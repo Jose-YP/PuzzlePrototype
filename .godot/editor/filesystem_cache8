@@ -1,0 +1,17 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1712428056
+icon.svg::CompressedTexture2D::8248961084117937552::1712425605::1712425613::1::::<><>::
+::res://Art/::1712427903
+AirOrb.png::CompressedTexture2D::1054926077143352215::1712427358::1712427374::1::::<><>::
+DarkOrb.png::CompressedTexture2D::1935638628612028504::1712427218::1712427224::1::::<><>::
+EarthOrb.png::CompressedTexture2D::7410748901229107902::1712427901::1712427903::1::::<><>::
+LightOrb.png::CompressedTexture2D::8911581817809219347::1712427681::1712427688::1::::<><>::
+LiquidOrb.png::CompressedTexture2D::4981308037519780617::1712427770::1712427774::1::::<><>::
+::res://Code/::1712428015
+SinglePiece.gd::GDScript::-1::1712428015::0::1::::<>Node2D<>::
+::res://Resources/::1712425980
+::res://Scenes/::1712428040
+FullPiece.tscn::PackedScene::5820798710556208465::1712426047::0::1::::<><>::
+Main.tscn::PackedScene::3399644878295701062::1712426034::0::1::::<><>::
+SinglePiece.tscn::PackedScene::6625588245103072961::1712428040::0::1::::<><>::res://Code/SinglePiece.gd
+::res://Themes/::1712425985
