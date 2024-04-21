@@ -6,6 +6,7 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
+@export_category("Grid")
 @export var width: int = 9
 @export var height: int = 7
 @export var x_offset: float = 64
@@ -13,6 +14,9 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 @export var x_start: float = 64
 @export var y_start: float = 800
 @export var start_pos: Vector2 = Vector2(5,7)
+@export_category("Process Constants")
+@export var gravity: float = 9.8
+@export var hold_wait: float = 1.5
 
 #Variables
 var board: Array[Array]

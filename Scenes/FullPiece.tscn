@@ -4,12 +4,14 @@
 [ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_olrsp"]
 
 [node name="FullPiece" type="Node2D"]
+position = Vector2(426, 222)
 script = ExtResource("1_olrsp")
+metadata/_edit_group_ = true
 
 [node name="SinglePiece" parent="." instance=ExtResource("1_8afeu")]
 
 [node name="SinglePiece2" parent="." instance=ExtResource("1_8afeu")]
-position = Vector2(0, -60)
+position = Vector2(0, -50)
 
 [node name="SinglePiece3" parent="." instance=ExtResource("1_8afeu")]
-position = Vector2(60, 0)
+position = Vector2(50, 0)

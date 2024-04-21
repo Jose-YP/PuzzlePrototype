@@ -5,3 +5,6 @@ res://Code/Scenes/Board.gd
 res://Code/Globals/Globals.gd
 res://Code/Scenes/SinglePiece.gd
 res://Scenes/FullPiece.tscn
+res://Code/Scenes/Control.gd
+res://Code/Scenes/FullPiece.gd
+res://Scenes/Test.tscn
