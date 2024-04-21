@@ -4,10 +4,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wufa0")
-x_offset = 50.0
-y_offset = 50.0
-x_start = 200.0
-y_start = 150.0
 
 [node name="Grid" type="Node2D" parent="."]
 position = Vector2(-20, -61)
