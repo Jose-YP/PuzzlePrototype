@@ -1,4 +1,7 @@
-res://Scenes/SinglePiece.tscn
-res://Code/SinglePiece.gd
 res://Scenes/Main.tscn
+res://Scenes/Board.gd
+res://Scenes/SinglePiece.tscn
+res://Code/Scenes/Board.gd
+res://Code/Globals/Globals.gd
+res://Code/Scenes/SinglePiece.gd
 res://Scenes/FullPiece.tscn

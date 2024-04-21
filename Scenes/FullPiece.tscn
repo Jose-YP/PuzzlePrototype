@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://co6vx7heink86"]
+[gd_scene load_steps=3 format=3 uid="uid://co6vx7heink86"]
 
 [ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/SinglePiece.tscn" id="1_8afeu"]
+[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_olrsp"]
 
 [node name="FullPiece" type="Node2D"]
+script = ExtResource("1_olrsp")
 
 [node name="SinglePiece" parent="." instance=ExtResource("1_8afeu")]
 

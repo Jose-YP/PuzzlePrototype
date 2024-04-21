@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="PuzzlePrototype"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/LiquidOrb.png"
+
+[autoload]
+
+Globals="*res://Code/Globals/Globals.gd"
