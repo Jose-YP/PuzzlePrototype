@@ -1,27 +1,22 @@
 extends Node2D
 
+@onready var positions: Array = $Positions.get_children()
+@onready var pieces: Array = $Pieces.get_children()
+@onready var rot = $Positions
+
 enum STATE {MOVE, PLACED}
 
-var pieces: Array 
+var currentPos: Vector2 = Vector2(5,2)
 var currentState: STATE = STATE.MOVE
 
 func _ready() -> void:
+	#Randomize Rotation
 	var rotNum: int = randi_range(0,3)
-	rotation_degrees = 90 * rotNum
+	rot.rotation_degrees = 90 * rotNum
 	
-	pieces = [$SinglePiece,$SinglePiece2,$SinglePiece3]
+	sync_position()
 
-func _process(_delta):
-	if currentState == STATE.MOVE:
-		if Input.is_action_just_pressed("ui_accept"):
-			rotation_degrees = fmod(rotation_degrees+90,360)
-		if Input.is_action_just_pressed("ui_cancel"):
-			rotation_degrees = fmod(rotation_degrees-90,360)
-		if Input.is_action_just_pressed("ui_left"):
-			pass
-		if Input.is_action_just_pressed("ui_right"):
-			pass
-		if Input.is_action_just_pressed("ui_up"):
-			pass
-		if Input.is_action_just_pressed("ui_down"):
-			pass
+#With positions independent from pieces I can rotate them and keep orientation fixed
+func sync_position() -> void: 
+	for i in range(3):
+		pieces[i].global_position = positions[i].global_position 

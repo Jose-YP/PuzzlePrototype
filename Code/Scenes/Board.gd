@@ -1,7 +1,6 @@
 extends Node2D
 
 #CONSTANTS
-const pieces = preload("res://Scenes/SinglePiece.tscn")
 const fullPiece = preload("res://Scenes/FullPiece.tscn")
 
 #EXPORT VARIABLES
@@ -43,32 +42,57 @@ func make_grid() -> Array[Array]:
 #______________________________
 #BASIC CONTROLS
 #______________________________
-func spawn_piece() -> void:
+func spawn_piece():
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
+	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
+	currentPiece.pieces[0].global_position = grid_to_pixel(start_pos)
 	
-	#If the rotation puts a piece below center, raise center by 1
-	var spawnPos: Vector2 = start_pos
-	if currentPiece.rotation_degrees >= 90 and currentPiece.rotation_degrees <= 180: 
-		spawnPos.y += 1
-		print("Facing down: ",spawnPos)
-	currentPiece.global_position = grid_to_pixel(spawnPos)
-	print("Center Pirece: ", spawnPos, currentPiece.pieces[0].global_position)
-	board[int(spawnPos.x)].insert(int(spawnPos.y), currentPiece.pieces[0])
+	full_piece_rotation(start_pos)
+
+func full_piece_rotation(pos) -> void:
+	var firstPos: Vector2 = pos
+	var secondPos: Vector2 = pos
 	
+	#Rotation is  a float value
+	match currentPiece.rot.rotation_degrees:
+		0.0:
+			firstPos.y += 1
+			secondPos.x += 1
+		90.0:
+			firstPos.x += 1
+			secondPos.y -= 1
+		180.0:
+			firstPos.y -= 1
+			secondPos.x -= 1
+		270.0:
+			firstPos.x -= 1
+			secondPos.y += 1
 	
-	print("\nCenter: ",currentPiece.pieces[0].global_position,  "1: ",currentPiece.pieces[1].global_position, "2: ",currentPiece.pieces[2].global_position,"\n")
-	
-	#1   ## X1 ##2x ## 2
-	#x2  ## 2  ## 1 ##1x 
-	#Add two other pieces based on position
-	var storedP2G: Vector2 = pixel_to_grid(currentPiece.pieces[1])
-	print("Piece 1: ",storedP2G, currentPiece.pieces[1].global_position)
-	board[int(storedP2G.x)].insert(int(storedP2G.y), currentPiece.pieces[1])
-	
-	storedP2G = pixel_to_grid(currentPiece.pieces[2])
-	print("\nPiece 2: ",storedP2G, currentPiece.pieces[2].global_position)
-	board[int(storedP2G.x)].insert(int(storedP2G.y), currentPiece.pieces[2])
+	print("Rotation: ", currentPiece.rot.rotation_degrees," First: ", firstPos, " Second: ", secondPos)
+	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
+	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
+	currentPiece.pieces[1].global_position = grid_to_pixel(firstPos)
+	currentPiece.pieces[2].global_position = grid_to_pixel(secondPos)
+
+func _process(_delta):
+	if currentPiece.currentState == currentPiece.STATE.MOVE:
+		if Input.is_action_just_pressed("ui_accept"):
+			currentPiece.rot.rotation_degrees = fmod(rotation_degrees+90,360)
+			full_piece_rotation(start_pos)
+		if Input.is_action_just_pressed("ui_cancel"):
+			currentPiece.rot.rotation_degrees = fmod(rotation_degrees-90,360)
+			full_piece_rotation(start_pos)
+		if Input.is_action_just_pressed("ui_left"):
+			currentPiece.position.x -= 50
+		if Input.is_action_just_pressed("ui_right"):
+			currentPiece.position.x += 50
+		if Input.is_action_just_pressed("ui_up"):
+			currentPiece.position.y -= 50
+		if Input.is_action_just_pressed("ui_down"):
+			currentPiece.position.y += 50
+		if Input.is_anything_pressed():
+			currentPiece.sync_position()
 
 #______________________________
 #CONVERSION
@@ -84,12 +108,11 @@ func grid_to_pixel(gridPos: Vector2) -> Vector2:
 
 #Turn visual positions into computer positions
 func pixel_to_grid(piece) -> Vector2:
-	var start_const: Vector2 = Vector2(origin.x - 50, origin.y + 50)
-	var Xnew: int = round((piece.global_position.x - start_const.x) / offset.x)
-	var Ynew: int = round((piece.global_position.y - start_const.y) / offset.y)
+	var Xnew: int = round((piece.global_position.x - start_pos.x) / offset.x)
+	var Ynew: int = round((piece.global_position.y - start_pos.y) / offset.y)
 	
-	print("Global: ",piece.global_position.x, " Start const: ", start_const.x)
-	print("Global: ",piece.global_position.y, " Start const: ", start_const.y)
+	print("Global: ",piece.global_position.x, " Start const: ", start_pos.x)
+	print("Global: ",piece.global_position.y, " Start const: ", start_pos.y)
 	
 	return Vector2(Xnew, Ynew)
 
@@ -101,13 +124,21 @@ func fill_board() -> void:
 		for j in height:
 			if j <= fail_rows:
 				continue
-			var piece = pieces.instantiate()
+			var piece = Globals.pieces.instantiate()
 			$Grid.add_child(piece)
 			#let the piece fall into pixel position
 			#I like how it starts lol
 			piece.position = grid_to_pixel(Vector2(i,j))
 			#Give the piece it's grid position
 			board[i][j] = piece
+
+func find_piece(piece) -> Vector2:
+	for i in width:
+		for j in height:
+			if board[i][j] == piece:
+				return Vector2(i,j)
+	
+	return Vector2(-1,-1)
 
 func display_board() -> void:
 	for j in height:
