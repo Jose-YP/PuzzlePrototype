@@ -95,6 +95,7 @@ texture = ExtResource("6_vobw2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource("7_c0alx")
+layout_mode = 0
 offset_left = 19.0
 offset_top = -1064.0
 offset_right = 1099.0

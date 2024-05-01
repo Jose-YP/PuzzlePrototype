@@ -27,6 +27,9 @@ func _ready() -> void:
 	board = make_grid()
 	spawn_piece()
 	#fill_board()
+	
+	
+	
 	display_board()
 
 func make_grid() -> Array[Array]:
@@ -39,6 +42,16 @@ func make_grid() -> Array[Array]:
 	
 	return array
 
+func _draw() -> void:
+	var drawOrigin = origin - offset/2
+	var boardRect: Rect2 = Rect2(drawOrigin,Vector2(offset.x * width,offset.y * height))
+	draw_rect(boardRect, Color(0.389, 0.389, 0.389))
+	
+	for i in width:
+		for j in height:
+			var rectOrigin = grid_to_pixel(Vector2(i,j)) - offset/2
+			var tileRect: Rect2 = Rect2(rectOrigin, offset)
+			draw_rect(tileRect, Color(0.208, 0.208, 0.208, 0.706), false, 1.5)
 #______________________________
 #BASIC CONTROLS
 #______________________________
