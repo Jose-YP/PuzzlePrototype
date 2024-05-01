@@ -26,8 +26,6 @@ var currentPiece
 func _ready() -> void:
 	board = make_grid()
 	spawn_piece()
-	#fill_board()
-	display_board()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -40,6 +38,8 @@ func make_grid() -> Array[Array]:
 	return array
 
 func _draw() -> void:
+	#Make the grid from origin to end
+	#-offset/2 leads to the top left of every tile
 	var drawOrigin = origin - offset/2
 	var boardRect: Rect2 = Rect2(drawOrigin,Vector2(offset.x * width,offset.y * height))
 	draw_rect(boardRect, Color(0.389, 0.389, 0.389))
@@ -54,20 +54,21 @@ func _draw() -> void:
 			
 			#DEBUG DRAW
 			var debugPos: Vector2 = grid_to_pixel(pos)
-			debugPos.x -= 10
+			debugPos.x -= 20
 			draw_string(ThemeDB.fallback_font, debugPos, str(pos))
 
 #______________________________
 #BASIC CONTROLS
 #______________________________
-func spawn_piece():
+func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
 	currentPiece.currentPos = start_pos
 	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
-	currentPiece.pieces[0].global_position = grid_to_pixel(start_pos)
+	currentPiece.rot.global_position = grid_to_pixel(start_pos)
 	
 	full_piece_rotation(start_pos)
+	currentPiece.sync_position()
 
 func full_piece_rotation(pos) -> void:
 	var firstPos: Vector2 = pos
@@ -91,15 +92,17 @@ func full_piece_rotation(pos) -> void:
 			firstPos.x -= 1
 			secondPos.y += 1
 	
-	print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
-	" First: ", currentPiece.pieces[1].currentType, 
-	firstPos, " Second: ", currentPiece.pieces[2].currentType, secondPos)
 	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
 	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
-	currentPiece.pieces[1].global_position = grid_to_pixel(firstPos)
-	currentPiece.pieces[2].global_position = grid_to_pixel(secondPos)
+	
+	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
+	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
+	
+	print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
+	" First: ", currentPiece.pieces[1].currentType, firstPos, currentPiece.positions[1].global_position,
+	"\n Second: ", currentPiece.pieces[2].currentType, secondPos, currentPiece.positions[2].global_position)
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		if Input.is_action_just_pressed("ui_accept"):
 			currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
