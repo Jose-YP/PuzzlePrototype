@@ -45,6 +45,7 @@ func make_grid() -> Array[Array]:
 func spawn_piece():
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
+	currentPiece.currentPos = start_pos
 	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
 	currentPiece.pieces[0].global_position = grid_to_pixel(start_pos)
 	
@@ -53,6 +54,9 @@ func spawn_piece():
 func full_piece_rotation(pos) -> void:
 	var firstPos: Vector2 = pos
 	var secondPos: Vector2 = pos
+	
+	if currentPiece.rot.rotation_degrees == 360:
+		currentPiece.rot.rotation_degrees = 0
 	
 	#Rotation is  a float value
 	match currentPiece.rot.rotation_degrees:
@@ -69,7 +73,9 @@ func full_piece_rotation(pos) -> void:
 			firstPos.x -= 1
 			secondPos.y += 1
 	
-	print("Rotation: ", currentPiece.rot.rotation_degrees," First: ", firstPos, " Second: ", secondPos)
+	print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
+	" First: ", currentPiece.pieces[1].currentType, 
+	firstPos, " Second: ", currentPiece.pieces[2].currentType, secondPos)
 	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
 	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
 	currentPiece.pieces[1].global_position = grid_to_pixel(firstPos)
@@ -78,11 +84,22 @@ func full_piece_rotation(pos) -> void:
 func _process(_delta):
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		if Input.is_action_just_pressed("ui_accept"):
-			currentPiece.rot.rotation_degrees = fmod(rotation_degrees+90,360)
-			full_piece_rotation(start_pos)
+			currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
+			
+			if currentPiece.rot.rotation_degrees > 360:
+				currentPiece.rot.rotation_degrees -= 360
+			
+			full_piece_rotation(currentPiece.currentPos)
+		
 		if Input.is_action_just_pressed("ui_cancel"):
-			currentPiece.rot.rotation_degrees = fmod(rotation_degrees-90,360)
-			full_piece_rotation(start_pos)
+			currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
+			
+			if currentPiece.rot.rotation_degrees < 0:
+				currentPiece.rot.rotation_degrees += 360
+			
+			full_piece_rotation(currentPiece.currentPos)
+		
+		
 		if Input.is_action_just_pressed("ui_left"):
 			currentPiece.position.x -= 50
 		if Input.is_action_just_pressed("ui_right"):
@@ -101,8 +118,6 @@ func _process(_delta):
 func grid_to_pixel(gridPos: Vector2) -> Vector2:
 	var Xnew: float = origin.x + offset.x * gridPos.x
 	var Ynew: float = origin.y + offset.y * gridPos.y
-	
-	print("Cetner spawn at: ", Vector2(Xnew, Ynew))
 	
 	return Vector2(Xnew, Ynew)
 
