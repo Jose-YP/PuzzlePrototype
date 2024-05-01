@@ -63,14 +63,14 @@ func _draw() -> void:
 func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
-	currentPiece.currentPos[0] = start_pos
+	currentPiece.gridPos[0] = start_pos
 	
 	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
 	currentPiece.rot.global_position = grid_to_pixel(start_pos)
 	
 	full_piece_rotation(start_pos)
 	currentPiece.sync_position()
-	print(currentPiece.currentPos)
+	print(currentPiece.gridPos)
 
 func full_piece_rotation(pos) -> void:
 	var firstPos: Vector2 = pos
@@ -97,9 +97,10 @@ func full_piece_rotation(pos) -> void:
 	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
 	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
 	
-	currentPiece.currentPos[1] = firstPos
-	currentPiece.currentPos[2] = secondPos
+	currentPiece.gridPos[1] = firstPos
+	currentPiece.gridPos[2] = secondPos
 	
+	currentPiece.positions[0].global_position = grid_to_pixel(pos)
 	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
 	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
 	
@@ -109,7 +110,32 @@ func full_piece_rotation(pos) -> void:
 
 func move_piece() -> void:
 	pass
+
+func can_move(direction) -> bool:
+	for i in range(currentPiece.pieces.size()):
+		var newPos: Vector2 = currentPiece.gridPos[i]
+		#Check if a piece can move horizontally or down
+		match direction:
+			"Left":
+				if newPos.x - 1 < 0:
+					return false
+				else: newPos.x -= 1
+			"Right":
+				if newPos.x + 1 > width - 1: return false
+				else: newPos.x += 1
+			"Down":
+				if newPos.y + 1 < height - 1: return false
+				else: newPos.y += 1
+			"Up":
+				if newPos.y - 1 < 0: return false
+				else: newPos.y -= 1
+		
+		var piece = board[newPos.x][newPos.y]
+		if piece != null and not currentPiece.in_full_piece(piece):
+			return false
 	
+	return true
+
 func _process(_delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -118,7 +144,7 @@ func _process(_delta) -> void:
 			if currentPiece.rot.rotation_degrees > 360:
 				currentPiece.rot.rotation_degrees -= 360
 			
-			full_piece_rotation(currentPiece.currentPos[0])
+			full_piece_rotation(currentPiece.gridPos[0])
 		
 		if Input.is_action_just_pressed("ui_cancel"):
 			currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
@@ -126,75 +152,22 @@ func _process(_delta) -> void:
 			if currentPiece.rot.rotation_degrees < 0:
 				currentPiece.rot.rotation_degrees += 360
 			
-			full_piece_rotation(currentPiece.currentPos[0])
+			full_piece_rotation(currentPiece.gridPos[0])
 		
+		if Input.is_action_just_pressed("ui_left") and can_move("Left"):
+			for i in range(currentPiece.gridPos.size()):
+				currentPiece.gridPos[i].x -= 1
+				currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
 		
-		if Input.is_action_just_pressed("ui_left"):
-			#Find which piece is closest to the left
-			#Prioritize them in the list
-			var leftPos: Array[Node] = currentPiece.positions
-			leftPos.sort_custom(func(a,b): return a.global_position.y < b.global_position.y)
-			leftPos.sort_custom(func(a,b): return a.global_position.x < b.global_position.x)
-			print("-----------LEFT------------")
-			print(currentPiece.currentPos)
-			
-			for i in range(leftPos.size()):
-				var pos: Vector2 = pixel_to_grid(leftPos[i])
-				var nextPos: Vector2 =  Vector2(clamp(pos.x - 1,0,width - 1), pos.y)
-				var regularIndex: int = currentPiece.currentPos.find(pos)
-				print(currentPiece.pieces[regularIndex].currentType, leftPos[i].global_position, pos)
-				print("Old Pos: ",pos ,"New Pos: ",nextPos, "Regular Index: ", regularIndex)
-				
-				#To prevent pieces from moving into already existent pieces
-				if board[nextPos.x][nextPos.y] != null:
-					print(board[nextPos.x][nextPos.y])
-					break
-				
-				if nextPos == Vector2(0,0) or pos == Vector2(0,0):
-					pass
-				
-				board[pos.x][pos.y] = null
-				
-				board[nextPos.x][nextPos.y] = currentPiece.pieces[regularIndex]
-				currentPiece.currentPos[regularIndex] = nextPos
-				
-				currentPiece.currentPos[regularIndex].global_position = grid_to_pixel(nextPos)
-				print(currentPiece.pieces[regularIndex].currentType, nextPos)
-			
-		if Input.is_action_just_pressed("ui_right"):
-			#Find which piece is closest to the right
-			#Prioritize them in the list
-			var rightPos: Array[Node] = currentPiece.positions
-			rightPos.sort_custom(func(a,b): return a.global_position.y < b.global_position.y)
-			rightPos.sort_custom(func(a,b): return a.global_position.x > b.global_position.x)
-			print("-----------RIGHT------------")
-			print(currentPiece.currentPos)
-			
-			for i in range(rightPos.size()):
-				var pos: Vector2 = pixel_to_grid(rightPos[i])
-				var nextPos: Vector2 =  Vector2(clamp(pos.x + 1,0,width - 1), pos.y)
-				var regularIndex: int = currentPiece.currentPos.find(pos)
-				
-				print(currentPiece.pieces[regularIndex].currentType, pos)
-				print("Old Pos: ",pos ,"New Pos: ",nextPos)
-				
-				#To prevent pieces from moving into already existent pieces
-				if board[nextPos.x][nextPos.y] != null:
-					break
-				   
-				board[pos.x][pos.y] = null
-				
-				pos = Vector2(clamp(pos.x + 1,0,width), pos.y)
-				
-				board[pos.x][pos.y] = currentPiece.pieces[regularIndex]
-				currentPiece.currentPos[regularIndex] = pos
-				
-				rightPos[i].global_position = grid_to_pixel(pos)
+		if Input.is_action_just_pressed("ui_right") and can_move("Right"):
+			for i in range(currentPiece.gridPos.size()):
+				currentPiece.gridPos[i].x += 1
+				currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
 		
 		#Both drop, up is hard drop, down is soft drop
 		if Input.is_action_just_pressed("ui_up"):
 			pass
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("ui_down") and can_move("Down"):
 			#Find which piece is closest to the right
 			#Prioritize them in the list
 			var floorPos: Array[Node] = currentPiece.positions
@@ -202,7 +175,7 @@ func _process(_delta) -> void:
 			
 			for i in range(floorPos.size()):
 				var regularIndex: int = currentPiece.positions.find(floorPos[i])
-				var pos: Vector2 = currentPiece.currentPos[regularIndex]
+				var pos: Vector2 = currentPiece.gridPos[regularIndex]
 				var nextPos: Vector2 =  Vector2(clamp(pos.x,0,width - 1), clamp(pos.y + 1, 0, height - 1))
 				
 				#To prevent pieces from moving into already existent pieces
@@ -214,7 +187,7 @@ func _process(_delta) -> void:
 				pos = Vector2(clamp(pos.x,0,width), clamp(pos.y + 1, 0, height))
 				
 				board[pos.x][pos.y] = currentPiece.pieces[regularIndex]
-				currentPiece.currentPos[regularIndex] = pos
+				currentPiece.gridPos[regularIndex] = pos
 				
 				floorPos[i].global_position = grid_to_pixel(pos)
 		
@@ -240,6 +213,22 @@ func pixel_to_grid(piece) -> Vector2:
 	#"Global: ",piece.global_position.y, " Start const: ", start_pos.y)
 	#print(Vector2(Xnew, Ynew))
 	return Vector2(Xnew, Ynew)
+
+#Adjacent array: [left,right,up,down] with null for any \wo a piece
+func find_adjacent(piece) -> Array:
+	var adjacent: Array = [null, null, null, null]
+	var pos = pixel_to_grid(piece)
+	
+	if board[pos.x - 1][pos.y] != null:
+		adjacent[0] = board[pos.x - 1][pos.y]
+	if board[pos.x + 1][pos.y] != null:
+		adjacent[1] = board[pos.x - 1][pos.y]
+	if board[pos.x][pos.y - 1] != null:
+		adjacent[2] = board[pos.x - 1][pos.y]
+	if board[pos.x][pos.y + 1] != null:
+		adjacent[3] = board[pos.x - 1][pos.y]
+
+	return adjacent
 
 #______________________________
 #DEBUG
