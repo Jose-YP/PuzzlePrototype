@@ -13,3 +13,4 @@ res://Scenes/FullPiece.tscn
 res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
 res://Code/Scenes/FullPiece.gd
+res://Code/Scenes/CurrentPos.gd

@@ -63,12 +63,14 @@ func _draw() -> void:
 func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
-	currentPiece.currentPos = start_pos
+	currentPiece.currentPos[0] = start_pos
+	
 	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
 	currentPiece.rot.global_position = grid_to_pixel(start_pos)
 	
 	full_piece_rotation(start_pos)
 	currentPiece.sync_position()
+	print(currentPiece.currentPos)
 
 func full_piece_rotation(pos) -> void:
 	var firstPos: Vector2 = pos
@@ -95,13 +97,19 @@ func full_piece_rotation(pos) -> void:
 	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
 	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
 	
+	currentPiece.currentPos[1] = firstPos
+	currentPiece.currentPos[2] = secondPos
+	
 	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
 	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
 	
-	print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
-	" First: ", currentPiece.pieces[1].currentType, firstPos, currentPiece.positions[1].global_position,
-	"\n Second: ", currentPiece.pieces[2].currentType, secondPos, currentPiece.positions[2].global_position)
+	#print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
+	#" First: ", currentPiece.pieces[1].currentType, firstPos, currentPiece.positions[1].global_position,
+	#"\n Second: ", currentPiece.pieces[2].currentType, secondPos, currentPiece.positions[2].global_position)
 
+func move_piece() -> void:
+	pass
+	
 func _process(_delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -110,7 +118,7 @@ func _process(_delta) -> void:
 			if currentPiece.rot.rotation_degrees > 360:
 				currentPiece.rot.rotation_degrees -= 360
 			
-			full_piece_rotation(currentPiece.currentPos)
+			full_piece_rotation(currentPiece.currentPos[0])
 		
 		if Input.is_action_just_pressed("ui_cancel"):
 			currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
@@ -118,17 +126,98 @@ func _process(_delta) -> void:
 			if currentPiece.rot.rotation_degrees < 0:
 				currentPiece.rot.rotation_degrees += 360
 			
-			full_piece_rotation(currentPiece.currentPos)
+			full_piece_rotation(currentPiece.currentPos[0])
 		
 		
 		if Input.is_action_just_pressed("ui_left"):
-			currentPiece.position.x -= 50
+			#Find which piece is closest to the left
+			#Prioritize them in the list
+			var leftPos: Array[Node] = currentPiece.positions
+			leftPos.sort_custom(func(a,b): return a.global_position.y < b.global_position.y)
+			leftPos.sort_custom(func(a,b): return a.global_position.x < b.global_position.x)
+			print("-----------LEFT------------")
+			print(currentPiece.currentPos)
+			
+			for i in range(leftPos.size()):
+				var pos: Vector2 = pixel_to_grid(leftPos[i])
+				var nextPos: Vector2 =  Vector2(clamp(pos.x - 1,0,width - 1), pos.y)
+				var regularIndex: int = currentPiece.currentPos.find(pos)
+				print(currentPiece.pieces[regularIndex].currentType, leftPos[i].global_position, pos)
+				print("Old Pos: ",pos ,"New Pos: ",nextPos, "Regular Index: ", regularIndex)
+				
+				#To prevent pieces from moving into already existent pieces
+				if board[nextPos.x][nextPos.y] != null:
+					print(board[nextPos.x][nextPos.y])
+					break
+				
+				if nextPos == Vector2(0,0) or pos == Vector2(0,0):
+					pass
+				
+				board[pos.x][pos.y] = null
+				
+				board[nextPos.x][nextPos.y] = currentPiece.pieces[regularIndex]
+				currentPiece.currentPos[regularIndex] = nextPos
+				
+				currentPiece.currentPos[regularIndex].global_position = grid_to_pixel(nextPos)
+				print(currentPiece.pieces[regularIndex].currentType, nextPos)
+			
 		if Input.is_action_just_pressed("ui_right"):
-			currentPiece.position.x += 50
+			#Find which piece is closest to the right
+			#Prioritize them in the list
+			var rightPos: Array[Node] = currentPiece.positions
+			rightPos.sort_custom(func(a,b): return a.global_position.y < b.global_position.y)
+			rightPos.sort_custom(func(a,b): return a.global_position.x > b.global_position.x)
+			print("-----------RIGHT------------")
+			print(currentPiece.currentPos)
+			
+			for i in range(rightPos.size()):
+				var pos: Vector2 = pixel_to_grid(rightPos[i])
+				var nextPos: Vector2 =  Vector2(clamp(pos.x + 1,0,width - 1), pos.y)
+				var regularIndex: int = currentPiece.currentPos.find(pos)
+				
+				print(currentPiece.pieces[regularIndex].currentType, pos)
+				print("Old Pos: ",pos ,"New Pos: ",nextPos)
+				
+				#To prevent pieces from moving into already existent pieces
+				if board[nextPos.x][nextPos.y] != null:
+					break
+				   
+				board[pos.x][pos.y] = null
+				
+				pos = Vector2(clamp(pos.x + 1,0,width), pos.y)
+				
+				board[pos.x][pos.y] = currentPiece.pieces[regularIndex]
+				currentPiece.currentPos[regularIndex] = pos
+				
+				rightPos[i].global_position = grid_to_pixel(pos)
+		
+		#Both drop, up is hard drop, down is soft drop
 		if Input.is_action_just_pressed("ui_up"):
-			currentPiece.position.y -= 50
+			pass
 		if Input.is_action_just_pressed("ui_down"):
-			currentPiece.position.y += 50
+			#Find which piece is closest to the right
+			#Prioritize them in the list
+			var floorPos: Array[Node] = currentPiece.positions
+			floorPos.sort_custom(func(a,b): return a.global_position.y > b.global_position.y)
+			
+			for i in range(floorPos.size()):
+				var regularIndex: int = currentPiece.positions.find(floorPos[i])
+				var pos: Vector2 = currentPiece.currentPos[regularIndex]
+				var nextPos: Vector2 =  Vector2(clamp(pos.x,0,width - 1), clamp(pos.y + 1, 0, height - 1))
+				
+				#To prevent pieces from moving into already existent pieces
+				if board[nextPos.x][nextPos.y] != null:
+					break
+				
+				board[pos.x][pos.y] = null
+				
+				pos = Vector2(clamp(pos.x,0,width), clamp(pos.y + 1, 0, height))
+				
+				board[pos.x][pos.y] = currentPiece.pieces[regularIndex]
+				currentPiece.currentPos[regularIndex] = pos
+				
+				floorPos[i].global_position = grid_to_pixel(pos)
+		
 		if Input.is_anything_pressed():
 			currentPiece.sync_position()
 
@@ -144,12 +233,12 @@ func grid_to_pixel(gridPos: Vector2) -> Vector2:
 
 #Turn visual positions into computer positions
 func pixel_to_grid(piece) -> Vector2:
-	var Xnew: int = round((piece.global_position.x - start_pos.x) / offset.x)
-	var Ynew: int = round((piece.global_position.y - start_pos.y) / offset.y)
+	var Xnew: int = round((piece.global_position.x - origin.x) / offset.x)
+	var Ynew: int = round((piece.global_position.y - origin.y) / offset.y)
 	
-	print("Global: ",piece.global_position.x, " Start const: ", start_pos.x)
-	print("Global: ",piece.global_position.y, " Start const: ", start_pos.y)
-	
+	#print("Global: ",piece.global_position.x, " Start const: ", start_pos.x, 
+	#"Global: ",piece.global_position.y, " Start const: ", start_pos.y)
+	#print(Vector2(Xnew, Ynew))
 	return Vector2(Xnew, Ynew)
 
 #______________________________

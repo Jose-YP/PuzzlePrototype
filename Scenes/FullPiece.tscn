@@ -10,7 +10,7 @@ metadata/_edit_group_ = true
 
 [node name="Pieces" type="Node2D" parent="."]
 
-[node name="SinglePiece" parent="Pieces" instance=ExtResource("1_8afeu")]
+[node name="Anchor" parent="Pieces" instance=ExtResource("1_8afeu")]
 
 [node name="SinglePiece2" parent="Pieces" instance=ExtResource("1_8afeu")]
 position = Vector2(0, -50)
@@ -20,7 +20,7 @@ position = Vector2(50, 0)
 
 [node name="Positions" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="Positions"]
+[node name="AnchorPos" type="Marker2D" parent="Positions"]
 
 [node name="Marker2D2" type="Marker2D" parent="Positions"]
 position = Vector2(0, -50)

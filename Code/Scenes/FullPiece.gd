@@ -2,12 +2,15 @@ extends Node2D
 
 @onready var positions: Array = $Positions.get_children()
 @onready var pieces: Array = $Pieces.get_children()
+#Dict doesn't work as the position values aren't pointers to currentPos
+@onready var pieceDict: Dictionary = {$Positions/AnchorPos:[$Pieces/Anchor, currentPos[0]],
+$Positions/Marker2D2:[$Pieces/SinglePiece2, currentPos[1]],$Positions/Marker2D3:[$Pieces/SinglePiece3, currentPos[2]]}
 @onready var rot = $Positions
 
 enum STATE {MOVE, PLACED}
 
-var currentPos: Vector2
 var currentState: STATE = STATE.MOVE
+var currentPos: Array[Vector2] = [Vector2(), Vector2(), Vector2()]
 
 func _ready() -> void:
 	#Randomize Rotation
