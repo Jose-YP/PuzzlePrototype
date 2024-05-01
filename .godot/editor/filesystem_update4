@@ -12,3 +12,4 @@ res://Code/Scenes/Board.gd
 res://Scenes/FullPiece.tscn
 res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
+res://Code/Scenes/FullPiece.gd

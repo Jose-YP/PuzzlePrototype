@@ -6,7 +6,7 @@ extends Node2D
 
 enum STATE {MOVE, PLACED}
 
-var currentPos: Vector2 = Vector2(5,2)
+var currentPos: Vector2
 var currentState: STATE = STATE.MOVE
 
 func _ready() -> void:
