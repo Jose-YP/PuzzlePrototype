@@ -8,22 +8,30 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 @export_category("Grid")
 @export var width: int = 9
 @export var height: int = 9 #row 0, 1 and 2 are fail state rows
-@export var offset: Vector2 = Vector2(50,50)
-@export var origin: Vector2 = Vector2(200, 150)
-@export var start_pos: Vector2 = Vector2(5,2)
+@export var offset: Vector2 = Vector2(65,65)
+@export var origin: Vector2 = Vector2(200, 85)
+@export var start_pos: Vector2 = Vector2(4,1)
 @export_category("Process Constants")
 @export var gravity: float = 9.8
 @export var hold_wait: float = 1.5
 @export var fail_rows: int = 2
-
+@export_group("Debug")
+@export var gravity_on: bool = false
+@export var column_fill: Vector2 = Vector2(3,4)
 #Variables
 var board: Array[Array]
-var currentPiece
+var currentPiece: Node2D
 
 #______________________________
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
+	#Make Timers function
+	$Timers/Grounded.set_paused(false)
+	$Timers/SoftDrop.set_paused(false)
+	$Timers/Gravity.set_paused(false)
+	
+	#Make board and start the game
 	board = make_grid()
 	spawn_piece()
 
@@ -57,9 +65,6 @@ func _draw() -> void:
 			debugPos.x -= 20
 			draw_string(ThemeDB.fallback_font, debugPos, str(pos))
 
-#______________________________
-#BASIC CONTROLS
-#______________________________
 #Array order goes [anchor, clockwise, ccw]
 func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
@@ -71,8 +76,10 @@ func spawn_piece() -> void:
 	
 	full_piece_rotation(start_pos)
 	currentPiece.sync_position()
-	print(currentPiece.gridPos)
 
+#______________________________
+#BASIC CONTROLS
+#______________________________
 func full_piece_rotation(pos) -> void:
 	var firstPos: Vector2 = pos
 	var secondPos: Vector2 = pos
@@ -114,44 +121,52 @@ func rotate_pop() -> bool:
 
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
+		var pos: Vector2 = currentPiece.gridPos[i]
+		board[pos.x][pos.y] = null
 		if direction == "X":
-			currentPiece.gridPos[i].x += ammount
+			pos.x += ammount
 		else:
-			currentPiece.gridPos[i].y += ammount
-		currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
+			pos.y += ammount
+		print(currentPiece.gridPos[i], pos)
+		currentPiece.gridPos[i] = pos
+		board[pos.x][pos.y] = currentPiece.pieces[i]
+		currentPiece.positions[i].global_position = grid_to_pixel(pos)
+
+func movement() -> void:
+	if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
+		currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
+		if currentPiece.rot.rotation_degrees > 360:
+			currentPiece.rot.rotation_degrees -= 360
+		
+		full_piece_rotation(currentPiece.gridPos[0])
+		
+	if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
+		currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
+		if currentPiece.rot.rotation_degrees < 0:
+			currentPiece.rot.rotation_degrees += 360
+		
+		full_piece_rotation(currentPiece.gridPos[0])
+	
+	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
+		move_piece(-1)
+	
+	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
+		move_piece(1)
+	
+	#Both drop, up is hard drop, down is soft drop
+	if Input.is_action_just_pressed("ui_up"):
+		pass
+	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
+		move_piece(-1, "Y")
+	
+	if Input.is_anything_pressed():
+		currentPiece.sync_position()
 
 func _process(_delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
-		if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
-			print("Clockwise")
-			currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
-			if currentPiece.rot.rotation_degrees > 360:
-				currentPiece.rot.rotation_degrees -= 360
-			
-			full_piece_rotation(currentPiece.gridPos[0])
-		
-		if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
-			print("Counterclock")
-			currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
-			if currentPiece.rot.rotation_degrees < 0:
-				currentPiece.rot.rotation_degrees += 360
-			
-			full_piece_rotation(currentPiece.gridPos[0])
-		
-		if Input.is_action_just_pressed("ui_left") and can_move("Left"):
-			move_piece(-1)
-		
-		if Input.is_action_just_pressed("ui_right") and can_move("Right"):
-			move_piece(1)
-		
-		#Both drop, up is hard drop, down is soft drop
-		if Input.is_action_just_pressed("ui_up"):
-			pass
-		if Input.is_action_just_pressed("ui_down") and can_move("Down"):
-			move_piece(-1, "Y")
-		
-		if Input.is_anything_pressed():
-			currentPiece.sync_position()
+		movement()
+	if currentPiece.currentState == currentPiece.STATE.GROUNDED:
+		movement()
 
 #______________________________
 #CONVERSION
@@ -190,6 +205,7 @@ func find_adjacent(piece) -> Array:
 	return adjacent
 
 func can_move(direction) -> bool:
+	print(currentPiece.pieces)
 	for i in range(currentPiece.pieces.size()):
 		var newPos: Vector2 = currentPiece.gridPos[i]
 		#Check if a piece can move horizontally or down
@@ -201,48 +217,72 @@ func can_move(direction) -> bool:
 				if newPos.x + 1 > width - 1: return false
 				else: newPos.x += 1
 			"Down":
-				if newPos.y + 1 < height - 1: return false
+				if newPos.y + 1 > height - 1: return false
 				else: newPos.y += 1
 			"Up":
 				if newPos.y - 1 < 0: return false
 				else: newPos.y -= 1
 		
 		var piece = board[newPos.x][newPos.y]
+		if piece != null:
+			print(piece)
+			print(piece.currentType, newPos, currentPiece.in_full_piece(piece))
+		else:
+			print(newPos, null, " bellow!")
 		if piece != null and not currentPiece.in_full_piece(piece):
 			return false
+		else:
+			print(piece != null, not currentPiece.in_full_piece(piece))
 	
 	return true
 
 #Check if the rotation will hit the wall
 func can_rotate(direction = "CCW") -> bool:
-	print(currentPiece.rot.rotation_degrees, currentPiece.gridPos)
-	#CCW 90  | X CCW   | CW X   |180 CW
-	# X CW   | CW 0    | 270 CCW| CCW X
+	#Don't ask me how, this is just what I witnessed
+	#CCW 90  | X CCW   |   CW X   |180 CW
+	# X CW   | CW 0    | 270 CCW  | CCW X
+	#X - Anchor, CCW - Counter Clockwise, CW -Clockwise
 	var pos: Vector2 = currentPiece.gridPos[0]
 	match currentPiece.rot.rotation_degrees:
 		0.0:
 			if ((direction == "CCW" and pos.y - 1 < 0) or
 			(direction != "CCW" and pos.x - 1 < 0)):
 				return false
-			else: print(270,(pos.y - 1 < 0),(pos.x - 1 < 0))
 		90.0:
 			if ((direction == "CCW" and pos.x - 1 < 0) or
 			(direction != "CCW" and pos.y + 1 > height - 1)):
 				return false
-			else: print(90, (pos.x - 1 < 0), (pos.y + 1 > height - 1))
 		180.0:
 			if ((direction == "CCW" and pos.y + 1 > height - 1) 
 			or (direction != "CCW" and pos.x + 1 > width - 1)):
-				print(180, (pos.y + 1 > height - 1), (pos.x + 1 > width - 1))
 				return false
-			else: print(180, (pos.y + 1 > height - 1), (pos.x + 1 > width - 1))
 		270.0:
 			if ((direction == "CCW" and pos.x + 1 > width - 1) 
 			or (direction != "CCW" and pos.y - 1 < 0)):
 				return false
-			else: print(0,(pos.x + 1 > width - 1), (pos.y - 1 < 0))
 		
 	return true
+
+#______________________________
+#TIMERS
+#______________________________
+func _on_soft_drop_timeout():
+	pass # Replace with function body.
+
+func _on_grounded_timeout():
+	pass # Replace with function body.
+
+func _on_gravity_timeout():
+	if gravity_on:
+		if not can_move("Down"):
+			currentPiece.currentState = currentPiece.STATE.PLACED
+			currentPiece = null
+			spawn_piece()
+			display_board()
+		
+		else:
+			move_piece(1, "Y")
+			currentPiece.sync_position()
 
 #______________________________
 #DEBUG

@@ -8,7 +8,7 @@ extends Node2D
 $Positions/CCWPos:[$Pieces/CCW, gridPos[1]],$Positions/ClockwisePos:[$Pieces/Clockwise, gridPos[2]]}
 @onready var rot = $Positions
 
-enum STATE {MOVE, PLACED}
+enum STATE {MOVE, GROUNDED, PLACED}
 
 var currentState: STATE = STATE.MOVE
 var gridPos: Array[Vector2] = [Vector2(), Vector2(), Vector2()]
