@@ -54,13 +54,14 @@ func spawn_piece() -> void:
 	board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
 	currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
 	
-	full_piece_rotation(rules.start_pos)
+	currentPiece.sync_position()
+	full_piece_rotation(rules.start_pos, true)
 	currentPiece.sync_position()
 
 #______________________________
 #BASIC CONTROLS
 #______________________________
-func full_piece_rotation(pos) -> void:
+func full_piece_rotation(pos, start = false) -> void:
 	var firstPos: Vector2 = pos
 	var secondPos: Vector2 = pos
 	
@@ -85,8 +86,9 @@ func full_piece_rotation(pos) -> void:
 	var oldPos: Vector2 = find_piece(currentPiece.pieces[1])
 	var oldPos2: Vector2 = find_piece(currentPiece.pieces[2])
 	
-	board[oldPos.x][oldPos.y] = null
-	board[oldPos2.x][oldPos2.y] = null
+	if not start:
+		board[oldPos.x][oldPos.y] = null
+		board[oldPos2.x][oldPos2.y] = null
 	
 	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
 	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
@@ -404,8 +406,6 @@ func find_piece(piece) -> Vector2:
 
 func display_board() -> void:
 	for j in rules.height:
-		if j == 8:
-			print()
 		var debugString: String
 		for i in rules.width:
 			if board[i][j] != null:
