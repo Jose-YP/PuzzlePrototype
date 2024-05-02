@@ -86,6 +86,7 @@ func full_piece_rotation(pos, start = false) -> void:
 	var oldPos: Vector2 = find_piece(currentPiece.pieces[1])
 	var oldPos2: Vector2 = find_piece(currentPiece.pieces[2])
 	
+	#Spawning pieces will give oldPos of (-1,-1) basically deleting (8,8)
 	if not start:
 		board[oldPos.x][oldPos.y] = null
 		board[oldPos2.x][oldPos2.y] = null
@@ -152,14 +153,12 @@ func place() -> void:
 		board[orgPos.x][orgPos.y] = null
 		var pos = currentPiece.gridPos[i]
 		board[pos.x][pos.y] = currentPiece.pieces[i]
-	print("Placed at: ", currentPiece.gridPos)
+	
 	currentPiece.currentState = currentPiece.STATE.PLACED
 	currentPiece = null
 	spawn_piece()
 
 func hard_drop(target) -> void:
-	print("From: ",currentPiece.gridPos, " To: ", target)
-	print("\n break")
 	for i in (currentPiece.pieces.size()):
 		var pos: Vector2 = target[i]
 		board[currentPiece.gridPos[i].x][currentPiece.gridPos[i].y] = null
@@ -169,7 +168,6 @@ func hard_drop(target) -> void:
 		currentPiece.positions[i].global_position = grid_to_pixel(pos)
 	currentPiece.sync_position()
 	
-	print("Placed at: ", currentPiece.gridPos)
 	currentPiece.currentState = currentPiece.STATE.PLACED
 	currentPiece = null
 	display_board()
@@ -235,6 +233,14 @@ func pixel_to_grid(piece) -> Vector2:
 	
 	return Vector2(Xnew, Ynew)
 
+func find_piece(piece) -> Vector2:
+	for i in rules.width:
+		for j in rules.height:
+			if board[i][j] == piece:
+				return Vector2(i,j)
+	
+	return Vector2(-1,-1)
+
 #Adjacent array: [left,right,up,down] with null for any \wo a piece
 func find_adjacent(piece) -> Array:
 	var adjacent: Array = [null, null, null, null]
@@ -263,42 +269,26 @@ func find_drop_bottom(pieces) -> Array[Vector2]:
 			if finalPos[j] == pieces.gridPos[i]:
 				regularIndexes[j] = i
 	
-	print(finalPos, pieces.gridPos, regularIndexes)
-	print("\n-----------Break----------")
-	
 	for i in range(pieces.gridPos.size()): #Find lowest place for each piece
 		var regIndex = regularIndexes[i]
 		var column: int = int(finalPos[i].x)
-		print("Column: ",column," ",pieces.pieces[regIndex].currentType, finalPos[i])
 		
 		for j in range(finalPos[i].y + 1, rules.height):
 			#First regular piece in current piece's column
-			if j == rules.height - 1:
-				print("\nBreak")
 			if board[column][j] != null:
 				#If it's not in the current peice, place it normally 
 				if not pieces.in_full_piece(board[column][j]):
-					print("Found piece ",board[column][j].currentType, board[column][j],
-					 " at ", Vector2(column,j), " so ", Vector2(column,j-1))
 					low[regIndex] = Vector2(column,j-1)
 					break
 				else: #Else find where the current peice is and place it above there
 					
 					var above = low[pieces.pieces.find(board[column][j])].y - 1
-					print("Place above ",board[column][j].currentType, low[regularIndexes[i - 1]],
-					 " So...", above)
 					low[regIndex] = Vector2(column,above)
 					break
 			if j >= rules.height - 1: #Floor is lowest if a piece wasn't found
-				print(pieces.pieces[regIndex].currentType, " Found Floor placing at ",Vector2(column,rules.height-1))
 				low[regIndex] = Vector2(column,rules.height-1)
 				break
-			
-		if low[regIndex] == Vector2(-1,-1):
-			print("Oops")
-			
 	
-	print(pieces.gridPos, low)
 	return low
 
 func can_move(direction) -> bool:
@@ -395,14 +385,6 @@ func fill_column() -> void:
 
 func make_overhang() -> void:
 	pass
-
-func find_piece(piece) -> Vector2:
-	for i in rules.width:
-		for j in rules.height:
-			if board[i][j] == piece:
-				return Vector2(i,j)
-	
-	return Vector2(-1,-1)
 
 func display_board() -> void:
 	for j in rules.height:
