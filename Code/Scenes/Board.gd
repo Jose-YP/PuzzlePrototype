@@ -6,18 +6,21 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export_category("Grid")
-@export var width: int = 9
-@export var height: int = 9 #row 0, 1 and 2 are fail state rows
+@export_range(6,15) var width: int = 9
+@export_range(6,15) var height: int = 9 #row 0, 1 and 2 are fail state rows
 @export var offset: Vector2 = Vector2(65,65)
 @export var origin: Vector2 = Vector2(200, 85)
 @export var start_pos: Vector2 = Vector2(4,1)
 @export_category("Process Constants")
-@export var gravity: float = 9.8
-@export var hold_wait: float = 1.5
-@export var fail_rows: int = 2
+@export_range(0,2) var gravity: float = 1
+@export_range(0,1) var soft_drop: float = 1
+@export_range(0,3) var fail_rows: int = 2
 @export_group("Debug")
 @export var gravity_on: bool = false
+@export_range(0,9) var grid_fill: int = 4
 @export var column_fill: Vector2 = Vector2(3,4)
+@export var overhang_dimentions: Vector2 = Vector2(4,2)
+
 #Variables
 var board: Array[Array]
 var currentPiece: Node2D
@@ -27,6 +30,8 @@ var currentPiece: Node2D
 #______________________________
 func _ready() -> void:
 	#Make Timers function
+	$Timers/Gravity.set_wait_time(gravity)
+	$Timers/SoftDrop.set_wait_time(soft_drop)
 	$Timers/Grounded.set_paused(false)
 	$Timers/SoftDrop.set_paused(false)
 	$Timers/Gravity.set_paused(false)
@@ -34,6 +39,7 @@ func _ready() -> void:
 	#Make board and start the game
 	board = make_grid()
 	spawn_piece()
+	fill_board()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -127,7 +133,6 @@ func move_piece(ammount, direction = "X") -> void:
 			pos.x += ammount
 		else:
 			pos.y += ammount
-		print(currentPiece.gridPos[i], pos)
 		currentPiece.gridPos[i] = pos
 		board[pos.x][pos.y] = currentPiece.pieces[i]
 		currentPiece.positions[i].global_position = grid_to_pixel(pos)
@@ -289,16 +294,22 @@ func _on_gravity_timeout():
 #______________________________
 func fill_board() -> void:
 	for i in width:
-		for j in height:
-			if j <= fail_rows:
+		for j in grid_fill:
+			if (height-j-1) <= fail_rows:
 				continue
-			var piece = Globals.pieces.instantiate()
+			var piece = Globals.piece.instantiate()
 			$Grid.add_child(piece)
 			#let the piece fall into pixel position
 			#I like how it starts lol
-			piece.position = grid_to_pixel(Vector2(i,j))
+			piece.global_position = grid_to_pixel(Vector2(i,height-j-1))
 			#Give the piece it's grid position
-			board[i][j] = piece
+			board[i][height-j-1] = piece
+
+func fill_column() -> void:
+	pass
+
+func make_overhang() -> void:
+	pass
 
 func find_piece(piece) -> Vector2:
 	for i in width:

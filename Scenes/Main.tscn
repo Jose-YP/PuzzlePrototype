@@ -4,7 +4,9 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wufa0")
+soft_drop = 0.5
 gravity_on = true
+grid_fill = 2
 
 [node name="Grid" type="Node2D" parent="."]
 position = Vector2(-20, -61)
