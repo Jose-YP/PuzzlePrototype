@@ -60,6 +60,7 @@ func _draw() -> void:
 #______________________________
 #BASIC CONTROLS
 #______________________________
+#Array order goes [anchor, clockwise, ccw]
 func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
@@ -108,88 +109,46 @@ func full_piece_rotation(pos) -> void:
 	#" First: ", currentPiece.pieces[1].currentType, firstPos, currentPiece.positions[1].global_position,
 	#"\n Second: ", currentPiece.pieces[2].currentType, secondPos, currentPiece.positions[2].global_position)
 
-func move_piece() -> void:
-	pass
+func rotate_pop() -> bool:
+	return false
 
-func can_move(direction) -> bool:
-	for i in range(currentPiece.pieces.size()):
-		var newPos: Vector2 = currentPiece.gridPos[i]
-		#Check if a piece can move horizontally or down
-		match direction:
-			"Left":
-				if newPos.x - 1 < 0:
-					return false
-				else: newPos.x -= 1
-			"Right":
-				if newPos.x + 1 > width - 1: return false
-				else: newPos.x += 1
-			"Down":
-				if newPos.y + 1 < height - 1: return false
-				else: newPos.y += 1
-			"Up":
-				if newPos.y - 1 < 0: return false
-				else: newPos.y -= 1
-		
-		var piece = board[newPos.x][newPos.y]
-		if piece != null and not currentPiece.in_full_piece(piece):
-			return false
-	
-	return true
+func move_piece(ammount, direction = "X") -> void:
+	for i in range(currentPiece.gridPos.size()):
+		if direction == "X":
+			currentPiece.gridPos[i].x += ammount
+		else:
+			currentPiece.gridPos[i].y += ammount
+		currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
 
 func _process(_delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
+			print("Clockwise")
 			currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
-			
 			if currentPiece.rot.rotation_degrees > 360:
 				currentPiece.rot.rotation_degrees -= 360
 			
 			full_piece_rotation(currentPiece.gridPos[0])
 		
-		if Input.is_action_just_pressed("ui_cancel"):
+		if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
+			print("Counterclock")
 			currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
-			
 			if currentPiece.rot.rotation_degrees < 0:
 				currentPiece.rot.rotation_degrees += 360
 			
 			full_piece_rotation(currentPiece.gridPos[0])
 		
 		if Input.is_action_just_pressed("ui_left") and can_move("Left"):
-			for i in range(currentPiece.gridPos.size()):
-				currentPiece.gridPos[i].x -= 1
-				currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
+			move_piece(-1)
 		
 		if Input.is_action_just_pressed("ui_right") and can_move("Right"):
-			for i in range(currentPiece.gridPos.size()):
-				currentPiece.gridPos[i].x += 1
-				currentPiece.positions[i].global_position = grid_to_pixel(currentPiece.gridPos[i])
+			move_piece(1)
 		
 		#Both drop, up is hard drop, down is soft drop
 		if Input.is_action_just_pressed("ui_up"):
 			pass
 		if Input.is_action_just_pressed("ui_down") and can_move("Down"):
-			#Find which piece is closest to the right
-			#Prioritize them in the list
-			var floorPos: Array[Node] = currentPiece.positions
-			floorPos.sort_custom(func(a,b): return a.global_position.y > b.global_position.y)
-			
-			for i in range(floorPos.size()):
-				var regularIndex: int = currentPiece.positions.find(floorPos[i])
-				var pos: Vector2 = currentPiece.gridPos[regularIndex]
-				var nextPos: Vector2 =  Vector2(clamp(pos.x,0,width - 1), clamp(pos.y + 1, 0, height - 1))
-				
-				#To prevent pieces from moving into already existent pieces
-				if board[nextPos.x][nextPos.y] != null:
-					break
-				
-				board[pos.x][pos.y] = null
-				
-				pos = Vector2(clamp(pos.x,0,width), clamp(pos.y + 1, 0, height))
-				
-				board[pos.x][pos.y] = currentPiece.pieces[regularIndex]
-				currentPiece.gridPos[regularIndex] = pos
-				
-				floorPos[i].global_position = grid_to_pixel(pos)
+			move_piece(-1, "Y")
 		
 		if Input.is_anything_pressed():
 			currentPiece.sync_position()
@@ -229,6 +188,61 @@ func find_adjacent(piece) -> Array:
 		adjacent[3] = board[pos.x - 1][pos.y]
 
 	return adjacent
+
+func can_move(direction) -> bool:
+	for i in range(currentPiece.pieces.size()):
+		var newPos: Vector2 = currentPiece.gridPos[i]
+		#Check if a piece can move horizontally or down
+		match direction:
+			"Left":
+				if newPos.x - 1 < 0: return false
+				else: newPos.x -= 1
+			"Right":
+				if newPos.x + 1 > width - 1: return false
+				else: newPos.x += 1
+			"Down":
+				if newPos.y + 1 < height - 1: return false
+				else: newPos.y += 1
+			"Up":
+				if newPos.y - 1 < 0: return false
+				else: newPos.y -= 1
+		
+		var piece = board[newPos.x][newPos.y]
+		if piece != null and not currentPiece.in_full_piece(piece):
+			return false
+	
+	return true
+
+#Check if the rotation will hit the wall
+func can_rotate(direction = "CCW") -> bool:
+	print(currentPiece.rot.rotation_degrees, currentPiece.gridPos)
+	#CCW 90  | X CCW   | CW X   |180 CW
+	# X CW   | CW 0    | 270 CCW| CCW X
+	var pos: Vector2 = currentPiece.gridPos[0]
+	match currentPiece.rot.rotation_degrees:
+		0.0:
+			if ((direction == "CCW" and pos.y - 1 < 0) or
+			(direction != "CCW" and pos.x - 1 < 0)):
+				return false
+			else: print(270,(pos.y - 1 < 0),(pos.x - 1 < 0))
+		90.0:
+			if ((direction == "CCW" and pos.x - 1 < 0) or
+			(direction != "CCW" and pos.y + 1 > height - 1)):
+				return false
+			else: print(90, (pos.x - 1 < 0), (pos.y + 1 > height - 1))
+		180.0:
+			if ((direction == "CCW" and pos.y + 1 > height - 1) 
+			or (direction != "CCW" and pos.x + 1 > width - 1)):
+				print(180, (pos.y + 1 > height - 1), (pos.x + 1 > width - 1))
+				return false
+			else: print(180, (pos.y + 1 > height - 1), (pos.x + 1 > width - 1))
+		270.0:
+			if ((direction == "CCW" and pos.x + 1 > width - 1) 
+			or (direction != "CCW" and pos.y - 1 < 0)):
+				return false
+			else: print(0,(pos.x + 1 > width - 1), (pos.y - 1 < 0))
+		
+	return true
 
 #______________________________
 #DEBUG

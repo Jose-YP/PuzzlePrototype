@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy73pk3cbyn7p"
-path="res://.godot/imported/LightOrb.png-3d193b9535bd64830d882f1f0dd6c2cb.ctex"
+uid="uid://pbaqi8u6vslb"
+path="res://.godot/imported/AirOrb.png-888686ef1e43956bc9b5d69a76679ea3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/LightOrb.png"
-dest_files=["res://.godot/imported/LightOrb.png-3d193b9535bd64830d882f1f0dd6c2cb.ctex"]
+source_file="res://Art/Pieces/AirOrb.png"
+dest_files=["res://.godot/imported/AirOrb.png-888686ef1e43956bc9b5d69a76679ea3.ctex"]
 
 [params]
 

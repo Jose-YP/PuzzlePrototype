@@ -1,10 +1,11 @@
 extends Node2D
 
+#Dict doesn't work as the position values aren't pointers to gridPos
+#CCW and CLockwise are named as such as they lead CCW/CLockwise rotations
 @onready var positions: Array = $Positions.get_children()
 @onready var pieces: Array = $Pieces.get_children()
-#Dict doesn't work as the position values aren't pointers to gridPos
 @onready var pieceDict: Dictionary = {$Positions/AnchorPos:[$Pieces/Anchor, gridPos[0]],
-$Positions/Marker2D2:[$Pieces/SinglePiece2, gridPos[1]],$Positions/Marker2D3:[$Pieces/SinglePiece3, gridPos[2]]}
+$Positions/CCWPos:[$Pieces/CCW, gridPos[1]],$Positions/ClockwisePos:[$Pieces/Clockwise, gridPos[2]]}
 @onready var rot = $Positions
 
 enum STATE {MOVE, PLACED}

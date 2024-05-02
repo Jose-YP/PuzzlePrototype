@@ -12,18 +12,18 @@ metadata/_edit_group_ = true
 
 [node name="Anchor" parent="Pieces" instance=ExtResource("1_8afeu")]
 
-[node name="SinglePiece2" parent="Pieces" instance=ExtResource("1_8afeu")]
+[node name="CCW" parent="Pieces" instance=ExtResource("1_8afeu")]
 position = Vector2(0, -50)
 
-[node name="SinglePiece3" parent="Pieces" instance=ExtResource("1_8afeu")]
+[node name="Clockwise" parent="Pieces" instance=ExtResource("1_8afeu")]
 position = Vector2(50, 0)
 
 [node name="Positions" type="Node2D" parent="."]
 
 [node name="AnchorPos" type="Marker2D" parent="Positions"]
 
-[node name="Marker2D2" type="Marker2D" parent="Positions"]
+[node name="CCWPos" type="Marker2D" parent="Positions"]
 position = Vector2(0, -50)
 
-[node name="Marker2D3" type="Marker2D" parent="Positions"]
+[node name="ClockwisePos" type="Marker2D" parent="Positions"]
 position = Vector2(50, 0)
