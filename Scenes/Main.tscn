@@ -1,16 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=4 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board.gd" id="1_wufa0"]
+[ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Basic Rules.tres" id="2_71wbc"]
+[ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="2_jsmj8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wufa0")
-soft_drop = 0.5
-gravity_on = true
-grid_fill = 2
+rules = ExtResource("2_71wbc")
 
 [node name="Grid" type="Node2D" parent="."]
 position = Vector2(-20, -61)
 scale = Vector2(1.25, 1.25)
+
+[node name="GridBackground" type="Node2D" parent="Grid"]
+position = Vector2(17, 49)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2_jsmj8")
 
 [node name="Timers" type="Node" parent="."]
 

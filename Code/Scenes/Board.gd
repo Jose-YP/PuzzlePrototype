@@ -5,21 +5,7 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
-@export_category("Grid")
-@export_range(6,15) var width: int = 9
-@export_range(6,15) var height: int = 9 #row 0, 1 and 2 are fail state rows
-@export var offset: Vector2 = Vector2(65,65)
-@export var origin: Vector2 = Vector2(200, 85)
-@export var start_pos: Vector2 = Vector2(4,1)
-@export_category("Process Constants")
-@export_range(0,2) var gravity: float = 1
-@export_range(0,1) var soft_drop: float = 1
-@export_range(0,3) var fail_rows: int = 2
-@export_group("Debug")
-@export var gravity_on: bool = false
-@export_range(0,9) var grid_fill: int = 4
-@export var column_fill: Vector2 = Vector2(3,4)
-@export var overhang_dimentions: Vector2 = Vector2(4,2)
+@export var rules: Rules
 
 #Variables
 var board: Array[Array]
@@ -30,8 +16,8 @@ var currentPiece: Node2D
 #______________________________
 func _ready() -> void:
 	#Make Timers function
-	$Timers/Gravity.set_wait_time(gravity)
-	$Timers/SoftDrop.set_wait_time(soft_drop)
+	$Timers/Gravity.set_wait_time(rules.gravity)
+	$Timers/SoftDrop.set_wait_time(rules.soft_drop)
 	$Timers/Grounded.set_paused(false)
 	$Timers/SoftDrop.set_paused(false)
 	$Timers/Gravity.set_paused(false)
@@ -44,43 +30,23 @@ func _ready() -> void:
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
 	
-	for i in width:
+	for i in rules.width:
 		array.append([])
-		for j in height:
+		for j in rules.height:
 			array[i].append(null)
 	
 	return array
-
-func _draw() -> void:
-	#Make the grid from origin to end
-	#-offset/2 leads to the top left of every tile
-	var drawOrigin = origin - offset/2
-	var boardRect: Rect2 = Rect2(drawOrigin,Vector2(offset.x * width,offset.y * height))
-	draw_rect(boardRect, Color(0.389, 0.389, 0.389))
-	
-	for i in width:
-		for j in height:
-			var pos: Vector2 = Vector2(i,j)
-			var rectOrigin:Vector2 = grid_to_pixel(pos) - offset/2
-			var tileRect: Rect2 = Rect2(rectOrigin, offset)
-			
-			draw_rect(tileRect, Color(0.208, 0.208, 0.208, 0.706), false, 1.5)
-			
-			#DEBUG DRAW
-			var debugPos: Vector2 = grid_to_pixel(pos)
-			debugPos.x -= 20
-			draw_string(ThemeDB.fallback_font, debugPos, str(pos))
 
 #Array order goes [anchor, clockwise, ccw]
 func spawn_piece() -> void:
 	currentPiece = fullPiece.instantiate()
 	$Grid.add_child(currentPiece)
-	currentPiece.gridPos[0] = start_pos
+	currentPiece.gridPos[0] = rules.start_pos
 	
-	board[start_pos.x][start_pos.y] = currentPiece.pieces[0]
-	currentPiece.rot.global_position = grid_to_pixel(start_pos)
+	board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
+	currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
 	
-	full_piece_rotation(start_pos)
+	full_piece_rotation(rules.start_pos)
 	currentPiece.sync_position()
 
 #______________________________
@@ -128,11 +94,19 @@ func rotate_pop() -> bool:
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
 		var pos: Vector2 = currentPiece.gridPos[i]
-		board[pos.x][pos.y] = null
+		var check = board[pos.x][pos.y]
+		#Only clear own piece
+		if check == currentPiece.pieces[i]:
+			check = null
+		
+		#move piece
 		if direction == "X":
 			pos.x += ammount
 		else:
 			pos.y += ammount
+		
+		#Keep board pos.x.y since thats new location of piece
+		#Update visual and coded grid position
 		currentPiece.gridPos[i] = pos
 		board[pos.x][pos.y] = currentPiece.pieces[i]
 		currentPiece.positions[i].global_position = grid_to_pixel(pos)
@@ -178,15 +152,15 @@ func _process(_delta) -> void:
 #______________________________
 #Turn computer positions into visual positions
 func grid_to_pixel(gridPos: Vector2) -> Vector2:
-	var Xnew: float = origin.x + offset.x * gridPos.x
-	var Ynew: float = origin.y + offset.y * gridPos.y
+	var Xnew: float = rules.origin.x + rules.offset.x * gridPos.x
+	var Ynew: float = rules.origin.y + rules.offset.y * gridPos.y
 	
 	return Vector2(Xnew, Ynew)
 
 #Turn visual positions into computer positions
 func pixel_to_grid(piece) -> Vector2:
-	var Xnew: int = round((piece.global_position.x - origin.x) / offset.x)
-	var Ynew: int = round((piece.global_position.y - origin.y) / offset.y)
+	var Xnew: int = round((piece.global_position.x - rules.origin.x) / rules.offset.x)
+	var Ynew: int = round((piece.global_position.y - rules.origin.y) / rules.offset.y)
 	
 	#print("Global: ",piece.global_position.x, " Start const: ", start_pos.x, 
 	#"Global: ",piece.global_position.y, " Start const: ", start_pos.y)
@@ -219,22 +193,23 @@ func can_move(direction) -> bool:
 				if newPos.x - 1 < 0: return false
 				else: newPos.x -= 1
 			"Right":
-				if newPos.x + 1 > width - 1: return false
+				if newPos.x + 1 > rules.width - 1: return false
 				else: newPos.x += 1
 			"Down":
-				if newPos.y + 1 > height - 1: return false
+				if newPos.y + 1 > rules.height - 1:
+					print("Hit Floor")
+					return false
 				else: newPos.y += 1
 			"Up":
 				if newPos.y - 1 < 0: return false
 				else: newPos.y -= 1
 		
 		var piece = board[newPos.x][newPos.y]
-		if piece != null:
-			print(piece)
-			print(piece.currentType, newPos, currentPiece.in_full_piece(piece))
-		else:
-			print(newPos, null, " bellow!")
+		print(piece)
 		if piece != null and not currentPiece.in_full_piece(piece):
+			display_board()
+			print("Found ", piece.currentType, " in ", newPos, " bellow ", 
+			currentPiece.pieces[i].currentType, currentPiece.gridPos[i])
 			return false
 		else:
 			print(piece != null, not currentPiece.in_full_piece(piece))
@@ -255,14 +230,14 @@ func can_rotate(direction = "CCW") -> bool:
 				return false
 		90.0:
 			if ((direction == "CCW" and pos.x - 1 < 0) or
-			(direction != "CCW" and pos.y + 1 > height - 1)):
+			(direction != "CCW" and pos.y + 1 > rules.height - 1)):
 				return false
 		180.0:
-			if ((direction == "CCW" and pos.y + 1 > height - 1) 
-			or (direction != "CCW" and pos.x + 1 > width - 1)):
+			if ((direction == "CCW" and pos.y + 1 > rules.height - 1) 
+			or (direction != "CCW" and pos.x + 1 > rules.width - 1)):
 				return false
 		270.0:
-			if ((direction == "CCW" and pos.x + 1 > width - 1) 
+			if ((direction == "CCW" and pos.x + 1 > rules.width - 1) 
 			or (direction != "CCW" and pos.y - 1 < 0)):
 				return false
 		
@@ -278,12 +253,17 @@ func _on_grounded_timeout():
 	pass # Replace with function body.
 
 func _on_gravity_timeout():
-	if gravity_on:
+	if rules.gravity_on:
 		if not can_move("Down"):
+			for i in range(currentPiece.pieces.size()):
+				var orgPos = find_piece(currentPiece.pieces[i])
+				board[orgPos.x][orgPos.y] = null
+				var pos = currentPiece.gridPos[i]
+				board[pos.x][pos.y] = currentPiece.pieces[i]
+			print("Placed at: ", currentPiece.gridPos)
 			currentPiece.currentState = currentPiece.STATE.PLACED
 			currentPiece = null
 			spawn_piece()
-			display_board()
 		
 		else:
 			move_piece(1, "Y")
@@ -293,17 +273,17 @@ func _on_gravity_timeout():
 #DEBUG
 #______________________________
 func fill_board() -> void:
-	for i in width:
-		for j in grid_fill:
-			if (height-j-1) <= fail_rows:
+	for i in rules.width:
+		for j in rules.grid_fill:
+			if (rules.height-j-1) <= rules.fail_rows:
 				continue
 			var piece = Globals.piece.instantiate()
 			$Grid.add_child(piece)
 			#let the piece fall into pixel position
 			#I like how it starts lol
-			piece.global_position = grid_to_pixel(Vector2(i,height-j-1))
+			piece.global_position = grid_to_pixel(Vector2(i,rules.height-j-1))
 			#Give the piece it's grid position
-			board[i][height-j-1] = piece
+			board[i][rules.height-j-1] = piece
 
 func fill_column() -> void:
 	pass
@@ -312,17 +292,17 @@ func make_overhang() -> void:
 	pass
 
 func find_piece(piece) -> Vector2:
-	for i in width:
-		for j in height:
+	for i in rules.width:
+		for j in rules.height:
 			if board[i][j] == piece:
 				return Vector2(i,j)
 	
 	return Vector2(-1,-1)
 
 func display_board() -> void:
-	for j in height:
+	for j in rules.height:
 		var debugString: String
-		for i in width:
+		for i in rules.width:
 			if board[i][j] != null:
 				debugString = str(debugString, board[i][j].currentType)
 			else:

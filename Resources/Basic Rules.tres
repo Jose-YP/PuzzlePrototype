@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Rules" load_steps=2 format=3 uid="uid://f365vj7wr28e"]
+
+[ext_resource type="Script" path="res://Resources/RuleMaker.gd" id="1_lny4s"]
+
+[resource]
+script = ExtResource("1_lny4s")
+width = 9
+height = 9
+offset = Vector2(65, 65)
+origin = Vector2(200, 85)
+start_pos = Vector2(4, 1)
+gravity = 1.0
+soft_drop = 1.0
+fail_rows = 2
+gravity_on = false
+grid_fill = 4
+column_fill = Vector2(3, 4)
+overhang_dimentions = Vector2(4, 2)
