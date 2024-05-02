@@ -20,6 +20,11 @@ config/icon="res://Art/Pieces/LiquidOrb.png"
 
 Globals="*res://Code/Globals/Globals.gd"
 
+[display]
+
+window/size/always_on_top=true
+window/stretch/mode="viewport"
+
 [input]
 
 ui_accept={

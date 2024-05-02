@@ -10,6 +10,8 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 #Variables
 var board: Array[Array]
 var currentPiece: Node2D
+var inputHoldTime: float = 0
+var held: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -25,7 +27,13 @@ func _ready() -> void:
 	#Make board and start the game
 	board = make_grid()
 	spawn_piece()
-	fill_board()
+	#Make debugging easier
+	if rules.debug_fills & 1:
+		fill_board()
+	if rules.debug_fills & 2:
+		fill_column()
+	if rules.debug_fills & 4:
+		make_overhang()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -83,10 +91,6 @@ func full_piece_rotation(pos) -> void:
 	currentPiece.positions[0].global_position = grid_to_pixel(pos)
 	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
 	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
-	
-	#print("Rotation: ", currentPiece.rot.rotation_degrees, "Center: ", pos,"\n",
-	#" First: ", currentPiece.pieces[1].currentType, firstPos, currentPiece.positions[1].global_position,
-	#"\n Second: ", currentPiece.pieces[2].currentType, secondPos, currentPiece.positions[2].global_position)
 
 func rotate_pop() -> bool:
 	return false
@@ -94,10 +98,9 @@ func rotate_pop() -> bool:
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
 		var pos: Vector2 = currentPiece.gridPos[i]
-		var check = board[pos.x][pos.y]
 		#Only clear own piece
-		if check == currentPiece.pieces[i]:
-			check = null
+		if board[pos.x][pos.y] == currentPiece.pieces[i]:
+			board[pos.x][pos.y] = null
 		
 		#move piece
 		if direction == "X":
@@ -132,20 +135,72 @@ func movement() -> void:
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
 		move_piece(1)
 	
-	#Both drop, up is hard drop, down is soft drop
-	if Input.is_action_just_pressed("ui_up"):
-		pass
-	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
-		move_piece(-1, "Y")
-	
 	if Input.is_anything_pressed():
 		currentPiece.sync_position()
 
-func _process(_delta) -> void:
+func hard_drop(target) -> void:
+	print("From: ",currentPiece.gridPos, " To: ", target)
+	for i in (currentPiece.pieces.size()):
+		var pos: Vector2 = target[i]
+		board[currentPiece.gridPos[i].x][currentPiece.gridPos[i].y] = null
+		
+		currentPiece.gridPos[i] = pos
+		board[pos.x][pos.y] = currentPiece.pieces[i]
+		currentPiece.positions[i].global_position = grid_to_pixel(pos)
+
+func drop() -> void:
+	#Both drop, up is hard drop, down is soft drop
+	if Input.is_action_just_pressed("ui_up"):
+		hard_drop(find_drop_bottom(currentPiece))
+		currentPiece.sync_position()
+		place()
+	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
+		move_piece(1, "Y")
+		currentPiece.sync_position()
+		$Timers/SoftDrop.start()
+
+func place() -> void:
+	for i in range(currentPiece.pieces.size()):
+		var orgPos = find_piece(currentPiece.pieces[i])
+		board[orgPos.x][orgPos.y] = null
+		var pos = currentPiece.gridPos[i]
+		board[pos.x][pos.y] = currentPiece.pieces[i]
+	print("Placed at: ", currentPiece.gridPos)
+	currentPiece.currentState = currentPiece.STATE.PLACED
+	currentPiece = null
+	spawn_piece()
+
+func _process(delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		movement()
+		drop()
 	if currentPiece.currentState == currentPiece.STATE.GROUNDED:
 		movement()
+		drop()
+	
+	if Input.is_action_pressed("ui_down"):
+		inputHoldTime += delta
+		held = inputHoldTime > rules.soft_drop
+	if Input.is_action_just_released("ui_down"):
+		$Timers/SoftDrop.stop()
+		inputHoldTime = 0
+		held = false
+
+#______________________________
+#POWER
+#______________________________
+
+#______________________________
+#CHAIN
+#______________________________
+
+#______________________________
+#BARRAGE & ETC
+#______________________________
+
+#______________________________
+#REACTIONS
+#______________________________
 
 #______________________________
 #CONVERSION
@@ -162,9 +217,6 @@ func pixel_to_grid(piece) -> Vector2:
 	var Xnew: int = round((piece.global_position.x - rules.origin.x) / rules.offset.x)
 	var Ynew: int = round((piece.global_position.y - rules.origin.y) / rules.offset.y)
 	
-	#print("Global: ",piece.global_position.x, " Start const: ", start_pos.x, 
-	#"Global: ",piece.global_position.y, " Start const: ", start_pos.y)
-	#print(Vector2(Xnew, Ynew))
 	return Vector2(Xnew, Ynew)
 
 #Adjacent array: [left,right,up,down] with null for any \wo a piece
@@ -183,8 +235,45 @@ func find_adjacent(piece) -> Array:
 
 	return adjacent
 
+func find_drop_bottom(pieces) -> Array[Vector2]:
+	#Handle lowest first, higher pieces can react to lowest's movement
+	var finalPos: Array[Vector2] = pieces.gridPos.duplicate()
+	var regularIndexes: Array[int] = [0,1,2]
+	var low: Array[Vector2] = [Vector2(-1,-1), Vector2(-1,-1), Vector2(-1,-1)]
+	
+	finalPos.sort_custom(func(a,b): return a.y > b.y)
+	for i in range(pieces.gridPos.size()):
+		for j in range(finalPos.size()):
+			if finalPos[j] == pieces.gridPos[i]:
+				regularIndexes[j] = i
+	
+	for i in range(pieces.gridPos.size()): #Find lowest place for each piece
+		var column: int = int(finalPos[i].x)
+		
+		for j in range(finalPos[i].y + 1, rules.height):
+			#First regular piece in current piece's column
+			if j >= rules.height - 1: #Floor is lowest if a piece wasn't found
+				print("Found Floor")
+				low[regularIndexes[i]] = Vector2(column,rules.height-1)
+				break
+			if board[column][j] != null:
+				#If it's not in the current peice, place it normally 
+				if not pieces.in_full_piece(board[column][j]):
+					print("Found piece")
+					low[regularIndexes[i]] = Vector2(column,j-1)
+					break
+				else: #Else find where the current peice is and place it above there
+					print("Place bellow ", low[regularIndexes[i-1]], " So...", low[regularIndexes[i-1]].y - 1)
+					var above = low[regularIndexes[i-1]].y - 1
+					low[regularIndexes[i]] = Vector2(column,above)
+					break
+		
+		
+	
+	print(pieces.gridPos, low)
+	return low
+
 func can_move(direction) -> bool:
-	print(currentPiece.pieces)
 	for i in range(currentPiece.pieces.size()):
 		var newPos: Vector2 = currentPiece.gridPos[i]
 		#Check if a piece can move horizontally or down
@@ -197,7 +286,6 @@ func can_move(direction) -> bool:
 				else: newPos.x += 1
 			"Down":
 				if newPos.y + 1 > rules.height - 1:
-					print("Hit Floor")
 					return false
 				else: newPos.y += 1
 			"Up":
@@ -205,14 +293,8 @@ func can_move(direction) -> bool:
 				else: newPos.y -= 1
 		
 		var piece = board[newPos.x][newPos.y]
-		print(piece)
 		if piece != null and not currentPiece.in_full_piece(piece):
-			display_board()
-			print("Found ", piece.currentType, " in ", newPos, " bellow ", 
-			currentPiece.pieces[i].currentType, currentPiece.gridPos[i])
 			return false
-		else:
-			print(piece != null, not currentPiece.in_full_piece(piece))
 	
 	return true
 
@@ -247,24 +329,19 @@ func can_rotate(direction = "CCW") -> bool:
 #TIMERS
 #______________________________
 func _on_soft_drop_timeout():
-	pass # Replace with function body.
+	if can_move("Down"):
+		move_piece(1, "Y")
+		currentPiece.sync_position()
+	else:
+		place()
 
 func _on_grounded_timeout():
 	pass # Replace with function body.
 
 func _on_gravity_timeout():
 	if rules.gravity_on:
-		if not can_move("Down"):
-			for i in range(currentPiece.pieces.size()):
-				var orgPos = find_piece(currentPiece.pieces[i])
-				board[orgPos.x][orgPos.y] = null
-				var pos = currentPiece.gridPos[i]
-				board[pos.x][pos.y] = currentPiece.pieces[i]
-			print("Placed at: ", currentPiece.gridPos)
-			currentPiece.currentState = currentPiece.STATE.PLACED
-			currentPiece = null
-			spawn_piece()
-		
+		if not can_move("Down") and not held:
+			place()
 		else:
 			move_piece(1, "Y")
 			currentPiece.sync_position()

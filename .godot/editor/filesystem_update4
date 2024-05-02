@@ -1,4 +1,6 @@
 res://Scenes/Main.tscn
+res://Code/Scenes/Board.gd
+res://Resources/Basic Rules.tres
 res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/Gradients/Earth.tres
 res://Shaders/Gradients/Light.tres
@@ -11,8 +13,4 @@ res://Shaders/ShaderCode/DiamondWave.gdshader
 res://Scenes/FullPiece.tscn
 res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
-res://Code/Scenes/Board.gd
-res://Code/Constants/GridBackground.gd
 res://Resources/RuleMaker.gd
-res://Resources/Basic Rules.tres
-res://Code/Scenes/SinglePiece.gd
