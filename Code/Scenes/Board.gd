@@ -101,8 +101,8 @@ func full_piece_rotation(pos, start = false) -> void:
 	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
 	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
 
-func rotate_pop() -> bool:
-	return false
+func rotate_pop() -> void:
+	pass
 
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
@@ -170,7 +170,6 @@ func hard_drop(target) -> void:
 	
 	currentPiece.currentState = currentPiece.STATE.PLACED
 	currentPiece = null
-	display_board()
 	spawn_piece()
 	display_board()
 
@@ -367,6 +366,11 @@ func _on_gravity_timeout():
 #______________________________
 #DEBUG
 #______________________________
+func add_piece(pos) -> void:
+	var piece = Globals.piece.instantiate()
+	$Grid.add_child(piece)
+	piece.global_position = grid_to_pixel(Vector2(pos.x,pos.y))
+	board[pos.x][pos.y] = piece
 func fill_board() -> void:
 	for i in rules.width:
 		for j in rules.grid_fill:
@@ -384,7 +388,13 @@ func fill_column() -> void:
 	pass
 
 func make_overhang() -> void:
-	pass
+	var overhangDim: Vector2 = rules.overhang_dimentions
+	
+	for j in range(int(overhangDim.y)):
+		add_piece(Vector2(overhangDim.x,rules.height-j-1))
+	
+	for i in range(1,int(overhangDim.x)):
+		add_piece(Vector2(overhangDim.x+i,overhangDim.y+1))
 
 func display_board() -> void:
 	for j in rules.height:
