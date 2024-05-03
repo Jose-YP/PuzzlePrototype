@@ -54,16 +54,14 @@ func spawn_piece() -> void:
 	board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
 	currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
 	
-	currentPiece.sync_position()
 	full_piece_rotation(rules.start_pos, true)
-	currentPiece.sync_position()
 
 #______________________________
 #BASIC CONTROLS
 #______________________________
 func full_piece_rotation(pos, start = false) -> void:
-	var firstPos: Vector2 = pos
-	var secondPos: Vector2 = pos
+	var allNewPos: Array[Vector2] = [pos,pos,pos]
+	var allOldPos: Array[Vector2] = [pos, find_piece(currentPiece.pieces[1]), find_piece(currentPiece.pieces[2])]
 	
 	if currentPiece.rot.rotation_degrees == 360:
 		currentPiece.rot.rotation_degrees = 0
@@ -71,38 +69,58 @@ func full_piece_rotation(pos, start = false) -> void:
 	#Rotation is  a float value
 	match currentPiece.rot.rotation_degrees:
 		0.0:
-			firstPos.y += 1
-			secondPos.x += 1
+			allNewPos[1].y += 1
+			allNewPos[2].x += 1
 		90.0:
-			firstPos.x += 1
-			secondPos.y -= 1
+			allNewPos[1].x += 1
+			allNewPos[2].y -= 1
 		180.0:
-			firstPos.y -= 1
-			secondPos.x -= 1
+			allNewPos[1].y -= 1
+			allNewPos[2].x -= 1
 		270.0:
-			firstPos.x -= 1
-			secondPos.y += 1
-	
-	var oldPos: Vector2 = find_piece(currentPiece.pieces[1])
-	var oldPos2: Vector2 = find_piece(currentPiece.pieces[2])
+			allNewPos[1].x -= 1
+			allNewPos[2].y += 1
 	
 	#Spawning pieces will give oldPos of (-1,-1) basically deleting (8,8)
 	if not start:
-		board[oldPos.x][oldPos.y] = null
-		board[oldPos2.x][oldPos2.y] = null
+		board[allOldPos[1].x][allOldPos[1].y] = null
+		board[allOldPos[2].x][allOldPos[2].y] = null
 	
-	board[firstPos.x][firstPos.y] = currentPiece.pieces[1]
-	board[secondPos.x][secondPos.y] = currentPiece.pieces[2]
+	allNewPos = rotate_pop(allNewPos)
+	print(allNewPos)
+	for i in range(currentPiece.positions.size()):
+		board[allNewPos[i].x][allNewPos[i].y] = currentPiece.pieces[i]
+		currentPiece.gridPos[i] = allNewPos[i]
+		currentPiece.positions[i].global_position = grid_to_pixel(allNewPos[i])
 	
-	currentPiece.gridPos[1] = firstPos
-	currentPiece.gridPos[2] = secondPos
-	
-	currentPiece.positions[0].global_position = grid_to_pixel(pos)
-	currentPiece.positions[1].global_position = grid_to_pixel(firstPos)
-	currentPiece.positions[2].global_position = grid_to_pixel(secondPos)
+	currentPiece.sync_position()
 
-func rotate_pop() -> void:
-	pass
+func rotate_pop(newPos) -> Array[Vector2]:
+	var temp: Array[Vector2]
+	
+	for i in range(rules.rotate_pop_checks.size()):
+		temp = mini_rotate_pop(newPos.duplicate(), rules.rotate_pop_checks[i])
+		
+		if temp != newPos:
+			var valid: bool = true
+			for pos in temp:
+				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= rules.height - 1 or pos.y < 0:
+					print(rules.rotate_pop_checks[i], "Doesn't work")
+					valid = false
+			if valid:
+				print("\n\nIs Valid: ", temp)
+				return temp
+	
+	print("Don't Pop")
+	return newPos
+
+func mini_rotate_pop(newPos, ammount) -> Array[Vector2]:
+	if not rotate_pop_cond(newPos):
+		return newPos
+	else:
+		for i in range(newPos.size()):
+			newPos[i] += ammount
+		return newPos
 
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
@@ -342,6 +360,16 @@ func can_rotate(direction = "CCW") -> bool:
 		
 	return true
 
+func rotate_pop_cond(newPos) -> bool:
+	var hit: bool = false
+	#Check if the new position would override any current pieces
+	for pos in newPos:
+		if board[pos.x][pos.y] != null and not currentPiece.in_full_piece(board[pos.x][pos.y]):
+			hit = true
+			break
+	
+	return hit
+
 #______________________________
 #TIMERS
 #______________________________
@@ -371,6 +399,7 @@ func add_piece(pos) -> void:
 	$Grid.add_child(piece)
 	piece.global_position = grid_to_pixel(Vector2(pos.x,pos.y))
 	board[pos.x][pos.y] = piece
+
 func fill_board() -> void:
 	for i in rules.width:
 		for j in rules.grid_fill:
@@ -385,7 +414,9 @@ func fill_board() -> void:
 			board[i][rules.height-j-1] = piece
 
 func fill_column() -> void:
-	pass
+	var columnDim: Vector2 = rules.column_fill
+	for j in range(int(columnDim.y)):
+		add_piece(Vector2(columnDim.x,rules.height-j-1))
 
 func make_overhang() -> void:
 	var overhangDim: Vector2 = rules.overhang_dimentions

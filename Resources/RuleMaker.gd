@@ -11,6 +11,7 @@ class_name Rules
 @export_range(0,2) var gravity: float = 1
 @export_range(0,1) var soft_drop: float = 1
 @export_range(0,3) var fail_rows: int = 2
+@export var rotate_pop_checks: Array[Vector2] = [Vector2(0,-1),Vector2(0,1), Vector2(-1,0), Vector2(1,0)]
 @export_group("Debug")
 @export var gravity_on: bool = true
 @export_flags("Grid","Column","Overhang") var debug_fills: int = 0
