@@ -18,6 +18,8 @@ var held: bool = false
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
+	#Make board before adding anything
+	board = make_grid()
 	#Make Timers function
 	$Timers/Gravity.set_wait_time(rules.gravity)
 	$Timers/SoftDrop.set_wait_time(rules.soft_drop)
@@ -36,8 +38,7 @@ func _ready() -> void:
 		4: make_overhang()
 		_: find_links()
 	
-	#Make board and start the game
-	board = make_grid()
+	#start the game
 	spawn_piece()
 
 func make_grid() -> Array[Array]:
@@ -128,12 +129,10 @@ func rotate_pop(newPos) -> Array[Vector2i]:
 	return newPos
 
 func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
-	if not rotate_pop_cond(newPos):
-		return newPos
-	else:
+	if rotate_pop_cond(newPos):
 		for i in range(newPos.size()):
 			newPos[i] += ammount
-		return newPos
+	return newPos
 
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
@@ -389,6 +388,7 @@ func rotate_pop_cond(newPos) -> bool:
 	#Check if the new position would override any current pieces
 	for pos in newPos:
 		if board[pos.x][pos.y] != null and not currentPiece.in_full_piece(board[pos.x][pos.y]):
+			print("Hit ",board[pos.x][pos.y].currentType, " in ", pos)
 			hit = true
 			break
 	
@@ -448,12 +448,14 @@ func fill_column() -> void:
 
 func make_overhang() -> void:
 	var overhangDim: Vector2i = rules.overhang_dimentions
-	
+	var overhangPos: Vector2i = rules.overhang_pos
 	for j in range(int(overhangDim.y)):
-		add_piece(Vector2i(overhangDim.x,rules.height-j-1))
+		add_piece(Vector2i(overhangPos.x,rules.height-j-1))
 	
-	for i in range(1,int(overhangDim.x)):
-		add_piece(Vector2i(overhangDim.x+i,overhangDim.y+1))
+	for i in range(abs(overhangDim.x)):
+		var ammount = overhangPos.x+overhangDim.x+i
+		print(Vector2i(ammount,rules.height-overhangPos.y))
+		add_piece(Vector2i(ammount,rules.height-overhangPos.y))
 
 func display_board() -> void:
 	for j in rules.height:

@@ -1,5 +1,6 @@
 res://Scenes/Main.tscn
 res://Code/Scenes/Board.gd
+res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/Gradients/Earth.tres
 res://Shaders/Gradients/Light.tres
@@ -9,12 +10,7 @@ res://Shaders/Gradients/Dark.tres
 res://Shaders/ShaderCode/Fullgradient.gdshader
 res://Shaders/ShaderCode/OutlineInline.gdshader
 res://Shaders/ShaderCode/DiamondWave.gdshader
-res://Code/Scenes/SinglePiece.gd
+res://Scenes/FullPiece.tscn
 res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
-res://Resources/Relations/RelationshipMaker.gd
-res://Code/Globals/Globals.gd
-res://Resources/Rules/Basic Rules.tres
-res://Scenes/FullPiece.tscn
-res://Code/Scenes/FullPiece.gd
 res://Resources/Rules/RuleMaker.gd
