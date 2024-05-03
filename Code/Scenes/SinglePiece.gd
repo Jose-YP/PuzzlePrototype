@@ -32,11 +32,12 @@ func should_glow(refresh = false) -> bool:
 	for adj in adjacent:
 		if adj == null:
 			continue
-		print("looking at ",adj.currentType, " ", adj)
 		
 		if adj.currentType == currentType and linkedPieces.find(adj) == -1:
 			linkedPieces.append(adj)
 			adj.linkedPieces = linkedPieces
+		elif adj.typeFlag & Globals.relation_flags[typeID]:
+			print(currentType, " can link with ", adj.currentType)
 		else:
 			print(linkedPieces.find(adj)," ", linkedPieces)
 	

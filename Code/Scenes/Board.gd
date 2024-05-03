@@ -25,18 +25,20 @@ func _ready() -> void:
 	$Timers/SoftDrop.set_paused(false)
 	$Timers/Gravity.set_paused(false)
 	
-	Globals.glow_num = rules.piece_relationships.glow_num
+	var rel = rules.piece_relationships
+	Globals.glow_num = rel.glow_num
+	Globals.relation_flags = [rel.earthRelations, rel.liquidRelations, rel.airRelations,
+	rel.lightRelations, rel.darkRelations]
+	#Make debugging easier
+	match rules.debug_fills:
+		1: fill_board()
+		2: fill_column()
+		4: make_overhang()
+		_: find_links()
 	
 	#Make board and start the game
 	board = make_grid()
 	spawn_piece()
-	#Make debugging easier
-	if rules.debug_fills & 1:
-		fill_board()
-	if rules.debug_fills & 2:
-		fill_column()
-	if rules.debug_fills & 4:
-		make_overhang()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -236,6 +238,9 @@ func post_turn() -> void:
 	
 	currentPiece.queue_free()
 	currentPiece = null
+	
+	print("\n")
+	display_board()
 	find_links()
 	
 	spawn_piece()
