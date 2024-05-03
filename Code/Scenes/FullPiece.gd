@@ -11,7 +11,7 @@ $Positions/CCWPos:[$Pieces/CCW, gridPos[1]],$Positions/ClockwisePos:[$Pieces/Clo
 enum STATE {MOVE, GROUNDED, PLACED}
 
 var currentState: STATE = STATE.MOVE
-var gridPos: Array[Vector2] = [Vector2(), Vector2(), Vector2()]
+var gridPos: Array[Vector2i] = [Vector2i(), Vector2i(), Vector2i()]
 
 func _ready() -> void:
 	#Randomize Rotation

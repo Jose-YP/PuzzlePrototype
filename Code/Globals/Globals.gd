@@ -6,8 +6,10 @@ const piece_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6,
 Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 const glow_colors: Array[Color] = [Color(1, 0.239, 1, 0.176)]
 
-func string_to_flag(str) -> int:
-	match str:
+var glow_num: int = 3
+
+func string_to_flag(type) -> int:
+	match type:
 		"Earth":
 			return 1
 		"Liquid":

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Pieces/LiquidOrb.png" id="10_tw8gi"]
 [ext_resource type="Shader" uid="uid://j41ttxtkgdcj" path="res://Shaders/Gradients/Dark.tres" id="11_nyjtk"]
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Pieces/DarkOrb.png" id="12_4yibj"]
-[ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/icon.svg" id="13_qvc0m"]
+[ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="13_qvc0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyg2"]
 shader = ExtResource("2_4bvjw")
