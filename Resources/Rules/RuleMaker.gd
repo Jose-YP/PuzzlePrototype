@@ -23,6 +23,7 @@ class_name Rules
 @export_category("Debug")
 @export_group("Debug")
 @export var gravity_on: bool = true
+@export var spawning: bool = true
 @export_flags("Grid","Column","Overhang") var debug_fills: int = 0
 @export_range(0,9) var grid_fill: int = 4
 @export var column_fill: Vector2 = Vector2(3,4)

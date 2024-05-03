@@ -9,6 +9,7 @@ const fullPiece = preload("res://Scenes/FullPiece.tscn")
 
 #Variables
 var board: Array[Array]
+var links: Array[Array]
 var currentPiece: Node2D
 var inputHoldTime: float = 0
 var held: bool = false
@@ -47,14 +48,15 @@ func make_grid() -> Array[Array]:
 
 #Array order goes [anchor, clockwise, ccw]
 func spawn_piece() -> void:
-	currentPiece = fullPiece.instantiate()
-	$Grid.add_child(currentPiece)
-	currentPiece.gridPos[0] = rules.start_pos
-	
-	board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
-	currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
-	
-	full_piece_rotation(rules.start_pos, true)
+	if rules.spawning:
+		currentPiece = fullPiece.instantiate()
+		$Grid.add_child(currentPiece)
+		currentPiece.gridPos[0] = rules.start_pos
+		
+		board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
+		currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
+		
+		full_piece_rotation(rules.start_pos, true)
 
 #______________________________
 #BASIC CONTROLS
@@ -220,15 +222,22 @@ func _process(delta) -> void:
 #______________________________
 #POWER
 #______________________________
-
+#POST TURN PROCESSES
 #______________________________
 #CHAIN
 #______________________________
+func find_links() -> void:
+	for i in rules.width:
+		for j in rules.height:
+			if board[i][j] == null or board[i][j].glowing:
+				continue
+			
+			
 
 #______________________________
 #BARRAGE & ETC
 #______________________________
-
+#CONNECTIONS AND LINKS
 #______________________________
 #REACTIONS
 #______________________________
@@ -263,13 +272,13 @@ func find_adjacent(piece) -> Array:
 	var adjacent: Array = [null, null, null, null]
 	var pos = pixel_to_grid(piece)
 	
-	if board[pos.x - 1][pos.y] != null:
+	if pos.x - 1 >= 0 and board[pos.x - 1][pos.y] != null:
 		adjacent[0] = board[pos.x - 1][pos.y]
-	if board[pos.x + 1][pos.y] != null:
+	if pos.x + 1 < rules.width and board[pos.x + 1][pos.y] != null:
 		adjacent[1] = board[pos.x - 1][pos.y]
-	if board[pos.x][pos.y - 1] != null:
+	if pos.y - 1 >= 0 and board[pos.x][pos.y - 1] != null:
 		adjacent[2] = board[pos.x - 1][pos.y]
-	if board[pos.x][pos.y + 1] != null:
+	if pos.y + 1 < rules.height and board[pos.x][pos.y + 1] != null:
 		adjacent[3] = board[pos.x - 1][pos.y]
 
 	return adjacent
