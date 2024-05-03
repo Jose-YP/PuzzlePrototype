@@ -117,13 +117,13 @@ func rotate_pop(newPos) -> Array[Vector2i]:
 		temp = mini_rotate_pop(newPos.duplicate(), rules.rotate_pop_checks[i])
 		
 		if temp != newPos:
-			var valid: bool = rotate_pop_cond(newPos)
+			var valid: bool = not rotate_pop_cond(temp)
+			if not valid:
+				continue
 			for pos in temp:
 				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= rules.height - 1 or pos.y < 0:
-					print(rules.rotate_pop_checks[i], "Doesn't work")
 					valid = false
 			if valid:
-				print("\n\nIs Valid: ", temp)
 				return temp
 	
 	return newPos
@@ -238,7 +238,6 @@ func post_turn() -> void:
 	currentPiece.queue_free()
 	currentPiece = null
 	
-	print("\n")
 	display_board()
 	find_links()
 	
@@ -388,7 +387,6 @@ func rotate_pop_cond(newPos) -> bool:
 	#Check if the new position would override any current pieces
 	for pos in newPos:
 		if board[pos.x][pos.y] != null and not currentPiece.in_full_piece(board[pos.x][pos.y]):
-			print("Hit ",board[pos.x][pos.y].currentType, " in ", pos)
 			hit = true
 			break
 	
@@ -443,8 +441,10 @@ func fill_board() -> void:
 
 func fill_column() -> void:
 	var columnDim: Vector2i = rules.column_fill
-	for j in range(int(columnDim.y)):
-		add_piece(Vector2i(columnDim.x,rules.height-j-1))
+	var columnPos: Vector2i = rules.column_pos
+	for i in range(columnDim.x):
+		for j in range(int(columnDim.y)):
+			add_piece(Vector2i(columnPos.x + i + 1,rules.height-j-1-columnPos.y))
 
 func make_overhang() -> void:
 	var overhangDim: Vector2i = rules.overhang_dimentions
@@ -454,16 +454,17 @@ func make_overhang() -> void:
 	
 	for i in range(abs(overhangDim.x)):
 		var ammount = overhangPos.x+overhangDim.x+i
-		print(Vector2i(ammount,rules.height-overhangPos.y))
 		add_piece(Vector2i(ammount,rules.height-overhangPos.y))
 
 func display_board() -> void:
+	print("\n_____________________________________________________")
 	for j in rules.height:
 		var debugString: String
 		for i in rules.width:
 			if board[i][j] != null:
-				debugString = str(debugString, board[i][j].currentType)
+				debugString = str(debugString, "\t",board[i][j].currentType)
 			else:
-				debugString = str(debugString, null)
+				debugString = str(debugString, "\t",null)
 		
 		print("Row: ",j,"\t", debugString)
+	print("_____________________________________________________\n")

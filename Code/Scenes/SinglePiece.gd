@@ -2,6 +2,8 @@ extends Node2D
 
 @export var pieces: Array[CompressedTexture2D]
 
+@onready var glow: Sprite2D = $Glow
+
 signal find_adjacent
 
 var typeID: int = 0
@@ -19,13 +21,12 @@ func _ready() -> void:
 	typeFlag = Globals.string_to_flag(currentType)
 	$Sprite.texture = pieces[typeID]
 	$Sprite.modulate = Globals.piece_colors[typeID]
-	$Glow.modulate = Globals.piece_colors[typeID]
+	glow.modulate = Globals.piece_colors[typeID]
 
 func update_adj() -> void:
 	find_adjacent.emit(self)
-	print(adjacent)
 
-func should_glow(refresh = false) -> bool:
+func should_glow(refresh = false) -> void:
 	if adjacent.size() == 0 or refresh:
 		update_adj()
 	
@@ -33,19 +34,33 @@ func should_glow(refresh = false) -> bool:
 		if adj == null:
 			continue
 		
+		#if adj can but isn't linked to piece
 		if adj.currentType == currentType and linkedPieces.find(adj) == -1:
+			#if this piece isn't linked but can to adj
+			if adj.linkedPieces.find(self) == -1:
+				adj.linkedPieces.append(self)
+				linkedPieces = adj.linkedPieces
+			#link adj to 
 			linkedPieces.append(adj)
 			adj.linkedPieces = linkedPieces
-		elif adj.typeFlag & Globals.relation_flags[typeID]:
-			print(currentType, " can link with ", adj.currentType)
-		else:
-			print(linkedPieces.find(adj)," ", linkedPieces)
+			
+		elif adj.typeFlag & Globals.relation_flags[typeID] and glowing and adj.glowing:
+			should_connect(adj)
 	
 	if linkedPieces.size() >= Globals.glow_num:
+		print(self,currentType, " links in ", linkedPieces)
 		for piece in linkedPieces:
-			$Glow.show()
-		return true
+			piece.glow.show()
+			glowing = true
 	else:
-		print()
-	
-	return false
+		for piece in linkedPieces:
+			piece.glow.hide()
+			glowing = false
+
+func should_connect(piece) -> void:
+	var link = piece.connectedLinks.find(linkedPieces)
+	print(currentType, " can connect with ", piece.currentType, link)
+	#If they aren't already connected, connect the links
+	if link == -1:
+		connectedLinks.append(piece.linkedPieces)
+		piece.connectedLinks.append(linkedPieces)

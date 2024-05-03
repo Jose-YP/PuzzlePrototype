@@ -29,5 +29,6 @@ class_name Rules
 @export_subgroup("Fills")
 @export_range(0,9) var grid_fill: int = 4
 @export var column_fill: Vector2i = Vector2i(3,4)
+@export var column_pos: Vector2i = Vector2i(3,0)
 @export var overhang_dimentions: Vector2i = Vector2i(1,4)
 @export var overhang_pos: Vector2i = Vector2i(4,2)

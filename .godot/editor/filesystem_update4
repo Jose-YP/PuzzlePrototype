@@ -13,4 +13,5 @@ res://Shaders/ShaderCode/DiamondWave.gdshader
 res://Scenes/FullPiece.tscn
 res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
+res://Code/Scenes/SinglePiece.gd
 res://Resources/Rules/RuleMaker.gd
