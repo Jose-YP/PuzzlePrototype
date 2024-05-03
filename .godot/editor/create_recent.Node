@@ -1,8 +1,9 @@
+CanvasModulate
+Sprite2D
 Node2D
 Node
 Timer
 BackBufferCopy
 TextureRect
 Marker2D
-Sprite2D
 Button

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Rules" load_steps=3 format=3 uid="uid://f365vj7wr28e"]
+
+[ext_resource type="Resource" uid="uid://dpxc016obexjq" path="res://Resources/Relations/5 Duo.tres" id="1_li5v6"]
+[ext_resource type="Script" path="res://Resources/Rules/RuleMaker.gd" id="2_uxgug"]
+
+[resource]
+script = ExtResource("2_uxgug")
+width = 11
+height = 9
+fail_rows = 2
+offset = Vector2(65, 65)
+origin = Vector2(200, 85)
+start_pos = Vector2(5, 1)
+piece_relationships = ExtResource("1_li5v6")
+gravity = 1.0
+soft_drop = 0.7
+rotate_pop_checks = Array[Vector2]([Vector2(0, -1), Vector2(0, 1), Vector2(-1, 0), Vector2(1, 0)])
+gravity_on = false
+debug_fills = 4
+grid_fill = 1
+column_fill = Vector2(3, 4)
+overhang_dimentions = Vector2(2, 4)

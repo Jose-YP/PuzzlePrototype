@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Relations" load_steps=2 format=3 uid="uid://dpxc016obexjq"]
+
+[ext_resource type="Script" path="res://Resources/Relations/RelationshipMaker.gd" id="1_juwla"]
+
+[resource]
+script = ExtResource("1_juwla")
+earthRelations = 6
+liquidRelations = 5
+airRelations = 3
+lightRelations = 16
+darkRelations = 8
