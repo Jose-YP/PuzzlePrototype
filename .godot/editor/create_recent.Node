@@ -1,9 +1,11 @@
-CanvasModulate
-Sprite2D
+AnimatedSprite2D
 Node2D
+Sprite2D
+TabContainer
+TextureRect
+CanvasModulate
 Node
 Timer
 BackBufferCopy
-TextureRect
 Marker2D
 Button

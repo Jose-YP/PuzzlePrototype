@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://co6vx7heink86"]
+
+[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Pieces/SinglePiece.tscn" id="1_8afeu"]
+[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_olrsp"]
+
+[node name="FullPiece" type="Node2D"]
+position = Vector2(426, 222)
+script = ExtResource("1_olrsp")
+metadata/_edit_group_ = true
+
+[node name="Pieces" type="Node2D" parent="."]
+
+[node name="Anchor" parent="Pieces" instance=ExtResource("1_8afeu")]
+
+[node name="CCW" parent="Pieces" instance=ExtResource("1_8afeu")]
+position = Vector2(0, -50)
+
+[node name="Clockwise" parent="Pieces" instance=ExtResource("1_8afeu")]
+position = Vector2(50, 0)
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="AnchorPos" type="Marker2D" parent="Positions"]
+
+[node name="CCWPos" type="Marker2D" parent="Positions"]
+position = Vector2(0, -50)
+
+[node name="ClockwisePos" type="Marker2D" parent="Positions"]
+position = Vector2(50, 0)

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var pieces: Array[CompressedTexture2D]
+@export var connectedVFX: PackedScene
 
 @onready var glow: Sprite2D = $Glow
 

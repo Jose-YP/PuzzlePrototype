@@ -189,8 +189,11 @@ func place() -> void:
 	post_turn()
 
 func hard_drop(target) -> void:
+	print(target)
 	for i in (currentPiece.pieces.size()):
 		var pos: Vector2i = target[i]
+		if pos == Vector2i(-1,-1):
+			print("Break")
 		board[currentPiece.gridPos[i].x][currentPiece.gridPos[i].y] = null
 		
 		currentPiece.gridPos[i] = pos

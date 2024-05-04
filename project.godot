@@ -12,7 +12,7 @@ config_version=5
 
 config/name="PuzzlePrototype"
 config/tags=PackedStringArray("2d", "made")
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/Board&Pieces/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/Pieces/LiquidOrb.png"
 

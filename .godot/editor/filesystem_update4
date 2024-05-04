@@ -15,3 +15,7 @@ res://Scenes/SinglePiece.tscn
 res://Scenes/Test.tscn
 res://Code/Scenes/SinglePiece.gd
 res://Resources/Rules/RuleMaker.gd
+res://Shaders/ShaderCode/Black2Transp.gdshader
+res://Shaders/ShaderCode/LightningArc.gdshader
+res://Shaders/Transparency/LightningArc.tres
+res://Scenes/Constants/connected.tscn
