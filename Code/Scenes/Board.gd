@@ -31,6 +31,7 @@ func _ready() -> void:
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.liquidRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
+	$ConnectedDisplay.position = grid_to_pixel(Vector2i(rules.width + 1, position.y))
 	#Make debugging easier
 	match rules.debug_fills:
 		1: fill_board()

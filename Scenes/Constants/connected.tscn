@@ -11,7 +11,7 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("2_dvep0")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.745813
+frame_progress = 0.762626
 speed_scale = 2.0
 script = ExtResource("3_8kjqr")
 

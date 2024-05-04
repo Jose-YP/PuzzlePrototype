@@ -1,9 +1,9 @@
+Sprite2D
+Node2D
 TextureRect
 Timer
 Marker2D
-Node2D
 AnimatedSprite2D
-Sprite2D
 TabContainer
 CanvasModulate
 Node

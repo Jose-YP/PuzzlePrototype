@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwyh8ksd5xhbw"]
+[gd_scene load_steps=7 format=3 uid="uid://cwyh8ksd5xhbw"]
 
 [ext_resource type="PackedScene" uid="uid://baem2bb63s81i" path="res://Scenes/Constants/UIPieces/liquid.tscn" id="1_8ixx7"]
 [ext_resource type="PackedScene" uid="uid://b7mejons4kmbs" path="res://Scenes/Constants/UIPieces/earth.tscn" id="2_p621q"]
 [ext_resource type="PackedScene" uid="uid://bo8i3bitdorr8" path="res://Scenes/Constants/UIPieces/Air.tscn" id="3_t5cxp"]
 [ext_resource type="PackedScene" uid="uid://bemu3udwgoopm" path="res://Scenes/Constants/UIPieces/Light.tscn" id="4_b8385"]
 [ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_a8mlu"]
+[ext_resource type="Texture2D" uid="uid://dwhru74flwehi" path="res://Art/ETC/doublesided.png" id="6_xwprj"]
 
-[node name="Control" type="Control"]
+[node name="ConnectionDisplay" type="Control"]
 layout_mode = 3
 anchor_right = 0.06
 anchor_bottom = 0.152
@@ -15,37 +16,62 @@ offset_bottom = 0.50399
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Liquid" parent="." instance=ExtResource("1_8ixx7")]
-layout_mode = 0
-offset_left = 31.0
-offset_top = -5.0
-offset_right = 71.1861
-offset_bottom = 35.0
+[node name="Pieces" type="Node2D" parent="."]
 
-[node name="Earth" parent="." instance=ExtResource("2_p621q")]
-layout_mode = 0
-offset_left = -12.0
-offset_top = 42.0
-offset_right = 28.186
-offset_bottom = 82.0
+[node name="Liquid" parent="Pieces" instance=ExtResource("1_8ixx7")]
+offset_left = 24.0
+offset_top = -32.0
+offset_right = 64.1861
+offset_bottom = 8.0
 
-[node name="Air" parent="." instance=ExtResource("3_t5cxp")]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 41.0
-offset_right = 118.186
-offset_bottom = 81.0
+[node name="Earth" parent="Pieces" instance=ExtResource("2_p621q")]
+offset_left = -56.0
+offset_top = 48.0
+offset_right = -15.814
+offset_bottom = 88.0
 
-[node name="Light" parent="." instance=ExtResource("4_b8385")]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 100.0
-offset_right = 107.186
-offset_bottom = 140.0
+[node name="Air" parent="Pieces" instance=ExtResource("3_t5cxp")]
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 152.186
+offset_bottom = 88.0
 
-[node name="Dark" parent="." instance=ExtResource("5_a8mlu")]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 101.0
-offset_right = 43.1861
-offset_bottom = 141.0
+[node name="Light" parent="Pieces" instance=ExtResource("4_b8385")]
+offset_left = 96.0
+offset_top = 112.0
+offset_right = 136.186
+offset_bottom = 152.0
+
+[node name="Dark" parent="Pieces" instance=ExtResource("5_a8mlu")]
+offset_left = -40.0
+offset_top = 112.0
+offset_right = 0.18605
+offset_bottom = 152.0
+
+[node name="Arrows" type="Node2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(48, 128)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_xwprj")
+
+[node name="Arrow5" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(50, 69)
+scale = Vector2(0.06, 0.04)
+texture = ExtResource("6_xwprj")
+
+[node name="Arrow6" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(88, 24)
+rotation = 0.785398
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("6_xwprj")
+
+[node name="Arrow7" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(1.43051e-06, 24)
+rotation = -0.785398
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("6_xwprj")
