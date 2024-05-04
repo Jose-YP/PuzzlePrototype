@@ -1,7 +1,7 @@
 extends Node2D
 
 #CONSTANTS
-const fullPiece = preload("res://Scenes/FullPiece.tscn")
+const fullPiece = preload("res://Scenes/Board&Pieces/FullPiece.tscn")
 
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
@@ -36,8 +36,6 @@ func _ready() -> void:
 		1: fill_board()
 		2: fill_column()
 		4: make_overhang()
-		_: find_links()
-	
 	#start the game
 	spawn_piece()
 
@@ -237,6 +235,7 @@ func post_turn() -> void:
 	
 	for piece in currentPiece.pieces:
 		piece.reparent($Grid)
+		piece.set_name(str(pixel_to_grid(piece)))
 	
 	currentPiece.queue_free()
 	currentPiece = null
@@ -250,8 +249,9 @@ func find_links() -> void:
 	for i in rules.width:
 		for j in rules.height:
 			var piece = board[i][j]
-			if piece == null:
+			if piece == null: #skip anything that has glowing or no pieces
 				continue
+			
 			piece.should_glow()
 
 #______________________________
@@ -319,7 +319,7 @@ func find_drop_bottom(pieces) -> Array[Vector2i]:
 			#First regular piece in current piece's column
 			if board[column][j] != null:
 				#If it's not in the current peice, place it normally 
-				if not pieces.in_full_piece(board[column][j]):
+				if not pieces.in_full_piece(board[column][j], board[finalPos[i].x][finalPos[i].y]):
 					low[regIndex] = Vector2i(column,j-1)
 					break
 				else: #Else find where the current peice is and place it above there
@@ -336,6 +336,7 @@ func find_drop_bottom(pieces) -> Array[Vector2i]:
 func can_move(direction) -> bool:
 	for i in range(currentPiece.pieces.size()):
 		var newPos: Vector2i = currentPiece.gridPos[i]
+		var samePiece = board[newPos.x][newPos.y]
 		#Check if a piece can move horizontally or down
 		match direction:
 			"Left":
@@ -353,7 +354,7 @@ func can_move(direction) -> bool:
 				else: newPos.y -= 1
 		
 		var piece = board[newPos.x][newPos.y]
-		if piece != null and not currentPiece.in_full_piece(piece):
+		if piece != null and not currentPiece.in_full_piece(piece,samePiece):
 			return false
 	
 	return true
@@ -411,8 +412,8 @@ func _on_grounded_timeout():
 	place()
 
 func _on_gravity_timeout():
-	$Timers/SoftDrop.start()
 	if rules.gravity_on:
+		$Timers/SoftDrop.start()
 		if not can_move("Down") and not held:
 			place()
 		else:
@@ -428,19 +429,15 @@ func add_piece(pos) -> void:
 	piece.global_position = grid_to_pixel(Vector2i(pos.x,pos.y))
 	board[pos.x][pos.y] = piece
 	piece.connect("find_adjacent", find_adjacent)
+	piece.set_name(str(pos))
 
 func fill_board() -> void:
 	for i in rules.width:
 		for j in rules.grid_fill:
 			if (rules.height-j-1) <= rules.fail_rows:
 				continue
-			var piece = Globals.piece.instantiate()
-			$Grid.add_child(piece)
-			#let the piece fall into pixel position
-			#I like how it starts lol
-			piece.global_position = grid_to_pixel(Vector2i(i,rules.height-j-1))
-			#Give the piece it's grid position
-			board[i][rules.height-j-1] = piece
+			var pos = Vector2i(i,rules.height-j-1)
+			add_piece(pos)
 
 func fill_column() -> void:
 	var columnDim: Vector2i = rules.column_fill
@@ -471,3 +468,6 @@ func display_board() -> void:
 		
 		print("Row: ",j,"\t", debugString)
 	print("_____________________________________________________\n")
+
+func _on_debug_timeout():
+	find_links()

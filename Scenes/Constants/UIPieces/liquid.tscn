@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://baem2bb63s81i"]
+
+[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Pieces/LiquidOrb.png" id="1_ngreq"]
+
+[node name="Liquid" type="TextureRect"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ngreq")
+expand_mode = 3
+stretch_mode = 5

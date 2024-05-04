@@ -25,9 +25,10 @@ func sync_position() -> void:
 	for i in range(3):
 		pieces[i].global_position = positions[i].global_position 
 
-func in_full_piece(piece) -> bool:
+func in_full_piece(piece, same = null) -> bool:
 	for i in range(pieces.size()):
-		if pieces[i] == piece:
+		#Check if the piece is in full piece but not same piece
+		if pieces[i] == piece and pieces[i] != same:
 			return true
 	
 	return false

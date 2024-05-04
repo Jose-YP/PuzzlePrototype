@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7mejons4kmbs"]
+
+[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Pieces/EarthOrb.png" id="1_y3j6o"]
+
+[node name="Earth" type="TextureRect"]
+modulate = Color(0.631, 0.125, 0.125, 1)
+custom_minimum_size = Vector2(40, 40)
+offset_right = 12.0
+offset_bottom = 12.0
+texture = ExtResource("1_y3j6o")
+expand_mode = 3
+stretch_mode = 5

@@ -1,11 +1,23 @@
 extends AnimatedSprite2D
 
+const horiRot: int = 45
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func set_color(connectColor):
+	material.set_shader_parameter("otherColor",connectColor)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func set_pos(place):
+	#End points right or down when rotated
+	#reverse pos to change direction
+	match place:
+		"Left":
+			rotation_degrees = -horiRot
+			translate(-$End.position)
+		"Right":
+			rotation_degrees = -horiRot
+			translate($End.position)
+		"Up":
+			rotation_degrees = horiRot
+			translate(-$End.position)
+		"Down":
+			rotation_degrees = horiRot
+			translate($End.position)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=9 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Script" path="res://Code/Scenes/SinglePiece.gd" id="1_ur3fy"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Pieces/EarthOrb.png" id="2_um12v"]
@@ -6,48 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Pieces/AirOrb.png" id="4_u1cuc"]
 [ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Pieces/LightOrb.png" id="5_f7ng5"]
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Pieces/DarkOrb.png" id="6_2p7d7"]
+[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="7_ioqva"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="7_pskja"]
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/LightningArc.gdshader" id="8_odo3u"]
-[ext_resource type="Gradient" uid="uid://dsve7ine4di6q" path="res://Themes/Gradients/new_gradient.tres" id="9_w2sj1"]
-[ext_resource type="Texture2D" uid="uid://16mucujyyq7g" path="res://Art/ETC/icon-1024x1024.jpg" id="10_p4x2s"]
-[ext_resource type="Material" uid="uid://cg0lumsuhuffv" path="res://Shaders/Transparency/LightningArc.tres" id="11_i0453"]
-[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Themes/LightningConnection.tres" id="12_sac0p"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6gmc7"]
-gradient = ExtResource("9_w2sj1")
-width = 50
-
-[sub_resource type="Gradient" id="Gradient_5c5w0"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q2y5f"]
-noise_type = 2
-frequency = 0.004
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_87fgt"]
-width = 400
-color_ramp = SubResource("Gradient_5c5w0")
-noise = SubResource("FastNoiseLite_q2y5f")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_06c6l"]
-shader = ExtResource("8_odo3u")
-shader_parameter/speed = 0.0
-shader_parameter/variation = 0.5
-shader_parameter/width = 0.3
-shader_parameter/color_gradient = SubResource("GradientTexture1D_6gmc7")
-shader_parameter/noiseTexture = SubResource("NoiseTexture2D_87fgt")
 
 [node name="SinglePiece" type="Node2D"]
 script = ExtResource("1_ur3fy")
 pieces = Array[CompressedTexture2D]([ExtResource("2_um12v"), ExtResource("3_wp7p8"), ExtResource("4_u1cuc"), ExtResource("5_f7ng5"), ExtResource("6_2p7d7")])
-
-[node name="Glow" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0.407843)
-light_mask = 2
-visibility_layer = 2
-position = Vector2(2, 1)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("7_pskja")
+connectedVFX = ExtResource("7_ioqva")
 
 [node name="Sprite" type="TextureRect" parent="."]
 light_mask = 2
@@ -74,18 +39,45 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Glow" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_06c6l")
-rotation = -0.785398
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_p4x2s")
+self_modulate = Color(1, 1, 1, 0.407843)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(2, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_pskja")
 
-[node name="Connected" type="AnimatedSprite2D" parent="."]
-visible = false
-material = ExtResource("11_i0453")
-rotation = -0.785398
-scale = Vector2(0.1, 0.1)
-sprite_frames = ExtResource("12_sac0p")
-frame = 203
-frame_progress = 0.0230213
+[node name="ConnectMarkers" type="Node2D" parent="."]
+
+[node name="L1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-18, -7)
+
+[node name="L2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(19, 7)
+
+[node name="R1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(19, -7)
+
+[node name="R2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-18, 7)
+
+[node name="U1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(7, -19)
+
+[node name="U2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-6, 16)
+
+[node name="D1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(7, 16)
+
+[node name="D2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-6, -19)

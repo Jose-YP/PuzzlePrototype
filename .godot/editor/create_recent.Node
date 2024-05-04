@@ -1,11 +1,11 @@
-AnimatedSprite2D
+TextureRect
+Timer
+Marker2D
 Node2D
+AnimatedSprite2D
 Sprite2D
 TabContainer
-TextureRect
 CanvasModulate
 Node
-Timer
 BackBufferCopy
-Marker2D
 Button
