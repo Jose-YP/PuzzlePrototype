@@ -192,6 +192,7 @@ func hard_drop(target) -> void:
 	for i in (currentPiece.pieces.size()):
 		var pos: Vector2i = target[i]
 		if pos == Vector2i(-1,-1):
+			#FIrst time this happened was when hard dropping from the bottom
 			print("Break")
 		board[currentPiece.gridPos[i].x][currentPiece.gridPos[i].y] = null
 		

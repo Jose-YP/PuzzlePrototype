@@ -11,3 +11,7 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Code/Scenes/SinglePiece.gd
 res://Scenes/Board&Pieces/FullPiece.tscn
 res://Scenes/Board&Pieces/SinglePiece.tscn
+res://Resources/Relations/5 Duo.tres
+res://Resources/Relations/RelationshipMaker.gd
+res://Scenes/Constants/ConnectedDisplay.tscn
+res://Resources/Relations/5 Connected.tres

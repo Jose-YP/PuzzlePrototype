@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/Scenes/Board.gd" id="1_wufa0"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_71wbc"]
 [ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="2_jsmj8"]
-[ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/ConnectDisplay.tscn" id="4_06lo4"]
+[ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="4_06lo4"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wufa0")

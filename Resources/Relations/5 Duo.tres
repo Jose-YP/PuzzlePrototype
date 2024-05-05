@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="Relations" load_steps=2 format=3 uid="uid://dpxc016obexjq"]
+[gd_resource type="Resource" script_class="Relations" load_steps=3 format=3 uid="uid://dpxc016obexjq"]
 
+[ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="1_ay8qa"]
 [ext_resource type="Script" path="res://Resources/Relations/RelationshipMaker.gd" id="1_juwla"]
 
 [resource]
 script = ExtResource("1_juwla")
+glow_num = 3
 earthRelations = 6
 liquidRelations = 5
 airRelations = 3
 lightRelations = 16
 darkRelations = 8
+relationDisplay = ExtResource("1_ay8qa")

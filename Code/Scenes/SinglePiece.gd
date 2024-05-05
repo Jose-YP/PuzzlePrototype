@@ -50,18 +50,9 @@ func should_glow(skip = null) -> void:
 			link_pieces(adj)
 			print(self,currentType, " Will check links with ", adj, adj.currentType)
 			adj.should_glow(self) #Find other pieces adj is linked to
-	
-	var finalLink = get_links()
-	if finalLink.size() >= Globals.glow_num:
-		print(self, " glows with ", finalLink)
-		for piece in finalLink:
-			piece.glow.show()
-			glowing = true
-			should_connect()
-	else:
-		for piece in finalLink:
-			piece.glow.hide()
-			glowing = false
+	print(self, get_links())
+	for piece in get_links():
+		piece.manage_glow()
 
 func link_pieces(adj) -> void:
 	#Sync links
@@ -74,6 +65,14 @@ func link_pieces(adj) -> void:
 	for piece in link:
 		if piece.get_links() == link:
 			piece.sync_links(self)
+
+func manage_glow() -> void:
+	if get_links().size() > Globals.glow_num:
+		glow.show()
+		glowing = true
+	else:
+		glow.hide()
+		glowing = false
 
 #______________________________
 #MANAGING CONNECTIONS

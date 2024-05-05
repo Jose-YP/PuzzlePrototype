@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf30m2bne32r0"]
+
+[ext_resource type="PackedScene" uid="uid://baem2bb63s81i" path="res://Scenes/Constants/UIPieces/liquid.tscn" id="1_6h7jc"]
+[ext_resource type="PackedScene" uid="uid://b7mejons4kmbs" path="res://Scenes/Constants/UIPieces/earth.tscn" id="2_dwtoa"]
+[ext_resource type="PackedScene" uid="uid://bo8i3bitdorr8" path="res://Scenes/Constants/UIPieces/Air.tscn" id="3_xdolh"]
+[ext_resource type="PackedScene" uid="uid://bemu3udwgoopm" path="res://Scenes/Constants/UIPieces/Light.tscn" id="4_8gw8w"]
+[ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_r4two"]
+[ext_resource type="Texture2D" uid="uid://dwhru74flwehi" path="res://Art/ETC/doublesided.png" id="6_05vd1"]
+
+[node name="ConnectionDisplay" type="Control"]
+layout_mode = 3
+anchor_right = 0.06
+anchor_bottom = 0.152
+offset_right = -0.120003
+offset_bottom = 0.50399
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pieces" type="Node2D" parent="."]
+
+[node name="Liquid" parent="Pieces" instance=ExtResource("1_6h7jc")]
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 64.1861
+offset_bottom = 32.0
+
+[node name="Earth" parent="Pieces" instance=ExtResource("2_dwtoa")]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = -25.814
+offset_bottom = 75.0
+
+[node name="Air" parent="Pieces" instance=ExtResource("3_xdolh")]
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 136.186
+offset_bottom = 80.0
+
+[node name="Light" parent="Pieces" instance=ExtResource("4_8gw8w")]
+offset_left = 63.0
+offset_top = 124.0
+offset_right = 103.186
+offset_bottom = 164.0
+
+[node name="Dark" parent="Pieces" instance=ExtResource("5_r4two")]
+offset_left = -26.0
+offset_top = 124.0
+offset_right = 14.1861
+offset_bottom = 164.0
+
+[node name="Arrows" type="Node2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(37, 144)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_05vd1")
+
+[node name="Arrow6" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(88, 24)
+rotation = 0.523599
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_05vd1")
+
+[node name="Arrow7" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(-8, 24)
+rotation = -0.523599
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_05vd1")
+
+[node name="Arrow8" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(104, 104)
+rotation = -1.0472
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_05vd1")
+
+[node name="Arrow9" type="Sprite2D" parent="Arrows"]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(-30, 102)
+rotation = 1.0472
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_05vd1")
