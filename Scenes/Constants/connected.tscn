@@ -6,7 +6,6 @@
 
 [node name="Connected" type="AnimatedSprite2D"]
 material = ExtResource("1_iipus")
-rotation = 0.785398
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("2_dvep0")
 animation = &"new_animation"
@@ -14,6 +13,3 @@ autoplay = "new_animation"
 frame_progress = 0.762626
 speed_scale = 2.0
 script = ExtResource("3_8kjqr")
-
-[node name="End" type="Marker2D" parent="."]
-position = Vector2(98.995, 98.9949)

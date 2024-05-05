@@ -52,32 +52,32 @@ texture = ExtResource("7_pskja")
 
 [node name="L1" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(-18, -7)
+position = Vector2(-34, -7)
 
 [node name="L2" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(19, 7)
+position = Vector2(34, 7)
 
 [node name="R1" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(19, -7)
+position = Vector2(34, -7)
 
 [node name="R2" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(-18, 7)
+position = Vector2(-34, 7)
 
 [node name="U1" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(7, -19)
+position = Vector2(7, -34)
 
 [node name="U2" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(-6, 16)
+position = Vector2(-7, 34)
 
 [node name="D1" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(7, 16)
+position = Vector2(7, 34)
 
 [node name="D2" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
-position = Vector2(-6, -19)
+position = Vector2(-7, -34)

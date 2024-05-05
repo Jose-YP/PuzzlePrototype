@@ -87,7 +87,7 @@ func should_connect(piece, linkWith) -> void:
 		connectedLinks.append(piece.linkedPieces)
 		piece.connectedLinks.append(linkedPieces)
 		display_connection(linkWith,0)
-		display_connection(linkWith,1)
+		piece.display_connection(linkWith,1)
 
 func display_connection(direction,using) -> void:
 	#Doesn't work
@@ -95,5 +95,7 @@ func display_connection(direction,using) -> void:
 	add_child(VFX)
 	VFX.position = connectPos[direction][using].position
 	VFX.set_color(Globals.piece_colors[typeID])
-	VFX.set_pos(Globals.directions[direction])
-	
+	if direction > 1:
+		VFX.rotation_degrees = VFX.horiRot
+	else:
+		VFX.rotation_degrees = -VFX.horiRot
