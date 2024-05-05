@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcwaljk6txjdw"]
+[gd_scene load_steps=20 format=3 uid="uid://bcwaljk6txjdw"]
 
-[ext_resource type="Script" path="res://Code/Scenes/Control.gd" id="1_5wru3"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/Shine2D.gdshader" id="2_4bvjw"]
 [ext_resource type="Material" uid="uid://nqsj1mjjc8b3" path="res://Shaders/Gradients/Earth.tres" id="3_yqcw8"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Pieces/EarthOrb.png" id="4_v2dqy"]
@@ -13,6 +12,10 @@
 [ext_resource type="Shader" uid="uid://j41ttxtkgdcj" path="res://Shaders/Gradients/Dark.tres" id="11_nyjtk"]
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Pieces/DarkOrb.png" id="12_4yibj"]
 [ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="13_qvc0m"]
+[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Pieces/SinglePiece.tscn" id="14_1yrqu"]
+[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Themes/LightningConnection.tres" id="14_4oyyh"]
+[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="15_ewc2x"]
+[ext_resource type="Script" path="res://Code/Constants/Connected.gd" id="15_ndy5h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyg2"]
 shader = ExtResource("2_4bvjw")
@@ -56,7 +59,6 @@ offset_right = 1475.0
 offset_bottom = 941.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5wru3")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -67,23 +69,6 @@ offset_bottom = 362.0
 text = "Spawn a piece
 "
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-material = SubResource("ShaderMaterial_8dyg2")
-position = Vector2(1325, -950.5)
-scale = Vector2(1.19, 1.265)
-
-[node name="TextureRect4" type="TextureRect" parent="BackBufferCopy"]
-material = ExtResource("3_yqcw8")
-offset_left = -633.613
-offset_top = -570.356
-offset_right = 446.387
-offset_bottom = 504.644
-texture = ExtResource("4_v2dqy")
-
-[node name="Node2D" type="Node2D" parent="."]
-material = SubResource("ShaderMaterial_ch8nq")
-position = Vector2(1719, 420)
-
 [node name="TextureRect2" type="TextureRect" parent="."]
 material = ExtResource("5_hvmsy")
 layout_mode = 0
@@ -93,22 +78,38 @@ offset_right = -77.0
 offset_bottom = 1025.0
 texture = ExtResource("6_vobw2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+material = SubResource("ShaderMaterial_8dyg2")
+position = Vector2(1325, -950.5)
+scale = Vector2(1.19, 1.265)
+
+[node name="TextureRect" type="TextureRect" parent="BackBufferCopy"]
 material = ExtResource("7_c0alx")
-layout_mode = 0
-offset_left = 19.0
-offset_top = -1064.0
-offset_right = 1099.0
-offset_bottom = 11.0
+offset_left = -2583.19
+offset_top = 148.221
+offset_right = -1503.19
+offset_bottom = 1223.22
 texture = ExtResource("8_2oqbg")
+
+[node name="TextureRect4" type="TextureRect" parent="BackBufferCopy"]
+material = ExtResource("3_yqcw8")
+offset_left = -1673.95
+offset_top = 292.885
+offset_right = -593.95
+offset_bottom = 1367.89
+texture = ExtResource("4_v2dqy")
+
+[node name="Node2D" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_ch8nq")
+position = Vector2(1719, 420)
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 material = ExtResource("9_0u4vk")
 layout_mode = 0
-offset_left = 399.0
-offset_top = -22.0
-offset_right = 1479.0
-offset_bottom = 1053.0
+offset_left = -1192.0
+offset_top = -1090.0
+offset_right = -112.0
+offset_bottom = -15.0
 texture = ExtResource("10_tw8gi")
 
 [node name="TextureRect5" type="TextureRect" parent="."]
@@ -124,5 +125,28 @@ texture = ExtResource("12_4yibj")
 position = Vector2(1719, 420)
 rotation = 1.79594
 texture = ExtResource("13_qvc0m")
+
+[node name="SinglePiece" parent="." instance=ExtResource("14_1yrqu")]
+position = Vector2(453, 400)
+
+[node name="Connected" type="AnimatedSprite2D" parent="SinglePiece"]
+visibility_layer = 2
+position = Vector2(25, 5)
+rotation = -0.785398
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("14_4oyyh")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.430266
+speed_scale = 2.0
+script = ExtResource("15_ndy5h")
+
+[node name="SinglePiece2" parent="." instance=ExtResource("14_1yrqu")]
+position = Vector2(502, 398)
+
+[node name="Connected2" parent="SinglePiece2" instance=ExtResource("15_ewc2x")]
+position = Vector2(-24, -5)
+rotation = -0.785398
+frame_progress = 0.430266
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -5,6 +5,6 @@
 [resource]
 shader = ExtResource("1_v4egu")
 shader_parameter/makeTransparent = Color(0, 0, 0, 1)
-shader_parameter/otherColor = Color(1, 1, 1, 1)
-shader_parameter/margin = 0.3
+shader_parameter/otherColor = Color(1, 0, 1, 1)
+shader_parameter/margin = 0.32
 shader_parameter/otherColorMix = 0.1

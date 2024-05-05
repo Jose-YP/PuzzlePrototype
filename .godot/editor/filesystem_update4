@@ -14,3 +14,10 @@ res://Scenes/Board&Pieces/Main.tscn
 res://Scenes/Board&Pieces/FullPiece.tscn
 res://Scenes/Board&Pieces/SinglePiece.tscn
 res://Code/Globals/Globals.gd
+res://Shaders/Gradients/Earth.tres
+res://Shaders/Gradients/Light.tres
+res://Shaders/Gradients/Air.tres
+res://Shaders/Gradients/Liquid.tres
+res://Code/Scenes/Control.gd
+res://Scenes/Constants/Test.tscn
+res://Shaders/Transparency/LightningArc.tres

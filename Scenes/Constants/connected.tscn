@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Code/Constants/Connected.gd" id="3_8kjqr"]
 
 [node name="Connected" type="AnimatedSprite2D"]
+visibility_layer = 2
 material = ExtResource("1_iipus")
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("2_dvep0")
