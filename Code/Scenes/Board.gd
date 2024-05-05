@@ -257,7 +257,7 @@ func find_links() -> void:
 				piece.should_connect()
 
 #______________________________
-#POWER, CHAIN & BARRAGE
+#CHAIN
 #______________________________
 
 #______________________________
