@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=10 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Script" path="res://Code/Scenes/SinglePiece.gd" id="1_ur3fy"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Pieces/EarthOrb.png" id="2_um12v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Pieces/DarkOrb.png" id="6_2p7d7"]
 [ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="7_ioqva"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="7_pskja"]
+[ext_resource type="Script" path="res://Scenes/Board&Pieces/LinkArray.gd" id="9_rp0w6"]
 
 [node name="SinglePiece" type="Node2D"]
 script = ExtResource("1_ur3fy")
@@ -81,3 +82,9 @@ position = Vector2(7, 25.5)
 [node name="D2" type="Marker2D" parent="ConnectMarkers"]
 unique_name_in_owner = true
 position = Vector2(-7, -25.5)
+
+[node name="Connections" type="Node2D" parent="."]
+
+[node name="LinkArray" type="Node" parent="."]
+editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
+script = ExtResource("9_rp0w6")
