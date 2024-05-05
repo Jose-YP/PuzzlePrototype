@@ -27,6 +27,7 @@ func _ready() -> void:
 	glow.modulate = Globals.piece_colors[typeID]
 
 func should_glow(skip = null) -> void:
+	find_adjacent.emit(self)
 	for i in range(adjacent.size()):
 		var adj = adjacent[i]
 		if adj == null:
@@ -35,12 +36,13 @@ func should_glow(skip = null) -> void:
 		if adj.currentType == currentType:
 			pass
 		
+		print(adj,skip)
 		#if adj can but isn't linked to piece + make sure to skip same piece
 		if adj.currentType == currentType and linkedPieces.find(adj) == -1 and adj != skip:
 			link_pieces(adj)
 			print(self,currentType, " Will check links with ", adj, adj.currentType)
-			adj.should_glow(adj) #Find other pieces adj is linked to
-	
+			adj.should_glow(self) #Find other pieces adj is linked to
+		
 	if linkedPieces.size() >= Globals.glow_num:
 		print(self, " glows with ", linkedPieces)
 		for piece in linkedPieces:
@@ -53,24 +55,14 @@ func should_glow(skip = null) -> void:
 			glowing = false
 
 func link_pieces(adj):
-	#Add eachother to own links
-	linkedPieces.append(adj)
-	if adj.linkedPieces.find(self) == -1:
-		adj.linkedPieces.append(self)
+	#Sync links
+	for piece in adj.linkedPieces:
+		if piece.linkedPieces.find(self) == -1:
+			piece.linkedPieces.append(self)
+		if linkedPieces.find(piece) == -1:
+			linkedPieces.append(piece)
+			
 	
-	#Sync links, if one has a larger link, sync them
-	if adj.linkedPieces.size() >= linkedPieces.size():
-		linkedPieces = adj.linkedPieces
-	else:
-		adj.linkedPieces = linkedPieces
-	
-	#If they still aren't the same, find what isn't in linked then sync the two
-	if adj.linkedPieces != linkedPieces:
-		for piece in linkedPieces:
-			if adj.linkedPieces.find(piece) == -1:
-				adj.linkedPieces.append(piece)
-			linkedPieces = adj.linkedPieces
-
 func should_connect():
 	for i in range(adjacent.size()):
 		var adj = adjacent[i]
@@ -80,31 +72,25 @@ func should_connect():
 		#Check if connections array has to updated when links update
 		if adj.typeFlag & Globals.relation_flags[typeID] and connectedLinks.find(adj.linkedPieces) == -1:
 			print("\n",self, adj.typeFlag, adj.currentType, Globals.relation_flags[typeID], currentType)
-			make_connection(adj, i)
+			display_connection(i,0)
+			adj.display_connection(i,1)
+			make_connection(adj)
 
 #Function is similar to link ver, might merge later
-func make_connection(adj, linkWith) -> void:
-	display_connection(linkWith,0)
-	adj.display_connection(linkWith,1)
-	#Check if the other piece already has a connection in 
-	#link adj doesn't show up in link but does adj show up in link
-	connectedLinks.append(adj.linkedPieces)
-	if adj.connectedLinks.find(linkedPieces) == -1:
-		adj.connectedLinks.append(linkedPieces)
-	
-	#Sync links, if one has a larger link, sync them
-	if adj.connectedLinks.size() >= connectedLinks.size():
-		connectedLinks = adj.connectedLinks
-	else:
-		adj.connectedLinks = connectedLinks
-	
+func make_connection(adj) -> void:
 	#If they still aren't the same, find what isn't in linked then sync the two
-	if adj.connectedLinks != connectedLinks:
-		for piece in connectedLinks:
-			if adj.connectedLinks.find(piece) == -1:
-				adj.connectedLinks.append(linkedPieces)
-			connectedLinks = adj.connectedLinks
+	for link in connectedLinks:
+		if adj.connectedLinks.find(link) == -1:
+			adj.connectedLinks.append(link)
+	for link in adj.connectedLinks:
+		if connectedLinks.find(link) == -1:
+			connectedLinks.append(link)
 	print(currentType, " can connect with ", adj.currentType," ", adj.connectedLinks)
+
+func sync_arrays(adj, array):
+	for item in array:
+		if adj.array.find(item) == -1:
+			adj.array.append(item)
 
 func display_connection(direction,using) -> void:
 	#Doesn't work

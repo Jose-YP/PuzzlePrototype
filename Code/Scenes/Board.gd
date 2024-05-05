@@ -252,11 +252,9 @@ func find_links() -> void:
 			var piece = board[i][j]
 			if piece == null: #skip anything that has glowing or no pieces
 				continue
-			piece.find_adjacent.emit(piece)
+			piece.should_glow()
 			if piece.glowing:
 				piece.should_connect()
-			else:
-				piece.should_glow()
 
 #______________________________
 #POWER, CHAIN & BARRAGE
