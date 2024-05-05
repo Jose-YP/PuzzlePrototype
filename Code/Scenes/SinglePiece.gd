@@ -26,9 +26,7 @@ func _ready() -> void:
 	$Sprite.modulate = Globals.piece_colors[typeID]
 	glow.modulate = Globals.piece_colors[typeID]
 
-func should_glow(skip = null, connect_links = true) -> void:
-	find_adjacent.emit(self)
-	
+func should_glow(skip = null) -> void:
 	for i in range(adjacent.size()):
 		var adj = adjacent[i]
 		if adj == null:
@@ -40,20 +38,15 @@ func should_glow(skip = null, connect_links = true) -> void:
 		#if adj can but isn't linked to piece + make sure to skip same piece
 		if adj.currentType == currentType and linkedPieces.find(adj) == -1 and adj != skip:
 			link_pieces(adj)
-			print(self, " Will check links with ", adj)
-			adj.should_glow(adj, false) #Find other pieces adj is linked to
-		
-		elif connect_links and adj.typeFlag & Globals.relation_flags[typeID] and glowing and adj.glowing:
-			print("\n",self, adj.typeFlag, adj.currentType, Globals.relation_flags[typeID], currentType)
-			should_connect(adj, i)
-		
-		
+			print(self,currentType, " Will check links with ", adj, adj.currentType)
+			adj.should_glow(adj) #Find other pieces adj is linked to
 	
 	if linkedPieces.size() >= Globals.glow_num:
-		print(self,currentType, " links in ", linkedPieces)
+		print(self, " glows with ", linkedPieces)
 		for piece in linkedPieces:
 			piece.glow.show()
 			glowing = true
+			should_connect()
 	else:
 		for piece in linkedPieces:
 			piece.glow.hide()
@@ -78,16 +71,40 @@ func link_pieces(adj):
 				adj.linkedPieces.append(piece)
 			linkedPieces = adj.linkedPieces
 
-func should_connect(piece, linkWith) -> void:
-	var link = piece.connectedLinks.find(linkedPieces)
-	print(currentType, " can connect with ", piece.currentType," ", link)
-	#If they aren't already connected, connect the links
-	if link == -1:
-		#Check if the other piece already has a connection in 
-		connectedLinks.append(piece.linkedPieces)
-		piece.connectedLinks.append(linkedPieces)
-		display_connection(linkWith,0)
-		piece.display_connection(linkWith,1)
+func should_connect():
+	for i in range(adjacent.size()):
+		var adj = adjacent[i]
+		if adj == null or not adj.glowing:
+			continue
+		
+		#Check if connections array has to updated when links update
+		if adj.typeFlag & Globals.relation_flags[typeID] and connectedLinks.find(adj.linkedPieces) == -1:
+			print("\n",self, adj.typeFlag, adj.currentType, Globals.relation_flags[typeID], currentType)
+			make_connection(adj, i)
+
+#Function is similar to link ver, might merge later
+func make_connection(adj, linkWith) -> void:
+	display_connection(linkWith,0)
+	adj.display_connection(linkWith,1)
+	#Check if the other piece already has a connection in 
+	#link adj doesn't show up in link but does adj show up in link
+	connectedLinks.append(adj.linkedPieces)
+	if adj.connectedLinks.find(linkedPieces) == -1:
+		adj.connectedLinks.append(linkedPieces)
+	
+	#Sync links, if one has a larger link, sync them
+	if adj.connectedLinks.size() >= connectedLinks.size():
+		connectedLinks = adj.connectedLinks
+	else:
+		adj.connectedLinks = connectedLinks
+	
+	#If they still aren't the same, find what isn't in linked then sync the two
+	if adj.connectedLinks != connectedLinks:
+		for piece in connectedLinks:
+			if adj.connectedLinks.find(piece) == -1:
+				adj.connectedLinks.append(linkedPieces)
+			connectedLinks = adj.connectedLinks
+	print(currentType, " can connect with ", adj.currentType," ", adj.connectedLinks)
 
 func display_connection(direction,using) -> void:
 	#Doesn't work
@@ -95,6 +112,7 @@ func display_connection(direction,using) -> void:
 	add_child(VFX)
 	VFX.position = connectPos[direction][using].position
 	VFX.set_color(Globals.piece_colors[typeID])
+	print(VFX.material)
 	if direction > 1:
 		VFX.rotation_degrees = VFX.horiRot
 	else:
