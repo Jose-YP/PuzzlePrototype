@@ -15,3 +15,4 @@ res://Resources/Relations/5 Duo.tres
 res://Resources/Relations/RelationshipMaker.gd
 res://Scenes/Constants/ConnectedDisplay.tscn
 res://Resources/Relations/5 Connected.tres
+res://Code/Constants/LinkArray.gd

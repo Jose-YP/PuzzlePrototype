@@ -1,3 +1,3 @@
 extends Node
 
-@onready var linkedPieces: Array[Node] = [get_parent()]
+@onready var linkedPieces: Dictionary = {get_parent():get_parent()}

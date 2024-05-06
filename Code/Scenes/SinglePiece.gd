@@ -3,6 +3,7 @@ extends Node2D
 @export var pieces: Array[CompressedTexture2D]
 @export var connectedVFX: PackedScene
 
+@onready var linkArray: Node = $LinkArray
 @onready var glow: Sprite2D = $Glow
 @onready var connectPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var connectedLinks: Array[Node] = [self]
@@ -15,8 +16,7 @@ var connectedNum: int = 0
 var currentType: String = "Earth"
 var connectedWith: Array[int] = [-1,-1,-1,-1]
 var adjacent: Array = []
-
-var connectNodes = [null,null,null,null]
+var connectNodes: Array = [null,null,null,null]
 var glowing: bool = false
 
 #______________________________
@@ -29,6 +29,7 @@ func _ready() -> void:
 	$Sprite.texture = pieces[typeID]
 	$Sprite.modulate = Globals.piece_colors[typeID]
 	glow.modulate = Globals.piece_colors[typeID]
+	print(get_links())
 
 #______________________________
 #MANAGING LINKS
@@ -47,6 +48,7 @@ func should_glow(skip = null) -> void:
 		print(adj,skip)
 		#if adj can but isn't linked to piece + make sure to skip same piece
 		if adj.currentType == currentType and links.find(adj) == -1 and adj != skip:
+			print("A")
 			link_pieces(adj)
 			print(self,currentType, " Will check links with ", adj, adj.currentType)
 			adj.should_glow(self) #Find other pieces adj is linked to
@@ -57,20 +59,23 @@ func should_glow(skip = null) -> void:
 func link_pieces(adj) -> void:
 	#Sync links
 	for piece in adj.get_links():
-		append_links(piece)
-		piece.append_links(self)
+		set_links(piece)
 	
 	var link = get_links()
 	#Keep every linked piece in the same order
+	print("\n", self, link)
 	for piece in link:
-		if piece.get_links() == link:
-			piece.sync_links(self)
+		print(piece,piece.get_links()," Sync ",piece.get_links() == link)
+		if piece.get_links() != link:
+			piece.set_links(self)
 
 func manage_glow() -> void:
-	if get_links().size() > Globals.glow_num:
+	print(self, get_links())
+	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
 	else:
+		print(get_links().size())
 		glow.hide()
 		glowing = false
 
@@ -118,19 +123,15 @@ func display_connection(direction,using) -> void:
 #______________________________
 #GET SET VALUES
 #______________________________
-func get_links() -> Array:
-	return $LinkArray.linkedPieces
+func get_links(array = true):
+	if array:
+		return linkArray.linkedPieces.keys()
+	else:
+		return linkArray.linkedPieces
 
 func set_links(value) -> void:
-	$LinkArray.linkedPieces = value
-
-func append_links(value) -> void:
-	if $LinkArray.linkedPieces.find(value) == -1:
-		$LinkArray.linkedPieces.append(value)
-
-func sync_links(adj) -> void:
-	if adj.get_links() != get_links():
-		adj.set_links(get_links())
+	get_links(false).merge(value.get_links(false))
+	value.get_links(false).merge(get_links(false))
 
 func get_all_connections() -> Array:
 	var array: Array = []
