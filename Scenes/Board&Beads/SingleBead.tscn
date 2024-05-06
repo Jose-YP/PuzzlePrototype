@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1nqp81cess0x"]
+
+[ext_resource type="Material" uid="uid://w0qtrr7jio8o" path="res://Shaders/Transparency/BurnOut.tres" id="1_xmwi2"]
+[ext_resource type="Script" path="res://Code/Scenes/SinglePiece.gd" id="2_3mwsr"]
+[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="3_u6i6u"]
+[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="3_v1280"]
+[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="4_4on11"]
+[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="4_7iynl"]
+[ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="5_lflmb"]
+[ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="6_avety"]
+[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="6_imsmg"]
+[ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="7_k1u3i"]
+
+[node name="SingleBead" type="Node2D"]
+modulate = Color(0.992157, 0.992157, 1, 1)
+material = ExtResource("1_xmwi2")
+script = ExtResource("2_3mwsr")
+beads = Array[CompressedTexture2D]([ExtResource("3_u6i6u"), ExtResource("4_4on11"), ExtResource("4_7iynl"), ExtResource("6_imsmg"), ExtResource("7_k1u3i")])
+connectedVFX = ExtResource("3_v1280")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+use_parent_material = true
+
+[node name="Sprite" type="TextureRect" parent="Sprite"]
+visible = false
+light_mask = 2
+visibility_layer = 2
+use_parent_material = true
+offset_left = -31.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 33.0
+texture = ExtResource("4_7iynl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Glow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.52549)
+light_mask = 2
+visibility_layer = 2
+use_parent_material = true
+position = Vector2(2, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_lflmb")
+
+[node name="Connections" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="ConnectMarkers" type="Node2D" parent="."]
+
+[node name="L1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-25.5, -7)
+
+[node name="L2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(25.5, 7)
+
+[node name="R1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(25.5, -7)
+
+[node name="R2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-25.5, 7)
+
+[node name="U1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(7, -25.5)
+
+[node name="U2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-7, 25.5)
+
+[node name="D1" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(7, 25.5)
+
+[node name="D2" type="Marker2D" parent="ConnectMarkers"]
+unique_name_in_owner = true
+position = Vector2(-7, -25.5)
+
+[node name="FullPieceConnection" type="TabContainer" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = 25.0
+
+[node name="Anchor" type="TextureRect" parent="FullPieceConnection"]
+layout_mode = 2
+
+[node name="NonAnchor" type="TextureRect" parent="FullPieceConnection"]
+visible = false
+layout_mode = 2
+
+[node name="LinkArray" type="Node" parent="."]
+editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
+script = ExtResource("6_avety")
+
+[node name="Free" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Free" to="." method="_on_free_timeout"]

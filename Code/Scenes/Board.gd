@@ -1,5 +1,8 @@
 extends Node2D
 
+#CONSTANTS
+const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
+
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
@@ -11,7 +14,7 @@ const fullPiece = preload("res://Scenes/Board&Pieces/FullPiece.tscn")
 #Variables
 var board: Array[Array]
 var links: Array[Array]
-var currentPiece: Node2D
+var currentBead: Node2D
 var inputHoldTime: float = 0
 var held: bool = false
 
@@ -28,7 +31,7 @@ func _ready() -> void:
 	$Timers/SoftDrop.set_paused(false)
 	$Timers/Gravity.set_paused(false)
 	
-	var rel = rules.piece_relationships
+	var rel = rules.bead_relationships
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
@@ -39,7 +42,7 @@ func _ready() -> void:
 		2: fill_column()
 		4: make_overhang()
 	#start the game
-	spawn_piece()
+	spawn_bead()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -51,118 +54,119 @@ func make_grid() -> Array[Array]:
 	
 	return array
 
-func spawn_piece() -> void: #Array order goes [anchor, clockwise, ccw]
+#Array order goes [anchor, clockwise, ccw]
+func spawn_bead() -> void:
 	if rules.spawning:
-		currentPiece = fullPiece.instantiate()
-		$Grid.add_child(currentPiece)
-		currentPiece.gridPos[0] = rules.start_pos
+		currentBead = fullBead.instantiate()
+		$Grid.add_child(currentBead)
+		currentBead.gridPos[0] = rules.start_pos
 		
-		board[rules.start_pos.x][rules.start_pos.y] = currentPiece.pieces[0]
-		currentPiece.rot.global_position = grid_to_pixel(rules.start_pos)
+		board[rules.start_pos.x][rules.start_pos.y] = currentBead.beads[0]
+		currentBead.rot.global_position = grid_to_pixel(rules.start_pos)
 		
-		for piece in currentPiece.pieces:
-			piece.connect("find_adjacent", find_adjacent)
+		for bead in currentBead.beads:
+			bead.connect("find_adjacent", find_adjacent)
 		
-		full_piece_rotation(rules.start_pos, true)
+		full_bead_rotation(rules.start_pos, true)
 
 #______________________________
 #BASIC CONTROLS: MOVE
 #______________________________
-func move_piece(ammount, direction = "X") -> void:
-	for i in range(currentPiece.gridPos.size()):
-		var pos: Vector2i = currentPiece.gridPos[i]
-		#Only clear own piece
-		if board[pos.x][pos.y] == currentPiece.pieces[i]:
+func move_bead(ammount, direction = "X") -> void:
+	for i in range(currentBead.gridPos.size()):
+		var pos: Vector2i = currentBead.gridPos[i]
+		#Only clear own bead
+		if board[pos.x][pos.y] == currentBead.beads[i]:
 			board[pos.x][pos.y] = null
 		
-		#move piece
+		#move bead
 		if direction == "X":
 			pos.x = clamp(pos.x + ammount, 0, rules.width - 1)
 		else:
 			pos.y = clamp(pos.y + ammount, 0,realHeight)
 		
-		ground_timer_reset(currentPiece.gridPos[i], pos)
+		ground_timer_reset(currentBead.gridPos[i], pos)
 		
-		#Keep board pos.x.y since thats new location of piece
+		#Keep board pos.x.y since thats new location of bead
 		#Update visual and coded grid position
-		currentPiece.gridPos[i] = pos
-		board[pos.x][pos.y] = currentPiece.pieces[i]
-		currentPiece.positions[i].global_position = grid_to_pixel(pos)
+		currentBead.gridPos[i] = pos
+		board[pos.x][pos.y] = currentBead.beads[i]
+		currentBead.positions[i].global_position = grid_to_pixel(pos)
 
 func movement() -> void:
 	if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
-		currentPiece.rot.rotation_degrees += fmod(rotation_degrees+90,360)
-		if currentPiece.rot.rotation_degrees > 360:
-			currentPiece.rot.rotation_degrees -= 360
+		currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
+		if currentBead.rot.rotation_degrees > 360:
+			currentBead.rot.rotation_degrees -= 360
 		
-		full_piece_rotation(currentPiece.gridPos[0])
+		full_bead_rotation(currentBead.gridPos[0])
 		
 	if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
-		currentPiece.rot.rotation_degrees += fmod(rotation_degrees-90,360)
-		if currentPiece.rot.rotation_degrees < 0:
-			currentPiece.rot.rotation_degrees += 360
+		currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
+		if currentBead.rot.rotation_degrees < 0:
+			currentBead.rot.rotation_degrees += 360
 		
-		full_piece_rotation(currentPiece.gridPos[0])
+		full_bead_rotation(currentBead.gridPos[0])
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
-		move_piece(-1)
+		move_bead(-1)
 	
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
-		move_piece(1)
+		move_bead(1)
 	
 	if Input.is_anything_pressed():
-		currentPiece.sync_position()
+		currentBead.sync_position()
 
 func place() -> void:
-	for i in range(currentPiece.pieces.size()):
-		var orgPos = find_piece(currentPiece.pieces[i])
+	for i in range(currentBead.beads.size()):
+		var orgPos = find_bead(currentBead.beads[i])
 		board[orgPos.x][orgPos.y] = null
-		var pos = currentPiece.gridPos[i]
-		board[pos.x][pos.y] = currentPiece.pieces[i]
+		var pos = currentBead.gridPos[i]
+		board[pos.x][pos.y] = currentBead.beads[i]
 	
 	post_turn()
 
 func hard_drop(target) -> void:
 	print(target)
-	for i in (currentPiece.pieces.size()):
+	for i in (currentBead.beads.size()):
 		var pos: Vector2i = target[i]
 		if pos == Vector2i(-1,-1):
 			#FIrst time this happened was when hard dropping from the bottom
 			print("Break")
-		board[currentPiece.gridPos[i].x][currentPiece.gridPos[i].y] = null
+		board[currentBead.gridPos[i].x][currentBead.gridPos[i].y] = null
 		
-		currentPiece.gridPos[i] = pos
-		board[pos.x][pos.y] = currentPiece.pieces[i]
-		currentPiece.positions[i].global_position = grid_to_pixel(pos)
+		currentBead.gridPos[i] = pos
+		board[pos.x][pos.y] = currentBead.beads[i]
+		currentBead.positions[i].global_position = grid_to_pixel(pos)
 	
 	post_turn()
 
 func drop() -> void:
 	#Both drop, up is hard drop, down is soft drop
 	if Input.is_action_just_pressed("ui_up"):
-		hard_drop(find_drop_bottom(currentPiece))
+		hard_drop(find_drop_bottom(currentBead))
 		
 	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
-		move_piece(1, "Y")
-		currentPiece.sync_position()
+		move_bead(1, "Y")
+		currentBead.sync_position()
 		$Timers/SoftDrop.start()
 
 #______________________________
 #BASIC CONTROLS: ROTATE
 #______________________________
 func ground_timer_reset(oldPos, newPos) -> void:
-	if oldPos != newPos and currentPiece.currentState == currentPiece.STATE.GROUNDED:
+	if oldPos != newPos and currentBead.currentState == currentBead.STATE.GROUNDED:
 		$Timers/Grounded.start()
 
-func full_piece_rotation(pos, start = false) -> void:
+func full_bead_rotation(pos, start = false) -> void:
 	var allNewPos: Array[Vector2i] = [pos,pos,pos]
-	var allOldPos: Array[Vector2i] = [pos, find_piece(currentPiece.pieces[1]), find_piece(currentPiece.pieces[2])]
+	var allOldPos: Array[Vector2i] = [pos, find_bead(currentBead.beads[1]), find_bead(currentBead.beads[2])]
 	
-	if currentPiece.rot.rotation_degrees == 360:
-		currentPiece.rot.rotation_degrees = 0
+	if currentBead.rot.rotation_degrees == 360:
+		currentBead.rot.rotation_degrees = 0
 	
 	#Rotation is  a float value
-	match currentPiece.rot.rotation_degrees:
+	match currentBead.rot.rotation_degrees:
 		0.0:
 			allNewPos[1].y += 1
 			allNewPos[2].x += 1
@@ -176,20 +180,20 @@ func full_piece_rotation(pos, start = false) -> void:
 			allNewPos[1].x -= 1
 			allNewPos[2].y += 1
 	
-	#Spawning pieces will give oldPos of (-1,-1) basically deleting (8,8)
+	#Spawning beads will give oldPos of (-1,-1) basically deleting (8,8)
 	if not start:
 		board[allOldPos[1].x][allOldPos[1].y] = null
 		board[allOldPos[2].x][allOldPos[2].y] = null
 	
 	allNewPos = rotate_pop(allNewPos)
 	
-	for i in range(currentPiece.positions.size()):
+	for i in range(currentBead.positions.size()):
 		ground_timer_reset(allOldPos[i], allNewPos[i])
-		board[allNewPos[i].x][allNewPos[i].y] = currentPiece.pieces[i]
-		currentPiece.gridPos[i] = allNewPos[i]
-		currentPiece.positions[i].global_position = grid_to_pixel(allNewPos[i])
+		board[allNewPos[i].x][allNewPos[i].y] = currentBead.beads[i]
+		currentBead.gridPos[i] = allNewPos[i]
+		currentBead.positions[i].global_position = grid_to_pixel(allNewPos[i])
 	
-	currentPiece.sync_position()
+	currentBead.sync_position()
 
 func rotate_pop(newPos) -> Array[Vector2i]:
 	var temp: Array[Vector2i]
@@ -219,10 +223,10 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING
 #______________________________
 func _process(delta) -> void:
-	if currentPiece.currentState == currentPiece.STATE.MOVE:
+	if currentBead.currentState == currentBead.STATE.MOVE:
 		movement()
 		drop()
-	if currentPiece.currentState == currentPiece.STATE.GROUNDED:
+	if currentBead.currentState == currentBead.STATE.GROUNDED:
 		movement()
 		drop()
 	
@@ -238,30 +242,30 @@ func _process(delta) -> void:
 #POST TURN PROCESSES
 #______________________________
 func post_turn() -> void:
-	currentPiece.currentState = currentPiece.STATE.PLACED
-	currentPiece.sync_position()
+	currentBead.currentState = currentBead.STATE.PLACED
+	currentBead.sync_position()
 	
-	for piece in currentPiece.pieces:
-		piece.reparent($Grid)
-		piece.set_name(str(pixel_to_grid(piece)))
+	for bead in currentBead.beads:
+		bead.reparent($Grid)
+		bead.set_name(str(pixel_to_grid(bead)))
 	
-	currentPiece.queue_free()
-	currentPiece = null
+	currentBead.queue_free()
+	currentBead = null
 	
 	display_board()
 	find_links()
 	
-	spawn_piece()
+	spawn_bead()
 
 func find_links() -> void:
 	for i in rules.width:
 		for j in rules.height:
-			var piece = board[i][j]
-			if piece == null: #skip anything that has glowing or no pieces
+			var bead = board[i][j]
+			if bead == null: #skip anything that has glowing or no beads
 				continue
-			piece.should_glow()
-			if piece.glowing:
-				piece.should_chain()
+			bead.should_glow()
+			if bead.glowing:
+				bead.should_connect()
 
 #______________________________
 #CHAIN
@@ -278,24 +282,24 @@ func grid_to_pixel(gridPos: Vector2i) -> Vector2:
 	return Vector2(Xnew, Ynew)
 
 #Turn visual positions into computer positions
-func pixel_to_grid(piece) -> Vector2i:
-	var Xnew: int = round((piece.global_position.x - rules.origin.x) / rules.offset.x)
-	var Ynew: int = round((piece.global_position.y - rules.origin.y) / rules.offset.y)
+func pixel_to_grid(bead) -> Vector2i:
+	var Xnew: int = round((bead.global_position.x - rules.origin.x) / rules.offset.x)
+	var Ynew: int = round((bead.global_position.y - rules.origin.y) / rules.offset.y)
 	
 	return Vector2i(Xnew, Ynew)
 
-func find_piece(piece) -> Vector2i:
+func find_bead(bead) -> Vector2i:
 	for i in rules.width:
 		for j in rules.height:
-			if board[i][j] == piece:
+			if board[i][j] == bead:
 				return Vector2i(i,j)
 	
 	return Vector2i(-1,-1)
 
-#Adjacent array: [left,right,up,down] with null for any \wo a piece
-func find_adjacent(piece) -> void:
+#Adjacent array: [left,right,up,down] with null for any \wo a bead
+func find_adjacent(bead) -> void:
 	var adjacent: Array = [null, null, null, null]
-	var pos = pixel_to_grid(piece)
+	var pos = pixel_to_grid(bead)
 	
 	if pos.x - 1 >= 0 and board[pos.x - 1][pos.y] != null:
 		adjacent[0] = board[pos.x - 1][pos.y]
@@ -306,50 +310,50 @@ func find_adjacent(piece) -> void:
 	if pos.y + 1 < rules.height and board[pos.x][pos.y + 1] != null:
 		adjacent[3] = board[pos.x][pos.y + 1]
 	
-	piece.adjacent = adjacent
+	bead.adjacent = adjacent
 
-func find_drop_bottom(pieces) -> Array[Vector2i]:
-	display_board()
-	#Handle lowest first, higher pieces can react to lowest's movement
-	var finalPos: Array[Vector2i] = pieces.gridPos.duplicate()
+func find_drop_bottom(beads) -> Array[Vector2i]:
+	#Handle lowest first, higher beads can react to lowest's movement
+	var finalPos: Array[Vector2i] = beads.gridPos.duplicate()
 	var regularIndexes: Array[int] = [0,1,2]
 	var low: Array[Vector2i] = pieces.gridPos.duplicate()
 	
 	finalPos.sort_custom(func(a,b): return a.y > b.y)
-	for i in range(pieces.gridPos.size()):
+	for i in range(beads.gridPos.size()):
 		for j in range(finalPos.size()):
-			if finalPos[j] == pieces.gridPos[i]:
+			if finalPos[j] == beads.gridPos[i]:
 				regularIndexes[j] = i
 	
-	for i in range(pieces.gridPos.size()): #Find lowest place for each piece
+	for i in range(beads.gridPos.size()): #Find lowest place for each bead
 		var regIndex = regularIndexes[i]
 		var column: int = int(finalPos[i].x)
-		var base = clamp(finalPos[i].y + 1, 0, realHeight)
-		for j in range(base, rules.height):
-			#First regular piece in current piece's column
+		
+		for j in range(finalPos[i].y + 1, rules.height):
+			#First regular bead in current bead's column
 			if board[column][j] != null:
-				#If it's not in the current peice, place it normally
-				if not pieces.in_full_piece(board[column][j]):
+				#If it's not in the current peice, place it normally 
+				if not beads.in_full_bead(board[column][j], board[finalPos[i].x][finalPos[i].y]):
 					low[regIndex] = Vector2i(column,j-1)
 					break
 				#Find if the current piece is already on the floor
 				elif low[regIndex].y == realHeight: 
 					break
 				else: #Else find where the current peice is and place it above there
-					var above = low[pieces.pieces.find(board[column][j])].y - 1
-					above = clamp(above,0,realHeight)
+					
+					var above = low[beads.beads.find(board[column][j])].y - 1
 					low[regIndex] = Vector2i(column,above)
 					break
-			if j >= realHeight: #Floor is lowest if a piece wasn't found
-				low[regIndex] = Vector2i(column,realHeight)
+			if j >= rules.height - 1: #Floor is lowest if a bead wasn't found
+				low[regIndex] = Vector2i(column,rules.height-1)
 				break
 	
 	return low
 
 func can_move(direction) -> bool:
-	for i in range(currentPiece.pieces.size()):
-		var newPos: Vector2i = currentPiece.gridPos[i]
-		#Check if a piece can move horizontally or down
+	for i in range(currentBead.beads.size()):
+		var newPos: Vector2i = currentBead.gridPos[i]
+		var sameBead = board[newPos.x][newPos.y]
+		#Check if a bead can move horizontally or down
 		match direction:
 			"Left":
 				if newPos.x - 1 < 0: return false
@@ -365,8 +369,8 @@ func can_move(direction) -> bool:
 				if newPos.y - 1 < 0: return false
 				else: newPos.y -= 1
 		
-		var piece = board[newPos.x][newPos.y]
-		if piece != null and not currentPiece.in_full_piece(piece):
+		var bead = board[newPos.x][newPos.y]
+		if bead != null and not currentBead.in_full_bead(bead,sameBead):
 			return false
 	
 	return true
@@ -377,8 +381,8 @@ func can_rotate(direction = "CCW") -> bool:
 	#CCW 90  | X CCW   |   CW X   |180 CW
 	# X CW   | CW 0    | 270 CCW  | CCW X
 	#X - Anchor, CCW - Counter Clockwise, CW -Clockwise
-	var pos: Vector2i = currentPiece.gridPos[0]
-	match currentPiece.rot.rotation_degrees:
+	var pos: Vector2i = currentBead.gridPos[0]
+	match currentBead.rot.rotation_degrees:
 		0.0:
 			if ((direction == "CCW" and pos.y - 1 < 0) or
 			(direction != "CCW" and pos.x - 1 < 0)):
@@ -400,9 +404,9 @@ func can_rotate(direction = "CCW") -> bool:
 
 func rotate_pop_cond(newPos) -> bool:
 	var hit: bool = false
-	#Check if the new position would override any current pieces
+	#Check if the new position would override any current beads
 	for pos in newPos:
-		if board[pos.x][pos.y] != null and not currentPiece.in_full_piece(board[pos.x][pos.y]):
+		if board[pos.x][pos.y] != null and not currentBead.in_full_bead(board[pos.x][pos.y]):
 			hit = true
 			break
 	
@@ -416,8 +420,8 @@ func _on_soft_drop_timeout():
 		$Timers/Gravity.start()
 	
 	if can_move("Down"):
-		move_piece(1, "Y")
-		currentPiece.sync_position()
+		move_bead(1, "Y")
+		currentBead.sync_position()
 	else:
 		place()
 
@@ -430,19 +434,19 @@ func _on_gravity_timeout():
 		if not can_move("Down") and not held:
 			place()
 		else:
-			move_piece(1, "Y")
-			currentPiece.sync_position()
+			move_bead(1, "Y")
+			currentBead.sync_position()
 
 #______________________________
 #DEBUG
 #______________________________
-func add_piece(pos) -> void:
-	var piece = Globals.piece.instantiate()
-	$Grid.add_child(piece)
-	piece.global_position = grid_to_pixel(Vector2i(pos.x,pos.y))
-	board[pos.x][pos.y] = piece
-	piece.connect("find_adjacent", find_adjacent)
-	piece.set_name(str(pos))
+func add_bead(pos) -> void:
+	var bead = Globals.bead.instantiate()
+	$Grid.add_child(bead)
+	bead.global_position = grid_to_pixel(Vector2i(pos.x,pos.y))
+	board[pos.x][pos.y] = bead
+	bead.connect("find_adjacent", find_adjacent)
+	bead.set_name(str(pos))
 
 func fill_board() -> void:
 	for i in rules.width:
@@ -450,24 +454,24 @@ func fill_board() -> void:
 			if (rules.height-j-1) <= rules.fail_rows:
 				continue
 			var pos = Vector2i(i,rules.height-j-1)
-			add_piece(pos)
+			add_bead(pos)
 
 func fill_column() -> void:
 	var columnDim: Vector2i = rules.column_fill
 	var columnPos: Vector2i = rules.column_pos
 	for i in range(columnDim.x):
 		for j in range(int(columnDim.y)):
-			add_piece(Vector2i(columnPos.x + i + 1,rules.height-j-1-columnPos.y))
+			add_bead(Vector2i(columnPos.x + i + 1,rules.height-j-1-columnPos.y))
 
 func make_overhang() -> void:
 	var overhangDim: Vector2i = rules.overhang_dimentions
 	var overhangPos: Vector2i = rules.overhang_pos
 	for j in range(int(overhangDim.y)):
-		add_piece(Vector2i(overhangPos.x,rules.height-j-1))
+		add_bead(Vector2i(overhangPos.x,rules.height-j-1))
 	
 	for i in range(abs(overhangDim.x)):
 		var ammount = overhangPos.x+overhangDim.x+i
-		add_piece(Vector2i(ammount,rules.height-overhangPos.y))
+		add_bead(Vector2i(ammount,rules.height-overhangPos.y))
 
 func display_board() -> void:
 	print("\n_____________________________________________________")

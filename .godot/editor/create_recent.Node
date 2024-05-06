@@ -1,11 +1,11 @@
-Node
-Node2D
 Sprite2D
-TextureRect
+Node2D
 Timer
+BackBufferCopy
+Node
+TextureRect
 Marker2D
 AnimatedSprite2D
 TabContainer
 CanvasModulate
-BackBufferCopy
 Button

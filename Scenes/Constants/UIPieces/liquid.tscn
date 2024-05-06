@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baem2bb63s81i"]
 
-[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Pieces/LiquidOrb.png" id="1_ngreq"]
+[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="1_ngreq"]
 
 [node name="Liquid" type="TextureRect"]
 modulate = Color(0.137255, 0.6, 0.909804, 1)

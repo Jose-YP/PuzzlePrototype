@@ -1,21 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcwaljk6txjdw"]
+[gd_scene load_steps=18 format=3 uid="uid://bcwaljk6txjdw"]
 
+[ext_resource type="Script" path="res://Code/Constants/Test.gd" id="1_3opgt"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/Shine2D.gdshader" id="2_4bvjw"]
 [ext_resource type="Material" uid="uid://nqsj1mjjc8b3" path="res://Shaders/Gradients/Earth.tres" id="3_yqcw8"]
-[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Pieces/EarthOrb.png" id="4_v2dqy"]
+[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="4_v2dqy"]
 [ext_resource type="Material" uid="uid://bsw4b6ve44gpt" path="res://Shaders/Gradients/Light.tres" id="5_hvmsy"]
-[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Pieces/LightOrb.png" id="6_vobw2"]
+[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="6_vobw2"]
 [ext_resource type="Material" uid="uid://c8rlxmxovlnnc" path="res://Shaders/Gradients/Air.tres" id="7_c0alx"]
-[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Pieces/AirOrb.png" id="8_2oqbg"]
+[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="8_2oqbg"]
 [ext_resource type="Material" uid="uid://i5f7t6uxbybc" path="res://Shaders/Gradients/Liquid.tres" id="9_0u4vk"]
-[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Pieces/LiquidOrb.png" id="10_tw8gi"]
+[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="10_tw8gi"]
 [ext_resource type="Shader" uid="uid://j41ttxtkgdcj" path="res://Shaders/Gradients/Dark.tres" id="11_nyjtk"]
-[ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Pieces/DarkOrb.png" id="12_4yibj"]
+[ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="12_4yibj"]
 [ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="13_qvc0m"]
-[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Pieces/SinglePiece.tscn" id="14_1yrqu"]
-[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Themes/LightningConnection.tres" id="14_4oyyh"]
-[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="15_ewc2x"]
-[ext_resource type="Script" path="res://Code/Constants/Connected.gd" id="15_ndy5h"]
+[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="14_1yrqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyg2"]
 shader = ExtResource("2_4bvjw")
@@ -59,15 +57,15 @@ offset_right = 1475.0
 offset_bottom = 941.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3opgt")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 170.0
-offset_top = 315.0
-offset_right = 255.0
-offset_bottom = 362.0
-text = "Spawn a piece
-"
+offset_left = 579.0
+offset_top = 392.0
+offset_right = 664.0
+offset_bottom = 439.0
+text = "Kill"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 material = ExtResource("5_hvmsy")
@@ -93,10 +91,10 @@ texture = ExtResource("8_2oqbg")
 
 [node name="TextureRect4" type="TextureRect" parent="BackBufferCopy"]
 material = ExtResource("3_yqcw8")
-offset_left = -1673.95
-offset_top = 292.885
-offset_right = -593.95
-offset_bottom = 1367.89
+offset_left = -2016.81
+offset_top = 250.198
+offset_right = -936.807
+offset_bottom = 1325.2
 texture = ExtResource("4_v2dqy")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -129,24 +127,7 @@ texture = ExtResource("13_qvc0m")
 [node name="SinglePiece" parent="." instance=ExtResource("14_1yrqu")]
 position = Vector2(453, 400)
 
-[node name="Connected" type="AnimatedSprite2D" parent="SinglePiece"]
-visibility_layer = 2
-position = Vector2(25, 5)
-rotation = -0.785398
-scale = Vector2(0.1, 0.1)
-sprite_frames = ExtResource("14_4oyyh")
-animation = &"new_animation"
-autoplay = "new_animation"
-frame_progress = 0.430266
-speed_scale = 2.0
-script = ExtResource("15_ndy5h")
-
 [node name="SinglePiece2" parent="." instance=ExtResource("14_1yrqu")]
 position = Vector2(502, 398)
-
-[node name="Connected2" parent="SinglePiece2" instance=ExtResource("15_ewc2x")]
-position = Vector2(-24, -5)
-rotation = -0.785398
-frame_progress = 0.430266
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

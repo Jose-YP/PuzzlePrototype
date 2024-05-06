@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bemu3udwgoopm"]
 
-[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Pieces/LightOrb.png" id="1_utlf8"]
+[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="1_utlf8"]
 
 [node name="Light" type="TextureRect"]
 modulate = Color(0.898039, 0.909804, 0.137255, 1)

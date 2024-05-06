@@ -48,7 +48,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpwld"]
 resource_local_to_scene = true
 shader = SubResource("Shader_7xfeb")
-shader_parameter/makeTransparent = Color(0, 0, 0, 1)
+shader_parameter/makeTransparent = Color(0.117647, 0.117647, 0.117647, 1)
 shader_parameter/otherColor = Color(1, 1, 1, 1)
 shader_parameter/margin = 0.12
 shader_parameter/otherColorMix = 0.4
