@@ -29,7 +29,6 @@ func _ready() -> void:
 	$Sprite.texture = pieces[typeID]
 	$Sprite.modulate = Globals.piece_colors[typeID]
 	glow.modulate = Globals.piece_colors[typeID]
-	print(get_links())
 
 #______________________________
 #MANAGING LINKS
@@ -44,16 +43,16 @@ func should_glow(skip = null) -> void:
 		if adj.currentType == currentType:
 			pass
 		
-		var links = get_links()
+		var links: Dictionary = get_links()
 		print(adj,skip)
 		#if adj can but isn't linked to piece + make sure to skip same piece
-		if adj.currentType == currentType and links.find(adj) == -1 and adj != skip:
+		if adj.currentType == currentType and not links.has(adj) and adj != skip:
 			print("A")
 			link_pieces(adj)
 			print(self,currentType, " Will check links with ", adj, adj.currentType)
 			adj.should_glow(self) #Find other pieces adj is linked to
-	print(self, get_links())
-	for piece in get_links():
+	print(self, get_links(true))
+	for piece in get_links(true):
 		piece.manage_glow()
 
 func link_pieces(adj) -> void:
@@ -63,19 +62,19 @@ func link_pieces(adj) -> void:
 	
 	var link = get_links()
 	#Keep every linked piece in the same order
-	print("\n", self, link)
+	print("\n\n->", self, link)
 	for piece in link:
-		print(piece,piece.get_links()," Sync ",piece.get_links() == link)
+		print(piece,piece.get_links(true)," Sync ",piece.get_links() != link)
 		if piece.get_links() != link:
 			piece.set_links(self)
 
 func manage_glow() -> void:
-	print(self, get_links())
+	print(self, get_links(true))
 	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
 	else:
-		print(get_links().size())
+		print(get_links(true).size())
 		glow.hide()
 		glowing = false
 
@@ -123,15 +122,15 @@ func display_connection(direction,using) -> void:
 #______________________________
 #GET SET VALUES
 #______________________________
-func get_links(array = true):
+func get_links(array:bool = false):
 	if array:
 		return linkArray.linkedPieces.keys()
 	else:
 		return linkArray.linkedPieces
 
 func set_links(value) -> void:
-	get_links(false).merge(value.get_links(false))
-	value.get_links(false).merge(get_links(false))
+	get_links().merge(value.get_links())
+	value.get_links().merge(get_links())
 
 func get_all_connections() -> Array:
 	var array: Array = []

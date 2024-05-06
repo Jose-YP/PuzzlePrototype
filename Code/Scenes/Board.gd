@@ -66,73 +66,8 @@ func spawn_piece() -> void:
 		full_piece_rotation(rules.start_pos, true)
 
 #______________________________
-#BASIC CONTROLS
+#BASIC CONTROLS: MOVE
 #______________________________
-func ground_timer_reset(oldPos, newPos) -> void:
-	if oldPos != newPos and currentPiece.currentState == currentPiece.STATE.GROUNDED:
-		$Timers/Grounded.start()
-
-func full_piece_rotation(pos, start = false) -> void:
-	var allNewPos: Array[Vector2i] = [pos,pos,pos]
-	var allOldPos: Array[Vector2i] = [pos, find_piece(currentPiece.pieces[1]), find_piece(currentPiece.pieces[2])]
-	
-	if currentPiece.rot.rotation_degrees == 360:
-		currentPiece.rot.rotation_degrees = 0
-	
-	#Rotation is  a float value
-	match currentPiece.rot.rotation_degrees:
-		0.0:
-			allNewPos[1].y += 1
-			allNewPos[2].x += 1
-		90.0:
-			allNewPos[1].x += 1
-			allNewPos[2].y -= 1
-		180.0:
-			allNewPos[1].y -= 1
-			allNewPos[2].x -= 1
-		270.0:
-			allNewPos[1].x -= 1
-			allNewPos[2].y += 1
-	
-	#Spawning pieces will give oldPos of (-1,-1) basically deleting (8,8)
-	if not start:
-		board[allOldPos[1].x][allOldPos[1].y] = null
-		board[allOldPos[2].x][allOldPos[2].y] = null
-	
-	allNewPos = rotate_pop(allNewPos)
-	
-	for i in range(currentPiece.positions.size()):
-		ground_timer_reset(allOldPos[i], allNewPos[i])
-		board[allNewPos[i].x][allNewPos[i].y] = currentPiece.pieces[i]
-		currentPiece.gridPos[i] = allNewPos[i]
-		currentPiece.positions[i].global_position = grid_to_pixel(allNewPos[i])
-	
-	currentPiece.sync_position()
-
-func rotate_pop(newPos) -> Array[Vector2i]:
-	var temp: Array[Vector2i]
-	
-	for i in range(rules.rotate_pop_checks.size()):
-		temp = mini_rotate_pop(newPos.duplicate(), rules.rotate_pop_checks[i])
-		
-		if temp != newPos:
-			var valid: bool = not rotate_pop_cond(temp)
-			if not valid:
-				continue
-			for pos in temp:
-				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= rules.height - 1 or pos.y < 0:
-					valid = false
-			if valid:
-				return temp
-	
-	return newPos
-
-func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
-	if rotate_pop_cond(newPos):
-		for i in range(newPos.size()):
-			newPos[i] += ammount
-	return newPos
-
 func move_piece(ammount, direction = "X") -> void:
 	for i in range(currentPiece.gridPos.size()):
 		var pos: Vector2i = currentPiece.gridPos[i]
@@ -212,6 +147,77 @@ func drop() -> void:
 		currentPiece.sync_position()
 		$Timers/SoftDrop.start()
 
+#______________________________
+#BASIC CONTROLS: ROTATE
+#______________________________
+func ground_timer_reset(oldPos, newPos) -> void:
+	if oldPos != newPos and currentPiece.currentState == currentPiece.STATE.GROUNDED:
+		$Timers/Grounded.start()
+
+func full_piece_rotation(pos, start = false) -> void:
+	var allNewPos: Array[Vector2i] = [pos,pos,pos]
+	var allOldPos: Array[Vector2i] = [pos, find_piece(currentPiece.pieces[1]), find_piece(currentPiece.pieces[2])]
+	
+	if currentPiece.rot.rotation_degrees == 360:
+		currentPiece.rot.rotation_degrees = 0
+	
+	#Rotation is  a float value
+	match currentPiece.rot.rotation_degrees:
+		0.0:
+			allNewPos[1].y += 1
+			allNewPos[2].x += 1
+		90.0:
+			allNewPos[1].x += 1
+			allNewPos[2].y -= 1
+		180.0:
+			allNewPos[1].y -= 1
+			allNewPos[2].x -= 1
+		270.0:
+			allNewPos[1].x -= 1
+			allNewPos[2].y += 1
+	
+	#Spawning pieces will give oldPos of (-1,-1) basically deleting (8,8)
+	if not start:
+		board[allOldPos[1].x][allOldPos[1].y] = null
+		board[allOldPos[2].x][allOldPos[2].y] = null
+	
+	allNewPos = rotate_pop(allNewPos)
+	
+	for i in range(currentPiece.positions.size()):
+		ground_timer_reset(allOldPos[i], allNewPos[i])
+		board[allNewPos[i].x][allNewPos[i].y] = currentPiece.pieces[i]
+		currentPiece.gridPos[i] = allNewPos[i]
+		currentPiece.positions[i].global_position = grid_to_pixel(allNewPos[i])
+	
+	currentPiece.sync_position()
+
+func rotate_pop(newPos) -> Array[Vector2i]:
+	var temp: Array[Vector2i]
+	
+	for i in range(rules.rotate_pop_checks.size()):
+		temp = mini_rotate_pop(newPos.duplicate(), rules.rotate_pop_checks[i])
+		
+		if temp != newPos:
+			var valid: bool = not rotate_pop_cond(temp)
+			if not valid:
+				continue
+			for pos in temp:
+				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= rules.height - 1 or pos.y < 0:
+					valid = false
+			if valid:
+				return temp
+	
+	return newPos
+
+func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
+	if rotate_pop_cond(newPos):
+		for i in range(newPos.size()):
+			newPos[i] += ammount
+	return newPos
+
+#______________________________
+#PROCESSING
+#______________________________
 func _process(delta) -> void:
 	if currentPiece.currentState == currentPiece.STATE.MOVE:
 		movement()
@@ -403,7 +409,8 @@ func rotate_pop_cond(newPos) -> bool:
 #TIMERS
 #______________________________
 func _on_soft_drop_timeout():
-	$Timers/Gravity.start()
+	if rules.gravity_on:
+		$Timers/Gravity.start()
 	
 	if can_move("Down"):
 		move_piece(1, "Y")
