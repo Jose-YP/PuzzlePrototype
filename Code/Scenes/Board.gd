@@ -1,11 +1,12 @@
 extends Node2D
 
-#CONSTANTS
-const fullPiece = preload("res://Scenes/Board&Pieces/FullPiece.tscn")
-
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
+@onready var realHeight: int = rules.height - 1
+
+#CONSTANTS
+const fullPiece = preload("res://Scenes/Board&Pieces/FullPiece.tscn")
 
 #Variables
 var board: Array[Array]
@@ -29,7 +30,7 @@ func _ready() -> void:
 	
 	var rel = rules.piece_relationships
 	Globals.glow_num = rel.glow_num
-	Globals.relation_flags = [rel.earthRelations, rel.liquidRelations, rel.airRelations,
+	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
 	$ConnectedDisplay.position = grid_to_pixel(Vector2i(rules.width + 1, int(position.y)))
 	#Make debugging easier
@@ -50,8 +51,7 @@ func make_grid() -> Array[Array]:
 	
 	return array
 
-#Array order goes [anchor, clockwise, ccw]
-func spawn_piece() -> void:
+func spawn_piece() -> void: #Array order goes [anchor, clockwise, ccw]
 	if rules.spawning:
 		currentPiece = fullPiece.instantiate()
 		$Grid.add_child(currentPiece)
@@ -79,7 +79,7 @@ func move_piece(ammount, direction = "X") -> void:
 		if direction == "X":
 			pos.x = clamp(pos.x + ammount, 0, rules.width - 1)
 		else:
-			pos.y = clamp(pos.y + ammount, 0,rules.height - 1)
+			pos.y = clamp(pos.y + ammount, 0,realHeight)
 		
 		ground_timer_reset(currentPiece.gridPos[i], pos)
 		
@@ -202,7 +202,7 @@ func rotate_pop(newPos) -> Array[Vector2i]:
 			if not valid:
 				continue
 			for pos in temp:
-				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= rules.height - 1 or pos.y < 0:
+				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= realHeight or pos.y < 0:
 					valid = false
 			if valid:
 				return temp
@@ -261,7 +261,7 @@ func find_links() -> void:
 				continue
 			piece.should_glow()
 			if piece.glowing:
-				piece.should_connect()
+				piece.should_chain()
 
 #______________________________
 #CHAIN
@@ -309,10 +309,11 @@ func find_adjacent(piece) -> void:
 	piece.adjacent = adjacent
 
 func find_drop_bottom(pieces) -> Array[Vector2i]:
+	display_board()
 	#Handle lowest first, higher pieces can react to lowest's movement
 	var finalPos: Array[Vector2i] = pieces.gridPos.duplicate()
 	var regularIndexes: Array[int] = [0,1,2]
-	var low: Array[Vector2i] = [Vector2i(-1,-1), Vector2i(-1,-1), Vector2i(-1,-1)]
+	var low: Array[Vector2i] = pieces.gridPos.duplicate()
 	
 	finalPos.sort_custom(func(a,b): return a.y > b.y)
 	for i in range(pieces.gridPos.size()):
@@ -323,21 +324,24 @@ func find_drop_bottom(pieces) -> Array[Vector2i]:
 	for i in range(pieces.gridPos.size()): #Find lowest place for each piece
 		var regIndex = regularIndexes[i]
 		var column: int = int(finalPos[i].x)
-		
-		for j in range(finalPos[i].y + 1, rules.height):
+		var base = clamp(finalPos[i].y + 1, 0, realHeight)
+		for j in range(base, rules.height):
 			#First regular piece in current piece's column
 			if board[column][j] != null:
-				#If it's not in the current peice, place it normally 
-				if not pieces.in_full_piece(board[column][j], board[finalPos[i].x][finalPos[i].y]):
+				#If it's not in the current peice, place it normally
+				if not pieces.in_full_piece(board[column][j]):
 					low[regIndex] = Vector2i(column,j-1)
 					break
+				#Find if the current piece is already on the floor
+				elif low[regIndex].y == realHeight: 
+					break
 				else: #Else find where the current peice is and place it above there
-					
 					var above = low[pieces.pieces.find(board[column][j])].y - 1
+					above = clamp(above,0,realHeight)
 					low[regIndex] = Vector2i(column,above)
 					break
-			if j >= rules.height - 1: #Floor is lowest if a piece wasn't found
-				low[regIndex] = Vector2i(column,rules.height-1)
+			if j >= realHeight: #Floor is lowest if a piece wasn't found
+				low[regIndex] = Vector2i(column,realHeight)
 				break
 	
 	return low
@@ -345,7 +349,6 @@ func find_drop_bottom(pieces) -> Array[Vector2i]:
 func can_move(direction) -> bool:
 	for i in range(currentPiece.pieces.size()):
 		var newPos: Vector2i = currentPiece.gridPos[i]
-		var samePiece = board[newPos.x][newPos.y]
 		#Check if a piece can move horizontally or down
 		match direction:
 			"Left":
@@ -355,7 +358,7 @@ func can_move(direction) -> bool:
 				if newPos.x + 1 > rules.width - 1: return false
 				else: newPos.x += 1
 			"Down":
-				if newPos.y + 1 > rules.height - 1:
+				if newPos.y + 1 > realHeight:
 					return false
 				else: newPos.y += 1
 			"Up":
@@ -363,7 +366,7 @@ func can_move(direction) -> bool:
 				else: newPos.y -= 1
 		
 		var piece = board[newPos.x][newPos.y]
-		if piece != null and not currentPiece.in_full_piece(piece,samePiece):
+		if piece != null and not currentPiece.in_full_piece(piece):
 			return false
 	
 	return true
@@ -382,10 +385,10 @@ func can_rotate(direction = "CCW") -> bool:
 				return false
 		90.0:
 			if ((direction == "CCW" and pos.x - 1 < 0) or
-			(direction != "CCW" and pos.y + 1 > rules.height - 1)):
+			(direction != "CCW" and pos.y + 1 > realHeight)):
 				return false
 		180.0:
-			if ((direction == "CCW" and pos.y + 1 > rules.height - 1) 
+			if ((direction == "CCW" and pos.y + 1 > realHeight) 
 			or (direction != "CCW" and pos.x + 1 > rules.width - 1)):
 				return false
 		270.0:

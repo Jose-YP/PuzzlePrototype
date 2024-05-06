@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="7_pskja"]
 [ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="9_mnltf"]
 
-[node name="SinglePiece" type="Node2D"]
+[node name="SinglePiece" type="Node2D" groups=["Bead"]]
 script = ExtResource("1_ur3fy")
 pieces = Array[CompressedTexture2D]([ExtResource("2_um12v"), ExtResource("3_wp7p8"), ExtResource("4_u1cuc"), ExtResource("5_f7ng5"), ExtResource("6_2p7d7")])
-connectedVFX = ExtResource("7_ioqva")
+chainedVFX = ExtResource("7_ioqva")
 
 [node name="Sprite" type="TextureRect" parent="."]
 light_mask = 2
