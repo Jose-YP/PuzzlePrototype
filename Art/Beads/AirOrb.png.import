@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2tvxklp6un8s"
-path="res://.godot/imported/DarkOrb.png-7d013508b94e72e9fe8e2ef2f21662bd.ctex"
+uid="uid://pbaqi8u6vslb"
+path="res://.godot/imported/AirOrb.png-48fe78f28450184df59d5ae07501ad88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Pieces/DarkOrb.png"
-dest_files=["res://.godot/imported/DarkOrb.png-7d013508b94e72e9fe8e2ef2f21662bd.ctex"]
+source_file="res://Art/Beads/AirOrb.png"
+dest_files=["res://.godot/imported/AirOrb.png-48fe78f28450184df59d5ae07501ad88.ctex"]
 
 [params]
 

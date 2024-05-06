@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var pieces: Array[CompressedTexture2D]
+@export var beads: Array[CompressedTexture2D]
 @export var connectedVFX: PackedScene
+@export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var linkArray: Node = $LinkArray
 @onready var glow: Sprite2D = $Glow
@@ -18,17 +19,20 @@ var connectedWith: Array[int] = [-1,-1,-1,-1]
 var adjacent: Array = []
 var connectNodes: Array = [null,null,null,null]
 var glowing: bool = false
+var willDie: bool = false
 
 #______________________________
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	typeID = randi_range(0,Globals.piece_types.size() - 1)
-	currentType = Globals.piece_types[typeID]
+	typeID = randi_range(0,Globals.bead_types.size() - 1)
+	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)
-	$Sprite.texture = pieces[typeID]
-	$Sprite.modulate = Globals.piece_colors[typeID]
-	glow.modulate = Globals.piece_colors[typeID]
+	$Sprite/Sprite.texture = beads[typeID]
+	$Sprite.modulate = Globals.bead_colors[typeID]
+	glow.modulate = Globals.bead_colors[typeID]
+	print(Globals.bead_colors[typeID])
+	$Free.wait_time = burnTiming + 1
 
 #______________________________
 #MANAGING LINKS
@@ -45,28 +49,28 @@ func should_glow(skip = null) -> void:
 		
 		var links: Dictionary = get_links()
 		print(adj,skip)
-		#if adj can but isn't linked to piece + make sure to skip same piece
+		#if adj can but isn't linked to bead + make sure to skip same bead
 		if adj.currentType == currentType and not links.has(adj) and adj != skip:
 			print("A")
-			link_pieces(adj)
+			link_beads(adj)
 			print(self,currentType, " Will check links with ", adj, adj.currentType)
-			adj.should_glow(self) #Find other pieces adj is linked to
+			adj.should_glow(self) #Find other beads adj is linked to
 	print(self, get_links(true))
-	for piece in get_links(true):
-		piece.manage_glow()
+	for bead in get_links(true):
+		bead.manage_glow()
 
-func link_pieces(adj) -> void:
+func link_beads(adj) -> void:
 	#Sync links
-	for piece in adj.get_links():
-		set_links(piece)
+	for bead in adj.get_links():
+		set_links(bead)
 	
 	var link = get_links()
-	#Keep every linked piece in the same order
+	#Keep every linked bead in the same order
 	print("\n\n->", self, link)
-	for piece in link:
-		print(piece,piece.get_links(true)," Sync ",piece.get_links() != link)
-		if piece.get_links() != link:
-			piece.set_links(self)
+	for bead in link:
+		print(bead,bead.get_links(true)," Sync ",bead.get_links() != link)
+		if bead.get_links() != link:
+			bead.set_links(self)
 
 func manage_glow() -> void:
 	print(self, get_links(true))
@@ -99,7 +103,7 @@ func make_connection(adj) -> void:
 	#Sync connections
 	adj.set_connections(self)
 	set_connections(adj)
-	#Keep every linked piece in the same order
+	#Keep every linked bead in the same order
 	print("\n",currentType, " can connect with ", adj.currentType," ", adj.get_all_connections())
 
 func display_connection(direction,using) -> void:
@@ -107,7 +111,7 @@ func display_connection(direction,using) -> void:
 	var VFX: AnimatedSprite2D = connectedVFX.instantiate()
 	$Connections.add_child(VFX)
 	VFX.position = connectPos[direction][using].position
-	VFX.set_color(Globals.piece_colors[typeID])
+	VFX.set_color(Globals.bead_colors[typeID])
 	print(VFX.material)
 	if direction > 1:
 		VFX.rotation_degrees = VFX.horiRot
@@ -143,3 +147,21 @@ func get_all_connections() -> Array:
 func set_connections(value) -> void:
 	if connectedLinks.find(value) == -1:
 		connectedLinks.append(value)
+
+#______________________________
+#DESTROYING PIECES
+#______________________________
+func destroy_anim():
+	#Destroy connections
+	for bolt in $Connections.get_children():
+		bolt.fade_tweenout()
+	
+	#Destroy bead
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
+
+func set_burn(value):
+	material.set_shader_parameter("dissolve_value",value)
+
+func _on_free_timeout():
+	queue_free()

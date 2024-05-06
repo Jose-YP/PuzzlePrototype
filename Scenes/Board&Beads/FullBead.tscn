@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://co6vx7heink86"]
+
+[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_oh5gf"]
+[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="2_p6uu0"]
+
+[node name="FullBead" type="Node2D"]
+position = Vector2(426, 222)
+script = ExtResource("1_oh5gf")
+metadata/_edit_lock_ = true
+
+[node name="Beads" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Anchor" parent="Beads" instance=ExtResource("2_p6uu0")]
+
+[node name="CCW" parent="Beads" instance=ExtResource("2_p6uu0")]
+position = Vector2(0, -50)
+
+[node name="Clockwise" parent="Beads" instance=ExtResource("2_p6uu0")]
+position = Vector2(50, 0)
+
+[node name="RegPos" type="Node2D" parent="."]
+
+[node name="AnchorPos" type="Marker2D" parent="RegPos"]
+
+[node name="CCWPos" type="Marker2D" parent="RegPos"]
+position = Vector2(0, -50)
+
+[node name="ClockwisePos" type="Marker2D" parent="RegPos"]
+position = Vector2(50, 0)
+
+[node name="Positions" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnchorPos" type="Marker2D" parent="Positions"]
+
+[node name="CCWPos" type="Marker2D" parent="Positions"]
+position = Vector2(0, -50)
+
+[node name="ClockwisePos" type="Marker2D" parent="Positions"]
+position = Vector2(50, 0)
+
+[node name="FlipPos" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnchorPos" type="Marker2D" parent="FlipPos"]
+
+[node name="CCWPos" type="Marker2D" parent="FlipPos"]
+position = Vector2(-50, 0)
+
+[node name="ClockwisePos" type="Marker2D" parent="FlipPos"]
+position = Vector2(0, -50)

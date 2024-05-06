@@ -12,7 +12,7 @@ class_name Rules
 @export var start_pos: Vector2i = Vector2(4,1)
 
 @export_category("Process Constants")
-@export var piece_relationships: Relations
+@export var bead_relationships: Relations
 @export_group("Timing")
 @export_range(0,2) var gravity: float = 1
 @export_range(0,1) var soft_drop: float = 1

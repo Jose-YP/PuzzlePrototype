@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo8i3bitdorr8"]
 
-[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Pieces/AirOrb.png" id="1_61eys"]
+[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="1_61eys"]
 
 [node name="Air" type="TextureRect"]
 custom_minimum_size = Vector2(40, 40)

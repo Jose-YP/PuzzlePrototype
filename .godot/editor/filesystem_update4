@@ -1,4 +1,5 @@
-res://Scenes/Board&Pieces/Main.tscn
+res://Code/Constants/Test.gd
+res://Scenes/Constants/Test.tscn
 res://Code/Scenes/Board.gd
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/Gradients/Dark.tres
@@ -8,11 +9,17 @@ res://Shaders/ShaderCode/DiamondWave.gdshader
 res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
+res://Shaders/Gradients/Earth.tres
+res://Shaders/Gradients/Light.tres
+res://Shaders/Gradients/Air.tres
+res://Shaders/Gradients/Liquid.tres
 res://Code/Scenes/SinglePiece.gd
-res://Scenes/Board&Pieces/FullPiece.tscn
-res://Scenes/Board&Pieces/SinglePiece.tscn
-res://Resources/Relations/5 Duo.tres
-res://Resources/Relations/RelationshipMaker.gd
-res://Scenes/Constants/ConnectedDisplay.tscn
-res://Resources/Relations/5 Connected.tres
-res://Code/Constants/LinkArray.gd
+res://Scenes/Board&Beads/Main.tscn
+res://Code/Scenes/FullPiece.gd
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/Board&Beads/FullBead.tscn
+res://Shaders/Transparency/BurnOut.tres
+res://Shaders/Transparency/LightningArc.tres
+res://Scenes/Constants/connected.tscn
+res://Code/Constants/Connected.gd
+res://Shaders/ShaderCode/BurnOut.gdshader

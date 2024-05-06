@@ -12,9 +12,9 @@ config_version=5
 
 config/name="PuzzlePrototype"
 config/tags=PackedStringArray("2d", "made")
-run/main_scene="res://Scenes/Board&Pieces/Main.tscn"
+run/main_scene="res://Scenes/Board&Beads/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Art/Pieces/LiquidOrb.png"
+config/icon="res://Art/Beads/LiquidOrb.png"
 
 [autoload]
 
