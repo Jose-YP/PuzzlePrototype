@@ -125,7 +125,9 @@ func place() -> void:
 
 func hard_drop(target) -> void:
 	print(target)
+	var prevPos: Vector2i = currentBead.gridPos[0]
 	for i in (currentBead.beads.size()):
+		display_board()
 		var pos: Vector2i = target[i]
 		#First time this happened was when hard dropping from the bottom
 		board[currentBead.gridPos[i].x][currentBead.gridPos[i].y] = null
@@ -133,6 +135,20 @@ func hard_drop(target) -> void:
 		currentBead.gridPos[i] = pos
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
+		print("Now: ",pos, board[pos.x][pos.y], " Prev: ", prevPos, board[prevPos.x][prevPos.y])
+		if board[pos.x][pos.y] == null:
+			print()
+		if board[prevPos.x][prevPos.y] == null and i != 0:
+			print(i != 0)
+			
+		prevPos = pos
+	
+	for bead in currentBead.beads:
+		var loc = find_bead(bead)
+		print(loc)
+		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
+			pass
+		
 	
 	post_turn()
 
