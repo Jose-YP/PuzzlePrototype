@@ -4,16 +4,9 @@ uniform sampler2D dissolve_texture : source_color;
 uniform float dissolve_value : hint_range(0,1);
 uniform float burn_size: hint_range(0.0, 1.0, 0.01);
 uniform vec4 burn_color: source_color;
-//render_mode blend_mix;
+uniform vec4 modulate: source_color = vec4(1,1,1,1);
 
 void fragment(){
-	//vec4 tint_color = vec4(0.0, 0.0, 0.0, 1.0);
-	//vec4 texture_color = texture(TEXTURE, UV);
-	//if (AT_LIGHT_PASS) {
-		//COLOR = texture_color;
-	//} else {
-		//COLOR = texture_color * tint_color;
-	//}
     vec4 main_texture = texture(TEXTURE, UV);
     vec4 noise_texture = texture(dissolve_texture, UV);
 	
@@ -25,4 +18,5 @@ void fragment(){
 	
 	COLOR.a *= threshold;
 	COLOR.rgb = mix(burn_color.rgb, main_texture.rgb, border);
+	COLOR *= modulate;
 }

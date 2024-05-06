@@ -28,10 +28,8 @@ func _ready() -> void:
 	typeID = randi_range(0,Globals.bead_types.size() - 1)
 	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)
-	$Sprite/Sprite.texture = beads[typeID]
-	$Sprite.modulate = Globals.bead_colors[typeID]
-	glow.modulate = Globals.bead_colors[typeID]
-	print(Globals.bead_colors[typeID])
+	$Sprite.texture = beads[typeID]
+	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
 	$Free.wait_time = burnTiming + 1
 
 #______________________________
@@ -48,14 +46,11 @@ func should_glow(skip = null) -> void:
 			pass
 		
 		var links: Dictionary = get_links()
-		print(adj,skip)
 		#if adj can but isn't linked to bead + make sure to skip same bead
 		if adj.currentType == currentType and not links.has(adj) and adj != skip:
-			print("A")
 			link_beads(adj)
-			print(self,currentType, " Will check links with ", adj, adj.currentType)
 			adj.should_glow(self) #Find other beads adj is linked to
-	print(self, get_links(true))
+	
 	for bead in get_links(true):
 		bead.manage_glow()
 
@@ -66,9 +61,7 @@ func link_beads(adj) -> void:
 	
 	var link = get_links()
 	#Keep every linked bead in the same order
-	print("\n\n->", self, link)
 	for bead in link:
-		print(bead,bead.get_links(true)," Sync ",bead.get_links() != link)
 		if bead.get_links() != link:
 			bead.set_links(self)
 
@@ -110,7 +103,6 @@ func display_chain(direction,using) -> void:
 	$Connections.add_child(VFX)
 	VFX.position = chainPos[direction][using].position
 	VFX.set_color(Globals.bead_colors[typeID])
-	print(VFX.material)
 	if direction > 1:
 		VFX.rotation_degrees = VFX.horiRot
 	else:
@@ -126,9 +118,9 @@ func display_chain(direction,using) -> void:
 #______________________________
 func get_links(array:bool = false):
 	if array:
-		return linkArray.linkedPieces.keys()
+		return linkArray.linkedBeads.keys()
 	else:
-		return linkArray.linkedPieces
+		return linkArray.linkedBeads
 
 func set_links(value) -> void:
 	get_links().merge(value.get_links())
@@ -145,8 +137,8 @@ func get_all_chains() -> Array:
 func set_chains(value) -> void:
 	var links: Dictionary = value.get_links()
 	var alreadyThere: bool = false
-	for piece in chainedLinks:
-		if links.has(piece):
+	for bead in chainedLinks:
+		if links.has(bead):
 			alreadyThere = true
 	
 	if not alreadyThere:
@@ -156,7 +148,7 @@ func set_chains(value) -> void:
 #DESTROYING PIECES
 #______________________________
 func destroy_anim():
-	#Destroy connections
+	#Destroy chains
 	for bolt in $Connections.get_children():
 		bolt.fade_tweenout()
 	

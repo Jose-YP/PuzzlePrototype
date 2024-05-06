@@ -1,15 +1,12 @@
 extends Node2D
 
-#CONSTANTS
-const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
-
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
 @onready var realHeight: int = rules.height - 1
 
 #CONSTANTS
-const fullPiece = preload("res://Scenes/Board&Pieces/FullPiece.tscn")
+const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 
 #Variables
 var board: Array[Array]
@@ -130,9 +127,7 @@ func hard_drop(target) -> void:
 	print(target)
 	for i in (currentBead.beads.size()):
 		var pos: Vector2i = target[i]
-		if pos == Vector2i(-1,-1):
-			#FIrst time this happened was when hard dropping from the bottom
-			print("Break")
+		#First time this happened was when hard dropping from the bottom
 		board[currentBead.gridPos[i].x][currentBead.gridPos[i].y] = null
 		
 		currentBead.gridPos[i] = pos
@@ -265,7 +260,7 @@ func find_links() -> void:
 				continue
 			bead.should_glow()
 			if bead.glowing:
-				bead.should_connect()
+				bead.should_chain()
 
 #______________________________
 #CHAIN
@@ -316,7 +311,7 @@ func find_drop_bottom(beads) -> Array[Vector2i]:
 	#Handle lowest first, higher beads can react to lowest's movement
 	var finalPos: Array[Vector2i] = beads.gridPos.duplicate()
 	var regularIndexes: Array[int] = [0,1,2]
-	var low: Array[Vector2i] = pieces.gridPos.duplicate()
+	var low: Array[Vector2i] = beads.gridPos.duplicate()
 	
 	finalPos.sort_custom(func(a,b): return a.y > b.y)
 	for i in range(beads.gridPos.size()):
@@ -335,7 +330,7 @@ func find_drop_bottom(beads) -> Array[Vector2i]:
 				if not beads.in_full_bead(board[column][j], board[finalPos[i].x][finalPos[i].y]):
 					low[regIndex] = Vector2i(column,j-1)
 					break
-				#Find if the current piece is already on the floor
+				#Find if the current bead is already on the floor
 				elif low[regIndex].y == realHeight: 
 					break
 				else: #Else find where the current peice is and place it above there

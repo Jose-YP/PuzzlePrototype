@@ -16,14 +16,9 @@ modulate = Color(0.992157, 0.992157, 1, 1)
 material = ExtResource("1_xmwi2")
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_u6i6u"), ExtResource("4_4on11"), ExtResource("4_7iynl"), ExtResource("6_imsmg"), ExtResource("7_k1u3i")])
-connectedVFX = ExtResource("3_v1280")
+chainedVFX = ExtResource("3_v1280")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-use_parent_material = true
-
-[node name="Sprite" type="TextureRect" parent="Sprite"]
-visible = false
+[node name="Sprite" type="TextureRect" parent="."]
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true

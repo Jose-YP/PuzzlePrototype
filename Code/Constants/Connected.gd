@@ -4,8 +4,6 @@ const horiRot: int = 45
 
 func set_color(chainColor):
 	material.set_shader_parameter("otherColor",chainColor)
-func set_color(connectColor):
-	material.set_shader_parameter("otherColor",connectColor)
 
 func fade_tweenout():
 	var start: float = get_fade()
