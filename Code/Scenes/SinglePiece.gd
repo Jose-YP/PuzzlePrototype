@@ -19,7 +19,7 @@ var chainedWith: Array[int] = [-1,-1,-1,-1]
 var adjacent: Array = []
 var chainNodes: Array = [null,null,null,null]
 var glowing: bool = false
-var willDie: bool = false
+var breaking: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -149,16 +149,13 @@ func set_chains(value) -> void:
 #______________________________
 func destroy_anim():
 	#Destroy chains
+	breaking = true
 	for bolt in $Connections.get_children():
 		bolt.fade_tweenout()
 	
 	#Destroy bead
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
-	$Free.start()
 
 func set_burn(value):
 	material.set_shader_parameter("dissolve_value",value)
-
-func _on_free_timeout():
-	queue_free()

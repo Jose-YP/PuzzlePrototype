@@ -6,6 +6,7 @@ extends Node2D
 @onready var realHeight: int = rules.height - 1
 
 signal brokeBead
+signal brokeAll
 
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
@@ -17,6 +18,7 @@ var currentBead: Node2D
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var held: bool = false
+var breaking: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -256,7 +258,9 @@ func _process(delta) -> void:
 		for i in range(chains.size()):
 			#Make sure the starting value is bracketed into an array
 			holdBreakChain = i
+			breaking = true
 			break_order([chains[i].pick_random()])
+			brokeAll.emit()
 
 #______________________________
 #POST TURN PROCESSES
@@ -267,7 +271,7 @@ func post_turn() -> void:
 	
 	for bead in currentBead.beads:
 		bead.reparent($Grid)
-		bead.set_name(str(pixel_to_grid(bead)))
+		bead.set_name(str(find_bead(bead)))
 	
 	currentBead.queue_free()
 	currentBead = null
@@ -309,21 +313,37 @@ func break_order(chainPart):
 	#They must be connected to the current bead
 	var adjacent: Dictionary = {}
 	for bead in chainPart:
+		if not is_instance_valid(bead):
+			continue
+		find_adjacent(bead)
 		for adj in bead.adjacent:
 			if (is_instance_valid(adj)
 			 and chains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
 	
+	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
+	
 	break_bead(chainPart)
 	await brokeBead
+	var empty = true
+	for bead in chains[holdBreakChain]:
+		if bead != null:
+			empty = false
+	if empty: return
 	break_order(adjacent.keys())
 
 func break_bead(chainPart):
 	for bead in chainPart:
-		bead.destroy_anim()
+		if is_instance_valid(bead):
+			bead.destroy_anim()
 	$Timers/ChainCLear.start()
 	await $Timers/ChainCLear.timeout
 	emit_signal("brokeBead")
+	for bead in chainPart:
+		if is_instance_valid(bead):
+			var pos = find_bead(bead)
+			board[pos.x][pos.y] = null
+			bead.queue_free()
 
 func find_connections(connection, recursion = []) -> Array:
 	var tempChain = recursion
@@ -363,6 +383,7 @@ func in_chains(bead) -> bool:
 		if chain.find(bead) != -1:
 			return true
 	return false
+
 #______________________________
 #CONVERSION
 #______________________________
@@ -372,13 +393,6 @@ func grid_to_pixel(gridPos: Vector2i) -> Vector2:
 	var Ynew: float = rules.origin.y + rules.offset.y * gridPos.y
 	
 	return Vector2(Xnew, Ynew)
-
-#Turn visual positions into computer positions
-func pixel_to_grid(bead) -> Vector2i:
-	var Xnew: int = round((bead.global_position.x - rules.origin.x) / rules.offset.x)
-	var Ynew: int = round((bead.global_position.y - rules.origin.y) / rules.offset.y)
-	
-	return Vector2i(Xnew, Ynew)
 
 func find_bead(bead) -> Vector2i:
 	for i in rules.width:
@@ -391,7 +405,7 @@ func find_bead(bead) -> Vector2i:
 #Adjacent array: [left,right,up,down] with null for any \wo a bead
 func find_adjacent(bead) -> void:
 	var adjacent: Array = [null, null, null, null]
-	var pos = pixel_to_grid(bead)
+	var pos = find_bead(bead)
 	
 	if pos.x - 1 >= 0 and board[pos.x - 1][pos.y] != null:
 		adjacent[0] = board[pos.x - 1][pos.y]
@@ -595,3 +609,7 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
+
+
+func _on_broke_all():
+	pass # Replace with function body.

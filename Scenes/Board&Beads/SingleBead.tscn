@@ -96,7 +96,7 @@ editor_description = "This is a seperate node so it's changes can be seen by eve
 script = ExtResource("6_avety")
 
 [node name="Free" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.25
 one_shot = true
 
 [connection signal="timeout" from="Free" to="." method="_on_free_timeout"]
