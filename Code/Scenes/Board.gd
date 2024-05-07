@@ -5,6 +5,8 @@ extends Node2D
 @export var rules: Rules
 @onready var realHeight: int = rules.height - 1
 
+signal brokeBead
+
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 
@@ -13,6 +15,7 @@ var board: Array[Array]
 var chains: Array[Array]
 var currentBead: Node2D
 var inputHoldTime: float = 0
+var holdBreakChain: int = 0
 var held: bool = false
 
 #______________________________
@@ -250,6 +253,10 @@ func _process(delta) -> void:
 		held = false
 	if Input.is_action_just_pressed("Y"):
 		find_chains()
+		for i in range(chains.size()):
+			#Make sure the starting value is bracketed into an array
+			holdBreakChain = i
+			break_order([chains[i].pick_random()])
 
 #______________________________
 #POST TURN PROCESSES
@@ -297,11 +304,28 @@ func find_chains() -> void:
 	
 	print(chains)
 
-func break_order(chain):
-	var adj = find_adjacent(chain[0])
+func break_order(chainPart):
+	#First find every adjacent bead to break in the future
+	#They must be connected to the current bead
+	var adjacent: Dictionary = {}
+	for bead in chainPart:
+		for adj in bead.adjacent:
+			if (is_instance_valid(adj)
+			 and chains[holdBreakChain].find(adj) != -1):
+				adjacent[adj] = adj
 	
+	break_bead(chainPart)
+	await brokeBead
+	break_order(adjacent.keys())
 
-func find_connections(connection, recursion = []) -> Array[Dictionary]:
+func break_bead(chainPart):
+	for bead in chainPart:
+		bead.destroy_anim()
+	$Timers/ChainCLear.start()
+	await $Timers/ChainCLear.timeout
+	emit_signal("brokeBead")
+
+func find_connections(connection, recursion = []) -> Array:
 	var tempChain = recursion
 	for bead in connection:
 		var link = bead.get_links()
@@ -310,7 +334,7 @@ func find_connections(connection, recursion = []) -> Array[Dictionary]:
 	
 	return tempChain
 
-func add_links(link: Dictionary, recursion: Array = []) -> Array[Dictionary]:
+func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	var tempChain: Array = recursion
 	if not in_temp_chain(tempChain, link):
 		tempChain.append(link)

@@ -155,6 +155,7 @@ func destroy_anim():
 	#Destroy bead
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
+	$Free.start()
 
 func set_burn(value):
 	material.set_shader_parameter("dissolve_value",value)

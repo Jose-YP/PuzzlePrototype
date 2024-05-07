@@ -13,6 +13,7 @@ res://Shaders/ShaderCode/Fullgradient.gdshader
 res://Shaders/ShaderCode/OutlineInline.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
+res://Code/Scenes/SinglePiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Constants/connected.tscn
 res://Scenes/Constants/Test.tscn
