@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_oh5gf"]
 [ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="2_p6uu0"]
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_1j664"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_g3lnw"]
 
 [sub_resource type="Gradient" id="Gradient_s422o"]
 
@@ -12,27 +12,27 @@
 color_ramp = SubResource("Gradient_s422o")
 noise = SubResource("FastNoiseLite_ttodo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8wxd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fghpn"]
 resource_local_to_scene = true
-shader = ExtResource("3_1j664")
+shader = ExtResource("3_g3lnw")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1diqx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc3xu"]
 resource_local_to_scene = true
-shader = ExtResource("3_1j664")
+shader = ExtResource("3_g3lnw")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft51g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rw82"]
 resource_local_to_scene = true
-shader = ExtResource("3_1j664")
+shader = ExtResource("3_g3lnw")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
@@ -49,14 +49,14 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Anchor" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_h8wxd")
+material = SubResource("ShaderMaterial_fghpn")
 
 [node name="CCW" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_1diqx")
+material = SubResource("ShaderMaterial_vc3xu")
 position = Vector2(0, -50)
 
 [node name="Clockwise" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_ft51g")
+material = SubResource("ShaderMaterial_8rw82")
 position = Vector2(50, 0)
 
 [node name="RegPos" type="Node2D" parent="."]

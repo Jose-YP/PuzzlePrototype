@@ -10,7 +10,7 @@ const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 
 #Variables
 var board: Array[Array]
-var links: Array[Array]
+var chains: Array[Array]
 var currentBead: Node2D
 var inputHoldTime: float = 0
 var held: bool = false
@@ -248,6 +248,8 @@ func _process(delta) -> void:
 		$Timers/SoftDrop.stop()
 		inputHoldTime = 0
 		held = false
+	if Input.is_action_just_pressed("Y"):
+		find_chains()
 
 #______________________________
 #POST TURN PROCESSES
@@ -281,6 +283,54 @@ func find_links() -> void:
 #______________________________
 #CHAIN
 #______________________________
+func find_chains():
+	chains.clear()
+	
+	for i in rules.width:
+		for j in rules.height:
+			var bead = board[i][j]
+			if bead == null: #skip anything that has glowing or no beads
+				continue
+			if bead.glowing and not bead_in_chain(bead):
+				chains.append(set_chains(bead))
+				if chains[-1].size() == 0:
+					chains.pop_back()
+	
+	print(chains)
+
+func set_chains(bead, seen = []) -> Array:
+	print("Already seen ", seen)
+	print("Looking to make chains with ", bead)
+	var returnChain: Array = []
+	var links = bead.get_links()
+	
+	
+	for linkedBead in links:
+		if linkedBead in seen:
+			continue
+		seen.append(linkedBead)
+		if linkedBead.chainedLinks.size() == 0:
+			continue
+		print(linkedBead, " has connections to ", linkedBead.chainedLinks)
+		for chain in linkedBead.chainedLinks:
+			if not link_in_chain(returnChain,chain.get_links()):
+				returnChain.append_array(chain.get_links(true))
+				returnChain.append_array(set_chains(linkedBead, seen))
+	
+	return returnChain
+
+func bead_in_chain(bead) -> bool:
+	for chain in chains:
+		if chain.find(bead) != -1:
+			return true
+	return false
+
+func link_in_chain(returnChain, checking) -> bool:
+	for bead in checking:
+		if returnChain.find(bead) != -1:
+			print(checking, " is already in ", returnChain)
+			return true
+	return false
 
 #______________________________
 #CONVERSION

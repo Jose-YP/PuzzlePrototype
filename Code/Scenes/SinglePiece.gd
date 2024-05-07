@@ -7,7 +7,7 @@ extends Node2D
 @onready var linkArray: Node = $LinkArray
 @onready var glow: Sprite2D = $Glow
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
-@onready var chainedLinks: Array[Node] = [self]
+@onready var chainedLinks: Array[Node] = []
 
 signal find_adjacent
 
