@@ -152,7 +152,7 @@ func hard_drop(target) -> void:
 		var loc = find_bead(bead)
 		print(loc)
 		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
-			pass
+			print()
 		
 	
 	post_turn()
@@ -239,28 +239,31 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING
 #______________________________
 func _process(delta) -> void:
-	if currentBead.currentState == currentBead.STATE.MOVE:
-		movement()
-		drop()
-	if currentBead.currentState == currentBead.STATE.GROUNDED:
-		movement()
-		drop()
-	
-	if Input.is_action_pressed("ui_down"):
-		inputHoldTime += delta
-		held = inputHoldTime > rules.soft_drop
-	if Input.is_action_just_released("ui_down"):
-		$Timers/SoftDrop.stop()
-		inputHoldTime = 0
-		held = false
-	if Input.is_action_just_pressed("Y"):
-		find_chains()
-		for i in range(chains.size()):
-			#Make sure the starting value is bracketed into an array
-			holdBreakChain = i
-			breaking = true
-			break_order([chains[i].pick_random()])
-			brokeAll.emit()
+	if not breaking:
+		if currentBead.currentState == currentBead.STATE.MOVE:
+			movement()
+			drop()
+		if currentBead.currentState == currentBead.STATE.GROUNDED:
+			movement()
+			drop()
+		
+		if Input.is_action_pressed("ui_down"):
+			inputHoldTime += delta
+			held = inputHoldTime > rules.soft_drop
+		if Input.is_action_just_released("ui_down"):
+			$Timers/SoftDrop.stop()
+			inputHoldTime = 0
+			held = false
+		if Input.is_action_just_pressed("Y"):
+			find_chains()
+			for i in range(chains.size()):
+				#Make sure the starting value is bracketed into an array
+				holdBreakChain = i
+				breaking = true
+				break_order([chains[i].pick_random()])
+				await brokeAll
+				print("\n\n Finish")
+				post_break()
 
 #______________________________
 #POST TURN PROCESSES
@@ -290,6 +293,28 @@ func find_links() -> void:
 			bead.should_glow()
 			if bead.glowing:
 				bead.should_chain()
+
+func post_break():
+	for i in range(rules.width):
+		#Start at the bottom of the board and push those down first
+		for j in range(realHeight,-1,-1):
+			var bead = board[i][j]
+			if currentBead.in_full_bead(bead) or bead == null:
+				continue
+			
+			var target = mini_find_bottom(Vector2i(i,j),i)
+			if target.x == -1:
+				target = Vector2i(i,j)
+			
+			print("Bottom of ", bead, " is ", target)
+			board[i][j] = null
+			board[target.x][target.y] = bead
+			bead.global_position = grid_to_pixel(target)
+			bead.set_name(str(target))
+	
+	$Timers/ChainFinish.start()
+	await  $Timers/ChainFinish.timeout
+	breaking = false
 
 #______________________________
 #CHAIN
@@ -329,16 +354,19 @@ func break_order(chainPart):
 	for bead in chains[holdBreakChain]:
 		if bead != null:
 			empty = false
-	if empty: return
+	if empty:
+		brokeAll.emit()
+		return
 	break_order(adjacent.keys())
 
 func break_bead(chainPart):
 	for bead in chainPart:
 		if is_instance_valid(bead):
 			bead.destroy_anim()
-	$Timers/ChainCLear.start()
-	await $Timers/ChainCLear.timeout
+	$Timers/ChainClear.start()
+	await $Timers/ChainClear.timeout
 	emit_signal("brokeBead")
+	
 	for bead in chainPart:
 		if is_instance_valid(bead):
 			var pos = find_bead(bead)
@@ -433,27 +461,34 @@ func find_drop_bottom(beads) -> Array[Vector2i]:
 	for i in range(beads.gridPos.size()): #Find lowest place for each bead
 		var regIndex = regularIndexes[i]
 		var column: int = int(finalPos[i].x)
-		
-		for j in range(finalPos[i].y + 1, rules.height):
-			#First regular bead in current bead's column
-			if board[column][j] != null:
-				#If it's not in the current peice, place it normally 
-				if not beads.in_full_bead(board[column][j], board[finalPos[i].x][finalPos[i].y]):
-					low[regIndex] = Vector2i(column,j-1)
-					break
-				#Find if the current bead is already on the floor
-				elif low[regIndex].y == realHeight: 
-					break
-				else: #Else find where the current peice is and place it above there
-					
-					var above = low[beads.beads.find(board[column][j])].y - 1
-					low[regIndex] = Vector2i(column,above)
-					break
-			if j >= rules.height - 1: #Floor is lowest if a bead wasn't found
-				low[regIndex] = Vector2i(column,rules.height-1)
-				break
-	
+		var target = mini_find_bottom(finalPos[i],column,low[regIndex],true)
+		if target.x == -1:
+			var above = low[beads.beads.find(board[column][target.y])].y - 1
+			low[regIndex] = Vector2i(column,above)
+		else:
+			low[regIndex] = target
 	return low
+
+func mini_find_bottom(pos,column,default = pos,hardDropping = false) -> Vector2i:
+	for j in range(pos.y + 1, rules.height):
+		#First regular bead in current bead's column
+		if board[column][j] != null:
+			var inCurrent: bool = false
+			if hardDropping:
+				var Bead = currentBead
+				inCurrent = Bead.in_full_bead(board[column][j], board[pos.x][pos.y])
+			
+			#If it's not in the current peice, place it normally 
+			if not inCurrent:
+				return Vector2i(column,j-1)
+			#Find if the current bead is already on the floor
+			elif default.y == realHeight: 
+				break
+			else: #Else find where the current peice is and place it above there
+				return Vector2i(-1,j)
+		if j >= realHeight: #Floor is lowest if a bead wasn't found
+			return Vector2i(column,realHeight)
+	return default
 
 func can_move(direction) -> bool:
 	for i in range(currentBead.beads.size()):
@@ -609,7 +644,3 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
-
-
-func _on_broke_all():
-	pass # Replace with function body.

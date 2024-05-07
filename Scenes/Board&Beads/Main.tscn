@@ -33,9 +33,11 @@ autostart = true
 [node name="Debug" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="ChainCLear" type="Timer" parent="Timers"]
+[node name="ChainClear" type="Timer" parent="Timers"]
 wait_time = 0.05
 one_shot = true
+
+[node name="ChainFinish" type="Timer" parent="Timers"]
 
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

@@ -20,6 +20,7 @@ var adjacent: Array = []
 var chainNodes: Array = [null,null,null,null]
 var glowing: bool = false
 var breaking: bool = false
+var hardDropped: bool = true
 
 #______________________________
 #INITIALIZATION
@@ -30,7 +31,6 @@ func _ready() -> void:
 	typeFlag = Globals.string_to_flag(currentType)
 	$Sprite.texture = beads[typeID]
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
-	$Free.wait_time = burnTiming + 1
 
 #______________________________
 #MANAGING LINKS
@@ -84,7 +84,6 @@ func should_chain() -> void:
 		
 		#Check if chains array has to updated when links update
 		if adj.typeFlag & Globals.relation_flags[typeID] and chainedLinks.find(adj) == -1:
-			print("\n",self, adj.typeFlag, adj.currentType, Globals.relation_flags[typeID], currentType)
 			make_chain(adj)
 			if chainNodes[i] == null and adj.chainNodes[Globals.otherConnectionNum[i]] == null:
 				display_chain(i,0)
@@ -95,7 +94,6 @@ func make_chain(adj) -> void:
 	adj.set_chains(self)
 	set_chains(adj)
 	#Keep every linked bead in the same order
-	print("\n",currentType, " can chain with ", adj.currentType," ", adj.get_all_chains())
 
 func display_chain(direction,using) -> void:
 	#Doesn't work
