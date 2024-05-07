@@ -283,7 +283,7 @@ func find_links() -> void:
 #______________________________
 #CHAIN
 #______________________________
-func find_chains():
+func find_chains() -> void:
 	chains.clear()
 	
 	for i in rules.width:
@@ -292,58 +292,16 @@ func find_chains():
 			if bead == null: #skip anything that has glowing or no beads
 				continue
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
-				print("---------------\n",bead)
 				var tempChain = add_links(bead.get_links())
-				print(tempChain)
 				chains.append(new_set_chains(tempChain))
-			
-			#if bead.chainedLinks.size() != 0 and not bead_in_chain(bead):
-				#chains.append(set_chains(bead))
-				#display_array(chains[-1])
-				#if chains[-1].size() == 0:
-					#chains.pop_back()
 	
 	print(chains)
 
-#func set_chains(bead, recursion = [], seen = []) -> Array:
-	#print("\nAlready seen ", seen)
-	#print("Looking to make chains with ", bead)
-	#var returnChain: Array = recursion
-	#var links = bead.get_links(true)
-	#if not link_in_chain(returnChain,links):
-		#returnChain.append_array(links)
-	#
-	#display_array(returnChain)
-	#for linkedBead in links:
-		#if linkedBead in seen:
-			#continue
-		#seen.append(linkedBead)
-		#if linkedBead.chainedLinks.size() == 0:
-			#continue
-		#print(linkedBead, " has connections to ", linkedBead.chainedLinks)
-		#for chain in linkedBead.chainedLinks:
-			#if not link_in_chain(returnChain,chain.get_links()):
-				#returnChain.append_array(chain.get_links(true))
-				#returnChain.append_array(set_chains(linkedBead,returnChain, seen))
-	#
-	#return returnChain
-#
-#func bead_in_chain(bead) -> bool:
-	#for chain in chains:
-		#if chain.find(bead) != -1:
-			#return true
-	#return false
-#
-#func link_in_chain(returnChain, checking) -> bool:
-	#for bead in checking:
-		#if returnChain.find(bead) != -1:
-			#print(checking, " is already in ", returnChain)
-			#return true
-	#return false
+func break_order(chain):
+	var adj = find_adjacent(chain[0])
+	
 
-#///
-
-func find_connections(connection, recursion = []):
+func find_connections(connection, recursion = []) -> Array[Dictionary]:
 	var tempChain = recursion
 	for bead in connection:
 		var link = bead.get_links()
@@ -352,7 +310,7 @@ func find_connections(connection, recursion = []):
 	
 	return tempChain
 
-func add_links(link: Dictionary, recursion: Array = []):
+func add_links(link: Dictionary, recursion: Array = []) -> Array[Dictionary]:
 	var tempChain: Array = recursion
 	if not in_temp_chain(tempChain, link):
 		tempChain.append(link)
@@ -534,7 +492,7 @@ func within_bounds(pos,where = "X") -> bool:
 #______________________________
 #TIMERS
 #______________________________
-func _on_soft_drop_timeout():
+func _on_soft_drop_timeout() -> void:
 	if rules.gravity_on:
 		$Timers/Gravity.start()
 	
@@ -544,10 +502,10 @@ func _on_soft_drop_timeout():
 	else:
 		place()
 
-func _on_grounded_timeout():
+func _on_grounded_timeout() -> void:
 	place()
 
-func _on_gravity_timeout():
+func _on_gravity_timeout() -> void:
 	if rules.gravity_on:
 		$Timers/SoftDrop.start()
 		if not can_move("Down") and not held:
@@ -605,11 +563,11 @@ func display_board() -> void:
 		print("Row: ",j,"\t", debugString)
 	print("_____________________________________________________\n")
 
-func display_array(array):
+func display_array(array) -> void:
 	var display: String = ""
 	for bead in array:
 		display = str(display, ", ", bead.name,bead.currentType)
 	print(display)
 
-func _on_debug_timeout():
+func _on_debug_timeout() -> void:
 	find_links()
