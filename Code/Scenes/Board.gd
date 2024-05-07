@@ -217,7 +217,7 @@ func rotate_pop(newPos) -> Array[Vector2i]:
 			if not valid:
 				continue
 			for pos in temp:
-				if pos.x >= rules.width - 1 or pos.x < 0 or pos.y >= realHeight or pos.y < 0:
+				if not within_bounds(pos) or not within_bounds(pos,"Y"):
 					valid = false
 			if valid:
 				return temp
@@ -291,48 +291,96 @@ func find_chains():
 			var bead = board[i][j]
 			if bead == null: #skip anything that has glowing or no beads
 				continue
-			if bead.chainedLinks.size() != 0 and not bead_in_chain(bead):
-				chains.append(set_chains(bead))
-				if chains[-1].size() == 0:
-					chains.pop_back()
+			if not in_chains(bead) and bead.chainedLinks.size() > 0:
+				print("---------------\n",bead)
+				var tempChain = add_links(bead.get_links())
+				print(tempChain)
+				chains.append(new_set_chains(tempChain))
+			
+			#if bead.chainedLinks.size() != 0 and not bead_in_chain(bead):
+				#chains.append(set_chains(bead))
+				#display_array(chains[-1])
+				#if chains[-1].size() == 0:
+					#chains.pop_back()
 	
 	print(chains)
 
-func set_chains(bead, recursion = [], seen = []) -> Array:
-	print("\nAlready seen ", seen)
-	print("Looking to make chains with ", bead)
-	var returnChain: Array = recursion
-	var links = bead.get_links(true)
-	if not link_in_chain(returnChain,links):
-		returnChain.append_array(links)
-	
-	for linkedBead in links:
-		if linkedBead in seen:
-			continue
-		seen.append(linkedBead)
-		if linkedBead.chainedLinks.size() == 0:
-			continue
-		print(linkedBead, " has connections to ", linkedBead.chainedLinks)
-		for chain in linkedBead.chainedLinks:
-			if not link_in_chain(returnChain,chain.get_links()):
-				returnChain.append_array(chain.get_links(true))
-				returnChain.append_array(set_chains(linkedBead,returnChain, seen))
-	
-	return returnChain
+#func set_chains(bead, recursion = [], seen = []) -> Array:
+	#print("\nAlready seen ", seen)
+	#print("Looking to make chains with ", bead)
+	#var returnChain: Array = recursion
+	#var links = bead.get_links(true)
+	#if not link_in_chain(returnChain,links):
+		#returnChain.append_array(links)
+	#
+	#display_array(returnChain)
+	#for linkedBead in links:
+		#if linkedBead in seen:
+			#continue
+		#seen.append(linkedBead)
+		#if linkedBead.chainedLinks.size() == 0:
+			#continue
+		#print(linkedBead, " has connections to ", linkedBead.chainedLinks)
+		#for chain in linkedBead.chainedLinks:
+			#if not link_in_chain(returnChain,chain.get_links()):
+				#returnChain.append_array(chain.get_links(true))
+				#returnChain.append_array(set_chains(linkedBead,returnChain, seen))
+	#
+	#return returnChain
+#
+#func bead_in_chain(bead) -> bool:
+	#for chain in chains:
+		#if chain.find(bead) != -1:
+			#return true
+	#return false
+#
+#func link_in_chain(returnChain, checking) -> bool:
+	#for bead in checking:
+		#if returnChain.find(bead) != -1:
+			#print(checking, " is already in ", returnChain)
+			#return true
+	#return false
 
-func bead_in_chain(bead) -> bool:
+#///
+
+func find_connections(connection, recursion = []):
+	var tempChain = recursion
+	for bead in connection:
+		var link = bead.get_links()
+		if not in_temp_chain(tempChain, link):
+			add_links(link,tempChain)
+	
+	return tempChain
+
+func add_links(link: Dictionary, recursion: Array = []):
+	var tempChain: Array = recursion
+	if not in_temp_chain(tempChain, link):
+		tempChain.append(link)
+	
+	for bead in link:
+		if bead.chainedLinks.size() != 0:
+			tempChain = find_connections(bead.chainedLinks, tempChain)
+	
+	return tempChain
+
+func in_temp_chain(tempChain, link) -> bool:
+	for tempLink in tempChain:
+		if link == tempLink:
+			return true
+	return false
+
+func new_set_chains(tempChain) -> Array:
+	var finalChain: = []
+	for link in tempChain:
+		for bead in link:
+			finalChain.append(link[bead])
+	return finalChain
+
+func in_chains(bead) -> bool:
 	for chain in chains:
 		if chain.find(bead) != -1:
 			return true
 	return false
-
-func link_in_chain(returnChain, checking) -> bool:
-	for bead in checking:
-		if returnChain.find(bead) != -1:
-			print(checking, " is already in ", returnChain)
-			return true
-	return false
-
 #______________________________
 #CONVERSION
 #______________________________
@@ -465,14 +513,23 @@ func can_rotate(direction = "CCW") -> bool:
 	return true
 
 func rotate_pop_cond(newPos) -> bool:
-	var hit: bool = false
 	#Check if the new position would override any current beads
 	for pos in newPos:
+		if not within_bounds(pos) or not within_bounds(pos,"Y"):
+			return true
 		if board[pos.x][pos.y] != null and not currentBead.in_full_bead(board[pos.x][pos.y]):
-			hit = true
-			break
+			return true
+	return false
+
+func within_bounds(pos,where = "X") -> bool:
+	if where == "X":
+		if pos.x >= rules.width - 1 or pos.x < 0:
+			return false
+	else:
+		if pos.y >= realHeight or pos.y < 0:
+			return false
 	
-	return hit
+	return true
 
 #______________________________
 #TIMERS
@@ -547,6 +604,12 @@ func display_board() -> void:
 		
 		print("Row: ",j,"\t", debugString)
 	print("_____________________________________________________\n")
+
+func display_array(array):
+	var display: String = ""
+	for bead in array:
+		display = str(display, ", ", bead.name,bead.currentType)
+	print(display)
 
 func _on_debug_timeout():
 	find_links()

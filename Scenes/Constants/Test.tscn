@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bcwaljk6txjdw"]
+[gd_scene load_steps=24 format=3 uid="uid://bcwaljk6txjdw"]
 
 [ext_resource type="Script" path="res://Code/Constants/Test.gd" id="1_3opgt"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/Shine2D.gdshader" id="2_4bvjw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="12_4yibj"]
 [ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="13_qvc0m"]
 [ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="14_1yrqu"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="15_prer4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyg2"]
 shader = ExtResource("2_4bvjw")
@@ -45,6 +46,32 @@ shader_parameter/midpos_enabled = true
 shader_parameter/range_start = 0.0
 shader_parameter/range_end = 1.0
 shader_parameter/range_softedge = 0.1
+
+[sub_resource type="Gradient" id="Gradient_s422o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ttodo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u52aq"]
+color_ramp = SubResource("Gradient_s422o")
+noise = SubResource("FastNoiseLite_ttodo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myv5o"]
+resource_local_to_scene = true
+shader = ExtResource("15_prer4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.45
+shader_parameter/burn_color = Color(1, 1, 1, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_han5n"]
+resource_local_to_scene = true
+shader = ExtResource("15_prer4")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.45
+shader_parameter/burn_color = Color(1, 1, 1, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -125,9 +152,11 @@ rotation = 1.79594
 texture = ExtResource("13_qvc0m")
 
 [node name="SinglePiece" parent="." instance=ExtResource("14_1yrqu")]
+material = SubResource("ShaderMaterial_myv5o")
 position = Vector2(453, 400)
 
 [node name="SinglePiece2" parent="." instance=ExtResource("14_1yrqu")]
+material = SubResource("ShaderMaterial_han5n")
 position = Vector2(502, 398)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
