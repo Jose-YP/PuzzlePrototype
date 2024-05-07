@@ -262,8 +262,8 @@ func _process(delta) -> void:
 				breaking = true
 				break_order([chains[i].pick_random()])
 				await brokeAll
-				print("\n\n Finish")
-				post_break()
+			print("\n\n Finish")
+			post_break()
 
 #______________________________
 #POST TURN PROCESSES
@@ -315,6 +315,8 @@ func post_break():
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	breaking = false
+	#Check for any broken links and new links
+	find_links()
 
 #______________________________
 #CHAIN

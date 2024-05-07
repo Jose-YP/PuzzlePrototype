@@ -18,3 +18,4 @@ res://Scenes/Constants/connected.tscn
 res://Scenes/Constants/Test.tscn
 res://Scenes/Board&Beads/FullBead.tscn
 res://Code/Scenes/SinglePiece.gd
+res://Resources/Rules/RuleMaker.gd
