@@ -291,19 +291,20 @@ func find_chains():
 			var bead = board[i][j]
 			if bead == null: #skip anything that has glowing or no beads
 				continue
-			if bead.glowing and not bead_in_chain(bead):
+			if bead.chainedLinks.size() != 0 and not bead_in_chain(bead):
 				chains.append(set_chains(bead))
 				if chains[-1].size() == 0:
 					chains.pop_back()
 	
 	print(chains)
 
-func set_chains(bead, seen = []) -> Array:
-	print("Already seen ", seen)
+func set_chains(bead, recursion = [], seen = []) -> Array:
+	print("\nAlready seen ", seen)
 	print("Looking to make chains with ", bead)
-	var returnChain: Array = []
-	var links = bead.get_links()
-	
+	var returnChain: Array = recursion
+	var links = bead.get_links(true)
+	if not link_in_chain(returnChain,links):
+		returnChain.append_array(links)
 	
 	for linkedBead in links:
 		if linkedBead in seen:
@@ -315,7 +316,7 @@ func set_chains(bead, seen = []) -> Array:
 		for chain in linkedBead.chainedLinks:
 			if not link_in_chain(returnChain,chain.get_links()):
 				returnChain.append_array(chain.get_links(true))
-				returnChain.append_array(set_chains(linkedBead, seen))
+				returnChain.append_array(set_chains(linkedBead,returnChain, seen))
 	
 	return returnChain
 
