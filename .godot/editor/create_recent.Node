@@ -1,3 +1,6 @@
+TextureRect
+TabContainer
+GridContainer
 Node2D
 Button
 Marker2D
@@ -10,5 +13,3 @@ HBoxContainer
 ProgressBar
 Node
 Timer
-Sprite2D
-BackBufferCopy

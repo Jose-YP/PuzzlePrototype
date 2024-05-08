@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh8tu1vguv63i"]
+
+[ext_resource type="PackedScene" uid="uid://b7mejons4kmbs" path="res://Scenes/Constants/UIPieces/earth.tscn" id="1_ecv0q"]
+[ext_resource type="Script" path="res://Code/Constants/all_beads.gd" id="1_ttsqa"]
+[ext_resource type="PackedScene" uid="uid://baem2bb63s81i" path="res://Scenes/Constants/UIPieces/liquid.tscn" id="2_s0dbo"]
+[ext_resource type="PackedScene" uid="uid://bo8i3bitdorr8" path="res://Scenes/Constants/UIPieces/Air.tscn" id="3_wwfa6"]
+[ext_resource type="PackedScene" uid="uid://bemu3udwgoopm" path="res://Scenes/Constants/UIPieces/Light.tscn" id="4_fjd4u"]
+[ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_mw2is"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8ax2"]
+
+[node name="AllBeads" type="TabContainer"]
+anchors_preset = -1
+anchor_right = 0.023
+anchor_bottom = 0.042
+offset_right = -5.44
+offset_bottom = -6.24
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d8ax2")
+current_tab = 2
+tabs_visible = false
+script = ExtResource("1_ttsqa")
+smallSize = Vector2(32, 32)
+regSize = Vector2(64, 64)
+
+[node name="Earth" parent="." instance=ExtResource("1_ecv0q")]
+visible = false
+layout_mode = 2
+
+[node name="Liquid" parent="." instance=ExtResource("2_s0dbo")]
+visible = false
+layout_mode = 2
+
+[node name="Air" parent="." instance=ExtResource("3_wwfa6")]
+layout_mode = 2
+
+[node name="Light" parent="." instance=ExtResource("4_fjd4u")]
+visible = false
+layout_mode = 2
+
+[node name="Dark" parent="." instance=ExtResource("5_mw2is")]
+visible = false
+layout_mode = 2
+
+[node name="None" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2

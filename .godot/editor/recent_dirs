@@ -1,11 +1,11 @@
+res://Code/Constants
+res://Scenes/Constants/UIPieces
 res://Code/Scenes
 res://Scenes/Board&Beads
-res://Code/Constants
 res://Scenes/UI
 res://Resources/SaveData
 res://Scenes/MainMenu
 res://Shaders/Transparency
-res://Scenes/Constants/UIPieces
 res://Scenes/Constants
 res://Themes/Gradients
 res://Art

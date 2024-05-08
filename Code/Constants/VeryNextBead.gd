@@ -1,18 +1,35 @@
 extends Control
 
-@export var recenterMove: Vector2 = Vector2(74,20)
+#Replace Full bead later
+@onready var fullBead = $FullBead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$FullBead.rot.global_position = $Marker2D.global_position
-	match $FullBead.rot.rotation_degrees:
-		90:
-			$FullBead.global_position.y += recenterMove.y 
-		180:
-			$FullBead.global_position += recenterMove
-		270:
-			$FullBead.global_position.x += recenterMove.x
-	$FullBead.sync_position()
+	fullBead.sync_position()
+	change_bead()
 
 func change_bead():
-	pass
+	#CCW 0  | X CCW    |   CW X   |270 CW
+	# X CW  | CW 90    | 180 CCW  | CCW X
+	# [Anchor, CCW, Clockwise]
+	match fullBead.rot.rotation_degrees:
+		0.0:
+			%"(0,0)".current_tab = fullBead.beads[1].typeID
+			%"(1,0)".current_tab = 5
+			%"(0,1)".current_tab = fullBead.beads[0].typeID
+			%"(1,1)".current_tab = fullBead.beads[2].typeID
+		90.0:
+			%"(0,0)".current_tab = fullBead.beads[0].typeID
+			%"(1,0)".current_tab = fullBead.beads[1].typeID
+			%"(0,1)".current_tab = fullBead.beads[2].typeID
+			%"(1,1)".current_tab = 5
+		180.0:
+			%"(0,0)".current_tab = fullBead.beads[2].typeID
+			%"(1,0)".current_tab = fullBead.beads[0].typeID
+			%"(0,1)".current_tab = 5
+			%"(1,1)".current_tab = fullBead.beads[1].typeID
+		270.0:
+			%"(0,0)".current_tab = 5
+			%"(1,0)".current_tab = fullBead.beads[2].typeID
+			%"(0,1)".current_tab = fullBead.beads[1].typeID
+			%"(1,1)".current_tab = fullBead.beads[0].typeID

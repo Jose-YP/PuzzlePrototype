@@ -15,3 +15,10 @@ res://Scenes/UI/right_ui.tscn
 res://Scenes/UI/NextBeads.tscn
 res://Scenes/UI/VeryNextBead.tscn
 res://Code/Constants/VeryNextBead.gd
+res://Scenes/Constants/UIPieces/all_beads.tscn
+res://Scenes/Constants/UIPieces/Dark.tscn
+res://Code/Constants/all_beads.gd
+res://Scenes/Constants/UIPieces/Light.tscn
+res://Scenes/Constants/UIPieces/Air.tscn
+res://Scenes/Constants/UIPieces/liquid.tscn
+res://Scenes/Constants/UIPieces/earth.tscn
