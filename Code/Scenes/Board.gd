@@ -16,8 +16,8 @@ const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 var board: Array[Array]
 var chains: Array[Array]
 var fixUp: Array = []
-var currentBead: Node2D
-var beadsUpnext: Node2D
+var currentBead: Control
+var beadsUpnext: Control
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0

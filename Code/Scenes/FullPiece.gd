@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 #Dict doesn't work as the position values aren't pointers to gridPos
 #CCW and CLockwise are named as such as they lead CCW/CLockwise rotations
@@ -15,13 +15,20 @@ enum STATE {MOVE, GROUNDED, PLACED}
 var currentState: STATE = STATE.MOVE
 var gridPos: Array[Vector2i] = [Vector2i(), Vector2i(), Vector2i()]
 
+#______________________________
+#INITIALIZATION
+#______________________________
 func _ready() -> void:
 	#Randomize Rotation
 	var rotNum: int = randi_range(0,3)
 	rot.rotation_degrees = 90 * rotNum
 	
 	sync_position()
+	print(get_size(), " vs ", get_true_size())
 
+#______________________________
+#BOARD FUNCTIONS
+#______________________________
 func flip():
 	rot = rot.rotation_degrees
 	if positions == regularPos:
@@ -44,3 +51,22 @@ func in_full_bead(bead, same = null) -> bool:
 			return true
 	
 	return false
+
+#______________________________
+#NEXT DISPLAY FUNCTIONS
+#______________________________
+func get_true_size() -> Vector2:
+	var currentSize: Vector2 = get_size()
+	for bead in beads:
+		var beadSize = bead.sprite.get_size()
+		print(bead, beadSize)
+		if abs(currentSize.x) < abs(beadSize.x):
+			currentSize.x = beadSize.x
+		if abs(currentSize.y) < abs(beadSize.y):
+			currentSize.y = beadSize.y
+	
+	return currentSize
+
+func fit_in(sizing):
+	#scale.x = sizing.x / 
+	pass

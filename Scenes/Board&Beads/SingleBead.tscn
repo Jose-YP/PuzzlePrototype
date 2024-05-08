@@ -95,9 +95,3 @@ layout_mode = 2
 [node name="LinkArray" type="Node" parent="."]
 editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
 script = ExtResource("6_avety")
-
-[node name="Free" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[connection signal="timeout" from="Free" to="." method="_on_free_timeout"]

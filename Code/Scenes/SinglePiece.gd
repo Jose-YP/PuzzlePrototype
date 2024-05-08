@@ -5,6 +5,7 @@ extends Node2D
 @export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var linkArray: Node = $LinkArray
+@onready var sprite = $Sprite
 @onready var glow: Sprite2D = $Glow
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
@@ -29,7 +30,7 @@ func _ready() -> void:
 	typeID = randi_range(0,Globals.bead_types.size() - 1)
 	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)
-	$Sprite.texture = beads[typeID]
+	sprite.texture = beads[typeID]
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
 
 #______________________________

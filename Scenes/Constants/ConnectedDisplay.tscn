@@ -27,30 +27,35 @@ offset_right = -104.04
 offset_bottom = -160.0
 
 [node name="Liquid" parent="Pieces" instance=ExtResource("1_6h7jc")]
+layout_mode = 0
 offset_left = 11.728
 offset_top = -8.0
 offset_right = 51.9141
 offset_bottom = 32.0
 
 [node name="Earth" parent="Pieces" instance=ExtResource("2_dwtoa")]
+layout_mode = 0
 offset_left = -66.0
 offset_top = 35.0
 offset_right = -25.814
 offset_bottom = 75.0
 
 [node name="Air" parent="Pieces" instance=ExtResource("3_xdolh")]
+layout_mode = 0
 offset_left = 96.0
 offset_top = 40.0
 offset_right = 136.186
 offset_bottom = 80.0
 
 [node name="Light" parent="Pieces" instance=ExtResource("4_8gw8w")]
+layout_mode = 0
 offset_left = 63.0
 offset_top = 124.0
 offset_right = 103.186
 offset_bottom = 164.0
 
 [node name="Dark" parent="Pieces" instance=ExtResource("5_r4two")]
+layout_mode = 0
 offset_left = -26.0
 offset_top = 124.0
 offset_right = 14.1861
