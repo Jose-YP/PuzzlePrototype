@@ -7,8 +7,13 @@
 script = ExtResource("1_juwla")
 glow_num = 3
 earthRelations = 6
-liquidRelations = 5
+seaRelations = 5
 airRelations = 3
 lightRelations = 16
 darkRelations = 8
+earthColor = Color(0.631373, 0.12549, 0.12549, 1)
+seaColor = Color(0.137, 0.6, 0.91, 1)
+airColor = Color(1, 1, 1, 1)
+lightColor = Color(0.898, 0.91, 0.137, 1)
+darkColor = Color(0.478, 0.071, 0.365, 1)
 relationDisplay = ExtResource("1_ay8qa")

@@ -4,6 +4,7 @@ extends Node2D
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
 @onready var realHeight: int = rules.height - 1
+@onready var RUI: Control = $RightUI
 
 signal brokeBead
 signal brokeAll
@@ -16,8 +17,10 @@ var board: Array[Array]
 var chains: Array[Array]
 var fixUp: Array = []
 var currentBead: Node2D
+var beadsUpnext: Node2D
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
+var brokenBeads: int = 0
 var score: int = 0
 var held: bool = false
 var breaking: bool = false
@@ -39,7 +42,10 @@ func _ready() -> void:
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
-	$ConnectedDisplay.position = grid_to_pixel(Vector2i(rules.width + 1, int(position.y)))
+	$ConnectedDisplay.position = grid_to_pixel(Vector2i(-3, int(position.y)))
+	$ConnectedDisplay.scale = Vector2(.85,.85)
+	RUI.position = grid_to_pixel(Vector2i(rules.width+1,1))
+	RUI.rules = rules
 	#Make debugging easier
 	match rules.debug_fills:
 		1: fill_board()
@@ -262,9 +268,11 @@ func _process(delta) -> void:
 				#Make sure the starting value is bracketed into an array
 				holdBreakChain = i
 				breaking = true
+				brokenBeads += chains[i].size()
 				break_order([chains[i].pick_random()])
 				await brokeAll
 			print("\n\n Finish")
+			RUI.update_beads(brokenBeads)
 			post_break()
 
 #______________________________
@@ -339,6 +347,7 @@ func find_chains() -> void:
 				var tempChain = add_links(bead.get_links())
 				score = rules.totalScore(tempChain)
 				print("\n\nTOTAL SCORE: ", score)
+				RUI.update_score(score)
 				chains.append(new_set_chains(tempChain))
 	
 	print(chains)

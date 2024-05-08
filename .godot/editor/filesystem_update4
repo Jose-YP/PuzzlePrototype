@@ -25,3 +25,8 @@ res://Scenes/Constants/DuoDisplay.tscn
 res://Scenes/UI/NextBeads.tscn
 res://Resources/SaveData/SaveMaker.gd
 res://Resources/SaveData/SaveFile.tres
+res://Resources/Relations/5 Duo.tres
+res://Code/Globals/Globals.gd
+res://Resources/Relations/RelationshipMaker.gd
+res://Code/Scenes/right_ui.gd
+res://Code/Scenes/NextBeads.gd

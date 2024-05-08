@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=4 format=3 uid="uid://bmnqltlxw855k"]
 
+[ext_resource type="Script" path="res://Code/Scenes/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="1_60hx3"]
 
 [sub_resource type="Theme" id="Theme_isud1"]
@@ -12,50 +13,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_isud1")
+script = ExtResource("1_5q6ng")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 270.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="ScoreContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="ScoreText" type="RichTextLabel" parent="VBoxContainer/ScoreContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "SCORE:"
+text = "SCORE: 0"
 fit_content = true
 
 [node name="HiScoreContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="HiScoreText" type="RichTextLabel" parent="VBoxContainer/HiScoreContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "HI SCORE:"
+text = "HI SCORE: 0"
 fit_content = true
 
 [node name="LevelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="LevelText" type="RichTextLabel" parent="VBoxContainer/LevelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "LEVEL:"
+text = "LEVEL: 1"
 fit_content = true
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="LevelProgress" type="TextureProgressBar" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 rounded = true
 
 [node name="BeadText" type="RichTextLabel" parent="VBoxContainer/PanelContainer/LevelProgress"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 271.0
 offset_bottom = 27.0
-text = "BEADS CLEARED:"
+text = "BEADS CLEARED: 0"
 fit_content = true
 
 [node name="NextBeads" parent="VBoxContainer" instance=ExtResource("1_60hx3")]
 layout_mode = 2
+metadata/_edit_lock_ = true

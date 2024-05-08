@@ -1,31 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=6 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board.gd" id="1_j4hi1"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
 [ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="3_qyefa"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="4_xl4nj"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
-[ext_resource type="Script" path="res://Code/Scenes/right_ui.gd" id="6_a5vo2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j4hi1")
 rules = ExtResource("2_hwdnt")
 
 [node name="ConnectedDisplay" parent="." instance=ExtResource("4_xl4nj")]
-offset_left = -0.0600015
-offset_right = -0.0600015
+
+[node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
 
 [node name="Grid" type="Node2D" parent="."]
-position = Vector2(-20, -61)
+position = Vector2(-20, -60)
 scale = Vector2(1.25, 1.25)
 
 [node name="GridBackground" type="Node2D" parent="Grid"]
 position = Vector2(17, 49)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("3_qyefa")
-
-[node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
-script = ExtResource("6_a5vo2")
 
 [node name="Timers" type="Node" parent="."]
 

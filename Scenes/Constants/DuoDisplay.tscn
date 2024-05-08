@@ -7,14 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_a8mlu"]
 [ext_resource type="Texture2D" uid="uid://dwhru74flwehi" path="res://Art/ETC/doublesided.png" id="6_xwprj"]
 
-[node name="ConnectionDisplay" type="Control"]
-layout_mode = 3
-anchor_right = 0.06
-anchor_bottom = 0.152
-offset_right = -0.120003
-offset_bottom = 0.50399
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ConnectionDisplay" type="Node2D"]
 
 [node name="Pieces" type="Node2D" parent="."]
 

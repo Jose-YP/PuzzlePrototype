@@ -1,5 +1,6 @@
 extends Node
 
+#const save = load("res://Resources/SaveData/SaveFile.tres")
 const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")
 const bead_types: Array[String] = ["Earth","Sea","Air","Light","Dark"]
 const bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
