@@ -1,5 +1,7 @@
 extends Control
 
+@onready var nextBeads: Control = $VBoxContainer/NextBeads
+
 signal levelUp(level)
 
 var rules: Rules
@@ -10,7 +12,11 @@ var level: int = 1
 func _ready():
 	pass # Replace with function body.
 
-func update_Score(score):
+func update_next(beads):
+	for i in range(3):
+		nextBeads.update(i,beads[i])
+
+func update_score(score):
 	%ScoreText.text = str("SCORE: ",score)
 	if score >= HiScore:
 		update_HiScore(score)

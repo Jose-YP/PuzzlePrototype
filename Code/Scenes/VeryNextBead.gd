@@ -3,7 +3,8 @@ extends Control
 @export var small: bool = false
 @export var orderText: String = "NEXT"
 #Replace Full bead later
-@onready var fullBead = $FullBead
+
+var fullBead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +16,6 @@ func _ready():
 	else:
 		$HBoxContainer/Next/VBoxContainer/Text.clear()
 		$HBoxContainer/Next/VBoxContainer/Text.append_text(str("[center]",orderText))
-	fullBead.sync_position()
-	change_bead()
 
 func change_bead():
 	#CCW 0  | X CCW    |   CW X   |270 CW

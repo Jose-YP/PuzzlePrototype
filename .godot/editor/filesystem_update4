@@ -18,3 +18,8 @@ res://Code/Constants/all_beads.gd
 res://Code/Constants/VeryNextBead.gd
 res://Code/Scenes/NextBeads.gd
 res://Code/Scenes/VeryNextBead.gd
+res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Constants/background.tscn
+res://Shaders/ShaderCode/background.gdshader
+res://Code/Constants/NextBeads.gd
+res://Code/Scenes/right_ui.gd

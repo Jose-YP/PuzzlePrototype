@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=7 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board.gd" id="1_j4hi1"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
+[ext_resource type="PackedScene" uid="uid://dfbgcar6hpar8" path="res://Scenes/Constants/background.tscn" id="3_gx4ym"]
 [ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="3_qyefa"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="4_xl4nj"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
@@ -9,6 +10,13 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j4hi1")
 rules = ExtResource("2_hwdnt")
+
+[node name="Background" parent="." instance=ExtResource("3_gx4ym")]
+visible = false
+offset_left = -46.0
+offset_top = -310.0
+offset_right = 1291.0
+offset_bottom = 1027.0
 
 [node name="ConnectedDisplay" parent="." instance=ExtResource("4_xl4nj")]
 
@@ -41,6 +49,9 @@ wait_time = 0.05
 one_shot = true
 
 [node name="ChainFinish" type="Timer" parent="Timers"]
+
+[node name="Hold" type="Node2D" parent="."]
+visible = false
 
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

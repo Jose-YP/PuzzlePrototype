@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=10 format=3 uid="uid://efcxr875kt2y"]
+
+[ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/GlassMove.wav" id="1_rmh2v"]
+[ext_resource type="AudioStream" uid="uid://cerqvwywvs7yc" path="res://Audio/GlassTap.wav" id="2_s5o8j"]
+[ext_resource type="AudioStream" uid="uid://chxp3gabho17j" path="res://Audio/HardDrop.wav" id="3_ckid5"]
+[ext_resource type="AudioStream" uid="uid://be1ulgpog174j" path="res://Audio/SoftDrop.wav" id="4_rnsn7"]
+[ext_resource type="AudioStream" uid="uid://dekt267tihexf" path="res://Audio/basicAction.wav" id="5_mnt3l"]
+[ext_resource type="AudioStream" uid="uid://lppqgchu4653" path="res://Audio/MenuMove.wav" id="6_jnthh"]
+[ext_resource type="AudioStream" uid="uid://cf40870fv4d5q" path="res://Audio/MenuConfirm.wav" id="7_bbfgb"]
+[ext_resource type="AudioStream" uid="uid://bhapq413y8iqc" path="res://Audio/MenuDeselect.wav" id="8_0a7ua"]
+[ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/Click.wav" id="9_w0bdq"]
 
 [node name="GameManager" type="Node2D"]
+
+[node name="BoardSFX" type="Node" parent="."]
+
+[node name="HoriMove" type="AudioStreamPlayer" parent="BoardSFX"]
+stream = ExtResource("1_rmh2v")
+volume_db = 5.0
+
+[node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
+stream = ExtResource("2_s5o8j")
+volume_db = 10.0
+
+[node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
+stream = ExtResource("3_ckid5")
+volume_db = 5.0
+
+[node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
+stream = ExtResource("4_rnsn7")
+volume_db = 5.0
+
+[node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
+stream = ExtResource("5_mnt3l")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MenuSFX" type="Node" parent="."]
+
+[node name="MenuMove" type="AudioStreamPlayer" parent="MenuSFX"]
+stream = ExtResource("6_jnthh")
+
+[node name="MenuConfirm" type="AudioStreamPlayer" parent="MenuSFX"]
+stream = ExtResource("7_bbfgb")
+volume_db = 5.0
+
+[node name="MenuDeselect" type="AudioStreamPlayer" parent="MenuSFX"]
+stream = ExtResource("8_0a7ua")
+volume_db = 5.0
+
+[node name="Pause" type="AudioStreamPlayer" parent="MenuSFX"]
+stream = ExtResource("9_w0bdq")
+volume_db = -1.0
+pitch_scale = 0.8

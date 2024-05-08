@@ -1,8 +1,10 @@
-MarginContainer
+Node2D
+Node
+AudioStreamPlayer
 TextureRect
+MarginContainer
 TabContainer
 GridContainer
-Node2D
 Button
 Marker2D
 Control
@@ -10,6 +12,3 @@ PanelContainer
 VBoxContainer
 RichTextLabel
 TextureProgressBar
-HBoxContainer
-ProgressBar
-Node

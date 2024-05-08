@@ -17,7 +17,7 @@ var board: Array[Array]
 var chains: Array[Array]
 var fixUp: Array = []
 var currentBead: Node2D
-var beadsUpnext: Node2D
+var beadsUpnext: Array[Node2D] = [null, null, null]
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0
@@ -52,7 +52,8 @@ func _ready() -> void:
 		2: fill_column()
 		4: make_overhang()
 	#start the game
-	spawn_bead()
+	spawn_beads()
+	pull_next_bead()
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -65,9 +66,18 @@ func make_grid() -> Array[Array]:
 	return array
 
 #Array order goes [anchor, clockwise, ccw]
-func spawn_bead() -> void:
+func spawn_beads() -> void:
+	for i in range(3):
+		if beadsUpnext[i] == null:
+			beadsUpnext[i] = fullBead.instantiate()
+			$Hold.add_child(beadsUpnext[i])
+	RUI.update_next(beadsUpnext)
+
+func pull_next_bead() -> void:
 	if rules.spawning:
-		currentBead = fullBead.instantiate()
+		currentBead = beadsUpnext.pop_front()
+		beadsUpnext.append(null)
+		$Hold.remove_child(currentBead)
 		$Grid.add_child(currentBead)
 		currentBead.gridPos[0] = rules.start_pos
 		
@@ -78,6 +88,7 @@ func spawn_bead() -> void:
 			bead.connect("find_adjacent", find_adjacent)
 		
 		full_bead_rotation(rules.start_pos, true)
+		spawn_beads()
 
 #______________________________
 #BASIC CONTROLS: MOVE
@@ -296,7 +307,7 @@ func post_turn() -> void:
 	display_board()
 	find_links()
 	
-	spawn_bead()
+	pull_next_bead()
 
 func find_links() -> void:
 	for i in rules.width:
