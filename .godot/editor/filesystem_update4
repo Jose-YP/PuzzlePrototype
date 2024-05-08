@@ -1,4 +1,4 @@
-res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/UI/NextBeads.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/BurnOut.tres
 res://Code/Scenes/Board.gd
@@ -9,16 +9,12 @@ res://Shaders/ShaderCode/OutlineInline.gdshader
 res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
+res://README.md
 res://Scenes/Board&Beads/Main.tscn
-res://Code/Scenes/FullPiece.gd
 res://Scenes/UI/right_ui.tscn
-res://Scenes/UI/NextBeads.tscn
 res://Scenes/UI/VeryNextBead.tscn
-res://Code/Constants/VeryNextBead.gd
-res://Scenes/Constants/UIPieces/all_beads.tscn
-res://Scenes/Constants/UIPieces/Dark.tscn
+res://Scenes/Board&Beads/FullBead.tscn
 res://Code/Constants/all_beads.gd
-res://Scenes/Constants/UIPieces/Light.tscn
-res://Scenes/Constants/UIPieces/Air.tscn
-res://Scenes/Constants/UIPieces/liquid.tscn
-res://Scenes/Constants/UIPieces/earth.tscn
+res://Code/Constants/VeryNextBead.gd
+res://Code/Scenes/NextBeads.gd
+res://Code/Scenes/VeryNextBead.gd

@@ -1,43 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbl2flstx01xg"]
+[gd_scene load_steps=3 format=3 uid="uid://dbl2flstx01xg"]
 
-[ext_resource type="Script" path="res://Code/Scenes/NextBeads.gd" id="1_48fil"]
-[ext_resource type="PackedScene" uid="uid://co6vx7heink86" path="res://Scenes/Board&Beads/FullBead.tscn" id="2_j0c84"]
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_ir2kl"]
-
-[sub_resource type="Gradient" id="Gradient_s422o"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ttodo"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_km65r"]
-color_ramp = SubResource("Gradient_s422o")
-noise = SubResource("FastNoiseLite_ttodo")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fghpn"]
-resource_local_to_scene = true
-shader = ExtResource("3_ir2kl")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/burn_size = 0.45
-shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc3xu"]
-resource_local_to_scene = true
-shader = ExtResource("3_ir2kl")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/burn_size = 0.45
-shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rw82"]
-resource_local_to_scene = true
-shader = ExtResource("3_ir2kl")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/burn_size = 0.45
-shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
+[ext_resource type="Script" path="res://Code/Constants/NextBeads.gd" id="1_k75ct"]
+[ext_resource type="PackedScene" uid="uid://c5g3srjmute6t" path="res://Scenes/UI/VeryNextBead.tscn" id="2_isxd5"]
 
 [node name="NextBeads" type="Control"]
 layout_mode = 3
@@ -46,74 +10,43 @@ offset_left = 323.0
 offset_top = 185.0
 offset_right = 500.0
 offset_bottom = 277.0
-script = ExtResource("1_48fil")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(60, 125)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(180, 65)
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(180, 170)
+script = ExtResource("1_k75ct")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 offset_right = 104.0
 offset_bottom = 94.0
 
-[node name="Next" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_right = 75
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Next"]
-layout_mode = 2
-
-[node name="Text" type="RichTextLabel" parent="HBoxContainer/Next/VBoxContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "NEXT"
-fit_content = true
-
-[node name="NextContain" type="PanelContainer" parent="HBoxContainer/Next/VBoxContainer"]
+[node name="Control" parent="HBoxContainer/MarginContainer" instance=ExtResource("2_isxd5")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 175)
+custom_minimum_size = Vector2(65, 50)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="FullBead" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_j0c84")]
-unique_name_in_owner = true
-
-[node name="Anchor" parent="HBoxContainer/Next/VBoxContainer/NextContain/FullBead/Beads" index="0"]
-material = SubResource("ShaderMaterial_fghpn")
-
-[node name="CCW" parent="HBoxContainer/Next/VBoxContainer/NextContain/FullBead/Beads" index="1"]
-material = SubResource("ShaderMaterial_vc3xu")
-
-[node name="Clockwise" parent="HBoxContainer/Next/VBoxContainer/NextContain/FullBead/Beads" index="2"]
-material = SubResource("ShaderMaterial_8rw82")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Next2" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(115, 100)
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_bottom = 10
 
-[node name="FullBead2" parent="HBoxContainer/VBoxContainer/Next2" instance=ExtResource("2_j0c84")]
+[node name="Control2" parent="HBoxContainer/VBoxContainer/MarginContainer2" instance=ExtResource("2_isxd5")]
 unique_name_in_owner = true
-
-[node name="Next3" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 100)
+custom_minimum_size = Vector2(65, 50)
 layout_mode = 2
+small = true
+orderText = "SECOND"
 
-[node name="FullBead3" parent="HBoxContainer/VBoxContainer/Next3" instance=ExtResource("2_j0c84")]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Control3" parent="HBoxContainer/VBoxContainer/MarginContainer3" instance=ExtResource("2_isxd5")]
 unique_name_in_owner = true
-
-[editable path="HBoxContainer/Next/VBoxContainer/NextContain/FullBead"]
+custom_minimum_size = Vector2(65, 50)
+layout_mode = 2
+small = true
+orderText = "THIRD"

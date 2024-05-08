@@ -1,10 +1,20 @@
 extends Control
 
+@export var small: bool = false
+@export var orderText: String = "NEXT"
 #Replace Full bead later
 @onready var fullBead = $FullBead
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if small:
+		for tabs in %NextContain.get_children():
+			tabs.small = true
+			tabs.resize()
+			$HBoxContainer/Next/VBoxContainer/Text.hide()
+	else:
+		$HBoxContainer/Next/VBoxContainer/Text.clear()
+		$HBoxContainer/Next/VBoxContainer/Text.append_text(str("[center]",orderText))
 	fullBead.sync_position()
 	change_bead()
 

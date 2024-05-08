@@ -4,7 +4,9 @@ extends TabContainer
 @export var smallSize: Vector2 = Vector2(20,20)
 @export var regSize: Vector2 = Vector2(40,40)
 
-func _ready():
+func _ready(): resize()
+
+func resize():
 	if small:
 		custom_minimum_size = smallSize
 	else:
