@@ -14,6 +14,8 @@ const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 #Variables
 var board: Array[Array]
 var chains: Array[Array]
+var score: Array = []
+var fixUp: Array = []
 var currentBead: Node2D
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
@@ -148,12 +150,12 @@ func hard_drop(target) -> void:
 			
 		prevPos = pos
 	
-	for bead in currentBead.beads:
-		var loc = find_bead(bead)
+	for i in range(currentBead.beads.size()):
+		var loc = find_bead(currentBead.beads[i])
 		print(loc)
 		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
-			print()
-		
+			print(currentBead.beads[i],target[i])
+			fixUp.append(currentBead.beads[i])
 	
 	post_turn()
 
@@ -279,6 +281,10 @@ func post_turn() -> void:
 	currentBead.queue_free()
 	currentBead = null
 	
+	for bead in fixUp: #Last minute fix
+		var pos = pixel_to_grid(bead)
+		board[pos.x][pos.y] = bead
+	
 	display_board()
 	find_links()
 	
@@ -331,6 +337,7 @@ func find_chains() -> void:
 				continue
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
 				var tempChain = add_links(bead.get_links())
+				
 				chains.append(new_set_chains(tempChain))
 	
 	print(chains)
@@ -423,6 +430,12 @@ func grid_to_pixel(gridPos: Vector2i) -> Vector2:
 	var Ynew: float = rules.origin.y + rules.offset.y * gridPos.y
 	
 	return Vector2(Xnew, Ynew)
+
+#Turn visual positions into computer positions
+func pixel_to_grid(bead) -> Vector2i:
+	var Xnew: int = round((bead.global_position.x - rules.origin.x) / rules.offset.x)
+	var Ynew: int = round((bead.global_position.y - rules.origin.y) / rules.offset.y)
+	return Vector2i(Xnew, Ynew)
 
 func find_bead(bead) -> Vector2i:
 	for i in rules.width:

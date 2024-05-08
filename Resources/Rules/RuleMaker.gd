@@ -25,7 +25,7 @@ class_name Rules
 @export_range(10,100) var beadScore: int = 50
 @export_range(0,2,.01) var linkMultiplier: float = .5
 @export_range(0,2,.01) var powerMultiplier: float = .15
-@export_range(0,2,.01) var chainMultiplier: float = 2
+@export_range(0,2,.01) var chainMultiplier: float = .7
 @export_range(0,2,.01) var varietyMultiplier: float = 2
 @export_group("Levels")
 @export var max_levels: int = 20
@@ -44,3 +44,21 @@ class_name Rules
 @export var column_pos: Vector2i = Vector2i(3,0)
 @export var overhang_dimentions: Vector2i = Vector2i(1,4)
 @export var overhang_pos: Vector2i = Vector2i(4,2)
+
+func indvChainScore(chain, linkNum): #Seperate functions cause the two will score a full chain differently
+	var linkScore: int = 0
+	for link in chain:
+		linkScore += link.size() * beadScore * powerMultiplier
+	return linkScore  * (linkMultiplier + linkNum - 1)
+
+func totalScore(chains):
+	var chainNum = chains.size()
+	var finalScore: int = 0
+	for chain in chains:
+		var linkNum = chain.size()
+		var linkScore: int = 0
+		for link in chains:
+			linkScore += link.size() * beadScore * powerMultiplier
+		finalScore += linkScore  * (linkMultiplier + linkNum - 1)
+	
+	return finalScore * chainNum * chainMultiplier

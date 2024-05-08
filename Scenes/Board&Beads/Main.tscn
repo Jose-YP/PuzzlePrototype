@@ -39,6 +39,8 @@ one_shot = true
 
 [node name="ChainFinish" type="Timer" parent="Timers"]
 
+[node name="Score" type="Node" parent="."]
+
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]
 [connection signal="timeout" from="Timers/Gravity" to="." method="_on_gravity_timeout"]
