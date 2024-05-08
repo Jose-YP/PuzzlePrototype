@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 #Dict doesn't work as the position values aren't pointers to gridPos
 #CCW and CLockwise are named as such as they lead CCW/CLockwise rotations
@@ -24,7 +24,7 @@ func _ready() -> void:
 	rot.rotation_degrees = 90 * rotNum
 	
 	sync_position()
-	print(get_size(), " vs ", get_true_size())
+	$Beads.rotation = 0 #In the UI Beads start rotated for some reason
 
 #______________________________
 #BOARD FUNCTIONS
@@ -55,18 +55,27 @@ func in_full_bead(bead, same = null) -> bool:
 #______________________________
 #NEXT DISPLAY FUNCTIONS
 #______________________________
-func get_true_size() -> Vector2:
-	var currentSize: Vector2 = get_size()
-	for bead in beads:
-		var beadSize = bead.sprite.get_size()
-		print(bead, beadSize)
-		if abs(currentSize.x) < abs(beadSize.x):
-			currentSize.x = beadSize.x
-		if abs(currentSize.y) < abs(beadSize.y):
-			currentSize.y = beadSize.y
-	
-	return currentSize
-
-func fit_in(sizing):
-	#scale.x = sizing.x / 
-	pass
+#func recenter():
+	#match rot.rotation_degrees:
+		#90:
+			#$Beads.position = Vector2($Beads.position.x,20)
+		#180:
+			#$Beads.position = Vector2(75,20)
+		#270:
+			#$Beads.position = Vector2(75,$Beads.position.y)
+#
+#func get_true_size() -> Vector2:
+	#var currentSize: Vector2 = get_size()
+	#for bead in beads:
+		#var beadSize = bead.sprite.get_size()
+		#print(bead, beadSize)
+		#if abs(currentSize.x) < abs(beadSize.x):
+			#currentSize.x = beadSize.x
+		#if abs(currentSize.y) < abs(beadSize.y):
+			#currentSize.y = beadSize.y
+	#
+	#return currentSize
+#
+#func fit_in(sizing):
+	##scale.x = sizing.x / 
+	#pass

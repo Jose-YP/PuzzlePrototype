@@ -1,60 +1,68 @@
-[gd_scene load_steps=10 format=3 uid="uid://co6vx7heink86"]
+[gd_scene load_steps=10 format=3 uid="uid://rk43qpboijce"]
 
-[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_oh5gf"]
-[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="2_p6uu0"]
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_g3lnw"]
+[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_qp17r"]
+[ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="2_gjbdu"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_4ajt5"]
 
-[sub_resource type="Gradient" id="Gradient_i1ngn"]
+[sub_resource type="Gradient" id="Gradient_6pamn"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a2nrc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_23kyy"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4c8xo"]
-color_ramp = SubResource("Gradient_i1ngn")
-noise = SubResource("FastNoiseLite_a2nrc")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u52aq"]
+color_ramp = SubResource("Gradient_6pamn")
+noise = SubResource("FastNoiseLite_23kyy")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ielwm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fghpn"]
 resource_local_to_scene = true
-shader = ExtResource("3_g3lnw")
+shader = ExtResource("3_4ajt5")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qroqv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc3xu"]
 resource_local_to_scene = true
-shader = ExtResource("3_g3lnw")
+shader = ExtResource("3_4ajt5")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cy068"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rw82"]
 resource_local_to_scene = true
-shader = ExtResource("3_g3lnw")
+shader = ExtResource("3_4ajt5")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
-[node name="FullBead" type="Node2D"]
-script = ExtResource("1_oh5gf")
+[node name="FullBead" type="Control"]
+layout_mode = 3
+anchor_right = 0.081
+anchor_bottom = 0.133
+offset_right = 0.32
+offset_bottom = 0.239998
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp17r")
+metadata/_edit_group_ = true
 
 [node name="Beads" type="Node2D" parent="."]
 position = Vector2(28, 74)
 metadata/_edit_group_ = true
 
-[node name="Anchor" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_ielwm")
+[node name="Anchor" parent="Beads" instance=ExtResource("2_gjbdu")]
+material = SubResource("ShaderMaterial_fghpn")
 
-[node name="CCW" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_qroqv")
+[node name="CCW" parent="Beads" instance=ExtResource("2_gjbdu")]
+material = SubResource("ShaderMaterial_vc3xu")
 position = Vector2(0, -50)
 
-[node name="Clockwise" parent="Beads" instance=ExtResource("2_p6uu0")]
-material = SubResource("ShaderMaterial_cy068")
+[node name="Clockwise" parent="Beads" instance=ExtResource("2_gjbdu")]
+material = SubResource("ShaderMaterial_8rw82")
 position = Vector2(50, 0)
 
 [node name="RegPos" type="Node2D" parent="."]

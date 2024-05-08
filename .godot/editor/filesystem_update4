@@ -10,12 +10,8 @@ res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
 res://Scenes/Board&Beads/Main.tscn
-res://Scenes/UI/right_ui.tscn
-res://Scenes/UI/left_ui.tscn
-res://Scenes/Constants/DuoDisplay.tscn
-res://Scenes/Constants/ConnectedDisplay.tscn
-res://Scenes/UI/NextBeads.tscn
 res://Code/Scenes/FullPiece.gd
-res://Code/Scenes/NextBeads.gd
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Code/Scenes/SinglePiece.gd
+res://Scenes/UI/right_ui.tscn
+res://Scenes/UI/NextBeads.tscn
+res://Scenes/UI/VeryNextBead.tscn
+res://Code/Constants/VeryNextBead.gd

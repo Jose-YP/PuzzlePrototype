@@ -8,7 +8,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ttodo"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u52aq"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_km65r"]
 color_ramp = SubResource("Gradient_s422o")
 noise = SubResource("FastNoiseLite_ttodo")
 
@@ -19,7 +19,7 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc3xu"]
 resource_local_to_scene = true
@@ -28,7 +28,7 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8rw82"]
 resource_local_to_scene = true
@@ -37,7 +37,7 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_km65r")
 
 [node name="NextBeads" type="Control"]
 layout_mode = 3
@@ -47,6 +47,18 @@ offset_top = 185.0
 offset_right = 500.0
 offset_bottom = 277.0
 script = ExtResource("1_48fil")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(60, 125)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(180, 65)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(180, 170)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -68,20 +80,13 @@ fit_content = true
 
 [node name="NextContain" type="PanelContainer" parent="HBoxContainer/Next/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(125, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Marker2D" type="Marker2D" parent="HBoxContainer/Next/VBoxContainer/NextContain"]
-position = Vector2(60, 63)
-
-[node name="FullBead" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_j0c84")]
-unique_name_in_owner = true
-clip_contents = true
-custom_minimum_size = Vector2(110, 110)
+custom_minimum_size = Vector2(150, 175)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="FullBead" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_j0c84")]
+unique_name_in_owner = true
 
 [node name="Anchor" parent="HBoxContainer/Next/VBoxContainer/NextContain/FullBead/Beads" index="0"]
 material = SubResource("ShaderMaterial_fghpn")
@@ -97,34 +102,18 @@ layout_mode = 2
 
 [node name="Next2" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 75)
+custom_minimum_size = Vector2(115, 100)
 layout_mode = 2
-
-[node name="Marker2D2" type="Marker2D" parent="HBoxContainer/VBoxContainer/Next2"]
-position = Vector2(49, 36)
 
 [node name="FullBead2" parent="HBoxContainer/VBoxContainer/Next2" instance=ExtResource("2_j0c84")]
 unique_name_in_owner = true
-clip_contents = true
-custom_minimum_size = Vector2(100, 75)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="Next3" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 75)
+custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-
-[node name="Marker2D3" type="Marker2D" parent="HBoxContainer/VBoxContainer/Next3"]
-position = Vector2(47, 33)
 
 [node name="FullBead3" parent="HBoxContainer/VBoxContainer/Next3" instance=ExtResource("2_j0c84")]
 unique_name_in_owner = true
-clip_contents = true
-custom_minimum_size = Vector2(100, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [editable path="HBoxContainer/Next/VBoxContainer/NextContain/FullBead"]

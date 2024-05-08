@@ -1,8 +1,9 @@
+Node2D
+Button
 Marker2D
 Control
 PanelContainer
 VBoxContainer
-Node2D
 RichTextLabel
 TextureProgressBar
 HBoxContainer
@@ -11,4 +12,3 @@ Node
 Timer
 Sprite2D
 BackBufferCopy
-TextureRect
