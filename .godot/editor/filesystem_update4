@@ -13,9 +13,15 @@ res://Shaders/ShaderCode/Fullgradient.gdshader
 res://Shaders/ShaderCode/OutlineInline.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
+res://Code/Scenes/SinglePiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Constants/connected.tscn
 res://Scenes/Constants/Test.tscn
 res://Scenes/Board&Beads/FullBead.tscn
-res://Code/Scenes/SinglePiece.gd
-res://Resources/Rules/RuleMaker.gd
+res://Scenes/UI/right_ui.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/Constants/ConnectedDisplay.tscn
+res://Scenes/Constants/DuoDisplay.tscn
+res://Scenes/UI/NextBeads.tscn
+res://Resources/SaveData/SaveMaker.gd
+res://Resources/SaveData/SaveFile.tres

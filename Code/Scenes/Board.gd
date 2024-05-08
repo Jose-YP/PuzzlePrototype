@@ -14,11 +14,11 @@ const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 #Variables
 var board: Array[Array]
 var chains: Array[Array]
-var score: Array = []
 var fixUp: Array = []
 var currentBead: Node2D
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
+var score: int = 0
 var held: bool = false
 var breaking: bool = false
 
@@ -337,7 +337,8 @@ func find_chains() -> void:
 				continue
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
 				var tempChain = add_links(bead.get_links())
-				
+				score = rules.totalScore(tempChain)
+				print("\n\nTOTAL SCORE: ", score)
 				chains.append(new_set_chains(tempChain))
 	
 	print(chains)

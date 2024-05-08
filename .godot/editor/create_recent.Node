@@ -1,3 +1,10 @@
+PanelContainer
+Control
+RichTextLabel
+TextureProgressBar
+VBoxContainer
+HBoxContainer
+ProgressBar
 Node
 Timer
 Sprite2D
@@ -5,7 +12,3 @@ Node2D
 BackBufferCopy
 TextureRect
 Marker2D
-AnimatedSprite2D
-TabContainer
-CanvasModulate
-Button

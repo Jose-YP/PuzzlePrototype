@@ -1,3 +1,7 @@
+res://Resources/SaveData
+res://Code/Scenes
+res://Scenes/UI
+res://Scenes/MainMenu
 res://Shaders/Transparency
 res://Code/Constants
 res://Scenes/Constants/UIPieces
@@ -6,7 +10,6 @@ res://Themes/Gradients
 res://Art
 res://Resources/Relations
 res://Resources
-res://Code/Scenes
 res://Shaders/Gradients
 res://Scenes
 res://Code/Globals
