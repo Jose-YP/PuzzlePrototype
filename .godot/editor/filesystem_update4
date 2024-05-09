@@ -45,3 +45,4 @@ res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/Options.tscn
 res://Resources/SaveData/SaveFile.tres
 res://Code/Scenes/right_ui.gd
+res://Resources/Options/UserPreferences.gd

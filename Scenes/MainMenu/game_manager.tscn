@@ -52,6 +52,8 @@ stream = ExtResource("5_mnt3l")
 
 [node name="Music" type="Node" parent="."]
 
+[node name="Music" type="AudioStreamPlayer" parent="Music"]
+
 [node name="MenuSFX" type="Node" parent="."]
 
 [node name="MenuMove" type="AudioStreamPlayer" parent="MenuSFX"]
@@ -73,3 +75,5 @@ unique_name_in_owner = true
 stream = ExtResource("9_w0bdq")
 volume_db = -1.0
 pitch_scale = 0.8
+
+[connection signal="playSFX" from="Board" to="." method="_on_board_play_sfx"]

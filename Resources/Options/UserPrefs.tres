@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UserPreferences" load_steps=2 format=3 uid="uid://b36cefhpvtfi5"]
+
+[ext_resource type="Script" path="res://Resources/Options/UserPreferences.gd" id="1_c45uf"]
+
+[resource]
+script = ExtResource("1_c45uf")
+masterAudioLeve = 100.0
+musicAudioLeve = 100.0
+sfxAudioLeve = 100.0
+input_type = 0
+keyboard_action_events = {}
+joy_action_events = {}

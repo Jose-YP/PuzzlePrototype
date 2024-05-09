@@ -9,6 +9,7 @@ extends Node2D
 
 signal brokeBead
 signal brokeAll
+signal playSFX(index)
 
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
@@ -114,6 +115,7 @@ func move_bead(ammount, direction = "X") -> void:
 		currentBead.gridPos[i] = pos
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
+		playSFX.emit(0)
 
 func movement() -> void:
 	if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
@@ -146,6 +148,7 @@ func place() -> void:
 		var pos = currentBead.gridPos[i]
 		board[pos.x][pos.y] = currentBead.beads[i]
 	
+	playSFX.emit(3)
 	post_turn()
 
 func hard_drop(target) -> void:
@@ -175,6 +178,7 @@ func hard_drop(target) -> void:
 			print(currentBead.beads[i],target[i])
 			fixUp.append(currentBead.beads[i])
 	
+	playSFX.emit(2)
 	post_turn()
 
 func drop() -> void:
@@ -230,6 +234,7 @@ func full_bead_rotation(pos, start = false) -> void:
 		currentBead.positions[i].global_position = grid_to_pixel(allNewPos[i])
 	
 	currentBead.sync_position()
+	playSFX.emit(1)
 
 func rotate_pop(newPos) -> Array[Vector2i]:
 	var temp: Array[Vector2i]
