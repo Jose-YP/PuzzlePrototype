@@ -5,6 +5,7 @@ extends Node2D
 @export var rules: Rules
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $RightUI
+@onready var LUI: Control = $LeftUI
 
 signal brokeBead
 signal brokeAll
@@ -42,10 +43,10 @@ func _ready() -> void:
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
-	$ConnectedDisplay.position = grid_to_pixel(Vector2i(-3, int(position.y)))
-	$ConnectedDisplay.scale = Vector2(.85,.85)
 	RUI.position = grid_to_pixel(Vector2i(rules.width+1,1))
+	LUI.position.y = grid_to_pixel(Vector2i(0,2)).y
 	RUI.rules = rules
+	LUI.rules = rules
 	#Make debugging easier
 	match rules.debug_fills:
 		1: fill_board()
@@ -71,7 +72,7 @@ func spawn_beads() -> void:
 		if beadsUpnext[i] == null:
 			beadsUpnext[i] = fullBead.instantiate()
 			$Hold.add_child(beadsUpnext[i])
-	RUI.update_next(beadsUpnext)
+	LUI.update_next(beadsUpnext)
 
 func pull_next_bead() -> void:
 	if rules.spawning:

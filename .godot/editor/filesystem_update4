@@ -37,3 +37,11 @@ res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Constants/DuoDisplay.tscn
 res://Scenes/UI/left_ui.tscn
 res://Code/Scenes/game_manager.gd
+res://Code/Globals/Globals.gd
+res://Resources/SaveData/SaveMaker.gd
+res://Scenes/UI/NextBeads.tscn
+res://Code/Scenes/left_ui.gd
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/Options.tscn
+res://Resources/SaveData/SaveFile.tres
+res://Code/Scenes/right_ui.gd

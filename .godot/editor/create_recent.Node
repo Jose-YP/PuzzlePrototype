@@ -1,3 +1,6 @@
+Label
+HBoxContainer
+FlowContainer
 VBoxContainer
 Control
 PanelContainer
@@ -9,7 +12,3 @@ TextureRect
 Node2D
 Node
 AudioStreamPlayer
-MarginContainer
-TabContainer
-GridContainer
-Button
