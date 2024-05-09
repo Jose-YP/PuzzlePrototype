@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://lppqgchu4653"
-path="res://.godot/imported/MenuMove.wav-54f8561b73c7b4b43080b35ae11d496f.sample"
+uid="uid://cerqvwywvs7yc"
+path="res://.godot/imported/GlassTap.wav-7ee9217822e30f22bcb0840d9a6d495a.sample"
 
 [deps]
 
-source_file="res://Audio/MenuMove.wav"
-dest_files=["res://.godot/imported/MenuMove.wav-54f8561b73c7b4b43080b35ae11d496f.sample"]
+source_file="res://Audio/BoardSFX/GlassTap.wav"
+dest_files=["res://.godot/imported/GlassTap.wav-7ee9217822e30f22bcb0840d9a6d495a.sample"]
 
 [params]
 

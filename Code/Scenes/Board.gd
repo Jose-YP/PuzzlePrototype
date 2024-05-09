@@ -11,6 +11,7 @@ extends Node2D
 
 signal brokeBead
 signal brokeAll
+signal fail
 signal playSFX(index)
 
 #CONSTANTS
@@ -46,8 +47,8 @@ func _ready() -> void:
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
-	RUI.position = grid_to_pixel(Vector2i(rules.width+1,1))
-	LUI.position.y = grid_to_pixel(Vector2i(0,2)).y
+	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
+	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
 	RUI.rules = rules
 	LUI.rules = rules
 	#Make debugging easier
@@ -316,6 +317,7 @@ func post_turn() -> void:
 		var pos = pixel_to_grid(bead)
 		board[pos.x][pos.y] = bead
 	
+	detect_fail()
 	LUI.update_meter(1)
 	display_board()
 	find_links()
@@ -332,7 +334,7 @@ func find_links() -> void:
 			if bead.glowing:
 				bead.should_chain()
 
-func post_break():
+func post_break() -> void:
 	for i in range(rules.width):
 		#Start at the bottom of the board and push those down first
 		for j in range(realHeight,-1,-1):
@@ -356,6 +358,14 @@ func post_break():
 	#Check for any broken links and new links
 	find_links()
 
+func detect_fail() -> void:
+	#Only check for fail spots
+	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
+		for j in rules.fail_rows:
+			if board[i][j] != null:
+				print("Found a bead in ",board[i][j] )
+				fail.emit()
+
 #______________________________
 #CHAIN
 #______________________________
@@ -376,7 +386,7 @@ func find_chains() -> void:
 	
 	print(chains)
 
-func break_order(chainPart):
+func break_order(chainPart) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
 	var adjacent: Dictionary = {}
@@ -402,7 +412,7 @@ func break_order(chainPart):
 		return
 	break_order(adjacent.keys())
 
-func break_bead(chainPart):
+func break_bead(chainPart) -> void:
 	for bead in chainPart:
 		if is_instance_valid(bead):
 			bead.destroy_anim()

@@ -1,9 +1,9 @@
+AudioStreamPlayer
+PanelContainer
 Timer
 Button
-PanelContainer
 ColorRect
 Label
-AudioStreamPlayer
 HBoxContainer
 FlowContainer
 VBoxContainer
@@ -12,4 +12,3 @@ CanvasLayer
 BackBufferCopy
 ParallaxBackground
 TextureRect
-Node2D

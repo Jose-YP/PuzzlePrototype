@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cx43g2mds8wmu"
-path="res://.godot/imported/Twinkle.wav-f00ca190ac5a1a4df624351633222e6d.sample"
+uid="uid://lppqgchu4653"
+path="res://.godot/imported/MenuMove.wav-4f8d859e54affb7bb923f068c075c021.sample"
 
 [deps]
 
-source_file="res://Audio/Twinkle.wav"
-dest_files=["res://.godot/imported/Twinkle.wav-f00ca190ac5a1a4df624351633222e6d.sample"]
+source_file="res://Audio/MenuSFX/MenuMove.wav"
+dest_files=["res://.godot/imported/MenuMove.wav-4f8d859e54affb7bb923f068c075c021.sample"]
 
 [params]
 

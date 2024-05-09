@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dm65tuqtdtjin"
-path="res://.godot/imported/Reckless.wav-86db31a5326f10e15037bb4ccd6cd768.sample"
+uid="uid://b5lfca8f5r133"
+path="res://.godot/imported/Click.wav-f6133572ada50647f55f52db124ebac3.sample"
 
 [deps]
 
-source_file="res://Audio/Reckless.wav"
-dest_files=["res://.godot/imported/Reckless.wav-86db31a5326f10e15037bb4ccd6cd768.sample"]
+source_file="res://Audio/MenuSFX/Click.wav"
+dest_files=["res://.godot/imported/Click.wav-f6133572ada50647f55f52db124ebac3.sample"]
 
 [params]
 

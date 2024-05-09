@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=14 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="PackedScene" uid="uid://boo2wissxvyly" path="res://Scenes/Board&Beads/Board.tscn" id="1_o0gyj"]
-[ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/GlassMove.wav" id="1_rmh2v"]
-[ext_resource type="AudioStream" uid="uid://cerqvwywvs7yc" path="res://Audio/GlassTap.wav" id="2_s5o8j"]
-[ext_resource type="AudioStream" uid="uid://chxp3gabho17j" path="res://Audio/HardDrop.wav" id="3_ckid5"]
-[ext_resource type="AudioStream" uid="uid://be1ulgpog174j" path="res://Audio/SoftDrop.wav" id="4_rnsn7"]
-[ext_resource type="AudioStream" uid="uid://dekt267tihexf" path="res://Audio/basicAction.wav" id="5_mnt3l"]
-[ext_resource type="AudioStream" uid="uid://lppqgchu4653" path="res://Audio/MenuMove.wav" id="6_jnthh"]
-[ext_resource type="AudioStream" uid="uid://cf40870fv4d5q" path="res://Audio/MenuConfirm.wav" id="7_bbfgb"]
-[ext_resource type="AudioStream" uid="uid://bhapq413y8iqc" path="res://Audio/MenuDeselect.wav" id="8_0a7ua"]
-[ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/Click.wav" id="9_w0bdq"]
+[ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/BoardSFX/GlassMove.wav" id="1_rmh2v"]
+[ext_resource type="AudioStream" uid="uid://cerqvwywvs7yc" path="res://Audio/BoardSFX/GlassTap.wav" id="2_s5o8j"]
+[ext_resource type="AudioStream" uid="uid://chxp3gabho17j" path="res://Audio/BoardSFX/HardDrop.wav" id="3_ckid5"]
+[ext_resource type="AudioStream" uid="uid://be1ulgpog174j" path="res://Audio/BoardSFX/SoftDrop.wav" id="4_rnsn7"]
+[ext_resource type="AudioStream" uid="uid://dekt267tihexf" path="res://Audio/BoardSFX/basicAction.wav" id="5_mnt3l"]
+[ext_resource type="AudioStream" uid="uid://lppqgchu4653" path="res://Audio/MenuSFX/MenuMove.wav" id="6_jnthh"]
+[ext_resource type="AudioStream" uid="uid://cf40870fv4d5q" path="res://Audio/MenuSFX/MenuConfirm.wav" id="7_bbfgb"]
+[ext_resource type="AudioStream" uid="uid://bhapq413y8iqc" path="res://Audio/MenuSFX/MenuDeselect.wav" id="8_0a7ua"]
+[ext_resource type="AudioStream" uid="uid://cx43g2mds8wmu" path="res://Audio/BoardSFX/Twinkle.wav" id="8_6hs26"]
+[ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="9_w0bdq"]
 [ext_resource type="PackedScene" uid="uid://dfbgcar6hpar8" path="res://Scenes/Constants/Backgrounds/DarkBG.tscn" id="12_73kx1"]
 
 [node name="GameManager" type="CanvasLayer"]
@@ -30,22 +31,31 @@ offset_bottom = 1312.0
 [node name="HoriMove" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("1_rmh2v")
-volume_db = 5.0
+volume_db = 2.0
+max_polyphony = 2
 
 [node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("2_s5o8j")
-volume_db = 10.0
+volume_db = 6.0
+max_polyphony = 2
 
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("3_ckid5")
 volume_db = 5.0
+max_polyphony = 2
 
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_rnsn7")
-volume_db = 5.0
+volume_db = 3.0
+max_polyphony = 4
+
+[node name="Twinkle" type="AudioStreamPlayer" parent="BoardSFX"]
+unique_name_in_owner = true
+stream = ExtResource("8_6hs26")
+pitch_scale = 0.76
 
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true

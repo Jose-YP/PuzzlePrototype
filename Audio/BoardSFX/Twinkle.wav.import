@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://be1ulgpog174j"
-path="res://.godot/imported/SoftDrop.wav-1f75db4f5ee8a7696401416d6a8a7d6b.sample"
+uid="uid://cx43g2mds8wmu"
+path="res://.godot/imported/Twinkle.wav-88e8ffbc5f94bef4b2ae01e8748a246b.sample"
 
 [deps]
 
-source_file="res://Audio/SoftDrop.wav"
-dest_files=["res://.godot/imported/SoftDrop.wav-1f75db4f5ee8a7696401416d6a8a7d6b.sample"]
+source_file="res://Audio/BoardSFX/Twinkle.wav"
+dest_files=["res://.godot/imported/Twinkle.wav-88e8ffbc5f94bef4b2ae01e8748a246b.sample"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dekt267tihexf"
-path="res://.godot/imported/basicAction.wav-a2e4fe12eff4194b4dcc1da9e190cece.sample"
+uid="uid://pda65amykc0j"
+path="res://.godot/imported/GlassMove.wav-678b071a6b0388c514d0d8bf1e572bc2.sample"
 
 [deps]
 
-source_file="res://Audio/basicAction.wav"
-dest_files=["res://.godot/imported/basicAction.wav-a2e4fe12eff4194b4dcc1da9e190cece.sample"]
+source_file="res://Audio/BoardSFX/GlassMove.wav"
+dest_files=["res://.godot/imported/GlassMove.wav-678b071a6b0388c514d0d8bf1e572bc2.sample"]
 
 [params]
 

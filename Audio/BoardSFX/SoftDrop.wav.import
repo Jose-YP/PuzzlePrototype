@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bhapq413y8iqc"
-path="res://.godot/imported/MenuDeselect.wav-3371e7714c53d6b75c21a5431374c31c.sample"
+uid="uid://be1ulgpog174j"
+path="res://.godot/imported/SoftDrop.wav-c0ccfa8ebf79ad918477389089c9ae00.sample"
 
 [deps]
 
-source_file="res://Audio/MenuDeselect.wav"
-dest_files=["res://.godot/imported/MenuDeselect.wav-3371e7714c53d6b75c21a5431374c31c.sample"]
+source_file="res://Audio/BoardSFX/SoftDrop.wav"
+dest_files=["res://.godot/imported/SoftDrop.wav-c0ccfa8ebf79ad918477389089c9ae00.sample"]
 
 [params]
 

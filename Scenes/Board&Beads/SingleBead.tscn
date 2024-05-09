@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://w0qtrr7jio8o" path="res://Shaders/Transparency/BurnOut.tres" id="1_xmwi2"]
 [ext_resource type="Script" path="res://Code/Scenes/SinglePiece.gd" id="2_3mwsr"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="3_2tfol"]
-[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/connected.tscn" id="3_v1280"]
+[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/ETC/connected.tscn" id="3_v1280"]
 [ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="4_gou0l"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="5_lflmb"]
 [ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="5_xevfo"]

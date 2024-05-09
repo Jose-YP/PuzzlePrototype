@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cerqvwywvs7yc"
-path="res://.godot/imported/GlassTap.wav-66cdc4053ee958219ec3e0c0d83af973.sample"
+uid="uid://dm65tuqtdtjin"
+path="res://.godot/imported/Reckless.wav-3490da9d921af641be80f2dbd1605bcb.sample"
 
 [deps]
 
-source_file="res://Audio/GlassTap.wav"
-dest_files=["res://.godot/imported/GlassTap.wav-66cdc4053ee958219ec3e0c0d83af973.sample"]
+source_file="res://Audio/MenuSFX/Reckless.wav"
+dest_files=["res://.godot/imported/Reckless.wav-3490da9d921af641be80f2dbd1605bcb.sample"]
 
 [params]
 

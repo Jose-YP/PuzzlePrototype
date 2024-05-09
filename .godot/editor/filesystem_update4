@@ -22,3 +22,6 @@ res://Scenes/UI/right_ui.tscn
 res://Scenes/Constants/Backgrounds/sea_bg.tscn
 res://Scenes/Constants/Backgrounds/DarkBG.tscn
 res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/NextBeads.tscn
+res://Themes/GameUI.tres
+res://Code/Scenes/game_manager.gd

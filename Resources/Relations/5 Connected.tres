@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Relations" load_steps=3 format=3 uid="uid://ckh4w5vf0wygk"]
 
-[ext_resource type="PackedScene" uid="uid://cf30m2bne32r0" path="res://Scenes/Constants/ConnectedDisplay.tscn" id="1_4g0gj"]
+[ext_resource type="PackedScene" uid="uid://cf30m2bne32r0" path="res://Scenes/Constants/UIPieces/ConnectedDisplay.tscn" id="1_4g0gj"]
 [ext_resource type="Script" path="res://Resources/Relations/RelationshipMaker.gd" id="1_oert6"]
 
 [resource]
