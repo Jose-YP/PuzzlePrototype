@@ -49,13 +49,3 @@ offset_right = 69.0
 offset_bottom = 75.0
 text = "1"
 horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 245.0
-offset_top = 231.0
-offset_right = 320.0
-offset_bottom = 291.0
-text = "Increase meter"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

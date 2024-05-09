@@ -30,10 +30,10 @@ color = Color(0, 0, 0, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource("3_3fpe7")
 layout_mode = 0
-offset_left = -246.0
-offset_top = -702.0
-offset_right = 1314.0
-offset_bottom = 978.0
+offset_left = -125.0
+offset_top = -575.0
+offset_right = 1283.0
+offset_bottom = 985.0
 texture = ExtResource("2_74b4g")
 expand_mode = 4
 stretch_mode = 1
@@ -42,14 +42,16 @@ stretch_mode = 1
 position = Vector2(611, 423)
 scale = Vector2(7.11, 5.23)
 copy_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_j2urw")
 layout_mode = 0
-offset_left = -246.0
-offset_top = -702.0
-offset_right = 1314.0
-offset_bottom = 978.0
+offset_left = -215.0
+offset_top = -588.0
+offset_right = 1345.0
+offset_bottom = 972.0
 texture = ExtResource("2_74b4g")
 expand_mode = 4
 stretch_mode = 1
+metadata/_edit_lock_ = true

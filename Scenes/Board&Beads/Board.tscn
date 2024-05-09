@@ -22,6 +22,8 @@ scale = Vector2(1.25, 1.25)
 position = Vector2(17, 49)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("3_qyefa")
+BoardColor = Color(0.388235, 0.388235, 0.388235, 0.729412)
+FailColor = Color(0.65098, 0.196078, 0.196078, 0.827451)
 
 [node name="Timers" type="Node" parent="."]
 

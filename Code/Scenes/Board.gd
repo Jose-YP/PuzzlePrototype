@@ -40,9 +40,7 @@ func _ready() -> void:
 	#Make Timers function
 	%Gravity.set_wait_time(rules.gravity)
 	%SoftDrop.set_wait_time(rules.soft_drop)
-	%Grounded.set_paused(false)
-	%SoftDrop.set_paused(false)
-	%Gravity.set_paused(false)
+	pauseFall(false)
 	
 	var rel = rules.bead_relationships
 	Globals.glow_num = rel.glow_num
@@ -629,9 +627,6 @@ func pauseFall(should):
 		%Gravity.set_paused(false)
 
 func _on_soft_drop_timeout() -> void:
-	if rules.gravity_on:
-		$Timers/Gravity.start()
-	
 	if can_move("Down"):
 		move_bead(1, "Y")
 		currentBead.sync_position()
@@ -643,7 +638,6 @@ func _on_grounded_timeout() -> void:
 
 func _on_gravity_timeout() -> void:
 	if rules.gravity_on:
-		$Timers/SoftDrop.start()
 		if not can_move("Down") and not held:
 			place()
 		else:
@@ -658,7 +652,6 @@ func _on_right_ui_level_up(level):
 	var factor = level * rules.speedUp
 	%Grounded.set_wait_time(baseGroundedTime - factor)
 	%Gravity.set_wait_time(baseGravTime - factor)
-	%SoftDrop.set_wait_time(%Gravity.get_wait_time()/2)
 
 #______________________________
 #DEBUG
