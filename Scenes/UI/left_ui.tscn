@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt86eivh6s6vl"]
+[gd_scene load_steps=3 format=3 uid="uid://dt86eivh6s6vl"]
 
 [ext_resource type="Script" path="res://Code/Scenes/game_manager.gd" id="1_8aurq"]
+[ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
 
 [node name="LeftUI" type="Control"]
 layout_mode = 3
@@ -11,8 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8aurq")
 
-[node name="BreakProgress" type="TextureProgressBar" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="NextBeads" parent="VBoxContainer" instance=ExtResource("2_47gbb")]
+layout_mode = 2
+
+[node name="BreakProgress" type="TextureProgressBar" parent="VBoxContainer"]
+layout_mode = 2
 fill_mode = 5

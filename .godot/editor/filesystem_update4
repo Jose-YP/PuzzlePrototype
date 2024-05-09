@@ -36,3 +36,4 @@ res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Constants/DuoDisplay.tscn
 res://Scenes/UI/left_ui.tscn
+res://Code/Scenes/game_manager.gd
