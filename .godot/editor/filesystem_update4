@@ -34,3 +34,5 @@ res://Scenes/Constants/Backgrounds/DarkBG.tscn
 res://Code/Constants/GridBackground.gd
 res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Constants/DuoDisplay.tscn
+res://Scenes/UI/left_ui.tscn

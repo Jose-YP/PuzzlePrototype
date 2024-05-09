@@ -7,9 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_a8mlu"]
 [ext_resource type="Texture2D" uid="uid://dwhru74flwehi" path="res://Art/ETC/doublesided.png" id="6_xwprj"]
 
-[node name="ConnectionDisplay" type="Node2D"]
+[node name="ConnectionDisplay" type="Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 201.0
+offset_bottom = 185.0
 
-[node name="Pieces" type="Node2D" parent="."]
+[node name="Pieces" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 57.0
+offset_top = 33.0
+offset_right = 57.0
+offset_bottom = 33.0
 
 [node name="Liquid" parent="Pieces" instance=ExtResource("1_8ixx7")]
 offset_left = 24.0
@@ -42,6 +54,7 @@ offset_right = 0.18605
 offset_bottom = 152.0
 
 [node name="Arrows" type="Node2D" parent="."]
+position = Vector2(57, 33)
 
 [node name="Arrow" type="Sprite2D" parent="Arrows"]
 modulate = Color(0.137255, 0.6, 0.909804, 1)

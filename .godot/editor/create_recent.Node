@@ -1,5 +1,6 @@
-CanvasLayer
 Control
+PanelContainer
+CanvasLayer
 ColorRect
 BackBufferCopy
 ParallaxBackground
@@ -11,5 +12,3 @@ MarginContainer
 TabContainer
 GridContainer
 Button
-Marker2D
-PanelContainer
