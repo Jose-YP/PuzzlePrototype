@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dssn0r35p6rhv"]
+
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/Black2Transp.gdshader" id="1_o1s4o"]
+[ext_resource type="Texture2D" uid="uid://broarbw56swi5" path="res://Art/Backgrounds/115.png" id="2_74b4g"]
+[ext_resource type="Material" uid="uid://c3x2mch3abhnf" path="res://Shaders/Backgrounds/WaterBG.tres" id="3_3fpe7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2urw"]
+shader = ExtResource("1_o1s4o")
+shader_parameter/makeTransparent = Color(1, 1, 1, 1)
+shader_parameter/otherColor = Color(0, 0, 0, 1)
+shader_parameter/margin = 0.3
+shader_parameter/otherColorMix = 0.1
+
+[node name="SeaBG" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -108.0
+offset_top = -242.0
+offset_right = 1392.0
+offset_bottom = 858.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("3_3fpe7")
+layout_mode = 0
+offset_left = -246.0
+offset_top = -702.0
+offset_right = 1314.0
+offset_bottom = 978.0
+texture = ExtResource("2_74b4g")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(611, 423)
+scale = Vector2(7.11, 5.23)
+copy_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_j2urw")
+layout_mode = 0
+offset_left = -246.0
+offset_top = -702.0
+offset_right = 1314.0
+offset_bottom = 978.0
+texture = ExtResource("2_74b4g")
+expand_mode = 4
+stretch_mode = 1

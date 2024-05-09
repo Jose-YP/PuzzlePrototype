@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg0gk08plhhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36j16"]
+bg_color = Color(0.411765, 0.0901961, 0.192157, 1)
+anti_aliasing_size = 2.055
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_36j16")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null

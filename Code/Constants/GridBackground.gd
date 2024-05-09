@@ -18,7 +18,7 @@ func _draw() -> void:
 			var rectOrigin:Vector2 = Board.grid_to_pixel(pos) - rules.offset/2
 			var tileRect: Rect2 = Rect2(rectOrigin, rules.offset)
 			
-			draw_rect(tileRect, Color(0.208, 0.208, 0.208, 0.706), false, 1.5)
+			draw_rect(tileRect, Color(0.208, 0.208, 0.208, 0.6), false, 1.5)
 			
 			#DEBUG DRAW
 			var debugPos: Vector2 = Board.grid_to_pixel(pos)
