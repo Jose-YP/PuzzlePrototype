@@ -30,4 +30,5 @@ func update_beads(beads):
 func update_level():
 	level = clamp(level + 1, 1, rules.max_levels)
 	%LevelText.text = str("LEVEL: ", level)
+	Globals.level = level
 	levelUp.emit(level)

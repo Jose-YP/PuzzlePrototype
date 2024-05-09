@@ -6,6 +6,8 @@ extends Node2D
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $RightUI
 @onready var LUI: Control = $LeftUI
+@onready var baseGroundedTime = %Grounded.get_wait_time()
+@onready var baseGravTime = %Gravity.get_wait_time()
 
 signal brokeBead
 signal brokeAll
@@ -24,8 +26,10 @@ var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0
 var score: int = 0
+var breakNum: int = 0
 var held: bool = false
 var breaking: bool = false
+var fallPaused: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -34,11 +38,11 @@ func _ready() -> void:
 	#Make board before adding anything
 	board = make_grid()
 	#Make Timers function
-	$Timers/Gravity.set_wait_time(rules.gravity)
-	$Timers/SoftDrop.set_wait_time(rules.soft_drop)
-	$Timers/Grounded.set_paused(false)
-	$Timers/SoftDrop.set_paused(false)
-	$Timers/Gravity.set_paused(false)
+	%Gravity.set_wait_time(rules.gravity)
+	%SoftDrop.set_wait_time(rules.soft_drop)
+	%Grounded.set_paused(false)
+	%SoftDrop.set_paused(false)
+	%Gravity.set_paused(false)
 	
 	var rel = rules.bead_relationships
 	Globals.glow_num = rel.glow_num
@@ -234,7 +238,8 @@ func full_bead_rotation(pos, start = false) -> void:
 		currentBead.positions[i].global_position = grid_to_pixel(allNewPos[i])
 	
 	currentBead.sync_position()
-	playSFX.emit(1)
+	if start == false:
+		playSFX.emit(1)
 
 func rotate_pop(newPos) -> Array[Vector2i]:
 	var temp: Array[Vector2i]
@@ -265,21 +270,23 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #______________________________
 func _process(delta) -> void:
 	if not breaking:
-		if currentBead.currentState == currentBead.STATE.MOVE:
+		if currentBead.currentState == currentBead.STATE.MOVE and not fallPaused:
 			movement()
 			drop()
-		if currentBead.currentState == currentBead.STATE.GROUNDED:
+		if currentBead.currentState == currentBead.STATE.GROUNDED and not fallPaused:
 			movement()
 			drop()
 		
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("ui_down") and not fallPaused:
 			inputHoldTime += delta
 			held = inputHoldTime > rules.soft_drop
 		if Input.is_action_just_released("ui_down"):
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
-		if Input.is_action_just_pressed("Y"):
+		if Input.is_action_just_pressed("Y") and breakNum > 0:
+			#Full Bead should not move during this
+			pauseFall(true)
 			find_chains()
 			for i in range(chains.size()):
 				#Make sure the starting value is bracketed into an array
@@ -291,6 +298,7 @@ func _process(delta) -> void:
 			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
 			post_break()
+			pauseFall(false)
 
 #______________________________
 #POST TURN PROCESSES
@@ -310,6 +318,7 @@ func post_turn() -> void:
 		var pos = pixel_to_grid(bead)
 		board[pos.x][pos.y] = bead
 	
+	LUI.update_meter(1)
 	display_board()
 	find_links()
 	
@@ -605,8 +614,20 @@ func within_bounds(pos,where = "X") -> bool:
 	return true
 
 #______________________________
-#TIMERS
+#TIMERS & OUTSIDE SIGNALS
 #______________________________
+func pauseFall(should):
+	if should:
+		fallPaused = true
+		%Grounded.set_paused(true)
+		%SoftDrop.set_paused(true)
+		%Gravity.set_paused(true)
+	else:
+		fallPaused = false
+		%Grounded.set_paused(false)
+		%SoftDrop.set_paused(false)
+		%Gravity.set_paused(false)
+
 func _on_soft_drop_timeout() -> void:
 	if rules.gravity_on:
 		$Timers/Gravity.start()
@@ -628,6 +649,16 @@ func _on_gravity_timeout() -> void:
 		else:
 			move_bead(1, "Y")
 			currentBead.sync_position()
+
+func _on_left_ui_break_ready():
+	breakNum += 1
+	LUI.breakText.text = str(breakNum)
+
+func _on_right_ui_level_up(level):
+	var factor = level * rules.speedUp
+	%Grounded.set_wait_time(baseGroundedTime - factor)
+	%Gravity.set_wait_time(baseGravTime - factor)
+	%SoftDrop.set_wait_time(%Gravity.get_wait_time()/2)
 
 #______________________________
 #DEBUG

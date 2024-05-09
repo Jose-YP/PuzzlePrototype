@@ -46,3 +46,6 @@ res://Scenes/MainMenu/Options.tscn
 res://Resources/SaveData/SaveFile.tres
 res://Code/Scenes/right_ui.gd
 res://Resources/Options/UserPreferences.gd
+res://Scenes/UI/ProgressBar.gdshader
+res://Resources/Rules/RuleMaker.gd
+res://Code/Scenes/FullPiece.gd

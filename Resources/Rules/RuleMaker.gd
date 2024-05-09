@@ -15,8 +15,8 @@ class_name Rules
 @export_category("Process Constants")
 @export var bead_relationships: Relations
 @export_group("Timing")
-@export_range(0,2) var gravity: float = 1
-@export_range(0,1) var soft_drop: float = 1
+@export_range(0,10,.5) var gravity: float = 5
+@export_range(0,2,.1) var soft_drop: float = 1
 @export_group("ETC")
 @export var rotate_pop_checks: Array[Vector2i] = [Vector2i(0,-1),Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 
@@ -30,7 +30,9 @@ class_name Rules
 @export_group("Levels")
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100
-@export_range(0,1,.01) var speedUp: float = .25
+@export_range(0,.5,.01) var speedUp: float = .05
+@export_range(0,1,.01) var meterChargeRate: float = .25
+@export_range(0,300) var meterChargeThres: int = 10
 
 @export_category("Debug")
 @export_group("Debug")

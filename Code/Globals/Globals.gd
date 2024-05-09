@@ -12,6 +12,7 @@ const otherConnectionNum: Array = [1,0,3,2]
 
 var relation_flags: Array[int] = []
 var glow_num: int = 3
+var level: int = 1
 var highestID: String
 var lowestID: String
 

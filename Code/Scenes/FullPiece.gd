@@ -51,31 +51,3 @@ func in_full_bead(bead, same = null) -> bool:
 			return true
 	
 	return false
-
-#______________________________
-#NEXT DISPLAY FUNCTIONS
-#______________________________
-#func recenter():
-	#match rot.rotation_degrees:
-		#90:
-			#$Beads.position = Vector2($Beads.position.x,20)
-		#180:
-			#$Beads.position = Vector2(75,20)
-		#270:
-			#$Beads.position = Vector2(75,$Beads.position.y)
-#
-#func get_true_size() -> Vector2:
-	#var currentSize: Vector2 = get_size()
-	#for bead in beads:
-		#var beadSize = bead.sprite.get_size()
-		#print(bead, beadSize)
-		#if abs(currentSize.x) < abs(beadSize.x):
-			#currentSize.x = beadSize.x
-		#if abs(currentSize.y) < abs(beadSize.y):
-			#currentSize.y = beadSize.y
-	#
-	#return currentSize
-#
-#func fit_in(sizing):
-	##scale.x = sizing.x / 
-	#pass

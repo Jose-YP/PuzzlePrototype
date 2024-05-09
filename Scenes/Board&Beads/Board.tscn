@@ -26,11 +26,16 @@ script = ExtResource("3_qyefa")
 [node name="Timers" type="Node" parent="."]
 
 [node name="Grounded" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 2.0
 one_shot = true
 
 [node name="SoftDrop" type="Timer" parent="Timers"]
+unique_name_in_owner = true
 
 [node name="Gravity" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 5.0
 autostart = true
 
 [node name="Debug" type="Timer" parent="Timers"]
@@ -42,9 +47,15 @@ one_shot = true
 
 [node name="ChainFinish" type="Timer" parent="Timers"]
 
+[node name="NewBead" type="Timer" parent="Timers"]
+wait_time = 0.25
+one_shot = true
+
 [node name="Hold" type="Node2D" parent="."]
 visible = false
 
+[connection signal="breakReady" from="LeftUI" to="." method="_on_left_ui_break_ready"]
+[connection signal="levelUp" from="RightUI" to="." method="_on_right_ui_level_up"]
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]
 [connection signal="timeout" from="Timers/Gravity" to="." method="_on_gravity_timeout"]
