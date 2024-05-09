@@ -5,7 +5,7 @@ class_name Rules
 @export_group("Dimentions")
 @export_range(6,15) var width: int = 9
 @export_range(6,15) var height: int = 9 #row 0, 1 and 2 are fail state rows
-@export_range(0,15) var safe_high_columns: int = 0
+@export_range(0,15) var safe_high_columns: int = 0 #Which colums in fail rows are safe?
 @export_range(0,3) var fail_rows: int = 2
 @export_group("Pos & Sizing")
 @export var offset: Vector2 = Vector2(65,65)
