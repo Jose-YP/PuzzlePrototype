@@ -33,38 +33,45 @@ unique_name_in_owner = true
 stream = ExtResource("1_rmh2v")
 volume_db = -10.0
 max_polyphony = 2
+bus = &"BoardSFX"
 
 [node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("2_s5o8j")
 volume_db = -10.0
 max_polyphony = 2
+bus = &"BoardSFX"
 
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("3_ckid5")
 volume_db = -10.0
 max_polyphony = 2
+bus = &"BoardSFX"
 
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_rnsn7")
 volume_db = -10.0
 max_polyphony = 4
+bus = &"BoardSFX"
 
 [node name="Twinkle" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("8_6hs26")
 volume_db = -12.0
 pitch_scale = 0.76
+bus = &"BoardSFX"
 
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_mnt3l")
+bus = &"BoardSFX"
 
 [node name="Music" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Music"]
+bus = &"Music"
 
 [node name="MenuSFX" type="Node" parent="."]
 

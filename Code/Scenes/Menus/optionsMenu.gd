@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+#IMPORTED FROM RPG PROTOTYPE
 @export var awaitingColor = Color(0.455, 0.455, 0.455)
 
 @onready var VolumeValues: Array[HSlider] = [%MasterSlider, %MusicSlider, %SFXSlider]

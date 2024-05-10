@@ -1,8 +1,8 @@
 extends Node
 
-@onready var save = Save
+@onready var save = Save.load_or_create()
+@onready var userPrefs = UserPreferences.load_or_create()
 
-#const save = load("res://Resources/SaveData/SaveFile.tres")
 const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")
 const bead_types: Array[String] = ["Earth","Sea","Air","Light","Dark"]
 const bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
@@ -15,14 +15,6 @@ var glow_num: int = 3
 var level: int = 1
 var highestID: String
 var lowestID: String
-
-func _ready():
-	print("Globals Ready")
-	save = Save.load_or_create()
-	
-	print(save.HiScores)
-	print("HIGHEST: ", find_extreme_score())
-	print("LOWEST: ", find_extreme_score(true))
 
 func find_extreme_score(lowest = false, Dict = save.HiScores) -> String:
 	var maxHold: Dictionary = {"abc" : [0,""]}
