@@ -24,31 +24,42 @@ func _ready():
 	print("HIGHEST: ", find_extreme_score())
 	print("LOWEST: ", find_extreme_score(true))
 
-func find_extreme_score(lowest = false) -> Dictionary:
+func find_extreme_score(lowest = false, Dict = save.HiScores) -> String:
 	var maxHold: Dictionary = {"abc" : [0,""]}
 	var maxID: String = "abc"
-	for ID in save.HiScores:
+	for ID in Dict:
 		if lowest:
-			if (save.HiScores[ID][0] <= maxHold[maxID][0]
+			if (Dict[ID][0] <= maxHold[maxID][0]
 			or maxID == "abc"):
 				maxHold.clear()
-				maxHold[ID] = save.HiScores[ID]
+				maxHold[ID] = Dict[ID]
 				maxID = ID
 		else:
-			if save.HiScores[ID][0] >= maxHold[maxID][0]:
+			if Dict[ID][0] >= maxHold[maxID][0]:
 				maxHold.clear()
-				maxHold[ID] = save.HiScores[ID]
+				maxHold[ID] = Dict[ID]
 				maxID = ID
 	
-	if lowest: lowestID = maxID
-	else: highestID = maxID
-	return maxHold
+	if Dict == save.HiScores:
+		if lowest: lowestID = maxID
+		else: highestID = maxID
+	return maxID
 
 func get_extreme(lowest = false):
 	if lowest:
 		return save.HiScores[lowestID]
 	else:
 		return save.HiScores[highestID]
+
+func sort_scores():
+	var sorted: Array = []
+	var Dict = save.HiScores.duplicate(true)
+	for i in range(save.HiScores.size()):
+		var ID = find_extreme_score(false, Dict)
+		sorted.append(Dict[ID])
+		Dict.erase(ID)
+	
+	return sorted
 
 func string_to_flag(type) -> int:
 	match type:

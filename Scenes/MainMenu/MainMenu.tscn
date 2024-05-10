@@ -1,7 +1,59 @@
-[gd_scene format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=3 format=3 uid="uid://bjf6n3d1yeous"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
+[ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
+
+[node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_7dq6h")
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 194.0
+offset_right = 771.0
+offset_bottom = 234.0
+bbcode_enabled = true
+text = "[center]LIVELY"
+
+[node name="Buttons" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 0
+offset_left = 308.0
+offset_top = 356.0
+offset_right = 938.0
+offset_bottom = 586.0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="Play" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "PLAY"
+
+[node name="Options" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="Scores" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "SCORES"
+
+[node name="How2Play" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "HOW TO PLAY"
+
+[node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
+visible = false
+layout_mode = 0
+
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Scores" to="." method="_on_scores_pressed"]
+[connection signal="pressed" from="Buttons/How2Play" to="." method="_on_how_2_play_pressed"]

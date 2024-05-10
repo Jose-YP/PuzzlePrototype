@@ -1,6 +1,7 @@
+res://Code/Scenes/Menus
+res://Scenes/MainMenu
 res://Resources/Options
 res://Code/Scenes
-res://Scenes/MainMenu
 res://Themes
 res://Shaders/Backgrounds
 res://Scenes/Constants/Backgrounds
@@ -19,4 +20,3 @@ res://Art
 res://Resources/Relations
 res://Resources
 res://Scenes
-res://Code/Globals

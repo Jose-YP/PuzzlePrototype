@@ -1,7 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg0gk08plhhl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36j16"]
-bg_color = Color(0.411765, 0.0901961, 0.192157, 1)
+bg_color = Color(0.278431, 0.00392157, 0.117647, 0.45098)
+shadow_color = Color(0.372549, 0.372549, 0.372549, 0.6)
+shadow_size = 2
 anti_aliasing_size = 2.055
 
 [resource]

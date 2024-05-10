@@ -8,6 +8,7 @@ extends CanvasLayer
 
 func _ready():
 	print("READY")
+	print(Globals.sort_scores())
 
 func _on_board_play_sfx(index):
 	BoardSFX[index].play()
