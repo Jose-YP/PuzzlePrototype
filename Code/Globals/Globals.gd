@@ -65,5 +65,4 @@ func string_to_flag(type) -> int:
 			return 8
 		"Dark":
 			return 16
-	
 	return 0

@@ -22,7 +22,7 @@ class_name Rules
 
 @export_category("Scoring")
 @export_group("Score")
-@export_range(10,100) var beadScore: int = 50
+@export_range(2,100) var beadScore: int = 50
 @export_range(0,2,.01) var linkMultiplier: float = .5
 @export_range(0,2,.01) var powerMultiplier: float = .15
 @export_range(0,2,.01) var chainMultiplier: float = .7
@@ -30,6 +30,7 @@ class_name Rules
 @export_group("Levels")
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100
+@export_range(0,1,.01) var levelUp_rate: float = .25
 @export_range(0,.5,.01) var speedUp: float = .05
 @export_range(0,1,.01) var meterChargeRate: float = .25
 @export_range(0,300) var meterChargeThres: int = 10

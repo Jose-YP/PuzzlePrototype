@@ -38,6 +38,7 @@ func _on_main_menu_switch_options():
 func _on_main_menu_switch_play():
 	changeScene(boardScene)
 	currentScene.connect("main",back_to_menu)
+	currentScene.connect("playSFX",_on_board_play_sfx)
 
 #-----------------------------------------
 #BOARD SIGNALS

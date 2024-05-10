@@ -39,7 +39,6 @@ func _ready():
 	
 	inputType = Globals.userPrefs.input_type
 	for action in Globals.userPrefs.keyboard_action_events:
-		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
 	
 	for action in Globals.userPrefs.joy_action_events:
@@ -88,6 +87,8 @@ func _on_sfx_pressed() -> void:
 #-----------------------------------------
 #CONTROLLER REMAPPING
 #-----------------------------------------
+#WHEN INPORTING: RESET INPUT MAP RESOURCE MANUALLY ONCE
+#
 func getNewInputs() -> void:
 	Actions = []
 	inputs = [[],[]]
@@ -110,12 +111,14 @@ func getNewInputs() -> void:
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
+		print(action,events)
 		Actions.append(action)
 		for event in events:
-			if event is InputEventKey:
+			if event is InputEventKey and inputType == 0:
+				print(action,event)
 				inputs[0].append(event)
 				Globals.userPrefs.keyboard_action_events[action] = event
-			elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			elif event is InputEventJoypadButton or event is InputEventJoypadMotion and inputType == 1:
 				inputs[1].append(event)
 				Globals.userPrefs.joy_action_events[action] = event
 	
@@ -153,7 +156,7 @@ func _on_new_input_type_selected(index) -> void:
 	inputType = index
 	Globals.userPrefs.input_type = index
 	Globals.userPrefs.save()
-	updateInputDisplay()
+	getNewInputs()
 
 func _on_reset_pressed() -> void:
 	InputMap.load_from_project_settings()
