@@ -12,6 +12,7 @@ extends Node2D
 signal brokeBead
 signal brokeAll
 signal fail
+signal main
 signal playSFX(index)
 
 #CONSTANTS

@@ -11,15 +11,6 @@ const boardScene = preload("res://Scenes/Board&Beads/Board.tscn")
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
-
-
-#-----------------------------------------
-#INITALIZATION
-#-----------------------------------------
-func _ready():
-	print("READY")
-	print(Globals.sort_scores())
-
 #-----------------------------------------
 #SCENE SWITCHING
 #-----------------------------------------
@@ -31,9 +22,21 @@ func changeScene(scene) -> void:
 	$".".add_child(newScene)
 	currentScene = newScene
 
+func back_to_menu():
+	changeScene(mainMenuScene)
+
 #-----------------------------------------
 #MAIN MENU SIGNALS
 #-----------------------------------------
+func _on_main_menu_switch_options():
+	changeScene(optionsScene)
+	currentScene.connect("main",back_to_menu)
+	currentScene.connect("makeNoise",_on_option_make_noise)
+	currentScene.connect("testMusic",_on_option_test_music)
+
+func _on_main_menu_switch_play():
+	changeScene(boardScene)
+	currentScene.connect("main",back_to_menu)
 
 #-----------------------------------------
 #BOARD SIGNALS
@@ -47,10 +50,5 @@ func _on_board_play_sfx(index):
 func _on_option_make_noise():
 	%ETC.play()
 
-
-func _on_main_menu_switch_options():
-	pass # Replace with function body.
-
-
-func _on_main_menu_switch_play():
-	pass # Replace with function body.
+func _on_option_test_music():
+	music.play()
