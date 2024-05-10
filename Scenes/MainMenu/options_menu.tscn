@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=2 format=3 uid="uid://1malajsj05pg"]
 
-[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="1_rvycu"]
-[ext_resource type="Script" path="res://Code/SceneCode/Screens/optionsMenu.gd" id="2_vrnb5"]
+[ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="2_vrnb5"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource("2_vrnb5")
@@ -19,7 +18,6 @@ offset_bottom = 376.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_rvycu")
 
 [node name="VBox" type="VBoxContainer" parent="Main"]
 layout_mode = 2
@@ -199,7 +197,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 80
 theme_override_constants/v_separation = 20
-columns = 3
+columns = 2
 
 [node name="Up" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
@@ -235,24 +233,6 @@ layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
 
-[node name="ZL" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ZL"]
-custom_minimum_size = Vector2(75, 25)
-layout_mode = 2
-size_flags_vertical = 4
-text = "ZL Button"
-scroll_active = false
-
-[node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ZL"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-size_flags_vertical = 4
-toggle_mode = true
-text = "Current Input"
-
 [node name="Left" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -282,23 +262,6 @@ text = "B Button"
 scroll_active = false
 
 [node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Cancel"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-toggle_mode = true
-text = "Current Input"
-
-[node name="L" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/L"]
-custom_minimum_size = Vector2(75, 25)
-layout_mode = 2
-size_flags_vertical = 4
-text = "L Button"
-scroll_active = false
-
-[node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/L"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
@@ -338,23 +301,6 @@ layout_mode = 2
 toggle_mode = true
 text = "Current Input"
 
-[node name="R" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/R"]
-custom_minimum_size = Vector2(75, 25)
-layout_mode = 2
-size_flags_vertical = 4
-text = "R Button"
-scroll_active = false
-
-[node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/R"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-toggle_mode = true
-text = "Current Input"
-
 [node name="Right" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -385,23 +331,6 @@ text = "Y Button"
 scroll_active = false
 
 [node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Y"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-toggle_mode = true
-text = "Current Input"
-
-[node name="ZR" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ZR"]
-custom_minimum_size = Vector2(75, 25)
-layout_mode = 2
-size_flags_vertical = 4
-text = "ZR Button"
-scroll_active = false
-
-[node name="Button" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ZR"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
@@ -446,14 +375,10 @@ text = "[center]...Awaiting Input...[/center]"
 [connection signal="pressed" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Up/Button" to="." method="controllerMapStart" binds= [0]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Accept/Button" to="." method="controllerMapStart" binds= [1]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ZL/Button" to="." method="controllerMapStart" binds= [2]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Left/Button" to="." method="controllerMapStart" binds= [3]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Cancel/Button" to="." method="controllerMapStart" binds= [4]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/L/Button" to="." method="controllerMapStart" binds= [5]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Down/Button" to="." method="controllerMapStart" binds= [6]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/X/Button" to="." method="controllerMapStart" binds= [7]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/R/Button" to="." method="controllerMapStart" binds= [8]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Right/Button" to="." method="controllerMapStart" binds= [9]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Y/Button" to="." method="controllerMapStart" binds= [10]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ZR/Button" to="." method="controllerMapStart" binds= [11]]
 [connection signal="pressed" from="Main/VBox/Exit" to="." method="_on_button_pressed"]

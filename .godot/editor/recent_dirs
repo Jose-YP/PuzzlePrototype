@@ -1,8 +1,10 @@
+res://
+res://Themes
+res://Import
 res://Code/Scenes/Menus
 res://Scenes/MainMenu
 res://Resources/Options
 res://Code/Scenes
-res://Themes
 res://Shaders/Backgrounds
 res://Scenes/Constants/Backgrounds
 res://Art/Backgrounds
@@ -18,5 +20,3 @@ res://Shaders/Transparency
 res://Themes/Gradients
 res://Art
 res://Resources/Relations
-res://Resources
-res://Scenes

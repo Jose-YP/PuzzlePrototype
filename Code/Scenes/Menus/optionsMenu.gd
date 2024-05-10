@@ -1,9 +1,11 @@
 extends CanvasLayer
 
+@export var awaitingColor = Color(0.455, 0.455, 0.455)
+
 @onready var VolumeValues: Array[HSlider] = [%MasterSlider, %MusicSlider, %SFXSlider]
 @onready var VolumeTexts: Array[RichTextLabel] = [%MasterText, %MusicText, %SFXText]
-@onready var controllerChange: Array[Button] = [%Up/Button, %Accept/Button, %ZL/Button, %Left/Button,
-%Cancel/Button, %L/Button, %Down/Button, %X/Button, %R/Button, %Right/Button, %Y/Button, %ZR/Button]
+@onready var controllerChange: Array[Button] = [%Up/Button, %Accept/Button,  %Left/Button,
+%Cancel/Button, %Down/Button, %X/Button, %Right/Button, %Y/Button]
 @onready var MasterBus = AudioServer.get_bus_index("Master")
 @onready var MusicBus = AudioServer.get_bus_index("Music")
 @onready var SFXBus = AudioServer.get_bus_index("SFX")
@@ -12,7 +14,6 @@ signal main
 signal makeNoise
 signal testMusic(toggled_on)
 
-var awaitingColor = Color(0.455, 0.455, 0.455)
 var inputs: Array[Array] = [[],[]]
 var inputTexts: Array[String] = []
 var Actions: Array = []
