@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://efcxr875kt2y"]
 
-[ext_resource type="Script" path="res://Code/Scenes/game_manager.gd" id="1_k3j0q"]
+[ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/BoardSFX/GlassMove.wav" id="1_rmh2v"]
 [ext_resource type="AudioStream" uid="uid://cerqvwywvs7yc" path="res://Audio/BoardSFX/GlassTap.wav" id="2_s5o8j"]
 [ext_resource type="AudioStream" uid="uid://chxp3gabho17j" path="res://Audio/BoardSFX/HardDrop.wav" id="3_ckid5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://rk43qpboijce"]
 
-[ext_resource type="Script" path="res://Code/Scenes/FullPiece.gd" id="1_qp17r"]
+[ext_resource type="Script" path="res://Code/Scenes/Board&Beads/FullPiece.gd" id="1_qp17r"]
 [ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="2_gjbdu"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="3_4ajt5"]
 

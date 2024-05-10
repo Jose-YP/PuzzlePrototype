@@ -20,3 +20,13 @@ res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Scenes/UI/right_ui.tscn
 res://Code/Scenes/Menus/optionsMenu.gd
+res://Shaders/ShaderCode/ProgressBar.gdshader
+res://Code/Scenes/Board&Beads/Board.gd
+res://Code/Scenes/UI/right_ui.gd
+res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Code/Globals/Globals.gd
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Code/Scenes/Menus/score_display.gd
+res://Scenes/MainMenu/score_display.tscn
+res://Resources/SaveData/SaveFile.tres
+res://Resources/SaveData/SaveMaker.gd

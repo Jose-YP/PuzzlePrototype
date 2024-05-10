@@ -1,3 +1,4 @@
+res://Code/Scenes/UI
 C:/Users/Jose/Desktop/Godots/Games/PuzzlePrototype/Plugins
 res://Plugins
 res://Scenes/Board&Beads
@@ -19,5 +20,3 @@ res://Scenes/UI
 res://Resources/SaveData
 res://Shaders/Transparency
 res://Themes/Gradients
-res://Art
-res://Resources/Relations

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt86eivh6s6vl"]
 
-[ext_resource type="Script" path="res://Code/Scenes/left_ui.gd" id="1_j8v1b"]
+[ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
-[ext_resource type="Shader" path="res://Scenes/UI/ProgressBar.gdshader" id="3_wkqru"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="3_wkqru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
 shader = ExtResource("3_wkqru")

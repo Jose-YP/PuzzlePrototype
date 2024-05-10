@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b371obu5a1ii"]
+[gd_scene load_steps=2 format=3 uid="uid://b371obu5a1ii"]
+
+[ext_resource type="Script" path="res://Code/Scenes/UI/fail_screen.gd" id="1_17cxs"]
 
 [node name="FailScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +9,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_17cxs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1290.0
+offset_bottom = 734.0
+color = Color(0.121569, 0.121569, 0.121569, 0.345098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 135.0
+offset_right = 941.0
+offset_bottom = 550.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]END"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "Retry"

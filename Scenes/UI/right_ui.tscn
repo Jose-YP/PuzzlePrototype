@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmnqltlxw855k"]
 
-[ext_resource type="Script" path="res://Code/Scenes/right_ui.gd" id="1_5q6ng"]
+[ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/UIPieces/DuoDisplay.tscn" id="2_uv3j1"]
 
 [node name="RightUI" type="Control"]

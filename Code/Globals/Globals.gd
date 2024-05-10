@@ -2,6 +2,7 @@ extends Node
 
 @onready var save = Save.load_or_create()
 @onready var userPrefs = UserPreferences.load_or_create()
+@onready var display = sort_scores()
 
 const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")
 const bead_types: Array[String] = ["Earth","Sea","Air","Light","Dark"]

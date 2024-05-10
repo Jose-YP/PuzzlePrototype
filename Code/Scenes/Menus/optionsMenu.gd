@@ -107,7 +107,6 @@ func getNewInputs() -> void:
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
-		print(action)
 		Actions.append(action)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
@@ -118,7 +117,7 @@ func getNewInputs() -> void:
 				Globals.userPrefs.joy_action_events[action] = event
 	
 	Globals.userPrefs.save()
-	print(inputs)
+	print(inputs,"\n")
 	updateInputDisplay()
 
 func updateInputDisplay() -> void:

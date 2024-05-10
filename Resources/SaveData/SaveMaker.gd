@@ -8,6 +8,8 @@ class_name Save
 "333333":[2000,"YP!"],
 "444444":[1000,"YP!"]}
 
+@export var username: String = "LVY"
+
 func save() -> void:
 	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 

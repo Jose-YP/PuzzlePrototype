@@ -1,6 +1,7 @@
 extends Control
 
 signal levelUp(level)
+signal HighScore
 
 var rules: Rules
 var HiScore: int = 0
@@ -18,6 +19,7 @@ func update_score(score) -> void:
 func update_HiScore(score) -> void:
 	HiScore = score
 	%HiScoreText.text = str("HISCORE: ", score)
+	HighScore.emit()
 
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
