@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var MenuSFX: Array[AudioStreamPlayer] = [%MenuMove, %MenuConfirm,
  %MenuDeselect, %Pause]
 @onready var music: AudioStreamPlayer = $Music/Music
-@onready var currentScene = $"Main Menu"
+@onready var currentScene = $MainMenu
 
 const boardScene = preload("res://Scenes/Board&Beads/Board.tscn")
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
@@ -15,7 +15,8 @@ const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 #SCENE SWITCHING
 #-----------------------------------------
 func changeScene(scene) -> void:
-	Globals.currentSave.save()
+	Globals.save.save()
+	Globals.userPrefs.save()
 	currentScene.queue_free()
 	
 	var newScene = scene.instantiate()

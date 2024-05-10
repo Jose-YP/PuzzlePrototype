@@ -24,7 +24,7 @@ offset_top = -25.0
 offset_right = 1308.0
 offset_bottom = 1312.0
 
-[node name="Main Menu" parent="." instance=ExtResource("3_i7gc1")]
+[node name="MainMenu" parent="." instance=ExtResource("3_i7gc1")]
 
 [node name="BoardSFX" type="Node" parent="."]
 
@@ -96,3 +96,6 @@ unique_name_in_owner = true
 stream = ExtResource("9_w0bdq")
 volume_db = -1.0
 pitch_scale = 0.8
+
+[connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
+[connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]

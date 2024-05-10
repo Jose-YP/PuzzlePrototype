@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
 
-[node name="Main Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -52,6 +52,8 @@ text = "HOW TO PLAY"
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
 layout_mode = 0
+offset_left = 0.0
+offset_right = 380.0
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]

@@ -39,6 +39,7 @@ var fallPaused: bool = false
 func _ready() -> void:
 	#Make board before adding anything
 	board = make_grid()
+	
 	#Make Timers function
 	%Gravity.set_wait_time(rules.gravity)
 	%SoftDrop.set_wait_time(rules.soft_drop)
@@ -48,15 +49,18 @@ func _ready() -> void:
 	Globals.glow_num = rel.glow_num
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
+	
 	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
 	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
 	RUI.rules = rules
 	LUI.rules = rules
+	
 	#Make debugging easier
 	match rules.debug_fills:
 		1: fill_board()
 		2: fill_column()
 		4: make_overhang()
+	
 	#start the game
 	spawn_beads()
 	pull_next_bead()
@@ -355,10 +359,13 @@ func post_break() -> void:
 	
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
+	
 	breaking = false
 	breakNum -= 1
+	LUI.breakText.text = str(breakNum)
 	if breakNum < 1:
 		LUI.breakNotifier.hide()
+	
 	#Check for any broken links and new links
 	find_links()
 
