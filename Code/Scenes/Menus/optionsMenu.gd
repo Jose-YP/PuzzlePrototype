@@ -5,8 +5,8 @@ extends CanvasLayer
 
 @onready var VolumeValues: Array[HSlider] = [%MasterSlider, %MusicSlider, %SFXSlider]
 @onready var VolumeTexts: Array[RichTextLabel] = [%MasterText, %MusicText, %SFXText]
-@onready var controllerChange: Array[Button] = [%Up/Button, %Accept/Button,  %Left/Button,
-%Cancel/Button, %Down/Button, %X/Button, %Right/Button, %Y/Button]
+@onready var controllerChange: Array[Button] = [%Up/Up, %Accept/Accept,  %Left/Left,
+%Cancel/Cancel, %Down/Down, %X/X, %Right/Right, %Y/Y]
 @onready var MasterBus = AudioServer.get_bus_index("Master")
 @onready var MusicBus = AudioServer.get_bus_index("Music")
 @onready var SFXBus = AudioServer.get_bus_index("SFX")
@@ -45,6 +45,7 @@ func _ready():
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
 	
 	getNewInputs()
+	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
 
 func _input(event):
 	if toggleOn:
@@ -54,11 +55,6 @@ func _input(event):
 		else:
 			if event is InputEventJoypadButton:
 				changeInput(event)
-				
-			elif event is InputEventJoypadMotion:
-				var eventText = event.as_text()
-				if eventText.contains("Axis 4") or eventText.contains("Axis 5"):
-					changeInput(event)
 
 #-----------------------------------------
 #AUDIO
@@ -111,29 +107,30 @@ func getNewInputs() -> void:
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
-		print(action,events)
+		print(action)
 		Actions.append(action)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
-				print(action,event)
 				inputs[0].append(event)
 				Globals.userPrefs.keyboard_action_events[action] = event
-			elif event is InputEventJoypadButton or event is InputEventJoypadMotion and inputType == 1:
+			elif event is InputEventJoypadButton and inputType == 1:
 				inputs[1].append(event)
 				Globals.userPrefs.joy_action_events[action] = event
 	
 	Globals.userPrefs.save()
+	print(inputs)
 	updateInputDisplay()
 
 func updateInputDisplay() -> void:
 	inputTexts.clear()
 	
 	for event in range(controllerChange.size()):
+		print(controllerChange[event],inputs[inputType][event])
 		var keyText: String
 		if inputType == 0:
 			keyText = inputs[inputType][event].as_text().trim_suffix(" (Physical)")
 		elif inputs[inputType][event].as_text().contains("Button"):
-			keyText = inputs[inputType][event].as_text().left(15)
+			keyText = inputs[inputType][event].as_text().left(16)
 		else:
 			keyText = inputs[inputType][event].as_text().left(23)
 		
@@ -144,6 +141,7 @@ func controllerMapStart(toggled,index) -> void:
 	if currentToggle != null:
 		currentToggle.button_pressed = toggled
 		currentToggle.text = inputTexts[currentToggleIndex]
+		print(currentToggle,inputTexts[currentToggleIndex])
 	
 	currentAction = Actions[index]
 	currentInput = inputs[inputType][index]
