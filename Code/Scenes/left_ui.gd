@@ -5,6 +5,7 @@ extends Control
 @onready var nextBeads = $VBoxContainer/NextBeads
 @onready var progressBar = $VBoxContainer/PanelContainer/BreakProgress
 @onready var breakText = $VBoxContainer/PanelContainer/BreakProgress/Label
+@onready var breakNotifier = $VBoxContainer/HBoxContainer/PanelContainer2
 
 signal breakReady
 

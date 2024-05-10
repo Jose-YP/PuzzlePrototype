@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/UI/left_ui.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/BurnOut.tres
 res://Code/Scenes/Board.gd
@@ -14,4 +14,7 @@ res://Shaders/ShaderCode/Shine2D.gdshader
 res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
-res://Code/Scenes/game_manager.gd
+res://Scenes/UI/right_ui.tscn
+res://Scenes/Board&Beads/Board.tscn
+res://Code/Scenes/left_ui.gd
+res://Scenes/MainMenu/game_manager.tscn

@@ -356,6 +356,9 @@ func post_break() -> void:
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	breaking = false
+	breakNum -= 1
+	if breakNum < 1:
+		LUI.breakNotifier.hide()
 	#Check for any broken links and new links
 	find_links()
 
@@ -657,6 +660,7 @@ func _on_gravity_timeout() -> void:
 
 func _on_left_ui_break_ready():
 	breakNum += 1
+	LUI.breakNotifier.show()
 	LUI.breakText.text = str(breakNum)
 
 func _on_right_ui_level_up(level):

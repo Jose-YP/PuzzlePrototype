@@ -1,10 +1,10 @@
-MarginContainer
+RichTextLabel
+PanelContainer
 HBoxContainer
+MarginContainer
 Button
 VBoxContainer
-RichTextLabel
 GridContainer
-PanelContainer
 AudioStreamPlayer
 Timer
 ColorRect
@@ -12,4 +12,3 @@ Label
 FlowContainer
 Control
 CanvasLayer
-BackBufferCopy
