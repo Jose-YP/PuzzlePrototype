@@ -1,3 +1,4 @@
+ProgressBar
 AudioStreamPlayer
 NewgroundsSessionWatcher
 NewgroundsRequest
@@ -12,4 +13,3 @@ HBoxContainer
 MarginContainer
 LineEdit
 ColorRect
-VBoxContainer

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export_range(0,100) var three_type_chance: int = 25
+
 #Dict doesn't work as the position values aren't pointers to gridPos
 #CCW and CLockwise are named as such as they lead CCW/CLockwise rotations
 @onready var positions: Array = $Positions.get_children()

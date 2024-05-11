@@ -34,6 +34,7 @@ var breakNum: int = 0
 var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
+var failed: bool = false
 var highScored: bool = false
 var playZap: bool = false
 
@@ -350,7 +351,8 @@ func post_turn() -> void:
 	display_board()
 	find_links()
 	
-	pull_next_bead()
+	if not failed:
+		pull_next_bead()
 
 func find_links() -> void:
 	for i in rules.width:
@@ -401,7 +403,8 @@ func detect_fail() -> void:
 	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
 		for j in rules.fail_rows:
 			if board[i][j] != null:
-				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
+				print(Vector2i(i,j),"Found a bead in ",board[i][j] )\
+				failed = true
 				fail_screen()
 
 #______________________________
@@ -712,6 +715,7 @@ func should_play_zap() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
+	
 	var display = Globals.display
 	for i in range(Globals.display.size()):
 		if score > display[i][1]:

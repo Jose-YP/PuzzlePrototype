@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var beads: Array[CompressedTexture2D]
-@export var chainedVFX: PackedScene
+@export var chainedVFX: PackedScene = preload("res://Scenes/Constants/ETC/connected.tscn")
 @export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var linkArray: Node = $LinkArray

@@ -11,6 +11,7 @@
 [node name="Board" type="Node2D"]
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
+scoreFade = null
 
 [node name="LeftUI" parent="." instance=ExtResource("3_4i3af")]
 offset_left = 10.0
