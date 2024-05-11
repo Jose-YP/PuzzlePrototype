@@ -14,7 +14,7 @@ enum STATE {MOVE, GROUNDED, PLACED}
 
 var currentState: STATE = STATE.MOVE
 var gridPos: Array[Vector2i] = [Vector2i(), Vector2i(), Vector2i()]
-
+var flipped: bool = false
 #______________________________
 #INITIALIZATION
 #______________________________
@@ -30,13 +30,13 @@ func _ready() -> void:
 #BOARD FUNCTIONS
 #______________________________
 func flip():
-	rot = rot.rotation_degrees
-	if positions == regularPos:
-		positions = $FlipPos.get_children()
-		rot = $FlipPos
+	if flipped:
+		$Beads.move_child($Beads/CCW,1)
 	else:
-		positions = $Positions.get_children()
-		rot = $Positions
+		$Beads.move_child($Beads/Clockwise,1)
+	
+	flipped = not flipped
+	beads = $Beads.get_children()
 	sync_position()
 
 #With positions independent from beads I can rotate them and keep orientation fixed

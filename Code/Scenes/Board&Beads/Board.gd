@@ -291,7 +291,10 @@ func _process(delta) -> void:
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
-		if Input.is_action_just_pressed("Y") and breakNum > 0:
+		if Input.is_action_just_pressed("Flip"):
+			print("flip")
+			currentBead.flip()
+		if Input.is_action_just_pressed("Break") and breakNum > 0:
 			#Full Bead should not move during this
 			pauseFall(true)
 			find_chains()
