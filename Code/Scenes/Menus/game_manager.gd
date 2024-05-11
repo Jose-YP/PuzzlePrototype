@@ -48,7 +48,10 @@ func _on_board_play_sfx(index):
 	BoardSFX[index].play()
 
 func on_board_retry():
-	pass
+	currentScene.reload_current_scene()
+	currentScene.connect("playSFX",_on_board_play_sfx)
+	currentScene.Fail.connect("main",back_to_menu)
+	currentScene.Fail.connect("retry",on_board_retry)
 
 #-----------------------------------------
 #OPTION MENU SIGNALS
