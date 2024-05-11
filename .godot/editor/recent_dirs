@@ -1,3 +1,4 @@
+res://Scenes/MainMenu
 res://Scenes/Constants/ETC
 res://Code/Constants
 res://Code/Scenes/UI
@@ -7,7 +8,6 @@ res://Scenes/Board&Beads
 res://
 res://Themes
 res://Code/Scenes/Menus
-res://Scenes/MainMenu
 res://Resources/Options
 res://Code/Scenes
 res://Shaders/Backgrounds

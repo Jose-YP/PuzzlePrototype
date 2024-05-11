@@ -1,6 +1,8 @@
+TabContainer
+TabBar
+PanelContainer
 Button
 Node
-PanelContainer
 HBoxContainer
 MarginContainer
 LineEdit
@@ -11,4 +13,3 @@ GridContainer
 AudioStreamPlayer
 Timer
 Label
-FlowContainer

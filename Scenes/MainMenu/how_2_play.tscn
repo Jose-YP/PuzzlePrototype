@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cgd0k1a1ig4xt"]
+
+[node name="How2Play" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2

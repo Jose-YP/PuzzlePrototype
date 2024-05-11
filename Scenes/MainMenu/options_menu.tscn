@@ -228,7 +228,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "A Button"
+text = "Accept"
 scroll_active = false
 
 [node name="Accept" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Accept"]
@@ -262,7 +262,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "B Button"
+text = "Cancel"
 scroll_active = false
 
 [node name="Cancel" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Cancel"]
@@ -296,7 +296,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "X Button"
+text = "Flip"
 scroll_active = false
 
 [node name="X" type="Button" parent="Main/VBox/Controls/VBox/Buttons/X"]
@@ -331,7 +331,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "Y Button"
+text = "Break"
 scroll_active = false
 
 [node name="Y" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Y"]

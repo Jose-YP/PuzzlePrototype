@@ -164,6 +164,7 @@ func changeInput(event) -> void:
 	checkRepeats(currentInput, event)
 	getNewInputs()
 	Globals.set_other_inputs()
+	reset_buttons()
 
 func checkRepeats(oldEvent, event) -> void:
 	var found: bool = false
@@ -179,6 +180,11 @@ func checkRepeats(oldEvent, event) -> void:
 	if found:
 		InputMap.action_erase_event(repeat, event)
 		InputMap.action_add_event(repeat, oldEvent)
+
+func reset_buttons() -> void:
+	for button in controllerChange:
+		button.button_pressed = false
+		button.flat = false
 
 #-----------------------------------------
 #NAVIGATION BUTTONS

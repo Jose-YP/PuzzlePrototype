@@ -2,6 +2,8 @@ extends PanelContainer
 
 @onready var scoretext = $VBoxContainer/HBoxContainer/Scores.get_children()
 
+signal refocus
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var display = Globals.display
@@ -15,5 +17,10 @@ func _ready():
 		scoretext[i].text = str(display[j][0])
 		j += 1
 
+func _process(_delta):
+	if visible:
+		$VBoxContainer/Button.grab_focus()
+
 func _on_button_pressed():
 	$".".hide()
+	refocus.emit()

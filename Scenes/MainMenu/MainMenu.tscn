@@ -33,29 +33,57 @@ columns = 2
 [node name="Play" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_top = NodePath("../Scores")
+focus_neighbor_right = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Scores")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "PLAY"
 
 [node name="Options" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_top = NodePath("../How2Play")
+focus_neighbor_right = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../How2Play")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "OPTIONS"
 
 [node name="Scores" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+focus_neighbor_left = NodePath("../How2Play")
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_right = NodePath("../How2Play")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "SCORES"
 
 [node name="How2Play" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Scores")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath("../Scores")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "HOW TO PLAY"
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
 layout_mode = 0
-offset_left = 0.0
-offset_right = 380.0
+offset_left = 435.0
+offset_top = 63.0
+offset_right = 815.0
+offset_bottom = 396.0
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/Scores" to="." method="_on_scores_pressed"]
 [connection signal="pressed" from="Buttons/How2Play" to="." method="_on_how_2_play_pressed"]
+[connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
+[connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]

@@ -14,3 +14,6 @@ func _on_scores_pressed():
 
 func _on_how_2_play_pressed():
 	pass # Replace with function body.
+
+func _on_score_display_refocus():
+	$Buttons/Scores.grab_focus()
