@@ -14,11 +14,13 @@ theme = ExtResource("1_2q8p4")
 script = ExtResource("1_iwhpm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1290.0
 offset_bottom = 734.0
 color = Color(0.121569, 0.121569, 0.121569, 0.345098)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 331.0
 offset_top = 135.0
 offset_right = 941.0
@@ -57,7 +59,7 @@ size_flags_horizontal = 4
 
 [node name="First" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Third")
@@ -69,7 +71,7 @@ focus_previous = NodePath(".")
 
 [node name="Second" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../First")
@@ -81,7 +83,7 @@ focus_previous = NodePath("../First")
 
 [node name="Third" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Second")
@@ -97,4 +99,7 @@ layout_mode = 2
 text = "Submit
 "
 
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/First" to="." method="_on_focus_entered" binds= [0]]
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Second" to="." method="_on_focus_entered" binds= [1]]
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Third" to="." method="_on_focus_entered" binds= [2]]
 [connection signal="pressed" from="VBoxContainer/Submit" to="." method="_on_submit_pressed"]
