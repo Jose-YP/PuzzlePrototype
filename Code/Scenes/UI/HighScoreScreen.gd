@@ -16,7 +16,10 @@ var placement: int = 6
 var currentIndex: int = 0
 var held: float = 0.0
 var nameIndexes: Array[int]
-# Called when the node enters the scene tree for the first time.
+
+#______________________________
+#INITIALIZATION & PROCESSING
+#______________________________
 func _ready():
 	%First.grab_focus()
 	
@@ -25,7 +28,6 @@ func _ready():
 	$VBoxContainer/RichTextLabel2.clear()
 	$VBoxContainer/RichTextLabel2.append_text(str("[center] Placed in ",convert_placement(placement)," place!"))
 	nameIndexes = charIndex(username)
-	print(nameIndexes)
 	
 	for i in range(charInputs.size()):
 		charInputs[i].text = characters[nameIndexes[i]]
@@ -33,6 +35,7 @@ func _ready():
 func _process(delta):
 	var justorMore: bool = held == 0.0 or held > threshold
 	
+	#held allows for held button presses
 	if Input.is_action_pressed("ui_up") and justorMore:
 		nameIndexes[currentIndex] += 1
 		if nameIndexes[currentIndex] > characters.size() - 1:
@@ -44,11 +47,15 @@ func _process(delta):
 			nameIndexes[currentIndex] = characters.size() - 1
 		charInputs[currentIndex].text = characters[nameIndexes[currentIndex]]
 	
+	#Seperate so held won't affect these two
 	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
 		held += delta
 	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
 		held = 0.0
 
+#______________________________
+#USERNAME MAKER
+#______________________________
 func convert_placement(place):
 	match place:
 		1:
@@ -69,14 +76,20 @@ func charIndex(input) -> Array[int]:
 				indexes.append(i)
 	return indexes
 
+#______________________________
+#SIGNALS
+#______________________________
 func _on_submit_pressed():
 	var user: String
 	for chara in charInputs:
 		user = str(user, chara.text)
 	
 	Globals.save.username = user
+	Globals.save.HiScores.erase(Globals.find_extreme_score(true))
+	Globals.save.save_score(score,user)
+	proceed.emit()
+	$VBoxContainer/Submit.disabled = true
 
 func _on_focus_entered(index):
-	print("focus on ", charInputs[index])
 	currentFocus = charInputs[index]
 	currentIndex = index

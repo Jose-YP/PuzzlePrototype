@@ -24,8 +24,3 @@ func save_score(score,name):
 	for i in range(6):
 		id = str(id,randi_range(0,9))
 	HiScores[id] = [score,name]
-
-func get_highScore():
-	for score in HiScores:
-		pass
-	

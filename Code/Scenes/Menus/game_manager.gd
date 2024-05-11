@@ -37,14 +37,18 @@ func _on_main_menu_switch_options():
 
 func _on_main_menu_switch_play():
 	changeScene(boardScene)
-	currentScene.connect("main",back_to_menu)
 	currentScene.connect("playSFX",_on_board_play_sfx)
+	currentScene.Fail.connect("main",back_to_menu)
+	currentScene.Fail.connect("retry",on_board_retry)
 
 #-----------------------------------------
 #BOARD SIGNALS
 #-----------------------------------------
 func _on_board_play_sfx(index):
 	BoardSFX[index].play()
+
+func on_board_retry():
+	pass
 
 #-----------------------------------------
 #OPTION MENU SIGNALS

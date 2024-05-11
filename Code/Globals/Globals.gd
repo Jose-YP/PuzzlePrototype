@@ -20,6 +20,9 @@ var lowestID: String
 func _ready() -> void:
 	set_other_inputs()
 
+#______________________________
+#SAVE MANAGEMENT
+#______________________________
 func find_extreme_score(lowest = false, Dict = save.HiScores) -> String:
 	var maxHold: Dictionary = {"abc" : [0,""]}
 	var maxID: String = "abc"
@@ -57,6 +60,9 @@ func sort_scores():
 	
 	return sorted
 
+#______________________________
+#INPUT MANAGEMENT
+#______________________________
 func set_other_inputs() -> void:
 	InputMap.action_erase_events("ui_focus_next")
 	InputMap.action_erase_events("ui_focus_prev")
@@ -65,6 +71,9 @@ func set_other_inputs() -> void:
 	for event in InputMap.action_get_events("ui_cancel"):
 		InputMap.action_add_event("ui_focus_prev", event)
 
+#______________________________
+#CONVERSION
+#______________________________
 func string_to_flag(type) -> int:
 	match type:
 		"Earth":

@@ -71,6 +71,7 @@ visible = false
 
 [node name="FailScreen" parent="." instance=ExtResource("7_td82j")]
 visible = false
+modulate = Color(1, 1, 1, 0)
 
 [connection signal="breakReady" from="LeftUI" to="." method="_on_left_ui_break_ready"]
 [connection signal="HighScore" from="RightUI" to="." method="_on_right_ui_high_score"]
@@ -79,3 +80,4 @@ visible = false
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]
 [connection signal="timeout" from="Timers/Gravity" to="." method="_on_gravity_timeout"]
 [connection signal="timeout" from="Timers/Debug" to="." method="_on_debug_timeout"]
+[connection signal="proceed" from="HighScoreScreen" to="." method="_on_high_score_screen_proceed"]

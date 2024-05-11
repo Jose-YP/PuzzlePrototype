@@ -35,12 +35,15 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Main Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Retry"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]

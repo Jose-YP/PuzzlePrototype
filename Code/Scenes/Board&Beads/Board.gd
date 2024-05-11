@@ -3,16 +3,18 @@ extends Node2D
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
+@export var scoreFade: float = 1.5
+
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $RightUI
 @onready var LUI: Control = $LeftUI
+@onready var Fail: Control = $FailScreen
 @onready var baseGroundedTime = %Grounded.get_wait_time()
 @onready var baseGravTime = %Gravity.get_wait_time()
 
 signal brokeBead
 signal brokeAll
 signal fail
-signal main
 signal playSFX(index)
 
 #CONSTANTS
@@ -376,7 +378,7 @@ func detect_fail() -> void:
 		for j in rules.fail_rows:
 			if board[i][j] != null:
 				print("Found a bead in ",board[i][j] )
-				fail.emit()
+				fail_screen()
 
 #______________________________
 #CHAIN
@@ -687,6 +689,28 @@ func fail_screen() -> void:
 	for i in range(Globals.display.size()):
 		if score > display[i][1]:
 			highScored = true
+	
+	if highScored:
+		var HiScoreTween = $HighScoreScreen.create_tween()
+		$HighScoreScreen.show()
+		HiScoreTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade/2)
+	
+	else:
+		var failTween = Fail.create_tween()
+		Fail.show()
+		failTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade/2)
+	
+
+func _on_high_score_screen_proceed():
+	var HiScoreTween = $HighScoreScreen.create_tween()
+	var failTween = Fail.create_tween()
+	HiScoreTween.set_parallel(true)
+	failTween.set_parallel(true)
+	
+	Fail.show()
+	HiScoreTween.tween_method(set_modulate, Color.WHITE, Color.TRANSPARENT, scoreFade)
+	failTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade)
+	HiScoreTween.tween_callback(hide)
 
 #______________________________
 #DEBUG

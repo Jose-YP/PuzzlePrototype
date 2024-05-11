@@ -27,6 +27,9 @@ var hardDropped: bool = true
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
+	randomize_type()
+
+func randomize_type() -> void:
 	typeID = randi_range(0,Globals.bead_types.size() - 1)
 	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)
