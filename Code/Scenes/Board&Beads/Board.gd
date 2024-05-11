@@ -35,6 +35,7 @@ var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
 var highScored: bool = false
+var playZap: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -99,6 +100,7 @@ func pull_next_bead() -> void:
 		
 		for bead in currentBead.beads:
 			bead.connect("find_adjacent", find_adjacent)
+			bead.connect("made_chain", should_play_zap)
 		
 		full_bead_rotation(rules.start_pos, true)
 		spawn_beads()
@@ -292,8 +294,8 @@ func _process(delta) -> void:
 			inputHoldTime = 0
 			held = false
 		if Input.is_action_just_pressed("Flip"):
-			print("flip")
 			currentBead.flip()
+			
 		if Input.is_action_just_pressed("Break") and breakNum > 0:
 			#Full Bead should not move during this
 			pauseFall(true)
@@ -344,6 +346,10 @@ func find_links() -> void:
 			bead.should_glow()
 			if bead.glowing:
 				bead.should_chain()
+	
+	if playZap: 
+		playSFX.emit(5)
+		playZap = false
 
 func post_break() -> void:
 	for i in range(rules.width):
@@ -684,6 +690,9 @@ func _on_right_ui_level_up(level):
 func _on_right_ui_high_score():
 	highScored = true
 
+func should_play_zap() -> void:
+	playZap = true
+
 #______________________________
 #FAIL SCREEN
 #______________________________
@@ -724,6 +733,7 @@ func add_bead(pos) -> void:
 	bead.global_position = grid_to_pixel(Vector2i(pos.x,pos.y))
 	board[pos.x][pos.y] = bead
 	bead.connect("find_adjacent", find_adjacent)
+	bead.connect("made_chain", should_play_zap)
 	bead.set_name(str(pos))
 
 func fill_board() -> void:

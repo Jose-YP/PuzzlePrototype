@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
-%HardDrop, %SoftDrop, %Twinkle, %ETC]
+%HardDrop, %SoftDrop, %Twinkle, %Zap, %ETC]
+@onready var breakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3]
 @onready var MenuSFX: Array[AudioStreamPlayer] = [%MenuMove, %MenuConfirm,
  %MenuDeselect, %Pause]
 @onready var music: AudioStreamPlayer = $Music/Music
@@ -21,10 +22,14 @@ func changeScene(scene) -> void:
 	
 	var newScene = scene.instantiate()
 	$".".add_child(newScene)
+	$".".move_child(currentScene,1)
 	currentScene = newScene
 
 func back_to_menu():
 	changeScene(mainMenuScene)
+
+func play_menu_sfx(index):
+	MenuSFX[index].play()
 
 #-----------------------------------------
 #MAIN MENU SIGNALS

@@ -95,3 +95,11 @@ layout_mode = 2
 [node name="LinkArray" type="Node" parent="."]
 editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
 script = ExtResource("6_avety")
+
+[node name="BreakSFX" type="Node" parent="."]
+
+[node name="Break" type="AudioStreamPlayer" parent="BreakSFX"]
+
+[node name="Break2" type="AudioStreamPlayer" parent="BreakSFX"]
+
+[node name="Break3" type="AudioStreamPlayer" parent="BreakSFX"]

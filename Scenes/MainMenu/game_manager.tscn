@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=16 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/BoardSFX/GlassMove.wav" id="1_rmh2v"]
@@ -11,8 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cf40870fv4d5q" path="res://Audio/MenuSFX/MenuConfirm.wav" id="7_bbfgb"]
 [ext_resource type="AudioStream" uid="uid://bhapq413y8iqc" path="res://Audio/MenuSFX/MenuDeselect.wav" id="8_0a7ua"]
 [ext_resource type="AudioStream" uid="uid://cx43g2mds8wmu" path="res://Audio/BoardSFX/Twinkle.wav" id="8_6hs26"]
+[ext_resource type="AudioStream" uid="uid://km3md211h7xt" path="res://Audio/BoardSFX/Zap.wav" id="9_g8x5o"]
 [ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="9_w0bdq"]
-[ext_resource type="AudioStream" uid="uid://cu1yqklwnfgy1" path="res://Audio/Music/1-02 Disco Ball (RR 20th Anniv. Mix).mp3" id="10_hqim8"]
+[ext_resource type="AudioStream" uid="uid://vamg0tkl3038" path="res://Audio/Music/break-tambossa-103bpm.wav" id="11_m4xdf"]
 [ext_resource type="PackedScene" uid="uid://dfbgcar6hpar8" path="res://Scenes/Constants/Backgrounds/DarkBG.tscn" id="12_73kx1"]
 
 [node name="GameManager" type="CanvasLayer"]
@@ -63,6 +64,33 @@ volume_db = -12.0
 pitch_scale = 0.76
 bus = &"BoardSFX"
 
+[node name="Zap" type="AudioStreamPlayer" parent="BoardSFX"]
+unique_name_in_owner = true
+stream = ExtResource("9_g8x5o")
+volume_db = -12.0
+pitch_scale = 0.76
+bus = &"BeadSFX"
+
+[node name="BreakSFX" type="Node" parent="BoardSFX"]
+
+[node name="Break" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+volume_db = -12.0
+pitch_scale = 0.94
+bus = &"BeadSFX"
+
+[node name="Break2" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+volume_db = -12.0
+pitch_scale = 0.94
+bus = &"BeadSFX"
+
+[node name="Break3" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+volume_db = -12.0
+pitch_scale = 0.94
+bus = &"BeadSFX"
+
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_mnt3l")
@@ -71,8 +99,9 @@ bus = &"BoardSFX"
 [node name="Music" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("10_hqim8")
+stream = ExtResource("11_m4xdf")
 volume_db = -10.0
+pitch_scale = 1.1
 bus = &"Music"
 
 [node name="MenuSFX" type="Node" parent="."]

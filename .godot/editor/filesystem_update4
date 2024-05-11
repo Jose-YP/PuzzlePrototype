@@ -20,3 +20,6 @@ res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/MainMenu/game_manager.tscn
 res://Code/Scenes/Board&Beads/FullPiece.gd
 res://Scenes/Board&Beads/FullBead.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/Board&Beads/SinglePiece.gd

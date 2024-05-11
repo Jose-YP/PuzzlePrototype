@@ -11,6 +11,7 @@ extends Node2D
 @onready var chainedLinks: Array[Node] = []
 
 signal find_adjacent
+signal made_chain
 
 var typeID: int = 0
 var typeFlag: int = 1
@@ -89,6 +90,7 @@ func should_chain() -> void:
 		#Check if chains array has to updated when links update
 		if adj.typeFlag & Globals.relation_flags[typeID] and chainedLinks.find(adj) == -1:
 			make_chain(adj)
+			made_chain.emit()
 			if chainNodes[i] == null and adj.chainNodes[Globals.otherConnectionNum[i]] == null:
 				display_chain(i,0)
 				adj.display_chain(i,1)
@@ -158,6 +160,8 @@ func destroy_anim():
 	#Destroy bead
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
+	await tween.finished
+	queue_free()
 
 func set_burn(value):
 	material.set_shader_parameter("dissolve_value",value)

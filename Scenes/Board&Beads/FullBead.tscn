@@ -57,18 +57,6 @@ position = Vector2(0, -50)
 material = SubResource("ShaderMaterial_cy068")
 position = Vector2(50, 0)
 
-[node name="RegPos" type="Node2D" parent="."]
-position = Vector2(12, 74)
-metadata/_edit_group_ = true
-
-[node name="AnchorPos" type="Marker2D" parent="RegPos"]
-
-[node name="CCWPos" type="Marker2D" parent="RegPos"]
-position = Vector2(0, -50)
-
-[node name="ClockwisePos" type="Marker2D" parent="RegPos"]
-position = Vector2(50, 0)
-
 [node name="Positions" type="Node2D" parent="."]
 position = Vector2(12, 74)
 metadata/_edit_group_ = true
@@ -80,15 +68,3 @@ position = Vector2(0, -50)
 
 [node name="ClockwisePos" type="Marker2D" parent="Positions"]
 position = Vector2(50, 0)
-
-[node name="FlipPos" type="Node2D" parent="."]
-position = Vector2(12, 74)
-metadata/_edit_group_ = true
-
-[node name="AnchorPos" type="Marker2D" parent="FlipPos"]
-
-[node name="CCWPos" type="Marker2D" parent="FlipPos"]
-position = Vector2(-50, 0)
-
-[node name="ClockwisePos" type="Marker2D" parent="FlipPos"]
-position = Vector2(0, -50)
