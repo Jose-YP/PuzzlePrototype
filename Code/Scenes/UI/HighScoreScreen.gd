@@ -1,6 +1,6 @@
 extends Control
 
-@onready var charInputs: Array[LineEdit] = [%First, %Second, %Third]
+@onready var charInputs: Array[Button] = [%First, %Second, %Third]
 @onready var username: String = Globals.save.username
 
 signal proceed
@@ -14,6 +14,8 @@ var placement: int = 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	%First.focus.set_focus_mode(2)
+	
 	$VBoxContainer/RichTextLabel.clear()
 	$VBoxContainer/RichTextLabel.append_text(str("[center] Reached a High Score of ",score))
 	$VBoxContainer/RichTextLabel2.clear()

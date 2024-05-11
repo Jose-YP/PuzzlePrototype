@@ -30,3 +30,6 @@ res://Code/Scenes/Menus/score_display.gd
 res://Scenes/MainMenu/score_display.tscn
 res://Resources/SaveData/SaveFile.tres
 res://Resources/SaveData/SaveMaker.gd
+res://Code/Constants/Node.gd
+res://Scenes/Constants/ETC/node.tscn
+res://Themes/GameUI.tres

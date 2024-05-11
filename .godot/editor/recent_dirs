@@ -1,3 +1,4 @@
+res://Scenes/Constants/ETC
 res://Code/Constants
 res://Code/Scenes/UI
 C:/Users/Jose/Desktop/Godots/Games/PuzzlePrototype/Plugins
@@ -19,4 +20,3 @@ res://Scenes/Constants/UIPieces
 res://Scenes/UI
 res://Resources/SaveData
 res://Shaders/Transparency
-res://Themes/Gradients

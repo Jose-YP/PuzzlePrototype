@@ -1,5 +1,5 @@
-Node
 Button
+Node
 PanelContainer
 HBoxContainer
 MarginContainer
@@ -12,4 +12,3 @@ AudioStreamPlayer
 Timer
 Label
 FlowContainer
-Control

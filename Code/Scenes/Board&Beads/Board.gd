@@ -127,24 +127,24 @@ func move_bead(ammount, direction = "X") -> void:
 		playSFX.emit(0)
 
 func movement() -> void:
-	if Input.is_action_just_pressed("Accept") and can_rotate("CCW"):
+	if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
 		currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
 		if currentBead.rot.rotation_degrees > 360:
 			currentBead.rot.rotation_degrees -= 360
 		
 		full_bead_rotation(currentBead.gridPos[0])
 		
-	if Input.is_action_just_pressed("Cancel") and can_rotate("CLOCKWISE"):
+	if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
 		currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
 		if currentBead.rot.rotation_degrees < 0:
 			currentBead.rot.rotation_degrees += 360
 		
 		full_bead_rotation(currentBead.gridPos[0])
 	
-	if Input.is_action_just_pressed("Left") and can_move("Left"):
+	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
 		move_bead(-1)
 	
-	if Input.is_action_just_pressed("Right") and can_move("Right"):
+	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
 		move_bead(1)
 	
 	if Input.is_anything_pressed():
@@ -192,10 +192,10 @@ func hard_drop(target) -> void:
 
 func drop() -> void:
 	#Both drop, up is hard drop, down is soft drop
-	if Input.is_action_just_pressed("Up"):
+	if Input.is_action_just_pressed("ui_up"):
 		hard_drop(find_drop_bottom(currentBead))
 		
-	if Input.is_action_just_pressed("Down") and can_move("Down"):
+	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
 		move_bead(1, "Y")
 		currentBead.sync_position()
 		$Timers/SoftDrop.start()
@@ -282,10 +282,10 @@ func _process(delta) -> void:
 			movement()
 			drop()
 		
-		if Input.is_action_pressed("Down") and not fallPaused:
+		if Input.is_action_pressed("ui_down") and not fallPaused:
 			inputHoldTime += delta
 			held = inputHoldTime > rules.soft_drop
-		if Input.is_action_just_released("Down"):
+		if Input.is_action_just_released("ui_down"):
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false

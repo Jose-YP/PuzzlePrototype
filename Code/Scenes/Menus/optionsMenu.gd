@@ -84,7 +84,7 @@ func _on_sfx_pressed() -> void:
 #CONTROLLER REMAPPING
 #-----------------------------------------
 #WHEN INPORTING: RESET INPUT MAP RESOURCE MANUALLY ONCE
-#
+#RECONFIGURE SIGNAL INDEXES
 func getNewInputs() -> void:
 	Actions = []
 	inputs = [[],[]]
@@ -117,14 +117,12 @@ func getNewInputs() -> void:
 				Globals.userPrefs.joy_action_events[action] = event
 	
 	Globals.userPrefs.save()
-	print(inputs,"\n")
 	updateInputDisplay()
 
 func updateInputDisplay() -> void:
 	inputTexts.clear()
 	
 	for event in range(controllerChange.size()):
-		print(controllerChange[event],inputs[inputType][event])
 		var keyText: String
 		if inputType == 0:
 			keyText = inputs[inputType][event].as_text().trim_suffix(" (Physical)")
@@ -140,7 +138,6 @@ func controllerMapStart(toggled,index) -> void:
 	if currentToggle != null:
 		currentToggle.button_pressed = toggled
 		currentToggle.text = inputTexts[currentToggleIndex]
-		print(currentToggle,inputTexts[currentToggleIndex])
 	
 	currentAction = Actions[index]
 	currentInput = inputs[inputType][index]
@@ -166,6 +163,7 @@ func changeInput(event) -> void:
 	toggleOn = false
 	checkRepeats(currentInput, event)
 	getNewInputs()
+	Globals.set_other_inputs()
 
 func checkRepeats(oldEvent, event) -> void:
 	var found: bool = false

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccacyr5ehej7m"]
+[gd_scene load_steps=3 format=3 uid="uid://ccacyr5ehej7m"]
 
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="1_2q8p4"]
 [ext_resource type="Script" path="res://Code/Scenes/UI/HighScoreScreen.gd" id="1_iwhpm"]
 
 [node name="HighScoreScreen" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2q8p4")
 script = ExtResource("1_iwhpm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -59,7 +61,9 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Third")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Second")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Second")
 focus_previous = NodePath(".")
 
@@ -69,7 +73,9 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../First")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Third")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Third")
 focus_previous = NodePath("../First")
 
@@ -79,7 +85,9 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Second")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../First")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../../Submit")
 focus_previous = NodePath("../Second")
 
