@@ -39,13 +39,7 @@ func _ready():
 		audioSet(userAudios[i], i)
 	
 	inputType = Globals.userPrefs.input_type
-	for action in Globals.userPrefs.keyboard_action_events:
-		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
-	
-	for action in Globals.userPrefs.joy_action_events:
-		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
+	Globals.set_controls()
 	
 	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
 	getNewInputs()

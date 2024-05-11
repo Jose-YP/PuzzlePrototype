@@ -33,3 +33,4 @@ res://Shaders/Backgrounds/WaterBG.tres
 res://Shaders/Gradients/Earth.tres
 res://Shaders/Gradients/Light.tres
 res://Shaders/Gradients/Air.tres
+res://Code/Globals/Globals.gd

@@ -19,6 +19,7 @@ var lowestID: String
 
 func _ready() -> void:
 	set_other_inputs()
+	Globals.set_controls()
 
 #______________________________
 #SAVE MANAGEMENT
@@ -59,6 +60,15 @@ func sort_scores():
 		Dict.erase(ID)
 	
 	return sorted
+
+func set_controls():
+	for action in Globals.userPrefs.keyboard_action_events:
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
+	
+	for action in Globals.userPrefs.joy_action_events:
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
 
 #______________________________
 #INPUT MANAGEMENT
