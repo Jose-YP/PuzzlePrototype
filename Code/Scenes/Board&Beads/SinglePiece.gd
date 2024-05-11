@@ -91,8 +91,8 @@ func should_chain() -> void:
 		#Check if chains array has to updated when links update
 		if adj.typeFlag & Globals.relation_flags[typeID] and chainedLinks.find(adj) == -1:
 			make_chain(adj)
-			made_chain.emit()
 			if chainNodes[i] == null and adj.chainNodes[Globals.otherConnectionNum[i]] == null:
+				made_chain.emit()
 				display_chain(i,0)
 				adj.display_chain(i,1)
 

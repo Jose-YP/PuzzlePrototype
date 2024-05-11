@@ -167,6 +167,8 @@ func place() -> void:
 func hard_drop(target) -> void:
 	print(target)
 	var prevPos: Vector2i = currentBead.gridPos[0]
+	if currentBead.flipped:
+		print()
 	for i in (currentBead.beads.size()):
 		display_board()
 		var pos: Vector2i = target[i]
@@ -296,6 +298,19 @@ func _process(delta) -> void:
 		if Input.is_action_just_pressed("Flip"):
 			currentBead.flip()
 			
+			for i in range(currentBead.gridPos.size()):
+				var pos: Vector2i = currentBead.gridPos[i]
+				#Only clear own bead
+				if board[pos.x][pos.y] == currentBead.beads[i]:
+					board[pos.x][pos.y] = null
+				
+				#Keep board pos.x.y since thats new location of bead
+				#Update visual and coded grid position
+				currentBead.gridPos[i] = pos
+				board[pos.x][pos.y] = currentBead.beads[i]
+				currentBead.positions[i].global_position = grid_to_pixel(pos)
+				playSFX.emit(1)
+			
 		if Input.is_action_just_pressed("Break") and breakNum > 0:
 			#Full Bead should not move during this
 			pauseFall(true)
@@ -386,7 +401,7 @@ func detect_fail() -> void:
 	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
 		for j in rules.fail_rows:
 			if board[i][j] != null:
-				print("Found a bead in ",board[i][j] )
+				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
 				fail_screen()
 
 #______________________________
