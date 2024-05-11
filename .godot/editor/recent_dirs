@@ -1,3 +1,4 @@
+res://Code/Constants
 res://Code/Scenes/UI
 C:/Users/Jose/Desktop/Godots/Games/PuzzlePrototype/Plugins
 res://Plugins
@@ -14,7 +15,6 @@ res://Art/Backgrounds
 res://Shaders/Gradients
 res://Shaders/ShaderCode
 res://Scenes/Constants
-res://Code/Constants
 res://Scenes/Constants/UIPieces
 res://Scenes/UI
 res://Resources/SaveData

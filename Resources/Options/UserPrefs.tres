@@ -96,22 +96,22 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 96.0
 input_type = 0
 keyboard_action_events = {
-"Accept": SubResource("InputEventKey_36gn1"),
-"Cancel": SubResource("InputEventKey_iqa86"),
-"Down": SubResource("InputEventKey_u24et"),
-"Left": SubResource("InputEventKey_6jykl"),
-"Right": SubResource("InputEventKey_wru2y"),
-"Up": SubResource("InputEventKey_ouwl1"),
+"ui_accept": SubResource("InputEventKey_36gn1"),
+"ui_cancel": SubResource("InputEventKey_iqa86"),
+"ui_down": SubResource("InputEventKey_u24et"),
+"ui_left": SubResource("InputEventKey_6jykl"),
+"ui_right": SubResource("InputEventKey_wru2y"),
+"ui_up": SubResource("InputEventKey_ouwl1"),
 "X": SubResource("InputEventKey_yauou"),
 "Y": SubResource("InputEventKey_2u0gq")
 }
 joy_action_events = {
-"Accept": SubResource("InputEventJoypadButton_sddbg"),
-"Cancel": SubResource("InputEventJoypadButton_wljpv"),
-"Down": SubResource("InputEventJoypadButton_pdd0g"),
-"Left": SubResource("InputEventJoypadButton_dgrfk"),
-"Right": SubResource("InputEventJoypadButton_l7pux"),
-"Up": SubResource("InputEventJoypadButton_yq7nx"),
+"ui_accept": SubResource("InputEventJoypadButton_sddbg"),
+"ui_cancel": SubResource("InputEventJoypadButton_wljpv"),
+"ui_down": SubResource("InputEventJoypadButton_pdd0g"),
+"ui_left": SubResource("InputEventJoypadButton_dgrfk"),
+"ui_right": SubResource("InputEventJoypadButton_l7pux"),
+"ui_up": SubResource("InputEventJoypadButton_yq7nx"),
 "X": SubResource("InputEventJoypadButton_bfrfc"),
 "Y": SubResource("InputEventJoypadButton_hdkv6")
 }
