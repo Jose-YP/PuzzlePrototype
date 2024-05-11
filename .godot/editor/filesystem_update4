@@ -23,3 +23,13 @@ res://Scenes/Board&Beads/FullBead.tscn
 res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/MainMenu/MainMenu.tscn
+res://Code/Scenes/Menus/MainMenu.gd
+res://Scenes/MainMenu/options_menu.tscn
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Shaders/Backgrounds/AirBG.tres
+res://Shaders/Backgrounds/EarthBG.tres
+res://Shaders/Backgrounds/WaterBG.tres
+res://Shaders/Gradients/Earth.tres
+res://Shaders/Gradients/Light.tres
+res://Shaders/Gradients/Air.tres

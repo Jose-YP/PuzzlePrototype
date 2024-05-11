@@ -9,6 +9,7 @@ extends Node2D
 @onready var glow: Sprite2D = $Glow
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
+@onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
 
 signal find_adjacent
 signal made_chain
@@ -154,6 +155,7 @@ func set_chains(value) -> void:
 func destroy_anim():
 	#Destroy chains
 	breaking = true
+	brakSFX.pick_random().play()
 	for bolt in $Connections.get_children():
 		bolt.fade_tweenout()
 	

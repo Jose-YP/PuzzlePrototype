@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UserPreferences" load_steps=18 format=3 uid="uid://b20cx18hisgxl"]
+[gd_resource type="Resource" script_class="UserPreferences" load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://Resources/Options/UserPreferences.gd" id="1_c45uf"]
 
@@ -33,56 +33,56 @@ button_index = 14
 device = -1
 button_index = 11
 
-[sub_resource type="InputEventKey" id="InputEventKey_2u0gq"]
+[sub_resource type="InputEventKey" id="InputEventKey_kixjv"]
 pressed = true
 keycode = 74
 physical_keycode = 74
 key_label = 74
 unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_yauou"]
+[sub_resource type="InputEventKey" id="InputEventKey_lii4d"]
 pressed = true
 keycode = 73
 physical_keycode = 73
 key_label = 73
 unicode = 105
 
-[sub_resource type="InputEventKey" id="InputEventKey_36gn1"]
+[sub_resource type="InputEventKey" id="InputEventKey_kr1vi"]
 pressed = true
 keycode = 79
 physical_keycode = 79
 key_label = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_iqa86"]
+[sub_resource type="InputEventKey" id="InputEventKey_exuaa"]
 pressed = true
 keycode = 75
 physical_keycode = 75
 key_label = 75
 unicode = 107
 
-[sub_resource type="InputEventKey" id="InputEventKey_u24et"]
+[sub_resource type="InputEventKey" id="InputEventKey_v0gcf"]
 pressed = true
 keycode = 83
 physical_keycode = 83
 key_label = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_6jykl"]
+[sub_resource type="InputEventKey" id="InputEventKey_grckm"]
 pressed = true
 keycode = 65
 physical_keycode = 65
 key_label = 65
 unicode = 97
 
-[sub_resource type="InputEventKey" id="InputEventKey_wru2y"]
+[sub_resource type="InputEventKey" id="InputEventKey_wfvbn"]
 pressed = true
 keycode = 68
 physical_keycode = 68
 key_label = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_ouwl1"]
+[sub_resource type="InputEventKey" id="InputEventKey_xf5y0"]
 pressed = true
 keycode = 87
 physical_keycode = 87
@@ -96,14 +96,14 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 96.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_2u0gq"),
-"Flip": SubResource("InputEventKey_yauou"),
-"ui_accept": SubResource("InputEventKey_36gn1"),
-"ui_cancel": SubResource("InputEventKey_iqa86"),
-"ui_down": SubResource("InputEventKey_u24et"),
-"ui_left": SubResource("InputEventKey_6jykl"),
-"ui_right": SubResource("InputEventKey_wru2y"),
-"ui_up": SubResource("InputEventKey_ouwl1")
+"Break": SubResource("InputEventKey_kixjv"),
+"Flip": SubResource("InputEventKey_lii4d"),
+"ui_accept": SubResource("InputEventKey_kr1vi"),
+"ui_cancel": SubResource("InputEventKey_exuaa"),
+"ui_down": SubResource("InputEventKey_v0gcf"),
+"ui_left": SubResource("InputEventKey_grckm"),
+"ui_right": SubResource("InputEventKey_wfvbn"),
+"ui_up": SubResource("InputEventKey_xf5y0")
 }
 joy_action_events = {
 "Break": SubResource("InputEventJoypadButton_hdkv6"),

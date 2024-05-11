@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=4 format=3 uid="uid://bjf6n3d1yeous"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
+[ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -80,6 +81,10 @@ offset_left = 435.0
 offset_top = 63.0
 offset_right = 815.0
 offset_bottom = 396.0
+
+[node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
+visible = false
+layout_mode = 0
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]

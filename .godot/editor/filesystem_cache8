@@ -139,10 +139,11 @@ Snare 11.wav::AudioStreamWAV::7674581248641622124::1715380729::1715380729::1::::
 SoftDrop.wav::AudioStreamWAV::2722084202396408851::1715179287::1715295468::1::::<><>::
 Twinkle.wav::AudioStreamWAV::6448763953319360908::1715179287::1715295477::1::::<><>::
 Zap.wav::AudioStreamWAV::728382675249509241::1715436513::1715436539::1::::<><>::
-::res://Audio/BoardSFX/BreakSFX/::1715436589
-Bead1.wav::AudioStreamWAV::4126847366720555629::1715436570::1715436589::1::::<><>::
-Bead2.wav::AudioStreamWAV::714499073919306466::1715436570::1715436589::1::::<><>::
-Bead3.wav::AudioStreamWAV::6169888650138545571::1715436571::1715436589::1::::<><>::
+::res://Audio/BoardSFX/BreakSFX/::1715439344
+Brak1.wav::AudioStreamWAV::236576533257939724::1715439344::1715439345::1::::<><>::
+Brak2.wav::AudioStreamWAV::8035153983867194367::1715439344::1715439345::1::::<><>::
+Brak3.wav::AudioStreamWAV::512769137136227985::1715439344::1715439345::1::::<><>::
+Brak4.wav::AudioStreamWAV::6804206042042964001::1715439344::1715439345::1::::<><>::
 ::res://Audio/MenuSFX/::1715381022
 Clap 3.wav::AudioStreamWAV::4028221680550949346::1715381002::1715381005::1::::<><>::
 Click.wav::AudioStreamWAV::4515101355926884356::1715179287::1715295457::1::::<><>::
@@ -151,7 +152,7 @@ MenuConfirm.wav::AudioStreamWAV::5185231116085820208::1715179287::1715295473::1:
 MenuDeselect.wav::AudioStreamWAV::2878683481400942794::1715179287::1715295473::1::::<><>::
 MenuMove.wav::AudioStreamWAV::803982592498889244::1715179287::1715295473::1::::<><>::
 Reckless.wav::AudioStreamWAV::8067380401030644841::1715179287::1715295473::1::::<><>::
-::res://Audio/Music/::1715380858
+::res://Audio/Music/::1715436856
 1-02 Disco Ball (RR 20th Anniv. Mix).mp3::AudioStreamMP3::6231778385524783450::1715353624::1715436752::1::::<><>::
 break-tambossa-103bpm.wav::AudioStreamWAV::1474706377980528845::1715380853::1715436856::1::::<><>::
 ::res://Code/::1714654675
@@ -167,12 +168,12 @@ Test.gd::GDScript::-1::1715032746::0::1::::<>Control<>::
 EditorPlugins.gd::GDScript::-1::1715357962::0::1::::<>Node<>::
 Globals.gd::GDScript::-1::1715393539::0::1::::<>Node<>::
 ::res://Code/Scenes/::1715380182
-::res://Code/Scenes/Board&Beads/::1715434276
-Board.gd::GDScript::-1::1715434275::0::1::::<>Node2D<>::
-FullPiece.gd::GDScript::-1::1715434276::0::1::::<>Node2D<>::
-SinglePiece.gd::GDScript::-1::1715395028::0::1::::<>Node2D<>::
-::res://Code/Scenes/Menus/::1715398800
-game_manager.gd::GDScript::-1::1715396781::0::1::::<>CanvasLayer<>::
+::res://Code/Scenes/Board&Beads/::1715438035
+Board.gd::GDScript::-1::1715438035::0::1::::<>Node2D<>::
+FullPiece.gd::GDScript::-1::1715437193::0::1::::<>Node2D<>::
+SinglePiece.gd::GDScript::-1::1715438035::0::1::::<>Node2D<>::
+::res://Code/Scenes/Menus/::1715437784
+game_manager.gd::GDScript::-1::1715437784::0::1::::<>CanvasLayer<>::
 MainMenu.gd::GDScript::-1::1715398800::0::1::::<>Control<>::
 optionsMenu.gd::GDScript::-1::1715398446::0::1::::<>CanvasLayer<>::
 score_display.gd::GDScript::-1::1715398634::0::1::::<>PanelContainer<>::
@@ -197,12 +198,12 @@ RuleMaker.gd::GDScript::-1::1715355238::0::1::::Rules<>Resource<>::
 SaveFile.tres::Resource/Resource::-1::1715433669::0::1::::<><>::res://Resources/SaveData/SaveMaker.gd
 SaveMaker.gd::GDScript::-1::1715393539::0::1::::Save<>Resource<>::
 ::res://Scenes/::1715179287
-::res://Scenes/Board&Beads/::1715433665
+::res://Scenes/Board&Beads/::1715438035
 Board.tscn::PackedScene::3399644878295701062::1715433664::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>res://Code/Constants/GridBackground.gd<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn
 fail_screen.tscn::PackedScene::129981532982295584::1715395209::0::1::::<><>::res://Code/Scenes/UI/fail_screen.gd
-FullBead.tscn::PackedScene::5820798710556208465::1715433665::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
+FullBead.tscn::PackedScene::5820798710556208465::1715437192::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
 HighScoreScreen.tscn::PackedScene::4913384287133867008::1715393694::0::1::::<><>::uid://bqt13gd00jakt::::res://Themes/Theme.tres<>res://Code/Scenes/UI/HighScoreScreen.gd
-SingleBead.tscn::PackedScene::6625588245103072961::1715380182::0::1::::<><>::uid://w0qtrr7jio8o::::res://Shaders/Transparency/BurnOut.tres<>res://Code/Scenes/Board&Beads/SinglePiece.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://4feies2oagdp::::res://Scenes/Constants/ETC/connected.tscn<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>res://Code/Constants/LinkArray.gd<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png
+SingleBead.tscn::PackedScene::6625588245103072961::1715438035::0::1::::<><>::uid://w0qtrr7jio8o::::res://Shaders/Transparency/BurnOut.tres<>res://Code/Scenes/Board&Beads/SinglePiece.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://4feies2oagdp::::res://Scenes/Constants/ETC/connected.tscn<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>res://Code/Constants/LinkArray.gd<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png
 UIFullBead.tscn::PackedScene::1215665778016850412::1715380163::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
 ::res://Scenes/Constants/::1715380353
 ::res://Scenes/Constants/Backgrounds/::1715353873
@@ -224,8 +225,8 @@ DuoDisplay.tscn::PackedScene::6367025496885865420::1715292042::0::1::::<><>::uid
 earth.tscn::PackedScene::4657495909541422340::1715196569::0::1::::<><>::uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png
 Light.tscn::PackedScene::2693213989488194706::1715196521::0::1::::<><>::uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png
 liquid.tscn::PackedScene::2395455070572786544::1715196558::0::1::::<><>::uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png
-::res://Scenes/MainMenu/::1715434275
-game_manager.tscn::PackedScene::291240715937711722::1715434275::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://cu1yqklwnfgy1::::res://Audio/Music/1-02 Disco Ball (RR 20th Anniv. Mix).mp3<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn
+::res://Scenes/MainMenu/::1715437194
+game_manager.tscn::PackedScene::291240715937711722::1715437194::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://vamg0tkl3038::::res://Audio/Music/break-tambossa-103bpm.wav<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn
 how_2_play.tscn::PackedScene::5201704712034171909::1715433664::0::1::::<><>::
 MainMenu.tscn::PackedScene::3030349083803999890::1715398800::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn
 options_menu.tscn::PackedScene::1849702126104635348::1715398448::0::1::::<><>::res://Code/Scenes/Menus/optionsMenu.gd
@@ -243,24 +244,24 @@ DarkBG.tres::ShaderMaterial::4819308094606053228::1715432843::0::1::::<><>::uid:
 EarthBG.tres::ShaderMaterial::227922523430680019::1715292042::0::1::::<><>::
 LightBG.tres::ShaderMaterial::8685382080157412346::1715292042::0::1::::<><>::
 WaterBG.tres::ShaderMaterial::6787270583058607907::1715293656::0::1::::<><>::res://Shaders/ShaderCode/background.gdshader
-::res://Shaders/Gradients/::1715434276
+::res://Shaders/Gradients/::1715438035
 Air.tres::ShaderMaterial::7124877255915840792::1715118276::0::1::::<><>::
-Dark.tres::Shader::693180153857176137::1715434276::0::1::::<><>::
+Dark.tres::Shader::693180153857176137::1715438035::0::1::::<><>::
 DarkBG.tres::GradientTexture1D::5106853221718501646::1715432843::0::1::::<><>::
 Earth.tres::ShaderMaterial::946595373940137218::1715118276::0::1::::<><>::
 Light.tres::ShaderMaterial::3697000419237521313::1715118276::0::1::::<><>::
 LightBG.tres::GradientTexture1D::1660572682679612619::1715292042::0::1::::<><>::
 Liquid.tres::ShaderMaterial::623803858866942268::1715118276::0::1::::<><>::
-::res://Shaders/ShaderCode/::1715434276
-background.gdshader::Shader::-1::1715434276::0::1::::<><>::
-Black2Transp.gdshader::Shader::-1::1715434276::0::1::::<><>::
-BurnOut.gdshader::Shader::-1::1715434276::0::1::::<><>::
+::res://Shaders/ShaderCode/::1715438035
+background.gdshader::Shader::-1::1715438035::0::1::::<><>::
+Black2Transp.gdshader::Shader::-1::1715438035::0::1::::<><>::
+BurnOut.gdshader::Shader::-1::1715438035::0::1::::<><>::
 Fade.gdshader::Shader::-1::1714654675::0::1::::<><>::
-Fullgradient.gdshader::Shader::-1::1715434276::0::1::::<><>::
-LightningArc.gdshader::Shader::-1::1715434276::0::1::::<><>::
-OutlineInline.gdshader::Shader::-1::1715434276::0::1::::<><>::
-ProgressBar.gdshader::Shader::-1::1715434276::0::1::::<><>::
-Shine2D.gdshader::Shader::-1::1715434276::0::1::::<><>::
+Fullgradient.gdshader::Shader::-1::1715438035::0::1::::<><>::
+LightningArc.gdshader::Shader::-1::1715438035::0::1::::<><>::
+OutlineInline.gdshader::Shader::-1::1715438035::0::1::::<><>::
+ProgressBar.gdshader::Shader::-1::1715438035::0::1::::<><>::
+Shine2D.gdshader::Shader::-1::1715438035::0::1::::<><>::
 ::res://Shaders/Transparency/::1715432843
 BurnOut.tres::ShaderMaterial::1596770326481583160::1715432843::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
 LightningArc.tres::ShaderMaterial::5246288134869955939::1714924001::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader

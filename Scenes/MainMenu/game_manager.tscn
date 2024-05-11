@@ -71,26 +71,6 @@ volume_db = -12.0
 pitch_scale = 0.76
 bus = &"BeadSFX"
 
-[node name="BreakSFX" type="Node" parent="BoardSFX"]
-
-[node name="Break" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
-unique_name_in_owner = true
-volume_db = -12.0
-pitch_scale = 0.94
-bus = &"BeadSFX"
-
-[node name="Break2" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
-unique_name_in_owner = true
-volume_db = -12.0
-pitch_scale = 0.94
-bus = &"BeadSFX"
-
-[node name="Break3" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
-unique_name_in_owner = true
-volume_db = -12.0
-pitch_scale = 0.94
-bus = &"BeadSFX"
-
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_mnt3l")

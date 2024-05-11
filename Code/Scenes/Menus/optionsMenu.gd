@@ -5,8 +5,8 @@ extends CanvasLayer
 
 @onready var VolumeValues: Array[HSlider] = [%MasterSlider, %MusicSlider, %SFXSlider]
 @onready var VolumeTexts: Array[RichTextLabel] = [%MasterText, %MusicText, %SFXText]
-@onready var controllerChange: Array[Button] = [%Up/Up, %Accept/Accept,  %Left/Left,
-%Cancel/Cancel, %Down/Down, %X/X, %Right/Right, %Y/Y]
+@onready var controllerChange: Array[Button] = [%ui_up/ui_up, %ui_accept/ui_accept, %ui_left/ui_left,
+%ui_cancel/ui_cancel, %ui_down/ui_down, %Flip/Flip, %ui_right/ui_right, %Break/Break]
 @onready var MasterBus = AudioServer.get_bus_index("Master")
 @onready var MusicBus = AudioServer.get_bus_index("Music")
 @onready var SFXBus = AudioServer.get_bus_index("SFX")
@@ -25,6 +25,7 @@ var currentToggleIndex: int
 var currentAction: String
 var currentToggle: Button
 var toggleOn: bool = false
+var resetting: bool = false
 var currentInput: InputEvent
 
 #-----------------------------------------
@@ -39,13 +40,15 @@ func _ready():
 	
 	inputType = Globals.userPrefs.input_type
 	for action in Globals.userPrefs.keyboard_action_events:
+		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
 	
 	for action in Globals.userPrefs.joy_action_events:
+		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
 	
-	getNewInputs()
 	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
+	getNewInputs()
 
 func _input(event):
 	if toggleOn:
@@ -85,6 +88,7 @@ func _on_sfx_pressed() -> void:
 #-----------------------------------------
 #WHEN INPORTING: RESET INPUT MAP RESOURCE MANUALLY ONCE
 #RECONFIGURE SIGNAL INDEXES
+#IF INPUT MAP NAMES CHANGE, CHANGE THE NAMES OF THE HBOXES
 func getNewInputs() -> void:
 	Actions = []
 	inputs = [[],[]]
@@ -108,6 +112,7 @@ func getNewInputs() -> void:
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
 		Actions.append(action)
+		print(action, events)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
 				inputs[0].append(event)
@@ -135,16 +140,18 @@ func updateInputDisplay() -> void:
 		controllerChange[event].text = keyText
 
 func controllerMapStart(toggled,index) -> void:
-	if currentToggle != null:
-		currentToggle.button_pressed = toggled
-		currentToggle.text = inputTexts[currentToggleIndex]
-	
-	currentAction = Actions[index]
-	currentInput = inputs[inputType][index]
-	currentToggleIndex = index
-	currentToggle = controllerChange[index]
-	currentToggle.text = str("...Awaiting Input...")
-	toggleOn = true
+	if not resetting:
+		if currentToggle != null:
+			currentToggle.button_pressed = toggled
+			currentToggle.text = inputTexts[currentToggleIndex]
+		
+		currentAction = Actions[index]
+		currentInput = inputs[inputType][index]
+		currentToggleIndex = index
+		currentToggle = controllerChange[index]
+		currentToggle.text = str("...Awaiting Input...")
+		print(toggled,index)
+		toggleOn = true
 
 func _on_new_input_type_selected(index) -> void:
 	inputType = index
@@ -182,9 +189,11 @@ func checkRepeats(oldEvent, event) -> void:
 		InputMap.action_add_event(repeat, oldEvent)
 
 func reset_buttons() -> void:
+	#find a way to prevent this from 
+	resetting = true
 	for button in controllerChange:
 		button.button_pressed = false
-		button.flat = false
+	resetting = false
 
 #-----------------------------------------
 #NAVIGATION BUTTONS

@@ -447,7 +447,7 @@ func break_bead(chainPart) -> void:
 		if is_instance_valid(bead):
 			var pos = find_bead(bead)
 			board[pos.x][pos.y] = null
-			bead.queue_free()
+			#bead.queue_free()
 
 func find_connections(connection, recursion = []) -> Array:
 	var tempChain = recursion

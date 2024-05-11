@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=15 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Material" uid="uid://w0qtrr7jio8o" path="res://Shaders/Transparency/BurnOut.tres" id="1_xmwi2"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="6_avety"]
 [ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="6_bnx1h"]
 [ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="7_7wy5j"]
+[ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="11_dj0cq"]
+[ext_resource type="AudioStream" uid="uid://dmqj2u4jpxoyp" path="res://Audio/BoardSFX/BreakSFX/Brak2.wav" id="12_yjdwj"]
+[ext_resource type="AudioStream" uid="uid://hknh6c41g4qn" path="res://Audio/BoardSFX/BreakSFX/Brak3.wav" id="13_4kv4x"]
+[ext_resource type="AudioStream" uid="uid://c37ajq80vr346" path="res://Audio/BoardSFX/BreakSFX/Brak4.wav" id="14_m1x3d"]
 
 [node name="SingleBead" type="Node2D"]
 modulate = Color(0.992157, 0.992157, 1, 1)
@@ -99,7 +103,21 @@ script = ExtResource("6_avety")
 [node name="BreakSFX" type="Node" parent="."]
 
 [node name="Break" type="AudioStreamPlayer" parent="BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("11_dj0cq")
+volume_db = -4.0
 
 [node name="Break2" type="AudioStreamPlayer" parent="BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("12_yjdwj")
+volume_db = -4.0
 
 [node name="Break3" type="AudioStreamPlayer" parent="BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("13_4kv4x")
+volume_db = -4.0
+
+[node name="Break4" type="AudioStreamPlayer" parent="BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("14_m1x3d")
+volume_db = -4.0
