@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=14 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Material" uid="uid://w0qtrr7jio8o" path="res://Shaders/Transparency/BurnOut.tres" id="1_xmwi2"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="3_2tfol"]
-[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/ETC/connected.tscn" id="3_v1280"]
 [ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="4_gou0l"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="5_lflmb"]
 [ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="5_xevfo"]
@@ -21,7 +20,6 @@ material = ExtResource("1_xmwi2")
 scale = Vector2(0.85, 0.85)
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_2tfol"), ExtResource("4_gou0l"), ExtResource("5_xevfo"), ExtResource("6_bnx1h"), ExtResource("7_7wy5j")])
-chainedVFX = ExtResource("3_v1280")
 
 [node name="Sprite" type="TextureRect" parent="."]
 light_mask = 2

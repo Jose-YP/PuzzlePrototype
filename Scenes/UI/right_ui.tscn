@@ -48,17 +48,20 @@ layout_mode = 2
 text = "LEVEL: 1"
 fit_content = true
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="LevelUpContainer" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="LevelProgress" type="TextureProgressBar" parent="VBoxContainer/PanelContainer"]
+[node name="LevelProgress" type="ProgressBar" parent="VBoxContainer/LevelUpContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 rounded = true
+fill_mode = 1
+show_percentage = false
 
-[node name="BeadText" type="RichTextLabel" parent="VBoxContainer/PanelContainer/LevelProgress"]
+[node name="BeadText" type="RichTextLabel" parent="VBoxContainer/LevelUpContainer/LevelProgress"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 271.0

@@ -158,6 +158,9 @@ func movement() -> void:
 func place() -> void:
 	for i in range(currentBead.beads.size()):
 		var orgPos = find_bead(currentBead.beads[i])
+		
+		
+		
 		board[orgPos.x][orgPos.y] = null
 		var pos = currentBead.gridPos[i]
 		board[pos.x][pos.y] = currentBead.beads[i]
@@ -339,6 +342,7 @@ func post_turn() -> void:
 		bead.reparent($Grid)
 		bead.set_name(str(find_bead(bead)))
 	
+	second_fix()
 	currentBead.queue_free()
 	currentBead = null
 	
@@ -403,9 +407,22 @@ func detect_fail() -> void:
 	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
 		for j in rules.fail_rows:
 			if board[i][j] != null:
-				print(Vector2i(i,j),"Found a bead in ",board[i][j] )\
+				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
 				failed = true
 				fail_screen()
+
+func second_fix() -> void:
+	for i in rules.width:
+		for j in rules.height:
+			#or currentBead.in_full_bead(bead)
+			var bead = board[i][j]
+			if bead == null:
+				continue
+			var pos = pixel_to_grid(bead)
+			if Vector2i(i,j) != pixel_to_grid(bead):
+				print()
+				board[i][j] = null
+				bead[pos.x][pos.y] = bead
 
 #______________________________
 #CHAIN
@@ -701,8 +718,9 @@ func _on_left_ui_break_ready():
 	LUI.breakText.text = str(breakNum)
 
 func _on_right_ui_level_up(level):
+	playSFX.emit(6)
 	var factor = level * rules.speedUp
-	%Grounded.set_wait_time(baseGroundedTime - factor)
+	%Grounded.set_wait_time(baseGroundedTime - factor/4)
 	%Gravity.set_wait_time(baseGravTime - factor)
 
 func _on_right_ui_high_score():
@@ -715,7 +733,6 @@ func should_play_zap() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
-	
 	var display = Globals.display
 	for i in range(Globals.display.size()):
 		if score > display[i][1]:
@@ -730,7 +747,6 @@ func fail_screen() -> void:
 		var failTween = Fail.create_tween()
 		Fail.show()
 		failTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade/2)
-	
 
 func _on_high_score_screen_proceed():
 	var HiScoreTween = $HighScoreScreen.create_tween()

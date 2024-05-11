@@ -1,5 +1,5 @@
-ProgressBar
 AudioStreamPlayer
+ProgressBar
 NewgroundsSessionWatcher
 NewgroundsRequest
 NewgroundsMedalUnlocker
@@ -12,4 +12,3 @@ Button
 HBoxContainer
 MarginContainer
 LineEdit
-ColorRect

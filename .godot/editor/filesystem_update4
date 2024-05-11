@@ -34,3 +34,5 @@ res://Shaders/Gradients/Earth.tres
 res://Shaders/Gradients/Light.tres
 res://Shaders/Gradients/Air.tres
 res://Code/Globals/Globals.gd
+res://Scenes/UI/right_ui.tscn
+res://Code/Scenes/UI/right_ui.gd

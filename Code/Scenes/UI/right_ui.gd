@@ -23,12 +23,18 @@ func update_HiScore(score) -> void:
 
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
-	var levelThreshold = roundi(rules.bead_levelUp + level * rules.levelUp_rate)
+	var levelThreshold = level_upThreshold(level)
 	#Make code for beads being higher than rules.bead_levelUp * level
-	%LevelProgress.value = beads % levelThreshold
+	%LevelProgress.value = beads - levelThreshold
 	if %LevelProgress.value >= levelThreshold:
 		update_level()
 		%LevelProgress.value = 0
+
+func level_upThreshold(lv):
+	if lv <= 1:
+		return roundi(rules.bead_levelUp + lv * rules.levelUp_rate)
+	else:
+		return roundi(rules.bead_levelUp + lv * rules.levelUp_rate) + level_upThreshold(lv - 1)
 
 func update_level() -> void:
 	level = clamp(level + 1, 1, rules.max_levels)
