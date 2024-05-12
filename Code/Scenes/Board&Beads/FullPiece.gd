@@ -26,10 +26,27 @@ func _ready() -> void:
 	
 	sync_position()
 	$Beads.rotation = 0 #In the UI Beads start rotated for some reason
+	determine_reroll()
 
 #______________________________
 #BOARD FUNCTIONS
 #______________________________
+func determine_reroll():
+	var types: Dictionary = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0}
+	var rerollTypes: Array[int] = []
+	var reroll: bool = true
+	for bead in beads:
+		types[bead.typeID] += 1 
+	for type in types:
+		if types[type] > 1:
+			reroll = false
+		if types[type] != 0:
+			rerollTypes.append(type)
+	if reroll and randi_range(0,100) < three_type_chance:
+		var index = range(3).pick_random()
+		var tempReroll = rerollTypes.pop_at(index)
+		beads[index].randomize_type(tempReroll)
+
 func flip():
 	if flipped:
 		$Beads.move_child($Beads/CCW,1)

@@ -159,8 +159,6 @@ func place() -> void:
 	for i in range(currentBead.beads.size()):
 		var orgPos = find_bead(currentBead.beads[i])
 		
-		
-		
 		board[orgPos.x][orgPos.y] = null
 		var pos = currentBead.gridPos[i]
 		board[pos.x][pos.y] = currentBead.beads[i]
@@ -390,9 +388,6 @@ func post_break() -> void:
 			bead.global_position = grid_to_pixel(target)
 			bead.set_name(str(target))
 	
-	$Timers/ChainFinish.start()
-	await  $Timers/ChainFinish.timeout
-	
 	breaking = false
 	breakNum -= 1
 	LUI.breakText.text = str(breakNum)
@@ -401,6 +396,9 @@ func post_break() -> void:
 	
 	#Check for any broken links and new links
 	find_links()
+	$Timers/ChainFinish.start()
+	await  $Timers/ChainFinish.timeout
+	display_board()
 
 func detect_fail() -> void:
 	#Only check for fail spots

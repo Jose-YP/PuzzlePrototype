@@ -29,10 +29,11 @@ var hardDropped: bool = true
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	randomize_type()
+	randomize_type(range(Globals.bead_types.size() - 1))
 
-func randomize_type() -> void:
-	typeID = randi_range(0,Globals.bead_types.size() - 1)
+func randomize_type(array) -> void:
+	
+	typeID = array.pick_random()
 	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)
 	sprite.texture = beads[typeID]
