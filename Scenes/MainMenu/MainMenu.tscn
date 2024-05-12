@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
 
 [node name="GameManager" type="CanvasLayer"]
+process_mode = 1
 script = ExtResource("1_k3j0q")
 
 [node name="Background" parent="." instance=ExtResource("12_73kx1")]

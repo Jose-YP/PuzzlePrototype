@@ -13,15 +13,15 @@ const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
 var paused: bool = false
 
-func _input(event):
-	if event.is_action("Pause"):
+func _process(_delta):
+	if Input.is_action_just_pressed("Pause"):
 		play_menu_sfx(3)
 		if paused:
 			$PauseScreen.hide()
-			currentScene.set_pause(false)
+			currentScene.process_mode = Node.PROCESS_MODE_DISABLED
 		else:
 			$PauseScreen.show()
-			currentScene.set_pause(true)
+			currentScene.process_mode = Node.PROCESS_MODE_INHERIT
 		
 		paused = not paused
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
+process_mode = 1
 scale = Vector2(0.95, 0.95)
 transform = Transform2D(0.95, 0, 0, 0.95, 0, 0)
 script = ExtResource("1_ybfn7")

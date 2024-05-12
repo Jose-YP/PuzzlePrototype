@@ -29,7 +29,7 @@ var hardDropped: bool = true
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	randomize_type(range(Globals.bead_types.size() - 1))
+	randomize_type(range(Globals.bead_types.size()))
 
 func randomize_type(array) -> void:
 	
@@ -38,6 +38,14 @@ func randomize_type(array) -> void:
 	typeFlag = Globals.string_to_flag(currentType)
 	sprite.texture = beads[typeID]
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
+
+func reset():
+	chainedWith = [-1,-1,-1,-1]
+	adjacent = []
+	chainedNum = 0
+	chainNodes = [null,null,null,null]
+	glowing = false
+	reset_link()
 
 #______________________________
 #MANAGING LINKS
@@ -149,6 +157,9 @@ func set_chains(value) -> void:
 	
 	if not alreadyThere:
 		chainedLinks.append(value)
+
+func reset_link():
+	linkArray.linkedBeads = {get_parent() : get_parent()}
 
 #______________________________
 #DESTROYING PIECES

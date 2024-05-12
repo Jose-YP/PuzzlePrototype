@@ -60,6 +60,7 @@ shader_parameter/margin = 0.12
 shader_parameter/otherColorMix = 0.4
 
 [node name="Board" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
 

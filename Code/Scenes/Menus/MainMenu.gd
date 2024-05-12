@@ -10,6 +10,10 @@ func _ready() -> void:
 	$Buttons/Play.grab_focus()
 	can = true
 
+#func _input(event):
+	#if event.is_action_pressed("ui_accept"):
+		#grab_focus().press()
+
 func _on_play_pressed() -> void:
 	playSFX.emit(1)
 	switchPlay.emit()

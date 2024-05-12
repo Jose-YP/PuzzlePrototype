@@ -41,6 +41,7 @@ shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
 
 [node name="FullBead" type="Node2D"]
 script = ExtResource("1_oh5gf")
+three_type_chance = 10
 
 [node name="Beads" type="Node2D" parent="."]
 position = Vector2(28, 74)

@@ -351,6 +351,7 @@ func post_turn() -> void:
 	detect_fail()
 	LUI.update_meter(1)
 	display_board()
+	reset_beads()
 	find_links()
 	
 	if not failed:
@@ -360,7 +361,7 @@ func find_links() -> void:
 	for i in rules.width:
 		for j in rules.height:
 			var bead = board[i][j]
-			if bead == null: #skip anything that has glowing or no beads
+			if bead == null:
 				continue
 			bead.should_glow()
 			if bead.glowing:
@@ -375,13 +376,14 @@ func post_break() -> void:
 		#Start at the bottom of the board and push those down first
 		for j in range(realHeight,-1,-1):
 			var bead = board[i][j]
-			if currentBead.in_full_bead(bead) or bead == null:
+			if bead == null or currentBead.in_full_bead(bead):
 				continue
 			
 			var target = mini_find_bottom(Vector2i(i,j),i)
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
+			bead.reset()
 			print("Bottom of ", bead, " is ", target)
 			board[i][j] = null
 			board[target.x][target.y] = bead
@@ -416,11 +418,21 @@ func second_fix() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
+			bead.reset()
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pixel_to_grid(bead):
 				print()
 				board[i][j] = null
 				bead[pos.x][pos.y] = bead
+
+func reset_beads() -> void:
+	for i in rules.width:
+		for j in rules.height:
+			#or currentBead.in_full_bead(bead)
+			var bead = board[i][j]
+			if bead == null:
+				continue
+			bead.reset()
 
 #______________________________
 #CHAIN
