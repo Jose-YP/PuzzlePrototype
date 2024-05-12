@@ -30,7 +30,7 @@ var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0
 var score: int = 0
-var breakNum: int = 0
+var breakNum: int = 1
 var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
@@ -351,7 +351,6 @@ func post_turn() -> void:
 	detect_fail()
 	LUI.update_meter(1)
 	display_board()
-	reset_beads()
 	find_links()
 	
 	if not failed:
@@ -383,7 +382,7 @@ func post_break() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
-			bead.reset()
+			#bead.reset_links()
 			print("Bottom of ", bead, " is ", target)
 			board[i][j] = null
 			board[target.x][target.y] = bead
@@ -418,7 +417,6 @@ func second_fix() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
-			bead.reset()
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pixel_to_grid(bead):
 				print()
@@ -432,7 +430,7 @@ func reset_beads() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
-			bead.reset()
+			bead.bead.reset_links()
 
 #______________________________
 #CHAIN

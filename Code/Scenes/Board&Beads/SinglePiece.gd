@@ -39,7 +39,7 @@ func randomize_type(array) -> void:
 	sprite.texture = beads[typeID]
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
 
-func reset():
+func reset_links():
 	chainedWith = [-1,-1,-1,-1]
 	adjacent = []
 	chainedNum = 0
