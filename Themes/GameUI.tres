@@ -7,7 +7,23 @@ shadow_size = 2
 anti_aliasing_size = 2.055
 
 [resource]
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Fonts/fonts/large = null
+Fonts/fonts/normal = null
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_36j16")
+ProgressBar/styles/background = null
+ProgressBar/styles/fill = null
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/normal_font = null

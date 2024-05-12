@@ -44,7 +44,8 @@ func determine_reroll():
 			rerollTypes.append(type)
 	if reroll and randi_range(0,100) < three_type_chance:
 		var index = range(3).pick_random()
-		var tempReroll = rerollTypes.pop_at(index)
+		rerollTypes.pop_at(index)
+		var tempReroll = rerollTypes
 		beads[index].randomize_type(tempReroll)
 
 func flip():

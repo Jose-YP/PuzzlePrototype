@@ -86,9 +86,13 @@ offset_bottom = 396.0
 visible = false
 layout_mode = 0
 
+[connection signal="focus_entered" from="Buttons/Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="focus_entered" from="Buttons/Options" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="Buttons/Scores" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/Scores" to="." method="_on_scores_pressed"]
+[connection signal="focus_entered" from="Buttons/How2Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/How2Play" to="." method="_on_how_2_play_pressed"]
 [connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
 [connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]

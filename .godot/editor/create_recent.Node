@@ -1,3 +1,5 @@
+RichTextLabel
+ColorRect
 AudioStreamPlayer
 ProgressBar
 NewgroundsSessionWatcher
@@ -11,4 +13,3 @@ PanelContainer
 Button
 HBoxContainer
 MarginContainer
-LineEdit

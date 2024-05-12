@@ -4,6 +4,7 @@ signal levelUp(level)
 signal HighScore
 
 var rules: Rules
+var regScore: int = 0
 var HiScore: int = 0
 var level: int = 1
 
@@ -12,7 +13,8 @@ func _ready() -> void:
 	update_HiScore(Globals.get_extreme()[0])
 
 func update_score(score) -> void:
-	%ScoreText.text = str("SCORE: ",score)
+	regScore += score
+	%ScoreText.text = str("SCORE: ",regScore)
 	if score >= HiScore:
 		update_HiScore(score)
 

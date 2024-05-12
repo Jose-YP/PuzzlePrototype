@@ -14,6 +14,7 @@ extends CanvasLayer
 signal main
 signal makeNoise
 signal testMusic(toggled_on)
+signal playSFX(index)
 
 var inputs: Array[Array] = [[],[]]
 var inputTexts: Array[String] = []

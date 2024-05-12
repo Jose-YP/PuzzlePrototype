@@ -80,20 +80,6 @@ position = Vector2(7, 25.5)
 unique_name_in_owner = true
 position = Vector2(-7, -25.5)
 
-[node name="FullPieceConnection" type="TabContainer" parent="."]
-visible = false
-offset_left = -25.0
-offset_top = -26.0
-offset_right = 26.0
-offset_bottom = 25.0
-
-[node name="Anchor" type="TextureRect" parent="FullPieceConnection"]
-layout_mode = 2
-
-[node name="NonAnchor" type="TextureRect" parent="FullPieceConnection"]
-visible = false
-layout_mode = 2
-
 [node name="LinkArray" type="Node" parent="."]
 editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
 script = ExtResource("6_avety")

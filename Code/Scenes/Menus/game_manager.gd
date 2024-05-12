@@ -11,6 +11,20 @@ const boardScene = preload("res://Scenes/Board&Beads/Board.tscn")
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
+var paused: bool = false
+
+func _input(event):
+	if event.is_action("Pause"):
+		play_menu_sfx(3)
+		if paused:
+			$PauseScreen.hide()
+			currentScene.paused = false
+		else:
+			$PauseScreen.show()
+			currentScene.paused = true
+		
+		paused = not paused
+
 #-----------------------------------------
 #SCENE SWITCHING
 #-----------------------------------------
