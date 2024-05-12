@@ -4,8 +4,11 @@ signal switchPlay
 signal switchOptions
 signal playSFX(index)
 
+var can: bool = false
+
 func _ready() -> void:
 	$Buttons/Play.grab_focus()
+	can = true
 
 func _on_play_pressed() -> void:
 	playSFX.emit(1)
@@ -27,4 +30,5 @@ func _on_score_display_refocus() -> void:
 	playSFX.emit(2)
 
 func _on_focus_entered() -> void:
-	playSFX.emit(0)
+	if can:
+		playSFX.emit(0)

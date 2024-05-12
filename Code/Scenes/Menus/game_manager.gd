@@ -18,10 +18,10 @@ func _input(event):
 		play_menu_sfx(3)
 		if paused:
 			$PauseScreen.hide()
-			currentScene.paused = false
+			currentScene.set_pause(false)
 		else:
 			$PauseScreen.show()
-			currentScene.paused = true
+			currentScene.set_pause(true)
 		
 		paused = not paused
 

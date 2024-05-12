@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=11 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -6,7 +6,58 @@
 [ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="3_qyefa"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
+[ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/ETC/connected.tscn" id="6_30ve2"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
+
+[sub_resource type="Shader" id="Shader_7xfeb"]
+code = "shader_type canvas_item;
+
+uniform vec4 makeTransparent : source_color = vec4(1,1,1,1);
+uniform vec4 otherColor: source_color = vec4(1,1,1,1);
+uniform float margin: hint_range(0.0, 1.0, 0.01) = 0.3;
+uniform float otherColorMix: hint_range(0.0, 1.0, 0.1) = .1;
+
+void vertex() {
+	COLOR = vec4(1);
+}
+
+void fragment() {
+	bool made_transparent = false;
+	vec4 input = texture(TEXTURE, UV);
+	
+	if (input == makeTransparent){
+		COLOR = vec4(0.0,0.0,0.0,0.0);
+		made_transparent = true;
+		}
+	
+	if (margin != 0.0){
+		vec3 margin_input = vec3(makeTransparent.r + margin,makeTransparent.g + margin, input.b + margin);
+		bool red_check = input.r <= margin_input.r;
+		bool green_check = input.g <= margin_input.g;
+		bool blue_check = input.b <= margin_input.b;
+		if (red_check && green_check && blue_check){
+			COLOR = vec4(0.0,0.0,0.0,0.0);
+			made_transparent = true;
+		}
+		
+		if (made_transparent == false){
+			vec4 finalColor = vec4(mix(input, otherColor, otherColorMix));
+			COLOR = finalColor;
+		}
+		
+	}
+	
+	// Called for every pixel the material is visible on.
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uouyc"]
+resource_local_to_scene = true
+shader = SubResource("Shader_7xfeb")
+shader_parameter/makeTransparent = Color(0.117647, 0.117647, 0.117647, 1)
+shader_parameter/otherColor = Color(1, 1, 1, 1)
+shader_parameter/margin = 0.12
+shader_parameter/otherColorMix = 0.4
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_ixvqd")
@@ -65,6 +116,9 @@ one_shot = true
 
 [node name="Hold" type="Node2D" parent="."]
 visible = false
+
+[node name="Connected" parent="Hold" instance=ExtResource("6_30ve2")]
+material = SubResource("ShaderMaterial_uouyc")
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false

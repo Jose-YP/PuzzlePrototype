@@ -29,3 +29,8 @@ res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/game_manager.tscn
 res://Code/Scenes/Menus/game_manager.gd
 res://Code/Scenes/Menus/optionsMenu.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/UI/right_ui.tscn
+res://Scenes/Constants/ETC/pause_screen.tscn
