@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg0gk08plhhl"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dg0gk08plhhl"]
+
+[ext_resource type="FontFile" uid="uid://fvv2fagfsd1a" path="res://Themes/AdobeClean-Bold.ttf" id="1_ay1fh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36j16"]
 bg_color = Color(0.278431, 0.00392157, 0.117647, 0.45098)
@@ -7,13 +9,14 @@ shadow_size = 2
 anti_aliasing_size = 2.055
 
 [resource]
+default_font = ExtResource("1_ay1fh")
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
-Fonts/fonts/large = null
-Fonts/fonts/normal = null
+Fonts/fonts/large = ExtResource("1_ay1fh")
+Fonts/fonts/normal = ExtResource("1_ay1fh")
 HSlider/icons/grabber = null
 HSlider/icons/grabber_disabled = null
 HSlider/icons/grabber_highlight = null
@@ -26,6 +29,6 @@ ProgressBar/styles/background = null
 ProgressBar/styles/fill = null
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 16
-RichTextLabel/fonts/normal_font = null
+RichTextLabel/fonts/normal_font = ExtResource("1_ay1fh")
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
