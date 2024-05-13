@@ -1,9 +1,10 @@
+VBoxContainer
+ProgressBar
+RichTextLabel
 CanvasLayer
 TextureProgressBar
-ProgressBar
 Button
 ColorRect
-RichTextLabel
 AudioStreamPlayer
 NewgroundsSessionWatcher
 NewgroundsRequest
@@ -12,4 +13,3 @@ NewgroundsScoreboard
 Node
 TabContainer
 TabBar
-PanelContainer

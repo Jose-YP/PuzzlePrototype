@@ -119,16 +119,6 @@ offset_bottom = -20.0
 offset_left = 10.0
 offset_top = -25.0
 
-[node name="ColorRect" parent="LeftUI/VBoxContainer/HBoxContainer/PanelContainer2/RichTextLabel" index="1"]
-offset_left = 0.0
-offset_right = 1305.0
-
-[node name="Ripple" parent="LeftUI" index="1"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 2571.0
-offset_bottom = 1063.0
-
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
 
@@ -144,5 +134,3 @@ modulate = Color(1, 1, 1, 0)
 [connection signal="levelUp" from="RightUI" to="." method="_on_right_ui_level_up"]
 [connection signal="breakReady" from="LeftUI" to="." method="_on_left_ui_break_ready"]
 [connection signal="proceed" from="HighScoreScreen" to="." method="_on_high_score_screen_proceed"]
-
-[editable path="LeftUI"]

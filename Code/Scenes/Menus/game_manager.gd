@@ -7,9 +7,12 @@ extends CanvasLayer
 @onready var music: AudioStreamPlayer = $Music/Music
 @onready var currentScene = $MainMenu
 
-const boardScene = preload("res://Scenes/Board&Beads/Board.tscn")
+#Loaded Scenes
+const boardScene: String ="res://Scenes/Board&Beads/Board.tscn"
+#Non Loaded Scenes
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
+const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
 
 var unpausing: bool = false
 
@@ -35,6 +38,17 @@ func changeScene(scene) -> void:
 	$".".move_child(currentScene,1)
 	currentScene = newScene
 
+func loadScene(scene) -> void:
+	changeScene(loadingScreen)
+	currentScene.next_scene = scene
+	currentScene.connect("finished", board_scene_loaded)
+
+func board_scene_loaded(scene):
+	changeScene(scene)
+	currentScene.connect("playSFX",_on_board_play_sfx)
+	currentScene.Fail.connect("main",back_to_menu)
+	currentScene.Fail.connect("retry",on_board_retry)
+
 func back_to_menu():
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
@@ -53,10 +67,11 @@ func _on_main_menu_switch_options():
 	currentScene.connect("testMusic",_on_option_test_music)
 
 func _on_main_menu_switch_play():
-	changeScene(boardScene)
-	currentScene.connect("playSFX",_on_board_play_sfx)
-	currentScene.Fail.connect("main",back_to_menu)
-	currentScene.Fail.connect("retry",on_board_retry)
+	loadScene(boardScene)
+	#await currentScene.finished
+	#currentScene.connect("playSFX",_on_board_play_sfx)
+	#currentScene.Fail.connect("main",back_to_menu)
+	#currentScene.Fail.connect("retry",on_board_retry)
 
 #-----------------------------------------
 #BOARD SIGNALS
@@ -79,7 +94,9 @@ func _on_option_make_noise():
 func _on_option_test_music():
 	music.play()
 
-
+#-----------------------------------------
+#OTHER
+#-----------------------------------------
 func _on_pause_screen_play_sfx():
 	unpausing = true
 	MenuSFX[3].play()

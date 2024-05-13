@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0g3de7eq0koq"]
 
-[ext_resource type="Shader" path="res://Scenes/Board&Beads/Ripple.gdshader" id="1_fapue"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/Ripple.gdshader" id="1_fapue"]
 
 [resource]
 shader = ExtResource("1_fapue")

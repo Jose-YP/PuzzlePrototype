@@ -29,3 +29,7 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/UI/NextBeads.tscn
 res://Scenes/UI/VeryNextBead.tscn
 res://Code/Constants/PauseScreen.gd
+res://Scenes/Constants/ETC/load_screen.gd
+res://Shaders/ShaderCode/Board.gdshader
+res://Shaders/ShaderCode/Ripple.gdshader
+res://Code/Constants/load_screen.gd
