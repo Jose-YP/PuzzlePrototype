@@ -1,8 +1,10 @@
-res://Scenes/UI/left_ui.tscn
+res://Scenes/Constants/ETC/pause_screen.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/BurnOut.tres
 res://Code/Scenes/Board&Beads/Board.gd
 res://Resources/Rules/Basic Rules.tres
+res://Scenes/Board&Beads/Ripple.gdshader
+res://Shaders/Ripple.tres
 res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
@@ -16,17 +18,14 @@ res://Shaders/ShaderCode/Black2Transp.gdshader
 res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Scenes/Board&Beads/Board.gdshader
-res://Scenes/Board&Beads/Ripple.gdshader
-res://Shaders/Ripple.tres
-res://Code/Scenes/UI/left_ui.gd
 res://Scenes/Board&Beads/Board.tscn
+res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/options_menu.tscn
-res://Scenes/UI/right_ui.tscn
-res://Scenes/Constants/UIPieces/DuoDisplay.tscn
-res://Themes/GameUI.tres
-res://Scenes/MainMenu/score_display.tscn
+res://Scenes/Constants/ETC/load_screen.tscn
+res://Scenes/UI/left_ui.tscn
 res://Scenes/UI/NextBeads.tscn
 res://Scenes/UI/VeryNextBead.tscn
+res://Code/Constants/PauseScreen.gd

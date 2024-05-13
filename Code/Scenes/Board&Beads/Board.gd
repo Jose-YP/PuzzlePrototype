@@ -316,6 +316,8 @@ func _process(delta) -> void:
 		if Input.is_action_just_pressed("Break") and breakNum > 0:
 			#Full Bead should not move during this
 			pauseFall(true)
+			LUI.ripple()
+			await LUI.rippleEnd
 			find_chains()
 			for i in range(chains.size()):
 				#Make sure the starting value is bracketed into an array

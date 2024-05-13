@@ -1,8 +1,10 @@
+CanvasLayer
+TextureProgressBar
+ProgressBar
 Button
 ColorRect
 RichTextLabel
 AudioStreamPlayer
-ProgressBar
 NewgroundsSessionWatcher
 NewgroundsRequest
 NewgroundsMedalUnlocker
@@ -11,4 +13,3 @@ Node
 TabContainer
 TabBar
 PanelContainer
-HBoxContainer

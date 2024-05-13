@@ -41,7 +41,6 @@ func set_progress() -> void:
 		meter_filled()
 
 func ripple():
-	$Ripple.show()
 	var rippleTween = $Ripple.create_tween()
 	rippleTween.tween_method(ripple_tween, rippleHeight - .001, rippleHeight, rippleTiming)
 	rippleTween.tween_method(ripple_tween, rippleHeight, 0, rippleTiming)

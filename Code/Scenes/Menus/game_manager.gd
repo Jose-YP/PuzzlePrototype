@@ -11,19 +11,16 @@ const boardScene = preload("res://Scenes/Board&Beads/Board.tscn")
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
-var paused: bool = false
+var unpausing: bool = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("Pause") and not unpausing:
 		play_menu_sfx(3)
-		if paused:
-			$PauseScreen.hide()
-			currentScene.process_mode = Node.PROCESS_MODE_DISABLED
-		else:
-			$PauseScreen.show()
-			currentScene.process_mode = Node.PROCESS_MODE_INHERIT
-		
-		paused = not paused
+		var currently = get_tree().paused
+		get_tree().paused = not currently
+		$PauseScreen.visible = not currently
+	elif Input.is_action_just_pressed("Pause"):
+		unpausing = false
 
 #-----------------------------------------
 #SCENE SWITCHING
@@ -81,3 +78,8 @@ func _on_option_make_noise():
 
 func _on_option_test_music():
 	music.play()
+
+
+func _on_pause_screen_play_sfx():
+	unpausing = true
+	MenuSFX[3].play()

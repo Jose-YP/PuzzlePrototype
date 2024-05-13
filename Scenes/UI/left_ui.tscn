@@ -18,11 +18,11 @@ shader_parameter/border_width = 0.03
 
 [node name="LeftUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = -0.001
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
+offset_left = 12.28
+offset_top = 16.0
 offset_right = 10.0
 offset_bottom = -25.0
 grow_horizontal = 2

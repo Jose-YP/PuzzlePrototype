@@ -118,14 +118,16 @@ offset_bottom = -20.0
 [node name="LeftUI" parent="." instance=ExtResource("3_4i3af")]
 offset_left = 10.0
 offset_top = -25.0
-offset_right = 10.0
-offset_bottom = -25.0
 
 [node name="ColorRect" parent="LeftUI/VBoxContainer/HBoxContainer/PanelContainer2/RichTextLabel" index="1"]
-layout_mode = 0
+offset_left = 0.0
+offset_right = 1305.0
 
 [node name="Ripple" parent="LeftUI" index="1"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 2571.0
+offset_bottom = 1063.0
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
