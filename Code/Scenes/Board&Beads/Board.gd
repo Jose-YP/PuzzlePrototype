@@ -19,6 +19,7 @@ signal playSFX(index)
 
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
+const uberbead = preload("res://Scenes/Board&Beads/uberbead.tscn")
 
 #Variables
 var board: Array[Array]
@@ -43,6 +44,8 @@ var playZap: bool = false
 #______________________________
 func _ready() -> void:
 	#Make board before adding anything
+	var temp = uberbead.instantiate()
+	$Hold.add_child(temp)
 	board = make_grid()
 	
 	#Make Timers function
@@ -354,6 +357,7 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	display_board()
 	find_links()
+	find_links()
 	
 	if not failed:
 		pull_next_bead()
@@ -398,6 +402,7 @@ func post_break() -> void:
 		LUI.breakNotifier.hide()
 	
 	#Check for any broken links and new links
+	reset_beads()
 	find_links()
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
@@ -432,7 +437,7 @@ func reset_beads() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
-			bead.bead.reset_links()
+			bead.reset_links()
 
 #______________________________
 #CHAIN

@@ -159,7 +159,7 @@ func set_chains(value) -> void:
 		chainedLinks.append(value)
 
 func reset_link():
-	linkArray.linkedBeads = {get_parent() : get_parent()}
+	linkArray.linkedBeads = {self : self}
 
 #______________________________
 #DESTROYING PIECES

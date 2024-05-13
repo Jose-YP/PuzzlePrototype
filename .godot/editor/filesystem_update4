@@ -36,3 +36,5 @@ res://Code/Constants/load_screen.gd
 res://Code/Scenes/UI/left_ui.gd
 res://Code/Scenes/UI/right_ui.gd
 res://Scenes/UI/right_ui.tscn
+res://Scenes/Board&Beads/uberbead.tscn
+res://Code/Scenes/Board&Beads/SinglePiece.gd
