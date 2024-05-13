@@ -33,3 +33,6 @@ res://Scenes/Constants/ETC/load_screen.gd
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
 res://Code/Constants/load_screen.gd
+res://Code/Scenes/UI/left_ui.gd
+res://Code/Scenes/UI/right_ui.gd
+res://Scenes/UI/right_ui.tscn

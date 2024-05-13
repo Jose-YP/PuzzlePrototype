@@ -1,9 +1,9 @@
+Button
 VBoxContainer
 ProgressBar
 RichTextLabel
 CanvasLayer
 TextureProgressBar
-Button
 ColorRect
 AudioStreamPlayer
 NewgroundsSessionWatcher
@@ -12,4 +12,3 @@ NewgroundsMedalUnlocker
 NewgroundsScoreboard
 Node
 TabContainer
-TabBar

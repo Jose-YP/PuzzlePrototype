@@ -13,9 +13,9 @@ func _ready() -> void:
 	update_HiScore(Globals.get_extreme()[0])
 
 func update_score(score) -> void:
-	regScore += score
+	regScore = score
 	%ScoreText.text = str("SCORE: ",regScore)
-	if score >= HiScore:
+	if regScore >= HiScore:
 		update_HiScore(score)
 
 func update_HiScore(score) -> void:
@@ -31,6 +31,8 @@ func update_beads(beads) -> void:
 	if %LevelProgress.value >= levelThreshold:
 		update_level()
 		%LevelProgress.value = 0
+		#Check for even higher levels
+		update_beads(beads)
 
 func level_upThreshold(lv):
 	if lv <= 1:

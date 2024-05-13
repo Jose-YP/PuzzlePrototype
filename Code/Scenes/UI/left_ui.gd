@@ -41,10 +41,10 @@ func set_progress() -> void:
 		meter_filled()
 
 func ripple():
-	var rippleTween = $Ripple.create_tween()
-	rippleTween.tween_method(ripple_tween, rippleHeight - .001, rippleHeight, rippleTiming)
+	var rippleTween = create_tween().set_ease(Tween.EASE_OUT_IN)
+	rippleTween.tween_method(ripple_tween, .001, rippleHeight, rippleTiming)
 	rippleTween.tween_method(ripple_tween, rippleHeight, 0, rippleTiming)
-	
+	await get_tree().create_timer(rippleTiming).timeout
 	rippleEnd.emit()
 
 

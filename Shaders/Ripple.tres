@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0g3de7eq0koq"]
 
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/Ripple.gdshader" id="1_fapue"]
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/Ripple.gdshader" id="1_20gy0"]
 
 [resource]
-shader = ExtResource("1_fapue")
-shader_parameter/wave_count = 10.0
+shader = ExtResource("1_20gy0")
+shader_parameter/wave_count = 1.0
 shader_parameter/speed = 7.6
-shader_parameter/height = 0.007
+shader_parameter/height = 0.0

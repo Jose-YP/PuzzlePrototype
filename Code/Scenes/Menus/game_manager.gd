@@ -7,9 +7,9 @@ extends CanvasLayer
 @onready var music: AudioStreamPlayer = $Music/Music
 @onready var currentScene = $MainMenu
 
-#Loaded Scenes
+#Scenes for loading
 const boardScene: String ="res://Scenes/Board&Beads/Board.tscn"
-#Non Loaded Scenes
+#Non Loading Scenes
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
@@ -28,6 +28,7 @@ func _process(_delta):
 #-----------------------------------------
 #SCENE SWITCHING
 #-----------------------------------------
+#For non-loading scenes
 func changeScene(scene) -> void:
 	Globals.save.save()
 	Globals.userPrefs.save()
@@ -38,6 +39,7 @@ func changeScene(scene) -> void:
 	$".".move_child(currentScene,1)
 	currentScene = newScene
 
+#For loading scenes
 func loadScene(scene) -> void:
 	changeScene(loadingScreen)
 	currentScene.next_scene = scene
@@ -68,10 +70,6 @@ func _on_main_menu_switch_options():
 
 func _on_main_menu_switch_play():
 	loadScene(boardScene)
-	#await currentScene.finished
-	#currentScene.connect("playSFX",_on_board_play_sfx)
-	#currentScene.Fail.connect("main",back_to_menu)
-	#currentScene.Fail.connect("retry",on_board_retry)
 
 #-----------------------------------------
 #BOARD SIGNALS

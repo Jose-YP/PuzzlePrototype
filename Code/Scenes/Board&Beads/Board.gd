@@ -447,7 +447,7 @@ func find_chains() -> void:
 				continue
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
 				var tempChain = add_links(bead.get_links())
-				score = rules.totalScore(tempChain)
+				score += rules.totalScore(tempChain)
 				print("\n\nTOTAL SCORE: ", score)
 				RUI.update_score(score)
 				chains.append(new_set_chains(tempChain))
