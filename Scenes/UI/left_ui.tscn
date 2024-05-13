@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt86eivh6s6vl"]
+[gd_scene load_steps=6 format=3 uid="uid://dt86eivh6s6vl"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
+[ext_resource type="Material" uid="uid://0g3de7eq0koq" path="res://Shaders/Ripple.tres" id="2_prcki"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="3_wkqru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
@@ -20,6 +21,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j8v1b")
@@ -64,3 +69,20 @@ theme_override_font_sizes/normal_font_size = 10
 text = "BREAK AVAILIBLE
 
 PRESS BREAK BUTTON TO BREAK CHAINS"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/PanelContainer2/RichTextLabel"]
+material = ExtResource("2_prcki")
+layout_mode = 0
+offset_left = 378.0
+offset_right = 1683.0
+offset_bottom = 751.0
+color = Color(0.188235, 0.188235, 0.188235, 0)
+
+[node name="Ripple" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("2_prcki")
+layout_mode = 0
+offset_left = -1235.0
+offset_top = -276.0
+offset_right = 1336.0
+offset_bottom = 787.0

@@ -1,5 +1,6 @@
-RichTextLabel
+Button
 ColorRect
+RichTextLabel
 AudioStreamPlayer
 ProgressBar
 NewgroundsSessionWatcher
@@ -10,6 +11,4 @@ Node
 TabContainer
 TabBar
 PanelContainer
-Button
 HBoxContainer
-MarginContainer

@@ -1,6 +1,8 @@
 extends Control
 
 @export var progressTiming: float = .5
+@export var rippleHeight: float = .007
+@export var rippleTiming: float = 1
 
 @onready var nextBeads: Control = $VBoxContainer/NextBeads
 @onready var progressBar: ColorRect = $VBoxContainer/HBoxContainer/PanelContainer/BreakProgress
@@ -8,6 +10,7 @@ extends Control
 @onready var breakNotifier: PanelContainer = $VBoxContainer/HBoxContainer/PanelContainer2
 
 signal breakReady
+signal rippleEnd
 
 var rules: Rules
 var progress: int = 0
@@ -37,8 +40,20 @@ func set_progress() -> void:
 	if newValue == 1:
 		meter_filled()
 
+func ripple():
+	$Ripple.show()
+	var rippleTween = $Ripple.create_tween()
+	rippleTween.tween_method(ripple_tween, rippleHeight - .001, rippleHeight, rippleTiming)
+	rippleTween.tween_method(ripple_tween, rippleHeight, 0, rippleTiming)
+	
+	rippleEnd.emit()
+
+
+func ripple_tween(value):
+	$Ripple.material.set_shader_parameter("height", value)
+
 func tween_progress(value) -> void:
 	progressBar.material.set_shader_parameter("value", value)
 
 func _on_button_pressed() -> void:
-	update_meter(1)
+	ripple()
