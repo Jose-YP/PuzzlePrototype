@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform float strength: hint_range(0.0, 0.1, 0.001) = 0.08;
 uniform vec2 center = vec2(0.5, 0.5);
-uniform bool spawn_corner = false;
+//uniform bool spawn_corner = false;
 uniform float radius: hint_range(0.0, 1.0, 0.001) = 0.25;
 
 uniform float aberration: hint_range(0.0, 1.0, 0.001) = 0.425;
@@ -15,8 +15,8 @@ void fragment() {
 	vec2 st = SCREEN_UV;
 	float aspect_ratio = SCREEN_PIXEL_SIZE.y/SCREEN_PIXEL_SIZE.x;
 	//if (spawn_corner){
-	//vec2 center_corr = (center -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);}
-	vec2 center_corr = center;
+	vec2 center_corr = (center -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);
+	//vec2 center_corr = center;
 	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5); 
 	vec2 dist_center = scaled_st - center_corr;
 	float mask =  (1.0 - smoothstep(radius-feather, radius, length(dist_center))) * smoothstep(radius - width - feather, radius-width , length(dist_center));

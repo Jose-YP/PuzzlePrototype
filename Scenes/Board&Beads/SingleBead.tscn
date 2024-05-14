@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://c37ajq80vr346" path="res://Audio/BoardSFX/BreakSFX/Brak4.wav" id="14_m1x3d"]
 
 [node name="SingleBead" type="Node2D"]
-modulate = Color(0.992157, 0.992157, 1, 1)
 material = ExtResource("1_xmwi2")
 scale = Vector2(0.85, 0.85)
 script = ExtResource("2_3mwsr")

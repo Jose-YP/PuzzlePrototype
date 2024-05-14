@@ -84,6 +84,17 @@ func manage_glow() -> void:
 	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
+		#Figure out how much it should glow depending on whether or not it's in a chain
+		#If any of it's linked nodes has a chain Node, it's in a chain
+		var chained = false
+		for link in get_links(true):
+			if link.chainNodes != [null,null,null,null]:
+				chained = true
+		if chained:
+			$Glow.self_modulate = Color.WHITE
+		else:
+			$Glow.self_modulate = Color(1,1,1,0.569)
+	
 	else:
 		glow.hide()
 		glowing = false
@@ -109,7 +120,6 @@ func make_chain(adj) -> void:
 	#Sync chains
 	adj.set_chains(self)
 	set_chains(adj)
-	#Keep every linked bead in the same order
 
 func display_chain(direction,using) -> void:
 	#Doesn't work

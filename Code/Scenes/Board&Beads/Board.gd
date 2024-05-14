@@ -751,8 +751,9 @@ func should_play_zap() -> void:
 #______________________________
 func fail_screen() -> void:
 	var display = Globals.display
+	#If regular score is higher than any of the current Hi scores 
 	for i in range(Globals.display.size()):
-		if RUI.regScore > display[i][1]:
+		if RUI.regScore > display[i][0]:
 			highScored = true
 	
 	if highScored:

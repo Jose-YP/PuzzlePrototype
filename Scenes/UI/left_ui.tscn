@@ -33,8 +33,10 @@ rippleTiming = 2.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1244.0
-offset_bottom = 708.0
+offset_left = 196.0
+offset_top = -181.0
+offset_right = 1335.0
+offset_bottom = 591.0
 texture = ExtResource("5_lviov")
 
 [node name="Ripple" type="ColorRect" parent="."]
@@ -43,7 +45,7 @@ layout_mode = 0
 offset_left = -151.0
 offset_top = -710.0
 offset_right = 2074.0
-offset_bottom = 841.0
+offset_bottom = 939.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

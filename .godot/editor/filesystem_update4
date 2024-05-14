@@ -25,3 +25,4 @@ res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Code/Scenes/UI/left_ui.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd
