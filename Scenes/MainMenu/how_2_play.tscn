@@ -36,11 +36,9 @@ theme_override_constants/margin_right = 10
 [node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 1
 tabs_visible = false
 
 [node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
-visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -125,6 +123,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -159,7 +158,13 @@ X - ROTATE CLOCKWISE
 C - FLIP BEADS NOT ON THE ANCHOR
 V - BREAK ALL CHAINS OF BEADS, [BREAK METER MUST BE FILLED]"
 
-[node name="ScoringSystem" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
+[node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "PRESS SPACE TO PAUSE"
+
+[node name="ScoringSystem2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -189,6 +194,7 @@ layout_mode = 2
 theme_override_constants/separation = 800
 
 [node name="Exit" type="Button" parent="VBoxContainer/nEXT_BACK/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "Exit"
