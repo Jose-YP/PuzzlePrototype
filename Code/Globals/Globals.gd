@@ -1,5 +1,6 @@
 extends Node
 
+@onready var rules: Rules = load("res://Resources/Rules/Basic Rules.tres")
 @onready var save = Save.load_or_create()
 @onready var userPrefs = UserPreferences.load_or_create()
 @onready var display = sort_scores()
@@ -19,7 +20,7 @@ var lowestID: String
 
 func _ready() -> void:
 	set_other_inputs()
-	Globals.set_controls()
+	set_controls()
 
 #______________________________
 #SAVE MANAGEMENT

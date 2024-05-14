@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
 [ext_resource type="PackedScene" uid="uid://bsilqawk4a714" path="res://Scenes/Board&Beads/uberbead.tscn" id="3_02f1i"]
 [ext_resource type="PackedScene" uid="uid://dt86eivh6s6vl" path="res://Scenes/UI/left_ui.tscn" id="3_4i3af"]
-[ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="3_qyefa"]
+[ext_resource type="PackedScene" uid="uid://c8upol425ha0o" path="res://Scenes/Board&Beads/grid_background.tscn" id="3_xac2l"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="4_ii0gx"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
@@ -36,12 +36,7 @@ rules = ExtResource("2_hwdnt")
 position = Vector2(-20, -60)
 scale = Vector2(1.25, 1.25)
 
-[node name="GridBackground" type="Node2D" parent="Grid"]
-position = Vector2(17, 49)
-scale = Vector2(0.8, 0.8)
-script = ExtResource("3_qyefa")
-BoardColor = Color(0.388235, 0.388235, 0.388235, 0.729412)
-FailColor = Color(0.0627451, 0.00392157, 0.00392157, 0.827451)
+[node name="GridBackground" parent="Grid" instance=ExtResource("3_xac2l")]
 
 [node name="Timers" type="Node" parent="."]
 

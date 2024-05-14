@@ -22,3 +22,9 @@ res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
 res://Scenes/UI/left_ui.tscn
 res://Code/Constants/how_2_play.gd
+res://Code/Globals/Globals.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/UI/right_ui.tscn
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/MainMenu/options_menu.tscn
