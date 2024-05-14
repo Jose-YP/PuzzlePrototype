@@ -1,9 +1,18 @@
-[gd_scene format=3 uid="uid://cgd0k1a1ig4xt"]
+[gd_scene load_steps=8 format=3 uid="uid://cgd0k1a1ig4xt"]
+
+[ext_resource type="PackedScene" uid="uid://b7mejons4kmbs" path="res://Scenes/Constants/UIPieces/earth.tscn" id="1_52035"]
+[ext_resource type="Script" path="res://Code/Constants/how_2_play.gd" id="1_u0p3y"]
+[ext_resource type="PackedScene" uid="uid://baem2bb63s81i" path="res://Scenes/Constants/UIPieces/liquid.tscn" id="2_pj0n1"]
+[ext_resource type="PackedScene" uid="uid://bo8i3bitdorr8" path="res://Scenes/Constants/UIPieces/Air.tscn" id="3_furbk"]
+[ext_resource type="PackedScene" uid="uid://bemu3udwgoopm" path="res://Scenes/Constants/UIPieces/Light.tscn" id="4_7bga7"]
+[ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_yr7w6"]
+[ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="6_3voon"]
 
 [node name="How2Play" type="PanelContainer"]
 custom_minimum_size = Vector2(1000, 700)
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_u0p3y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -24,85 +33,172 @@ layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer/Information"]
+[node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
+unique_name_in_owner = true
 layout_mode = 2
+current_tab = 1
 tabs_visible = false
 
-[node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
+[node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Controls"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Chains"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]CHAINS
+BREAK CHAINS TO SCORE"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]CHAINS ARE GROUPS OF DIFFERENTLY COLORED BEADS THAT CONNECT TOGETHER"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+GLOWING [color=red]EARTH[/color] - [color=aqua]SEA[/color] -  [color=white]AIR[/color] BEADS CONNECT TOGETHER"
+
+[node name="Earth" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("1_52035")]
+layout_mode = 2
+
+[node name="Liquid" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_pj0n1")]
+layout_mode = 2
+
+[node name="Air" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("3_furbk")]
+layout_mode = 2
+
+[node name="Light" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("4_7bga7")]
+layout_mode = 2
+
+[node name="Dark" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("5_yr7w6")]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+expand_mode = 4
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+GLOWING [color=gold]LIGHT[/color] - [color=purple]DARK[/color] BEADS CONNECT TOGETHER"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center] TO MAKE A BEAD GLOW, THREE OR MORE OF THE SAME TYPE MUST BE NEXT TO EACHOTHER"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center] AS YOU PLACE BEADS, THE BREAK METER WILL GROW, ONCE FILLED YOU'LL GAIN A BREAK THAT'LL DESTROY ALL CHAINS ON THE BOARD"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer2"]
+layout_mode = 2
+
+[node name="BreakProgress" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer2/HBoxContainer2" instance=ExtResource("6_3voon")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]CONTROLS"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
-layout_mode = 2
-text = "CONTROLS"
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
-layout_mode = 2
-text = "CONTROLS"
-
-[node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 550)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Chains"]
+[node name="Movement" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+text = "LEFT/RIGHT - MOVE LEFT AND RIGHT
+UP - HARD DROP [BEADS ARE THROWN TO THEIR LOWEST POSSIBLE POSITION]
+DOWN - SOFT DROP [BEADS MOVE DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]
+"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Chains/VBoxContainer2"]
+[node name="FullBeadManip" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-bbcode_enabled = true
-text = "[center]CONTROLS"
+text = "Z - ROTATE COUNTER CLOCKWISE
+X - ROTATE CLOCKWISE
+C - FLIP BEADS NOT ON THE ANCHOR
+V - BREAK ALL CHAINS OF BEADS, [BREAK METER MUST BE FILLED]"
 
-[node name="Breaks" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 550)
-layout_mode = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Breaks"]
-layout_mode = 2
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Breaks/VBoxContainer3"]
+[node name="ScoringSystem" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]BREAKS"
+text = "YOU'LL GET SCORED X FOR EVERY BEAD BROKEN
 
-[node name="LevellingUp" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 550)
-layout_mode = 2
+FOR EVERY SET OF GLOWING BEADS IN A CHAIN YOU'LL ADD A X MULTIPLIER TO EVERY SET OF GLOWING BEADS
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/LevellingUp"]
-layout_mode = 2
+FOR EVERY CHAIN ON SCREEN YOU'LL GAIN A X MULTIPLIER FOR EVERY CHAIN ON SCREEN"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/LevellingUp/VBoxContainer4"]
+[node name="LevellingSystem" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]PROGRESSION"
+text = "AS BEADS GET BROKEN, YOU'LL LEVEL UP, WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION
+THERE ARE A MAX OF 20 LEVELS IN A SESSION"
 
-[node name="Contols" type="MarginContainer" parent="VBoxContainer"]
+[node name="nEXT_BACK" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Contols"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/nEXT_BACK"]
 layout_mode = 2
 theme_override_constants/separation = 800
 
-[node name="Back" type="Button" parent="VBoxContainer/Contols/HBoxContainer"]
+[node name="Exit" type="Button" parent="VBoxContainer/nEXT_BACK/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Back"
+text = "Exit"
 
-[node name="Next" type="Button" parent="VBoxContainer/Contols/HBoxContainer"]
+[node name="Next" type="Button" parent="VBoxContainer/nEXT_BACK/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Next"
+text = "Controls
+"
+
+[connection signal="pressed" from="VBoxContainer/nEXT_BACK/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/nEXT_BACK/HBoxContainer/Next" to="." method="_on_next_pressed"]

@@ -1,4 +1,5 @@
-res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/BreakProgress.tscn
+res://Scenes/MainMenu/how_2_play.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/BurnOut.tres
 res://Code/Scenes/Board&Beads/Board.gd
@@ -19,10 +20,5 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
-res://Scenes/Board&Beads/Board.tscn
-res://Scenes/UI/right_ui.tscn
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/MainMenu/game_manager.tscn
-res://Scenes/MainMenu/how_2_play.tscn
-res://Code/Scenes/UI/left_ui.gd
-res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/UI/left_ui.tscn
+res://Code/Constants/how_2_play.gd

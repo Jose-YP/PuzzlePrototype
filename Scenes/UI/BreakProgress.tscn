@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd2r7vn8ipum5"]
+
+[ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="1_eyjqy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
+shader = ExtResource("1_eyjqy")
+shader_parameter/primary_color = Color(0.0446386, 0.604391, 0.0364517, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/unfilled_color = Color(0.443, 0.443, 0.443, 1)
+shader_parameter/value = 0.0
+shader_parameter/smooth_ = 0.005
+shader_parameter/width_in = 0.4
+shader_parameter/width_out = 0.915
+shader_parameter/border_width = 0.03
+
+[node name="HBoxContainer" type="HBoxContainer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="BreakProgress" type="ColorRect" parent="PanelContainer"]
+material = SubResource("ShaderMaterial_276xm")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+text = "BREAK AVAILIBLE
+
+PRESS BREAK BUTTON TO BREAK CHAINS"

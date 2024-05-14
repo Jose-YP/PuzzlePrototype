@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8upol425ha0o"]
+
+[ext_resource type="Script" path="res://Code/Constants/GridBackground.gd" id="1_mcfr2"]
+
+[node name="GridBackground" type="Node2D"]
+position = Vector2(17, 49)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_mcfr2")
+BoardColor = Color(0.388235, 0.388235, 0.388235, 0.729412)
+FailColor = Color(0.0627451, 0.00392157, 0.00392157, 0.827451)

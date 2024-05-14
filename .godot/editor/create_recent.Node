@@ -1,10 +1,10 @@
+HBoxContainer
+MarginContainer
 TextureRect
 RichTextLabel
 VBoxContainer
-MarginContainer
 PanelContainer
 Button
-HBoxContainer
 ProgressBar
 CanvasLayer
 TextureProgressBar
