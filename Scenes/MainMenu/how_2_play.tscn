@@ -1,8 +1,108 @@
 [gd_scene format=3 uid="uid://cgd0k1a1ig4xt"]
 
 [node name="How2Play" type="PanelContainer"]
+custom_minimum_size = Vector2(1000, 700)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center] HOW TO PLAY"
+
+[node name="Information" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/Information"]
+layout_mode = 2
+tabs_visible = false
+
+[node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Controls"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]CONTROLS"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Chains"]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Chains/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]CONTROLS"
+
+[node name="Breaks" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/Breaks"]
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/Breaks/VBoxContainer3"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]BREAKS"
+
+[node name="LevellingUp" type="PanelContainer" parent="VBoxContainer/Information/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Information/TabContainer/LevellingUp"]
+layout_mode = 2
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/TabContainer/LevellingUp/VBoxContainer4"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]PROGRESSION"
+
+[node name="Contols" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Contols"]
+layout_mode = 2
+theme_override_constants/separation = 800
+
+[node name="Back" type="Button" parent="VBoxContainer/Contols/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="VBoxContainer/Contols/HBoxContainer"]
+layout_mode = 2
+text = "Next"

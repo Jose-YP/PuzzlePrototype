@@ -93,6 +93,7 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="SingleBead" parent="." instance=ExtResource("3_02f1i")]
 material = SubResource("ShaderMaterial_pmlil")
+position = Vector2(36, 30)
 
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

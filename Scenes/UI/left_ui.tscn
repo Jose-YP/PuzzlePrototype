@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt86eivh6s6vl"]
+[gd_scene load_steps=7 format=3 uid="uid://dt86eivh6s6vl"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
 [ext_resource type="Material" uid="uid://0g3de7eq0koq" path="res://Shaders/Ripple.tres" id="2_prcki"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="3_wkqru"]
+[ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="5_lviov"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
 shader = ExtResource("3_wkqru")
@@ -28,6 +29,21 @@ offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j8v1b")
+rippleTiming = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1244.0
+offset_bottom = 708.0
+texture = ExtResource("5_lviov")
+
+[node name="Ripple" type="ColorRect" parent="."]
+material = ExtResource("2_prcki")
+layout_mode = 0
+offset_left = -151.0
+offset_top = -710.0
+offset_right = 2074.0
+offset_bottom = 841.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -49,15 +65,6 @@ material = SubResource("ShaderMaterial_276xm")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BreakProgress"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 39.0
-offset_right = 69.0
-offset_bottom = 75.0
-text = "1"
-horizontal_alignment = 1
-
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
@@ -78,16 +85,7 @@ offset_right = 1683.0
 offset_bottom = 751.0
 color = Color(0.188235, 0.188235, 0.188235, 0)
 
-[node name="Ripple" type="ColorRect" parent="."]
-material = ExtResource("2_prcki")
-layout_mode = 0
-offset_left = -1235.0
-offset_top = -276.0
-offset_right = 1336.0
-offset_bottom = 787.0
-
 [node name="Button" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 525.0
 offset_top = 329.0

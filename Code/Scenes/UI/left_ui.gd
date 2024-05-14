@@ -1,12 +1,11 @@
 extends Control
 
 @export var progressTiming: float = .5
-@export var rippleHeight: float = .007
 @export var rippleTiming: float = 1
 
 @onready var nextBeads: Control = $VBoxContainer/NextBeads
 @onready var progressBar: ColorRect = $VBoxContainer/HBoxContainer/PanelContainer/BreakProgress
-@onready var breakText: Label = $VBoxContainer/HBoxContainer/PanelContainer/BreakProgress/Label
+@onready var breakText: RichTextLabel = $VBoxContainer/HBoxContainer/PanelContainer2/RichTextLabel
 @onready var breakNotifier: PanelContainer = $VBoxContainer/HBoxContainer/PanelContainer2
 
 signal breakReady
@@ -41,18 +40,26 @@ func set_progress() -> void:
 		meter_filled()
 
 func ripple():
-	var rippleTween = create_tween().set_ease(Tween.EASE_OUT_IN)
-	rippleTween.tween_method(ripple_tween, .001, rippleHeight, rippleTiming)
-	rippleTween.tween_method(ripple_tween, rippleHeight, 0, rippleTiming)
+	var rippleTween = create_tween().set_ease(Tween.EASE_OUT_IN).set_parallel()
+	rippleTween.tween_method(ripple_radius_tween, .001, 1, rippleTiming)
+	rippleTween.tween_method(ripple_size_tween, .04, 0, rippleTiming)
 	await get_tree().create_timer(rippleTiming).timeout
 	rippleEnd.emit()
 
 
-func ripple_tween(value):
-	$Ripple.material.set_shader_parameter("height", value)
+func ripple_radius_tween(value):
+	$Ripple.material.set_shader_parameter("radius", value)
+
+func ripple_size_tween(value):
+	$Ripple.material.set_shader_parameter("width", value)
 
 func tween_progress(value) -> void:
 	progressBar.material.set_shader_parameter("value", value)
 
 func _on_button_pressed() -> void:
 	ripple()
+
+func set_ripple_center(pos):
+	var center: Vector2 = pos.normalized()
+	print(center)
+	$Ripple.material.set_shader_parameter("center", center)

@@ -60,6 +60,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
 	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
+	LUI.set_ripple_center(LUI.position)
 	RUI.rules = rules
 	LUI.rules = rules
 	
@@ -282,7 +283,7 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 	return newPos
 
 #______________________________
-#PROCESSING
+#PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
 	if not breaking:
@@ -300,6 +301,7 @@ func _process(delta) -> void:
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
+		
 		if Input.is_action_just_pressed("Flip"):
 			currentBead.flip()
 			
