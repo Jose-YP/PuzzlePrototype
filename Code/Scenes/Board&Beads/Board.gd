@@ -61,7 +61,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
 	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
-	LUI.set_ripple_center(LUI.position)
+	LUI.set_ripple_center()
 	RUI.rules = rules
 	LUI.rules = rules
 	
@@ -287,7 +287,7 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
-	if not breaking:
+	if not breaking and not failed:
 		if currentBead.currentState == currentBead.STATE.MOVE and not fallPaused:
 			movement()
 			drop()
@@ -428,7 +428,7 @@ func second_fix() -> void:
 			if bead == null:
 				continue
 			var pos = pixel_to_grid(bead)
-			if Vector2i(i,j) != pixel_to_grid(bead):
+			if Vector2i(i,j) != pos:
 				print()
 				board[i][j] = null
 				bead[pos.x][pos.y] = bead

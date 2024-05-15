@@ -5,8 +5,8 @@
 [resource]
 shader = ExtResource("1_fp5ij")
 shader_parameter/strength = 0.08
-shader_parameter/center = Vector2(0.5, 0.4)
-shader_parameter/radius = 0.154
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
 shader_parameter/aberration = 0.425
 shader_parameter/width = 0.04
-shader_parameter/feather = 0.146
+shader_parameter/feather = 0.135

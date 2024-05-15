@@ -14,11 +14,16 @@ signal rippleEnd
 var rules: Rules
 var progress: int = 0
 
-# Called when the node enters the scene tree for the first time.
+#______________________________
+#NEXT BEADS
+#______________________________
 func update_next(beads) -> void:
 	for i in range(3):
 		nextBeads.update(i,beads[i])
 
+#______________________________
+#BREAK PROGRESS
+#______________________________
 func update_meter(add) -> void:
 	progress += add
 	set_progress()
@@ -39,13 +44,18 @@ func set_progress() -> void:
 	if newValue == 1:
 		meter_filled()
 
+func tween_progress(value) -> void:
+	progressBar.material.set_shader_parameter("value", value)
+
+#______________________________
+#BREAK RIPPLE
+#______________________________
 func ripple():
 	var rippleTween = create_tween().set_ease(Tween.EASE_OUT_IN).set_parallel()
-	rippleTween.tween_method(ripple_radius_tween, .001, 1, rippleTiming)
+	rippleTween.tween_method(ripple_radius_tween, .001, 2, rippleTiming)
 	rippleTween.tween_method(ripple_size_tween, .04, 0, rippleTiming)
 	await get_tree().create_timer(rippleTiming).timeout
 	rippleEnd.emit()
-
 
 func ripple_radius_tween(value):
 	$Ripple.material.set_shader_parameter("radius", value)
@@ -53,13 +63,7 @@ func ripple_radius_tween(value):
 func ripple_size_tween(value):
 	$Ripple.material.set_shader_parameter("width", value)
 
-func tween_progress(value) -> void:
-	progressBar.material.set_shader_parameter("value", value)
-
-func _on_button_pressed() -> void:
-	ripple()
-
-func set_ripple_center(pos):
-	var center: Vector2 = pos.normalized()
+func set_ripple_center() -> void:
+	var center: Vector2 = $VBoxContainer/HBoxContainer.set_ripple_center()
 	print(center)
 	$Ripple.material.set_shader_parameter("center", center)

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="PuzzlePrototype"
-config/tags=PackedStringArray("2d", "made")
+config/name="PuzzlePrototype:LIVELY"
+config/tags=PackedStringArray("2d", "made", "release")
 run/main_scene="res://Scenes/MainMenu/game_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/Beads/LiquidOrb.png"

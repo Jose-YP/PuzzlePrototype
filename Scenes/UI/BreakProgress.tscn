@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd2r7vn8ipum5"]
+[gd_scene load_steps=5 format=3 uid="uid://cd2r7vn8ipum5"]
 
+[ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="1_eyjqy"]
+[ext_resource type="Texture2D" uid="uid://cb3k08qh4jhwv" path="res://Art/ETC/orb2.png" id="3_efg6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
 shader = ExtResource("1_eyjqy")
@@ -14,6 +16,7 @@ shader_parameter/width_out = 0.915
 shader_parameter/border_width = 0.03
 
 [node name="HBoxContainer" type="HBoxContainer"]
+script = ExtResource("1_7383g")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -33,3 +36,9 @@ theme_override_font_sizes/normal_font_size = 10
 text = "BREAK AVAILIBLE
 
 PRESS BREAK BUTTON TO BREAK CHAINS"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(49, 49)
+scale = Vector2(0.0850878, 0.0749999)
+texture = ExtResource("3_efg6c")
