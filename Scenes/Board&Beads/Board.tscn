@@ -69,6 +69,10 @@ one_shot = true
 [node name="Hold" type="Node2D" parent="."]
 visible = false
 
+[node name="SingleBead" parent="Hold" instance=ExtResource("3_02f1i")]
+material = SubResource("ShaderMaterial_pmlil")
+position = Vector2(36, 30)
+
 [node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
 offset_left = -30.0
 offset_top = -20.0
@@ -85,10 +89,6 @@ visible = false
 [node name="FailScreen" parent="." instance=ExtResource("7_td82j")]
 visible = false
 modulate = Color(1, 1, 1, 0)
-
-[node name="SingleBead" parent="." instance=ExtResource("3_02f1i")]
-material = SubResource("ShaderMaterial_pmlil")
-position = Vector2(36, 30)
 
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

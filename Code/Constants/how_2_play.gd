@@ -50,12 +50,13 @@ func _ready():
 #CONTROLS
 #______________________________
 func _process(_delta):
-	if Input.is_action_just_pressed("Break") and breakNum > 0:
-		pass
-	if Input.is_action_just_pressed("ui_accept"):
-		%Next.press()
-	if Input.is_action_just_pressed("ui_cancel"):
-		%Exit.press()
+	if visible:
+		if Input.is_action_just_pressed("Break") and breakNum > 0 and infoTabs.current_tab == 0:
+			pass
+		if Input.is_action_just_pressed("ui_accept"):
+			%Next.pressed = true
+		if Input.is_action_just_pressed("ui_cancel"):
+			%Exit.presseed = true
 
 func _on_exit_pressed():
 	exit.emit()

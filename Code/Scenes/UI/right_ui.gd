@@ -27,7 +27,7 @@ func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
 	var levelThreshold = level_upThreshold(level)
 	#Make code for beads being higher than rules.bead_levelUp * level
-	%LevelProgress.value = beads - levelThreshold
+	%LevelProgress.value = clamp((beads - levelThreshold) / levelThreshold, 0, 100)
 	if beads >= levelThreshold:
 		update_level()
 		%LevelProgress.value = 0
