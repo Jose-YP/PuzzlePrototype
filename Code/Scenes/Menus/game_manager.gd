@@ -55,6 +55,7 @@ func back_to_menu():
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)
+	currentScene.connect("boardSFX", _on_board_play_sfx)
 
 func play_menu_sfx(index):
 	MenuSFX[index].play()

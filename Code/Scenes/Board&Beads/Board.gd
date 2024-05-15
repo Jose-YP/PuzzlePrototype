@@ -10,8 +10,8 @@ class_name MainBoard
 @onready var RUI: Control = $RightUI
 @onready var LUI: Control = $LeftUI
 @onready var Fail: Control = $FailScreen
-@onready var baseGroundedTime = %Grounded.get_wait_time()
-@onready var baseGravTime = %Gravity.get_wait_time()
+@onready var baseGroundedTime: float = %Grounded.get_wait_time()
+@onready var baseGravTime: float = %Gravity.get_wait_time()
 
 signal brokeBead
 signal brokeAll
@@ -72,7 +72,7 @@ func _ready() -> void:
 		4: make_overhang()
 	
 	#start the game
-	spawn_beads()
+	spawn_full_beads()
 	pull_next_bead()
 
 func make_grid() -> Array[Array]:
@@ -86,7 +86,7 @@ func make_grid() -> Array[Array]:
 	return array
 
 #Array order goes [anchor, clockwise, ccw]
-func spawn_beads() -> void:
+func spawn_full_beads() -> void:
 	for i in range(3):
 		if beadsUpnext[i] == null:
 			beadsUpnext[i] = fullBead.instantiate()
@@ -109,7 +109,7 @@ func pull_next_bead() -> void:
 			bead.connect("made_chain", should_play_zap)
 		
 		full_bead_rotation(rules.start_pos, true)
-		spawn_beads()
+		spawn_full_beads()
 
 #______________________________
 #BASIC CONTROLS: MOVE

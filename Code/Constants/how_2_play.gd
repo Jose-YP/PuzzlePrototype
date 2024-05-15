@@ -1,10 +1,7 @@
 extends PanelContainer
 
-@onready var scoreSystem: RichTextLabel = %ScoringSystem
-@onready var levelSystem: RichTextLabel = %LevellingSystem
 @onready var infoTabs: TabContainer = %InfoTabs
-@onready var breakProgress = %BreakProgress
-@onready var manipText: RichTextLabel = %FullBeadManip
+@onready var breakProgress: HBoxContainer = %BreakProgress
 
 signal boardSFX(index)
 signal makeSFX(index)
@@ -12,13 +9,14 @@ signal exit
 
 var breakNum: int = 1
 
+#______________________________
+#INITIALIZATION
+#______________________________
 func _ready():
 	var upInput = OS.get_keycode_string(InputMap.action_get_events("ui_left")[0].keycode)
 	var downInput = OS.get_keycode_string(InputMap.action_get_events("ui_right")[0].keycode)
 	var leftInput = OS.get_keycode_string(InputMap.action_get_events("ui_up")[0].keycode)
-	var rightInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)
-	print(upInput,downInput,leftInput,rightInput)
-	
+	var rightInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)	
 	
 	%Movement.clear()
 	%Movement.append_text(str(leftInput,"/",rightInput," - MOVE LEFT AND RIGHT\n",upInput,
@@ -30,7 +28,6 @@ func _ready():
 	var FlipInput = OS.get_keycode_string(InputMap.action_get_events("Flip")[0].keycode)
 	var BreakInput = OS.get_keycode_string(InputMap.action_get_events("Break")[0].keycode)
 	
-	print(CWWInput,ClockInput,FlipInput,BreakInput)
 	%FullBeadManip.clear()
 	%FullBeadManip.append_text(str(CWWInput," - ROTATE COUNTER CLOCKWISE\n",
 	ClockInput," - ROTATE CLOCKWISE\n",FlipInput
@@ -48,8 +45,10 @@ func _ready():
 	%LevellingSystem.append_text(str("AS BEADS GET BROKEN, YOU'LL LEVEL UP,",
 	"WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION",
 	"THERE ARE A MAX OF ", Globals.rules.max_levels, " LEVELS IN A SESSION"))
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+#______________________________
+#CONTROLS
+#______________________________
 func _process(_delta):
 	if Input.is_action_just_pressed("Break") and breakNum > 0:
 		pass
@@ -59,7 +58,6 @@ func _process(_delta):
 		%Exit.press()
 
 func _on_exit_pressed():
-	makeSFX.emit(2)
 	exit.emit()
 
 func _on_next_pressed():
