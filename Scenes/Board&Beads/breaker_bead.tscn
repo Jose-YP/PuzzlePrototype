@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagf1jfvukcdx"]
+
+[ext_resource type="Script" path="res://Code/Scenes/Board&Beads/breaker_bead.gd" id="1_itnrx"]
+
+[node name="BreakerBead" type="Node2D"]
+script = ExtResource("1_itnrx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
