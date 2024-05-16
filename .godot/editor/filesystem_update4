@@ -30,3 +30,6 @@ res://Scenes/MainMenu/MainMenu.tscn
 res://Code/Scenes/UI/BreakProgress.gd
 res://Code/Constants/how_2_play.gd
 res://Code/Scenes/UI/right_ui.gd
+res://Resources/Rules/RuleMaker.gd
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Code/Scenes/UI/fail_screen.gd

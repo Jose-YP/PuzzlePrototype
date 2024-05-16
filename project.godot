@@ -29,6 +29,10 @@ window/size/viewport_height=720
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Jose/Videos/Godot Movies/GodotTest.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/newgrounds/plugin.cfg")

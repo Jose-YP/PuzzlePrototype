@@ -288,17 +288,18 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #______________________________
 func _process(delta) -> void:
 	if not breaking and not failed:
-		if currentBead.currentState == currentBead.STATE.MOVE and not fallPaused:
+		#Fall paused is first so currentBead won't be read after fail screen
+		if not fallPaused and currentBead.currentState == currentBead.STATE.MOVE:
 			movement()
 			drop()
-		if currentBead.currentState == currentBead.STATE.GROUNDED and not fallPaused:
+		if not fallPaused and currentBead.currentState == currentBead.STATE.GROUNDED:
 			movement()
 			drop()
 		
-		if Input.is_action_pressed("ui_down") and not fallPaused:
+		if Input.is_action_pressed("ui_down") and not fallPaused and not failed:
 			inputHoldTime += delta
 			held = inputHoldTime > rules.soft_drop
-		if Input.is_action_just_released("ui_down"):
+		if Input.is_action_just_released("ui_down") and not failed:
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
@@ -344,6 +345,10 @@ func post_turn() -> void:
 	currentBead.currentState = currentBead.STATE.PLACED
 	currentBead.sync_position()
 	
+	for bead in fixUp: #Last minute fix
+		var pos = pixel_to_grid(bead)
+		board[pos.x][pos.y] = bead
+	
 	for bead in currentBead.beads:
 		bead.reparent($Grid)
 		bead.set_name(str(find_bead(bead)))
@@ -351,10 +356,6 @@ func post_turn() -> void:
 	second_fix()
 	currentBead.queue_free()
 	currentBead = null
-	
-	for bead in fixUp: #Last minute fix
-		var pos = pixel_to_grid(bead)
-		board[pos.x][pos.y] = bead
 	
 	detect_fail()
 	LUI.update_meter(1)
@@ -400,9 +401,9 @@ func post_break() -> void:
 	
 	breaking = false
 	breakNum -= 1
-	LUI.breakText.text = str(breakNum)
+	LUI.breakMeter.breakText.text = str(breakNum)
 	if breakNum < 1:
-		LUI.breakNotifier.hide()
+		LUI.breakMeter.breakNotifier.hide()
 	
 	#Check for any broken links and new links
 	reset_beads()
@@ -419,6 +420,7 @@ func detect_fail() -> void:
 				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
 				failed = true
 				fail_screen()
+				break
 
 func second_fix() -> void:
 	for i in rules.width:
@@ -732,8 +734,8 @@ func _on_gravity_timeout() -> void:
 
 func _on_left_ui_break_ready():
 	breakNum += 1
-	LUI.breakNotifier.show()
-	LUI.breakText.text = str(breakNum)
+	LUI.breakMeter.breakNotifier.show()
+	LUI.breakMeter.breakText.text = str(breakNum)
 
 func _on_right_ui_level_up(level):
 	playSFX.emit(6)
@@ -751,21 +753,26 @@ func should_play_zap() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
+	pauseFall(true)
 	var display = Globals.display
+	print(display)
 	#If regular score is higher than any of the current Hi scores 
 	for i in range(Globals.display.size()):
 		if RUI.regScore > display[i][0]:
+			print(RUI.regScore, "vs",display[i][0])
 			highScored = true
 	
 	if highScored:
 		var HiScoreTween = $HighScoreScreen.create_tween()
 		$HighScoreScreen.show()
-		HiScoreTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade/2)
+		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
+		await get_tree().create_timer(scoreFade).timeout
 	
 	else:
 		var failTween = Fail.create_tween()
 		Fail.show()
-		failTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade/2)
+		failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
+		await get_tree().create_timer(scoreFade).timeout
 
 func _on_high_score_screen_proceed():
 	var HiScoreTween = $HighScoreScreen.create_tween()
@@ -774,8 +781,9 @@ func _on_high_score_screen_proceed():
 	failTween.set_parallel(true)
 	
 	Fail.show()
-	HiScoreTween.tween_method(set_modulate, Color.WHITE, Color.TRANSPARENT, scoreFade)
-	failTween.tween_method(set_modulate, Color.TRANSPARENT, Color.WHITE, scoreFade)
+	HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.TRANSPARENT, scoreFade/2)
+	failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
+	await get_tree().create_timer(scoreFade).timeout
 	HiScoreTween.tween_callback(hide)
 
 #______________________________

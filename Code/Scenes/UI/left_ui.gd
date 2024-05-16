@@ -4,9 +4,7 @@ extends Control
 @export var rippleTiming: float = 1
 
 @onready var nextBeads: Control = $VBoxContainer/NextBeads
-@onready var progressBar: ColorRect = $VBoxContainer/HBoxContainer/PanelContainer/BreakProgress
-@onready var breakText: RichTextLabel = $VBoxContainer/HBoxContainer/PanelContainer2/RichTextLabel
-@onready var breakNotifier: PanelContainer = $VBoxContainer/HBoxContainer/PanelContainer2
+@onready var breakMeter: HBoxContainer = $VBoxContainer/HBoxContainer
 
 signal breakReady
 signal rippleEnd
@@ -34,7 +32,7 @@ func meter_filled() -> void:
 	breakReady.emit()
 
 func set_progress() -> void:
-	var currentValue = progressBar.material.get_shader_parameter("value")
+	var currentValue = breakMeter.progressBar.material.get_shader_parameter("value")
 	var tween = get_tree().create_tween()
 	var newValue = (progress / 
 	((Globals.level * rules.meterChargeRate) + rules.meterChargeThres))
@@ -45,7 +43,7 @@ func set_progress() -> void:
 		meter_filled()
 
 func tween_progress(value) -> void:
-	progressBar.material.set_shader_parameter("value", value)
+	breakMeter.progressBar.material.set_shader_parameter("value", value)
 
 #______________________________
 #BREAK RIPPLE

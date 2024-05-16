@@ -10,7 +10,8 @@ var level: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	update_HiScore(Globals.get_extreme()[0])
+	HiScore = Globals.get_extreme()[0]
+	%HiScoreText.text = str("HISCORE: ", HiScore)
 
 func update_score(score) -> void:
 	regScore = score
