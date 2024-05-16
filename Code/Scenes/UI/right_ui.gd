@@ -61,7 +61,7 @@ func update_level() -> void:
 #CHAIN DISPLAY MANIP
 #______________________________
 func show_display() -> void:
-	var displayTween = get_tree().create_tween()
+	var displayTween = self.create_tween()
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.WHITE, chainDisplayTiming)
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()
 
@@ -77,5 +77,5 @@ func update_display(beads, links, chains) -> void:
 	links," Links",chains))
 
 func remove_display() -> void:
-	var displayTween = get_tree().create_tween()
+	var displayTween = self.create_tween()
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.TRANSPARENT, chainDisplayTiming)

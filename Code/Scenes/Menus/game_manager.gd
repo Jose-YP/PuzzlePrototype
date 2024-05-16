@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
-%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC]
+%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %Roar, %ETC]
 @onready var MenuSFX: Array[AudioStreamPlayer] = [%MenuMove, %MenuConfirm,
  %MenuDeselect, %Pause]
 @onready var music: AudioStreamPlayer = $Music/Music

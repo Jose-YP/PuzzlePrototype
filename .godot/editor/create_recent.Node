@@ -1,3 +1,4 @@
+AnimationPlayer
 AudioStreamPlayer
 RichTextLabel
 PanelContainer
@@ -12,4 +13,3 @@ VBoxContainer
 ProgressBar
 CanvasLayer
 TextureProgressBar
-ColorRect

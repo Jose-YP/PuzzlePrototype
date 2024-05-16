@@ -33,7 +33,7 @@ func meter_filled() -> void:
 
 func set_progress() -> void:
 	var currentValue = breakMeter.progressBar.material.get_shader_parameter("value")
-	var tween = get_tree().create_tween()
+	var tween = self.create_tween()
 	var newValue = (progress / 
 	((Globals.level * rules.meterChargeRate) + rules.meterChargeThres))
 	newValue = clamp(newValue, 0, 1)

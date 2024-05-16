@@ -22,3 +22,11 @@ res://Shaders/ShaderCode/Ripple.gdshader
 res://Code/Scenes/UI/right_ui.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Scenes/MainMenu/game_manager.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/BreakProgress.tscn
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/UI/left_ui.gd

@@ -33,6 +33,9 @@ var holdBreakChain: int = 0
 var brokenBeads: int = 0
 var score: int = 0
 var breakNum: int = 1
+var chainsSize: int = 0
+var linksSize: int = 0
+var beadsSize: int = 0
 var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
@@ -324,15 +327,24 @@ func _process(delta) -> void:
 			#Full Bead should not move during this
 			pauseFall(true)
 			LUI.ripple()
-			await LUI.rippleEnd
+			playSFX.emit(8)
+			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+			
 			find_chains()
+			chainsSize = chains.size()
+			beadsSize = 0
+			RUI.show_display()
+			await LUI.rippleEnd
 			for i in range(chains.size()):
 				#Make sure the starting value is bracketed into an array
 				holdBreakChain = i
 				breaking = true
+				beadsSize += chains[i].size()
 				brokenBeads += chains[i].size()
 				break_order([chains[i].pick_random()])
 				await brokeAll
+			
+			RUI.update_display(beadsSize,linksSize,chainsSize)
 			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
 			post_break()
@@ -392,7 +404,6 @@ func post_break() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
-			#bead.reset_links()
 			print("Bottom of ", bead, " is ", target)
 			board[i][j] = null
 			board[target.x][target.y] = bead
@@ -408,6 +419,7 @@ func post_break() -> void:
 	#Check for any broken links and new links
 	reset_beads()
 	find_links()
+	RUI.remove_display()
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	display_board()
@@ -455,12 +467,15 @@ func find_chains() -> void:
 			var bead = board[i][j]
 			if bead == null: #skip anything that has glowing or no beads
 				continue
+			#Temp chain has the ammount of links in a chain
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
 				var tempChain = add_links(bead.get_links())
 				score += rules.totalScore(tempChain)
 				print("\n\nTOTAL SCORE: ", score)
 				RUI.update_score(score)
 				chains.append(new_set_chains(tempChain))
+				for chain in tempChain:
+					linksSize += chain.size()
 	
 	print(chains)
 
@@ -766,13 +781,13 @@ func fail_screen() -> void:
 		var HiScoreTween = $HighScoreScreen.create_tween()
 		$HighScoreScreen.show()
 		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
-		await get_tree().create_timer(scoreFade).timeout
+		await $HighScoreScreen.create_timer(scoreFade).timeout
 	
 	else:
 		var failTween = Fail.create_tween()
 		Fail.show()
 		failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
-		await get_tree().create_timer(scoreFade).timeout
+		await Fail.create_timer(scoreFade).timeout
 		Fail.start_focus()
 
 func _on_high_score_screen_proceed():
@@ -784,7 +799,7 @@ func _on_high_score_screen_proceed():
 	Fail.show()
 	HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.TRANSPARENT, scoreFade/2)
 	failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
-	await get_tree().create_timer(scoreFade).timeout
+	await Fail.create_timer(scoreFade).timeout
 	$HighScoreScreen.hide()
 	Fail.start_focus()
 

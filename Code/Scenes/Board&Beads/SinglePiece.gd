@@ -10,6 +10,7 @@ extends Node2D
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
 @onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
+@onready var shakeTween = self.create_tween()
 
 signal find_adjacent
 signal made_chain
@@ -24,6 +25,8 @@ var chainNodes: Array = [null,null,null,null]
 var glowing: bool = false
 var breaking: bool = false
 var hardDropped: bool = true
+var shaking: bool = false
+var chained: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -46,6 +49,10 @@ func reset_links():
 	chainNodes = [null,null,null,null]
 	glowing = false
 	reset_link()
+
+func _process(_delta):
+	if not shaking and chained:
+		pass
 
 #______________________________
 #MANAGING LINKS
@@ -86,7 +93,7 @@ func manage_glow() -> void:
 		glowing = true
 		#Figure out how much it should glow depending on whether or not it's in a chain
 		#If any of it's linked nodes has a chain Node, it's in a chain
-		var chained = false
+		chained = false
 		for link in get_links(true):
 			if link.chainNodes != [null,null,null,null]:
 				chained = true
@@ -137,6 +144,10 @@ func display_chain(direction,using) -> void:
 	else:
 		chainNodes[Globals.otherConnectionNum[direction]] = VFX
 
+func chain_shake() -> void:
+	
+	pass
+
 #______________________________
 #GET SET VALUES
 #______________________________
@@ -182,9 +193,10 @@ func destroy_anim():
 		bolt.fade_tweenout()
 	
 	#Destroy bead
-	var tween = get_tree().create_tween()
+	var tween = self.create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
 	await tween.finished
+	shakeTween.queue_free()
 	queue_free()
 
 func set_burn(value):
