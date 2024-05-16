@@ -53,6 +53,10 @@ unique_name_in_owner = true
 wait_time = 5.0
 autostart = true
 
+[node name="Shake" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
 [node name="Debug" type="Timer" parent="Timers"]
 one_shot = true
 
@@ -93,6 +97,7 @@ modulate = Color(1, 1, 1, 0)
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]
 [connection signal="timeout" from="Timers/Gravity" to="." method="_on_gravity_timeout"]
+[connection signal="timeout" from="Timers/Shake" to="." method="_on_shake_timeout"]
 [connection signal="timeout" from="Timers/Debug" to="." method="_on_debug_timeout"]
 [connection signal="HighScore" from="RightUI" to="." method="_on_right_ui_high_score"]
 [connection signal="levelUp" from="RightUI" to="." method="_on_right_ui_level_up"]

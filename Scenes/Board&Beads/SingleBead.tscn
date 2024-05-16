@@ -137,6 +137,7 @@ material = ExtResource("1_iplqb")
 scale = Vector2(0.85, 0.85)
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_2tfol"), ExtResource("4_gou0l"), ExtResource("5_xevfo"), ExtResource("6_bnx1h"), ExtResource("7_7wy5j")])
+burnTiming = 0.08
 
 [node name="Images" type="Node2D" parent="."]
 use_parent_material = true

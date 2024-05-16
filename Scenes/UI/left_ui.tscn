@@ -18,7 +18,6 @@ offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j8v1b")
-rippleTiming = 2.0
 
 [node name="Ripple" type="ColorRect" parent="."]
 material = ExtResource("2_prcki")

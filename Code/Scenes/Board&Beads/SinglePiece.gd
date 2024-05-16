@@ -35,7 +35,6 @@ func _ready() -> void:
 	randomize_type(range(Globals.bead_types.size()))
 
 func randomize_type(array) -> void:
-	
 	typeID = array.pick_random()
 	currentType = Globals.bead_types[typeID]
 	typeFlag = Globals.string_to_flag(currentType)

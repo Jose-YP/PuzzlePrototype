@@ -460,6 +460,7 @@ func reset_beads() -> void:
 #CHAIN
 #______________________________
 func find_chains() -> void:
+	#Make sure there's nothing else in chains to mess up the operation
 	chains.clear()
 	
 	for i in rules.width:
@@ -467,15 +468,19 @@ func find_chains() -> void:
 			var bead = board[i][j]
 			if bead == null: #skip anything that has glowing or no beads
 				continue
-			#Temp chain has the ammount of links in a chain
+			#Work with beads not alreay put in the chain and it has a chain
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
+				#The temp chain takes every link that's chained together
 				var tempChain = add_links(bead.get_links())
+				#Now's the time to get the score and linkSize
 				score += rules.totalScore(tempChain)
+				#Right now tempChain's size temp chain's size is the ammount of links it has
+				linksSize += tempChain.size()
 				print("\n\nTOTAL SCORE: ", score)
 				RUI.update_score(score)
+				
+				#Make the standard chains list for the computer to clear
 				chains.append(new_set_chains(tempChain))
-				for chain in tempChain:
-					linksSize += chain.size()
 	
 	print(chains)
 
@@ -484,10 +489,12 @@ func break_order(chainPart) -> void:
 	#They must be connected to the current bead
 	var adjacent: Dictionary = {}
 	for bead in chainPart:
+		#Skip any beads that were already freed
 		if not is_instance_valid(bead):
 			continue
 		find_adjacent(bead)
 		for adj in bead.adjacent:
+			#Clear a bead if it's in the chain, first condition is for debugger
 			if (is_instance_valid(adj)
 			 and chains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
