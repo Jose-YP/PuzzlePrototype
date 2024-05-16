@@ -12,7 +12,9 @@ func start_focus():
 func _process(_delta):
 	if shown:
 		if Input.is_action_just_pressed("ui_accept"):
-			get_viewport().gui_get_focus_owner().pressed = true
+			var x = get_viewport().gui_get_focus_owner()
+			print(x)
+			get_viewport().gui_get_focus_owner().button_pressed = true
 
 func _on_retry_pressed():
 	retry.emit()

@@ -773,6 +773,7 @@ func fail_screen() -> void:
 		Fail.show()
 		failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
 		await get_tree().create_timer(scoreFade).timeout
+		Fail.start_focus()
 
 func _on_high_score_screen_proceed():
 	var HiScoreTween = $HighScoreScreen.create_tween()
@@ -784,7 +785,8 @@ func _on_high_score_screen_proceed():
 	HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.TRANSPARENT, scoreFade/2)
 	failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
 	await get_tree().create_timer(scoreFade).timeout
-	HiScoreTween.tween_callback(hide)
+	$HighScoreScreen.hide()
+	Fail.start_focus()
 
 #______________________________
 #DEBUG
