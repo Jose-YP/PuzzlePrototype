@@ -30,3 +30,5 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/UI/BreakProgress.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Code/Scenes/UI/left_ui.gd
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/how_2_play.tscn

@@ -1,6 +1,5 @@
 [gd_scene load_steps=19 format=3 uid="uid://c1nqp81cess0x"]
 
-[ext_resource type="Material" uid="uid://w0qtrr7jio8o" path="res://Shaders/Transparency/BurnOut.tres" id="1_xmwi2"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
 [ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="3_2tfol"]
 [ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="4_gou0l"]
@@ -21,14 +20,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 0.435275, 0.466516, 0.450625, 0.517632, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(0, 0)]
+"values": [Vector2(-31, -30), Vector2(-31, -30), Vector2(-31, -30), Vector2(-31, -30), Vector2(-31, -30), Vector2(-31, -30), Vector2(-31, -30)]
 }
 
 [sub_resource type="Animation" id="Animation_sme3t"]
@@ -81,6 +80,17 @@ tracks/0/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/dissolve_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
 
 [sub_resource type="Animation" id="Animation_vniej"]
 resource_name = "MakeConnection"
@@ -98,19 +108,36 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0.521569), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_l5aow"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_accq8"]
 _data = {
 "Glow": SubResource("Animation_sme3t"),
 "MakeConnection": SubResource("Animation_vniej"),
+"RESET": SubResource("Animation_l5aow"),
 "Shake": SubResource("Animation_0xnvv"),
 "burn": SubResource("Animation_y6y1q")
 }
 
 [node name="SingleBead" type="Node2D"]
-material = ExtResource("1_xmwi2")
 scale = Vector2(0.85, 0.85)
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_2tfol"), ExtResource("4_gou0l"), ExtResource("5_xevfo"), ExtResource("6_bnx1h"), ExtResource("7_7wy5j")])
+
+[node name="Images" type="Node2D" parent="."]
+scale = Vector2(1, 1)
 
 [node name="Sprite" type="TextureRect" parent="."]
 light_mask = 2
@@ -125,9 +152,8 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Glow" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.52549)
-self_modulate = Color(1, 1, 1, 0.596078)
+self_modulate = Color(1, 1, 1, 0)
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true

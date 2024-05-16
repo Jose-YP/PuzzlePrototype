@@ -51,6 +51,9 @@ func reset_links():
 	reset_link()
 
 func _process(_delta):
+	if Input.is_action_just_pressed("ui_home"):
+		$AnimationPlayer.play("burn")
+		destroy_anim()
 	if not shaking and chained:
 		pass
 		#$AnimationPlayer.play("Shake")
@@ -102,11 +105,11 @@ func manage_glow() -> void:
 		if chained:
 			if temp != glowing:
 				$AnimationPlayer.play("MakeConnection")
-			$Glow.self_modulate = Color.WHITE
+			glow.self_modulate = Color.WHITE
 		else:
 			if temp != glowing:
 				$AnimationPlayer.play("Glow")
-			$Glow.self_modulate = Color(1,1,1,0.569)
+			glow.self_modulate = Color(1,1,1,0.569)
 	
 	else:
 		glow.hide()
