@@ -33,3 +33,4 @@ res://Code/Scenes/UI/right_ui.gd
 res://Resources/Rules/RuleMaker.gd
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Code/Scenes/UI/fail_screen.gd
+res://Code/Scenes/Menus/game_manager.gd
