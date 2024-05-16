@@ -1,3 +1,6 @@
+AudioStreamPlayer
+RichTextLabel
+PanelContainer
 TextureRect
 Label
 Sprite2D
@@ -5,9 +8,7 @@ Button
 Marker2D
 MarginContainer
 HBoxContainer
-RichTextLabel
 VBoxContainer
-PanelContainer
 ProgressBar
 CanvasLayer
 TextureProgressBar

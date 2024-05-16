@@ -78,3 +78,16 @@ size_flags_horizontal = 0
 [node name="ConnectionDisplay" parent="VBoxContainer/ConnectedPanel" instance=ExtResource("2_uv3j1")]
 custom_minimum_size = Vector2(75, 200)
 layout_mode = 2
+
+[node name="ChainTotals" type="PanelContainer" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChainTotals"]
+layout_mode = 2
+bbcode_enabled = true
+text = "XX Beads!
+XX Links!
+XX Chains!"
