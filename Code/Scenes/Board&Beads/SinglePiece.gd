@@ -10,7 +10,6 @@ extends Node2D
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
 @onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
-@onready var shakeTween = self.create_tween()
 
 signal find_adjacent
 signal made_chain
@@ -27,6 +26,7 @@ var breaking: bool = false
 var hardDropped: bool = true
 var shaking: bool = false
 var chained: bool = false
+var firstTime: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -53,6 +53,7 @@ func reset_links():
 func _process(_delta):
 	if not shaking and chained:
 		pass
+		#$AnimationPlayer.play("Shake")
 
 #______________________________
 #MANAGING LINKS
@@ -88,6 +89,7 @@ func link_beads(adj) -> void:
 			bead.set_links(self)
 
 func manage_glow() -> void:
+	var temp = glowing
 	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
@@ -98,8 +100,12 @@ func manage_glow() -> void:
 			if link.chainNodes != [null,null,null,null]:
 				chained = true
 		if chained:
+			if temp != glowing:
+				$AnimationPlayer.play("MakeConnection")
 			$Glow.self_modulate = Color.WHITE
 		else:
+			if temp != glowing:
+				$AnimationPlayer.play("Glow")
 			$Glow.self_modulate = Color(1,1,1,0.569)
 	
 	else:
@@ -145,7 +151,8 @@ func display_chain(direction,using) -> void:
 		chainNodes[Globals.otherConnectionNum[direction]] = VFX
 
 func chain_shake() -> void:
-	
+	var shakeTween = self.create_tween()
+	shakeTween.tween_property($Sprite,"position",$Sprite.position - 5,.8)
 	pass
 
 #______________________________
@@ -196,8 +203,7 @@ func destroy_anim():
 	var tween = self.create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
 	await tween.finished
-	shakeTween.queue_free()
 	queue_free()
 
-func set_burn(value):
+func set_burn(value: float):
 	material.set_shader_parameter("dissolve_value",value)
