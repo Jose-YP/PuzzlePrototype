@@ -2,6 +2,8 @@ extends Node2D
 
 @export var beads: Array[CompressedTexture2D]
 @export var chainedVFX: PackedScene = preload("res://Scenes/Constants/ETC/connected.tscn")
+@export var shakeRange: Vector2 = Vector2(.5,0)
+@export_range(0,.5,.01) var shakeSpeed: float = .05
 @export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var linkArray: Node = $LinkArray
@@ -13,6 +15,7 @@ extends Node2D
 
 signal find_adjacent
 signal made_chain
+signal something_changed
 
 var typeID: int = 0
 var typeFlag: int = 1
@@ -83,7 +86,9 @@ func link_beads(adj) -> void:
 			bead.set_links(self)
 
 func manage_glow() -> void:
+	#If this var is different by the end then board should know
 	var temp = glowing
+	
 	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
@@ -95,10 +100,12 @@ func manage_glow() -> void:
 				chained = true
 		if chained:
 			if temp != glowing:
+				something_changed.emit()
 				$AnimationPlayer.play("MakeConnection")
 			glow.self_modulate = Color.WHITE
 		else:
 			if temp != glowing:
+				something_changed.emit()
 				$AnimationPlayer.play("Glow")
 			glow.self_modulate = Color(1,1,1,0.569)
 	
@@ -147,12 +154,12 @@ func display_chain(direction,using) -> void:
 func chain_shake() -> void:
 	var pos = $Images.position
 	var shakeTween = self.create_tween()
-	var shakeDist = Vector2(2,0)
-	shakeTween.tween_property($Images,"position",pos - shakeDist,.1)
-	shakeTween.tween_property($Images,"position",pos + shakeDist,.1)
-	shakeTween.tween_property($Images,"position",pos - shakeDist,.1)
-	shakeTween.tween_property($Images,"position",pos + shakeDist,.1)
-	shakeTween.tween_property($Images,"position",pos,.1)
+	var shakeDist = shakeRange
+	shakeTween.tween_property($Images,"position",pos - shakeDist,shakeSpeed)
+	shakeTween.tween_property($Images,"position",pos + shakeDist,shakeSpeed)
+	shakeTween.tween_property($Images,"position",pos - shakeDist,shakeSpeed)
+	shakeTween.tween_property($Images,"position",pos + shakeDist,shakeSpeed)
+	shakeTween.tween_property($Images,"position",pos,shakeSpeed)
 
 #______________________________
 #GET SET VALUES

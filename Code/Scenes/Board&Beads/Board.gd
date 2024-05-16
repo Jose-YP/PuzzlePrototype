@@ -537,15 +537,19 @@ func find_connections(connection, recursion = []) -> Array:
 
 func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	var tempChain: Array = recursion
+	#Check if the link is already in the chain if not add it
 	if not in_temp_chain(tempChain, link):
 		tempChain.append(link)
 	
+	#Check for any connections the bead has, if check said connection's links
 	for bead in link:
 		if bead.chainedLinks.size() != 0:
 			tempChain = find_connections(bead.chainedLinks, tempChain)
 	
+	#This is reached where there are no connections left to find
 	return tempChain
 
+#Search functions
 func in_temp_chain(tempChain, link) -> bool:
 	for tempLink in tempChain:
 		if link == tempLink:

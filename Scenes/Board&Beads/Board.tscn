@@ -54,7 +54,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Shake" type="Timer" parent="Timers"]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="Debug" type="Timer" parent="Timers"]
@@ -76,6 +76,7 @@ visible = false
 [node name="SingleBead" parent="Hold" instance=ExtResource("3_02f1i")]
 material = SubResource("ShaderMaterial_pmlil")
 position = Vector2(36, 30)
+burnTiming = 0.05
 
 [node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
 offset_left = -30.0
