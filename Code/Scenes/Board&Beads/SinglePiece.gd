@@ -5,8 +5,8 @@ extends Node2D
 @export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var linkArray: Node = $LinkArray
-@onready var sprite = $Sprite
-@onready var glow: Sprite2D = $Glow
+@onready var sprite = $Images/Sprite
+@onready var glow: Sprite2D = $Images/Glow
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
 @onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
@@ -49,14 +49,6 @@ func reset_links():
 	chainNodes = [null,null,null,null]
 	glowing = false
 	reset_link()
-
-func _process(_delta):
-	if Input.is_action_just_pressed("ui_home"):
-		$AnimationPlayer.play("burn")
-		destroy_anim()
-	if not shaking and chained:
-		pass
-		#$AnimationPlayer.play("Shake")
 
 #______________________________
 #MANAGING LINKS
@@ -154,9 +146,14 @@ func display_chain(direction,using) -> void:
 		chainNodes[Globals.otherConnectionNum[direction]] = VFX
 
 func chain_shake() -> void:
+	var pos = $Images.position
 	var shakeTween = self.create_tween()
-	shakeTween.tween_property($Sprite,"position",$Sprite.position - 5,.8)
-	pass
+	var shakeDist = Vector2(2,0)
+	shakeTween.tween_property($Images,"position",pos - shakeDist,.1)
+	shakeTween.tween_property($Images,"position",pos + shakeDist,.1)
+	shakeTween.tween_property($Images,"position",pos - shakeDist,.1)
+	shakeTween.tween_property($Images,"position",pos + shakeDist,.1)
+	shakeTween.tween_property($Images,"position",pos,.1)
 
 #______________________________
 #GET SET VALUES

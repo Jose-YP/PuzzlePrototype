@@ -1,5 +1,7 @@
-Node2D
+Timer
+VSeparator
 TextureRect
+Node2D
 GridContainer
 RichTextLabel
 HBoxContainer
@@ -11,5 +13,3 @@ Sprite2D
 Button
 Marker2D
 MarginContainer
-VBoxContainer
-ProgressBar

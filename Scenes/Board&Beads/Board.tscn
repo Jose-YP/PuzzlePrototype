@@ -21,7 +21,7 @@ noise = SubResource("FastNoiseLite_ttodo")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmlil"]
 resource_local_to_scene = true
 shader = ExtResource("4_ii0gx")
-shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
