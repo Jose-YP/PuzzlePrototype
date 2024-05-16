@@ -747,18 +747,27 @@ func _on_gravity_timeout() -> void:
 			move_bead(1, "Y")
 			currentBead.sync_position()
 
-func _on_left_ui_break_ready():
+func _on_shake_timeout() -> void:
+	for i in rules.width:
+		for j in rules.height:
+			var bead = board[i][j]
+			if bead == null: #skip anything that has glowing or no beads
+				continue
+			if bead.chained:
+				bead.chain_shake()
+
+func _on_left_ui_break_ready() -> void:
 	breakNum += 1
 	LUI.breakMeter.breakNotifier.show()
 	LUI.breakMeter.breakText.text = str(breakNum)
 
-func _on_right_ui_level_up(level):
+func _on_right_ui_level_up(level) -> void:
 	playSFX.emit(6)
 	var factor = level * rules.speedUp
 	%Grounded.set_wait_time(baseGroundedTime - factor/4)
 	%Gravity.set_wait_time(baseGravTime - factor)
 
-func _on_right_ui_high_score():
+func _on_right_ui_high_score() -> void:
 	highScored = true
 
 func should_play_zap() -> void:
@@ -790,7 +799,7 @@ func fail_screen() -> void:
 		await get_tree().create_timer(scoreFade).timeout
 		Fail.start_focus()
 
-func _on_high_score_screen_proceed():
+func _on_high_score_screen_proceed() -> void:
 	var HiScoreTween = $HighScoreScreen.create_tween()
 	var failTween = Fail.create_tween()
 	HiScoreTween.set_parallel(true)
