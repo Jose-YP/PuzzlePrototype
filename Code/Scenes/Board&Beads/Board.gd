@@ -200,7 +200,7 @@ func hard_drop(target) -> void:
 	
 	for i in range(currentBead.beads.size()):
 		var loc = find_bead(currentBead.beads[i])
-		print(loc)
+		print("Not matching up", loc)
 		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
 			print(currentBead.beads[i],target[i])
 			fixUp.append(currentBead.beads[i])
@@ -363,6 +363,7 @@ func post_turn() -> void:
 	for bead in fixUp:
 		var pos = pixel_to_grid(bead)
 		board[pos.x][pos.y] = bead
+	fixUp.clear()
 	
 	for bead in currentBead.beads:
 		bead.reparent($Grid)
@@ -561,18 +562,22 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func shake_order(chainPart, size, recursion = {}) -> void:
+func shake_order(chainPart, size, index, recursion = {}) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
 	var shookBeads: Dictionary = recursion
 	var adjacent: Dictionary = {}
 	#Get which parts will shake, they will also have their adjacents checked in chains
 	for bead in chainPart:
+		if not is_instance_valid(bead):
+			continue
+		
 		find_adjacent(bead)
 		for adj in bead.adjacent:
 			#Only shake beads that have yet to shake
-			if (shookBeads.has(adj)
-			 and chains[holdBreakChain].find(adj) != -1):
+			#It should be in chains[index] but not shookBeads
+			if (not shookBeads.has(adj)
+			 and chains[index].find(adj) != -1):
 				adjacent[adj] = adj
 	
 	#Shake beads
@@ -586,7 +591,7 @@ func shake_order(chainPart, size, recursion = {}) -> void:
 	#If every bead in the chain has yet to be shook keep going
 	if shookBeads.size() >= size:
 		return
-	shake_order(adjacent.keys(), size, shookBeads)
+	shake_order(adjacent.keys(), size, index, shookBeads)
 
 #Search functions
 func in_temp_chain(tempChain, link) -> bool:
@@ -798,17 +803,19 @@ func _on_gravity_timeout() -> void:
 			currentBead.sync_position()
 
 func _on_shake_timeout() -> void:
-	#if chains.size() != 0:
-		#var rand: int = randi_range(0,chains.size() - 1)
-		#shake_order(chains[rand], chains[rand].size())
+	if chains.size() != 0:
+		print()
+		var rand: int = randi_range(0,chains.size() - 1)
+		var part: Array = [chains[rand].pick_random()]
+		shake_order(part, chains[rand].size(), rand)
 	#Simple placeholder ver
-	for i in rules.width:
-		for j in rules.height:
-			var bead = board[i][j]
-			if bead == null: #skip anything that has glowing or no beads
-				continue
-			if bead.chained:
-				bead.chain_shake()
+	#for i in rules.width:a
+		#for j in rules.height:
+			#var bead = board[i][j]
+			#if bead == null: #skip anything that has glowing or no beads
+				#continue
+			#if bead.chained:
+				#bead.chain_shake()
 
 func _on_left_ui_break_ready() -> void:
 	breakNum += 1
