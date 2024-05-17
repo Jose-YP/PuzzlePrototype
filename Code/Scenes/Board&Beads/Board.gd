@@ -442,7 +442,6 @@ func detect_fail() -> void:
 		for j in rules.fail_rows:
 			if board[i][j] != null:
 				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
-				failed = true
 				fail_screen()
 				break
 
@@ -826,6 +825,9 @@ func _on_right_ui_level_up(level) -> void:
 func _on_right_ui_high_score() -> void:
 	highScored = true
 
+func _on_right_ui_maxed_level() -> void:
+	fail_screen()
+
 func should_play_zap() -> void:
 	playZap = true
 
@@ -836,6 +838,7 @@ func should_refind() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
+	failed = true
 	pauseFall(true)
 	var display = Globals.display
 	var placement = 7

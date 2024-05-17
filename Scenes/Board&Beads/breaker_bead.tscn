@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bagf1jfvukcdx"]
+[gd_scene load_steps=5 format=3 uid="uid://bagf1jfvukcdx"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/breaker_bead.gd" id="1_itnrx"]
+[ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="2_fqx32"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="2_snr66"]
 [ext_resource type="Material" uid="uid://0g3de7eq0koq" path="res://Shaders/Ripple.tres" id="3_s6r7u"]
 
@@ -8,9 +9,21 @@
 script = ExtResource("1_itnrx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.180392, 0.831373, 0.254902, 1)
-offset_right = 40.0
-offset_bottom = 40.0
+modulate = Color(0.376471, 0.858824, 0.435294, 1)
+custom_minimum_size = Vector2(63, 63)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fqx32")
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Glow" type="Sprite2D" parent="."]

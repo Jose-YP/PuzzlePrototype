@@ -21,6 +21,7 @@ var hasName: bool = false
 #INITIALIZATION & PROCESSING
 #______________________________
 func _ready():
+	hasName = false
 	%First.grab_focus()
 	
 	$VBoxContainer/RichTextLabel.clear()
@@ -95,9 +96,9 @@ func _on_submit_pressed():
 		user = str(user, chara.text)
 	
 	Globals.save.username = user
-	#Erase the lowest score after putting the high score in
-	Globals.save.save_score(score,user)
+	#Erase the lowest score before putting the high score in
 	Globals.save.HiScores.erase(Globals.find_extreme_score(true))
+	Globals.save.save_score(score,user)
 	print(Globals.save.HiScores)
 	proceed.emit()
 	$VBoxContainer/Submit.disabled = true
