@@ -329,7 +329,7 @@ func _process(delta) -> void:
 			#Full Bead should not move during this
 			pauseFall(true)
 			LUI.ripple()
-			playSFX.emit(8)
+			playSFX.emit(7)
 			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
 			
 			find_chains()
@@ -378,6 +378,7 @@ func post_turn() -> void:
 	detect_fail()
 	
 	if not failed:
+		find_chains()
 		pull_next_bead()
 
 func find_links() -> void:
@@ -429,6 +430,7 @@ func post_break() -> void:
 	#Check for any broken links and new links
 	reset_beads()
 	find_links()
+	find_chains()
 	RUI.remove_display()
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
@@ -559,6 +561,33 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
+func shake_order(chainPart, size, recursion = {}) -> void:
+	#First find every adjacent bead to break in the future
+	#They must be connected to the current bead
+	var shookBeads: Dictionary = recursion
+	var adjacent: Dictionary = {}
+	#Get which parts will shake, they will also have their adjacents checked in chains
+	for bead in chainPart:
+		find_adjacent(bead)
+		for adj in bead.adjacent:
+			#Only shake beads that have yet to shake
+			if (shookBeads.has(adj)
+			 and chains[holdBreakChain].find(adj) != -1):
+				adjacent[adj] = adj
+	
+	#Shake beads
+	for bead in adjacent.keys():
+		bead.chain_shake()
+	
+	#Update which beads shook
+	shookBeads.merge(adjacent)
+	await get_tree().create_timer(.1).timeout
+	
+	#If every bead in the chain has yet to be shook keep going
+	if shookBeads.size() >= size:
+		return
+	shake_order(adjacent.keys(), size, shookBeads)
+
 #Search functions
 func in_temp_chain(tempChain, link) -> bool:
 	for tempLink in tempChain:
@@ -608,13 +637,13 @@ func find_adjacent(bead) -> void:
 	var adjacent: Array = [null, null, null, null]
 	var pos = find_bead(bead)
 	
-	if pos.x - 1 >= 0 and board[pos.x - 1][pos.y] != null:
+	if pos.x - 1 >= 0 and is_instance_valid(board[pos.x - 1][pos.y]) and board[pos.x - 1][pos.y] != null:
 		adjacent[0] = board[pos.x - 1][pos.y]
-	if pos.x + 1 < rules.width and board[pos.x + 1][pos.y] != null:
+	if pos.x + 1 < rules.width and is_instance_valid(board[pos.x + 1][pos.y]) and board[pos.x + 1][pos.y] != null:
 		adjacent[1] = board[pos.x + 1][pos.y]
-	if pos.y - 1 >= 0 and board[pos.x][pos.y - 1] != null:
+	if pos.y - 1 >= 0 and is_instance_valid(board[pos.x][pos.y - 1]) and board[pos.x][pos.y - 1] != null:
 		adjacent[2] = board[pos.x][pos.y - 1]
-	if pos.y + 1 < rules.height and board[pos.x][pos.y + 1] != null:
+	if pos.y + 1 < rules.height and is_instance_valid(board[pos.x][pos.y + 1]) and board[pos.x][pos.y + 1] != null:
 		adjacent[3] = board[pos.x][pos.y + 1]
 	
 	bead.adjacent = adjacent
@@ -769,6 +798,10 @@ func _on_gravity_timeout() -> void:
 			currentBead.sync_position()
 
 func _on_shake_timeout() -> void:
+	#if chains.size() != 0:
+		#var rand: int = randi_range(0,chains.size() - 1)
+		#shake_order(chains[rand], chains[rand].size())
+	#Simple placeholder ver
 	for i in rules.width:
 		for j in rules.height:
 			var bead = board[i][j]
@@ -815,6 +848,7 @@ func fail_screen() -> void:
 		$HighScoreScreen.show()
 		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
 		await get_tree().create_timer(scoreFade).timeout
+		$HighScoreScreen.new_focus()
 	
 	else:
 		var failTween = Fail.create_tween()

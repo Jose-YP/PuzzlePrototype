@@ -26,4 +26,5 @@ res://Scenes/UI/right_ui.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Scenes/UI/HighScoreScreen.gd
 res://Code/Scenes/Board&Beads/SinglePiece.gd

@@ -93,3 +93,6 @@ func _on_submit_pressed():
 func _on_focus_entered(index):
 	currentFocus = charInputs[index]
 	currentIndex = index
+
+func new_focus():
+	%First.grab_focus()

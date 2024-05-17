@@ -98,16 +98,17 @@ func manage_glow() -> void:
 		for link in get_links(true):
 			if link.chainNodes != [null,null,null,null]:
 				chained = true
-		if chained:
-			if temp != glowing:
-				something_changed.emit()
-				$AnimationPlayer.play("MakeConnection")
-			glow.self_modulate = Color.WHITE
-		else:
+		if not chained:
 			if temp != glowing:
 				something_changed.emit()
 				$AnimationPlayer.play("Glow")
 			glow.self_modulate = Color(1,1,1,0.569)
+		else:
+			if temp != glowing:
+				something_changed.emit()
+				$AnimationPlayer.play("MakeConnection")
+			glow.self_modulate = Color.WHITE
+			
 	
 	else:
 		glow.hide()

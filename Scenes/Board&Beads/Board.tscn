@@ -76,6 +76,8 @@ visible = false
 [node name="SingleBead" parent="Hold" instance=ExtResource("3_02f1i")]
 material = SubResource("ShaderMaterial_pmlil")
 position = Vector2(36, 30)
+shakeRange = Vector2(0.5, 0)
+shakeSpeed = 0.05
 burnTiming = 0.05
 
 [node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
