@@ -42,6 +42,7 @@ var fallPaused: bool = false
 var failed: bool = false
 var highScored: bool = false
 var playZap: bool = false
+var refind: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -110,6 +111,7 @@ func pull_next_bead() -> void:
 		for bead in currentBead.beads:
 			bead.connect("find_adjacent", find_adjacent)
 			bead.connect("made_chain", should_play_zap)
+			bead.connect("something_changed", should_refind)
 		
 		full_bead_rotation(rules.start_pos, true)
 		spawn_full_beads()
@@ -357,7 +359,8 @@ func post_turn() -> void:
 	currentBead.currentState = currentBead.STATE.PLACED
 	currentBead.sync_position()
 	
-	for bead in fixUp: #Last minute fix
+	#Last minute fix before they get removed from currentBeads
+	for bead in fixUp:
 		var pos = pixel_to_grid(bead)
 		board[pos.x][pos.y] = bead
 	
@@ -369,16 +372,18 @@ func post_turn() -> void:
 	currentBead.queue_free()
 	currentBead = null
 	
-	detect_fail()
-	LUI.update_meter(1)
 	display_board()
 	find_links()
-	find_links()
+	LUI.update_meter(1)
+	detect_fail()
 	
 	if not failed:
 		pull_next_bead()
 
 func find_links() -> void:
+	#If nothing changes, then this won't
+	refind = false
+	
 	for i in rules.width:
 		for j in rules.height:
 			var bead = board[i][j]
@@ -391,6 +396,11 @@ func find_links() -> void:
 	if playZap: 
 		playSFX.emit(5)
 		playZap = false
+	
+	#If something changed in the board
+	#look at it again to see if that changes anything
+	if refind:
+		find_links()
 
 func post_break() -> void:
 	for i in range(rules.width):
@@ -783,6 +793,9 @@ func _on_right_ui_high_score() -> void:
 
 func should_play_zap() -> void:
 	playZap = true
+
+func should_refind() -> void:
+	refind = true
 
 #______________________________
 #FAIL SCREEN
