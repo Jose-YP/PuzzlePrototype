@@ -2,8 +2,11 @@ extends Control
 
 @export var chainDisplayTiming: float = 1.0
 
+@onready var displayTime: Timer = $Timer
+
 signal levelUp(level)
 signal HighScore
+signal maxedLevel
 
 var rules: Rules
 var regScore: int = 0
@@ -36,17 +39,22 @@ func update_HiScore(score) -> void:
 #______________________________
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
-	var levelThreshold = level_upThreshold(level)
+	var levelThreshold: int = 1
+	if level < rules.max_levels:
+		levelThreshold = level_upThreshold(level)
 	#Make code for beads being higher than rules.bead_levelUp * level
 	%LevelProgress.value = clamp((beads - levelThreshold) / levelThreshold, 0, 100)
-	if beads >= levelThreshold:
+	if beads >= levelThreshold and level < rules.max_levels:
 		update_level()
 		%LevelProgress.value = 0
 		#Check for even higher levels
 		update_beads(beads)
+	if level == rules.max_levels:
+		maxedLevel.emit()
+	
 
 func level_upThreshold(lv) -> int:
-	if lv <= 1:
+	if lv <= 2:
 		return roundi(rules.bead_levelUp + lv * rules.levelUp_rate)
 	else:
 		return roundi(rules.bead_levelUp + lv * rules.levelUp_rate) + level_upThreshold(lv - 1)
@@ -74,8 +82,10 @@ func update_display(beads, links, chains) -> void:
 		chainText = str(chainText, chains, " Chain")
 	
 	$VBoxContainer/ChainTotals/RichTextLabel.append_text(str(beads," Beads\n",
-	links," Links",chains))
+	links," Links\n",chains, " Chains"))
+	displayTime.start()
 
-func remove_display() -> void:
+func remove_display():
 	var displayTween = self.create_tween()
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.TRANSPARENT, chainDisplayTiming)
+	$VBoxContainer/ChainTotals/RichTextLabel.clear()

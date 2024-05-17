@@ -91,3 +91,8 @@ bbcode_enabled = true
 text = "XX Beads!
 XX Links!
 XX Chains!"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="remove_display"]

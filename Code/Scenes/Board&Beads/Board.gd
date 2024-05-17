@@ -432,7 +432,6 @@ func post_break() -> void:
 	reset_beads()
 	find_links()
 	find_chains()
-	RUI.remove_display()
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	display_board()

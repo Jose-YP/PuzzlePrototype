@@ -31,3 +31,4 @@ res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Resources/SaveData/SaveFile.tres
 res://Code/Constants/how_2_play.gd
+res://Code/Scenes/UI/right_ui.gd
