@@ -200,8 +200,8 @@ func hard_drop(target) -> void:
 	
 	for i in range(currentBead.beads.size()):
 		var loc = find_bead(currentBead.beads[i])
-		print("Not matching up", loc)
 		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
+			print("Not matching up", loc)
 			print(currentBead.beads[i],target[i])
 			fixUp.append(currentBead.beads[i])
 	
@@ -456,9 +456,8 @@ func second_fix() -> void:
 				continue
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pos:
-				print()
 				board[i][j] = null
-				bead[pos.x][pos.y] = bead
+				board[pos.x][pos.y] = bead
 
 func reset_beads() -> void:
 	for i in rules.width:
@@ -517,13 +516,19 @@ func break_order(chainPart) -> void:
 	break_bead(chainPart)
 	await brokeBead
 	var empty = true
+	var notEmptied = []
 	for bead in chains[holdBreakChain]:
 		if bead != null:
 			empty = false
+			notEmptied.append(bead)
 	if empty:
 		brokeAll.emit()
 		return
-	break_order(adjacent.keys())
+	#If there are no adjacent beads left find untouched beads
+	if adjacent.size() != 0:
+		break_order(adjacent.keys())
+	else:
+		break_order(notEmptied)
 
 func break_bead(chainPart) -> void:
 	for bead in chainPart:
@@ -804,18 +809,9 @@ func _on_gravity_timeout() -> void:
 
 func _on_shake_timeout() -> void:
 	if chains.size() != 0:
-		print()
 		var rand: int = randi_range(0,chains.size() - 1)
 		var part: Array = [chains[rand].pick_random()]
 		shake_order(part, chains[rand].size(), rand)
-	#Simple placeholder ver
-	#for i in rules.width:a
-		#for j in rules.height:
-			#var bead = board[i][j]
-			#if bead == null: #skip anything that has glowing or no beads
-				#continue
-			#if bead.chained:
-				#bead.chain_shake()
 
 func _on_left_ui_break_ready() -> void:
 	breakNum += 1
@@ -825,7 +821,7 @@ func _on_left_ui_break_ready() -> void:
 func _on_right_ui_level_up(level) -> void:
 	playSFX.emit(6)
 	var factor = level * rules.speedUp
-	%Grounded.set_wait_time(baseGroundedTime - factor/4)
+	%Grounded.set_wait_time(baseGroundedTime - factor/5)
 	%Gravity.set_wait_time(baseGravTime - factor)
 
 func _on_right_ui_high_score() -> void:
@@ -843,11 +839,13 @@ func should_refind() -> void:
 func fail_screen() -> void:
 	pauseFall(true)
 	var display = Globals.display
+	var placement = 7
 	print(display)
 	#If regular score is higher than any of the current Hi scores 
 	for i in range(Globals.display.size()):
 		if RUI.regScore > display[i][0]:
 			print(RUI.regScore, "vs",display[i][0])
+			placement -= 1
 			highScored = true
 	
 	if highScored:
@@ -855,7 +853,7 @@ func fail_screen() -> void:
 		$HighScoreScreen.show()
 		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
 		await get_tree().create_timer(scoreFade).timeout
-		$HighScoreScreen.new_focus()
+		$HighScoreScreen.new_focus(RUI.regScore, placement)
 	
 	else:
 		var failTween = Fail.create_tween()

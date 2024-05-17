@@ -42,11 +42,11 @@ scale = Vector2(1.25, 1.25)
 
 [node name="Grounded" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 2.0
 one_shot = true
 
 [node name="SoftDrop" type="Timer" parent="Timers"]
 unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="Gravity" type="Timer" parent="Timers"]
 unique_name_in_owner = true
@@ -92,10 +92,16 @@ offset_top = -25.0
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
+light_mask = 3
+visibility_layer = 3
+z_index = 1
 
 [node name="FailScreen" parent="." instance=ExtResource("7_td82j")]
 visible = false
 modulate = Color(1, 1, 1, 0)
+light_mask = 3
+visibility_layer = 3
+z_index = 1
 
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

@@ -69,4 +69,3 @@ func _on_next_pressed():
 		infoTabs.current_tab -= 1
 		%Next.text = str("Controls")
 	makeSFX.emit(1)
-	

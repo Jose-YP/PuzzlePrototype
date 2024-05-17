@@ -87,14 +87,14 @@ func link_beads(adj) -> void:
 
 func manage_glow() -> void:
 	#If this var is different by the end then board should know
-	var temp = glowing
-	
+	var temp: bool = glowing
+	var chainTemp: bool = chained
 	if get_links().size() >= Globals.glow_num:
 		glow.show()
 		glowing = true
 		#Figure out how much it should glow depending on whether or not it's in a chain
 		#If any of it's linked nodes has a chain Node, it's in a chain
-		chained = false
+		
 		for link in get_links(true):
 			if link.chainNodes != [null,null,null,null]:
 				chained = true
@@ -102,12 +102,14 @@ func manage_glow() -> void:
 			if temp != glowing:
 				something_changed.emit()
 				$AnimationPlayer.play("Glow")
-			glow.self_modulate = Color(1,1,1,0.569)
-		else:
-			if temp != glowing:
+			else:
+				glow.self_modulate = Color(1,1,1,0.569)
+		if chained:
+			if chainTemp != chained:
 				something_changed.emit()
 				$AnimationPlayer.play("MakeConnection")
-			glow.self_modulate = Color.WHITE
+			else:
+				glow.self_modulate = Color.WHITE
 			
 	
 	else:
