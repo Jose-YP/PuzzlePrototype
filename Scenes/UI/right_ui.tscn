@@ -93,6 +93,7 @@ XX Links!
 XX Chains!"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="remove_display"]

@@ -13,6 +13,8 @@ script = ExtResource("1_17cxs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
+offset_left = -4.0
+offset_top = -5.0
 offset_right = 1290.0
 offset_bottom = 734.0
 color = Color(0.121569, 0.121569, 0.121569, 0.345098)
@@ -24,11 +26,14 @@ offset_top = 135.0
 offset_right = 941.0
 offset_bottom = 550.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]END"
+
+[node name="Reason" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

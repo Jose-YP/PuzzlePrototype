@@ -17,16 +17,19 @@ signal brokeBead
 signal brokeAll
 signal fail
 signal playSFX(index)
+signal playBreak(index)
 
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
 const uberbead = preload("res://Scenes/Board&Beads/uberbead.tscn")
+const breakerBead = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
 
 #Variables
 var board: Array[Array]
 var chains: Array[Array]
 var fixUp: Array = []
 var currentBead: Node2D
+var breakers: Array[Node2D] = []
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
@@ -326,31 +329,36 @@ func _process(delta) -> void:
 				playSFX.emit(1)
 			
 		if Input.is_action_just_pressed("Break") and breakNum > 0:
-			#Full Bead should not move during this
-			pauseFall(true)
-			LUI.ripple()
-			playSFX.emit(7)
-			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
-			
-			find_chains()
-			chainsSize = chains.size()
-			beadsSize = 0
-			RUI.show_display()
-			await LUI.rippleEnd
-			for i in range(chains.size()):
-				#Make sure the starting value is bracketed into an array
-				holdBreakChain = i
-				breaking = true
-				beadsSize += chains[i].size()
-				brokenBeads += chains[i].size()
-				break_order([chains[i].pick_random()])
-				await brokeAll
-			
-			RUI.update_display(beadsSize,linksSize,chainsSize)
-			print("\n\n Finish")
-			RUI.update_beads(brokenBeads)
-			post_break()
-			pauseFall(false)
+			if rules.breakBead:
+				
+				currentBead.queue_free()
+				currentBead = breakerBead.instantiate()
+			else:
+				#Full Bead should not move during this
+				pauseFall(true)
+				LUI.ripple()
+				playBreak.emit(1)
+				#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+				
+				find_chains()
+				chainsSize = chains.size()
+				beadsSize = 0
+				RUI.show_display()
+				await LUI.rippleEnd
+				for i in range(chains.size()):
+					#Make sure the starting value is bracketed into an array
+					holdBreakChain = i
+					breaking = true
+					beadsSize += chains[i].size()
+					brokenBeads += chains[i].size()
+					break_order([chains[i].pick_random()])
+					await brokeAll
+				
+				RUI.update_display(beadsSize,linksSize,chainsSize)
+				print("\n\n Finish")
+				RUI.update_beads(brokenBeads)
+				post_break()
+				pauseFall(false)
 
 #______________________________
 #POST TURN PROCESSES

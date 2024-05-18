@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %Roar, %ETC]
+@onready var BreakSFX: Array[AudioStreamPlayer] = [%Roar, %Roar2, %Roar3]
 @onready var MenuSFX: Array[AudioStreamPlayer] = [%MenuMove, %MenuConfirm,
  %MenuDeselect, %Pause]
 @onready var music: AudioStreamPlayer = $Music/Music
@@ -48,6 +49,7 @@ func loadScene(scene) -> void:
 func board_scene_loaded(scene):
 	changeScene(scene)
 	currentScene.connect("playSFX",_on_board_play_sfx)
+	currentScene.connect("playBreak", _on_board_play_break_sfx)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 
@@ -77,6 +79,9 @@ func _on_main_menu_switch_play():
 #-----------------------------------------
 func _on_board_play_sfx(index):
 	BoardSFX[index].play()
+
+func _on_board_play_break_sfx(index):
+	BreakSFX[index].play()
 
 func on_board_retry():
 	loadScene(boardScene)

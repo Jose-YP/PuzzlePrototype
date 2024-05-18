@@ -10,11 +10,10 @@ extends Node2D
 $Positions/CCWPos:[$Beads/CCW, gridPos[1]],$Positions/ClockwisePos:[$Beads/Clockwise, gridPos[2]]}
 @onready var rot = $Positions
 
-enum STATE {MOVE, GROUNDED, PLACED}
-
-var currentState: STATE = STATE.MOVE
+var placed: bool = false
 var gridPos: Array[Vector2i] = [Vector2i(), Vector2i(), Vector2i()]
 var flipped: bool = false
+var breaker: bool = false
 
 #______________________________
 #INITIALIZATION

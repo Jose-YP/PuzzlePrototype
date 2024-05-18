@@ -15,7 +15,7 @@ noise = SubResource("FastNoiseLite_a2nrc")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ielwm"]
 resource_local_to_scene = true
 shader = ExtResource("3_g3lnw")
-shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
@@ -24,7 +24,7 @@ shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qroqv"]
 resource_local_to_scene = true
 shader = ExtResource("3_g3lnw")
-shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
@@ -33,7 +33,7 @@ shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_4c8xo")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cy068"]
 resource_local_to_scene = true
 shader = ExtResource("3_g3lnw")
-shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)

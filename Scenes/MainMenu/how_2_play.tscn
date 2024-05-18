@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgd0k1a1ig4xt"]
+[gd_scene load_steps=10 format=3 uid="uid://cgd0k1a1ig4xt"]
 
 [ext_resource type="PackedScene" uid="uid://b7mejons4kmbs" path="res://Scenes/Constants/UIPieces/earth.tscn" id="1_52035"]
 [ext_resource type="Script" path="res://Code/Constants/how_2_play.gd" id="1_u0p3y"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6supmeapq163" path="res://Scenes/Constants/UIPieces/Dark.tscn" id="5_yr7w6"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="6_3voon"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="8_xip8m"]
+[ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="9_thaav"]
 
 [node name="How2Play" type="PanelContainer"]
 custom_minimum_size = Vector2(1000, 700)
@@ -118,18 +119,15 @@ text = "[center] AS YOU PLACE BEADS, THE BREAK METER WILL GROW, ONCE FILLED YOU'
 [node name="HBoxContainer" type="GridContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-columns = 4
+columns = 5
 metadata/_edit_lock_ = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 45
 theme_override_constants/margin_right = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/MarginContainer2"]
-layout_mode = 2
-
-[node name="BreakProgress" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/MarginContainer2/HBoxContainer2" instance=ExtResource("6_3voon")]
+[node name="BreakProgress" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/MarginContainer2" instance=ExtResource("6_3voon")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -153,11 +151,11 @@ position = Vector2(51, 49.5)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("8_xip8m")
 
-[node name="Replace2" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("4_7bga7")]
+[node name="Chain" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("4_7bga7")]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Glow2" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Replace2"]
+[node name="Glow2" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Chain"]
 modulate = Color(0.898039, 0.909804, 0.137255, 0.607843)
 self_modulate = Color(1, 1, 1, 0.85098)
 light_mask = 2
@@ -167,13 +165,23 @@ position = Vector2(50, 50)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("8_xip8m")
 
+[node name="Replace" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+modulate = Color(0.376471, 0.858824, 0.435294, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_thaav")
+expand_mode = 2
+stretch_mode = 4
+
 [node name="BreakLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Break Meter"
+text = "[center]Break Meter
+When filled, it'll increment by 1. You can store as many as you like"
 
 [node name="RegularBead" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
@@ -201,6 +209,15 @@ size_flags_vertical = 4
 bbcode_enabled = true
 text = "[center]Chained Beads
 Can be broken and turn other chainable beads into Chained Beads"
+
+[node name="ChainedBeads2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Bead Breaker
+Will destroy any chains adjacent to it"
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
 visible = false
@@ -290,4 +307,4 @@ text = "Controls
 [connection signal="pressed" from="VBoxContainer/nEXT_BACK/HBoxContainer/Next" to="." method="_on_next_pressed"]
 
 [editable path="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Glow"]
-[editable path="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Replace2"]
+[editable path="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Chain"]

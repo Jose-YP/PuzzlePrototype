@@ -88,4 +88,5 @@ func update_display(beads, links, chains) -> void:
 func remove_display():
 	var displayTween = self.create_tween()
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.TRANSPARENT, chainDisplayTiming)
+	await displayTween.finished
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()

@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://km3md211h7xt" path="res://Audio/BoardSFX/Zap.wav" id="9_g8x5o"]
 [ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="9_w0bdq"]
 [ext_resource type="AudioStream" uid="uid://dhlvh5cnlnrwe" path="res://Audio/BoardSFX/Snare 11.wav" id="10_qphp8"]
-[ext_resource type="AudioStream" uid="uid://do31ftphnqyj8" path="res://Audio/BoardSFX/RandomizedRoar3.wav" id="11_kwukb"]
+[ext_resource type="AudioStream" uid="uid://do31ftphnqyj8" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav" id="11_kwukb"]
 [ext_resource type="AudioStream" uid="uid://vamg0tkl3038" path="res://Audio/Music/break-tambossa-103bpm.wav" id="11_m4xdf"]
 [ext_resource type="PackedScene" uid="uid://dfbgcar6hpar8" path="res://Scenes/Constants/Backgrounds/DarkBG.tscn" id="12_73kx1"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
@@ -83,15 +83,27 @@ volume_db = -8.0
 pitch_scale = 0.7
 bus = &"BoardSFX"
 
-[node name="Roar" type="AudioStreamPlayer" parent="BoardSFX"]
-unique_name_in_owner = true
-stream = ExtResource("11_kwukb")
-volume_db = -5.777
-
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_mnt3l")
 bus = &"BoardSFX"
+
+[node name="BreakSFX" type="Node" parent="BoardSFX"]
+
+[node name="Roar" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("11_kwukb")
+volume_db = -5.777
+
+[node name="Roar2" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("11_kwukb")
+volume_db = -5.777
+
+[node name="Roar3" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("11_kwukb")
+volume_db = -5.777
 
 [node name="Music" type="Node" parent="."]
 process_mode = 1

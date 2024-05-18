@@ -7,12 +7,30 @@ signal rippleEnd
 
 var currentType: String = "Breaker"
 var adjacent: Array = []
-var breaking: bool = false
-
+var breaker: bool = true
 
 #______________________________
 #CHECKING CHAINS
 #______________________________
+func check_should_break() -> Array:
+	var breakChains: Array = []
+	find_adjacent.emit(self)
+	for i in range(adjacent.size()):
+		var should_break: bool = false
+		var adj = adjacent[i]
+		if adj == null:
+			continue
+		
+		#These will be checked last so chained should be accurate
+		var links: Dictionary = adj.get_links()
+		for link in links:
+			if link.chained:
+				should_break = true
+		
+		if should_break:
+			breakChains.append(adj)
+	
+	return breakChains
 
 #______________________________
 #RIPPLE
