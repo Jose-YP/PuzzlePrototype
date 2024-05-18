@@ -31,3 +31,7 @@ res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Scenes/Board&Beads/uberbead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Code/Scenes/Board&Beads/FullPiece.gd
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Code/Scenes/UI/left_ui.gd
+res://Code/Scenes/Menus/optionsMenu.gd

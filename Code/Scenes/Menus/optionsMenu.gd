@@ -107,7 +107,6 @@ func getNewInputs() -> void:
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
 		Actions.append(action)
-		print(action, events)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
 				inputs[0].append(event)
@@ -145,7 +144,6 @@ func controllerMapStart(toggled,index) -> void:
 		currentToggleIndex = index
 		currentToggle = controllerChange[index]
 		currentToggle.text = str("...Awaiting Input...")
-		print(toggled,index)
 		toggleOn = true
 
 func _on_new_input_type_selected(index) -> void:

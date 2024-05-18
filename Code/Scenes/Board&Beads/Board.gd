@@ -180,10 +180,8 @@ func place() -> void:
 	post_turn()
 
 func hard_drop(target) -> void:
-	print(target)
 	var prevPos: Vector2i = currentBead.gridPos[0]
 	for i in (currentBead.beads.size()):
-		display_board()
 		var pos: Vector2i = target[i]
 		#First time this happened was when hard dropping from the bottom
 		board[currentBead.gridPos[i].x][currentBead.gridPos[i].y] = null
@@ -191,12 +189,6 @@ func hard_drop(target) -> void:
 		currentBead.gridPos[i] = pos
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
-		print("Now: ",pos, board[pos.x][pos.y], " Prev: ", prevPos, board[prevPos.x][prevPos.y])
-		if board[pos.x][pos.y] == null:
-			print()
-		if board[prevPos.x][prevPos.y] == null and i != 0:
-			print(i != 0)
-			
 		prevPos = pos
 	
 	for i in range(currentBead.beads.size()):
@@ -331,6 +323,8 @@ func _process(delta) -> void:
 		if (currentBead != null and not currentBead.breaker 
 		and Input.is_action_just_pressed("Break") and breakNum > 0):
 			if rules.breakBead:
+				breakNum -= 1
+				LUI.breakMeter.breakText.text = str(breakNum)
 				#Get old values to carry over
 				var oldPos = currentBead.gridPos[0]
 				for pos in currentBead.gridPos:
@@ -344,7 +338,6 @@ func _process(delta) -> void:
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
 				playSFX.emit(7)
-				display_board()
 			else:
 				#Full Bead should not move during this
 				pauseFall(true)
@@ -396,7 +389,6 @@ func post_turn() -> void:
 		currentBead.queue_free()
 	
 	currentBead = null
-	display_board()
 	find_links()
 	find_chains(false)
 	check_breakers()
@@ -448,7 +440,6 @@ func post_break() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
-			print("Bottom of ", bead, " is ", target)
 			board[i][j] = null
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
@@ -477,7 +468,6 @@ func post_break() -> void:
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	pauseFall(false)
-	display_board()
 
 func detect_fail() -> void:
 	#Only check for fail spots
@@ -514,10 +504,12 @@ func check_breakers() -> void:
 	var breakAt: Array
 	
 	#Check every breaker bead if they have chains to break
+	#maybe change when the breakers are removed
 	for i in range(breakerArray.size()):
 		breakAt = breakerArray[i].check_should_break()
 		if breakAt.size() != 0:
 			breaking = true
+			breakerArray[i].breaking = true
 			#If there a chains to break find their full chains
 			var breakerChains = find_specific_chains(breakAt)
 			if not is_instance_valid(breakerArray[i]):
@@ -548,14 +540,19 @@ func check_breakers() -> void:
 				await brokeAll
 				holdBreakChain += 1
 			
-			var pos = breakerArray[i].gridPos[0]
-			board[pos.x][pos.y] = null
-			breakerArray.pop_at(i).destroy_anim()
-			
 			#Fix since it's not accurate yet
 			RUI.update_display(beadsSize,linksSize,chainsSize)
 			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
+	
+	if breaking:
+		#Erase from the script wide var rather than local
+		for i in range(breakerArray.size()):
+			if breakerArray[i].breaking:
+				var pos = breakerArray[i].gridPos[0]
+				board[pos.x][pos.y] = null
+				breakerArray[i].destroy_anim()
+				breakers.erase(breakerArray[i])
 	
 	if breakAt.size() != 0 and chainsSize == 1:
 		post_break()
@@ -964,11 +961,9 @@ func fail_screen() -> void:
 	pauseFall(true)
 	var display = Globals.display
 	var placement = 7
-	print(display)
 	#If regular score is higher than any of the current Hi scores 
 	for i in range(Globals.display.size()):
 		if RUI.regScore > display[i][0]:
-			print(RUI.regScore, "vs",display[i][0])
 			placement -= 1
 			highScored = true
 	

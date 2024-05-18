@@ -63,5 +63,4 @@ func ripple_size_tween(value):
 
 func set_ripple_center() -> void:
 	var center: Vector2 = $VBoxContainer/HBoxContainer.set_ripple_center()
-	print(center)
 	$Ripple.material.set_shader_parameter("center", center)

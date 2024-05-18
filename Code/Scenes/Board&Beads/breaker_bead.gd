@@ -67,7 +67,6 @@ func ripple_size_tween(value):
 func set_ripple_center() -> void:
 	var center: Vector2 = $Sprite2D.global_position / (get_window().size as Vector2)
 	center = Vector2(center.x,center.y*2)
-	print(center)
 	$Ripple.material.set_shader_parameter("center", center)
 
 #______________________________

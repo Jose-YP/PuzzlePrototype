@@ -90,7 +90,6 @@ func charIndex(input) -> Array[int]:
 #SIGNALS
 #______________________________
 func _on_submit_pressed():
-	print("AAAAA")
 	var user: String
 	for chara in charInputs:
 		user = str(user, chara.text)
