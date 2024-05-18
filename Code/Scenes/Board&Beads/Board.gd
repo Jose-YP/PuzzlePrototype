@@ -180,7 +180,7 @@ func place() -> void:
 	post_turn()
 
 func hard_drop(target) -> void:
-	var prevPos: Vector2i = currentBead.gridPos[0]
+	#var prevPos: Vector2i = currentBead.gridPos[0]
 	for i in (currentBead.beads.size()):
 		var pos: Vector2i = target[i]
 		#First time this happened was when hard dropping from the bottom
@@ -189,7 +189,7 @@ func hard_drop(target) -> void:
 		currentBead.gridPos[i] = pos
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
-		prevPos = pos
+		#prevPos = pos
 	
 	for i in range(currentBead.beads.size()):
 		var loc = find_bead(currentBead.beads[i])
@@ -536,9 +536,12 @@ func check_breakers() -> void:
 				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
 				linksSize = find_linkNum(breakerChains[j])
+				
+				print("\nHOLD BREAKCHAIN:",holdBreakChain, breakerChains)
+				
 				break_order([breakAt[j]], breakerChains)
-				await brokeAll
-				holdBreakChain += 1
+				await self.brokeAll
+				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			#Fix since it's not accurate yet
 			RUI.update_display(beadsSize,linksSize,chainsSize)
@@ -606,7 +609,7 @@ func break_order(chainPart, holdChains) -> void:
 			 and holdChains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
 	
-	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
+	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	
 	break_bead(chainPart)
 	await brokeBead
