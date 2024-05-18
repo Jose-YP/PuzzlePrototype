@@ -38,3 +38,5 @@ res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/FullBead.tscn
 res://Code/Scenes/Board&Beads/FullPiece.gd
 res://Resources/Rules/RuleMaker.gd
+res://Scenes/Board&Beads/uberbead.tscn
+res://Shaders/Transparency/SingleBeadBurn.tres

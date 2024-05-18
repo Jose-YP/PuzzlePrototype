@@ -1,25 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsilqawk4a714"]
+[gd_scene load_steps=5 format=3 uid="uid://bsilqawk4a714"]
 
 [ext_resource type="PackedScene" uid="uid://c1nqp81cess0x" path="res://Scenes/Board&Beads/SingleBead.tscn" id="1_3adwn"]
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="2_sp0ni"]
 [ext_resource type="PackedScene" uid="uid://4feies2oagdp" path="res://Scenes/Constants/ETC/connected.tscn" id="3_gytfj"]
-
-[sub_resource type="Gradient" id="Gradient_s422o"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ttodo"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u52aq"]
-color_ramp = SubResource("Gradient_s422o")
-noise = SubResource("FastNoiseLite_ttodo")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kb5x6"]
-resource_local_to_scene = true
-shader = ExtResource("2_sp0ni")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/burn_size = 0.45
-shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
 
 [sub_resource type="Shader" id="Shader_7xfeb"]
 code = "shader_type canvas_item;
@@ -72,9 +54,7 @@ shader_parameter/margin = 0.12
 shader_parameter/otherColorMix = 0.4
 
 [node name="SingleBead" instance=ExtResource("1_3adwn")]
-material = SubResource("ShaderMaterial_kb5x6")
 
 [node name="Connected" parent="ConnectMarkers" index="8" instance=ExtResource("3_gytfj")]
 material = SubResource("ShaderMaterial_bxnc6")
 position = Vector2(0, 1.17647)
-scale = Vector2(0.1, 0.1)

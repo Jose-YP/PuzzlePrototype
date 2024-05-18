@@ -30,6 +30,7 @@ var chains: Array[Array]
 var fixUp: Array = []
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
+var currentFull: Node2D
 var breakers: Dictionary = {}
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
@@ -102,7 +103,8 @@ func spawn_full_beads() -> void:
 
 func pull_next_bead() -> void:
 	if rules.spawning:
-		currentBead = beadsUpnext.pop_front()
+		currentFull = beadsUpnext.pop_front()
+		currentBead = currentFull
 		beadsUpnext.append(null)
 		$Hold.remove_child(currentBead)
 		$Grid.add_child(currentBead)
@@ -299,7 +301,6 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
-	
 	if not breaking and not failed:
 		#Fall paused is first so currentBead won't be read after fail screen
 		if not fallPaused and not currentBead.placed:
@@ -332,13 +333,21 @@ func _process(delta) -> void:
 			
 		if not currentBead.breaker and Input.is_action_just_pressed("Break") and breakNum > 0:
 			if rules.breakBead:
+				for bead in beadsUpnext:
+					print(bead.global_position, bead.material)
 				var oldPos = currentBead.gridPos[0]
-				currentBead.queue_free()
+				for pos in currentBead.gridPos:
+					board[pos.x][pos.y] = null
+				currentFull = currentBead
 				currentBead = breakerBead.instantiate()
+				$Grid.remove_child(currentFull)
+				$Hold.add_child(currentFull)
 				$Grid.add_child(currentBead)
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
 				display_board()
+				for bead in beadsUpnext:
+					print(bead.global_position, bead.material)
 			else:
 				#Full Bead should not move during this
 				pauseFall(true)

@@ -71,7 +71,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="Hold" type="Node2D" parent="."]
-visible = false
+position = Vector2(1152, 620)
 
 [node name="SingleBead" parent="Hold" instance=ExtResource("3_02f1i")]
 material = SubResource("ShaderMaterial_pmlil")

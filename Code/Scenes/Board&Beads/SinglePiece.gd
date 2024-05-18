@@ -60,7 +60,7 @@ func should_glow(skip = null) -> void:
 	find_adjacent.emit(self)
 	for i in range(adjacent.size()):
 		var adj = adjacent[i]
-		if adj == null:
+		if adj == null or adj.currentType == "Breaker":
 			continue
 		
 		if adj.currentType == currentType:
@@ -123,7 +123,7 @@ func manage_glow() -> void:
 func should_chain() -> void:
 	for i in range(adjacent.size()):
 		var adj = adjacent[i]
-		if adj == null or not adj.glowing:
+		if adj == null or adj.currentType == "Breaker" or not adj.glowing:
 			continue
 		
 		#Check if chains array has to updated when links update
