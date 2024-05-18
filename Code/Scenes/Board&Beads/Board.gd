@@ -357,10 +357,9 @@ func _process(delta) -> void:
 					beadsSize += chains[i].size()
 					brokenBeads += chains[i].size()
 					break_order([chains[i].pick_random()], chains)
-					await brokeAll
+					await self.brokeAll
 				
 				RUI.update_display(beadsSize,linksSize,chainsSize)
-				print("\n\n Finish")
 				RUI.update_beads(brokenBeads)
 				post_break()
 				pauseFall(false)
@@ -440,6 +439,8 @@ func post_break() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
+			print(bead.currentType,bead," Goes to ",target)
+			
 			board[i][j] = null
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
@@ -466,7 +467,7 @@ func post_break() -> void:
 	
 	chainsSize = 0
 	$Timers/ChainFinish.start()
-	await  $Timers/ChainFinish.timeout
+	await $Timers/ChainFinish.timeout
 	pauseFall(false)
 
 func detect_fail() -> void:
@@ -517,8 +518,8 @@ func check_breakers() -> void:
 			pauseFall(true)
 			breakerArray[i].ripple()
 			playBreak.emit(clamp(chainsSize,0,2))
-			print("BREAK AT:", breakAt)
-			print("BREAKER CHAINS:", breakerChains)
+			#print("BREAK AT:", breakAt)
+			#print("BREAKER CHAINS:", breakerChains)
 			
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			chainsSize += 1
@@ -537,15 +538,12 @@ func check_breakers() -> void:
 				brokenBeads += breakerChains[j].size()
 				linksSize = find_linkNum(breakerChains[j])
 				
-				print("\nHOLD BREAKCHAIN:",holdBreakChain, breakerChains)
-				
 				break_order([breakAt[j]], breakerChains)
 				await self.brokeAll
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			#Fix since it's not accurate yet
 			RUI.update_display(beadsSize,linksSize,chainsSize)
-			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
 	
 	if breaking:
@@ -590,8 +588,6 @@ func find_chains(addScore: bool) -> void:
 				
 				#Make the standard chains list for the computer to clear
 				chains.append(new_set_chains(tempChain))
-	
-	print(chains)
 
 func break_order(chainPart, holdChains) -> void:
 	#First find every adjacent bead to break in the future
@@ -612,7 +608,7 @@ func break_order(chainPart, holdChains) -> void:
 	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	
 	break_bead(chainPart)
-	await brokeBead
+	await self.brokeBead
 	var empty = true
 	var notEmptied = []
 	for bead in holdChains[holdBreakChain]:

@@ -29,7 +29,6 @@ var breaking: bool = false
 var hardDropped: bool = true
 var shaking: bool = false
 var chained: bool = false
-var firstTime: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -49,8 +48,11 @@ func reset_links():
 	chainedWith = [-1,-1,-1,-1]
 	adjacent = []
 	chainedNum = 0
+	chained = false
 	chainNodes = [null,null,null,null]
 	glowing = false
+	for bolt in $Connections.get_children():
+		bolt.queue_free()
 	reset_link()
 
 #______________________________
@@ -108,9 +110,9 @@ func manage_glow() -> void:
 				$AnimationPlayer.play("MakeConnection")
 			else:
 				glow.self_modulate = Color.WHITE
-			
 	
 	else:
+		$AnimationPlayer.play_backwards("Glow")
 		glow.hide()
 		glowing = false
 
