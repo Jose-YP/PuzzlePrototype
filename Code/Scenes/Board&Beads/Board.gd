@@ -468,6 +468,9 @@ func post_break() -> void:
 	check_breakers()
 	
 	if breaking:
+		$Timers/ChainFinish.start()
+		await $Timers/ChainFinish.timeout
+		print(chainsSize)
 		post_break()
 	
 	chainsSize = 0
@@ -593,6 +596,7 @@ func find_chains(addScore: bool) -> void:
 func break_order(chainPart, holdChains) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
+	#REMOVE EVERY INSTANCE OF CHAINS
 	var adjacent: Dictionary = {}
 	for bead in chainPart:
 		#Skip any beads that were already freed
@@ -611,7 +615,7 @@ func break_order(chainPart, holdChains) -> void:
 	await brokeBead
 	var empty = true
 	var notEmptied = []
-	for bead in chains[holdBreakChain]:
+	for bead in holdChains[holdBreakChain]:
 		if bead != null:
 			empty = false
 			notEmptied.append(bead)
@@ -636,7 +640,6 @@ func break_bead(chainPart) -> void:
 		if is_instance_valid(bead):
 			var pos = find_bead(bead)
 			board[pos.x][pos.y] = null
-			#bead.queue_free()
 
 func find_connections(connection, recursion = []) -> Array:
 	var tempChain = recursion
