@@ -25,9 +25,10 @@ const uberbead = preload("res://Scenes/Board&Beads/uberbead.tscn")
 const breakerBead = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
 
 #Variables
+var fixUp: Array = []
 var board: Array[Array]
 var chains: Array[Array]
-var fixUp: Array = []
+var chainLinkNum: Array[int]
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
 var breakers: Dictionary = {}
@@ -436,7 +437,9 @@ func post_break() -> void:
 		#Start at the bottom of the board and push those down first
 		for j in range(realHeight,-1,-1):
 			var bead = board[i][j]
-			if bead == null or currentBead.in_full_bead(bead):
+			if bead == null:
+				continue
+			elif currentBead != null and currentBead.in_full_bead(bead):
 				continue
 			
 			var target = mini_find_bottom(Vector2i(i,j),i)
@@ -496,9 +499,12 @@ func reset_beads() -> void:
 func check_breakers() -> void:
 	chainsSize = 0
 	var breakerArray: Array = breakers.keys()
+	
+	#Check every breaker bead if they have chains to break
 	for i in range(breakerArray.size()):
 		var breakAt = breakerArray[i].check_should_break()
 		if breakAt.size() != 0:
+			#If there a chains to break find their full chains
 			var breakerChains = find_specific_chains(breakAt)
 			if not is_instance_valid(breakAt[i]):
 				continue
@@ -508,11 +514,13 @@ func check_breakers() -> void:
 			print(breakAt)
 			print(breakerChains)
 			
-			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			chainsSize += 1
 			beadsSize = 0
 			RUI.show_display()
-			await breakers[i].rippleEnd
+			await breakerArray[i].rippleEnd
+			
+			#Break every chain found at ith breaker bead
 			for j in range(breakAt.size()):
 				#Make sure the starting value is bracketed into an array
 				holdBreakChain = i
@@ -534,6 +542,7 @@ func check_breakers() -> void:
 func find_chains(addScore: bool) -> void:
 	#Make sure there's nothing else in chains to mess up the operation
 	chains.clear()
+	chainLinkNum.clear()
 	
 	for i in rules.width:
 		for j in rules.height:
@@ -546,12 +555,14 @@ func find_chains(addScore: bool) -> void:
 				#The temp chain takes every link that's chained together
 				var tempChain = add_links(bead.get_links())
 				#Now's the time to get the score and linkSize
-				if addScore:
-					score += rules.totalScore(tempChain)
 				#Right now tempChain's size temp chain's size is the ammount of links it has
 				linksSize += tempChain.size()
-				print("\n\nTOTAL SCORE: ", score)
-				RUI.update_score(score)
+				chainLinkNum.append(linksSize)
+				
+				if addScore:
+					score += rules.totalScore(tempChain)
+					print("\n\nTOTAL SCORE: ", score)
+					RUI.update_score(score)
 				
 				#Make the standard chains list for the computer to clear
 				chains.append(new_set_chains(tempChain))
