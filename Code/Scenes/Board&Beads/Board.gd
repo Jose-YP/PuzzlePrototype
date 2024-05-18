@@ -335,13 +335,15 @@ func _process(delta) -> void:
 				var oldPos = currentBead.gridPos[0]
 				for pos in currentBead.gridPos:
 					board[pos.x][pos.y] = null
+				currentBead.queue_free()
 				
 				#Replace current bead with a breaker bead
-				currentBead.queue_free()
 				currentBead = breakerBead.instantiate()
 				$Grid.add_child(currentBead)
+				currentBead.connect("find_adjacent", find_adjacent)
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
+				playSFX.emit(7)
 				display_board()
 			else:
 				#Full Bead should not move during this
@@ -350,7 +352,7 @@ func _process(delta) -> void:
 				playBreak.emit(1)
 				#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
 				
-				find_chains()
+				find_chains(true)
 				chainsSize = chains.size()
 				beadsSize = 0
 				RUI.show_display()
@@ -361,7 +363,7 @@ func _process(delta) -> void:
 					breaking = true
 					beadsSize += chains[i].size()
 					brokenBeads += chains[i].size()
-					break_order([chains[i].pick_random()])
+					break_order([chains[i].pick_random()], chains)
 					await brokeAll
 				
 				RUI.update_display(beadsSize,linksSize,chainsSize)
@@ -396,11 +398,12 @@ func post_turn() -> void:
 	currentBead = null
 	display_board()
 	find_links()
+	check_breakers()
 	LUI.update_meter(1)
 	detect_fail()
 	
 	if not failed:
-		find_chains()
+		find_chains(false)
 		pull_next_bead()
 
 func find_links() -> void:
@@ -455,7 +458,7 @@ func post_break() -> void:
 	#Check for any broken links and new links
 	reset_beads()
 	find_links()
-	find_chains()
+	find_chains(false)
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
 	display_board()
@@ -491,28 +494,32 @@ func reset_beads() -> void:
 			bead.reset_links()
 
 func check_breakers() -> void:
-	for breaker in breakers:
-		var breakChains = breaker.check_should_break()
-		print(breakChains)
-		print(chains)
-		if breakChains.size() != 0:
+	chainsSize = 0
+	var breakerArray: Array = breakers.keys()
+	for i in range(breakerArray.size()):
+		var breakAt = breakerArray[i].check_should_break()
+		if breakAt.size() != 0:
+			var breakerChains = find_specific_chains(breakAt)
+			if not is_instance_valid(breakAt[i]):
+				continue
 			pauseFall(true)
-			breaker.ripple()
-			playBreak.emit(1)
-			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+			breakerArray[i].ripple()
+			playBreak.emit(clamp(i,0,2))
+			print(breakAt)
+			print(breakerChains)
 			
-			find_chains()
-			chainsSize = chains.size()
+			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+			chainsSize += 1
 			beadsSize = 0
 			RUI.show_display()
-			await LUI.rippleEnd
-			for i in range(chains.size()):
+			await breakers[i].rippleEnd
+			for j in range(breakAt.size()):
 				#Make sure the starting value is bracketed into an array
 				holdBreakChain = i
 				breaking = true
-				beadsSize += chains[i].size()
-				brokenBeads += chains[i].size()
-				break_order([chains[i].pick_random()])
+				beadsSize += breakerChains[j].size()
+				brokenBeads += breakerChains[j].size()
+				break_order([breakAt[j]], breakerChains)
 				await brokeAll
 			
 			RUI.update_display(beadsSize,linksSize,chainsSize)
@@ -524,7 +531,7 @@ func check_breakers() -> void:
 #______________________________
 #CHAIN
 #______________________________
-func find_chains() -> void:
+func find_chains(addScore: bool) -> void:
 	#Make sure there's nothing else in chains to mess up the operation
 	chains.clear()
 	
@@ -539,7 +546,8 @@ func find_chains() -> void:
 				#The temp chain takes every link that's chained together
 				var tempChain = add_links(bead.get_links())
 				#Now's the time to get the score and linkSize
-				score += rules.totalScore(tempChain)
+				if addScore:
+					score += rules.totalScore(tempChain)
 				#Right now tempChain's size temp chain's size is the ammount of links it has
 				linksSize += tempChain.size()
 				print("\n\nTOTAL SCORE: ", score)
@@ -550,7 +558,7 @@ func find_chains() -> void:
 	
 	print(chains)
 
-func break_order(chainPart) -> void:
+func break_order(chainPart, holdChains) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
 	var adjacent: Dictionary = {}
@@ -562,7 +570,7 @@ func break_order(chainPart) -> void:
 		for adj in bead.adjacent:
 			#Clear a bead if it's in the chain, first condition is for debugger
 			if (is_instance_valid(adj)
-			 and chains[holdBreakChain].find(adj) != -1):
+			 and holdChains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
 	
 	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
@@ -580,9 +588,9 @@ func break_order(chainPart) -> void:
 		return
 	#If there are no adjacent beads left find untouched beads
 	if adjacent.size() != 0:
-		break_order(adjacent.keys())
+		break_order(adjacent.keys(), holdChains)
 	else:
-		break_order(notEmptied)
+		break_order(notEmptied, holdChains)
 
 func break_bead(chainPart) -> void:
 	for bead in chainPart:
@@ -620,6 +628,9 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	
 	#This is reached where there are no connections left to find
 	return tempChain
+
+func get_chain_score(breeakerChains):
+	pass
 
 func shake_order(chainPart, size, index, recursion = {}) -> void:
 	#First find every adjacent bead to break in the future
@@ -671,6 +682,18 @@ func in_chains(bead) -> bool:
 		if chain.find(bead) != -1:
 			return true
 	return false
+
+func find_specific_chains(breakerLinks) -> Array:
+	var returnChains: Dictionary = {}
+	
+	#I don't know why but chain in chains doesn't work here but it works everywhere else
+	for chain in chains:
+		for link in chains:
+			for bead in link:
+				if breakerLinks.find(bead) != -1:
+					returnChains[link] = link
+	
+	return returnChains.keys()
 
 #______________________________
 #CONVERSION

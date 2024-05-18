@@ -41,6 +41,7 @@ func check_should_break() -> Array:
 		for link in links:
 			if link.chained:
 				should_break = true
+				break
 		
 		if should_break:
 			breakChains.append(adj)
