@@ -1,5 +1,4 @@
 extends Node2D
-class_name MainBoard
 
 #EXPORT VARIABLES
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
@@ -15,7 +14,6 @@ class_name MainBoard
 
 signal brokeBead
 signal brokeAll
-signal fail
 signal playSFX(index)
 signal playBreak(index)
 
@@ -300,7 +298,7 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
-	if not breaking and not failed:
+	if currentBead != null and not breaking and not failed:
 		#Fall paused is first so currentBead won't be read after fail screen
 		if not fallPaused and not currentBead.placed:
 			movement()
@@ -314,7 +312,7 @@ func _process(delta) -> void:
 			inputHoldTime = 0
 			held = false
 		
-		if not currentBead.breaker and Input.is_action_just_pressed("Flip"):
+		if currentBead != null and not currentBead.breaker and Input.is_action_just_pressed("Flip"):
 			currentBead.flip()
 			
 			for i in range(currentBead.gridPos.size()):
@@ -330,7 +328,8 @@ func _process(delta) -> void:
 				currentBead.positions[i].global_position = grid_to_pixel(pos)
 				playSFX.emit(1)
 			
-		if not currentBead.breaker and Input.is_action_just_pressed("Break") and breakNum > 0:
+		if (currentBead != null and not currentBead.breaker 
+		and Input.is_action_just_pressed("Break") and breakNum > 0):
 			if rules.breakBead:
 				#Get old values to carry over
 				var oldPos = currentBead.gridPos[0]
@@ -399,12 +398,15 @@ func post_turn() -> void:
 	currentBead = null
 	display_board()
 	find_links()
+	find_chains(false)
 	check_breakers()
+	if breaking:
+		$Timers/ChainFinish.start()
+		await $Timers/ChainFinish.timeout
+	
 	LUI.update_meter(1)
 	detect_fail()
-	
 	if not failed:
-		find_chains(false)
 		pull_next_bead()
 
 func find_links() -> void:
@@ -452,18 +454,26 @@ func post_break() -> void:
 			bead.global_position = grid_to_pixel(target)
 			bead.set_name(str(target))
 	
-	breaking = false
-	breakNum -= 1
-	LUI.breakMeter.breakText.text = str(breakNum)
+	if not rules.breakBead:
+		breakNum -= 1
+		LUI.breakMeter.breakText.text = str(breakNum)
 	if breakNum < 1:
 		LUI.breakMeter.breakNotifier.hide()
 	
+	breaking = false
 	#Check for any broken links and new links
 	reset_beads()
 	find_links()
 	find_chains(false)
+	check_breakers()
+	
+	if breaking:
+		post_break()
+	
+	chainsSize = 0
 	$Timers/ChainFinish.start()
 	await  $Timers/ChainFinish.timeout
+	pauseFall(false)
 	display_board()
 
 func detect_fail() -> void:
@@ -497,7 +507,6 @@ func reset_beads() -> void:
 			bead.reset_links()
 
 func check_breakers() -> void:
-	chainsSize = 0
 	var breakerArray: Array = breakers.keys()
 	
 	#Check every breaker bead if they have chains to break
@@ -506,35 +515,45 @@ func check_breakers() -> void:
 		if breakAt.size() != 0:
 			#If there a chains to break find their full chains
 			var breakerChains = find_specific_chains(breakAt)
-			if not is_instance_valid(breakAt[i]):
+			if not is_instance_valid(breakerArray[i]):
 				continue
 			pauseFall(true)
 			breakerArray[i].ripple()
-			playBreak.emit(clamp(i,0,2))
-			print(breakAt)
-			print(breakerChains)
+			playBreak.emit(clamp(chainsSize,0,2))
+			print("BREAK AT:", breakAt)
+			print("BREAKER CHAINS:", breakerChains)
 			
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			chainsSize += 1
 			beadsSize = 0
+			holdBreakChain = 0
 			RUI.show_display()
 			await breakerArray[i].rippleEnd
 			
 			#Break every chain found at ith breaker bead
 			for j in range(breakAt.size()):
+				#Check if 
+				if not is_instance_valid(breakAt[j]):
+					continue
 				#Make sure the starting value is bracketed into an array
-				holdBreakChain = i
 				breaking = true
 				beadsSize += breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
 				break_order([breakAt[j]], breakerChains)
 				await brokeAll
+				holdBreakChain += 1
 			
+			var pos = breakerArray[i].gridPos[0]
+			board[pos.x][pos.y] = null
+			breakerArray[i].destroy_anim()
+			
+			#Fix since it's not accurate yet
 			RUI.update_display(beadsSize,linksSize,chainsSize)
 			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
-			post_break()
-			pauseFall(false)
+	
+	if chainsSize == 1:
+		post_break()
 
 #______________________________
 #CHAIN
@@ -640,7 +659,7 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func get_chain_score(breeakerChains):
+func get_chain_score(breakerChains):
 	pass
 
 func shake_order(chainPart, size, index, recursion = {}) -> void:
@@ -705,6 +724,12 @@ func find_specific_chains(breakerLinks) -> Array:
 					returnChains[link] = link
 	
 	return returnChains.keys()
+
+func find_linkNum(chain) -> int:
+	var index: int = chains.find(chain)
+	if index == -1:
+		return 0
+	return chainLinkNum[index]
 
 #______________________________
 #CONVERSION

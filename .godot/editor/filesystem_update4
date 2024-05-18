@@ -30,3 +30,4 @@ res://Scenes/UI/BreakProgress.tscn
 res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Scenes/Board&Beads/uberbead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd

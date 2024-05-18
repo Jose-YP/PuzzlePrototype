@@ -63,9 +63,6 @@ func should_glow(skip = null) -> void:
 		if adj == null or adj.currentType == "Breaker":
 			continue
 		
-		if adj.currentType == currentType:
-			pass
-		
 		var links: Dictionary = get_links()
 		#if adj can but isn't linked to bead + make sure to skip same bead
 		if adj.currentType == currentType and not links.has(adj) and adj != skip:
