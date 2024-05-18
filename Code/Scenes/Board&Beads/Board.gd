@@ -304,10 +304,10 @@ func _process(delta) -> void:
 			movement()
 			drop()
 		
-		if Input.is_action_pressed("ui_down") and not fallPaused and not failed:
+		if currentBead != null and Input.is_action_pressed("ui_down") and not fallPaused and not failed:
 			inputHoldTime += delta
 			held = inputHoldTime > rules.soft_drop
-		if Input.is_action_just_released("ui_down") and not failed:
+		if currentBead != null and Input.is_action_just_released("ui_down") and not failed:
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
@@ -508,11 +508,13 @@ func reset_beads() -> void:
 
 func check_breakers() -> void:
 	var breakerArray: Array = breakers.keys()
+	var breakAt: Array
 	
 	#Check every breaker bead if they have chains to break
 	for i in range(breakerArray.size()):
-		var breakAt = breakerArray[i].check_should_break()
+		breakAt = breakerArray[i].check_should_break()
 		if breakAt.size() != 0:
+			breaking = true
 			#If there a chains to break find their full chains
 			var breakerChains = find_specific_chains(breakAt)
 			if not is_instance_valid(breakerArray[i]):
@@ -536,23 +538,23 @@ func check_breakers() -> void:
 				if not is_instance_valid(breakAt[j]):
 					continue
 				#Make sure the starting value is bracketed into an array
-				breaking = true
-				beadsSize += breakerChains[j].size()
+				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
+				linksSize = find_linkNum(breakerChains[j])
 				break_order([breakAt[j]], breakerChains)
 				await brokeAll
 				holdBreakChain += 1
 			
 			var pos = breakerArray[i].gridPos[0]
 			board[pos.x][pos.y] = null
-			breakerArray[i].destroy_anim()
+			breakerArray.pop_at(i).destroy_anim()
 			
 			#Fix since it's not accurate yet
 			RUI.update_display(beadsSize,linksSize,chainsSize)
 			print("\n\n Finish")
 			RUI.update_beads(brokenBeads)
 	
-	if chainsSize == 1:
+	if breakAt.size() != 0 and chainsSize == 1:
 		post_break()
 
 #______________________________
