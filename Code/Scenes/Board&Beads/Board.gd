@@ -183,8 +183,6 @@ func place() -> void:
 func hard_drop(target) -> void:
 	print(target)
 	var prevPos: Vector2i = currentBead.gridPos[0]
-	if currentBead.flipped:
-		print()
 	for i in (currentBead.beads.size()):
 		display_board()
 		var pos: Vector2i = target[i]
@@ -219,8 +217,10 @@ func drop() -> void:
 		
 	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
 		move_bead(1, "Y")
-		currentBead.sync_position()
 		$Timers/SoftDrop.start()
+		if not currentBead.breaker:
+			currentBead.sync_position()
+
 
 #______________________________
 #BASIC CONTROLS: ROTATE
@@ -335,6 +335,7 @@ func _process(delta) -> void:
 				var oldPos = currentBead.gridPos[0]
 				currentBead.queue_free()
 				currentBead = breakerBead.instantiate()
+				$Grid.add_child(currentBead)
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
 				display_board()
@@ -379,14 +380,16 @@ func post_turn() -> void:
 		board[pos.x][pos.y] = bead
 	fixUp.clear()
 	
-	for bead in currentBead.beads:
-		bead.reparent($Grid)
-		bead.set_name(str(find_bead(bead)))
+	if currentBead.breaker:
+		currentBead.set_name(str(find_bead(currentBead)))
+	else:
+		for bead in currentBead.beads:
+			bead.reparent($Grid)
+			bead.set_name(str(find_bead(bead)))
+		second_fix()
+		currentBead.queue_free()
 	
-	second_fix()
-	currentBead.queue_free()
 	currentBead = null
-	
 	display_board()
 	find_links()
 	LUI.update_meter(1)
@@ -407,6 +410,7 @@ func find_links() -> void:
 				continue
 			if bead.currentType == "Breaker":
 				breakers[bead] = bead
+				continue
 			bead.should_glow()
 			if bead.glowing:
 				bead.should_chain()
@@ -478,7 +482,7 @@ func reset_beads() -> void:
 		for j in rules.height:
 			#or currentBead.in_full_bead(bead)
 			var bead = board[i][j]
-			if bead == null:
+			if bead == null or bead.currentType == "Breaker":
 				continue
 			bead.reset_links()
 
@@ -523,7 +527,8 @@ func find_chains() -> void:
 	for i in rules.width:
 		for j in rules.height:
 			var bead = board[i][j]
-			if bead == null: #skip anything that has glowing or no beads
+			#skip anything that has breaker or no beads
+			if bead == null or bead.currentType == "Breaker":
 				continue
 			#Work with beads not alreay put in the chain and it has a chain
 			if not in_chains(bead) and bead.chainedLinks.size() > 0:
@@ -731,7 +736,7 @@ func mini_find_bottom(pos,column,default = pos,hardDropping = false) -> Vector2i
 		#First regular bead in current bead's column
 		if board[column][j] != null:
 			var inCurrent: bool = false
-			if hardDropping:
+			if hardDropping and not currentBead.breaker:
 				var Bead = currentBead
 				inCurrent = Bead.in_full_bead(board[column][j], board[pos.x][pos.y])
 			
@@ -837,7 +842,8 @@ func pauseFall(should):
 func _on_soft_drop_timeout() -> void:
 	if can_move("Down"):
 		move_bead(1, "Y")
-		currentBead.sync_position()
+		if not currentBead.breaker:
+			currentBead.sync_position()
 	else:
 		place()
 
@@ -850,7 +856,8 @@ func _on_gravity_timeout() -> void:
 			place()
 		else:
 			move_bead(1, "Y")
-			currentBead.sync_position()
+			if not currentBead.breaker:
+				currentBead.sync_position()
 
 func _on_shake_timeout() -> void:
 	if chains.size() != 0:

@@ -8,14 +8,21 @@ extends Node2D
 signal find_adjacent
 signal rippleEnd
 
-#Beads is here just to easily integrate into old code
+#Beads & positions is here just to easily integrate into old code
 var currentType: String = "Breaker"
 var adjacent: Array = []
 var beads: Array = [self]
+var positions: Array = [self]
 var gridPos: Array[Vector2i] = [Vector2i(0,0)]
 var breaker: bool = true
 var placed: bool = false
 var breaking: bool = false
+
+#______________________________
+#INITIALIZATION
+#______________________________
+func _ready() -> void:
+	material.set_shader_parameter("dissolve_value",1.0)
 
 #______________________________
 #CHECKING CHAINS

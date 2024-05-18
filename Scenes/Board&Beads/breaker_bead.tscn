@@ -34,20 +34,21 @@ script = ExtResource("1_itnrx")
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.376471, 0.858824, 0.435294, 1)
 use_parent_material = true
-custom_minimum_size = Vector2(63, 63)
+custom_minimum_size = Vector2(63, 60)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -31.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fqx32")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="Glow" type="Sprite2D" parent="."]
