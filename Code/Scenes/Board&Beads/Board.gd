@@ -28,9 +28,9 @@ const breakerBead = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
 var board: Array[Array]
 var chains: Array[Array]
 var fixUp: Array = []
-var currentBead: Node2D
-var breakers: Array[Node2D] = []
 var beadsUpnext: Array[Node2D] = [null, null, null]
+var currentBead: Node2D
+var breakers: Dictionary = {}
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0
@@ -145,19 +145,20 @@ func move_bead(ammount, direction = "X") -> void:
 		playSFX.emit(0)
 
 func movement() -> void:
-	if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
-		currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
-		if currentBead.rot.rotation_degrees > 360:
-			currentBead.rot.rotation_degrees -= 360
-		
-		full_bead_rotation(currentBead.gridPos[0])
-		
-	if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
-		currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
-		if currentBead.rot.rotation_degrees < 0:
-			currentBead.rot.rotation_degrees += 360
-		
-		full_bead_rotation(currentBead.gridPos[0])
+	if not currentBead.breaker:
+		if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
+			currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
+			if currentBead.rot.rotation_degrees > 360:
+				currentBead.rot.rotation_degrees -= 360
+			
+			full_bead_rotation(currentBead.gridPos[0])
+			
+		if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
+			currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
+			if currentBead.rot.rotation_degrees < 0:
+				currentBead.rot.rotation_degrees += 360
+			
+			full_bead_rotation(currentBead.gridPos[0])
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
 		move_bead(-1)
@@ -165,7 +166,7 @@ func movement() -> void:
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
 		move_bead(1)
 	
-	if Input.is_anything_pressed():
+	if not currentBead.breaker and Input.is_anything_pressed():
 		currentBead.sync_position()
 
 func place() -> void:
@@ -225,8 +226,11 @@ func drop() -> void:
 #BASIC CONTROLS: ROTATE
 #______________________________
 func ground_timer_reset(oldPos, newPos) -> void:
-	if oldPos != newPos and currentBead.currentState == currentBead.STATE.GROUNDED:
+	var canDown = can_move("Down")
+	if oldPos != newPos and not canDown:
 		$Timers/Grounded.start()
+	elif canDown:
+		$Timers/Grounded.stop()
 
 func full_bead_rotation(pos, start = false) -> void:
 	var allNewPos: Array[Vector2i] = [pos,pos,pos]
@@ -295,12 +299,10 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
+	
 	if not breaking and not failed:
 		#Fall paused is first so currentBead won't be read after fail screen
-		if not fallPaused and currentBead.currentState == currentBead.STATE.MOVE:
-			movement()
-			drop()
-		if not fallPaused and currentBead.currentState == currentBead.STATE.GROUNDED:
+		if not fallPaused and not currentBead.placed:
 			movement()
 			drop()
 		
@@ -312,7 +314,7 @@ func _process(delta) -> void:
 			inputHoldTime = 0
 			held = false
 		
-		if Input.is_action_just_pressed("Flip"):
+		if not currentBead.breaker and Input.is_action_just_pressed("Flip"):
 			currentBead.flip()
 			
 			for i in range(currentBead.gridPos.size()):
@@ -328,11 +330,14 @@ func _process(delta) -> void:
 				currentBead.positions[i].global_position = grid_to_pixel(pos)
 				playSFX.emit(1)
 			
-		if Input.is_action_just_pressed("Break") and breakNum > 0:
+		if not currentBead.breaker and Input.is_action_just_pressed("Break") and breakNum > 0:
 			if rules.breakBead:
-				
+				var oldPos = currentBead.gridPos[0]
 				currentBead.queue_free()
 				currentBead = breakerBead.instantiate()
+				currentBead.gridPos[0] = oldPos
+				currentBead.global_position = grid_to_pixel(oldPos)
+				display_board()
 			else:
 				#Full Bead should not move during this
 				pauseFall(true)
@@ -364,8 +369,9 @@ func _process(delta) -> void:
 #POST TURN PROCESSES
 #______________________________
 func post_turn() -> void:
-	currentBead.currentState = currentBead.STATE.PLACED
-	currentBead.sync_position()
+	currentBead.placed = true
+	if not currentBead.breaker:
+		currentBead.sync_position()
 	
 	#Last minute fix before they get removed from currentBeads
 	for bead in fixUp:
@@ -399,6 +405,8 @@ func find_links() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
+			if bead.currentType == "Breaker":
+				breakers[bead] = bead
 			bead.should_glow()
 			if bead.glowing:
 				bead.should_chain()
@@ -473,6 +481,37 @@ func reset_beads() -> void:
 			if bead == null:
 				continue
 			bead.reset_links()
+
+func check_breakers() -> void:
+	for breaker in breakers:
+		var breakChains = breaker.check_should_break()
+		print(breakChains)
+		print(chains)
+		if breakChains.size() != 0:
+			pauseFall(true)
+			breaker.ripple()
+			playBreak.emit(1)
+			#Once chains are finalized you cAan'y normally find the amoount of links so find them before this
+			
+			find_chains()
+			chainsSize = chains.size()
+			beadsSize = 0
+			RUI.show_display()
+			await LUI.rippleEnd
+			for i in range(chains.size()):
+				#Make sure the starting value is bracketed into an array
+				holdBreakChain = i
+				breaking = true
+				beadsSize += chains[i].size()
+				brokenBeads += chains[i].size()
+				break_order([chains[i].pick_random()])
+				await brokeAll
+			
+			RUI.update_display(beadsSize,linksSize,chainsSize)
+			print("\n\n Finish")
+			RUI.update_beads(brokenBeads)
+			post_break()
+			pauseFall(false)
 
 #______________________________
 #CHAIN

@@ -1,13 +1,21 @@
 extends Node2D
 
 @export var rippleTiming: float = 1.0
+@export_range(0,.5,.01) var burnTiming: float = .05
+
+@onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
 
 signal find_adjacent
 signal rippleEnd
 
+#Beads is here just to easily integrate into old code
 var currentType: String = "Breaker"
 var adjacent: Array = []
+var beads: Array = [self]
+var gridPos: Array[Vector2i] = [Vector2i(0,0)]
 var breaker: bool = true
+var placed: bool = false
+var breaking: bool = false
 
 #______________________________
 #CHECKING CHAINS
@@ -53,3 +61,20 @@ func set_ripple_center() -> void:
 	center = Vector2(center.x,center.y*2)
 	print(center)
 	$Ripple.material.set_shader_parameter("center", center)
+
+#______________________________
+#DESTROYING PIECES
+#______________________________
+func destroy_anim():
+	#Destroy chains
+	breaking = true
+	brakSFX.pick_random().play()
+	
+	#Destroy bead
+	var tween = self.create_tween()
+	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)
+	await tween.finished
+	queue_free()
+
+func set_burn(value: float):
+	material.set_shader_parameter("dissolve_value",value)

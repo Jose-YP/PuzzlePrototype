@@ -16,5 +16,5 @@ shader = ExtResource("1_m83x7")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 1.0
 shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(0.376471, 0.858824, 0.435294, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")

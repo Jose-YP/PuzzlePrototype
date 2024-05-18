@@ -20,7 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_j8v1b")
 
 [node name="Ripple" type="ColorRect" parent="."]
-visible = false
+editor_description = "This causes problems in the web build"
 material = ExtResource("2_prcki")
 layout_mode = 0
 offset_left = -18.0
