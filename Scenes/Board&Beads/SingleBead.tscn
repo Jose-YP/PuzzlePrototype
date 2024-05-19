@@ -17,6 +17,7 @@
 [sub_resource type="Animation" id="Animation_sme3t"]
 resource_name = "Glow"
 length = 0.20001
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,10 +25,10 @@ tracks/0/path = NodePath("Images/Glow:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0166667, 0.0167667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -157,6 +158,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Glow" type="Sprite2D" parent="Images"]
+visible = false
 modulate = Color(1, 1, 1, 0.52549)
 self_modulate = Color(1, 1, 1, 0)
 light_mask = 2

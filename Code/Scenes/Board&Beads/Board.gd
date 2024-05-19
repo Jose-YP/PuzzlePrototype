@@ -837,7 +837,10 @@ func can_move(direction) -> bool:
 				else: newPos.y -= 1
 		
 		var bead = board[newPos.x][newPos.y]
-		if bead != null and not currentBead.in_full_bead(bead,sameBead):
+		#Function will skip and if using a breaker 
+		var currentBool: bool = ((not currentBead.breaker and not currentBead.in_full_bead(bead,sameBead))
+		 or currentBead.breaker)
+		if bead != null and currentBool:
 			return false
 	
 	return true

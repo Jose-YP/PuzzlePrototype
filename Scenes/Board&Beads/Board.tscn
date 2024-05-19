@@ -71,6 +71,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="Hold" type="Node2D" parent="."]
+editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"
 visible = false
 position = Vector2(1152, 620)
 

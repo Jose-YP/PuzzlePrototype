@@ -51,8 +51,12 @@ func reset_links():
 	chained = false
 	chainNodes = [null,null,null,null]
 	glowing = false
+	print("Erasing from ",self)
 	for bolt in $Connections.get_children():
+		remove_child(bolt)
 		bolt.queue_free()
+	print($Connections.get_children())
+	$AnimationPlayer.play_backwards("Glow")
 	reset_link()
 
 #______________________________
@@ -112,7 +116,6 @@ func manage_glow() -> void:
 				glow.self_modulate = Color.WHITE
 	
 	else:
-		$AnimationPlayer.play_backwards("Glow")
 		glow.hide()
 		glowing = false
 
@@ -198,7 +201,7 @@ func set_chains(value) -> void:
 func reset_link():
 	linkArray.linkedBeads = {self : self}
 
-#______________________________
+#____a__________________________
 #DESTROYING PIECES
 #______________________________
 func destroy_anim():
