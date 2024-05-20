@@ -70,6 +70,7 @@ func _ready() -> void:
 	LUI.set_ripple_center()
 	RUI.rules = rules
 	LUI.rules = rules
+	LUI.breakMeter.breakText.text = str(breakNum)
 	
 	#Make debugging easier
 	match rules.debug_fills:

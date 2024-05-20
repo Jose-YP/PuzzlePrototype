@@ -46,18 +46,17 @@ func randomize_type(array) -> void:
 
 func reset_links():
 	chainedWith = [-1,-1,-1,-1]
-	adjacent = []
+	adjacent.clear()
 	chainedNum = 0
 	chained = false
+	chainedLinks.clear()
 	chainNodes = [null,null,null,null]
 	glowing = false
+	glow.hide()
 	print("Erasing from ",self)
 	for bolt in $Connections.get_children():
-		bolt.die()
 		$Connections.remove_child(bolt)
-		bolt.queue_free()
-	print($Connections.get_children())
-	$AnimationPlayer.play_backwards("Glow")
+		bolt.die()
 	reset_link()
 
 #______________________________
