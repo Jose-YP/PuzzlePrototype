@@ -1,4 +1,4 @@
-res://Scenes/Board&Beads/breaker_bead.tscn
+res://Scenes/Board&Beads/Board.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/SingleBeadBurn.tres
 res://Code/Scenes/Board&Beads/Board.gd
@@ -17,8 +17,8 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
-res://Scenes/Board&Beads/Board.tscn
+res://Shaders/Backgrounds/WaterBG.tres
 res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/Constants/ETC/connected.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/UI/left_ui.tscn
+res://Scenes/Constants/Backgrounds/sea_bg.tscn

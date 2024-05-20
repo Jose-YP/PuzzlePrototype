@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -108.0
 offset_top = -242.0
@@ -30,10 +31,10 @@ color = Color(0, 0, 0, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource("3_3fpe7")
 layout_mode = 0
-offset_left = -125.0
-offset_top = -575.0
-offset_right = 1283.0
-offset_bottom = 985.0
+offset_left = -203.0
+offset_top = -406.0
+offset_right = 1302.0
+offset_bottom = 1165.0
 texture = ExtResource("2_74b4g")
 expand_mode = 4
 stretch_mode = 1

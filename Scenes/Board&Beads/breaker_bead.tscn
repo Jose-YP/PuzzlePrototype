@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bagf1jfvukcdx"]
+[gd_scene load_steps=13 format=3 uid="uid://bagf1jfvukcdx"]
 
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="1_2fe1a"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/breaker_bead.gd" id="1_itnrx"]
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="2_fqx32"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="2_snr66"]
-[ext_resource type="Texture2D" uid="uid://dpr4gisyi1233" path="res://Art/ETC/icon.svg" id="3_pxk8i"]
-[ext_resource type="Material" uid="uid://0g3de7eq0koq" path="res://Shaders/Ripple.tres" id="3_s6r7u"]
 [ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="6_6t61a"]
 [ext_resource type="AudioStream" uid="uid://dmqj2u4jpxoyp" path="res://Audio/BoardSFX/BreakSFX/Brak2.wav" id="7_63jnv"]
 [ext_resource type="AudioStream" uid="uid://hknh6c41g4qn" path="res://Audio/BoardSFX/BreakSFX/Brak3.wav" id="8_u775y"]
@@ -33,11 +31,6 @@ material = SubResource("ShaderMaterial_nq0h3")
 position = Vector2(291, 136)
 script = ExtResource("1_itnrx")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(315, 210.5)
-scale = Vector2(10.2344, 5.36719)
-texture = ExtResource("3_pxk8i")
-
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.376471, 0.858824, 0.435294, 1)
 use_parent_material = true
@@ -60,6 +53,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Glow" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.180392, 0.831373, 0.254902, 0.52549)
 light_mask = 2
 visibility_layer = 2
@@ -70,7 +64,7 @@ texture = ExtResource("2_snr66")
 metadata/_edit_lock_ = true
 
 [node name="Ripple" type="ColorRect" parent="."]
-material = ExtResource("3_s6r7u")
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
