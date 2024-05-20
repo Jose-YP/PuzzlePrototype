@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=19 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="4_ii0gx"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
+[ext_resource type="PackedScene" uid="uid://bagf1jfvukcdx" path="res://Scenes/Board&Beads/breaker_bead.tscn" id="6_e5yph"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
 
 [sub_resource type="Gradient" id="Gradient_s422o"]
@@ -26,6 +27,23 @@ shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_u52aq")
+
+[sub_resource type="Gradient" id="Gradient_tohcf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_54v3r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2rnc0"]
+color_ramp = SubResource("Gradient_tohcf")
+noise = SubResource("FastNoiseLite_54v3r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkxm0"]
+resource_local_to_scene = true
+shader = ExtResource("4_ii0gx")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 1.0
+shader_parameter/burn_color = Color(1, 1, 1, 1)
+shader_parameter/modulate = Color(0.376471, 0.858824, 0.435294, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_2rnc0")
 
 [node name="Board" type="Node2D"]
 process_mode = 1
@@ -72,7 +90,6 @@ one_shot = true
 
 [node name="Hold" type="Node2D" parent="."]
 editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"
-visible = false
 position = Vector2(1152, 620)
 
 [node name="SingleBead" parent="Hold" instance=ExtResource("3_02f1i")]
@@ -81,6 +98,9 @@ position = Vector2(36, 30)
 shakeRange = Vector2(0.5, 0)
 shakeSpeed = 0.05
 burnTiming = 0.05
+
+[node name="BreakerBead" parent="Hold" instance=ExtResource("6_e5yph")]
+material = SubResource("ShaderMaterial_lkxm0")
 
 [node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
 offset_left = -30.0

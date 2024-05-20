@@ -42,9 +42,11 @@ func update_beads(beads) -> void:
 	var levelThreshold: int = 1
 	if level < rules.max_levels:
 		levelThreshold = level_upThreshold(level)
+	print("level: ", level," Threshold: ",levelThreshold)
 	#Make code for beads being higher than rules.bead_levelUp * level
 	%LevelProgress.value = clamp((beads - levelThreshold) / levelThreshold, 0, 100)
 	if beads >= levelThreshold and level < rules.max_levels:
+		print("level up!")
 		update_level()
 		%LevelProgress.value = 0
 		#Check for even higher levels

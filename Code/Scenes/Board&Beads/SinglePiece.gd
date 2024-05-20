@@ -53,7 +53,6 @@ func reset_links():
 	chainNodes = [null,null,null,null]
 	glowing = false
 	glow.hide()
-	print("Erasing from ",self)
 	for bolt in $Connections.get_children():
 		$Connections.remove_child(bolt)
 		bolt.die()

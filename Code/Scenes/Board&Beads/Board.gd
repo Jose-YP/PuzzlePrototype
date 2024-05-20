@@ -39,6 +39,7 @@ var breakNum: int = 1
 var chainsSize: int = 0
 var linksSize: int = 0
 var beadsSize: int = 0
+var comboSize: int = 0
 var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
@@ -79,6 +80,7 @@ func _ready() -> void:
 		2: fill_column()
 		4: make_overhang()
 	
+	$Hold.hide()
 	#start the game
 	spawn_full_beads()
 	pull_next_bead()
@@ -153,6 +155,7 @@ func movement() -> void:
 				currentBead.rot.rotation_degrees -= 360
 			
 			full_bead_rotation(currentBead.gridPos[0])
+			second_fix()
 			
 		if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
 			currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
@@ -160,6 +163,7 @@ func movement() -> void:
 				currentBead.rot.rotation_degrees += 360
 			
 			full_bead_rotation(currentBead.gridPos[0])
+			second_fix()
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
 		move_bead(-1)
@@ -168,7 +172,6 @@ func movement() -> void:
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
-		#second_fix()
 		currentBead.sync_position()
 
 func place() -> void:
@@ -401,6 +404,8 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
+		#Reset grounded timer to give the player time to react
+		$Timers/Grounded.start()
 		pull_next_bead()
 
 func find_links() -> void:
@@ -442,8 +447,7 @@ func post_break() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
-			print(bead.currentType,bead," Goes to ",target)
-			
+			#print(bead.currentType,bead," Goes to ",target)
 			board[i][j] = null
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
@@ -469,6 +473,7 @@ func post_break() -> void:
 		post_break()
 	
 	chainsSize = 0
+	comboSize = 0
 	$Timers/ChainFinish.start()
 	await $Timers/ChainFinish.timeout
 	pauseFall(false)
@@ -525,7 +530,7 @@ func check_breakers() -> void:
 	
 	if shouldBreak:
 		
-		playBreak.emit(clamp(chainsSize,0,2))
+		playBreak.emit(clamp(comboSize,0,2))
 		await self.startBreaking
 		
 		for i in range(usingBreakerArray.size()):
@@ -541,7 +546,7 @@ func check_breakers() -> void:
 			#print("BREAKER CHAINS:", breakerChains)
 			
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
-			chainsSize += 1
+			comboSize += 1
 			beadsSize = 0
 			holdBreakChain = 0
 			RUI.show_display()
@@ -564,7 +569,8 @@ func check_breakers() -> void:
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			#Fix since it's not accurate yet
-			RUI.update_display(beadsSize,linksSize,chainsSize)
+			get_chain_score(beadsSize,linksSize,comboSize)
+			RUI.update_display(beadsSize,linksSize,comboSize)
 			RUI.update_beads(brokenBeads)
 	
 	if breaking:
@@ -577,7 +583,7 @@ func check_breakers() -> void:
 				breakers.erase(breakerArray[i])
 				await breakerArray[i].tree_exiting
 	
-	if breakAt.size() != 0 and chainsSize == 1:
+	if breakAt.size() != 0 and comboSize == 1:
 		post_break()
 
 #______________________________
@@ -683,40 +689,44 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func get_chain_score(breakerChains):
+func get_chain_score(beads,links,chains):
 	pass
 
 func shake_order(chainPart, size, index, recursion = {}) -> void:
-	#First find every adjacent bead to break in the future
-	#They must be connected to the current bead
-	var shookBeads: Dictionary = recursion
-	var adjacent: Dictionary = {}
-	#Get which parts will shake, they will also have their adjacents checked in chains
-	for bead in chainPart:
-		if not is_instance_valid(bead):
-			continue
+	#Cut the shake if beads are being broken
+	if not breaking:
+		#First find every adjacent bead to break in the future
+		#They must be connected to the current bead
+		var shookBeads: Dictionary = recursion
+		var adjacent: Dictionary = {}
+		#Get which parts will shake, they will also have their adjacents checked in chains
+		for bead in chainPart:
+			if not is_instance_valid(bead):
+				continue
+			
+			find_adjacent(bead)
+			for adj in bead.adjacent:
+				#Only shake beads that have yet to shake
+				#It should be in chains[index] but not shookBeads
+				if (not shookBeads.has(adj)
+				 and chains[index].find(adj) != -1):
+					adjacent[adj] = adj
 		
-		find_adjacent(bead)
-		for adj in bead.adjacent:
-			#Only shake beads that have yet to shake
-			#It should be in chains[index] but not shookBeads
-			if (not shookBeads.has(adj)
-			 and chains[index].find(adj) != -1):
-				adjacent[adj] = adj
-	
-	#Shake beads
-	for bead in adjacent.keys():
-		bead.chain_shake()
-	
-	#Update which beads shook
-	shookBeads.merge(adjacent)
-	await get_tree().create_timer(.1).timeout
-	
-	#If every bead in the chain has yet to be shook keep going
-	if shookBeads.size() >= size:
+		#Shake beads
+		for bead in adjacent.keys():
+			bead.chain_shake()
+		
+		#Update which beads shook
+		shookBeads.merge(adjacent)
+		await get_tree().create_timer(.1).timeout
+		
+		#If every bead in the chain has yet to be shook keep going
+		if shookBeads.size() >= size:
+			return
+		shake_order(adjacent.keys(), size, index, shookBeads)
+	else:
 		return
-	shake_order(adjacent.keys(), size, index, shookBeads)
-
+	
 #Search functions
 func in_temp_chain(tempChain, link) -> bool:
 	for tempLink in tempChain:

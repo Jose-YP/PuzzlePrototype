@@ -27,3 +27,7 @@ res://Scenes/Constants/ETC/ripple.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Code/Scenes/UI/BreakProgress.gd
 res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Code/Scenes/UI/right_ui.gd
+res://Scenes/UI/right_ui.tscn
+res://Shaders/Gradients/DarkBG.tres
+res://Shaders/Backgrounds/DarkBG.tres
