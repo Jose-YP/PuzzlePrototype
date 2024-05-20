@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var rippleTiming: float = 1.0
-@export var rippleOffset: Vector2 = Vector2(0.01,0.01)
 @export_range(0,.5,.01) var burnTiming: float = .05
 
 @onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
@@ -27,10 +26,6 @@ var rippled: bool = false
 #______________________________
 func _ready() -> void:
 	material.set_shader_parameter("dissolve_value",1.0)
-
-func _process(_delta) -> void: 
-	if Input.is_action_just_pressed("Flip"):
-		ripple()
 
 #______________________________
 #CHECKING CHAINS
@@ -74,11 +69,7 @@ func ripple_size_tween(value):
 	$Ripple.material.set_shader_parameter("width", value)
 
 func set_ripple_center() -> void:
-	
 	var center: Vector2 = global_position / (get_window().size as Vector2)
-	
-	#I need to find a way to get the center y to update as it should
-	center = Vector2(center.x,center.y ) + rippleOffset
 	$Ripple.material.set_shader_parameter("center", center)
 
 func _on_ripple_end():
@@ -100,6 +91,3 @@ func destroy_anim():
 
 func set_burn(value: float):
 	material.set_shader_parameter("dissolve_value",value)
-
-func _on_button_pressed():
-	ripple()

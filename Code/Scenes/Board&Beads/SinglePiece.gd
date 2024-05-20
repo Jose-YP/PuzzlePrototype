@@ -24,9 +24,9 @@ var currentType: String = "Earth"
 var chainedWith: Array[int] = [-1,-1,-1,-1]
 var adjacent: Array = []
 var chainNodes: Array = [null,null,null,null]
+var hardDropped: bool = true
 var glowing: bool = false
 var breaking: bool = false
-var hardDropped: bool = true
 var shaking: bool = false
 var chained: bool = false
 

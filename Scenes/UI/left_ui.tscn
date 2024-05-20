@@ -1,9 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt86eivh6s6vl"]
+[gd_scene load_steps=7 format=3 uid="uid://dt86eivh6s6vl"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
 [ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="2_krah5"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="5_0b4ie"]
+
+[sub_resource type="Shader" id="Shader_cx7ik"]
+code = "shader_type canvas_item;
+
+uniform float strength: hint_range(0.0, 0.1, 0.001) = 0.08;
+uniform vec2 center = vec2(0.5, 0.5);
+uniform float radius: hint_range(0.0, 2.0, 0.001) = 0.25;
+
+uniform float aberration: hint_range(0.0, 1.0, 0.001) = 0.425;
+uniform float width: hint_range(0.0, 0.1, 0.0001) = 0.04;
+uniform float feather: hint_range(0.0, 1.0, 0.001) = 0.135;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+void fragment() {
+	vec2 st = SCREEN_UV;
+	float aspect_ratio = SCREEN_PIXEL_SIZE.y/SCREEN_PIXEL_SIZE.x;
+	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);
+	vec2 center_corr = (center -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);
+	vec2 dist_center = scaled_st - center_corr;
+	float mask =  (1.0 - smoothstep(radius-feather, radius, length(dist_center))) * smoothstep(radius - width - feather, radius-width , length(dist_center));
+	vec2 offset = normalize(dist_center)*strength*mask;
+	vec2 biased_st = scaled_st - offset;
+	
+	vec2 abber_vec = offset*aberration*mask;
+	
+	vec2 final_st = st*(1.0-mask) + biased_st*mask;
+
+	vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
+	vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
+	vec4 ori = texture(SCREEN_TEXTURE, final_st);
+	COLOR = vec4(red.r, ori.g, blue.b, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f28la"]
+resource_local_to_scene = true
+shader = SubResource("Shader_cx7ik")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
 
 [node name="LeftUI" type="Control"]
 visibility_layer = 3
@@ -20,6 +63,7 @@ grow_vertical = 2
 script = ExtResource("1_j8v1b")
 
 [node name="Ripple" parent="." instance=ExtResource("2_krah5")]
+material = SubResource("ShaderMaterial_f28la")
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0

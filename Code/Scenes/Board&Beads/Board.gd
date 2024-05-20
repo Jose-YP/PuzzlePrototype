@@ -168,7 +168,7 @@ func movement() -> void:
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
-		second_fix()
+		#second_fix()
 		currentBead.sync_position()
 
 func place() -> void:
