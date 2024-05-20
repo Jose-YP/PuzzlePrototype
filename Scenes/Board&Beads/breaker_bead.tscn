@@ -93,3 +93,5 @@ volume_db = -4.0
 unique_name_in_owner = true
 stream = ExtResource("9_vw60o")
 volume_db = -4.0
+
+[connection signal="rippleEnd" from="." to="." method="_on_ripple_end"]

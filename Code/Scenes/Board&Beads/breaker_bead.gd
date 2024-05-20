@@ -17,6 +17,7 @@ var gridPos: Array[Vector2i] = [Vector2i(0,0)]
 var breaker: bool = true
 var placed: bool = false
 var breaking: bool = false
+var rippled: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -68,6 +69,9 @@ func set_ripple_center() -> void:
 	var center: Vector2 = $Sprite2D.global_position / (get_window().size as Vector2)
 	center = Vector2(center.x,center.y*2)
 	$Ripple.material.set_shader_parameter("center", center)
+
+func _on_ripple_end():
+	rippled = true
 
 #______________________________
 #DESTROYING PIECES

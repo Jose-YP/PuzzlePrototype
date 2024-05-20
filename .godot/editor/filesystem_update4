@@ -1,11 +1,11 @@
-res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Board&Beads/breaker_bead.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/SingleBeadBurn.tres
 res://Code/Scenes/Board&Beads/Board.gd
 res://Shaders/Shockwave.gdshader
 res://Shaders/Ripple.tres
-res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Resources/Rules/Basic Rules.tres
+res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Shaders/Gradients/Dark.tres
@@ -17,8 +17,7 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
+res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Constants/Connected.gd
-res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Constants/ETC/connected.tscn
+res://Code/Scenes/Board&Beads/breaker_bead.gd

@@ -12,6 +12,7 @@ extends Node2D
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
+signal startBreaking
 signal brokeBead
 signal brokeAll
 signal playSFX(index)
@@ -213,7 +214,6 @@ func drop() -> void:
 		if not currentBead.breaker:
 			currentBead.sync_position()
 
-
 #______________________________
 #BASIC CONTROLS: ROTATE
 #______________________________
@@ -336,6 +336,7 @@ func _process(delta) -> void:
 				currentBead = breakerBead.instantiate()
 				$Grid.add_child(currentBead)
 				currentBead.connect("find_adjacent", find_adjacent)
+				currentBead.connect("rippleEnd", continue_breaker)
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
 				playSFX.emit(7)
@@ -503,22 +504,38 @@ func reset_beads() -> void:
 
 func check_breakers() -> void:
 	var breakerArray: Array = breakers.keys()
-	var breakAt: Array
+	var breakAt: Array = []
+	var usingBreakerArray: Array = []
+	var breakAtCheck: Array[Array] = []
+	var shouldBreak: bool = false
 	
 	#Check every breaker bead if they have chains to break
 	#maybe change when the breakers are removed
 	for i in range(breakerArray.size()):
-		breakAt = breakerArray[i].check_should_break()
-		if breakAt.size() != 0:
+		breakAtCheck.append(breakerArray[i].check_should_break())
+		if breakAtCheck[i].size() != 0:
+			breakerArray[i].ripple()
+			shouldBreak = true
+			#Log every breaker and their chain into a new array that'll keep the right indexes
+			breakAt.append(breakAtCheck[i])
+			usingBreakerArray.append(breakerArray[i])
+	
+	#Have all breaker ripples occur at once
+	
+	if shouldBreak:
+		
+		playBreak.emit(clamp(chainsSize,0,2))
+		await self.startBreaking
+		
+		for i in range(usingBreakerArray.size()):
 			breaking = true
-			breakerArray[i].breaking = true
+			usingBreakerArray[i].breaking = true
 			#If there a chains to break find their full chains
-			var breakerChains = find_specific_chains(breakAt)
-			if not is_instance_valid(breakerArray[i]):
+			var breakerChains = find_specific_chains(breakAt[i])
+			if not is_instance_valid(usingBreakerArray[i]):
 				continue
 			pauseFall(true)
-			breakerArray[i].ripple()
-			playBreak.emit(clamp(chainsSize,0,2))
+			
 			#print("BREAK AT:", breakAt)
 			#print("BREAKER CHAINS:", breakerChains)
 			
@@ -527,19 +544,19 @@ func check_breakers() -> void:
 			beadsSize = 0
 			holdBreakChain = 0
 			RUI.show_display()
-			await breakerArray[i].rippleEnd
+			
 			
 			#Break every chain found at ith breaker bead
-			for j in range(breakAt.size()):
+			for j in range(breakAt[i].size()):
 				#Check if 
-				if not is_instance_valid(breakAt[j]):
+				if not is_instance_valid(breakAt[i][j]):
 					continue
 				#Make sure the starting value is bracketed into an array
 				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
 				linksSize = find_linkNum(breakerChains[j])
 				
-				break_order([breakAt[j]], breakerChains)
+				break_order([breakAt[i][j]], breakerChains)
 				await self.brokeAll
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
@@ -555,6 +572,7 @@ func check_breakers() -> void:
 				board[pos.x][pos.y] = null
 				breakerArray[i].destroy_anim()
 				breakers.erase(breakerArray[i])
+				await breakerArray[i].tree_exiting
 	
 	if breakAt.size() != 0 and chainsSize == 1:
 		post_break()
@@ -579,7 +597,7 @@ func find_chains(addScore: bool) -> void:
 				var tempChain = add_links(bead.get_links())
 				#Now's the time to get the score and linkSize
 				#Right now tempChain's size temp chain's size is the ammount of links it has
-				linksSize += tempChain.size()
+				linksSize = tempChain.size()
 				chainLinkNum.append(linksSize)
 				
 				if addScore:
@@ -955,6 +973,9 @@ func should_play_zap() -> void:
 
 func should_refind() -> void:
 	refind = true
+
+func continue_breaker() -> void:
+	startBreaking.emit()
 
 #______________________________
 #FAIL SCREEN
