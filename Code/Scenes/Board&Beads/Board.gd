@@ -168,6 +168,7 @@ func movement() -> void:
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
+		second_fix()
 		currentBead.sync_position()
 
 func place() -> void:
@@ -634,6 +635,7 @@ func break_order(chainPart, holdChains) -> void:
 		if bead != null:
 			empty = false
 			notEmptied.append(bead)
+	
 	if empty:
 		brokeAll.emit()
 		return
