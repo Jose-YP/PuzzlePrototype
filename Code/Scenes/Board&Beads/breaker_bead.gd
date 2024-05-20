@@ -28,6 +28,10 @@ var rippled: bool = false
 func _ready() -> void:
 	material.set_shader_parameter("dissolve_value",1.0)
 
+func _process(_delta) -> void: 
+	if Input.is_action_just_pressed("Flip"):
+		ripple()
+
 #______________________________
 #CHECKING CHAINS
 #______________________________
@@ -76,9 +80,6 @@ func set_ripple_center() -> void:
 	#I need to find a way to get the center y to update as it should
 	center = Vector2(center.x,center.y ) + rippleOffset
 	$Ripple.material.set_shader_parameter("center", center)
-	print(center)
-	#* 1.15
-	#print(center.y / 1.15, "||", get_window().size.y, "||", global_position.y, "||", center.y / 1.15 * get_window().size.y,)
 
 func _on_ripple_end():
 	rippled = true

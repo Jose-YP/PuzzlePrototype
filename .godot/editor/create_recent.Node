@@ -1,3 +1,4 @@
+BackBufferCopy
 Control
 Button
 Node
@@ -12,4 +13,3 @@ AnimationPlayer
 AudioStreamPlayer
 PanelContainer
 Label
-Sprite2D

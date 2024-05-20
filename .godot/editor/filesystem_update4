@@ -25,3 +25,4 @@ res://Scenes/Constants/Backgrounds/sea_bg.tscn
 res://Scenes/Constants/ETC/test.tscn
 res://Scenes/Constants/ETC/ripple.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Code/Scenes/UI/BreakProgress.gd

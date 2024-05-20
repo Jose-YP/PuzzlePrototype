@@ -32,12 +32,19 @@ material = SubResource("ShaderMaterial_nq0h3")
 script = ExtResource("1_itnrx")
 rippleOffset = Vector2(-0.006, 0.004)
 
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
+position = Vector2(611, 423)
+scale = Vector2(7.11, 5.23)
+copy_mode = 2
+metadata/_edit_lock_ = true
+
 [node name="Ripple" parent="." instance=ExtResource("3_tjmdn")]
 visible = true
-offset_left = -618.0
-offset_top = -305.0
-offset_right = 668.0
-offset_bottom = 409.0
+offset_left = -1260.0
+offset_top = -673.0
+offset_right = 26.0
+offset_bottom = 41.0
+scale = Vector2(2, 2)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.376471, 0.858824, 0.435294, 1)
