@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
-[ext_resource type="Material" uid="uid://0g3de7eq0koq" path="res://Shaders/Ripple.tres" id="2_prcki"]
+[ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="2_krah5"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="5_0b4ie"]
 
 [node name="LeftUI" type="Control"]
@@ -19,15 +19,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j8v1b")
 
-[node name="Ripple" type="ColorRect" parent="."]
-editor_description = "This causes problems in the web build"
-modulate = Color(1, 1, 1, 0)
-material = ExtResource("2_prcki")
+[node name="Ripple" parent="." instance=ExtResource("2_krah5")]
 layout_mode = 0
-offset_left = -18.0
-offset_top = -7.0
-offset_right = 1268.0
-offset_bottom = 707.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1286.0
+offset_bottom = 714.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

@@ -20,7 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = -108.0
 offset_top = -242.0
@@ -28,7 +27,14 @@ offset_right = 1392.0
 offset_bottom = 858.0
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 material = ExtResource("3_3fpe7")
 layout_mode = 0
 offset_left = -203.0
@@ -39,13 +45,15 @@ texture = ExtResource("2_74b4g")
 expand_mode = 4
 stretch_mode = 1
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Control"]
+visible = false
 position = Vector2(611, 423)
 scale = Vector2(7.11, 5.23)
 copy_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+visible = false
 material = SubResource("ShaderMaterial_j2urw")
 layout_mode = 0
 offset_left = -215.0
