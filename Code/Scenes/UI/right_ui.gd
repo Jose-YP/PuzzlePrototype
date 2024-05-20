@@ -75,16 +75,18 @@ func show_display() -> void:
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.WHITE, chainDisplayTiming)
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()
 
-func update_display(beads, links, chains) -> void:
+func update_display(beads, links, chains, breaker = false) -> void:
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()
 	var chainText: String = "\n"
-	if chains > 1:
+	if chains > 1 and not breaker:
 		chainText = str(chainText, chains, " Chains")
+	elif breaker:
+		chainText = str(chainText, chains, " Combo")
 	else:
 		chainText = str(chainText, chains, " Chain")
 	
 	$VBoxContainer/ChainTotals/RichTextLabel.append_text(str(beads," Beads\n",
-	links," Links\n",chains, " Chains"))
+	links," Links",chainText))
 	displayTime.start()
 
 func remove_display():

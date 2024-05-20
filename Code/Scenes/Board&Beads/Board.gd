@@ -468,15 +468,13 @@ func post_break() -> void:
 	
 	if breaking:
 		$Timers/ChainFinish.start()
-		await $Timers/ChainFinish.timeout
-		print(chainsSize)
 		post_break()
 	
-	chainsSize = 0
-	comboSize = 0
-	$Timers/ChainFinish.start()
-	await $Timers/ChainFinish.timeout
-	pauseFall(false)
+	else:
+		await $Timers/ChainFinish.timeout
+		comboSize = 0
+		chainsSize = 0
+		pauseFall(false)
 
 func detect_fail() -> void:
 	#Only check for fail spots
@@ -529,8 +527,9 @@ func check_breakers() -> void:
 	#Have all breaker ripples occur at once
 	
 	if shouldBreak:
-		
+		pauseFall(true)
 		playBreak.emit(clamp(comboSize,0,2))
+		print(comboSize)
 		await self.startBreaking
 		
 		for i in range(usingBreakerArray.size()):
@@ -540,17 +539,14 @@ func check_breakers() -> void:
 			var breakerChains = find_specific_chains(breakAt[i])
 			if not is_instance_valid(usingBreakerArray[i]):
 				continue
-			pauseFall(true)
 			
 			#print("BREAK AT:", breakAt)
 			#print("BREAKER CHAINS:", breakerChains)
-			
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
-			comboSize += 1
+			print()
 			beadsSize = 0
 			holdBreakChain = 0
 			RUI.show_display()
-			
 			
 			#Break every chain found at ith breaker bead
 			for j in range(breakAt[i].size()):
@@ -569,8 +565,9 @@ func check_breakers() -> void:
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			#Fix since it's not accurate yet
+			comboSize += 1
 			get_chain_score(beadsSize,linksSize,comboSize)
-			RUI.update_display(beadsSize,linksSize,comboSize)
+			RUI.update_display(beadsSize,linksSize,comboSize, true)
 			RUI.update_beads(brokenBeads)
 	
 	if breaking:
@@ -689,7 +686,7 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func get_chain_score(beads,links,chains):
+func get_chain_score(beads,links,combo):
 	pass
 
 func shake_order(chainPart, size, index, recursion = {}) -> void:
@@ -761,6 +758,9 @@ func find_specific_chains(breakerLinks) -> Array:
 
 func find_linkNum(chain) -> int:
 	var index: int = chains.find(chain)
+	for i in range(chains.size()):
+		if chains[i] == chain:
+			return chainLinkNum[i]
 	if index == -1:
 		return 0
 	return chainLinkNum[index]
