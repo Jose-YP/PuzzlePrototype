@@ -53,7 +53,8 @@ func reset_links():
 	glowing = false
 	print("Erasing from ",self)
 	for bolt in $Connections.get_children():
-		remove_child(bolt)
+		bolt.die()
+		$Connections.remove_child(bolt)
 		bolt.queue_free()
 	print($Connections.get_children())
 	$AnimationPlayer.play_backwards("Glow")
