@@ -559,6 +559,8 @@ func check_breakers() -> void:
 				
 				break_order([breakAt[i][j]], breakerChains)
 				await self.brokeAll
+				
+				#print()
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			#Fix since it's not accurate yet

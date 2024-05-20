@@ -21,3 +21,4 @@ res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Constants/ETC/connected.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Scenes/UI/left_ui.tscn
