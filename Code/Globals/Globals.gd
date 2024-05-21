@@ -7,12 +7,13 @@ extends Node
 
 const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")
 const bead_types: Array[String] = ["Earth","Sea","Air","Light","Dark"]
-const bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
-Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 const directions: Array[String] = ["Left","Right","Up","Down"]
 const otherConnectionNum: Array = [1,0,3,2]
 
 var relation_flags: Array[int] = []
+var bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
+Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
+var breaker_color: Color = Color(0.514, 0.969, 0.557)
 var glow_num: int = 3
 var level: int = 1
 var highestID: String
@@ -70,6 +71,9 @@ func set_controls():
 	for action in Globals.userPrefs.joy_action_events:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
+	
+	bead_colors = Globals.userPrefs.get_regular_colors()
+	breaker_color = Globals.userPrefs.breakerColor
 
 #______________________________
 #INPUT MANAGEMENT

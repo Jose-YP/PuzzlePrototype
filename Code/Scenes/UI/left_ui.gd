@@ -35,7 +35,7 @@ func set_progress() -> void:
 	var currentValue = breakMeter.progressBar.material.get_shader_parameter("value")
 	var tween = self.create_tween()
 	var newValue = (progress / 
-	((Globals.level * rules.meterChargeRate) + rules.meterChargeThres))
+	((Globals.level * Globals.rules.meterChargeRate) + Globals.rules.meterChargeThres))
 	newValue = clamp(newValue, 0, 1)
 	#Use a method to tween shader properties
 	tween.tween_method(tween_progress, currentValue, newValue, progressTiming)

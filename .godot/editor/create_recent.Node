@@ -1,3 +1,7 @@
+ColorPickerButton
+HBoxContainer
+GridContainer
+MarginContainer
 BackBufferCopy
 Control
 Button
@@ -7,9 +11,5 @@ Timer
 VSeparator
 TextureRect
 Node2D
-GridContainer
-HBoxContainer
 AnimationPlayer
 AudioStreamPlayer
-PanelContainer
-Label

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=3 format=3 uid="uid://1malajsj05pg"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
+[ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/Constants/UIPieces/all_beads.tscn" id="2_kx4ek"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 process_mode = 1
@@ -54,108 +55,216 @@ bbcode_enabled = true
 text = "[center][i]Use Keyboard to navigate Menu[/i]"
 scroll_active = false
 
-[node name="Audio" type="MarginContainer" parent="Main/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox"]
+layout_mode = 2
+
+[node name="Audio" type="MarginContainer" parent="Main/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
 
-[node name="IndvOptions" type="VBoxContainer" parent="Main/VBox/Audio"]
+[node name="IndvOptions" type="VBoxContainer" parent="Main/VBox/HBoxContainer/Audio"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="PanelContainer" parent="Main/VBox/Audio/IndvOptions"]
-custom_minimum_size = Vector2(600, 40)
+[node name="Title" type="PanelContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/Title"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Title"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[center]AUDIO MIXING"
+text = "[center]AUDIO"
 
-[node name="Tests" type="HBoxContainer" parent="Main/VBox/Audio/IndvOptions"]
+[node name="Tests" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Music" type="Button" parent="Main/VBox/Audio/IndvOptions/Tests"]
+[node name="Music" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 toggle_mode = true
 text = "Test Music"
 
-[node name="SFX" type="Button" parent="Main/VBox/Audio/IndvOptions/Tests"]
+[node name="SFX" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
 layout_mode = 2
 text = "Test SFX"
 
-[node name="AudioOptions" type="MarginContainer" parent="Main/VBox/Audio/IndvOptions"]
+[node name="AudioOptions" type="MarginContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 
-[node name="GridContainer" type="GridContainer" parent="Main/VBox/Audio/IndvOptions/AudioOptions"]
+[node name="GridContainer" type="GridContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions"]
 layout_mode = 2
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 value = 100.0
 
-[node name="MasterText" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MasterText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "		100%"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Music
 Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MusicSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
 
-[node name="MusicText" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MusicText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "		100%"
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "SFX
 Volume"
 
-[node name="SFXSlider" type="HSlider" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="SFXSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
 
-[node name="SFXText" type="RichTextLabel" parent="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="SFXText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "		100%"
 
+[node name="Colors" type="MarginContainer" parent="Main/VBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="IndvOptions" type="VBoxContainer" parent="Main/VBox/HBoxContainer/Colors"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="PanelContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Title"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]COLORS
+"
+metadata/_edit_lock_ = true
+
+[node name="Example Beads" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+layout_mode = 2
+
+[node name="Domains" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="EarthColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Earth Color"
+color = Color(0.631, 0.125, 0.125, 1)
+
+[node name="Erth" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+current_tab = 0
+small = true
+
+[node name="SeaColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Sea Color"
+color = Color(0.137255, 0.6, 0.909804, 1)
+
+[node name="Sea" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+current_tab = 1
+small = true
+
+[node name="AirColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Air Color"
+color = Color(1, 1, 1, 1)
+
+[node name="Air" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+small = true
+
+[node name="Energy" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="LightColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Light Color"
+color = Color(0.898039, 0.909804, 0.137255, 1)
+
+[node name="Lght" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+current_tab = 3
+small = true
+
+[node name="DarkColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Dark Color"
+color = Color(0.478431, 0.0705882, 0.364706, 1)
+
+[node name="Dark" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+current_tab = 4
+small = true
+
+[node name="BreakerColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Breaker Color"
+color = Color(0.513726, 0.968627, 0.556863, 1)
+
+[node name="Brek" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+layout_mode = 2
+current_tab = 5
+small = true
+
 [node name="Controls" type="MarginContainer" parent="Main/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
@@ -371,11 +480,11 @@ size_flags_vertical = 4
 bbcode_enabled = true
 text = "[center]...Awaiting Input...[/center]"
 
-[connection signal="toggled" from="Main/VBox/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
-[connection signal="pressed" from="Main/VBox/Audio/IndvOptions/Tests/SFX" to="." method="_on_sfx_pressed"]
-[connection signal="value_changed" from="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
-[connection signal="value_changed" from="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
-[connection signal="value_changed" from="Main/VBox/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
+[connection signal="toggled" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX" to="." method="_on_sfx_pressed"]
+[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
+[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
+[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
 [connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton" to="." method="_on_new_input_type_selected"]
 [connection signal="pressed" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up" to="." method="controllerMapStart" binds= [0]]

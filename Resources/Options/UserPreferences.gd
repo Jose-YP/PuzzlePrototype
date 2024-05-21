@@ -11,6 +11,14 @@ class_name UserPreferences
 @export var keyboard_action_events: Dictionary = {}
 @export var joy_action_events: Dictionary ={}
 
+#PREFERED COLORS
+@export_color_no_alpha var earthColor: Color = Color(0.631, 0.125, 0.125)
+@export_color_no_alpha var seaColor: Color = Color(0.137, 0.6, 0.91)
+@export_color_no_alpha var airColor: Color = Color(1,1,1)
+@export_color_no_alpha var lightColor: Color = Color(0.898, 0.91, 0.137)
+@export_color_no_alpha var darkColor: Color = Color(0.478, 0.071, 0.365)
+@export_color_no_alpha var breakerColor: Color = Color(0.514, 0.969, 0.557)
+
 #FUNCTIONS
 func save() -> void:
 	ResourceSaver.save(self, "res://Resources/Options/UserPrefs.tres")
@@ -20,3 +28,8 @@ static func load_or_create() -> UserPreferences:
 	if !res:
 		res = UserPreferences.new()
 	return res
+
+func get_regular_colors() -> Array[Color]:
+	var arr: Array[Color] = [earthColor, seaColor, airColor,
+	 lightColor, darkColor]
+	return arr
