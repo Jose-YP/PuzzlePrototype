@@ -21,3 +21,4 @@ res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/UI/left_ui.tscn
 res://Scenes/UI/right_ui.tscn
 res://Resources/Rules/RuleMaker.gd
+res://Scenes/Board&Beads/FullBead.tscn

@@ -425,6 +425,8 @@ func find_links() -> void:
 			if bead.currentType == "Breaker":
 				breakers[bead] = bead
 				continue
+			elif currentBead != null and currentBead.in_full_bead(bead):
+				continue
 			bead.should_glow()
 			if bead.glowing:
 				bead.should_chain()
@@ -478,6 +480,7 @@ func post_break() -> void:
 		post_break()
 	
 	else:
+		$Timers/ChainFinish.start()
 		await $Timers/ChainFinish.timeout
 		comboSize = 0
 		chainsSize = 0
