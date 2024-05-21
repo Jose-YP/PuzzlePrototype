@@ -113,6 +113,9 @@ func _on_reset_colors_pressed():
 	Globals.userPrefs.reset_colors()
 	currentColors = Globals.userPrefs.get_regular_colors()
 	currentColors.append(Globals.userPrefs.breakerColor)
+	for i in range(beadColorPickers.size()):
+		beadColorPickers[i].color = currentColors[i]
+	
 	show_colors()
 
 #-----------------------------------------

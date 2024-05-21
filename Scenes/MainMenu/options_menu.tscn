@@ -195,6 +195,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Earth Color"
 color = Color(0.631, 0.125, 0.125, 1)
+edit_alpha = false
 
 [node name="Erth" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
