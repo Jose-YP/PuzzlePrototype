@@ -23,11 +23,11 @@ class_name Rules
 
 @export_category("Scoring")
 @export_group("Score")
-@export_range(2,100) var beadScore: int = 50
+@export_range(0,100) var beadScore: int = 50
 @export_range(0,2,.01) var linkMultiplier: float = .5
 @export_range(0,2,.01) var powerMultiplier: float = .15
 @export_range(0,2,.01) var chainMultiplier: float = .7
-@export_range(0,2,.01) var varietyMultiplier: float = 2
+@export_range(0,2,.01) var comboMultiplier: float = 2
 @export_group("Levels")
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100
@@ -49,11 +49,19 @@ class_name Rules
 @export var overhang_dimentions: Vector2i = Vector2i(1,4)
 @export var overhang_pos: Vector2i = Vector2i(4,2)
 
+#Instead of storing link num, use the link num to get and store total score
+#Combo multiplier can be a seperate function
 func indvChainScore(chain, linkNum): #Seperate functions cause the two will score a full chain differently
+	#Already have the number of beads broken, the number of links in the chain and it's combo number
 	var linkScore: int = 0
 	for link in chain:
-		linkScore += link.size() * beadScore * powerMultiplier
+		linkScore += link.size() * beadScore
 	return linkScore  * (linkMultiplier + linkNum - 1)
+
+func chainComboMult(chainScore, combo):
+	#Will be zero at combo 1, so have a 1+const to make sure chain score doesn't vanish
+	#Beyond combo 1 combo mod will go very high
+	return chainScore * (1 + (combo * comboMultiplier))
 
 func totalScore(chains):
 	var chainNum = chains.size()
@@ -62,7 +70,7 @@ func totalScore(chains):
 		var linkNum = chain.size()
 		var linkScore: int = 0
 		for link in chains:
-			linkScore += link.size() * beadScore * powerMultiplier
+			linkScore += link.size() * beadScore
 		finalScore += linkScore  * (linkMultiplier + linkNum - 1)
 	
 	return finalScore * chainNum * chainMultiplier

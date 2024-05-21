@@ -28,6 +28,7 @@ var fixUp: Array = []
 var board: Array[Array]
 var chains: Array[Array]
 var chainLinkNum: Array[int]
+var chainScores: Array[int]
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
 var breakers: Dictionary = {}
@@ -543,7 +544,6 @@ func check_breakers() -> void:
 			#print("BREAK AT:", breakAt)
 			#print("BREAKER CHAINS:", breakerChains)
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
-			print()
 			beadsSize = 0
 			holdBreakChain = 0
 			RUI.show_display()
@@ -554,9 +554,14 @@ func check_breakers() -> void:
 				if not is_instance_valid(breakAt[i][j]):
 					continue
 				#Make sure the starting value is bracketed into an array
+				var extraIndex = find_linkNum_index(breakerChains[j])
+				var finalScore = rules.chainComboMult(chainScores[extraIndex], comboSize)
 				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
-				linksSize = find_linkNum(breakerChains[j])
+				linksSize = chainLinkNum[extraIndex]
+				score += finalScore
+				print("From ",breakAt[i][j])
+				print("Score: ", chainScores[extraIndex], " With Combo ",  finalScore)
 				
 				break_order([breakAt[i][j]], breakerChains)
 				await self.brokeAll
@@ -564,11 +569,11 @@ func check_breakers() -> void:
 				#print()
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
-			#Fix since it's not accurate yet
 			comboSize += 1
-			get_chain_score(beadsSize,linksSize,comboSize)
+			#Should probably find a way to display multiple chain breaks at once
 			RUI.update_display(beadsSize,linksSize,comboSize, true)
 			RUI.update_beads(brokenBeads)
+			RUI.update_score(score)
 	
 	if breaking:
 		#Erase from the script wide var rather than local
@@ -590,6 +595,7 @@ func find_chains(addScore: bool) -> void:
 	#Make sure there's nothing else in chains to mess up the operation
 	chains.clear()
 	chainLinkNum.clear()
+	chainScores.clear()
 	
 	for i in rules.width:
 		for j in rules.height:
@@ -605,6 +611,7 @@ func find_chains(addScore: bool) -> void:
 				#Right now tempChain's size temp chain's size is the ammount of links it has
 				linksSize = tempChain.size()
 				chainLinkNum.append(linksSize)
+				chainScores.append(rules.indvChainScore(tempChain,linksSize))
 				
 				if addScore:
 					score += rules.totalScore(tempChain)
@@ -686,9 +693,6 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func get_chain_score(beads,links,combo):
-	pass
-
 func shake_order(chainPart, size, index, recursion = {}) -> void:
 	#Cut the shake if beads are being broken
 	if not breaking:
@@ -756,14 +760,14 @@ func find_specific_chains(breakerLinks) -> Array:
 	
 	return returnChains.keys()
 
-func find_linkNum(chain) -> int:
+func find_linkNum_index(chain) -> int:
 	var index: int = chains.find(chain)
 	for i in range(chains.size()):
 		if chains[i] == chain:
-			return chainLinkNum[i]
+			return i
 	if index == -1:
 		return 0
-	return chainLinkNum[index]
+	return index
 
 #______________________________
 #CONVERSION

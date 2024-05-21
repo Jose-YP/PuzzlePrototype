@@ -24,7 +24,7 @@ shader = ExtResource("1_2fe1a")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 1.0
 shader_parameter/burn_color = Color(1, 1, 1, 1)
-shader_parameter/modulate = Color(0.376471, 0.858824, 0.435294, 1)
+shader_parameter/modulate = Color(0.513726, 0.968627, 0.556863, 1)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_2rnc0")
 
 [sub_resource type="Shader" id="Shader_cx7ik"]
@@ -108,7 +108,6 @@ texture = ExtResource("2_fqx32")
 expand_mode = 3
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="Glow" type="Sprite2D" parent="."]
 visible = false
