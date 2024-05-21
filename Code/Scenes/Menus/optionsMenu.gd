@@ -91,8 +91,11 @@ func _on_sfx_pressed() -> void:
 #COLOR MAPPING
 #-----------------------------------------
 func set_color_pickers() -> void:
-	for picker in beadColorPickers:
-		var edit: ColorPicker = picker.get_picker()
+	for i in range(beadColorPickers.size()):
+		var edit: ColorPicker = beadColorPickers[i].get_picker()
+		
+		beadColorPickers[i].color = currentColors[i]
+		
 		edit.set_picker_shape(edit.SHAPE_OKHSL_CIRCLE)
 		edit.set_presets_visible(false)
 		edit.set_sliders_visible(false)
@@ -109,6 +112,7 @@ func set_colors(color: Color, index: int) -> void:
 func save_colors():
 	Globals.userPrefs.set_colors(currentColors)
 	Globals.userPrefs.save()
+	print(Globals.userPrefs.get_regular_colors())
 
 func _on_reset_colors_pressed():
 	Globals.userPrefs.reset_colors()
@@ -233,5 +237,7 @@ func reset_buttons() -> void:
 #NAVIGATION BUTTONS
 #-----------------------------------------
 func _on_button_pressed() -> void:
+	print()
 	save_colors()
+	Globals.set_colors()
 	main.emit()

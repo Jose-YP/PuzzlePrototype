@@ -45,19 +45,39 @@ func _ready():
 	%LevellingSystem.append_text(str("AS BEADS GET BROKEN, YOU'LL LEVEL UP,",
 	"WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION",
 	"THERE ARE A MAX OF ", Globals.rules.max_levels, " LEVELS IN A SESSION"))
+	
+	%Glow.modulate = Globals.bead_colors[3]
+	%Glow2.modulate = Globals.bead_colors[3]
+	
+	%DomainText.clear()
+	%DomainText.append_text("[center]GLOWING ")
+	%DomainText.push_color(Globals.bead_colors[0])
+	%DomainText.append_text("EARTH ")
+	%DomainText.pop()
+	%DomainText.append_text("- ")
+	%DomainText.push_color(Globals.bead_colors[1])
+	%DomainText.append_text("SEA ")
+	%DomainText.pop()
+	%DomainText.append_text("- ")
+	%DomainText.push_color(Globals.bead_colors[2])
+	%DomainText.append_text("AIR")
+	%DomainText.pop()
+	%DomainText.append_text(" BEADS CONNECT TOGETHER")
+	
+	%EnergyText.clear()
+	%EnergyText.append_text("[center]GLOWING ")
+	%EnergyText.push_color(Globals.bead_colors[3])
+	%EnergyText.append_text("LIGHT ")
+	%EnergyText.pop()
+	%EnergyText.append_text("- ")
+	%EnergyText.push_color(Globals.bead_colors[4])
+	%EnergyText.append_text("DARK")
+	%EnergyText.pop()
+	%EnergyText.append_text(" BEADS CONNECT TOGETHER")
 
 #______________________________
 #CONTROLS
 #______________________________
-func _process(_delta):
-	if visible:
-		if Input.is_action_just_pressed("Break") and breakNum > 0 and infoTabs.current_tab == 0:
-			pass
-		if Input.is_action_just_pressed("ui_accept"):
-			%Next.button_pressed = true
-		if Input.is_action_just_pressed("ui_cancel"):
-			%Exit.button_pressed = true
-
 func _on_exit_pressed():
 	exit.emit()
 
@@ -69,3 +89,7 @@ func _on_next_pressed():
 		infoTabs.current_tab -= 1
 		%Next.text = str("Controls")
 	makeSFX.emit(1)
+
+func _on_visibility_changed():
+	if visible:
+		%Next.grab_focus()

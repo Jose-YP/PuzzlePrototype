@@ -29,11 +29,13 @@ static func load_or_create() -> UserPreferences:
 		res = UserPreferences.new()
 	return res
 
+#Ugly functions but they work 
 func set_colors(newColors):
-	var oldColors = get_regular_colors()
-	for i in (oldColors.size()):
-		oldColors[i] = newColors[i]
-	
+	earthColor = newColors[0]
+	seaColor = newColors[1]
+	airColor = newColors[2]
+	lightColor = newColors[3]
+	darkColor = newColors[4]
 	breakerColor = newColors[5]
 
 func get_regular_colors() -> Array[Color]:

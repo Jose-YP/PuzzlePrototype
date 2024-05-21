@@ -48,6 +48,10 @@ visible = false
 modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
+[node name="None" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+
 [node name="Breaker" type="TextureRect" parent="."]
 visible = false
 clip_contents = true
@@ -58,9 +62,5 @@ size_flags_vertical = 4
 texture = ExtResource("7_so5yu")
 expand_mode = 2
 stretch_mode = 4
-
-[node name="None" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
 
 [connection signal="tab_changed" from="." to="." method="edit_color"]

@@ -267,7 +267,7 @@ color = Color(0.513726, 0.968627, 0.556863, 1)
 [node name="Brek" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 5
+current_tab = 6
 small = true
 
 [node name="Controls" type="MarginContainer" parent="Main/VBox"]

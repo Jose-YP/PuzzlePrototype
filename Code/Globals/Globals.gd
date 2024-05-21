@@ -22,6 +22,7 @@ var lowestID: String
 func _ready() -> void:
 	set_other_inputs()
 	set_controls()
+	set_colors()
 
 #______________________________
 #SAVE MANAGEMENT
@@ -47,13 +48,13 @@ func find_extreme_score(lowest = false, Dict = save.HiScores) -> String:
 		else: highestID = maxID
 	return maxID
 
-func get_extreme(lowest = false):
+func get_extreme(lowest = false) -> Array:
 	if lowest:
 		return save.HiScores[lowestID]
 	else:
 		return save.HiScores[highestID]
 
-func sort_scores():
+func sort_scores() -> Array:
 	var sorted: Array = []
 	var Dict = save.HiScores.duplicate(true)
 	for i in range(save.HiScores.size()):
@@ -63,7 +64,7 @@ func sort_scores():
 	
 	return sorted
 
-func set_controls():
+func set_controls() -> void:
 	for action in Globals.userPrefs.keyboard_action_events:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
@@ -71,7 +72,8 @@ func set_controls():
 	for action in Globals.userPrefs.joy_action_events:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
-	
+
+func set_colors() -> void:
 	bead_colors = Globals.userPrefs.get_regular_colors()
 	breaker_color = Globals.userPrefs.breakerColor
 

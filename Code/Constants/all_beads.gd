@@ -26,7 +26,7 @@ func edit_color(index):
 			modulate = Globals.userPrefs.lightColor
 		4:
 			modulate = Globals.userPrefs.darkColor
-		5:
-			modulate = Globals.userPrefs.breakerColor
 		6:
+			modulate = Globals.userPrefs.breakerColor
+		5:
 			modulate = Color.TRANSPARENT

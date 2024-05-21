@@ -31,6 +31,7 @@ func _on_scores_pressed() -> void:
 
 func _on_how_2_play_pressed() -> void:
 	playSFX.emit(1)
+	get_viewport().gui_get_focus_owner().release_focus()
 	$How2Play.show()
 
 #______________________________
@@ -52,7 +53,8 @@ func _on_how_2_play_make_sfx(index):
 
 func _on_how_2_play_exit():
 	playSFX.emit(2)
-	$How2Play.show()
+	$How2Play.hide()
+	$Buttons/How2Play.grab_focus()
 
 func _on_how_2_play_board_sfx(index):
 	boardSFX.emit(index)
