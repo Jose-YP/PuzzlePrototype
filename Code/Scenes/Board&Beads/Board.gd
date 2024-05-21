@@ -401,8 +401,8 @@ func post_turn() -> void:
 	find_chains(false)
 	check_breakers()
 	
-	
 	if breaking:
+		await self.endCheck
 		$Timers/ChainFinish.start()
 		await $Timers/ChainFinish.timeout
 	
@@ -470,7 +470,8 @@ func post_break() -> void:
 	find_links()
 	find_chains(false)
 	check_breakers()
-	await self.endCheck
+	
+	print()
 	
 	if breaking:
 		$Timers/ChainFinish.start()
@@ -590,10 +591,10 @@ func check_breakers() -> void:
 				breakers.erase(breakerArray[i])
 				await breakerArray[i].tree_exiting
 	
-	if breakAt.size() != 0 and comboSize == 1:
+	if shouldBreak:
 		post_break()
 	
-	elif breakAt.size() == 0:
+	else:
 		endCheck.emit()
 
 #______________________________
