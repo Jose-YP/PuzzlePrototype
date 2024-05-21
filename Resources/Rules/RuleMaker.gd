@@ -51,19 +51,19 @@ class_name Rules
 
 #Instead of storing link num, use the link num to get and store total score
 #Combo multiplier can be a seperate function
-func indvChainScore(chain, linkNum): #Seperate functions cause the two will score a full chain differently
+func indvChainScore(chain, linkNum) -> int: #Seperate functions cause the two will score a full chain differently
 	#Already have the number of beads broken, the number of links in the chain and it's combo number
 	var linkScore: int = 0
 	for link in chain:
 		linkScore += link.size() * beadScore
-	return linkScore  * (linkMultiplier + linkNum - 1)
+	return round(linkScore  * (linkMultiplier + linkNum - 1))
 
-func chainComboMult(chainScore, combo):
+func chainComboMult(chainScore, combo) -> int:
 	#Will be zero at combo 1, so have a 1+const to make sure chain score doesn't vanish
 	#Beyond combo 1 combo mod will go very high
-	return chainScore * (1 + (combo * comboMultiplier))
+	return round(chainScore * (1 + (combo * comboMultiplier)))
 
-func totalScore(chains):
+func totalScore(chains) -> int:
 	var chainNum = chains.size()
 	var finalScore: int = 0
 	for chain in chains:
@@ -73,4 +73,4 @@ func totalScore(chains):
 			linkScore += link.size() * beadScore
 		finalScore += linkScore  * (linkMultiplier + linkNum - 1)
 	
-	return finalScore * chainNum * chainMultiplier
+	return round(finalScore * chainNum * chainMultiplier)

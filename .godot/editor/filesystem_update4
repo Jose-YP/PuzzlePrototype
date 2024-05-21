@@ -2,8 +2,6 @@ res://Scenes/Board&Beads/Board.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Transparency/SingleBeadBurn.tres
 res://Code/Scenes/Board&Beads/Board.gd
-res://Shaders/Shockwave.gdshader
-res://Shaders/Ripple.tres
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Themes/ButtonStyle/Focused.tres
@@ -17,18 +15,9 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
-res://Shaders/Backgrounds/WaterBG.tres
+res://Shaders/Shockwave.gdshader
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/UI/left_ui.tscn
-res://Scenes/Constants/Backgrounds/sea_bg.tscn
-res://Scenes/Constants/ETC/test.tscn
-res://Scenes/Constants/ETC/ripple.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
-res://Code/Scenes/UI/BreakProgress.gd
-res://Code/Scenes/Board&Beads/SinglePiece.gd
-res://Code/Scenes/UI/right_ui.gd
 res://Scenes/UI/right_ui.tscn
-res://Shaders/Gradients/DarkBG.tres
-res://Shaders/Backgrounds/DarkBG.tres
 res://Resources/Rules/RuleMaker.gd

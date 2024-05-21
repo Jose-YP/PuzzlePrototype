@@ -13,6 +13,7 @@ extends Node2D
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
 signal startBreaking
+signal endCheck
 signal brokeBead
 signal brokeAll
 signal playSFX(index)
@@ -211,6 +212,7 @@ func hard_drop(target) -> void:
 func drop() -> void:
 	#Both drop, up is hard drop, down is soft drop
 	if Input.is_action_just_pressed("ui_up"):
+		print()
 		hard_drop(find_drop_bottom(currentBead))
 		
 	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
@@ -398,6 +400,8 @@ func post_turn() -> void:
 	find_links()
 	find_chains(false)
 	check_breakers()
+	
+	
 	if breaking:
 		$Timers/ChainFinish.start()
 		await $Timers/ChainFinish.timeout
@@ -466,6 +470,7 @@ func post_break() -> void:
 	find_links()
 	find_chains(false)
 	check_breakers()
+	await self.endCheck
 	
 	if breaking:
 		$Timers/ChainFinish.start()
@@ -587,6 +592,9 @@ func check_breakers() -> void:
 	
 	if breakAt.size() != 0 and comboSize == 1:
 		post_break()
+	
+	elif breakAt.size() == 0:
+		endCheck.emit()
 
 #______________________________
 #CHAIN
@@ -620,6 +628,8 @@ func find_chains(addScore: bool) -> void:
 				
 				#Make the standard chains list for the computer to clear
 				chains.append(new_set_chains(tempChain))
+	
+	print(chainScores)
 
 func break_order(chainPart, holdChains) -> void:
 	#First find every adjacent bead to break in the future
