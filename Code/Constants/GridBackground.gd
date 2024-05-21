@@ -23,12 +23,23 @@ func _draw() -> void:
 	draw_rect(failRect, FailColor)
 	for i in rules.width:
 		for j in rules.height:
+			#FOR FAIL ROWS DON'T DRAW THE GRID
+			if j <= rules.fail_rows and not debug:
+				continue
+			
 			var pos: Vector2 = Vector2(i,j)
 			var rectOrigin:Vector2 = Board.grid_to_pixel(pos) - rules.offset/2
-			var tileRect: Rect2 = Rect2(rectOrigin, rules.offset)
+			
+			#CHECK IF IT"S RIGHT BELLOW THE FAIL ROWS
+			if j == rules.fail_rows + 1:
+				#EDIT TILE RECT TO HAVE NO TOP 
+				var tileRect: Rect2 = Rect2(rectOrigin, rules.offset)
+				draw_rect(tileRect, TileColor, false, 1.5)
 			
 			#Draw the grid by drawing a rect minus the fill
-			draw_rect(tileRect, TileColor, false, 1.5)
+			else:
+				var tileRect: Rect2 = Rect2(rectOrigin, rules.offset)
+				draw_rect(tileRect, TileColor, false, 1.5)
 			
 			#DEBUG DRAW
 			if debug:

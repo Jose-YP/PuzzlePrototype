@@ -32,3 +32,5 @@ res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/Constants/UIPieces/all_beads.tscn
 res://Code/Scenes/Menus/optionsMenu.gd
 res://Code/Constants/all_beads.gd
+res://Code/Constants/GridBackground.gd
+res://Scenes/Constants/UIPieces/DuoDisplay.tscn

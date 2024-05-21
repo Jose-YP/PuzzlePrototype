@@ -29,6 +29,13 @@ static func load_or_create() -> UserPreferences:
 		res = UserPreferences.new()
 	return res
 
+func set_colors(newColors):
+	var oldColors = get_regular_colors()
+	for i in (oldColors.size()):
+		oldColors[i] = newColors[i]
+	
+	breakerColor = newColors[5]
+
 func get_regular_colors() -> Array[Color]:
 	var arr: Array[Color] = [earthColor, seaColor, airColor,
 	 lightColor, darkColor]

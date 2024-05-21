@@ -107,7 +107,8 @@ func set_colors(color: Color, index: int) -> void:
 	show_colors()
 
 func save_colors():
-	pass
+	Globals.userPrefs.set_colors(currentColors)
+	Globals.userPrefs.save()
 
 func _on_reset_colors_pressed():
 	Globals.userPrefs.reset_colors()
@@ -232,4 +233,5 @@ func reset_buttons() -> void:
 #NAVIGATION BUTTONS
 #-----------------------------------------
 func _on_button_pressed() -> void:
+	save_colors()
 	main.emit()
