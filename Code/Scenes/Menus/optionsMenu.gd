@@ -10,7 +10,9 @@ extends CanvasLayer
 @onready var MasterBus = AudioServer.get_bus_index("Master")
 @onready var MusicBus = AudioServer.get_bus_index("Music")
 @onready var SFXBus = AudioServer.get_bus_index("SFX")
-
+@onready var beadColorPickers: Array = [%EarthColor, %SeaColor, %AirColor,
+ %LightColor, %DarkColor, %BreakerColor]
+@onready var beadExamples: Array[TabContainer] = [%Erth, %Sea, %Air, %Lght, %Dark, %Brek]
 
 signal main
 signal makeNoise
@@ -19,6 +21,7 @@ signal playSFX(index)
 
 var inputs: Array[Array] = [[],[]]
 var inputTexts: Array[String] = []
+var currentColors: Array[Color] = []
 var Actions: Array = []
 var Buses: Array = []
 var userAudios: Array = []
@@ -43,8 +46,13 @@ func _ready():
 	inputType = Globals.userPrefs.input_type
 	Globals.set_controls()
 	
+	currentColors = Globals.userPrefs.get_regular_colors()
+	currentColors.append(Globals.userPrefs.breakerColor)
+	
 	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
 	getNewInputs()
+	set_color_pickers()
+	show_colors()
 
 func _input(event):
 	if toggleOn:
@@ -78,6 +86,34 @@ func _on_music_toggled(toggled_on) -> void:
 
 func _on_sfx_pressed() -> void:
 	makeNoise.emit()
+
+#-----------------------------------------
+#COLOR MAPPING
+#-----------------------------------------
+func set_color_pickers() -> void:
+	for picker in beadColorPickers:
+		var edit: ColorPicker = picker.get_picker()
+		edit.set_picker_shape(edit.SHAPE_OKHSL_CIRCLE)
+		edit.set_presets_visible(false)
+		edit.set_sliders_visible(false)
+		edit.set_modes_visible(false)
+
+func show_colors() -> void:
+	for i in range(beadExamples.size()):
+		beadExamples[i].modulate = currentColors[i]
+
+func set_colors(color: Color, index: int) -> void:
+	currentColors[index] = color
+	show_colors()
+
+func save_colors():
+	pass
+
+func _on_reset_colors_pressed():
+	Globals.userPrefs.reset_colors()
+	currentColors = Globals.userPrefs.get_regular_colors()
+	currentColors.append(Globals.userPrefs.breakerColor)
+	show_colors()
 
 #-----------------------------------------
 #CONTROLLER REMAPPING

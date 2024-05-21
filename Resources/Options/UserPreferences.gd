@@ -33,3 +33,11 @@ func get_regular_colors() -> Array[Color]:
 	var arr: Array[Color] = [earthColor, seaColor, airColor,
 	 lightColor, darkColor]
 	return arr
+
+func reset_colors():
+	earthColor = Color(0.631, 0.125, 0.125)
+	seaColor = Color(0.137, 0.6, 0.91)
+	airColor = Color(1,1,1)
+	lightColor = Color(0.898, 0.91, 0.137)
+	darkColor = Color(0.478, 0.071, 0.365)
+	breakerColor = Color(0.514, 0.969, 0.557)

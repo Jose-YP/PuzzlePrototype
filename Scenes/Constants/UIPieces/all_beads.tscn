@@ -27,10 +27,12 @@ regSize = Vector2(64, 64)
 
 [node name="Earth" parent="." instance=ExtResource("1_ecv0q")]
 visible = false
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Liquid" parent="." instance=ExtResource("2_s0dbo")]
 visible = false
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Air" parent="." instance=ExtResource("3_wwfa6")]
@@ -38,15 +40,16 @@ layout_mode = 2
 
 [node name="Light" parent="." instance=ExtResource("4_fjd4u")]
 visible = false
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Dark" parent="." instance=ExtResource("5_mw2is")]
 visible = false
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Breaker" type="TextureRect" parent="."]
 visible = false
-modulate = Color(0.513726, 0.968627, 0.556863, 1)
 clip_contents = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -59,3 +62,5 @@ stretch_mode = 4
 [node name="None" type="TextureRect" parent="."]
 visible = false
 layout_mode = 2
+
+[connection signal="tab_changed" from="." to="." method="edit_color"]

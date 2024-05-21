@@ -179,8 +179,10 @@ text = "[center]COLORS
 "
 metadata/_edit_lock_ = true
 
-[node name="Example Beads" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
+text = "Reset Colors
+"
 
 [node name="Domains" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
@@ -188,17 +190,20 @@ size_flags_horizontal = 4
 columns = 2
 
 [node name="EarthColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "Earth Color"
 color = Color(0.631, 0.125, 0.125, 1)
 
 [node name="Erth" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 small = true
 
 [node name="SeaColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -207,55 +212,59 @@ text = "Sea Color"
 color = Color(0.137255, 0.6, 0.909804, 1)
 
 [node name="Sea" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 current_tab = 1
 small = true
 
 [node name="AirColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "Air Color"
 color = Color(1, 1, 1, 1)
 
 [node name="Air" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 small = true
 
-[node name="Energy" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
-layout_mode = 2
-size_flags_horizontal = 4
-columns = 2
-
-[node name="LightColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+[node name="LightColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Light Color"
 color = Color(0.898039, 0.909804, 0.137255, 1)
 
-[node name="Lght" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+[node name="Lght" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 current_tab = 3
 small = true
 
-[node name="DarkColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+[node name="DarkColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "Dark Color"
 color = Color(0.478431, 0.0705882, 0.364706, 1)
 
-[node name="Dark" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+[node name="Dark" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 current_tab = 4
 small = true
 
-[node name="BreakerColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy"]
+[node name="BreakerColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "Breaker Color"
 color = Color(0.513726, 0.968627, 0.556863, 1)
 
-[node name="Brek" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Energy" instance=ExtResource("2_kx4ek")]
+[node name="Brek" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+unique_name_in_owner = true
 layout_mode = 2
 current_tab = 5
 small = true
@@ -485,6 +494,13 @@ text = "[center]...Awaiting Input...[/center]"
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Reset" to="." method="_on_reset_colors_pressed"]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/EarthColor" to="." method="set_colors" binds= [0]]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/SeaColor" to="." method="set_colors" binds= [1]]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/AirColor" to="." method="set_colors" binds= [2]]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/LightColor" to="." method="set_colors" binds= [3]]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/DarkColor" to="." method="set_colors" binds= [4]]
+[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/BreakerColor" to="." method="set_colors" binds= [5]]
 [connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton" to="." method="_on_new_input_type_selected"]
 [connection signal="pressed" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up" to="." method="controllerMapStart" binds= [0]]

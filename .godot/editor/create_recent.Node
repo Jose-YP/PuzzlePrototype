@@ -1,15 +1,14 @@
+Button
+ColorPicker
 ColorPickerButton
 HBoxContainer
 GridContainer
 MarginContainer
 BackBufferCopy
 Control
-Button
 Node
 RichTextLabel
 Timer
 VSeparator
 TextureRect
 Node2D
-AnimationPlayer
-AudioStreamPlayer
