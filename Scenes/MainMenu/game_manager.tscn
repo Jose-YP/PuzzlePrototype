@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=22 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/BoardSFX/GlassMove.wav" id="1_rmh2v"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cynh42d4vh1do" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav" id="12_ub8u1"]
 [ext_resource type="AudioStream" uid="uid://bs88cfn7ooyoh" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav" id="13_ley1y"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
+[ext_resource type="Script" path="res://addons/newgrounds/scripts/newgrounds_request.gd" id="21_6ewy6"]
 
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
@@ -142,6 +143,9 @@ pitch_scale = 0.8
 [node name="PauseScreen" parent="." instance=ExtResource("17_kh1yb")]
 process_mode = 2
 visible = false
+
+[node name="NewgroundsRequest" type="HTTPRequest" parent="."]
+script = ExtResource("21_6ewy6")
 
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]

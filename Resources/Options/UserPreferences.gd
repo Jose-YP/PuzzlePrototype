@@ -22,6 +22,7 @@ class_name UserPreferences
 #FUNCTIONS
 func save() -> void:
 	ResourceSaver.save(self, "res://Resources/Options/UserPrefs.tres")
+	NGCloudSave.save_game()
 
 static func load_or_create() -> UserPreferences:
 	var res: UserPreferences = load("res://Resources/Options/UserPrefs.tres") as UserPreferences

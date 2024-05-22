@@ -19,6 +19,7 @@ config/icon="res://Art/Beads/LiquidOrb.png"
 [autoload]
 
 Globals="*res://Code/Globals/Globals.gd"
+NGSaveSetup="*res://Code/Globals/NGSave.gd"
 NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
 
@@ -113,5 +114,5 @@ Pause={
 
 [newgrounds.io]
 
-app_id="58262:1hFJVJsT"
-AES-128_key="354jIc35Uyg/x5a/tdgvJw=="
+app_id="58344:yWmMxvnO"
+AES-128_key="GSwyswln7HEDKawKf0iDyA=="

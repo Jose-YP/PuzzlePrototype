@@ -29,14 +29,6 @@ func _ready():
 	var FlipInput = OS.get_keycode_string(InputMap.action_get_events("Flip")[0].physical_keycode)
 	var BreakInput = OS.get_keycode_string(InputMap.action_get_events("Break")[0].physical_keycode)
 	
-	print(InputMap.action_get_events("ui_accept"))
-	print(InputMap.action_get_events("ui_accept")[0])
-	print(InputMap.action_get_events("ui_accept")[0].keycode)
-	print(InputMap.action_get_events("ui_accept")[0].get_keycode())
-	print(InputMap.action_get_events("ui_accept")[0].physical_keycode)
-	
-	print(CWWInput, ClockInput, FlipInput, BreakInput)
-	
 	%FullBeadManip.clear()
 	%FullBeadManip.append_text(str(CWWInput," - ROTATE COUNTER CLOCKWISE\n",
 	ClockInput," - ROTATE CLOCKWISE\n",FlipInput

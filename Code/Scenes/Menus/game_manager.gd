@@ -17,6 +17,10 @@ const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
 
 var unpausing: bool = false
 
+
+func _ready():
+	NGCloudSave.load_game()
+
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and not unpausing:
 		play_menu_sfx(3)

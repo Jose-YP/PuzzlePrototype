@@ -12,6 +12,7 @@ class_name Save
 
 func save() -> void:
 	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
+	NGCloudSave.save_game()
 
 static func load_or_create() -> Save:
 	var res: Save = load("res://Resources/SaveData/SaveFile.tres") as Save

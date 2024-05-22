@@ -28,3 +28,10 @@ res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://addons/newgrounds/data/newgrounds_ids.gd
+res://Code/Globals/Globals.gd
+res://Code/Globals/NGSave.gd
+res://Resources/SaveData/SaveMaker.gd
+res://Resources/Options/UserPreferences.gd
+res://addons/newgrounds/examples/newgrounds_debug.tscn
