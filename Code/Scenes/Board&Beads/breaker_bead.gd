@@ -25,6 +25,7 @@ var rippled: bool = false
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
+	material.set_shader_parameter("modulate",Globals.breaker_color)
 	material.set_shader_parameter("dissolve_value",1.0)
 
 #______________________________

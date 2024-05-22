@@ -33,56 +33,56 @@ button_index = 14
 device = -1
 button_index = 11
 
-[sub_resource type="InputEventKey" id="InputEventKey_kixjv"]
+[sub_resource type="InputEventKey" id="InputEventKey_s34y4"]
 pressed = true
 keycode = 74
 physical_keycode = 74
 key_label = 74
 unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_lii4d"]
+[sub_resource type="InputEventKey" id="InputEventKey_yfk5j"]
 pressed = true
 keycode = 73
 physical_keycode = 73
 key_label = 73
 unicode = 105
 
-[sub_resource type="InputEventKey" id="InputEventKey_kr1vi"]
+[sub_resource type="InputEventKey" id="InputEventKey_xipov"]
 pressed = true
 keycode = 79
 physical_keycode = 79
 key_label = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_exuaa"]
+[sub_resource type="InputEventKey" id="InputEventKey_ie6n5"]
 pressed = true
 keycode = 75
 physical_keycode = 75
 key_label = 75
 unicode = 107
 
-[sub_resource type="InputEventKey" id="InputEventKey_v0gcf"]
+[sub_resource type="InputEventKey" id="InputEventKey_odrsf"]
 pressed = true
 keycode = 83
 physical_keycode = 83
 key_label = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_grckm"]
+[sub_resource type="InputEventKey" id="InputEventKey_x8dgd"]
 pressed = true
 keycode = 65
 physical_keycode = 65
 key_label = 65
 unicode = 97
 
-[sub_resource type="InputEventKey" id="InputEventKey_wfvbn"]
+[sub_resource type="InputEventKey" id="InputEventKey_2x5y2"]
 pressed = true
 keycode = 68
 physical_keycode = 68
 key_label = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_xf5y0"]
+[sub_resource type="InputEventKey" id="InputEventKey_bruo4"]
 pressed = true
 keycode = 87
 physical_keycode = 87
@@ -96,14 +96,14 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 96.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_kixjv"),
-"Flip": SubResource("InputEventKey_lii4d"),
-"ui_accept": SubResource("InputEventKey_kr1vi"),
-"ui_cancel": SubResource("InputEventKey_exuaa"),
-"ui_down": SubResource("InputEventKey_v0gcf"),
-"ui_left": SubResource("InputEventKey_grckm"),
-"ui_right": SubResource("InputEventKey_wfvbn"),
-"ui_up": SubResource("InputEventKey_xf5y0")
+"Break": SubResource("InputEventKey_s34y4"),
+"Flip": SubResource("InputEventKey_yfk5j"),
+"ui_accept": SubResource("InputEventKey_xipov"),
+"ui_cancel": SubResource("InputEventKey_ie6n5"),
+"ui_down": SubResource("InputEventKey_odrsf"),
+"ui_left": SubResource("InputEventKey_x8dgd"),
+"ui_right": SubResource("InputEventKey_2x5y2"),
+"ui_up": SubResource("InputEventKey_bruo4")
 }
 joy_action_events = {
 "Break": SubResource("InputEventJoypadButton_hdkv6"),
@@ -115,9 +115,9 @@ joy_action_events = {
 "ui_right": SubResource("InputEventJoypadButton_l7pux"),
 "ui_up": SubResource("InputEventJoypadButton_yq7nx")
 }
-earthColor = Color(0.843137, 0.435294, 0, 1)
+earthColor = Color(0.631, 0.125, 0.125, 1)
 seaColor = Color(0.137, 0.6, 0.91, 1)
-airColor = Color(0.32549, 0.603922, 0.192157, 1)
-lightColor = Color(1, 0.811765, 0.87451, 1)
-darkColor = Color(0.105882, 0.313726, 0.317647, 1)
+airColor = Color(1, 1, 1, 1)
+lightColor = Color(0.898, 0.91, 0.137, 1)
+darkColor = Color(0.478, 0.071, 0.365, 1)
 breakerColor = Color(0.514, 0.969, 0.557, 1)

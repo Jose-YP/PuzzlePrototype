@@ -35,3 +35,6 @@ res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Code/Constants/how_2_play.gd
 res://Code/Scenes/Menus/MainMenu.gd
+res://Code/Scenes/Menus/game_manager.gd
+res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Scenes/Board&Beads/breaker_bead.tscn

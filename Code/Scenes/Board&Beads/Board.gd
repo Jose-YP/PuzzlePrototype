@@ -482,7 +482,6 @@ func post_break() -> void:
 	else:
 		$Timers/ChainFinish.start()
 		await $Timers/ChainFinish.timeout
-		comboSize = 0
 		chainsSize = 0
 		pauseFall(false)
 
@@ -584,20 +583,20 @@ func check_breakers() -> void:
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
 	
-	if breaking:
-		#Erase from the script wide var rather than local
-		for i in range(breakerArray.size()):
-			if breakerArray[i].breaking:
-				var pos = breakerArray[i].gridPos[0]
-				board[pos.x][pos.y] = null
-				breakerArray[i].destroy_anim()
-				breakers.erase(breakerArray[i])
-				await breakerArray[i].tree_exiting
+	#Erase from the script wide var rather than local
+	for i in range(breakerArray.size()):
+		if breakerArray[i].breaking:
+			var pos = breakerArray[i].gridPos[0]
+			board[pos.x][pos.y] = null
+			breakerArray[i].destroy_anim()
+			breakers.erase(breakerArray[i])
+			await breakerArray[i].tree_exiting
 	
 	if shouldBreak:
 		post_break()
 	
 	else:
+		comboSize = 0
 		endCheck.emit()
 
 #______________________________

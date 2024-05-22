@@ -25,6 +25,7 @@ offset_left = 109.0
 offset_top = 55.0
 offset_right = 139.14
 offset_bottom = 85.0
+small = true
 
 [node name="AllBeads2" parent="Pieces" instance=ExtResource("1_thji5")]
 layout_mode = 1
@@ -33,6 +34,7 @@ offset_top = 56.0
 offset_right = -17.8605
 offset_bottom = 86.0
 current_tab = 0
+small = true
 
 [node name="AllBeads3" parent="Pieces" instance=ExtResource("1_thji5")]
 layout_mode = 1
@@ -41,14 +43,16 @@ offset_top = -23.0
 offset_right = 55.1395
 offset_bottom = 7.0
 current_tab = 1
+small = true
 
 [node name="AllBeads4" parent="Pieces" instance=ExtResource("1_thji5")]
 layout_mode = 1
-offset_left = 103.0
+offset_left = 102.0
 offset_top = 113.0
-offset_right = 133.14
+offset_right = 132.14
 offset_bottom = 143.0
 current_tab = 3
+small = true
 
 [node name="AllBeads5" parent="Pieces" instance=ExtResource("1_thji5")]
 layout_mode = 1
@@ -57,6 +61,7 @@ offset_top = 115.0
 offset_right = -5.86046
 offset_bottom = 145.0
 current_tab = 4
+small = true
 
 [node name="Arrows" type="Node2D" parent="."]
 position = Vector2(57, 33)
