@@ -13,20 +13,29 @@ var breakNum: int = 1
 #INITIALIZATION
 #______________________________
 func _ready():
-	var upInput = OS.get_keycode_string(InputMap.action_get_events("ui_left")[0].keycode)
-	var downInput = OS.get_keycode_string(InputMap.action_get_events("ui_right")[0].keycode)
-	var leftInput = OS.get_keycode_string(InputMap.action_get_events("ui_up")[0].keycode)
-	var rightInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)	
+	var upInput = OS.get_keycode_string(InputMap.action_get_events("ui_up")[0].keycode)
+	var leftInput = OS.get_keycode_string(InputMap.action_get_events("ui_left")[0].keycode)
+	var downInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)
+	var rightInput = OS.get_keycode_string(InputMap.action_get_events("ui_right")[0].keycode)	
+	
 	
 	%Movement.clear()
 	%Movement.append_text(str(leftInput,"/",rightInput," - MOVE LEFT AND RIGHT\n",upInput,
 	" - HARD DROP [BEADS ARE THROWN TO THEIR LOWEST POSSIBLE POSITION]\n",downInput,
 	" - SOFT DROP [BEADS MOVE DOWN ONE SPACE, WHEN PLACED THEY\'LL STICK TOGETHER]"))
 	
-	var CWWInput = OS.get_keycode_string(InputMap.action_get_events("ui_accept")[0].keycode)
-	var ClockInput = OS.get_keycode_string(InputMap.action_get_events("ui_cancel")[0].keycode)
-	var FlipInput = OS.get_keycode_string(InputMap.action_get_events("Flip")[0].keycode)
-	var BreakInput = OS.get_keycode_string(InputMap.action_get_events("Break")[0].keycode)
+	var CWWInput = OS.get_keycode_string(InputMap.action_get_events("ui_accept")[0].physical_keycode)
+	var ClockInput = OS.get_keycode_string(InputMap.action_get_events("ui_cancel")[0].physical_keycode)
+	var FlipInput = OS.get_keycode_string(InputMap.action_get_events("Flip")[0].physical_keycode)
+	var BreakInput = OS.get_keycode_string(InputMap.action_get_events("Break")[0].physical_keycode)
+	
+	print(InputMap.action_get_events("ui_accept"))
+	print(InputMap.action_get_events("ui_accept")[0])
+	print(InputMap.action_get_events("ui_accept")[0].keycode)
+	print(InputMap.action_get_events("ui_accept")[0].get_keycode())
+	print(InputMap.action_get_events("ui_accept")[0].physical_keycode)
+	
+	print(CWWInput, ClockInput, FlipInput, BreakInput)
 	
 	%FullBeadManip.clear()
 	%FullBeadManip.append_text(str(CWWInput," - ROTATE COUNTER CLOCKWISE\n",
