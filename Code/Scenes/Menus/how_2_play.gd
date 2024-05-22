@@ -33,9 +33,13 @@ func _ready():
 	%FullBeadManip.append_text(str(CWWInput," - ROTATE COUNTER CLOCKWISE\n",
 	ClockInput," - ROTATE CLOCKWISE\n",FlipInput
 	," - FLIP BEADS NOT ON THE ANCHOR\n",BreakInput
-	," - BREAK ALL CHAINS OF BEADS, [BREAK METER MUST BE FILLED]"))
+	," - SUMMON BREAKER BEAD, [BREAK METER MUST BE FILLED AT LEAST ONCE]"))
 	
 	%ScoringSystem2.clear()
+	var use
+	if Globals.rules.breaker:
+		use = str(Globals.rules.chainMultiplier)
+	
 	%ScoringSystem2.append_text(str("YOU\'LL ONLY SCORE ",Globals.rules.beadScore,
 	" POINTS FOR EVERY BEAD BROKEN\n\nBUT FOR EVERY SET OF GLOWING BEADS IN A CHAIN ",
 	"YOU\'LL ADD A ", Globals.rules.linkMultiplier * 100,"% MULTIPLIER FOR EVERY SET",

@@ -18,6 +18,7 @@ var glow_num: int = 3
 var level: int = 1
 var highestID: String
 var lowestID: String
+var NewgroundsToggle: bool = true
 
 func _ready() -> void:
 	set_other_inputs()

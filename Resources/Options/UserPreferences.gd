@@ -20,9 +20,10 @@ class_name UserPreferences
 @export_color_no_alpha var breakerColor: Color = Color(0.514, 0.969, 0.557)
 
 #FUNCTIONS
-func save() -> void:
+func save(NG = false) -> void:
 	ResourceSaver.save(self, "res://Resources/Options/UserPrefs.tres")
-	NGCloudSave.save_game()
+	if NG:
+		NGCloudSave.save_game()
 
 static func load_or_create() -> UserPreferences:
 	var res: UserPreferences = load("res://Resources/Options/UserPrefs.tres") as UserPreferences

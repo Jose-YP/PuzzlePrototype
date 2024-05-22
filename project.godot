@@ -18,10 +18,11 @@ config/icon="res://Art/Beads/LiquidOrb.png"
 
 [autoload]
 
+NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 Globals="*res://Code/Globals/Globals.gd"
 NGSaveSetup="*res://Code/Globals/NGSave.gd"
-NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
+FinalGlobal="*res://Code/Globals/FinalGlobal.gd"
 
 [display]
 

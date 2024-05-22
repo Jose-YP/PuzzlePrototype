@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var Newgrounds: bool = true
+
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC]
 @onready var BreakSFX: Array[AudioStreamPlayer] = [%Roar, %Roar2, %Roar3]
@@ -17,10 +19,6 @@ const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
 
 var unpausing: bool = false
 
-
-func _ready():
-	NGCloudSave.load_game()
-
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and not unpausing:
 		play_menu_sfx(3)
@@ -35,7 +33,7 @@ func _process(_delta):
 #-----------------------------------------
 #For non-loading scenes
 func changeScene(scene) -> void:
-	Globals.save.save()
+	Globals.save.save(Newgrounds)
 	Globals.userPrefs.save()
 	currentScene.queue_free()
 	

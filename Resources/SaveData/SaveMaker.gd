@@ -10,9 +10,10 @@ class_name Save
 
 @export var username: String = "LVY"
 
-func save() -> void:
+func save(NG = false) -> void:
 	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
-	NGCloudSave.save_game()
+	if NG:
+		NGCloudSave.save_game()
 
 static func load_or_create() -> Save:
 	var res: Save = load("res://Resources/SaveData/SaveFile.tres") as Save

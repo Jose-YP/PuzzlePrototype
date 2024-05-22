@@ -230,6 +230,7 @@ func reset_buttons() -> void:
 	#find a way to prevent this from 
 	resetting = true
 	for button in controllerChange:
+		button.release_focus()
 		button.button_pressed = false
 	resetting = false
 

@@ -11,10 +11,12 @@ enum ScoreboardId {
 
 enum MedalId {
 	None = 0,
+	Testinhg = 78932,
 
 }
 
 class MedalIdsToResource:
 	const medals = {
+		78932: "res://addons/newgrounds/imported_medals/testinhg.tres",
 
 	}

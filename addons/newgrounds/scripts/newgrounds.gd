@@ -211,7 +211,9 @@ func medal_get_list(app_id: String = "") -> Array[MedalResource]:
 	
 	if res.error:
 		if !is_external:
-			return medals.values()
+			var quickFix: Array[MedalResource] = []
+			quickFix.assign(medals.values())
+			return quickFix
 		print("Could not get external medals. Make sure the app ID is correct and allowed in your project settings.")
 		return []
 	
@@ -343,6 +345,7 @@ func cloudsave_clear_slot(slot_id: int) -> bool:
 
 func cloudsave_load_slot(slot_id: int) -> NewgroundsSaveSlot:
 	var res = await components.cloudsave_load_slot(slot_id).on_response
+	print("BBBBBB")
 	if !res.error:
 		var slot = _store_slot_data(res.data)
 		on_cloudsave_slot_loaded.emit(slot.id)
