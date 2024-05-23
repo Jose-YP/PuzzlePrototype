@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=3 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/UIPieces/DuoDisplay.tscn" id="2_uv3j1"]
-[ext_resource type="PackedScene" uid="uid://oon2u5ecyv51" path="res://Scenes/UI/chain_totals.tscn" id="3_headh"]
 
 [node name="RightUI" type="Control"]
 layout_mode = 3
@@ -84,9 +83,6 @@ layout_mode = 2
 layout_mode = 2
 columns = 2
 
-[node name="ChainTotals" parent="VBoxContainer" instance=ExtResource("3_headh")]
-layout_mode = 2
-
 [node name="Summn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 389.0
@@ -104,6 +100,7 @@ offset_bottom = 287.0
 text = "None"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
 
 [connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
 [connection signal="pressed" from="Gone" to="." method="remove_displays"]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cawrkhbnlvn85"]
 
-[ext_resource type="Texture2D" uid="uid://ce02ekfv2puje" path="res://Shaders/Gradients/DarkBG.tres" id="1_q7soj"]
+[ext_resource type="Texture2D" uid="uid://ce02ekfv2puje" path="res://Shaders/Backgrounds/DarkBGGradient.tres" id="1_q7soj"]
 
 [sub_resource type="Shader" id="Shader_bmluw"]
 code = "/* 

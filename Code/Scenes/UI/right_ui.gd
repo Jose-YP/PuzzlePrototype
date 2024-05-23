@@ -71,15 +71,17 @@ func update_level() -> void:
 #CHAIN DISPLAY MANIP
 #______________________________
 func show_display() -> PanelContainer:
-	var chainTotal = chainDisplayScene.instantiate()
-	$VBoxContainer/DisplayContainer.add_child(chainTotal)
-	chainTotalArray.append(chainTotal)
-	chainTotal.connect("remove",hide_display)
+	var chainDisplay = chainDisplayScene.instantiate()
+	$VBoxContainer/DisplayContainer.add_child(chainDisplay)
+	chainTotalArray.append(chainDisplay)
+	chainDisplay.connect("remove",hide_display)
 	
 	var displayTween = self.create_tween()
-	displayTween.tween_property(chainTotal, "modulate", Color.WHITE, chainDisplayTiming)
-	chainTotal.text.clear()
-	return chainTotal
+	chainDisplay.midTween = true
+	displayTween.tween_property(chainDisplay, "modulate", Color.WHITE, chainDisplayTiming)
+	chainDisplay.midTween = false
+	chainDisplay.text.clear()
+	return chainDisplay
 
 func update_display(beads, links, chains, breaker = false) -> void:
 	#Get an avalible chainDisplay
@@ -99,15 +101,18 @@ func update_display(beads, links, chains, breaker = false) -> void:
 
 func hide_display(chainDisplay):
 	var displayTween = self.create_tween()
+	chainDisplay.midTween = true
 	displayTween.tween_property(chainDisplay, "modulate", Color.TRANSPARENT, chainDisplayTiming)
 	await displayTween.finished
+	chainDisplay.midTween = false
 
 #Will be called upon chains ending
 #Keep seperate so displays don't jump position
 func remove_displays():
 	for chainDisplay in chainTotalArray:
-		chainTotalArray.erase(chainDisplay)
-		chainDisplay.queue_free()
+		if not chainDisplay.midTween:
+			chainTotalArray.erase(chainDisplay)
+			chainDisplay.queue_free()
 	
 	if chainTotalArray.size() != 0:
 		$Timer.start()

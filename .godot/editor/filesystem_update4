@@ -27,3 +27,4 @@ res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/MainMenu/game_manager.tscn
 res://addons/newgrounds/examples/newgrounds_debug.tscn
 res://Scenes/MainMenu/how_2_play.tscn
+res://Shaders/ShaderCode/Shockwave.gdshader
