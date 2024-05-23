@@ -33,28 +33,28 @@ button_index = 14
 device = -1
 button_index = 11
 
-[sub_resource type="InputEventKey" id="InputEventKey_hjaie"]
+[sub_resource type="InputEventKey" id="InputEventKey_ux3vr"]
 pressed = true
 keycode = 74
 physical_keycode = 74
 key_label = 74
 unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_x3o5w"]
+[sub_resource type="InputEventKey" id="InputEventKey_cjkbb"]
 pressed = true
 keycode = 73
 physical_keycode = 73
 key_label = 73
 unicode = 105
 
-[sub_resource type="InputEventKey" id="InputEventKey_2dywb"]
+[sub_resource type="InputEventKey" id="InputEventKey_ycu76"]
 pressed = true
 keycode = 79
 physical_keycode = 79
 key_label = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_ctwcf"]
+[sub_resource type="InputEventKey" id="InputEventKey_6rbh4"]
 pressed = true
 keycode = 75
 physical_keycode = 75
