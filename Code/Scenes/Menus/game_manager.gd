@@ -42,7 +42,7 @@ func changeScene(scene) -> void:
 	
 	var newScene = scene.instantiate()
 	$".".add_child(newScene)
-	$".".move_child(currentScene,1)
+	$".".move_child(newScene,1)
 	currentScene = newScene
 
 #For loading scenes

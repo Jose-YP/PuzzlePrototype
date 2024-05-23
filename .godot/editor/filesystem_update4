@@ -26,3 +26,5 @@ res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Code/Globals/FinalGlobal.gd
 res://Code/Globals/NGSave.gd
+res://Scenes/Constants/UIPieces/DuoDisplay.tscn
+res://Code/Scenes/Menus/game_manager.gd

@@ -7,11 +7,10 @@ func _ready() -> void:
 	#if NG.save_slots.size() == 0:
 		#NG.save_slots[1] = null
 
-func finalReady(NG):
-	if NG:
+func finalReady(use_NG):
+	if use_NG:
 		Globals.NewgroundsToggle = true
 		NGCloudSave.load_game()
 		if NG.save_slots.size() == 0:
 			NG.save_slots[1] = null
-		NGCloudSave.loadSlot()
 	else: Globals.NewgroundsToggle = false
