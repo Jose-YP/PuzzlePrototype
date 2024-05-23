@@ -21,6 +21,12 @@ OPTIONS - It allows the player to mix the audio levels, change the colors of eve
 OTHER - The game also shows a local leaderboard of personal records and has a how to play screen to help player get used to the game. It's a new type of puzzle game so I need to ease people into it.
 
 ----------------
+PLANS
+----------------
+This is intented to be a web release that'll be playable in Itch.io and newgrounds. It'll always be free, and any updates directly to the game will also be free.
+
+
+----------------
 WHAT I WON'T DO HERE
 ----------------
 Since this is a first project I'm limiting this to just a single player puzzle game experience. I'm willing to see how far I can go with just that idea but it won't go beyond what the single player puzzle game for the time being
