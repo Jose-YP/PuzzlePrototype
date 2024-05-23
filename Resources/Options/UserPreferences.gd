@@ -2,16 +2,20 @@ extends Resource
 class_name UserPreferences
 
 #AUDIO OPTIONS
+@export_category("Audio")
 @export_range(0,100,.05) var masterAudioLeve: float = 100.0
 @export_range(0,100,.05) var musicAudioLeve: float = 100.0
 @export_range(0,100,.05) var sfxAudioLeve: float = 100.0
 
 #INPUT MAP
+@export_category("Controls")
 @export_enum("KEYBOARD","GAMEPAD") var input_type: int = 0
 @export var keyboard_action_events: Dictionary = {}
 @export var joy_action_events: Dictionary ={}
+@export var reset: bool = true
 
 #PREFERED COLORS
+@export_category("Colors")
 @export_color_no_alpha var earthColor: Color = Color(0.631, 0.125, 0.125)
 @export_color_no_alpha var seaColor: Color = Color(0.137, 0.6, 0.91)
 @export_color_no_alpha var airColor: Color = Color(1,1,1)
@@ -21,6 +25,10 @@ class_name UserPreferences
 
 #FUNCTIONS
 func save(NG = false) -> void:
+	if reset:
+		set_default_controls()
+		reset = false
+	
 	ResourceSaver.save(self, "res://Resources/Options/UserPrefs.tres")
 	if NG:
 		NGCloudSave.save_game()
@@ -29,9 +37,15 @@ static func load_or_create() -> UserPreferences:
 	var res: UserPreferences = load("res://Resources/Options/UserPrefs.tres") as UserPreferences
 	if !res:
 		res = UserPreferences.new()
+	
 	return res
 
-#Ugly functions but they work 
+#Ugly functions but they work
+func set_default_controls():
+	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
+	for action in actions:
+		keyboard_action_events[action] = InputMap.action_get_events(action)[0]
+
 func set_colors(newColors):
 	earthColor = newColors[0]
 	seaColor = newColors[1]

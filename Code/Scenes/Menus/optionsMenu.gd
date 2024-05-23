@@ -178,10 +178,11 @@ func updateInputDisplay() -> void:
 		inputTexts.append(keyText)
 		controllerChange[event].text = keyText
 
-func controllerMapStart(toggled,index) -> void:
+func controllerMapStart(_toggled,index) -> void:
 	if not resetting:
 		if currentToggle != null:
-			currentToggle.button_pressed = toggled
+			#I think this might be bad for the look of options but it might also be needed
+			#currentToggle.button_pressed = toggled
 			currentToggle.text = inputTexts[currentToggleIndex]
 		
 		currentAction = Actions[index]
@@ -190,6 +191,7 @@ func controllerMapStart(toggled,index) -> void:
 		currentToggle = controllerChange[index]
 		currentToggle.text = str("...Awaiting Input...")
 		toggleOn = true
+		print(currentToggle)
 
 func _on_new_input_type_selected(index) -> void:
 	inputType = index
