@@ -13,6 +13,7 @@ var breakNum: int = 1
 #INITIALIZATION
 #______________________________
 func _ready():
+	print(InputMap.action_get_events("ui_up"))
 	var upInput = OS.get_keycode_string(InputMap.action_get_events("ui_up")[0].keycode)
 	var leftInput = OS.get_keycode_string(InputMap.action_get_events("ui_left")[0].keycode)
 	var downInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)

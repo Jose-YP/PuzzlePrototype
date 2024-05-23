@@ -20,6 +20,8 @@ func _ready():
 func _process(_delta):
 	if visible:
 		$VBoxContainer/Button.grab_focus()
+		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel"):
+			$VBoxContainer/Button.set_pressed(true)
 
 func _on_button_pressed():
 	$".".hide()
