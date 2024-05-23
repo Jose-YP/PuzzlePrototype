@@ -8,7 +8,9 @@ signal levelUp(level)
 signal HighScore
 signal maxedLevel
 
-var rules: Rules
+const chainDisplayScene = preload("res://Scenes/UI/chain_totals.tscn")
+
+var chainTotalArray: Array[PanelContainer] = []
 var regScore: int = 0
 var HiScore: int = 0
 var level: int = 1
@@ -71,9 +73,12 @@ func update_level() -> void:
 #CHAIN DISPLAY MANIP
 #______________________________
 func show_display() -> void:
+	var chainTotal = chainDisplayScene.instantiate()
+	$VBoxContainer/GridContainer.add_child(chainTotal)
+	chainTotalArray.append(chainTotal)
 	var displayTween = self.create_tween()
-	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.WHITE, chainDisplayTiming)
-	$VBoxContainer/ChainTotals/RichTextLabel.clear()
+	displayTween.tween_property(chainTotal, "modulate", Color.WHITE, chainDisplayTiming)
+	chainTotal.text.clear()
 
 func update_display(beads, links, chains, breaker = false) -> void:
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()
@@ -94,3 +99,7 @@ func remove_display():
 	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.TRANSPARENT, chainDisplayTiming)
 	await displayTween.finished
 	$VBoxContainer/ChainTotals/RichTextLabel.clear()
+
+
+func _on_summn_pressed():
+	pass # Replace with function body.

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://oon2u5ecyv51"]
+
+[ext_resource type="Script" path="res://Code/Scenes/UI/chain_totals.gd" id="1_fssn4"]
+
+[node name="ChainTotals" type="PanelContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 70)
+size_flags_horizontal = 0
+script = ExtResource("1_fssn4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "XX Beads!
+XX Links!
+XX Chains!"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

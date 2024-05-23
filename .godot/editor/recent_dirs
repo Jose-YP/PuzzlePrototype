@@ -1,3 +1,5 @@
+res://Code/Scenes/UI
+res://Scenes/UI
 res://Code/Globals
 res://Code/Constants
 res://Scenes/Constants/ETC
@@ -6,8 +8,6 @@ res://Shaders/Transparency
 res://Code/Scenes/Board&Beads
 res://Scenes/Board&Beads
 C:/Users/Jose/Videos/Godot Movies
-res://Code/Scenes/UI
-res://Scenes/UI
 res://
 res://Scenes/MainMenu
 res://Themes
