@@ -79,7 +79,7 @@ func audioSet(value, index) -> void:
 			Globals.userPrefs.musicAudioLeve = value
 		2:
 			Globals.userPrefs.sfxAudioLeve = value
-	Globals.userPrefs.save()
+	Globals.userPrefs.save(Globals.NewgroundsToggle)
 
 func _on_music_toggled(toggled_on) -> void:
 	testMusic.emit(toggled_on)
@@ -111,7 +111,7 @@ func set_colors(color: Color, index: int) -> void:
 
 func save_colors():
 	Globals.userPrefs.set_colors(currentColors)
-	Globals.userPrefs.save()
+	Globals.userPrefs.save(Globals.NewgroundsToggle)
 	print(Globals.userPrefs.get_regular_colors())
 
 func _on_reset_colors_pressed():
@@ -160,7 +160,7 @@ func getNewInputs() -> void:
 				inputs[1].append(event)
 				Globals.userPrefs.joy_action_events[action] = event
 	
-	Globals.userPrefs.save()
+	Globals.userPrefs.save(Globals.NewgroundsToggle)
 	updateInputDisplay()
 
 func updateInputDisplay() -> void:
@@ -194,7 +194,7 @@ func controllerMapStart(toggled,index) -> void:
 func _on_new_input_type_selected(index) -> void:
 	inputType = index
 	Globals.userPrefs.input_type = index
-	Globals.userPrefs.save()
+	Globals.userPrefs.save(Globals.NewgroundsToggle)
 	getNewInputs()
 
 func _on_reset_pressed() -> void:

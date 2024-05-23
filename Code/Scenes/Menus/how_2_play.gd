@@ -37,14 +37,14 @@ func _ready():
 	
 	%ScoringSystem2.clear()
 	var use
-	if Globals.rules.breaker:
-		use = str(Globals.rules.chainMultiplier)
-	
+	if Globals.rules.breakBead:
+		use = str("FOR EVERY CONSECUTIVE BREAK YOU\'LL GAIN A ",Globals.rules.comboMultiplier * 100, "%")
+	else:
+		use = str("FOR EVERY CHAIN ON SCREEN YOU\'LL GAIN A X",Globals.rules.chainMultiplier)
 	%ScoringSystem2.append_text(str("YOU\'LL ONLY SCORE ",Globals.rules.beadScore,
 	" POINTS FOR EVERY BEAD BROKEN\n\nBUT FOR EVERY SET OF GLOWING BEADS IN A CHAIN ",
 	"YOU\'LL ADD A ", Globals.rules.linkMultiplier * 100,"% MULTIPLIER FOR EVERY SET",
-	" OF GLOWING BEADS\n\nFOR EVERY CHAIN ON SCREEN YOU\'LL GAIN A X",
-	Globals.rules.chainMultiplier," MULTIPLIER FOR EVERY CHAIN ON SCREEN"))
+	" OF GLOWING BEADS\n\n", use ," MULTIPLIER FOR EVERY CHAIN ON SCREEN"))
 	
 	%LevellingSystem.clear()
 	%LevellingSystem.append_text(str("AS BEADS GET BROKEN, YOU'LL LEVEL UP,",

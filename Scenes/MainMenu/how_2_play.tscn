@@ -278,7 +278,7 @@ layout_mode = 2
 text = "Z - ROTATE COUNTER CLOCKWISE
 X - ROTATE CLOCKWISE
 C - FLIP BEADS NOT ON THE ANCHOR
-V - BREAK ALL CHAINS OF BEADS, [BREAK METER MUST BE FILLED]"
+V - SUMMON BREAKER BEAD [BREAK METER MUST BE FILLED AT LEAST ONCE]"
 
 [node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

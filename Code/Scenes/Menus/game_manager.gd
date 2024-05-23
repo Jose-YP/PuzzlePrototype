@@ -34,7 +34,7 @@ func _process(_delta):
 #For non-loading scenes
 func changeScene(scene) -> void:
 	Globals.save.save(Newgrounds)
-	Globals.userPrefs.save()
+	Globals.userPrefs.save(Newgrounds)
 	currentScene.queue_free()
 	
 	var newScene = scene.instantiate()
