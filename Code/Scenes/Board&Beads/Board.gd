@@ -57,6 +57,8 @@ func _ready() -> void:
 	#Make board before adding anything
 	var temp = uberbead.instantiate()
 	$Hold.add_child(temp)
+	var temp2 = breakerBead.instantiate()
+	$Hold.add_child(temp)
 	board = make_grid()
 	
 	#Make Timers function
@@ -438,29 +440,12 @@ func find_links() -> void:
 		find_links()
 
 func post_break() -> void:
-	for i in range(rules.width):
-		#Start at the bottom of the board and push those down first
-		for j in range(realHeight,-1,-1):
-			var bead = board[i][j]
-			if bead == null:
-				continue
-			elif currentBead != null and currentBead.in_full_bead(bead):
-				continue
-			
-			var target = mini_find_bottom(Vector2i(i,j),i)
-			if target.x == -1:
-				target = Vector2i(i,j)
-			
-			#print(bead.currentType,bead," Goes to ",target)
-			board[i][j] = null
-			board[target.x][target.y] = bead
-			bead.global_position = grid_to_pixel(target)
-			bead.set_name(str(target))
+	all_fall()
 	
 	if not rules.breakBead:
 		breakNum -= 1
 		LUI.breakMeter.breakText.text = str(breakNum)
-	if breakNum < 1:
+	if breakNum <= 0:
 		LUI.breakMeter.breakNotifier.hide()
 	
 	breaking = false
@@ -482,6 +467,34 @@ func post_break() -> void:
 		chainsSize = 0
 		pauseFall(false)
 		RUI.remove_displays()
+
+func all_fall() -> void:
+	var check_again: bool = false
+	for i in range(rules.width):
+		#Start at the bottom of the board and push those down first
+		for j in range(realHeight,-1,-1):
+			var bead = board[i][j]
+			if bead == null:
+				continue
+			elif currentBead != null and currentBead.in_full_bead(bead):
+				continue
+			
+			var target = mini_find_bottom(Vector2i(i,j),i)
+			if target.x == -1:
+				target = Vector2i(i,j)
+			
+			if target != Vector2i(i,j):
+				print("Found new place")
+				check_again= true
+				
+			#print(bead.currentType,bead," Goes to ",target)
+			board[i][j] = null
+			board[target.x][target.y] = bead
+			bead.global_position = grid_to_pixel(target)
+			bead.set_name(str(target))
+	
+	if check_again:
+		all_fall()
 
 func detect_fail() -> void:
 	#Only check for fail spots

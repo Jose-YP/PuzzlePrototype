@@ -84,6 +84,7 @@ layout_mode = 2
 columns = 2
 
 [node name="Summn" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 389.0
 offset_top = 250.0
@@ -92,6 +93,7 @@ offset_bottom = 281.0
 text = "Add"
 
 [node name="Gone" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 469.0
 offset_top = 256.0

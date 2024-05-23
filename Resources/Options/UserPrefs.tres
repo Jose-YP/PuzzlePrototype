@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UserPreferences" load_steps=10 format=3]
+[gd_resource type="Resource" script_class="UserPreferences" load_steps=10 format=3 uid="uid://d4iyecfhrxkh2"]
 
 [ext_resource type="Script" path="res://Resources/Options/UserPreferences.gd" id="1_nv052"]
 
