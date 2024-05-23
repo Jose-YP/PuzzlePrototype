@@ -29,3 +29,4 @@ res://addons/newgrounds/examples/newgrounds_debug.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Shaders/ShaderCode/Shockwave.gdshader
 res://Shaders/Beads/SingleBeadBurn.tres
+res://Code/Scenes/UI/left_ui.gd

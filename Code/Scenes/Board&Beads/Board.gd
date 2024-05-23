@@ -72,8 +72,6 @@ func _ready() -> void:
 	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
 	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
 	LUI.set_ripple_center()
-	RUI.rules = rules
-	LUI.rules = rules
 	LUI.breakMeter.breakText.text = str(breakNum)
 	
 	#Make debugging easier
@@ -483,6 +481,7 @@ func post_break() -> void:
 		await $Timers/ChainFinish.timeout
 		chainsSize = 0
 		pauseFall(false)
+		RUI.remove_displays()
 
 func detect_fail() -> void:
 	#Only check for fail spots
@@ -584,9 +583,9 @@ func check_breakers() -> void:
 	#Erase from the script wide var rather than local
 	for i in range(breakerArray.size()):
 		if breakerArray[i].breaking:
+			breakerArray[i].destroy_anim()
 			var pos = breakerArray[i].gridPos[0]
 			board[pos.x][pos.y] = null
-			breakerArray[i].destroy_anim()
 			breakers.erase(breakerArray[i])
 			await breakerArray[i].tree_exiting
 	
@@ -984,6 +983,7 @@ func _on_left_ui_break_ready() -> void:
 	breakNum += 1
 	LUI.breakMeter.breakNotifier.show()
 	LUI.breakMeter.breakText.text = str(breakNum)
+	playSFX.emit(4)
 
 func _on_right_ui_level_up(level) -> void:
 	playSFX.emit(6)

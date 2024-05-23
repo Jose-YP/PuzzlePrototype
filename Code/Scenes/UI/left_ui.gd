@@ -9,7 +9,6 @@ extends Control
 signal breakReady
 signal rippleEnd
 
-var rules: Rules
 var progress: int = 0
 
 #______________________________
