@@ -19,3 +19,11 @@ res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Board.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
 res://Shaders/Shockwave.gdshader
+res://Scenes/UI/right_ui.tscn
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/MainMenu/game_manager.tscn
+res://addons/newgrounds/examples/newgrounds_debug.tscn
+res://Scenes/MainMenu/how_2_play.tscn

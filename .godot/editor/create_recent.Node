@@ -1,3 +1,4 @@
+Timer
 Button
 GridContainer
 Node
@@ -10,5 +11,4 @@ MarginContainer
 BackBufferCopy
 Control
 RichTextLabel
-Timer
 VSeparator

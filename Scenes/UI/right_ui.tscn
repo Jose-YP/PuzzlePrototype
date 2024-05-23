@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=4 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/UIPieces/DuoDisplay.tscn" id="2_uv3j1"]
+[ext_resource type="PackedScene" uid="uid://oon2u5ecyv51" path="res://Scenes/UI/chain_totals.tscn" id="3_headh"]
 
 [node name="RightUI" type="Control"]
 layout_mode = 3
@@ -79,21 +80,30 @@ size_flags_horizontal = 0
 custom_minimum_size = Vector2(75, 200)
 layout_mode = 2
 
-[node name="ChainTotals" type="PanelContainer" parent="VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 70)
+[node name="DisplayContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ChainTotals"]
+[node name="ChainTotals" parent="VBoxContainer" instance=ExtResource("3_headh")]
 layout_mode = 2
-bbcode_enabled = true
-text = "XX Beads!
-XX Links!
-XX Chains!"
+
+[node name="Summn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 250.0
+offset_right = 430.0
+offset_bottom = 281.0
+text = "Add"
+
+[node name="Gone" type="Button" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 256.0
+offset_right = 510.0
+offset_bottom = 287.0
+text = "None"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="remove_display"]
+[connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
+[connection signal="pressed" from="Gone" to="." method="remove_displays"]

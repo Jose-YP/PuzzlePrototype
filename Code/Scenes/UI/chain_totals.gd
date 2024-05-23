@@ -1,9 +1,9 @@
 extends PanelContainer
 
 @onready var text: RichTextLabel = $RichTextLabel
-@onready var timer: Timer = $Timer
+@onready var displayTime: Timer = $Timer
 
-signal remove
+signal remove(who)
 
 func _on_timer_timeout():
-	remove.emit()
+	remove.emit(self)

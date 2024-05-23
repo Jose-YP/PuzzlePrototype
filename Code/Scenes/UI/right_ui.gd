@@ -2,8 +2,6 @@ extends Control
 
 @export var chainDisplayTiming: float = 1.0
 
-@onready var displayTime: Timer = $Timer
-
 signal levelUp(level)
 signal HighScore
 signal maxedLevel
@@ -72,16 +70,22 @@ func update_level() -> void:
 #______________________________
 #CHAIN DISPLAY MANIP
 #______________________________
-func show_display() -> void:
+func show_display() -> PanelContainer:
 	var chainTotal = chainDisplayScene.instantiate()
-	$VBoxContainer/GridContainer.add_child(chainTotal)
+	$VBoxContainer/DisplayContainer.add_child(chainTotal)
 	chainTotalArray.append(chainTotal)
+	chainTotal.connect("remove",hide_display)
+	
 	var displayTween = self.create_tween()
 	displayTween.tween_property(chainTotal, "modulate", Color.WHITE, chainDisplayTiming)
 	chainTotal.text.clear()
+	return chainTotal
 
 func update_display(beads, links, chains, breaker = false) -> void:
-	$VBoxContainer/ChainTotals/RichTextLabel.clear()
+	#Get an avalible chainDisplay
+	var display = show_display()
+	
+	display.text.clear()
 	var chainText: String = "\n"
 	if chains > 1 and not breaker:
 		chainText = str(chainText, chains, " Chains")
@@ -90,16 +94,27 @@ func update_display(beads, links, chains, breaker = false) -> void:
 	else:
 		chainText = str(chainText, chains, " Chain")
 	
-	$VBoxContainer/ChainTotals/RichTextLabel.append_text(str(beads," Beads\n",
-	links," Links",chainText))
-	displayTime.start()
+	display.text.append_text(str(beads," Beads\n", links," Links",chainText))
+	display.displayTime.start()
 
-func remove_display():
+func hide_display(chainDisplay):
 	var displayTween = self.create_tween()
-	displayTween.tween_property($VBoxContainer/ChainTotals, "modulate", Color.TRANSPARENT, chainDisplayTiming)
+	displayTween.tween_property(chainDisplay, "modulate", Color.TRANSPARENT, chainDisplayTiming)
 	await displayTween.finished
-	$VBoxContainer/ChainTotals/RichTextLabel.clear()
 
+#Will be called upon chains ending
+#Keep seperate so displays don't jump position
+func remove_displays():
+	for chainDisplay in chainTotalArray:
+		chainTotalArray.erase(chainDisplay)
+		chainDisplay.queue_free()
+	
+	if chainTotalArray.size() != 0:
+		$Timer.start()
 
 func _on_summn_pressed():
-	pass # Replace with function body.
+	var randBool = true
+	if randi() % 2 == 0:
+		randBool = false
+	
+	update_display(randi_range(6,30), randi_range(2,12), randi_range(1,5), randBool)
