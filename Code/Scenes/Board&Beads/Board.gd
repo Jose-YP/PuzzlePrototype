@@ -357,7 +357,6 @@ func _process(delta) -> void:
 				find_chains(true)
 				chainsSize = chains.size()
 				beadsSize = 0
-				RUI.show_display()
 				await LUI.rippleEnd
 				for i in range(chains.size()):
 					#Make sure the starting value is bracketed into an array
@@ -554,7 +553,6 @@ func check_breakers() -> void:
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			beadsSize = 0
 			holdBreakChain = 0
-			RUI.show_display()
 			
 			#Break every chain found at ith breaker bead
 			for j in range(breakAt[i].size()):
