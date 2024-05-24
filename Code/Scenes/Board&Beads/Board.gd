@@ -605,6 +605,9 @@ func check_breakers() -> void:
 	
 	#Erase from the script wide var rather than local
 	for i in range(breakerArray.size()):
+		#If the array still has null values, skip them
+		if not is_instance_valid(breakerArray[i]):
+			continue
 		if breakerArray[i].breaking:
 			print("breaking ", breakerArray[i])
 			breakerArray[i].destroy_anim()

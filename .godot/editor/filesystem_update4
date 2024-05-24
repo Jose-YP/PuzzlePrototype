@@ -20,3 +20,6 @@ res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Code/Scenes/Board&Beads/BoardDebugCode.gd
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Resources/SaveData/SaveFile.tres
+res://Resources/Options/UserPrefs.tres
+res://Resources/SaveData/SaveMaker.gd

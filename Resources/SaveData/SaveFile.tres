@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Save" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="Save" load_steps=2 format=3 uid="uid://c813wb8m3geh4"]
 
 [ext_resource type="Script" path="res://Resources/SaveData/SaveMaker.gd" id="1_l2j0a"]
 
@@ -9,7 +9,7 @@ HiScores = {
 "111111": [999, "YP!"],
 "222222": [3000, "YP!"],
 "333333": [2000, "YP!"],
-"444444": [1000, "YP!"],
+"444444": [50, "YP!"],
 "999999": [1000, "YP!"]
 }
 username = "LVY"
