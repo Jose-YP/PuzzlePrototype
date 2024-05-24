@@ -107,6 +107,7 @@ text = "1.		YP"
 custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+button_mask = 0
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

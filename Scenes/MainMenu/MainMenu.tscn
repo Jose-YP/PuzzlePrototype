@@ -41,6 +41,8 @@ focus_neighbor_right = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Scores")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
 text = "PLAY"
 
 [node name="Options" type="Button" parent="Buttons"]
@@ -52,6 +54,8 @@ focus_neighbor_right = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../How2Play")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
 text = "OPTIONS"
 
 [node name="Scores" type="Button" parent="Buttons"]
@@ -63,6 +67,8 @@ focus_neighbor_right = NodePath("../How2Play")
 focus_neighbor_bottom = NodePath("../Play")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
 text = "SCORES"
 
 [node name="How2Play" type="Button" parent="Buttons"]
@@ -73,6 +79,8 @@ focus_neighbor_right = NodePath("../Scores")
 focus_neighbor_bottom = NodePath("../Options")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
 text = "HOW TO PLAY"
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]

@@ -45,6 +45,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 focus_next = NodePath("../Retry")
 focus_previous = NodePath("../Retry")
+button_mask = 0
 text = "Main Menu"
 
 [node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer"]
@@ -52,6 +53,7 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 focus_next = NodePath("../Main Menu")
 focus_previous = NodePath("../Main Menu")
+button_mask = 0
 text = "Retry"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

@@ -23,3 +23,6 @@ res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Resources/SaveData/SaveFile.tres
 res://Resources/Options/UserPrefs.tres
 res://Resources/SaveData/SaveMaker.gd
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/score_display.tscn

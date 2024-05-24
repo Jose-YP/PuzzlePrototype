@@ -325,6 +325,7 @@ focus_neighbor_right = NodePath("../Next")
 focus_next = NodePath("../Next")
 focus_previous = NodePath("../Next")
 action_mode = 0
+button_mask = 0
 text = "Exit"
 
 [node name="Next" type="Button" parent="VBoxContainer/nEXT_BACK/HBoxContainer"]
@@ -336,6 +337,7 @@ focus_neighbor_right = NodePath("../Exit")
 focus_next = NodePath("../Exit")
 focus_previous = NodePath("../Exit")
 action_mode = 0
+button_mask = 0
 text = "Controls
 "
 

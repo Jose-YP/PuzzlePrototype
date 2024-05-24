@@ -383,6 +383,7 @@ func _process(delta) -> void:
 #POST TURN PROCESSES
 #______________________________
 func post_turn() -> void:
+	var origBreakerSize = breakers.size()
 	currentBead.placed = true
 	if not currentBead.breaker:
 		currentBead.sync_position()
@@ -416,6 +417,10 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
+		#Since breaker beads break last do one last fall check
+		if breakers.size() != origBreakerSize:
+			all_fall()
+		
 		#Reset grounded & Gravity timer to give the player time to react
 		%Grounded.start()
 		%Gravity.start()
