@@ -33,3 +33,5 @@ res://Resources/SaveData/SaveFile.tres
 res://Code/Scenes/UI/DuoDisplay.gd
 res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/UI/right_ui.gd
+res://Code/Scenes/UI/left_ui.gd

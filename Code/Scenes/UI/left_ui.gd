@@ -63,3 +63,7 @@ func ripple_size_tween(value):
 func set_ripple_center() -> void:
 	var center: Vector2 = $VBoxContainer/HBoxContainer.set_ripple_center()
 	$Ripple.material.set_shader_parameter("center", center)
+
+
+func _on_right_ui_break_gain(beads):
+	pass # Replace with function body.

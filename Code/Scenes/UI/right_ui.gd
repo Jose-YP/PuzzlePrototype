@@ -2,6 +2,7 @@ extends Control
 
 @export var chainDisplayTiming: float = 1.0
 
+signal breakGain(beads)
 signal levelUp(level)
 signal HighScore
 signal maxedLevel
@@ -11,6 +12,7 @@ const chainDisplayScene = preload("res://Scenes/UI/chain_totals.tscn")
 var chainTotalArray: Array[PanelContainer] = []
 var regScore: int = 0
 var HiScore: int = 0
+var currentBeads: int = 0
 var level: int = 1
 
 #______________________________
@@ -39,6 +41,8 @@ func update_HiScore(score) -> void:
 #______________________________
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
+	
+	currentBeads = beads
 	var levelThreshold: int = 1
 	if level < Globals.rules.max_levels:
 		levelThreshold = level_upThreshold(level)

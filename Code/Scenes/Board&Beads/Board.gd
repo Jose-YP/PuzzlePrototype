@@ -61,10 +61,11 @@ func _ready() -> void:
 	var temp2 = breakerBead.instantiate()
 	$Hold.add_child(temp)
 	$Hold.add_child(temp2)
-	temp.position = Vector2(100,100)
-	temp2.position = farAway
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
+	temp.position = farAway
+	temp2.position = farAway
+	
 	#Make board before adding anything
 	board = make_grid()
 	
