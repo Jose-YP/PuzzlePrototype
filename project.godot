@@ -45,6 +45,7 @@ folder_colors={
 "res://Art/": "red",
 "res://Audio/": "red",
 "res://Code/": "green",
+"res://Exports/": "orange",
 "res://Resources/": "green",
 "res://Scenes/": "green",
 "res://Shaders/": "pink",
@@ -109,3 +110,7 @@ Pause={
 
 app_id="58344:yWmMxvnO"
 AES-128_key="GSwyswln7HEDKawKf0iDyA=="
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
