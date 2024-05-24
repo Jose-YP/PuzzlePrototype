@@ -13,4 +13,7 @@ func finalReady(use_NG):
 		NGCloudSave.load_game()
 		if NG.save_slots.size() == 0:
 			NG.save_slots[1] = null
+		
+		Globals.save = NGSaveSetup.save
+		Globals.userPrefs = NGSaveSetup.userPrefs
 	else: Globals.NewgroundsToggle = false

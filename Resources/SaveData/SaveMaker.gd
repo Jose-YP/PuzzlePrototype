@@ -1,11 +1,11 @@
 extends Resource
 class_name Save
 
-@export var HiScores: Dictionary = {"999999":[1000,"YP!"],
-"000000":[1200,"YP!"],
-"111111":[999,"YP!"],
-"222222":[3000,"YP!"],
-"333333":[2000,"YP!"],
+@export var HiScores: Dictionary = {"999999":[1,"YP!"],
+"000000":[40,"YP!"],
+"111111":[30,"YP!"],
+"222222":[20,"YP!"],
+"333333":[10,"YP!"],
 "444444":[50,"YP!"]}
 
 @export var username: String = "LVY"

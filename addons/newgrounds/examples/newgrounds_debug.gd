@@ -59,8 +59,8 @@ func _on_list_scoreboards_pressed():
 
 
 func _on_submit_score_pressed():
-	$ExampleScoreboard.submit_time(100 + randf() * 40)
-	#NG.scoreboard_submit(1230, 123)
+	#$ExampleScoreboard.submit_time(100 + randf() * 40)
+	NG.scoreboard_submit(13768, 123)
 	pass # Replace with function body.
 
 

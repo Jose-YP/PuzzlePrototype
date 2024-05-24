@@ -6,6 +6,7 @@ class_name NewgroundsIds
 
 enum ScoreboardId {
 	None = 0,
+	TopScores = 13768,
 
 }
 

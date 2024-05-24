@@ -312,6 +312,8 @@ func cloudsave_load_slots() -> Array[NewgroundsSaveSlot]:
 func cloudsave_set_data(slot_id: int, data: String) -> NewgroundsSaveSlot:
 	offline_data.store_local_slot_data(slot_id, data);
 	if offline_mode:
+		if save_slots.size() == 0:
+			save_slots[1] = null
 		var slot = save_slots[slot_id]
 		if slot:
 			slot.data = data;

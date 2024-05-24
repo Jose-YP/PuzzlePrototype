@@ -109,4 +109,6 @@ func _on_focus_entered(index):
 func new_focus(newScore, newPlacement):
 	score = newScore
 	placement = newPlacement
+	if newPlacement == 1:
+		await NG.scoreboard_submit(13768, newScore)
 	_ready()
