@@ -5,6 +5,7 @@ extends Node2D
 @export var rules: Rules
 @export var scoreFade: float = 1.5
 @export var farAway: Vector2 = Vector2(-100,-100)
+@export var RUIextra: float = 20.0
 
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $RightUI
@@ -79,8 +80,9 @@ func _ready() -> void:
 	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
 	rel.lightRelations, rel.darkRelations]
 	
-	RUI.position += grid_to_pixel(Vector2i(rules.width+1,1))
-	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
+	RUI.position += grid_to_pixel(Vector2i(rules.width,0))
+	RUI.position += Vector2(RUIextra, 0)
+	LUI.position.y += grid_to_pixel(Vector2i(0,0)).y
 	LUI.set_ripple_center()
 	LUI.breakMeter.breakText.text = str(breakNum)
 	
