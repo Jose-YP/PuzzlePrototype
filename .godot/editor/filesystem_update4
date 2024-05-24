@@ -35,3 +35,5 @@ res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Code/Scenes/UI/right_ui.gd
 res://Code/Scenes/UI/left_ui.gd
+res://Scenes/MainMenu/how_2_play.tscn
+res://Resources/Rules/RuleMaker.gd

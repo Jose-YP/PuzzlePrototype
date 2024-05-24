@@ -41,8 +41,11 @@ func update_HiScore(score) -> void:
 #______________________________
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
+	#Get how many were broken in a combo for breaker bead ruleset
+	if Globals.rules.breakBead:
+		breakGain.emit(beads - currentBeads)
+		currentBeads = beads
 	
-	currentBeads = beads
 	var levelThreshold: int = 1
 	if level < Globals.rules.max_levels:
 		levelThreshold = level_upThreshold(level)

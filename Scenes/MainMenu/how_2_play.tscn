@@ -110,13 +110,14 @@ GLOWING [color=gold]LIGHT[/color] - [color=purple]DARK[/color] BEADS CONNECT TOG
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center] TO MAKE A BEAD GLOW, THREE OR MORE OF THE SAME TYPE MUST BE NEXT TO EACHOTHER"
+text = "[center] TO MAKE A BEAD GLOW, THREE OR MORE OF THE SAME TYPE MUST BE NEXT TO EACHOTHER
+ ONCE THEY GLOW THEY CAN START CONNECTING TO DIFFERENT TYPES OF GLOWING BEADS"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center] AS YOU PLACE BEADS, THE BREAK METER WILL GROW, 
+text = "[center] AS YOU PLACE AND DESTROY BEADS, THE BREAK METER WILL GROW, 
 ONCE FILLED YOU'LL GAIN A BREAK BEAD THAT'LL DESTROY ANY CHAIN IT TOUCHES"
 
 [node name="HBoxContainer" type="GridContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
@@ -241,7 +242,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Bead Breaker
+text = "[center]Breaker Bead
 Will destroy any chains adjacent to it"
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]

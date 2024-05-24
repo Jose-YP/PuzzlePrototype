@@ -28,6 +28,7 @@ class_name Rules
 @export_range(0,2,.01) var powerMultiplier: float = .15
 @export_range(0,2,.01) var chainMultiplier: float = .7
 @export_range(0,2,.01) var comboMultiplier: float = 2
+@export_range(0,1) var breakBeadRecharge: float = .75
 @export_group("Levels")
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100

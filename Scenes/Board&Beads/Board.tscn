@@ -84,6 +84,7 @@ z_index = 1
 [connection signal="timeout" from="Timers/Shake" to="." method="_on_shake_timeout"]
 [connection signal="timeout" from="Timers/Debug" to="." method="_on_debug_timeout"]
 [connection signal="HighScore" from="RightUI" to="." method="_on_right_ui_high_score"]
+[connection signal="breakGain" from="RightUI" to="LeftUI" method="_on_right_ui_break_gain"]
 [connection signal="levelUp" from="RightUI" to="." method="_on_right_ui_level_up"]
 [connection signal="maxedLevel" from="RightUI" to="." method="_on_right_ui_maxed_level"]
 [connection signal="breakReady" from="LeftUI" to="." method="_on_left_ui_break_ready"]
