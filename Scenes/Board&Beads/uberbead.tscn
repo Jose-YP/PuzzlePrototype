@@ -74,6 +74,9 @@ shader_parameter/otherColorMix = 0.4
 [node name="SingleBead" instance=ExtResource("1_3adwn")]
 material = SubResource("ShaderMaterial_w3nxt")
 
+[node name="Glow" parent="Images" index="1"]
+visible = true
+
 [node name="Connected" parent="ConnectMarkers" index="8" instance=ExtResource("3_gytfj")]
 material = SubResource("ShaderMaterial_bxnc6")
 position = Vector2(0, 1.17647)

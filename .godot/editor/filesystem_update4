@@ -28,3 +28,6 @@ res://Code/Globals/FinalGlobal.gd
 res://Code/Globals/NGSave.gd
 res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/Board&Beads/uberbead.tscn
+res://Resources/SaveData/SaveFile.tres
+res://Code/Scenes/UI/DuoDisplay.gd

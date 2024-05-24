@@ -4,6 +4,7 @@ extends Node2D
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
 @export var scoreFade: float = 1.5
+@export var farAway: Vector2 = Vector2(-100,-100)
 
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $RightUI
@@ -54,11 +55,15 @@ var refind: bool = false
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	#Make board before adding anything
+	#Here to load all objects
+	#Once they're loaded once, they won't freeze up the game again
 	var temp = uberbead.instantiate()
-	$Hold.add_child(temp)
 	var temp2 = breakerBead.instantiate()
 	$Hold.add_child(temp)
+	$Hold.add_child(temp2)
+	temp.position = farAway
+	temp2.position = farAway
+	#Make board before adding anything
 	board = make_grid()
 	
 	#Make Timers function
@@ -82,7 +87,6 @@ func _ready() -> void:
 		2: fill_column()
 		4: make_overhang()
 	
-	$Hold.hide()
 	#start the game
 	spawn_full_beads()
 	pull_next_bead()
@@ -716,7 +720,7 @@ func add_links(link: Dictionary, recursion: Array = []) -> Array:
 	#This is reached where there are no connections left to find
 	return tempChain
 
-func shake_order(chainPart, size, index, recursion = {}) -> void:
+func shake_order(chainPart, main, size, recursion = {}) -> void:
 	#Cut the shake if beads are being broken
 	if not breaking:
 		#First find every adjacent bead to break in the future
@@ -733,7 +737,7 @@ func shake_order(chainPart, size, index, recursion = {}) -> void:
 				#Only shake beads that have yet to shake
 				#It should be in chains[index] but not shookBeads
 				if (not shookBeads.has(adj)
-				 and chains[index].find(adj) != -1):
+				 and main.find(adj) != -1):
 					adjacent[adj] = adj
 		
 		#Shake beads
@@ -747,7 +751,7 @@ func shake_order(chainPart, size, index, recursion = {}) -> void:
 		#If every bead in the chain has yet to be shook keep going
 		if shookBeads.size() >= size:
 			return
-		shake_order(adjacent.keys(), size, index, shookBeads)
+		shake_order(adjacent.keys(), main, size, shookBeads)
 	else:
 		return
 	
@@ -990,7 +994,7 @@ func _on_shake_timeout() -> void:
 	if chains.size() != 0:
 		var rand: int = randi_range(0,chains.size() - 1)
 		var part: Array = [chains[rand].pick_random()]
-		shake_order(part, chains[rand].size(), rand)
+		shake_order(part, chains[rand], chains[rand].size())
 
 func _on_left_ui_break_ready() -> void:
 	breakNum += 1
