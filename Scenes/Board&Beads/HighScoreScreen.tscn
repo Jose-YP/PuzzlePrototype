@@ -68,6 +68,7 @@ focus_neighbor_right = NodePath("../Second")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Second")
 focus_previous = NodePath(".")
+mouse_filter = 2
 button_mask = 0
 
 [node name="Second" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
@@ -81,6 +82,7 @@ focus_neighbor_right = NodePath("../Third")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Third")
 focus_previous = NodePath("../First")
+mouse_filter = 2
 button_mask = 0
 
 [node name="Third" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
@@ -94,11 +96,13 @@ focus_neighbor_right = NodePath("../First")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../../Submit")
 focus_previous = NodePath("../Second")
+mouse_filter = 2
 button_mask = 0
 
 [node name="Submit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+mouse_filter = 2
 button_mask = 0
 text = "Submit
 "

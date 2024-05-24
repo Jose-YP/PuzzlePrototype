@@ -3,7 +3,22 @@
 [ext_resource type="Script" path="res://Code/Constants/load_screen.gd" id="1_6opy8"]
 
 [node name="LoadScreen" type="CanvasLayer"]
+layer = 2
+follow_viewport_enabled = true
 script = ExtResource("1_6opy8")
+trasitionTiming = 0.75
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -1683.0
+offset_right = 1293.0
+offset_bottom = -726.0
+grow_vertical = 0
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 1283.0

@@ -420,6 +420,7 @@ func post_turn() -> void:
 		#Since breaker beads break last do one last fall check
 		if breakers.size() != origBreakerSize:
 			all_fall()
+			lost_beads()
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		%Grounded.start()
@@ -527,10 +528,19 @@ func second_fix() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
+			
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pos:
 				board[i][j] = null
 				board[pos.x][pos.y] = bead
+
+func lost_beads() -> void:
+	#If a bead isn't in the board anymore just delete them
+	for bead in $Grid.get_children():
+		if bead == $Grid/GridBackground:
+			continue
+		if pixel_to_grid(bead) != find_bead(bead):
+			bead.queue_free()
 
 func reset_beads() -> void:
 	for i in rules.width:
@@ -600,6 +610,10 @@ func check_breakers() -> void:
 				await self.brokeAll
 				
 				#print()
+				var pos = usingBreakerArray[i].gridPos[0]
+				board[pos.x][pos.y] = null
+				breakers.erase(usingBreakerArray[i])
+				await usingBreakerArray[i].tree_exiting
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			comboSize += 1

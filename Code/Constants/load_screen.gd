@@ -1,11 +1,16 @@
 extends CanvasLayer
 
+@export var trasitionTiming: float = .15
 @export var next_scene = "res://Scenes/Board&Beads/Board.tscn"
 
 signal finished(scene)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var transitionTween = self.create_tween().set_trans(Tween.TRANS_SPRING)
+	transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-200),trasitionTiming)
+	await transitionTween.finished
+	print($ColorRect.position)
 	ResourceLoader.load_threaded_request(next_scene)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

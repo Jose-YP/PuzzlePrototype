@@ -26,3 +26,7 @@ res://Resources/SaveData/SaveMaker.gd
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/score_display.tscn
+res://Shaders/Backgrounds/EarthBG.tres
+res://Scenes/Constants/Backgrounds/EarthBG.tscn
+res://Scenes/Constants/ETC/load_screen.tscn
+res://Code/Constants/load_screen.gd

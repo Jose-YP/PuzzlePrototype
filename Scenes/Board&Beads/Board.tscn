@@ -19,6 +19,9 @@ position = Vector2(-20, -60)
 scale = Vector2(1.25, 1.25)
 
 [node name="GridBackground" parent="Grid" instance=ExtResource("3_xac2l")]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
 
 [node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
 offset_left = -30.0
