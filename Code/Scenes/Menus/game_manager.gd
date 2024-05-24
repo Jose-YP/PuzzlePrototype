@@ -21,6 +21,8 @@ var unpausing: bool = false
 
 func _ready():
 	FinalGlobal.finalReady(Newgrounds)
+	BreakSFX[1].play()
+	BreakSFX[1].stop()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and not unpausing:

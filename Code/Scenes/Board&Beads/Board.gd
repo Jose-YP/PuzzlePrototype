@@ -57,12 +57,14 @@ var refind: bool = false
 func _ready() -> void:
 	#Here to load all objects
 	#Once they're loaded once, they won't freeze up the game again
-	var temp = uberbead.instantiate()
+	var temp = Globals.bead.instantiate()
 	var temp2 = breakerBead.instantiate()
 	$Hold.add_child(temp)
 	$Hold.add_child(temp2)
-	temp.position = farAway
+	temp.position = Vector2(100,100)
 	temp2.position = farAway
+	#Spawn a connected bolt from a bead to load it in during loading
+	temp.display_chain(0,0)
 	#Make board before adding anything
 	board = make_grid()
 	
@@ -412,8 +414,9 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
-		#Reset grounded timer to give the player time to react
-		$Timers/Grounded.start()
+		#Reset grounded & Gravity timer to give the player time to react
+		%Grounded.start()
+		%Gravity.start()
 		pull_next_bead()
 
 func find_links() -> void:
