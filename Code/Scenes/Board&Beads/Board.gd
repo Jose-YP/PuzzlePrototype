@@ -407,6 +407,7 @@ func post_turn() -> void:
 	find_chains(false)
 	check_breakers()
 	
+	print(breaking)
 	if breaking:
 		await self.endCheck
 		$Timers/ChainFinish.start()
@@ -419,6 +420,7 @@ func post_turn() -> void:
 		%Grounded.start()
 		%Gravity.start()
 		pull_next_bead()
+		display_board()
 
 func find_links() -> void:
 	#If nothing changes, then this won't
@@ -604,6 +606,7 @@ func check_breakers() -> void:
 	#Erase from the script wide var rather than local
 	for i in range(breakerArray.size()):
 		if breakerArray[i].breaking:
+			print("breaking ", breakerArray[i])
 			breakerArray[i].destroy_anim()
 			var pos = breakerArray[i].gridPos[0]
 			board[pos.x][pos.y] = null

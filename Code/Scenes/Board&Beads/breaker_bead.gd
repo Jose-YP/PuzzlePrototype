@@ -37,7 +37,7 @@ func check_should_break() -> Array:
 	for i in range(adjacent.size()):
 		var should_break: bool = false
 		var adj = adjacent[i]
-		if adj == null:
+		if adj == null or adj.currentType == "Breaker":
 			continue
 		
 		#These will be checked last so chained should be accurate

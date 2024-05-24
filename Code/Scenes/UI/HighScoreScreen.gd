@@ -60,8 +60,7 @@ func _process(delta):
 				$VBoxContainer/Submit.grab_focus()
 				hasName = true
 			else:
-				$VBoxContainer/Submit.button_pressed = true
-	
+				$VBoxContainer/Submit.set_pressed(true)
 
 #______________________________
 #USERNAME MAKER
@@ -100,6 +99,7 @@ func _on_submit_pressed():
 	Globals.save.save_score(score,user)
 	print(Globals.save.HiScores)
 	proceed.emit()
+	print("AAAAAAA")
 	$VBoxContainer/Submit.disabled = true
 
 func _on_focus_entered(index):
