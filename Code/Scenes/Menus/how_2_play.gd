@@ -2,6 +2,8 @@ extends PanelContainer
 
 @onready var infoTabs: TabContainer = %InfoTabs
 @onready var breakProgress: HBoxContainer = %BreakProgress
+@onready var movementContainers: Array[Node] = %MovementContainer.get_children()
+@onready var manipContainers: Array[Node] = %ManipContainer.get_children()
 
 signal boardSFX(index)
 signal makeSFX(index)
@@ -13,28 +15,10 @@ var breakNum: int = 1
 #INITIALIZATION
 #______________________________
 func _ready():
-	print(InputMap.action_get_events("ui_up"))
-	var upInput = OS.get_keycode_string(InputMap.action_get_events("ui_up")[0].keycode)
-	var leftInput = OS.get_keycode_string(InputMap.action_get_events("ui_left")[0].keycode)
-	var downInput = OS.get_keycode_string(InputMap.action_get_events("ui_down")[0].keycode)
-	var rightInput = OS.get_keycode_string(InputMap.action_get_events("ui_right")[0].keycode)	
-	
-	
-	%Movement.clear()
-	%Movement.append_text(str(leftInput,"/",rightInput," - MOVE LEFT AND RIGHT\n",upInput,
-	" - HARD DROP [BEADS ARE THROWN TO THEIR LOWEST POSSIBLE POSITION]\n",downInput,
-	" - SOFT DROP [BEADS MOVE DOWN ONE SPACE, WHEN PLACED THEY\'LL STICK TOGETHER]"))
-	
-	var CWWInput = OS.get_keycode_string(InputMap.action_get_events("ui_accept")[0].physical_keycode)
-	var ClockInput = OS.get_keycode_string(InputMap.action_get_events("ui_cancel")[0].physical_keycode)
-	var FlipInput = OS.get_keycode_string(InputMap.action_get_events("Flip")[0].physical_keycode)
-	var BreakInput = OS.get_keycode_string(InputMap.action_get_events("Break")[0].physical_keycode)
-	
-	%FullBeadManip.clear()
-	%FullBeadManip.append_text(str(CWWInput," - ROTATE COUNTER CLOCKWISE\n",
-	ClockInput," - ROTATE CLOCKWISE\n",FlipInput
-	," - FLIP BEADS NOT ON THE ANCHOR\n",BreakInput
-	," - SUMMON BREAKER BEAD, [BREAK METER MUST BE FILLED AT LEAST ONCE]"))
+	for i in range(movementContainers.size()):
+		Globals.show_controls(movementContainers[i].get_child(0))
+		Globals.show_controls(manipContainers[i].get_child(0))
+	Globals.show_controls(%PauseTexture)
 	
 	%ScoringSystem2.clear()
 	var use

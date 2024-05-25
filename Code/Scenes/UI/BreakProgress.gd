@@ -7,6 +7,8 @@ extends HBoxContainer
 func _ready():
 	if Globals.rules.breakBead:
 		$PanelContainer2/VBoxContainer/RichTextLabel.text = "TO SPAWN A BREAKER BEAD"
+	
+	Globals.show_controls($PanelContainer2/VBoxContainer/RichTextLabel2/TextureRect)
 
 # Called when the node enters the scene tree for the first time.
 func set_ripple_center() -> Vector2:

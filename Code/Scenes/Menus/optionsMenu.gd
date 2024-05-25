@@ -19,6 +19,8 @@ signal makeNoise
 signal testMusic(toggled_on)
 signal playSFX(index)
 
+const awaitText: String = "Awaiting Input"
+
 var inputs: Array[Array] = [[],[]]
 var inputTexts: Array[String] = []
 var currentColors: Array[Color] = []
@@ -142,6 +144,8 @@ func getNewInputs() -> void:
 			loopActions = Globals.userPrefs.joy_action_events.keys()
 	
 	for i in range(controllerChange.size()):#Controller change's parents have the right names
+		Globals.show_controls(controllerChange[i].get_child(0))
+		
 		for j in range(loopActions.size()):
 			if controllerChange[i].get_parent().name == loopActions[j]:
 				sortedLoop.append(loopActions[j])
@@ -151,17 +155,20 @@ func getNewInputs() -> void:
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
+		print(action, InputMap.action_get_events(action))
 		Actions.append(action)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
 				inputs[0].append(event)
 				Globals.userPrefs.keyboard_action_events[action] = event
 			elif event is InputEventJoypadButton and inputType == 1:
+				print()
 				inputs[1].append(event)
 				Globals.userPrefs.joy_action_events[action] = event
 	
 	Globals.userPrefs.save(Globals.NewgroundsToggle)
-	updateInputDisplay()
+	ControllerIcons.refresh()
+	#updateInputDisplay()
 
 func updateInputDisplay() -> void:
 	inputTexts.clear()
@@ -180,16 +187,20 @@ func updateInputDisplay() -> void:
 
 func controllerMapStart(_toggled,index) -> void:
 	if not resetting:
+		var erase: bool = false
 		if currentToggle != null:
 			#I think this might be bad for the look of options but it might also be needed
 			#currentToggle.button_pressed = toggled
-			currentToggle.text = inputTexts[currentToggleIndex]
+			#Using Text inputs: inputTexts[currentToggleIndex]
+			erase = true
+			currentToggle.text = ""
 		
 		currentAction = Actions[index]
 		currentInput = inputs[inputType][index]
 		currentToggleIndex = index
 		currentToggle = controllerChange[index]
-		currentToggle.text = str("...Awaiting Input...")
+		if not erase:
+			currentToggle.text = awaitText
 		toggleOn = true
 		print(currentToggle)
 
@@ -197,6 +208,7 @@ func _on_new_input_type_selected(index) -> void:
 	inputType = index
 	Globals.userPrefs.input_type = index
 	Globals.userPrefs.save(Globals.NewgroundsToggle)
+	
 	getNewInputs()
 
 func _on_reset_pressed() -> void:

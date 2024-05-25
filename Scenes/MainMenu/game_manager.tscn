@@ -25,6 +25,7 @@
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
 script = ExtResource("1_k3j0q")
+Newgrounds = false
 
 [node name="Background" parent="." instance=ExtResource("12_73kx1")]
 process_mode = 1

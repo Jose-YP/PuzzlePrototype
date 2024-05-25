@@ -42,9 +42,12 @@ static func load_or_create() -> UserPreferences:
 
 #Ugly functions but they work
 func set_default_controls():
+	InputMap.load_from_project_settings()
 	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
 	for action in actions:
-		keyboard_action_events[action] = InputMap.action_get_events(action)[0]
+		var events = InputMap.action_get_events(action)
+		keyboard_action_events[action] = events[0]
+		joy_action_events[action] = events[1]
 
 func set_colors(newColors):
 	earthColor = newColors[0]

@@ -13,7 +13,7 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("7_0yb6m")
 path = "ui_left"
-show_mode = 1
+show_mode = 0
 force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_2fnls"]
@@ -110,11 +110,9 @@ theme_override_constants/margin_right = 10
 [node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 1
 tabs_visible = false
 
 [node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
-visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -322,6 +320,7 @@ text = "[center]Breaker Bead
 Will destroy any chains adjacent to it"
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -343,29 +342,8 @@ text = "[center]CONTROLS"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="Movement" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-bbcode_enabled = true
-text = "LEFT/RIGHT - MOVE LEFT AND RIGHT
-UP - HARD DROP [BEADS ARE THROWN TO THEIR LOWEST POSSIBLE POSITION]
-DOWN - SOFT DROP [BEADS MOVE DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]
-"
-fit_content = true
-
-[node name="FullBeadManip" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-text = "Z - ROTATE COUNTER CLOCKWISE
-X - ROTATE CLOCKWISE
-C - FLIP BEADS NOT ON THE ANCHOR
-V - SUMMON BREAKER BEAD [BREAK METER MUST BE FILLED AT LEAST ONCE]"
-
 [node name="MovementContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Left" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
@@ -429,6 +407,7 @@ layout_mode = 2
 text = "SOFT DROP [DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]"
 
 [node name="ManipContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="CCW" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
@@ -446,16 +425,16 @@ layout_mode = 2
 bbcode_enabled = true
 text = "ROTATE COUNTER CLOCKWISE"
 
-[node name="CCW2" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
+[node name="Clockwise" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW2"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Clockwise"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("Texture2D_1fja8")
 expand_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Clockwise"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 bbcode_enabled = true
@@ -500,7 +479,8 @@ size_flags_vertical = 4
 bbcode_enabled = true
 text = "PRESS "
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="PauseTexture" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 texture = SubResource("Texture2D_f1v8r")

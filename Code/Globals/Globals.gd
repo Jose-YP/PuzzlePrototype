@@ -70,10 +70,14 @@ func set_controls() -> void:
 	for action in Globals.userPrefs.keyboard_action_events:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
-	
-	for action in Globals.userPrefs.joy_action_events:
-		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
+		InputMap.action_add_event(action, Globals.userPrefs.joy_action_events[action])
+
+func show_controls(textureNode) -> void:
+	match Globals.userPrefs.input_type:
+		0:
+			textureNode.texture.force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
+		1:
+			textureNode.texture.force_type = ControllerIconTexture.ForceType.CONTROLLER
 
 func set_colors() -> void:
 	bead_colors = Globals.userPrefs.get_regular_colors()

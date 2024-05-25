@@ -1,57 +1,90 @@
-[gd_resource type="Resource" script_class="UserPreferences" load_steps=10 format=3]
+[gd_resource type="Resource" script_class="UserPreferences" load_steps=18 format=3 uid="uid://cwr7s14e06jwq"]
 
 [ext_resource type="Script" path="res://Resources/Options/UserPreferences.gd" id="1_nv052"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_di0ih"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_yy17a"]
+device = -1
+button_index = 2
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_v8mrl"]
+device = -1
+button_index = 3
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ybavd"]
+device = -1
+button_index = 1
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_8f8l3"]
+device = -1
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_5j644"]
+device = -1
+button_index = 12
+pressed = true
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_glovq"]
+device = -1
+button_index = 13
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_gttd1"]
+device = -1
+button_index = 14
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_iu1yp"]
+device = -1
+button_index = 11
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_dcovd"]
 pressed = true
 keycode = 74
 physical_keycode = 74
 key_label = 74
 unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_saqy1"]
+[sub_resource type="InputEventKey" id="InputEventKey_ht8iy"]
 pressed = true
 keycode = 73
 physical_keycode = 73
 key_label = 73
 unicode = 105
 
-[sub_resource type="InputEventKey" id="InputEventKey_bfuo3"]
+[sub_resource type="InputEventKey" id="InputEventKey_plhdq"]
 pressed = true
 keycode = 79
 physical_keycode = 79
 key_label = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_gmihh"]
+[sub_resource type="InputEventKey" id="InputEventKey_4wl75"]
 pressed = true
 keycode = 75
 physical_keycode = 75
 key_label = 75
-unicode = 75
+unicode = 107
 
-[sub_resource type="InputEventKey" id="InputEventKey_535en"]
+[sub_resource type="InputEventKey" id="InputEventKey_pft84"]
 pressed = true
 keycode = 83
 physical_keycode = 83
 key_label = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_4jhtv"]
+[sub_resource type="InputEventKey" id="InputEventKey_uya6k"]
 pressed = true
 keycode = 65
 physical_keycode = 65
 key_label = 65
 unicode = 97
 
-[sub_resource type="InputEventKey" id="InputEventKey_xufhk"]
+[sub_resource type="InputEventKey" id="InputEventKey_nnyio"]
 pressed = true
 keycode = 68
 physical_keycode = 68
 key_label = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_yagih"]
+[sub_resource type="InputEventKey" id="InputEventKey_8pcxs"]
 pressed = true
 keycode = 87
 physical_keycode = 87
@@ -65,16 +98,25 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 100.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_di0ih"),
-"Flip": SubResource("InputEventKey_saqy1"),
-"ui_accept": SubResource("InputEventKey_bfuo3"),
-"ui_cancel": SubResource("InputEventKey_gmihh"),
-"ui_down": SubResource("InputEventKey_535en"),
-"ui_left": SubResource("InputEventKey_4jhtv"),
-"ui_right": SubResource("InputEventKey_xufhk"),
-"ui_up": SubResource("InputEventKey_yagih")
+"Break": SubResource("InputEventKey_dcovd"),
+"Flip": SubResource("InputEventKey_ht8iy"),
+"ui_accept": SubResource("InputEventKey_plhdq"),
+"ui_cancel": SubResource("InputEventKey_4wl75"),
+"ui_down": SubResource("InputEventKey_pft84"),
+"ui_left": SubResource("InputEventKey_uya6k"),
+"ui_right": SubResource("InputEventKey_nnyio"),
+"ui_up": SubResource("InputEventKey_8pcxs")
 }
-joy_action_events = {}
+joy_action_events = {
+"Break": SubResource("InputEventJoypadButton_yy17a"),
+"Flip": SubResource("InputEventJoypadButton_v8mrl"),
+"ui_accept": SubResource("InputEventJoypadButton_ybavd"),
+"ui_cancel": SubResource("InputEventJoypadButton_8f8l3"),
+"ui_down": SubResource("InputEventJoypadButton_5j644"),
+"ui_left": SubResource("InputEventJoypadButton_glovq"),
+"ui_right": SubResource("InputEventJoypadButton_gttd1"),
+"ui_up": SubResource("InputEventJoypadButton_iu1yp")
+}
 reset = false
 earthColor = Color(0.631, 0.125, 0.125, 1)
 seaColor = Color(0.137, 0.6, 0.91, 1)

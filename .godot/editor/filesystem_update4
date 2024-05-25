@@ -21,3 +21,9 @@ res://Scenes/UI/BreakProgress.tscn
 res://Code/Scenes/UI/BreakProgress.gd
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/UI/left_ui.tscn
+res://Resources/Options/UserPreferences.gd
+res://addons/controller_icons/settings.tres
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Resources/Options/UserPrefs.tres
+res://Code/Globals/Globals.gd
+res://Code/Scenes/Menus/how_2_play.gd
