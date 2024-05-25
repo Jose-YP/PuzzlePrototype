@@ -1,3 +1,5 @@
+res://addons
+res://addons/controller_icons
 C:/Users/Jose/Desktop/Godots/Exports
 res://Code/Scenes/Board&Beads
 res://Scenes/Board&Beads
@@ -18,5 +20,3 @@ res://Code/Scenes
 res://Shaders/Backgrounds
 res://Scenes/Constants/Backgrounds
 res://Art/Backgrounds
-res://Shaders/ShaderCode
-res://Scenes/Constants

@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/game_manager.tscn
+res://addons/newgrounds/examples/newgrounds_debug.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Beads/SingleBeadBurn.tres
 res://Code/Scenes/Board&Beads/Board.gd
@@ -12,17 +12,4 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
 res://Shaders/ShaderCode/Shockwave.gdshader
-res://Code/Scenes/Board&Beads/FullPiece.gd
-res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/Constants/ETC/load_screen.tscn
-res://Scenes/Board&Beads/Board.tscn
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/MainMenu/how_2_play.tscn
-res://Scenes/Board&Beads/FullBead.tscn
-res://Scenes/Board&Beads/ghost_bead.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
-res://Code/Scenes/Board&Beads/ghost_bead.gd
-res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Scenes/Board&Beads/SinglePiece.gd
-res://Resources/Rules/Basic Rules.tres
-res://addons/newgrounds/examples/newgrounds_debug.tscn
+res://addons/controller_icons/ControllerIcons.gd

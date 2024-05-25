@@ -22,6 +22,8 @@ NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 Globals="*res://Code/Globals/Globals.gd"
 NGSaveSetup="*res://Code/Globals/NGSave.gd"
 NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
+ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
+InputBuffer="*res://addons/input_buffer.gd"
 FinalGlobal="*res://Code/Globals/FinalGlobal.gd"
 
 [display]
@@ -37,7 +39,7 @@ movie_writer/movie_file="C:/Users/Jose/Videos/Godot Movies/GodotTest.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/newgrounds/plugin.cfg")
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/newgrounds/plugin.cfg")
 
 [file_customization]
 
