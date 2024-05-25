@@ -36,12 +36,12 @@ func check_drought() -> void:
 			print("Rerolling for ", Globals.bead_types[i])
 			#Take a random number of beads
 			var num = randi_range(1,3)
-			var tempBeads = beads
+			var tempBeads = beads.duplicate()
 			#Reroll every randomly chosen bead into that type
 			for j in range(num):
 				var bead = tempBeads.pop_at(randi_range(0,tempBeads.size()))
 				if bead.typeID != i:
-					bead.randomize_type([drought[i]])
+					bead.randomize_type([i])
 			break
 
 #______________________________
