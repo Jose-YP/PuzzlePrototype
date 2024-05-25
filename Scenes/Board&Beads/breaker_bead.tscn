@@ -71,6 +71,8 @@ shader_parameter/width = 0.04
 shader_parameter/feather = 0.135
 
 [node name="BreakerBead" type="Node2D"]
+top_level = true
+z_index = 1
 material = SubResource("ShaderMaterial_nq0h3")
 script = ExtResource("1_itnrx")
 

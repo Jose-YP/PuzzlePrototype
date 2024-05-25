@@ -12,6 +12,7 @@ signal rippleEnd
 
 #Beads & positions is here just to easily integrate into old code
 var currentType: String = "Breaker"
+var typeID: int = 5
 var adjacent: Array = []
 var beads: Array = [self]
 var positions: Array = [self]

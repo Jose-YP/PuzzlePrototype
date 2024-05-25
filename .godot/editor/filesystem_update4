@@ -19,3 +19,7 @@ res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/Board&Beads/ghost_bead.tscn
+res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Code/Scenes/Board&Beads/ghost_bead.gd
+res://Scenes/Board&Beads/breaker_bead.tscn
