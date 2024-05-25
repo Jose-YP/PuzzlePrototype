@@ -34,13 +34,14 @@ func check_drought() -> void:
 		#Check if any drought value is over the limit
 		if drought[i] >= Globals.rules.droughtVal:
 			print("Rerolling for ", Globals.bead_types[i])
-			#Take a random number of beads
-			var num = randi_range(1,3)
+			#Take a random number of beads, no three colors from this
+			var num = randi_range(2,3)
 			var tempBeads = beads.duplicate()
 			#Reroll every randomly chosen bead into that type
 			for j in range(num):
 				var bead = tempBeads.pop_at(randi_range(0,tempBeads.size()))
 				if bead.typeID != i:
+					#Array of just the droughted type ensures type appears
 					bead.randomize_type([i])
 			break
 

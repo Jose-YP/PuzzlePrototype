@@ -168,19 +168,21 @@ offset_left = 422.0
 offset_top = 57.0
 offset_right = 688.0
 offset_bottom = 422.0
+scoreboard_id = 13768
 own_scores = true
 
 [node name="ExampleMedalList" parent="." instance=ExtResource("4_lqp0p")]
-offset_left = 885.0
-offset_top = 40.0
-offset_right = 1111.0
-offset_bottom = 405.0
+offset_left = 772.0
+offset_top = 61.0
+offset_right = 998.0
+offset_bottom = 426.0
 
 [node name="NewgroundsSessionWatcher" type="Node" parent="."]
 script = ExtResource("6_i37bs")
 
 [node name="NewgroundsMedalUnlocker" type="Node" parent="."]
 script = ExtResource("7_tu0rn")
+medal_id = 78932
 
 [connection signal="text_changed" from="ExampleSaveData/TextEdit" to="ExampleSaveData" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="Log In" to="." method="_on_log_in_pressed"]

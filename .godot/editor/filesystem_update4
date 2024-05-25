@@ -25,3 +25,4 @@ res://Code/Scenes/Board&Beads/ghost_bead.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Resources/Rules/Basic Rules.tres
+res://addons/newgrounds/examples/newgrounds_debug.tscn

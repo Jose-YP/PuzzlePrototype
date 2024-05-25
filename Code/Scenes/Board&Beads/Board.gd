@@ -450,7 +450,7 @@ func post_turn() -> void:
 		%Grounded.start()
 		%Gravity.start()
 		pull_next_bead()
-		display_board()
+		#display_board()
 
 func find_links() -> void:
 	#If nothing changes, then this won't
