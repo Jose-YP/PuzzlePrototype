@@ -93,6 +93,7 @@ func _ready() -> void:
 		4: make_overhang()
 	
 	#start the game
+	Globals.droughtArray = [0,0,0,0,0]
 	spawn_full_beads()
 	pull_next_bead()
 
@@ -112,6 +113,7 @@ func spawn_full_beads() -> void:
 		if beadsUpnext[i] == null:
 			beadsUpnext[i] = fullBead.instantiate()
 			$Hold.add_child(beadsUpnext[i])
+			manage_drought(beadsUpnext[i])
 	LUI.update_next(beadsUpnext)
 
 func pull_next_bead() -> void:
@@ -132,6 +134,20 @@ func pull_next_bead() -> void:
 		
 		full_bead_rotation(rules.start_pos, true)
 		spawn_full_beads()
+
+func manage_drought(fullBead) -> void:
+	var willDrought = range(5)
+	#Any type found in a full bead will remove the drought count
+	#Remove it from will drought
+	for bead in fullBead.beads:
+		willDrought.erase(bead.typeID)
+		Globals.droughtArray[bead.typeID] = 0
+	
+	#For any value still in willDrought, add 1 to the drought array's corresponding value
+	for unfound in willDrought:
+		Globals.droughtArray[unfound] += 1
+	
+	print("DROUGHT ARRAY: ", Globals.droughtArray)
 
 #______________________________
 #BASIC CONTROLS: MOVE

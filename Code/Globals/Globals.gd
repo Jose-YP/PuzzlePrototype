@@ -14,6 +14,7 @@ var relation_flags: Array[int] = []
 var bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
 Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 var breaker_color: Color = Color(0.514, 0.969, 0.557)
+var droughtArray: Array[int] = [0,0,0,0,0]
 var glow_num: int = 3
 var level: int = 1
 var highestID: String

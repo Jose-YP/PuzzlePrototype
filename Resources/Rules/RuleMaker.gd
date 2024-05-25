@@ -15,6 +15,7 @@ class_name Rules
 @export_category("Process Constants")
 @export var bead_relationships: Relations
 @export var breakBead: bool = false
+@export_range(5,20) var droughtVal: int = 8
 @export_group("Timing")
 @export_range(0,10,.5) var gravity: float = 5
 @export_range(0,2,.1) var soft_drop: float = 1

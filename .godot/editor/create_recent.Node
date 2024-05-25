@@ -1,3 +1,4 @@
+MarginContainer
 ColorRect
 Node
 Timer
@@ -8,8 +9,6 @@ HTTPRequest
 ColorPicker
 ColorPickerButton
 HBoxContainer
-MarginContainer
 BackBufferCopy
 Control
 RichTextLabel
-VSeparator

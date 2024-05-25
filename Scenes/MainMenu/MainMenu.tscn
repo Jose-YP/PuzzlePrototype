@@ -8,8 +8,10 @@
 process_mode = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -103.0
+offset_top = -35.0
+offset_right = 49.0
+offset_bottom = 5.0
 script = ExtResource("1_7dq6h")
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -94,10 +96,10 @@ offset_bottom = 396.0
 [node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
 visible = false
 layout_mode = 0
-offset_left = 157.0
-offset_top = 2.0
-offset_right = 1207.0
-offset_bottom = 702.0
+offset_left = 25.0
+offset_top = 40.0
+offset_right = 1229.0
+offset_bottom = 740.0
 
 [connection signal="focus_entered" from="Buttons/Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
