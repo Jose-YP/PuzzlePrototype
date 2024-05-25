@@ -1,7 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=12 format=3 uid="uid://1malajsj05pg"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/Constants/UIPieces/all_beads.tscn" id="2_kx4ek"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_m2cxj"]
+
+[sub_resource type="Texture2D" id="Texture2D_batfw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_up"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_uiq46"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_accept"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_7gy35"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_left"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_e1f7w"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_cancel"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_i4njl"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_down"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_r2mv0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "Flip"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_l14fa"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "ui_right"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_sfah0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_m2cxj")
+path = "Break"
+show_mode = 0
+force_type = 0
 
 [node name="OptionsMenu" type="CanvasLayer"]
 process_mode = 1
@@ -342,6 +407,15 @@ layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
 
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up"]
+layout_mode = 0
+offset_left = -0.0263094
+offset_top = -0.526316
+offset_right = 31.9737
+offset_bottom = 31.4737
+texture = SubResource("Texture2D_batfw")
+expand_mode = 2
+
 [node name="ui_accept" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -358,6 +432,14 @@ custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept"]
+layout_mode = 0
+offset_top = -0.526
+offset_right = 32.0
+offset_bottom = 31.474
+texture = SubResource("Texture2D_uiq46")
+expand_mode = 2
 
 [node name="ui_left" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
@@ -376,6 +458,14 @@ layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
 
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_left/ui_left"]
+layout_mode = 0
+offset_top = -0.526
+offset_right = 32.0
+offset_bottom = 31.474
+texture = SubResource("Texture2D_7gy35")
+expand_mode = 2
+
 [node name="ui_cancel" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -392,6 +482,14 @@ custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
 text = "Current Input"
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel"]
+layout_mode = 0
+offset_top = -0.526
+offset_right = 32.0
+offset_bottom = 31.474
+texture = SubResource("Texture2D_e1f7w")
+expand_mode = 2
 
 [node name="ui_down" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
@@ -410,6 +508,14 @@ layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
 
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_down/ui_down"]
+layout_mode = 0
+offset_top = -0.526
+offset_right = 32.0
+offset_bottom = 31.474
+texture = SubResource("Texture2D_i4njl")
+expand_mode = 2
+
 [node name="Flip" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -426,6 +532,13 @@ custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
 text = "Current Input"
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Flip/Flip"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("Texture2D_r2mv0")
+expand_mode = 2
 
 [node name="ui_right" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
@@ -445,6 +558,14 @@ layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
 
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_right/ui_right"]
+layout_mode = 0
+offset_top = -0.526
+offset_right = 32.0
+offset_bottom = 31.474
+texture = SubResource("Texture2D_l14fa")
+expand_mode = 2
+
 [node name="Break" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -461,6 +582,13 @@ custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
 text = "Current Input"
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Break/Break"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("Texture2D_sfah0")
+expand_mode = 2
 
 [node name="Exit" type="Button" parent="Main/VBox"]
 custom_minimum_size = Vector2(100, 50)
