@@ -11,6 +11,7 @@ extends Node2D
 @onready var RUI: Control = $RightUI
 @onready var LUI: Control = $LeftUI
 @onready var Fail: Control = $FailScreen
+@onready var ghostBeads: Array[Node] = $Ghost.get_children()
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
@@ -134,12 +135,13 @@ func pull_next_bead() -> void:
 		
 		full_bead_rotation(rules.start_pos, true)
 		spawn_full_beads()
+		ghost_bead_pos()
 
-func manage_drought(fullBead) -> void:
+func manage_drought(checkedBeads) -> void:
 	var willDrought = range(5)
 	#Any type found in a full bead will remove the drought count
 	#Remove it from will drought
-	for bead in fullBead.beads:
+	for bead in checkedBeads.beads:
 		willDrought.erase(bead.typeID)
 		Globals.droughtArray[bead.typeID] = 0
 	
@@ -172,6 +174,7 @@ func move_bead(ammount, direction = "X") -> void:
 		currentBead.gridPos[i] = pos
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
+		ghost_bead_pos()
 		playSFX.emit(0)
 
 func movement() -> void:
@@ -200,6 +203,7 @@ func movement() -> void:
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
 		currentBead.sync_position()
+		ghost_bead_pos()
 
 func place() -> void:
 	for i in range(currentBead.beads.size()):
@@ -351,6 +355,7 @@ func _process(delta) -> void:
 				currentBead.gridPos[i] = pos
 				board[pos.x][pos.y] = currentBead.beads[i]
 				currentBead.positions[i].global_position = grid_to_pixel(pos)
+				ghost_bead_pos()
 				playSFX.emit(1)
 			
 		if (currentBead != null and not currentBead.breaker 
@@ -371,6 +376,7 @@ func _process(delta) -> void:
 				currentBead.connect("rippleEnd", continue_breaker)
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
+				ghost_bead_pos()
 				playSFX.emit(7)
 			else:
 				#Full Bead should not move during this
@@ -1110,6 +1116,28 @@ func _on_high_score_screen_proceed() -> void:
 	await get_tree().create_timer(scoreFade).timeout
 	$HighScoreScreen.hide()
 	Fail.start_focus()
+
+#______________________________
+#GHOST BEADS
+#______________________________
+func ghost_bead_pos() -> void:
+	if currentBead == null:
+		return
+	
+	var target = find_drop_bottom(currentBead)
+	if currentBead.breaker:
+		ghostBeads[1].hide()
+		ghostBeads[2].hide()
+		
+		ghostBeads[0].global_position = grid_to_pixel(target[0])
+		ghostBeads[0].set_color(currentBead)
+	else:
+		ghostBeads[1].show()
+		ghostBeads[2].show()
+		
+		for i in range(ghostBeads.size()):
+			ghostBeads[i].global_position = grid_to_pixel(target[i])
+			ghostBeads[i].set_color(currentBead.beads[i])
 
 #______________________________
 #DEBUG
