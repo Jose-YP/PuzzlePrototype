@@ -430,8 +430,8 @@ func post_turn() -> void:
 	currentBead = null
 	find_links()
 	find_chains(false)
-	check_breakers()
-	
+	await check_breakers()
+	print("IBUFSIUABSIUBFIB")
 	print(breaking)
 	if breaking:
 		await self.endCheck
@@ -442,7 +442,7 @@ func post_turn() -> void:
 	detect_fail()
 	if not failed:
 		#Since breaker beads break last do one last fall check
-		if breakers.size() != origBreakerSize:
+		if breakers.size() < origBreakerSize:
 			all_fall()
 			lost_beads()
 		
@@ -636,8 +636,9 @@ func check_breakers() -> void:
 				#print()
 				var pos = usingBreakerArray[i].gridPos[0]
 				board[pos.x][pos.y] = null
-				breakers.erase(usingBreakerArray[i])
+				usingBreakerArray[i].destroy_anim()
 				await usingBreakerArray[i].tree_exiting
+				breakers.erase(usingBreakerArray[i])
 				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			comboSize += 1
@@ -647,22 +648,25 @@ func check_breakers() -> void:
 			RUI.update_score(score)
 	
 	#Erase from the script wide var rather than local
-	for i in range(breakerArray.size()):
-		#If the array still has null values, skip them
-		if not is_instance_valid(breakerArray[i]):
-			continue
-		if breakerArray[i].breaking:
-			print("breaking ", breakerArray[i])
-			breakerArray[i].destroy_anim()
-			var pos = breakerArray[i].gridPos[0]
-			board[pos.x][pos.y] = null
-			breakers.erase(breakerArray[i])
-			await breakerArray[i].tree_exiting
+	#for i in range(breakerArray.size()):
+		##If the array still has null values, skip them
+		#if not is_instance_valid(breakerArray[i]):
+			#continue
+		#if breakerArray[i].breaking:
+			#print("breaking ", breakerArray[i])
+			#breakerArray[i].destroy_anim()
+			#var pos = breakerArray[i].gridPos[0]
+			#board[pos.x][pos.y] = null
+			#breakers.erase(breakerArray[i])
+			#await breakerArray[i].tree_exiting
+	
+	print()
 	
 	if shouldBreak:
 		post_break()
 	
 	else:
+		print("AAAA")
 		comboSize = 0
 		endCheck.emit()
 
@@ -799,7 +803,7 @@ func shake_order(chainPart, main, size, recursion = {}) -> void:
 		
 		#Update which beads shook
 		shookBeads.merge(adjacent)
-		await get_tree().create_timer(.1).timeout
+		await get_tree().create_timer(0.1).timeout
 		
 		#If every bead in the chain has yet to be shook keep going
 		if shookBeads.size() >= size:
