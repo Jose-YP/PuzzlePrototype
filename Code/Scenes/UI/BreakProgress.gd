@@ -4,6 +4,10 @@ extends HBoxContainer
 @onready var breakNotifier: PanelContainer = $PanelContainer2
 @onready var breakText: Label = $PanelContainer/Label
 
+func _ready():
+	if Globals.rules.breakBead:
+		$PanelContainer2/VBoxContainer/RichTextLabel.text = "TO SPAWN A BREAKER BEAD"
+
 # Called when the node enters the scene tree for the first time.
 func set_ripple_center() -> Vector2:
 	var center: Vector2 = $Sprite2D.global_position / (get_window().size as Vector2)

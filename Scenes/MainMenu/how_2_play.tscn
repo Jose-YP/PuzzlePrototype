@@ -1,11 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgd0k1a1ig4xt"]
+[gd_scene load_steps=17 format=3 uid="uid://cgd0k1a1ig4xt"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/how_2_play.gd" id="1_u0p3y"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/Constants/UIPieces/all_beads.tscn" id="2_o4w07"]
 [ext_resource type="PackedScene" uid="uid://bemu3udwgoopm" path="res://Scenes/Constants/UIPieces/Light.tscn" id="4_7bga7"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="6_3voon"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="7_0yb6m"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="8_xip8m"]
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="9_thaav"]
+
+[sub_resource type="Texture2D" id="Texture2D_pwoq6"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_left"
+show_mode = 1
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_2fnls"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_right"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_137kx"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_up"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_o2ma6"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_down"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_01y4c"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_accept"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_1fja8"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "ui_cancel"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_ayuoe"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "Flip"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_6yak5"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "Break"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_f1v8r"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_0yb6m")
+path = "Pause"
+show_mode = 0
+force_type = 1
 
 [node name="How2Play" type="PanelContainer"]
 custom_minimum_size = Vector2(1200, 700)
@@ -37,9 +110,11 @@ theme_override_constants/margin_right = 10
 [node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
 unique_name_in_owner = true
 layout_mode = 2
+current_tab = 1
 tabs_visible = false
 
 [node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -247,7 +322,6 @@ text = "[center]Breaker Bead
 Will destroy any chains adjacent to it"
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
-visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -271,15 +345,19 @@ layout_mode = 2
 
 [node name="Movement" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+bbcode_enabled = true
 text = "LEFT/RIGHT - MOVE LEFT AND RIGHT
 UP - HARD DROP [BEADS ARE THROWN TO THEIR LOWEST POSSIBLE POSITION]
 DOWN - SOFT DROP [BEADS MOVE DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]
 "
+fit_content = true
 
 [node name="FullBeadManip" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "Z - ROTATE COUNTER CLOCKWISE
@@ -287,11 +365,154 @@ X - ROTATE CLOCKWISE
 C - FLIP BEADS NOT ON THE ANCHOR
 V - SUMMON BREAKER BEAD [BREAK METER MUST BE FILLED AT LEAST ONCE]"
 
-[node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="MovementContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Left" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Left"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_pwoq6")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Left"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 bbcode_enabled = true
-text = "PRESS SPACE TO PAUSE"
+text = "MOVE LEFT"
+
+[node name="Right" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Right"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_2fnls")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Right"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "MOVE RIGHT"
+
+[node name="Up" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Up"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_137kx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Up"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "HARD DROP [LOWEST POSSIBLE POSITION]"
+
+[node name="Down" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Down"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_o2ma6")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Down"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "SOFT DROP [DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]"
+
+[node name="ManipContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CCW" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_01y4c")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "ROTATE COUNTER CLOCKWISE"
+
+[node name="CCW2" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_1fja8")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/CCW2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "ROTATE CLOCKWISE"
+
+[node name="Flip" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Flip"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_ayuoe")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Flip"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "FLIP BEADS NOT ON THE ANCHOR"
+
+[node name="Break" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Break"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("Texture2D_6yak5")
+expand_mode = 5
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/ManipContainer/Break"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = " SUMMON BREAKER BEAD"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(55, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "PRESS "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("Texture2D_f1v8r")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="PAUSE2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = " TO PAUSE"
 
 [node name="ScoringSystem2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

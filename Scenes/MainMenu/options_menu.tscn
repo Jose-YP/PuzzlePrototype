@@ -10,7 +10,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_up"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_uiq46"]
 resource_local_to_scene = false
@@ -18,7 +18,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_accept"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_7gy35"]
 resource_local_to_scene = false
@@ -26,7 +26,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_left"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_e1f7w"]
 resource_local_to_scene = false
@@ -34,7 +34,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_cancel"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_i4njl"]
 resource_local_to_scene = false
@@ -42,7 +42,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_down"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_r2mv0"]
 resource_local_to_scene = false
@@ -50,7 +50,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "Flip"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_l14fa"]
 resource_local_to_scene = false
@@ -58,7 +58,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "ui_right"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [sub_resource type="Texture2D" id="Texture2D_sfah0"]
 resource_local_to_scene = false
@@ -66,7 +66,7 @@ resource_name = ""
 script = ExtResource("3_m2cxj")
 path = "Break"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [node name="OptionsMenu" type="CanvasLayer"]
 process_mode = 1
@@ -481,7 +481,6 @@ scroll_active = false
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
-text = "Current Input"
 
 [node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel"]
 layout_mode = 0
@@ -531,7 +530,6 @@ scroll_active = false
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
-text = "Current Input"
 
 [node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Flip/Flip"]
 layout_mode = 0
@@ -581,7 +579,6 @@ scroll_active = false
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 toggle_mode = true
-text = "Current Input"
 
 [node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Break/Break"]
 layout_mode = 0

@@ -1,9 +1,9 @@
-HBoxContainer
-TextureRect
-MarginContainer
 VBoxContainer
-RichTextLabel
+TextureRect
 GridContainer
+HBoxContainer
+MarginContainer
+RichTextLabel
 ControllerTextureRect
 Node2D
 ColorRect

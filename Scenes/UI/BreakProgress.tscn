@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd2r7vn8ipum5"]
+[gd_scene load_steps=7 format=3 uid="uid://cd2r7vn8ipum5"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="1_eyjqy"]
 [ext_resource type="Texture2D" uid="uid://cb3k08qh4jhwv" path="res://Art/ETC/orb2.png" id="3_efg6c"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_et21x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
 shader = ExtResource("1_eyjqy")
@@ -14,6 +15,14 @@ shader_parameter/smooth_ = 0.005
 shader_parameter/width_in = 0.4
 shader_parameter/width_out = 0.915
 shader_parameter/border_width = 0.03
+
+[sub_resource type="Texture2D" id="Texture2D_4dw3j"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_et21x")
+path = "Break"
+show_mode = 0
+force_type = 1
 
 [node name="HBoxContainer" type="HBoxContainer"]
 script = ExtResource("1_7383g")
@@ -31,16 +40,38 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2"]
-custom_minimum_size = Vector2(70, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(70, 54)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
 text = "BREAK AVAILIBLE
 
-PRESS BREAK BUTTON TO BREAK CHAINS"
+PRESS "
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer2/VBoxContainer/RichTextLabel2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 31.0
+offset_top = 28.0
+offset_right = 63.0
+offset_bottom = 60.0
+texture = SubResource("Texture2D_4dw3j")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(70, 42)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_font_sizes/normal_font_size = 10
+text = "TO BREAK ALL CHAINS"
+scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

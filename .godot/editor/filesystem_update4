@@ -17,3 +17,7 @@ res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/Constants/ETC/load_screen.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://addons/newgrounds/examples/newgrounds_debug.tscn
+res://Scenes/UI/BreakProgress.tscn
+res://Code/Scenes/UI/BreakProgress.gd
+res://Scenes/MainMenu/how_2_play.tscn
+res://Scenes/UI/left_ui.tscn
