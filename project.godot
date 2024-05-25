@@ -45,7 +45,6 @@ folder_colors={
 "res://Art/": "red",
 "res://Audio/": "red",
 "res://Code/": "green",
-"res://Exports/": "orange",
 "res://Resources/": "green",
 "res://Scenes/": "green",
 "res://Shaders/": "pink",
