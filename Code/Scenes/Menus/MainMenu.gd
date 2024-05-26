@@ -10,7 +10,6 @@ signal playSFX(index)
 signal boardSFX(index)
 
 var can: bool = false
-var moved: bool = false
 
 #______________________________
 #INITIALIZATION

@@ -15,6 +15,7 @@ extends Node2D
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
+signal processFramed
 signal startBreaking
 signal endCheck
 signal brokeBead
@@ -148,7 +149,7 @@ func manage_drought(checkedBeads) -> void:
 	for unfound in willDrought:
 		Globals.droughtArray[unfound] += 1
 	
-	print("DROUGHT ARRAY: ", Globals.droughtArray)
+	#print("DROUGHT ARRAY: ", Globals.droughtArray)
 
 #______________________________
 #BASIC CONTROLS: MOVE
@@ -205,6 +206,7 @@ func movement() -> void:
 		ghost_bead_pos()
 
 func place() -> void:
+	await self.processFramed
 	for i in range(currentBead.beads.size()):
 		var orgPos = find_bead(currentBead.beads[i])
 		
@@ -406,6 +408,7 @@ func _process(delta) -> void:
 				RUI.update_beads(brokenBeads)
 				post_break()
 				pauseFall(false)
+	processFramed.emit()
 
 #______________________________
 #POST TURN PROCESSES
@@ -634,6 +637,7 @@ func check_breakers() -> void:
 				
 				#print()
 				if is_instance_valid(usingBreakerArray[i]):
+					print("Remove ", usingBreakerArray[i])
 					var pos = usingBreakerArray[i].gridPos[0]
 					board[pos.x][pos.y] = null
 					usingBreakerArray[i].destroy_anim()
@@ -646,6 +650,10 @@ func check_breakers() -> void:
 			RUI.update_display(beadsSize,linksSize,comboSize, true)
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
+	
+	for bead in breakers:
+		if not is_instance_valid(bead):
+			breakers.erase(bead)
 	
 	if shouldBreak:
 		post_break()
@@ -706,8 +714,7 @@ func break_order(chainPart, holdChains) -> void:
 			 and holdChains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
 	
-	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
-	
+	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	break_bead(chainPart)
 	await self.brokeBead
 	var empty = true

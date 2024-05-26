@@ -46,6 +46,7 @@ offset_top = -25.0
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
+top_level = true
 light_mask = 3
 visibility_layer = 3
 z_index = 1
@@ -53,6 +54,7 @@ z_index = 1
 [node name="FailScreen" parent="." instance=ExtResource("7_td82j")]
 visible = false
 modulate = Color(1, 1, 1, 0)
+top_level = true
 light_mask = 3
 visibility_layer = 3
 z_index = 1
