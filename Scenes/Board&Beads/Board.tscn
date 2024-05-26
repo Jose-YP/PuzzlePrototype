@@ -79,11 +79,6 @@ autostart = true
 [node name="Debug" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="ready" type="Timer" parent="Timers"]
-wait_time = 0.01
-one_shot = true
-autostart = true
-
 [node name="ChainClear" type="Timer" parent="Timers"]
 wait_time = 0.05
 one_shot = true
@@ -108,4 +103,3 @@ position = Vector2(-100, -100)
 [connection signal="timeout" from="Timers/Gravity" to="." method="_on_gravity_timeout"]
 [connection signal="timeout" from="Timers/Shake" to="." method="_on_shake_timeout"]
 [connection signal="timeout" from="Timers/Debug" to="." method="_on_debug_timeout"]
-[connection signal="timeout" from="Timers/ready" to="." method="_on_ready_timeout"]

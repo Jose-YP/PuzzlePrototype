@@ -9,9 +9,8 @@ signal switchTutorial
 signal playSFX(index)
 signal boardSFX(index)
 
-const H2P: String ="res://Scenes/MainMenu/how_2_play.tscn"
-
 var can: bool = false
+var moved: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -19,7 +18,11 @@ var can: bool = false
 func _ready() -> void:
 	$Buttons/Play.grab_focus()
 	can = true
-	$How2Play.position = orgH2pPosition
+
+func _process(_delta):
+	if not moved:
+		$How2Play.position = orgH2pPosition
+		moved = true
 
 #______________________________
 #BUTTON NAVIGATIONS

@@ -52,6 +52,7 @@ var failed: bool = false
 var highScored: bool = false
 var playZap: bool = false
 var refind: bool = false
+var moved: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -325,6 +326,11 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
+	if not moved:
+		for bead in $Hold.get_children():
+			bead.global_position = farAway
+		moved = true
+	
 	if currentBead != null and not breaking and not failed:
 		#Fall paused is first so currentBead won't be read after fail screen
 		if not fallPaused and not currentBead.placed:
@@ -1180,7 +1186,3 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
-
-func _on_ready_timeout():
-	for bead in $Hold.get_children():
-		bead.global_position = farAway
