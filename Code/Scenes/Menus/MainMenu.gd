@@ -13,7 +13,6 @@ var can: bool = false
 func _ready() -> void:
 	$Buttons/Play.grab_focus()
 	can = true
-	$"Score Display".hide()
 	$How2Play.hide()
 
 #______________________________

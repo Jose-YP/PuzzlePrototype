@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd2r7vn8ipum5"]
+[gd_scene load_steps=6 format=3 uid="uid://cd2r7vn8ipum5"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="1_eyjqy"]
-[ext_resource type="Texture2D" uid="uid://cb3k08qh4jhwv" path="res://Art/ETC/orb2.png" id="3_efg6c"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_et21x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
@@ -77,4 +76,3 @@ scroll_active = false
 visible = false
 position = Vector2(49, 49)
 scale = Vector2(0.0850878, 0.0749999)
-texture = ExtResource("3_efg6c")

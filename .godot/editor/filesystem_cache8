@@ -1,17 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716644428
+::res://::1716650243
 default_bus_layout.tres::AudioBusLayout::6237434195594704410::1715353625::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1716610486::0::1::::<><>::
 README.md::TextFile::-1::1716501656::0::1::::<><>::
 ::res://addons/::1716644375
 input_buffer.gd::GDScript::-1::1716644375::0::1::::<>Node<>::
-::res://addons/controller_icons/::1716643792
+::res://addons/controller_icons/::1716669495
 ControllerIcons.gd::GDScript::-1::1716643792::0::1::::<>Node<>::
 Mapper.gd::GDScript::-1::1715277339::0::1::::ControllerMapper<>Node<>::
 plugin.cfg::TextFile::-1::1715277339::0::1::::<><>::
 plugin.gd::GDScript::-1::1715277339::0::1::::<>EditorPlugin<>::
 Settings.gd::GDScript::-1::1715277339::0::1::::ControllerSettings<>Resource<>::
-settings.tres::Resource/Resource::8165738396870216675::1715277339::0::1::::<><>::res://addons/controller_icons/Settings.gd
+settings.tres::Resource/ControllerSettings::8165738396870216675::1716669495::0::1::::<><>::res://addons/controller_icons/Settings.gd
 ::res://addons/controller_icons/assets/::1715277339
 disconnected.png::CompressedTexture2D::4512197778159170925::1715277339::1715277339::1::::<><>::
 ::res://addons/controller_icons/assets/key/::1715277339
@@ -438,14 +438,14 @@ newgrounds_saveslot.gd::GDScript::-1::1706204339::0::1::::NewgroundsSaveSlot<>Re
 newgrounds_scoreboard_item.gd::GDScript::-1::1706204339::0::1::::NewgroundsScoreboardItem<>RefCounted<>::
 newgrounds_session.gd::GDScript::-1::1706204339::0::1::::NewgroundsSession<>RefCounted<>::
 newgrounds_user.gd::GDScript::-1::1706204339::0::1::::NewgroundsUser<>RefCounted<>::
-::res://addons/newgrounds/examples/::1716643819
+::res://addons/newgrounds/examples/::1716672604
 ExampleSaveData.gd::GDScript::-1::1706204339::0::1::::<>Control<>::
 example_medal_list.gd::GDScript::-1::1706204339::0::1::::<>Control<>::
 example_medal_list.tscn::PackedScene::4784582804862305035::1706204339::0::1::::<><>::res://addons/newgrounds/examples/example_medal_list.gd
 example_scoreboard.gd::GDScript::-1::1706204339::0::1::::<>Control<>::
 example_scoreboard.tscn::PackedScene::4317405060774068446::1706204339::0::1::::<><>::res://addons/newgrounds/examples/example_scoreboard.gd<>res://addons/newgrounds/newgrounds_scoreboard.gd
 newgrounds_debug.gd::GDScript::-1::1716587152::0::1::::<>Control<>::
-newgrounds_debug.tscn::PackedScene::1619811821043084831::1716643819::0::1::::<><>::res://addons/newgrounds/examples/newgrounds_debug.gd<>res://addons/newgrounds/examples/ExampleSaveData.gd<>uid://b2rnbblsa42pm::::res://addons/newgrounds/examples/example_scoreboard.tscn<>uid://dgf2xfu4r0mtd::::res://addons/newgrounds/newgrounds_user_avatar.tscn<>uid://cafxm6acw5lcl::::res://addons/newgrounds/examples/example_medal_list.tscn<>res://addons/newgrounds/newgrounds_session_watcher.gd<>res://addons/newgrounds/newgrounds_medal_unlocker.gd
+newgrounds_debug.tscn::PackedScene::1619811821043084831::1716672604::0::1::::<><>::res://addons/newgrounds/examples/newgrounds_debug.gd<>res://addons/newgrounds/examples/ExampleSaveData.gd<>uid://b2rnbblsa42pm::::res://addons/newgrounds/examples/example_scoreboard.tscn<>uid://dgf2xfu4r0mtd::::res://addons/newgrounds/newgrounds_user_avatar.tscn<>uid://cafxm6acw5lcl::::res://addons/newgrounds/examples/example_medal_list.tscn<>res://addons/newgrounds/newgrounds_session_watcher.gd<>res://addons/newgrounds/newgrounds_medal_unlocker.gd
 ::res://addons/newgrounds/icons/::1715399914
 anon.png::CompressedTexture2D::8834133970687912095::1706204339::1715399914::1::::<><>::
 avatar.png::CompressedTexture2D::1736156942127060365::1706204339::1715399914::1::::<><>::
@@ -463,15 +463,12 @@ newgrounds_consts.gd::GDScript::-1::1706204339::0::1::::<>RefCounted<>::
 newgrounds_image.gd::GDScript::-1::1706204339::0::1::::<>TextureRect<>::
 newgrounds_offline_data.gd::GDScript::-1::1706204339::0::1::::<>Node<>::
 newgrounds_request.gd::GDScript::-1::1706204339::0::1::::NewgroundsRequest<>HTTPRequest<>::
-::res://Art/::1715640772
-::res://Art/Backgrounds/::1715292042
+::res://Art/::1716689570
+::res://Art/Backgrounds/::1716689628
 115.png::CompressedTexture2D::3608562760507141318::1715292042::1715292042::1::::<><>::
-5391146.png::CompressedTexture2D::4649276010675079457::1715292042::1715292042::1::::<><>::
 Air BG.png::CompressedTexture2D::5202144251950783632::1715292042::1715292042::1::::<><>::
 Dark BG.png::CompressedTexture2D::6014922212016558526::1715292042::1715292042::1::::<><>::
-Light BG.png::CompressedTexture2D::905920331800634410::1715292042::1715292042::1::::<><>::
 v1043-068a.png::CompressedTexture2D::4884160941452799133::1715292042::1715292042::1::::<><>::
-white_organic_lines_seamless_pattern_on_black_background.png::CompressedTexture2D::8072868375972253955::1715292042::1715292042::1::::<><>::
 ::res://Art/Beads/::1715988320
 AirOrb.png::CompressedTexture2D::1054926077143352215::1715032746::1715032746::1::::<><>::
 DarkOrb.png::CompressedTexture2D::1935638628612028504::1715032746::1715032746::1::::<><>::
@@ -479,14 +476,9 @@ EarthOrb.png::CompressedTexture2D::7410748901229107902::1715032746::1715032746::
 LightOrb.png::CompressedTexture2D::8911581817809219347::1715032746::1715032746::1::::<><>::
 LiquidOrb.png::CompressedTexture2D::4981308037519780617::1715032746::1715032746::1::::<><>::
 SoulBreaker.png::CompressedTexture2D::1362707941815891526::1715988320::1715988320::1::::<><>::
-::res://Art/Control Inputs/::1715640772
-::res://Art/ETC/::1714845215
+::res://Art/ETC/::1716689566
 857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png::CompressedTexture2D::8160380675066023406::1714748740::1714748747::1::::<><>::
 doublesided.png::CompressedTexture2D::8718936885938840902::1714845214::1714845215::1::::<><>::
-icon-1024x1024.jpg::CompressedTexture2D::1889670101140732902::1714745925::1714745981::1::::<><>::
-icon.svg::CompressedTexture2D::8248961084117937552::1714654675::1714745980::1::::<><>::
-icons-set-3_0001s_0000_Layer-89.png::CompressedTexture2D::9214774254473208287::1714579777::1714745980::1::::<><>::
-orb2.png::CompressedTexture2D::4901486361257784981::1714748756::1714748756::1::::<><>::
 ::res://Art/frames/::1714834197
 0000.png::CompressedTexture2D::8337188132914974801::1714771187::1714771217::1::::<><>::
 0001.png::CompressedTexture2D::3961639676691893016::1714771187::1714771217::1::::<><>::
@@ -550,34 +542,32 @@ orb2.png::CompressedTexture2D::4901486361257784981::1714748756::1714748756::1:::
 0059.png::CompressedTexture2D::2740900370301519604::1714771187::1714771216::1::::<><>::
 0060.png::CompressedTexture2D::3695106835100842418::1714771187::1714771216::1::::<><>::
 ::res://Audio/::1715381005
-::res://Audio/BoardSFX/::1715991298
-basicAction.wav::AudioStreamWAV::7461864721001865531::1715179287::1715295465::1::::<><>::
-GlassMove.wav::AudioStreamWAV::1059082723721914547::1715179287::1715295465::1::::<><>::
-GlassTap.wav::AudioStreamWAV::5089701330931010898::1715179287::1715295465::1::::<><>::
-HardDrop.wav::AudioStreamWAV::5312605033512109745::1715179287::1715295465::1::::<><>::
-Kick 12.wav::AudioStreamWAV::3184182847574451050::1715380946::1715380949::1::::<><>::
-Snare 11.wav::AudioStreamWAV::7674581248641622124::1715380729::1715380729::1::::<><>::
-SoftDrop.wav::AudioStreamWAV::2722084202396408851::1715179287::1715295468::1::::<><>::
-Twinkle.wav::AudioStreamWAV::6448763953319360908::1715179287::1715295477::1::::<><>::
-Zap.wav::AudioStreamWAV::728382675249509241::1715436513::1715436539::1::::<><>::
+::res://Audio/BoardSFX/::1716689869
+basicAction.wav::AudioStreamWAV::7461864721001865531::1715179287::1716690036::1::::<><>::
+GlassMove.wav::AudioStreamWAV::1059082723721914547::1715179287::1716690036::1::::<><>::
+GlassTap.wav::AudioStreamWAV::5089701330931010898::1715179287::1716690036::1::::<><>::
+HardDrop.wav::AudioStreamWAV::5312605033512109745::1715179287::1716690036::1::::<><>::
+Kick 12.wav::AudioStreamWAV::3184182847574451050::1715380946::1716690036::1::::<><>::
+Snare 11.wav::AudioStreamWAV::7674581248641622124::1715380729::1716690036::1::::<><>::
+SoftDrop.wav::AudioStreamWAV::2722084202396408851::1715179287::1716690036::1::::<><>::
+Twinkle.wav::AudioStreamWAV::6448763953319360908::1715179287::1716690036::1::::<><>::
+Zap.wav::AudioStreamWAV::728382675249509241::1715436513::1716690036::1::::<><>::
 ::res://Audio/BoardSFX/BreakSFX/::1715991298
-Brak1.wav::AudioStreamWAV::236576533257939724::1715439344::1715439345::1::::<><>::
-Brak2.wav::AudioStreamWAV::8035153983867194367::1715439344::1715439345::1::::<><>::
-Brak3.wav::AudioStreamWAV::512769137136227985::1715439344::1715439345::1::::<><>::
-Brak4.wav::AudioStreamWAV::6804206042042964001::1715439344::1715439345::1::::<><>::
-RandomizedRoar1.wav::AudioStreamWAV::6484688756585226436::1715991286::1715991298::1::::<><>::
-RandomizedRoar2.wav::AudioStreamWAV::3719951851583188563::1715991286::1715991298::1::::<><>::
-RandomizedRoar3.wav::AudioStreamWAV::8201297031358679075::1715872111::1715991267::1::::<><>::
-::res://Audio/MenuSFX/::1715381022
-Clap 3.wav::AudioStreamWAV::4028221680550949346::1715381002::1715381005::1::::<><>::
-Click.wav::AudioStreamWAV::4515101355926884356::1715179287::1715295457::1::::<><>::
-KS808_1 (C).wav::AudioStreamWAV::6967879047831593302::1715381022::1715381022::1::::<><>::
-MenuConfirm.wav::AudioStreamWAV::5185231116085820208::1715179287::1715295473::1::::<><>::
-MenuDeselect.wav::AudioStreamWAV::2878683481400942794::1715179287::1715295473::1::::<><>::
-MenuMove.wav::AudioStreamWAV::803982592498889244::1715179287::1715295473::1::::<><>::
-Reckless.wav::AudioStreamWAV::8067380401030644841::1715179287::1715295473::1::::<><>::
-::res://Audio/Music/::1715436856
-1-02 Disco Ball (RR 20th Anniv. Mix).mp3::AudioStreamMP3::6231778385524783450::1715353624::1715436752::1::::<><>::
+Brak1.wav::AudioStreamWAV::236576533257939724::1715439344::1716690071::1::::<><>::
+Brak2.wav::AudioStreamWAV::8035153983867194367::1715439344::1716690071::1::::<><>::
+Brak3.wav::AudioStreamWAV::512769137136227985::1715439344::1716690071::1::::<><>::
+Brak4.wav::AudioStreamWAV::6804206042042964001::1715439344::1716690071::1::::<><>::
+RandomizedRoar1.wav::AudioStreamWAV::6484688756585226436::1715991286::1716690071::1::::<><>::
+RandomizedRoar2.wav::AudioStreamWAV::3719951851583188563::1715991286::1716690071::1::::<><>::
+RandomizedRoar3.wav::AudioStreamWAV::8201297031358679075::1715872111::1716690071::1::::<><>::
+::res://Audio/MenuSFX/::1716689919
+Clap 3.wav::AudioStreamWAV::4028221680550949346::1715381002::1716690100::1::::<><>::
+Click.wav::AudioStreamWAV::4515101355926884356::1715179287::1716690100::1::::<><>::
+KS808_1 (C).wav::AudioStreamWAV::6967879047831593302::1715381022::1716690100::1::::<><>::
+MenuConfirm.wav::AudioStreamWAV::5185231116085820208::1715179287::1716690100::1::::<><>::
+MenuDeselect.wav::AudioStreamWAV::2878683481400942794::1715179287::1716690100::1::::<><>::
+MenuMove.wav::AudioStreamWAV::803982592498889244::1715179287::1716690100::1::::<><>::
+::res://Audio/Music/::1716689949
 break-tambossa-103bpm.wav::AudioStreamWAV::1474706377980528845::1715380853::1715436856::1::::<><>::
 ::res://Code/::1716393044
 ::res://Code/Constants/::1716586086
@@ -588,26 +578,26 @@ LinkArray.gd::GDScript::-1::1715032746::0::1::::<>Node<>::
 load_screen.gd::GDScript::-1::1716586085::0::1::::<>CanvasLayer<>::
 NextBeads.gd::GDScript::-1::1715292042::0::1::::<>Control<>::
 PauseScreen.gd::GDScript::-1::1715621117::0::1::::<>CanvasLayer<>::
-::res://Code/Globals/::1716598925
+::res://Code/Globals/::1716672234
 FinalGlobal.gd::GDScript::-1::1716587152::0::1::::<>Node<>::
-Globals.gd::GDScript::-1::1716598925::0::1::::<>Node<>::
+Globals.gd::GDScript::-1::1716672234::0::1::::<>Node<>::
 NGSave.gd::GDScript::-1::1716587152::0::1::::<>Node<>::
 ::res://Code/Scenes/::1715380182
-::res://Code/Scenes/Board&Beads/::1716643717
-Board.gd::GDScript::-1::1716643717::0::1::::<>Node2D<>::
-BoardDebugCode.gd::GDScript::-1::1716578779::0::1::::<>Node<>::
+::res://Code/Scenes/Board&Beads/::1716687647
+Board.gd::GDScript::-1::1716687647::0::1::::<>Node2D<>::
+BoardDebugCode.gd::GDScript::-1::1716687647::0::1::::<>Node<>::
 breaker_bead.gd::GDScript::-1::1716608926::0::1::::<>Node2D<>::
-FullPiece.gd::GDScript::-1::1716611039::0::1::::<>Node2D<>::
+FullPiece.gd::GDScript::-1::1716676718::0::1::::<>Node2D<>::
 ghost_bead.gd::GDScript::-1::1716608926::0::1::::<>Node2D<>::
 SinglePiece.gd::GDScript::-1::1716610801::0::1::::<>Node2D<>::
-::res://Code/Scenes/Menus/::1716521146
+::res://Code/Scenes/Menus/::1716688662
 game_manager.gd::GDScript::-1::1716521146::0::1::::<>CanvasLayer<>::
-how_2_play.gd::GDScript::-1::1716501656::0::1::::<>PanelContainer<>::
-MainMenu.gd::GDScript::-1::1716334869::0::1::::<>Control<>::
-optionsMenu.gd::GDScript::-1::1716504404::0::1::::<>CanvasLayer<>::
+how_2_play.gd::GDScript::-1::1716687648::0::1::::<>PanelContainer<>::
+MainMenu.gd::GDScript::-1::1716688662::0::1::::<>Control<>::
+optionsMenu.gd::GDScript::-1::1716687648::0::1::::<>CanvasLayer<>::
 score_display.gd::GDScript::-1::1716501656::0::1::::<>PanelContainer<>::
-::res://Code/Scenes/UI/::1716586347
-BreakProgress.gd::GDScript::-1::1716239684::0::1::::<>HBoxContainer<>::
+::res://Code/Scenes/UI/::1716672469
+BreakProgress.gd::GDScript::-1::1716672469::0::1::::<>HBoxContainer<>::
 chain_totals.gd::GDScript::-1::1716474259::0::1::::<>PanelContainer<>::
 DuoDisplay.gd::GDScript::-1::1716520527::0::1::::<>Control<>::
 fail_screen.gd::GDScript::-1::1715828021::0::1::::<>Control<>::
@@ -616,11 +606,10 @@ left_ui.gd::GDScript::-1::1716522601::0::1::::<>Control<>::
 right_ui.gd::GDScript::-1::1716522601::0::1::::<>Control<>::
 VeryNextBead.gd::GDScript::-1::1715292042::0::1::::<>Control<>::
 ::res://Resources/::1715872118
-::res://Resources/Options/::1716580680
-UserPreferences.gd::GDScript::-1::1716503755::0::1::::UserPreferences<>Resource<>::
-UserPrefs.tres::Resource/Resource::-1::1716610753::0::1::::<><>::res://Resources/Options/UserPreferences.gd
-::res://Resources/Relations/::1716326163
-5 Connected.tres::Resource/Resource::5490982136703954774::1715295413::0::1::::<><>::uid://cf30m2bne32r0::::res://Scenes/Constants/UIPieces/ConnectedDisplay.tscn<>res://Resources/Relations/RelationshipMaker.gd
+::res://Resources/Options/::1716677330
+UserPreferences.gd::GDScript::-1::1716669810::0::1::::UserPreferences<>Resource<>::
+UserPrefs.tres::Resource/UserPreferences::6354066847923557224::1716677330::0::1::::<><>::res://Resources/Options/UserPreferences.gd
+::res://Resources/Relations/::1716689723
 5 Duo.tres::Resource/Resource::8259742886959976142::1715295413::0::1::::<><>::uid://cwyh8ksd5xhbw::::res://Scenes/Constants/UIPieces/DuoDisplay.tscn<>res://Resources/Relations/RelationshipMaker.gd
 RelationshipMaker.gd::GDScript::-1::1716326163::0::1::::Relations<>Resource<>::
 ::res://Resources/Rules/::1716610801
@@ -630,82 +619,78 @@ RuleMaker.gd::GDScript::-1::1716593035::0::1::::Rules<>Resource<>::
 SaveFile.tres::Resource/Resource::-1::1716610753::0::1::::<><>::res://Resources/SaveData/SaveMaker.gd
 SaveMaker.gd::GDScript::-1::1716586348::0::1::::Save<>Resource<>::
 ::res://Scenes/::1715179287
-::res://Scenes/Board&Beads/::1716611039
-Board.tscn::PackedScene::3399644878295701062::1716611039::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>uid://c8upol425ha0o::::res://Scenes/Board&Beads/grid_background.tscn<>uid://dlxjyxa3t38su::::res://Scenes/Board&Beads/ghost_bead.tscn<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn<>res://Code/Scenes/Board&Beads/BoardDebugCode.gd
+::res://Scenes/Board&Beads/::1716688663
+Board.tscn::PackedScene::3399644878295701062::1716688663::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>uid://c8upol425ha0o::::res://Scenes/Board&Beads/grid_background.tscn<>uid://dlxjyxa3t38su::::res://Scenes/Board&Beads/ghost_bead.tscn<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn<>res://Code/Scenes/Board&Beads/BoardDebugCode.gd
 breaker_bead.tscn::PackedScene::2399157447238258805::1716610148::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader<>res://Code/Scenes/Board&Beads/breaker_bead.gd<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://dmum7mn3abqi::::res://Audio/BoardSFX/BreakSFX/Brak1.wav<>uid://dmqj2u4jpxoyp::::res://Audio/BoardSFX/BreakSFX/Brak2.wav<>uid://hknh6c41g4qn::::res://Audio/BoardSFX/BreakSFX/Brak3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav
 fail_screen.tscn::PackedScene::129981532982295584::1716581890::0::1::::<><>::res://Code/Scenes/UI/fail_screen.gd
 FullBead.tscn::PackedScene::5820798710556208465::1716610750::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
 ghost_bead.tscn::PackedScene::7979410540765424780::1716610148::0::1::::<><>::res://Code/Scenes/Board&Beads/ghost_bead.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
 grid_background.tscn::PackedScene::7131297142351933976::1715737946::0::1::::<><>::res://Code/Constants/GridBackground.gd
 HighScoreScreen.tscn::PackedScene::4913384287133867008::1716588070::0::1::::<><>::uid://bqt13gd00jakt::::res://Themes/Theme.tres<>res://Code/Scenes/UI/HighScoreScreen.gd
-SingleBead.tscn::PackedScene::6625588245103072961::1716610749::0::1::::<><>::uid://b2xqd47n88l6n::::res://Shaders/Beads/SingleBeadBurn.tres<>res://Code/Scenes/Board&Beads/SinglePiece.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>res://Code/Constants/LinkArray.gd<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png<>uid://dmum7mn3abqi::::res://Audio/BoardSFX/BreakSFX/Brak1.wav<>uid://dmqj2u4jpxoyp::::res://Audio/BoardSFX/BreakSFX/Brak2.wav<>uid://hknh6c41g4qn::::res://Audio/BoardSFX/BreakSFX/Brak3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav
+SingleBead.tscn::PackedScene::6625588245103072961::1716688663::0::1::::<><>::uid://b2xqd47n88l6n::::res://Shaders/Beads/SingleBeadBurn.tres<>res://Code/Scenes/Board&Beads/SinglePiece.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>res://Code/Constants/LinkArray.gd<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png<>uid://dmum7mn3abqi::::res://Audio/BoardSFX/BreakSFX/Brak1.wav<>uid://dmqj2u4jpxoyp::::res://Audio/BoardSFX/BreakSFX/Brak2.wav<>uid://hknh6c41g4qn::::res://Audio/BoardSFX/BreakSFX/Brak3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav
 uberbead.tscn::PackedScene::3667031385311914657::1716507515::0::1::::<><>::uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader<>uid://4feies2oagdp::::res://Scenes/Constants/ETC/connected.tscn
 ::res://Scenes/Constants/::1715380353
-::res://Scenes/Constants/Backgrounds/::1716592151
-AirBG.tscn::PackedScene::766257865649105513::1715292042::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader<>uid://cgd7s5qv73jky::::res://Art/Backgrounds/Air BG.png<>uid://2r3sscvn3s6i::::res://Shaders/Backgrounds/AirBG.tres
+::res://Scenes/Constants/Backgrounds/::1716689609
 DarkBG.tscn::PackedScene::7512638548248051179::1716592151::0::1::::<><>::uid://cawrkhbnlvn85::::res://Shaders/Backgrounds/DarkBG.tres<>uid://crxw5i5fsgspi::::res://Art/Backgrounds/Dark BG.png
 EarthBG.tscn::PackedScene::3149499898499646176::1716582779::0::1::::<><>::uid://din36mm6qnuh::::res://Shaders/Backgrounds/EarthBG.tres<>uid://cbt6oggrwg5o0::::res://Art/Backgrounds/v1043-068a.png
-LightBG.tscn::PackedScene::4491455632357239364::1715292042::0::1::::<><>::uid://dv0i8d3s8k7ry::::res://Shaders/Backgrounds/LightBG.tres<>uid://m53m1c8bsgny::::res://Art/Backgrounds/Light BG.png
 sea_bg.tscn::PackedScene::8460654939426370671::1716240874::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader<>uid://broarbw56swi5::::res://Art/Backgrounds/115.png<>uid://c3x2mch3abhnf::::res://Shaders/Backgrounds/WaterBG.tres
-::res://Scenes/Constants/ETC/::1716611039
+::res://Scenes/Constants/ETC/::1716689480
 connected.tscn::PackedScene::2046055747740895309::1716209045::0::1::::<><>::uid://v1axc2nifmul::::res://Themes/LightningConnection.tres<>res://Code/Constants/Connected.gd
-load_screen.tscn::PackedScene::2258975239481599943::1716611039::0::1::::<><>::res://Code/Constants/load_screen.gd
+load_screen.tscn::PackedScene::2258975239481599943::1716677309::0::1::::<><>::res://Code/Constants/load_screen.gd
 pause_screen.tscn::PackedScene::6941669322958366871::1715621761::0::1::::<><>::res://Code/Constants/PauseScreen.gd
 ripple.tscn::PackedScene::4295565812743270968::1716240875::0::1::::<><>::
-test.tscn::PackedScene::4400881954101511315::1716240436::0::1::::<><>::uid://dpr4gisyi1233::::res://Art/ETC/icon.svg<>uid://bagf1jfvukcdx::::res://Scenes/Board&Beads/breaker_bead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
-::res://Scenes/Constants/UIPieces/::1716520533
+::res://Scenes/Constants/UIPieces/::1716689734
 Air.tscn::PackedScene::3437724764430633895::1715196543::0::1::::<><>::uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png
 all_beads.tscn::PackedScene::7719899159518361124::1716405768::0::1::::<><>::uid://b7mejons4kmbs::::res://Scenes/Constants/UIPieces/earth.tscn<>res://Code/Constants/all_beads.gd<>uid://baem2bb63s81i::::res://Scenes/Constants/UIPieces/liquid.tscn<>uid://bo8i3bitdorr8::::res://Scenes/Constants/UIPieces/Air.tscn<>uid://bemu3udwgoopm::::res://Scenes/Constants/UIPieces/Light.tscn<>uid://6supmeapq163::::res://Scenes/Constants/UIPieces/Dark.tscn<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png
-ConnectedDisplay.tscn::PackedScene::5183128937308454599::1715185790::0::1::::<><>::uid://baem2bb63s81i::::res://Scenes/Constants/UIPieces/liquid.tscn<>uid://b7mejons4kmbs::::res://Scenes/Constants/UIPieces/earth.tscn<>uid://bo8i3bitdorr8::::res://Scenes/Constants/UIPieces/Air.tscn<>uid://bemu3udwgoopm::::res://Scenes/Constants/UIPieces/Light.tscn<>uid://6supmeapq163::::res://Scenes/Constants/UIPieces/Dark.tscn<>uid://dwhru74flwehi::::res://Art/ETC/doublesided.png
 Dark.tscn::PackedScene::2214254715596107026::1715196432::0::1::::<><>::uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png
 DuoDisplay.tscn::PackedScene::6367025496885865420::1716520533::0::1::::<><>::res://Code/Scenes/UI/DuoDisplay.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://dwhru74flwehi::::res://Art/ETC/doublesided.png
 earth.tscn::PackedScene::4657495909541422340::1715196569::0::1::::<><>::uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png
 Light.tscn::PackedScene::2693213989488194706::1715196521::0::1::::<><>::uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png
 liquid.tscn::PackedScene::2395455070572786544::1715196558::0::1::::<><>::uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png
-::res://Scenes/MainMenu/::1716611039
-game_manager.tscn::PackedScene::291240715937711722::1716611038::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://dhlvh5cnlnrwe::::res://Audio/BoardSFX/Snare 11.wav<>uid://do31ftphnqyj8::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav<>uid://vamg0tkl3038::::res://Audio/Music/break-tambossa-103bpm.wav<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn<>uid://cynh42d4vh1do::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav<>uid://bs88cfn7ooyoh::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav<>uid://c55ujrf1e7yhj::::res://Scenes/Constants/ETC/pause_screen.tscn<>res://addons/newgrounds/scripts/newgrounds_request.gd
-how_2_play.tscn::PackedScene::5201704712034171909::1716610749::0::1::::<><>::res://Code/Scenes/Menus/how_2_play.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://bemu3udwgoopm::::res://Scenes/Constants/UIPieces/Light.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png
-MainMenu.tscn::PackedScene::3030349083803999890::1716611039::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn<>uid://cgd0k1a1ig4xt::::res://Scenes/MainMenu/how_2_play.tscn
-options_menu.tscn::PackedScene::1849702126104635348::1716588070::0::1::::<><>::res://Code/Scenes/Menus/optionsMenu.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn
+::res://Scenes/MainMenu/::1716688664
+game_manager.tscn::PackedScene::291240715937711722::1716688662::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://dhlvh5cnlnrwe::::res://Audio/BoardSFX/Snare 11.wav<>uid://do31ftphnqyj8::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav<>uid://vamg0tkl3038::::res://Audio/Music/break-tambossa-103bpm.wav<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn<>uid://cynh42d4vh1do::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav<>uid://bs88cfn7ooyoh::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav<>uid://c55ujrf1e7yhj::::res://Scenes/Constants/ETC/pause_screen.tscn<>res://addons/newgrounds/scripts/newgrounds_request.gd
+how_2_play.tscn::PackedScene::5201704712034171909::1716688663::0::1::::<><>::res://Code/Scenes/Menus/how_2_play.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
+MainMenu.tscn::PackedScene::3030349083803999890::1716688663::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn<>uid://cgd0k1a1ig4xt::::res://Scenes/MainMenu/how_2_play.tscn
+options_menu.tscn::PackedScene::1849702126104635348::1716688664::0::1::::<><>::res://Code/Scenes/Menus/optionsMenu.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd
 score_display.tscn::PackedScene::8428345760910690618::1716581919::0::1::::<><>::res://Code/Scenes/Menus/score_display.gd
-::res://Scenes/UI/::1716588068
-BreakProgress.tscn::PackedScene::5040236556525383006::1716038764::0::1::::<><>::res://Code/Scenes/UI/BreakProgress.gd<>res://Shaders/ShaderCode/ProgressBar.gdshader<>uid://cb3k08qh4jhwv::::res://Art/ETC/orb2.png
+::res://Scenes/UI/::1716689558
+BreakProgress.tscn::PackedScene::5040236556525383006::1716689558::0::1::::<><>::res://Code/Scenes/UI/BreakProgress.gd<>res://Shaders/ShaderCode/ProgressBar.gdshader<>res://addons/controller_icons/objects/ControllerIconTexture.gd
 chain_totals.tscn::PackedScene::1012383733827204810::1716520531::0::1::::<><>::res://Code/Scenes/UI/chain_totals.gd
-left_ui.tscn::PackedScene::8562864369025183345::1716588068::0::1::::<><>::res://Code/Scenes/UI/left_ui.gd<>uid://dbl2flstx01xg::::res://Scenes/UI/NextBeads.tscn<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn
+left_ui.tscn::PackedScene::8562864369025183345::1716651342::0::1::::<><>::res://Code/Scenes/UI/left_ui.gd<>uid://dbl2flstx01xg::::res://Scenes/UI/NextBeads.tscn<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn
 NextBeads.tscn::PackedScene::7253807944244565396::1715614520::0::1::::<><>::res://Code/Constants/NextBeads.gd<>uid://c5g3srjmute6t::::res://Scenes/UI/VeryNextBead.tscn
 right_ui.tscn::PackedScene::3256515849781732230::1716588068::0::1::::<><>::res://Code/Scenes/UI/right_ui.gd<>uid://cwyh8ksd5xhbw::::res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 song_display.tscn::PackedScene::8386807918637817636::1715179287::0::1::::<><>::
 VeryNextBead.tscn::PackedScene::6892626070512177881::1715623860::0::1::::<><>::res://Code/Scenes/UI/VeryNextBead.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn
 ::res://Shaders/::1716474463
-::res://Shaders/Backgrounds/::1716643718
+::res://Shaders/Backgrounds/::1716645077
 AirBG.tres::ShaderMaterial::1931926369616189758::1715444608::0::1::::<><>::res://Shaders/ShaderCode/background.gdshader
-DarkBG.tres::ShaderMaterial::4819308094606053228::1716643718::0::1::::<><>::uid://ce02ekfv2puje::::res://Shaders/Backgrounds/DarkBGGradient.tres
-DarkBGGradient.tres::GradientTexture1D::5106853221718501646::1716643718::0::1::::<><>::
+DarkBG.tres::ShaderMaterial::4819308094606053228::1716645077::0::1::::<><>::uid://ce02ekfv2puje::::res://Shaders/Backgrounds/DarkBGGradient.tres
+DarkBGGradient.tres::GradientTexture1D::5106853221718501646::1716645077::0::1::::<><>::
 EarthBG.tres::ShaderMaterial::227922523430680019::1716582778::0::1::::<><>::
 LightBG.tres::ShaderMaterial::8685382080157412346::1715292042::0::1::::<><>::
 WaterBG.tres::ShaderMaterial::6787270583058607907::1716242647::0::1::::<><>::res://Shaders/ShaderCode/background.gdshader
-::res://Shaders/Beads/::1716643717
+::res://Shaders/Beads/::1716688663
 LightningArc.tres::ShaderMaterial::5246288134869955939::1714924001::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader
 Ripple.tres::ShaderMaterial::1768813050385603548::1716240428::0::1::::<><>::
-SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1716643717::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
-::res://Shaders/ShaderCode/::1716644416
-background.gdshader::Shader::-1::1716644415::0::1::::<><>::
-Black2Transp.gdshader::Shader::-1::1716644415::0::1::::<><>::
-BurnOut.gdshader::Shader::-1::1716644415::0::1::::<><>::
-LightningArc.gdshader::Shader::-1::1716644415::0::1::::<><>::
-ProgressBar.gdshader::Shader::-1::1716644416::0::1::::<><>::
-Ripple.gdshader::Shader::-1::1716644416::0::1::::<><>::
-Shockwave.gdshader::Shader::-1::1716644416::0::1::::<><>::
-::res://Themes/::1716643718
+SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1716688663::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
+::res://Shaders/ShaderCode/::1716689558
+background.gdshader::Shader::-1::1716689558::0::1::::<><>::
+Black2Transp.gdshader::Shader::-1::1716689558::0::1::::<><>::
+BurnOut.gdshader::Shader::-1::1716689558::0::1::::<><>::
+LightningArc.gdshader::Shader::-1::1716689558::0::1::::<><>::
+ProgressBar.gdshader::Shader::-1::1716689558::0::1::::<><>::
+Ripple.gdshader::Shader::-1::1716689558::0::1::::<><>::
+Shockwave.gdshader::Shader::-1::1716689558::0::1::::<><>::
+::res://Themes/::1716645077
 AdobeClean-Bold.ttf::FontFile::395619687205701920::1702314482::1715386954::1::::<><>::
 AdobeClean-Regular.ttf::FontFile::4413336349752594389::1702522296::1715386954::1::::<><>::
 GameUI.tres::Theme::224482002394513341::1715567039::0::1::::<><>::uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf
 LightningConnection.tres::SpriteFrames::1527680758622028651::1714834492::0::1::::<><>::uid://dq1ujgwtx8tfd::::res://Art/frames/0000.png<>uid://bwpbvkoy1lt7u::::res://Art/frames/0001.png<>uid://dl2sy2ua3huci::::res://Art/frames/0002.png<>uid://ctuaarwu8dke8::::res://Art/frames/0003.png<>uid://d0xg6cd641t7i::::res://Art/frames/0004.png<>uid://d1p6dmw74kes0::::res://Art/frames/0005.png<>uid://dkhbn44i8lsn7::::res://Art/frames/0006.png<>uid://cj5db332vbqv6::::res://Art/frames/0007.png<>uid://db7ftop4nfdno::::res://Art/frames/0008.png<>uid://d52lm42hyv4u::::res://Art/frames/0009.png<>uid://bnne476b635t5::::res://Art/frames/0010.png<>uid://y3i77frrywlv::::res://Art/frames/0011.png<>uid://dt10a600k5bdt::::res://Art/frames/0012.png<>uid://bhb470v6bql8d::::res://Art/frames/0013.png<>uid://b06gd0ppn3woh::::res://Art/frames/0014.png<>uid://ctqih504wt2pj::::res://Art/frames/0015.png<>uid://da7wivmwxifr3::::res://Art/frames/0016.png<>uid://bik51hunb0b8p::::res://Art/frames/0017.png<>uid://dx15xhu2i6env::::res://Art/frames/0018.png<>uid://dptsp3etqe76v::::res://Art/frames/0019.png<>uid://c3gtl1u5fo2uv::::res://Art/frames/0020.png<>uid://btq8t63dqxhb8::::res://Art/frames/0021.png<>uid://cd1m6i53exv05::::res://Art/frames/0022.png<>uid://cia0gc7bcbc0c::::res://Art/frames/0023.png<>uid://c47rapockpiv4::::res://Art/frames/0024.png<>uid://t7mdty0d14ou::::res://Art/frames/0025.png<>uid://b38fpuhr4kgwg::::res://Art/frames/0026.png<>uid://dker83bg6ujsg::::res://Art/frames/0027.png<>uid://o25ok4mdf6lt::::res://Art/frames/0028.png<>uid://dnsfy5gdjkjfh::::res://Art/frames/0029.png<>uid://c638ffelmsq8w::::res://Art/frames/0030.png<>uid://cwfwxi47pfdv8::::res://Art/frames/0031.png<>uid://cmypl6ikna5nk::::res://Art/frames/0032.png<>uid://d2waq4sg8b8p7::::res://Art/frames/0033.png<>uid://c475eb8hjs0kj::::res://Art/frames/0034.png<>uid://dosqmkxc2uq6h::::res://Art/frames/0035.png<>uid://b5q5dh267nom::::res://Art/frames/0036.png<>uid://byuohvrvoicsd::::res://Art/frames/0037.png<>uid://bj2d3vk3nt782::::res://Art/frames/0038.png<>uid://c6cnm8iljhkie::::res://Art/frames/0039.png<>uid://dst0btosshkb8::::res://Art/frames/0040.png<>uid://0i2timv8kk3x::::res://Art/frames/0041.png<>uid://bckjxq5mf818i::::res://Art/frames/0042.png<>uid://bl4njx2gxk26::::res://Art/frames/0043.png<>uid://dmxbi4nspts7j::::res://Art/frames/0044.png<>uid://dwpvkmtsctuvp::::res://Art/frames/0045.png<>uid://t85l53fsaxaq::::res://Art/frames/0046.png<>uid://dhwbtnyoosxbi::::res://Art/frames/0047.png<>uid://ckff4w20xlors::::res://Art/frames/0048.png<>uid://bpqy16ra2e4h4::::res://Art/frames/0049.png<>uid://ctc12oj7qcu37::::res://Art/frames/0050.png<>uid://be7hplpwbwbco::::res://Art/frames/0051.png<>uid://bwxree4tp7djf::::res://Art/frames/0052.png<>uid://bb1hqvx71t1ti::::res://Art/frames/0053.png<>uid://c2upjqka7r20i::::res://Art/frames/0054.png<>uid://b268go7ce37sr::::res://Art/frames/0055.png<>uid://cek5s6h4ngd3f::::res://Art/frames/0056.png<>uid://bm5tsofvdb1sm::::res://Art/frames/0057.png<>uid://cfppocefphurg::::res://Art/frames/0058.png<>uid://bfbyh1k176paa::::res://Art/frames/0059.png<>uid://bsv64tnf1wdss::::res://Art/frames/0060.png
-Theme.tres::Theme::3550294324214182303::1716643718::0::1::::<><>::uid://bmnp5omb2d47q::::res://Themes/ButtonStyle/Disabled.tres<>uid://da8iornffdc3c::::res://Themes/ButtonStyle/Hover.tres<>uid://csn7gcgx0jah7::::res://Themes/ButtonStyle/Normal.tres<>uid://57im7twwo0e0::::res://Themes/ButtonStyle/Focused.tres<>uid://dqp2it5itff85::::res://Themes/ButtonStyle/Pressed.tres<>uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf<>uid://cbmvpuynhcqqe::::res://Themes/HasSingle/Pannel.tres<>uid://7hbcyu4mqewp::::res://Themes/HasSingle/Scrollbar.tres<>uid://o6ph7ekev63x::::res://Themes/HasSingle/TabContainer.tres
-::res://Themes/ButtonStyle/::1716643718
+Theme.tres::Theme::3550294324214182303::1716645077::0::1::::<><>::uid://bmnp5omb2d47q::::res://Themes/ButtonStyle/Disabled.tres<>uid://da8iornffdc3c::::res://Themes/ButtonStyle/Hover.tres<>uid://csn7gcgx0jah7::::res://Themes/ButtonStyle/Normal.tres<>uid://57im7twwo0e0::::res://Themes/ButtonStyle/Focused.tres<>uid://dqp2it5itff85::::res://Themes/ButtonStyle/Pressed.tres<>uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf<>uid://cbmvpuynhcqqe::::res://Themes/HasSingle/Pannel.tres<>uid://7hbcyu4mqewp::::res://Themes/HasSingle/Scrollbar.tres<>uid://o6ph7ekev63x::::res://Themes/HasSingle/TabContainer.tres
+::res://Themes/ButtonStyle/::1716645077
 Disabled.tres::StyleBoxFlat::3256488800807134636::1715356179::0::1::::<><>::
 Dock.tres::ShaderMaterial::476549150978123185::1715356180::0::1::::<><>::res://Shaders/OutlineInline.gdshader
-Focused.tres::StyleBoxFlat::2172234273867921365::1716643718::0::1::::<><>::
+Focused.tres::StyleBoxFlat::2172234273867921365::1716645077::0::1::::<><>::
 Hover.tres::StyleBoxFlat::7227898167233465866::1702361247::0::1::::<><>::
 Normal.tres::StyleBoxFlat::6065031237599822278::1715356179::0::1::::<><>::
 Pressed.tres::StyleBoxFlat::8314903905431514092::1702361252::0::1::::<><>::

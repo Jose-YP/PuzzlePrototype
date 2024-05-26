@@ -86,6 +86,7 @@ button_mask = 0
 text = "HOW TO PLAY"
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
+visible = false
 layout_mode = 0
 offset_left = 435.0
 offset_top = 63.0
