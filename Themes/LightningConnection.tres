@@ -102,5 +102,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"new_animation_1",
-"speed": 30.0
+"speed": 60.0
 }]

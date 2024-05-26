@@ -122,7 +122,7 @@ func pull_next_bead() -> void:
 		currentBead = beadsUpnext.pop_front()
 		beadsUpnext.append(null)
 		$Hold.remove_child(currentBead)
-		$Grid.add_child(currentBead)
+		$Grid.add_child.call_deferred(currentBead)
 		currentBead.gridPos[0] = rules.start_pos
 		
 		board[rules.start_pos.x][rules.start_pos.y] = currentBead.beads[0]
@@ -629,12 +629,13 @@ func check_breakers() -> void:
 				await self.brokeAll
 				
 				#print()
-				var pos = usingBreakerArray[i].gridPos[0]
-				board[pos.x][pos.y] = null
-				usingBreakerArray[i].destroy_anim()
-				await usingBreakerArray[i].tree_exiting
-				breakers.erase(usingBreakerArray[i])
-				holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
+				if is_instance_valid(usingBreakerArray[i]):
+					var pos = usingBreakerArray[i].gridPos[0]
+					board[pos.x][pos.y] = null
+					usingBreakerArray[i].destroy_anim()
+					await usingBreakerArray[i].tree_exiting
+					breakers.erase(usingBreakerArray[i])
+					holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			comboSize += 1
 			#Should probably find a way to display multiple chain breaks at once
