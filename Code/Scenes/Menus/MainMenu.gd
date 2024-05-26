@@ -22,7 +22,6 @@ func _ready() -> void:
 #BUTTON NAVIGATIONS
 #______________________________
 func _on_play_pressed() -> void:
-	playSFX.emit(1)
 	switchPlay.emit()
 
 func _on_options_pressed() -> void:

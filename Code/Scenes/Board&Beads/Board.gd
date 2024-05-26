@@ -206,7 +206,12 @@ func movement() -> void:
 		ghost_bead_pos()
 
 func place() -> void:
+	#Check a single extra frame if any processing is happening
+	#If their new position can move down, don't place
 	await self.processFramed
+	if can_move("Down"):
+		return
+	
 	for i in range(currentBead.beads.size()):
 		var orgPos = find_bead(currentBead.beads[i])
 		
@@ -566,6 +571,8 @@ func lost_beads() -> void:
 		if bead == $Grid/GridBackground:
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
+			print(bead)
+			display_board()
 			bead.queue_free()
 
 func reset_beads() -> void:
@@ -600,7 +607,7 @@ func check_breakers() -> void:
 	if shouldBreak:
 		pauseFall(true)
 		playBreak.emit(clamp(comboSize,0,2))
-		print(comboSize)
+		print(comboSize, usingBreakerArray)
 		await self.startBreaking
 		
 		for i in range(usingBreakerArray.size()):
@@ -652,7 +659,8 @@ func check_breakers() -> void:
 			RUI.update_score(score)
 	
 	for bead in breakers:
-		if not is_instance_valid(bead):
+		print(breakers)
+		if bead == null:
 			breakers.erase(bead)
 	
 	if shouldBreak:

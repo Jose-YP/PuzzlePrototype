@@ -21,8 +21,6 @@ var unpausing: bool = false
 
 func _ready():
 	FinalGlobal.finalReady(Newgrounds)
-	BreakSFX[1].play()
-	BreakSFX[1].stop()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and not unpausing:
@@ -85,12 +83,9 @@ func play_menu_sfx(index):
 #-----------------------------------------
 func _on_main_menu_switch_options():
 	loadScene(optionsScene)
-	#changeScene(optionsScene)
-	#currentScene.connect("main",back_to_menu)
-	#currentScene.connect("makeNoise",_on_option_make_noise)
-	#currentScene.connect("testMusic",_on_option_test_music)
 
 func _on_main_menu_switch_play():
+	MenuSFX[1].play()
 	loadScene(boardScene)
 
 #-----------------------------------------
