@@ -51,6 +51,10 @@ func _ready():
 	currentColors = Globals.userPrefs.get_regular_colors()
 	currentColors.append(Globals.userPrefs.breakerColor)
 	
+	for i in range(beadExamples.size() - 1):
+		beadExamples[i].current_tab = i
+	beadExamples[5].current_tab = 6
+	
 	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
 	getNewInputs()
 	set_color_pickers()

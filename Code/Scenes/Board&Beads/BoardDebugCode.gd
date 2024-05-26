@@ -46,3 +46,15 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	$"..".find_links()
+#Erase from the script wide var rather than local
+	#for i in range(breakerArray.size()):
+		##If the array still has null values, skip them
+		#if not is_instance_valid(breakerArray[i]):
+			#continue
+		#if breakerArray[i].breaking:
+			#print("breaking ", breakerArray[i])
+			#breakerArray[i].destroy_anim()
+			#var pos = breakerArray[i].gridPos[0]
+			#board[pos.x][pos.y] = null
+			#breakers.erase(breakerArray[i])
+			#await breakerArray[i].tree_exiting

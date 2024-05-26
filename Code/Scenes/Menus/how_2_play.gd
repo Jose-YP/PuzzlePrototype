@@ -1,9 +1,14 @@
 extends PanelContainer
 
+@export var glowTab: int = 3
+
 @onready var infoTabs: TabContainer = %InfoTabs
 @onready var breakProgress: HBoxContainer = %BreakProgress
 @onready var movementContainers: Array[Node] = %MovementContainer.get_children()
 @onready var manipContainers: Array[Node] = %ManipContainer.get_children()
+@onready var beadImgs: Array[TabContainer] = [%Earth, %Sea, %Air, %Light, %Dark]
+@onready var glowImgs: Array[TabContainer] = [%NoGlow, %Glo, %Linked]
+@onready var breakerImg: TabContainer = %Breaker
 
 signal boardSFX(index)
 signal makeSFX(index)
@@ -15,6 +20,12 @@ var breakNum: int = 1
 #INITIALIZATION
 #______________________________
 func _ready():
+	for i in range(beadImgs.size()):
+		beadImgs[i].current_tab = i
+	for img in glowImgs:
+		img.current_tab = glowTab
+	breakerImg.current_tab = 6
+	
 	for i in range(movementContainers.size()):
 		Globals.show_controls(movementContainers[i].get_child(0))
 		Globals.show_controls(manipContainers[i].get_child(0))

@@ -86,7 +86,6 @@ button_mask = 0
 text = "HOW TO PLAY"
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
-visible = false
 layout_mode = 0
 offset_left = 435.0
 offset_top = 63.0
@@ -94,7 +93,6 @@ offset_right = 815.0
 offset_bottom = 396.0
 
 [node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
-visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 40.0

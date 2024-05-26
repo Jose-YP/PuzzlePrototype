@@ -431,12 +431,7 @@ func post_turn() -> void:
 	find_links()
 	find_chains(false)
 	await check_breakers()
-	print("IBUFSIUABSIUBFIB")
 	print(breaking)
-	if breaking:
-		await self.endCheck
-		$Timers/ChainFinish.start()
-		await $Timers/ChainFinish.timeout
 	
 	LUI.update_meter(1)
 	detect_fail()
@@ -646,21 +641,6 @@ func check_breakers() -> void:
 			RUI.update_display(beadsSize,linksSize,comboSize, true)
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
-	
-	#Erase from the script wide var rather than local
-	#for i in range(breakerArray.size()):
-		##If the array still has null values, skip them
-		#if not is_instance_valid(breakerArray[i]):
-			#continue
-		#if breakerArray[i].breaking:
-			#print("breaking ", breakerArray[i])
-			#breakerArray[i].destroy_anim()
-			#var pos = breakerArray[i].gridPos[0]
-			#board[pos.x][pos.y] = null
-			#breakers.erase(breakerArray[i])
-			#await breakerArray[i].tree_exiting
-	
-	print()
 	
 	if shouldBreak:
 		post_break()

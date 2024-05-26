@@ -29,3 +29,5 @@ res://Code/Globals/Globals.gd
 res://Code/Scenes/Menus/how_2_play.gd
 res://Code/Scenes/Board&Beads/FullPiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/Board&Beads/BoardDebugCode.gd
+res://Code/Scenes/Menus/MainMenu.gd
