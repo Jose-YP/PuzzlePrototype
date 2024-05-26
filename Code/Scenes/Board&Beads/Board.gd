@@ -36,7 +36,6 @@ var chainLinkNum: Array[int]
 var chainScores: Array[int]
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
-var breakers: Dictionary = {}
 var inputHoldTime: float = 0
 var holdBreakChain: int = 0
 var brokenBeads: int = 0
@@ -54,6 +53,13 @@ var highScored: bool = false
 var playZap: bool = false
 var refind: bool = false
 var moved: bool = false
+var breakers: Dictionary = {}: 
+	set(newVal):
+		if newVal == null:
+			return
+		print("Setting, ", newVal)
+		breakers[newVal] = newVal
+	get: return breakers
 
 #______________________________
 #INITIALIZATION
@@ -466,9 +472,12 @@ func find_links() -> void:
 	for i in rules.width:
 		for j in rules.height:
 			var bead = board[i][j]
+			
 			if bead == null:
 				continue
 			if bead.currentType == "Breaker":
+				if bead.breaking:
+					continue
 				breakers[bead] = bead
 				continue
 			elif currentBead != null and currentBead.in_full_bead(bead):
@@ -584,6 +593,9 @@ func reset_beads() -> void:
 				continue
 			bead.reset_links()
 
+#______________________________
+#BREAKERS
+#______________________________
 func check_breakers() -> void:
 	var breakerArray: Array = breakers.keys()
 	var breakAt: Array = []
