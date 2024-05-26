@@ -1,3 +1,4 @@
+Timer
 VBoxContainer
 TextureRect
 GridContainer
@@ -8,7 +9,6 @@ ControllerTextureRect
 Node2D
 ColorRect
 Node
-Timer
 Button
 NewgroundsRequest
 HTTPRequest

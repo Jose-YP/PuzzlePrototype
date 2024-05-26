@@ -18,9 +18,9 @@ res://Scenes/Constants/Backgrounds/sea_bg.tscn::ffd8258f8cc159fe05b20bf0b7073e4b
 res://Scenes/Constants/ETC/connected.tscn::102dc8850e2c89f14a6c0055f486c937::1716691029::res://.godot/exported/133200997/export-e9dfd14d3a8fb095d4f7096c971576e8-connected.scn
 res://Scenes/Constants/UIPieces/all_beads.tscn::866da5daf897c4c3dda7fc8f86bb0302::1716690209::res://.godot/exported/133200997/export-b5444a7f0d4158a36e92e876096f43a1-all_beads.scn
 res://Scenes/Constants/UIPieces/DuoDisplay.tscn::79d3de09c8ea6a2f6cac93ab8f293811::1716520533::res://.godot/exported/133200997/export-a43315ac63da8b08befebad55fe3c17b-DuoDisplay.scn
-res://Scenes/MainMenu/game_manager.tscn::4bf79363df2b53608bb3b601a97ecff4::1716697078::res://.godot/exported/133200997/export-2c5e222cf36fd6e0c24e009255bc7e9c-game_manager.scn
-res://Scenes/MainMenu/how_2_play.tscn::b960d6e4c93d8f8c8f1bae7fd399e7b7::1716697080::res://.godot/exported/133200997/export-0b7745a83f863f1682bd539959cee22a-how_2_play.scn
-res://Scenes/MainMenu/MainMenu.tscn::aefc615c42e944749dd8bfae8e065c24::1716697079::res://.godot/exported/133200997/export-ac22634f210ed72aaffe50757d1f9d3e-MainMenu.scn
+res://Scenes/MainMenu/game_manager.tscn::4bf79363df2b53608bb3b601a97ecff4::1716697588::res://.godot/exported/133200997/export-2c5e222cf36fd6e0c24e009255bc7e9c-game_manager.scn
+res://Scenes/MainMenu/how_2_play.tscn::b960d6e4c93d8f8c8f1bae7fd399e7b7::1716697588::res://.godot/exported/133200997/export-0b7745a83f863f1682bd539959cee22a-how_2_play.scn
+res://Scenes/MainMenu/MainMenu.tscn::ad695a0d8b52576131182e050af6f2dd::1716697588::res://.godot/exported/133200997/export-ac22634f210ed72aaffe50757d1f9d3e-MainMenu.scn
 res://Scenes/MainMenu/options_menu.tscn::94bbb131976db247ba2196c46057ead3::1716697081::res://.godot/exported/133200997/export-435732bc71f03259835dde0f87553c2c-options_menu.scn
 res://Scenes/MainMenu/score_display.tscn::6632f313f072d09998c996b476852d5b::1716581919::res://.godot/exported/133200997/export-1a20ed0292403187f2c62a3cb5bebf90-score_display.scn
 res://Scenes/UI/left_ui.tscn::7c89682b44d86dfd5e7e4a8f5fb9d7a3::1716651342::res://.godot/exported/133200997/export-bf06a78e919482aec73e236dadfbba84-left_ui.scn

@@ -19,11 +19,6 @@ func _ready() -> void:
 	$Buttons/Play.grab_focus()
 	can = true
 
-func _process(_delta):
-	if not moved:
-		$How2Play.position = orgH2pPosition
-		moved = true
-
 #______________________________
 #BUTTON NAVIGATIONS
 #______________________________
@@ -73,3 +68,7 @@ func _on_how_2_play_exit():
 
 func _on_how_2_play_board_sfx(index):
 	boardSFX.emit(index)
+
+func _on_timer_timeout():
+	$How2Play.position = orgH2pPosition
+	$How2Play.modulate = Color.WHITE
