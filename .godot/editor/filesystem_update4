@@ -31,3 +31,6 @@ res://Code/Scenes/Board&Beads/FullPiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Code/Scenes/Board&Beads/BoardDebugCode.gd
 res://Code/Scenes/Menus/MainMenu.gd
+res://Scenes/Constants/UIPieces/all_beads.tscn
+res://Scenes/Constants/ETC/connected.tscn
+res://Themes/LightningConnection.tres
