@@ -65,8 +65,6 @@ func _ready() -> void:
 	$Hold.add_child(temp2)
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
-	temp.position = farAway
-	temp2.position = farAway
 	
 	#Make board before adding anything
 	board = make_grid()
@@ -1182,3 +1180,7 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
+
+func _on_ready_timeout():
+	for bead in $Hold.get_children():
+		bead.global_position = farAway

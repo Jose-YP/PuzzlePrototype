@@ -16,7 +16,6 @@ const optionsScene: String = "res://Scenes/MainMenu/options_menu.tscn"
 #Non Loading Scenes
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
-#const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
 var unpausing: bool = false
 

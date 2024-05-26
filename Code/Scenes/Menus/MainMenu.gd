@@ -9,6 +9,8 @@ signal switchTutorial
 signal playSFX(index)
 signal boardSFX(index)
 
+const H2P: String ="res://Scenes/MainMenu/how_2_play.tscn"
+
 var can: bool = false
 
 #______________________________
