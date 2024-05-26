@@ -1,7 +1,11 @@
 extends Control
 
+@export var newH2pPosition: Vector2 = Vector2(25,40)
+@export var orgH2pPosition: Vector2 = Vector2(25,-700)
+
 signal switchPlay
 signal switchOptions
+signal switchTutorial
 signal playSFX(index)
 signal boardSFX(index)
 
@@ -13,7 +17,7 @@ var can: bool = false
 func _ready() -> void:
 	$Buttons/Play.grab_focus()
 	can = true
-	$How2Play.hide()
+	$How2Play.position = orgH2pPosition
 
 #______________________________
 #BUTTON NAVIGATIONS
@@ -31,9 +35,12 @@ func _on_scores_pressed() -> void:
 	$"Score Display".show()
 
 func _on_how_2_play_pressed() -> void:
+	var h2pTween = self.create_tween()
 	playSFX.emit(1)
 	get_viewport().gui_get_focus_owner().release_focus()
-	$How2Play.show()
+	h2pTween.tween_property($How2Play,"position",newH2pPosition,.1)
+	await h2pTween.finished
+	switchTutorial.emit()
 
 #______________________________
 #SCORE AND BASIC CONTROLS
@@ -53,8 +60,10 @@ func _on_how_2_play_make_sfx(index):
 	playSFX.emit(index)
 
 func _on_how_2_play_exit():
+	var h2pTween = self.create_tween()
 	playSFX.emit(2)
-	$How2Play.hide()
+	h2pTween.tween_property($How2Play,"position",orgH2pPosition,.1)
+	await h2pTween.finished
 	$Buttons/How2Play.grab_focus()
 
 func _on_how_2_play_board_sfx(index):

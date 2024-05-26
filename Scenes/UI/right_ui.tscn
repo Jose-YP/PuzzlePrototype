@@ -81,7 +81,6 @@ layout_mode = 2
 
 [node name="DisplayContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
-columns = 2
 
 [node name="Summn" type="Button" parent="."]
 visible = false

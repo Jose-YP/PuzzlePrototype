@@ -11,11 +11,12 @@ extends CanvasLayer
 @onready var currentScene = $MainMenu
 
 #Scenes for loading
-const boardScene: String ="res://Scenes/Board&Beads/Board.tscn"
+const boardScene: String = "res://Scenes/Board&Beads/Board.tscn"
+const optionsScene: String = "res://Scenes/MainMenu/options_menu.tscn"
 #Non Loading Scenes
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
-const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
+#const optionsScene = preload("res://Scenes/MainMenu/options_menu.tscn")
 
 var unpausing: bool = false
 
@@ -51,7 +52,11 @@ func changeScene(scene) -> void:
 func loadScene(scene) -> void:
 	changeScene(loadingScreen)
 	currentScene.next_scene = scene
-	currentScene.connect("finished", board_scene_loaded)
+	match scene:
+		boardScene:
+			currentScene.connect("finished", board_scene_loaded)
+		optionsScene:
+			currentScene.connect("finished", option_scene_loaded)
 
 func board_scene_loaded(scene):
 	changeScene(scene)
@@ -59,6 +64,12 @@ func board_scene_loaded(scene):
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
+
+func option_scene_loaded(scene):
+	changeScene(scene)
+	currentScene.connect("main",back_to_menu)
+	currentScene.connect("makeNoise",_on_option_make_noise)
+	currentScene.connect("testMusic",_on_option_test_music)
 
 func back_to_menu():
 	changeScene(mainMenuScene)
@@ -74,10 +85,11 @@ func play_menu_sfx(index):
 #MAIN MENU SIGNALS
 #-----------------------------------------
 func _on_main_menu_switch_options():
-	changeScene(optionsScene)
-	currentScene.connect("main",back_to_menu)
-	currentScene.connect("makeNoise",_on_option_make_noise)
-	currentScene.connect("testMusic",_on_option_test_music)
+	loadScene(optionsScene)
+	#changeScene(optionsScene)
+	#currentScene.connect("main",back_to_menu)
+	#currentScene.connect("makeNoise",_on_option_make_noise)
+	#currentScene.connect("testMusic",_on_option_test_music)
 
 func _on_main_menu_switch_play():
 	loadScene(boardScene)

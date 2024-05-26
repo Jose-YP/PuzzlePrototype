@@ -91,6 +91,5 @@ func _on_next_pressed():
 		%Next.text = str("Controls")
 	makeSFX.emit(1)
 
-func _on_visibility_changed():
-	if visible:
-		%Next.grab_focus()
+func _on_main_menu_switch_tutorial():
+	%Next.grab_focus()

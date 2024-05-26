@@ -529,6 +529,5 @@ button_mask = 0
 text = "Controls
 "
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/nEXT_BACK/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="VBoxContainer/nEXT_BACK/HBoxContainer/Next" to="." method="_on_next_pressed"]
