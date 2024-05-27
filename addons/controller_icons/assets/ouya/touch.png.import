@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/touch.png-1ba3e7ec2b35a2d00655a24d0089caad.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

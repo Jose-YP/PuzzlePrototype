@@ -745,7 +745,7 @@ func break_order(chainPart, holdChains) -> void:
 	if adjacent.size() != 0:
 		break_order(adjacent.keys(), holdChains)
 	else:
-		break_order(notEmptied, holdChains)
+		break_order([notEmptied.pick_random()], holdChains)
 
 func break_bead(chainPart) -> void:
 	for bead in chainPart:

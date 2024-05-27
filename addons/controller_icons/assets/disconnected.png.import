@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/disconnected.png-459773ea7f2a3f5eca9fe5104acb
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

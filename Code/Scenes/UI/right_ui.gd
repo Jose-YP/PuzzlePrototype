@@ -84,9 +84,7 @@ func show_display() -> PanelContainer:
 	chainDisplay.connect("remove",hide_display)
 	
 	var displayTween = self.create_tween()
-	chainDisplay.midTween = true
 	displayTween.tween_property(chainDisplay, "modulate", Color.WHITE, chainDisplayTiming)
-	chainDisplay.midTween = false
 	chainDisplay.text.clear()
 	return chainDisplay
 
@@ -108,16 +106,16 @@ func update_display(beads, links, chains, breaker = false) -> void:
 
 func hide_display(chainDisplay):
 	var displayTween = self.create_tween()
-	chainDisplay.midTween = true
 	displayTween.tween_property(chainDisplay, "modulate", Color.TRANSPARENT, chainDisplayTiming)
 	await displayTween.finished
-	chainDisplay.midTween = false
+	#This should only be true when the hide tween finishes
+	chainDisplay.finishedTween = true
 
 #Will be called upon chains ending
 #Keep seperate so displays don't jump position
 func remove_displays():
 	for chainDisplay in chainTotalArray:
-		if not chainDisplay.midTween:
+		if chainDisplay.finishedTween:
 			chainTotalArray.erase(chainDisplay)
 			chainDisplay.queue_free()
 	

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/gyro.png-036a1df6f9221b801ce960258264e36b.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

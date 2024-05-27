@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/dpad_right.png-a38451b01e6223d51bc488908900e4
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

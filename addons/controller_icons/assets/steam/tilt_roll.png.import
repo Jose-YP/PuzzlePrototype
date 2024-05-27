@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/tilt_roll.png-8c1f5b0ec6a270dd46dec3045007bf8
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

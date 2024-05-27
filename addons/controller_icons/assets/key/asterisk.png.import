@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/asterisk.png-f83bdb0b06735716dc152cef5ad1a65a
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

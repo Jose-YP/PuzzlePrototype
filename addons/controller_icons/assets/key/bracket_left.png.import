@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/bracket_left.png-578afec4dd6c472e6a94a57c4699
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

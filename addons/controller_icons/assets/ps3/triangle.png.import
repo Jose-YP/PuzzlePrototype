@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/triangle.png-636bd5a4c11993247c97be299c04f5ef
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

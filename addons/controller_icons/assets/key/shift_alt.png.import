@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/shift_alt.png-e1013b0ce4d0764e12cc0d349786ce1
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

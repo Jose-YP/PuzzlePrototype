@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/semicolon.png-c1c48dd478b2bf5ae5d9bae57cdf3d6
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -49,7 +49,7 @@ visible = false
 top_level = true
 light_mask = 3
 visibility_layer = 3
-z_index = 1
+z_index = 2
 
 [node name="FailScreen" parent="." instance=ExtResource("7_td82j")]
 visible = false
@@ -57,7 +57,7 @@ modulate = Color(1, 1, 1, 0)
 top_level = true
 light_mask = 3
 visibility_layer = 3
-z_index = 1
+z_index = 2
 
 [node name="Timers" type="Node" parent="."]
 

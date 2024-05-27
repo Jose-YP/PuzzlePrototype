@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/DarkOrb.png-9315c499b53139638ab25d308c0e8915.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

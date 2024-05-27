@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/l_stick.png-b5ed993555606d8da48a1c310a3cbd0d.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -97,10 +97,12 @@ func _on_submit_pressed():
 	#Erase the lowest score before putting the high score in
 	Globals.save.HiScores.erase(Globals.find_extreme_score(true))
 	Globals.save.save_score(score,user)
-	print(Globals.save.HiScores)
+	Globals.display = Globals.sort_scores()
 	proceed.emit()
-	print("AAAAAAA")
 	$VBoxContainer/Submit.disabled = true
+	
+	if Globals.NewgroundsToggle:
+		NG.scoreboard_submit(13768, score)
 
 func _on_focus_entered(index):
 	currentFocus = charInputs[index]

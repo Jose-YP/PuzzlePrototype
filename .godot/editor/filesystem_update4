@@ -24,3 +24,8 @@ res://Scenes/Constants/ETC/pause_screen.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Code/Scenes/Board&Beads/FullPiece.gd
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Scenes/UI/right_ui.tscn
+res://Code/Scenes/UI/chain_totals.gd
+res://Code/Scenes/UI/right_ui.gd
+res://Scenes/UI/chain_totals.tscn

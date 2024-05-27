@@ -5,7 +5,7 @@ extends PanelContainer
 
 signal remove(who)
 
-var midTween: bool = false
+var finishedTween: bool = false
 
 func _on_timer_timeout():
 	remove.emit(self)
