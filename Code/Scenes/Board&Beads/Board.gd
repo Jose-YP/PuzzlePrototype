@@ -571,7 +571,7 @@ func second_fix() -> void:
 func lost_beads() -> void:
 	#If a bead isn't in the board anymore just delete them
 	for bead in $Grid.get_children():
-		if bead == $Grid/GridBackground:
+		if bead == $Grid/GridBackground or bead.has_node("Beads"):
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
 			print(bead)
