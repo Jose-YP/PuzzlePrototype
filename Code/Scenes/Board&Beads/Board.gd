@@ -149,7 +149,7 @@ func manage_drought(checkedBeads) -> void:
 	for unfound in willDrought:
 		Globals.droughtArray[unfound] += 1
 	
-	#print("DROUGHT ARRAY: ", Globals.droughtArray)
+	print("DROUGHT ARRAY: ", Globals.droughtArray)
 
 #______________________________
 #BASIC CONTROLS: MOVE
@@ -451,10 +451,9 @@ func post_turn() -> void:
 		#Since breaker beads break last do one last fall check
 		if breakers.size() < origBreakerSize:
 			all_fall()
-			lost_beads()
-			all_fall()
 		
 		#Reset grounded & Gravity timer to give the player time to react
+		lost_beads()
 		%Grounded.start()
 		%Gravity.start()
 		pull_next_bead()
@@ -723,7 +722,7 @@ func break_order(chainPart, holdChains) -> void:
 			if (is_instance_valid(adj)
 			 and holdChains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
-			elif bead != null:
+			elif adj != null:
 				print(adj, adj.currentType)
 	
 	if adjacent.size() == 0:
@@ -736,7 +735,6 @@ func break_order(chainPart, holdChains) -> void:
 	var notEmptied = []
 	for bead in holdChains[holdBreakChain]:
 		if bead != null:
-			print("Empty")
 			empty = false
 			notEmptied.append(bead)
 	

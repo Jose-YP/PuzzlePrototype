@@ -50,23 +50,27 @@ func check_drought() -> void:
 #BOARD FUNCTIONS
 #______________________________
 func determine_reroll():
-	var types: Dictionary = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0}
+	var types: Dictionary = {0:0, 1:0, 2:0, 3:0, 4:0}
 	var rerollTypes: Array[int] = []
 	var reroll: bool = true
 	for bead in beads:
+		#For every type found add 1 to it's place in the dictionary
 		types[bead.typeID] += 1 
 	for type in types:
 		if types[type] > 1:
 			reroll = false
 		if types[type] != 0:
+			#If the type shows up in the type dict as 1 or more add it to the reroll
 			rerollTypes.append(type)
 	var chance = randi_range(0,100)
 	if reroll and chance >= three_type_chance:
 		var index = range(3).pick_random()
-		rerollTypes.pop_at(index)
+		rerollTypes.erase(beads[index].typeID)
+		print(beads[index].currentType, " Reroll,", rerollTypes)
 		var tempReroll = rerollTypes
 		beads[index].randomize_type(tempReroll)
 	elif reroll: print("unlucky")
+	else: print(reroll, chance >= three_type_chance)
 
 func flip():
 	if flipped:
