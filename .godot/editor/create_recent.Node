@@ -1,3 +1,4 @@
+Control
 AudioStreamPlayer
 Timer
 VBoxContainer
@@ -12,4 +13,3 @@ ColorRect
 Node
 Button
 NewgroundsRequest
-HTTPRequest

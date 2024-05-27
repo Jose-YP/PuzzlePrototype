@@ -61,11 +61,12 @@ func determine_reroll():
 		if types[type] != 0:
 			rerollTypes.append(type)
 	var chance = randi_range(0,100)
-	if reroll and chance > three_type_chance:
+	if reroll and chance >= three_type_chance:
 		var index = range(3).pick_random()
 		rerollTypes.pop_at(index)
 		var tempReroll = rerollTypes
 		beads[index].randomize_type(tempReroll)
+	elif reroll: print("unlucky")
 
 func flip():
 	if flipped:

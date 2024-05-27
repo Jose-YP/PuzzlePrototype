@@ -83,7 +83,6 @@ copy_mode = 2
 metadata/_edit_lock_ = true
 
 [node name="Ripple" parent="." instance=ExtResource("3_tjmdn")]
-visible = true
 material = SubResource("ShaderMaterial_lx5b6")
 offset_left = -1260.0
 offset_top = -673.0

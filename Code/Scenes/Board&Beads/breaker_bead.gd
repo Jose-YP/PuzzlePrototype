@@ -57,6 +57,7 @@ func check_should_break() -> Array:
 #RIPPLE
 #______________________________
 func ripple():
+	$Ripple.show()
 	set_ripple_center()
 	var rippleTween = create_tween().set_ease(Tween.EASE_OUT_IN).set_parallel()
 	rippleTween.tween_method(ripple_radius_tween, .001, 2, rippleTiming)

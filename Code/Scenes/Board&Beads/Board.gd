@@ -53,13 +53,7 @@ var highScored: bool = false
 var playZap: bool = false
 var refind: bool = false
 var moved: bool = false
-var breakers: Dictionary = {}: 
-	set(newVal):
-		if newVal == null:
-			return
-		print("Setting, ", newVal)
-		breakers[newVal] = newVal
-	get: return breakers
+var breakers: Dictionary = {}
 
 #______________________________
 #INITIALIZATION
@@ -458,6 +452,7 @@ func post_turn() -> void:
 		if breakers.size() < origBreakerSize:
 			all_fall()
 			lost_beads()
+			all_fall()
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		%Grounded.start()
@@ -670,11 +665,6 @@ func check_breakers() -> void:
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
 	
-	for bead in breakers:
-		print(breakers)
-		if bead == null:
-			breakers.erase(bead)
-	
 	if shouldBreak:
 		post_break()
 	
@@ -733,6 +723,11 @@ func break_order(chainPart, holdChains) -> void:
 			if (is_instance_valid(adj)
 			 and holdChains[holdBreakChain].find(adj) != -1):
 				adjacent[adj] = adj
+			elif bead != null:
+				print(adj, adj.currentType)
+	
+	if adjacent.size() == 0:
+		print("ERmpty")
 	
 	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	break_bead(chainPart)
@@ -741,6 +736,7 @@ func break_order(chainPart, holdChains) -> void:
 	var notEmptied = []
 	for bead in holdChains[holdBreakChain]:
 		if bead != null:
+			print("Empty")
 			empty = false
 			notEmptied.append(bead)
 	
