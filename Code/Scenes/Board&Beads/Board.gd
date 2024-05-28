@@ -643,23 +643,16 @@ func check_breakers() -> void:
 				#Check if bead already broke
 				if not is_instance_valid(breakAt[i][j]):
 					continue
-				#Make sure the starting value is bracketed into an array
-				var extraIndex = find_linkNum_index(breakerChains[j])
-				var finalScore = rules.chainComboMult(chainScores[extraIndex], comboSize)
-				var breakIndex: int = 0
+				
+				var breakIndex = find_linkNum_index(breakerChains[j])
+				var finalScore = rules.chainComboMult(chainScores[breakIndex], comboSize)
 				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
-				linksSize = chainLinkNum[extraIndex]
+				linksSize = chainLinkNum[breakIndex]
 				score += finalScore
 				print("From ",breakAt[i][j])
-				print("Score: ", chainScores[extraIndex], " With Combo ",  finalScore)
-				for chain in range(chains.size()):
-					breakIndex = chains[chain].find(breakAt[i][j])
-					if breakIndex != -1:
-						breakIndex = chain
-						break
-				
-				print("Just checking something, ", extraIndex, breakIndex)
+				print("Score: ", chainScores[breakIndex], " With Combo ",  finalScore)
+				#Make sure the starting value is bracketed into an array
 				break_order([breakAt[i][j]], breakIndex)
 				await self.brokeAll
 				RUI.update_display(beadsSize,linksSize,comboSize, true)
@@ -673,7 +666,6 @@ func check_breakers() -> void:
 		post_break()
 	
 	else:
-		print("AAAA")
 		comboSize = 0
 		endCheck.emit()
 
@@ -726,9 +718,6 @@ func break_order(chainPart, holdNum) -> void:
 			if (is_instance_valid(adj)
 			 and chains[holdNum].find(adj) != -1):
 				adjacent[adj] = adj
-			elif adj != null:
-				print(adj, adj.currentType)
-				print(is_instance_valid(adj), chains[holdNum].find(adj))
 	
 	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	break_bead(chainPart)
@@ -1023,7 +1012,7 @@ func within_bounds(pos,where = "X") -> bool:
 #______________________________
 #TIMERS & OUTSIDE SIGNALS
 #______________________________
-func pauseFall(should):
+func pauseFall(should) -> void:
 	if should:
 		fallPaused = true
 		%Grounded.set_paused(true)
