@@ -624,8 +624,14 @@ func check_breakers() -> void:
 			usingBreakerArray[i].breaking = true
 			#If there a chains to break find their full chains
 			var breakerChains = find_specific_chains(breakAt[i])
-			if not is_instance_valid(usingBreakerArray[i]):
-				continue
+			if is_instance_valid(usingBreakerArray[i]):
+				print("Remove ", usingBreakerArray[i])
+				var pos = usingBreakerArray[i].gridPos[0]
+				board[pos.x][pos.y] = null
+				usingBreakerArray[i].destroy_anim()
+				await usingBreakerArray[i].tree_exiting
+				breakers.erase(usingBreakerArray[i])
+			else: continue
 			
 			#print("BREAK AT:", breakAt)
 			#print("BREAKER CHAINS:", breakerChains)
@@ -633,9 +639,8 @@ func check_breakers() -> void:
 			beadsSize = 0
 			
 			#Break every chain found at ith breaker bead
-			print(range(breakAt[i].size()))
 			for j in range(breakAt[i].size()):
-				#Check if 
+				#Check if bead already broke
 				if not is_instance_valid(breakAt[i][j]):
 					continue
 				#Make sure the starting value is bracketed into an array
@@ -657,19 +662,10 @@ func check_breakers() -> void:
 				print("Just checking something, ", extraIndex, breakIndex)
 				break_order([breakAt[i][j]], breakerChains, breakIndex)
 				await self.brokeAll
-				
-				#print()
-				if is_instance_valid(usingBreakerArray[i]):
-					print("Remove ", usingBreakerArray[i])
-					var pos = usingBreakerArray[i].gridPos[0]
-					board[pos.x][pos.y] = null
-					usingBreakerArray[i].destroy_anim()
-					await usingBreakerArray[i].tree_exiting
-					breakers.erase(usingBreakerArray[i])
+				RUI.update_display(beadsSize,linksSize,comboSize, true)
 			
 			comboSize += 1
 			#Should probably find a way to display multiple chain breaks at once
-			RUI.update_display(beadsSize,linksSize,comboSize, true)
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
 	
