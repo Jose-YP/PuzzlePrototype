@@ -10,11 +10,11 @@ signal maxedLevel
 const chainDisplayScene = preload("res://Scenes/UI/chain_totals.tscn")
 
 var chainTotalArray: Array[PanelContainer] = []
+var level: int = 1
 var regScore: int = 0
 var HiScore: int = 0
 var currentBeads: int = 0
 var levelUpthreshold: int = 0
-var level: int = 1
 
 #______________________________
 #INITIALIZATION
@@ -22,7 +22,7 @@ var level: int = 1
 func _ready() -> void:
 	HiScore = Globals.get_extreme()[0]
 	%HiScoreText.text = str("HISCORE: ", HiScore)
-	levelUpthreshold = get_levelup_Threshold(1)
+	levelUpthreshold = get_levelup_Threshold(level)
 
 #______________________________
 #SCORE MANIP
@@ -75,9 +75,7 @@ func tween_levelUp(currentValue: float):
 	var target = clamp((currentThreshold - currentValue) / currentThreshold, 0, 100) * 100
 	var levelTween = self.create_tween().set_ease(Tween.EASE_IN)
 	levelTween.tween_property(%LevelProgress,"value",target,.1)
-	print(%LevelProgress.value, target," | ", currentThreshold - currentValue,
-	" | ", currentThreshold," | ", currentValue, " | ", (currentThreshold - currentValue) / currentThreshold)
-	print(currentValue / currentThreshold)
+
 #______________________________
 #CHAIN DISPLAY MANIP
 #______________________________
