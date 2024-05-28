@@ -404,7 +404,7 @@ func _process(delta) -> void:
 					breaking = true
 					beadsSize += chains[i].size()
 					brokenBeads += chains[i].size()
-					break_order([chains[i].pick_random()], chains, i)
+					break_order([chains[i].pick_random()], i)
 					await self.brokeAll
 				
 				RUI.update_display(beadsSize,linksSize,chainsSize)
@@ -660,7 +660,7 @@ func check_breakers() -> void:
 						break
 				
 				print("Just checking something, ", extraIndex, breakIndex)
-				break_order([breakAt[i][j]], breakerChains, breakIndex)
+				break_order([breakAt[i][j]], breakIndex)
 				await self.brokeAll
 				RUI.update_display(beadsSize,linksSize,comboSize, true)
 			
@@ -712,10 +712,9 @@ func find_chains(addScore: bool) -> void:
 	
 	print(chainScores)
 
-func break_order(chainPart, holdChains, holdNum) -> void:
+func break_order(chainPart, holdNum) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
-	#REMOVE EVERY INSTANCE OF CHAINS
 	var adjacent: Dictionary = {}
 	for bead in chainPart:
 		#Skip any beads that were already freed
@@ -725,22 +724,18 @@ func break_order(chainPart, holdChains, holdNum) -> void:
 		for adj in bead.adjacent:
 			#Clear a bead if it's in the chain, first condition is for debugger
 			if (is_instance_valid(adj)
-			 and holdChains[holdNum].find(adj) != -1):
+			 and chains[holdNum].find(adj) != -1):
 				adjacent[adj] = adj
 			elif adj != null:
 				print(adj, adj.currentType)
-				print(is_instance_valid(adj), holdChains[holdNum].find(adj))
-	
-	if adjacent.size() == 0:
-		print("ERmpty")
-		print(holdChains, holdNum)
+				print(is_instance_valid(adj), chains[holdNum].find(adj))
 	
 	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	break_bead(chainPart)
 	await self.brokeBead
 	var empty = true
 	var notEmptied = []
-	for bead in holdChains[holdNum]:
+	for bead in chains[holdNum]:
 		if bead != null:
 			empty = false
 			notEmptied.append(bead)
@@ -750,9 +745,9 @@ func break_order(chainPart, holdChains, holdNum) -> void:
 		return
 	#If there are no adjacent beads left find untouched beads
 	if adjacent.size() != 0:
-		break_order(adjacent.keys(), holdChains, holdNum)
+		break_order(adjacent.keys(), holdNum)
 	else:
-		break_order([notEmptied.pick_random()], holdChains, holdNum)
+		break_order([notEmptied.pick_random()], holdNum)
 
 func break_bead(chainPart) -> void:
 	for bead in chainPart:
