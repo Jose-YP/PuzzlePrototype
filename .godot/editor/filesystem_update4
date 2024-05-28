@@ -33,3 +33,6 @@ res://Code/Scenes/Menus/how_2_play.gd
 res://Scenes/MainMenu/how_2_play.tscn
 res://addons/newgrounds/imported_medals/testinhg.tres
 res://Scenes/Constants/ETC/connected.tscn
+res://Scenes/Constants/Backgrounds/DarkBG.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Code/Scenes/Menus/MainMenu.gd

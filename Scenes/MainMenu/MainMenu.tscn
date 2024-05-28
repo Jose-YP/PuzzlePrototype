@@ -7,32 +7,53 @@
 [node name="MainMenu" type="Control"]
 process_mode = 1
 layout_mode = 3
-anchors_preset = 0
-offset_left = -103.0
-offset_top = -35.0
-offset_right = 49.0
-offset_bottom = 5.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -20.0
+offset_right = 76.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_7dq6h")
 
 [node name="Title" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 485.0
-offset_top = 194.0
-offset_right = 771.0
-offset_bottom = 234.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -6.979
+anchor_right = 0.5
+anchor_bottom = -6.979
+offset_left = -138.0
+offset_top = -6.83997
+offset_right = 148.0
+offset_bottom = 33.16
+grow_horizontal = 2
+grow_vertical = 0
 bbcode_enabled = true
 text = "[center]LIVELY"
 
 [node name="Buttons" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(300, 200)
-layout_mode = 0
-offset_left = 308.0
-offset_top = 356.0
-offset_right = 938.0
-offset_bottom = 586.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -115.0
+offset_right = 315.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 2
+metadata/_edit_lock_ = true
 
 [node name="Play" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(300, 100)
@@ -87,18 +108,36 @@ text = "HOW TO PLAY"
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
-layout_mode = 0
-offset_left = 435.0
-offset_top = 63.0
-offset_right = 815.0
-offset_bottom = 396.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -333.0
+offset_right = 190.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_lock_ = true
 
 [node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
 modulate = Color(1, 1, 1, 0.00392157)
 self_modulate = Color(1, 1, 1, 0.105882)
-layout_mode = 0
-offset_left = 25.0
-offset_right = 1229.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -602.0
+offset_top = -350.0
+offset_right = 602.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="jokor" type="Timer" parent="."]
 wait_time = 0.15
