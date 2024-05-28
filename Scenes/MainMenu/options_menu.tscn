@@ -387,7 +387,7 @@ text = "Reset Buttons"
 [node name="Buttons" type="GridContainer" parent="Main/VBox/Controls/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = 80
+theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 10
 columns = 2
 
@@ -422,10 +422,10 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_accept"]
-custom_minimum_size = Vector2(75, 25)
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "Accept"
+text = "Accept/CCW"
 scroll_active = false
 
 [node name="ui_accept" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_accept"]
@@ -472,10 +472,10 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel"]
-custom_minimum_size = Vector2(75, 25)
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
-text = "Cancel"
+text = "Cancel/Clockwise"
 scroll_active = false
 
 [node name="ui_cancel" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel"]
@@ -521,7 +521,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/Flip"]
-custom_minimum_size = Vector2(75, 25)
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Flip"
@@ -570,7 +570,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/Break"]
-custom_minimum_size = Vector2(75, 25)
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Break"

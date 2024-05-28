@@ -93,6 +93,15 @@ unicode = 119
 
 [resource]
 script = ExtResource("1_nv052")
+HiScores = {
+"000000": [40, "YP!"],
+"111111": [30, "YP!"],
+"222222": [20, "YP!"],
+"333333": [10, "YP!"],
+"444444": [50, "YP!"],
+"999999": [1, "YP!"]
+}
+username = "LVY"
 masterAudioLeve = 100.0
 musicAudioLeve = 100.0
 sfxAudioLeve = 100.0

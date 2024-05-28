@@ -19,55 +19,62 @@ offset_bottom = 40.0
 metadata/_edit_lock_ = true
 
 [node name="ScoreContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
-metadata/_edit_lock_ = true
+size_flags_horizontal = 0
 
 [node name="ScoreText" type="RichTextLabel" parent="VBoxContainer/ScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "SCORE: 0"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="HiScoreContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
-metadata/_edit_lock_ = true
+size_flags_horizontal = 0
 
 [node name="HiScoreText" type="RichTextLabel" parent="VBoxContainer/HiScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HI SCORE: 0"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="LevelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
-metadata/_edit_lock_ = true
+size_flags_horizontal = 0
 
 [node name="LevelText" type="RichTextLabel" parent="VBoxContainer/LevelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "LEVEL: 1"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="LevelUpContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
-metadata/_edit_lock_ = true
+size_flags_horizontal = 0
 
 [node name="LevelProgress" type="ProgressBar" parent="VBoxContainer/LevelUpContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-rounded = true
 fill_mode = 1
 show_percentage = false
 
 [node name="BeadText" type="RichTextLabel" parent="VBoxContainer/LevelUpContainer/LevelProgress"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(225, 0)
 layout_mode = 0
 offset_right = 271.0
 offset_bottom = 27.0
 text = "BEADS CLEARED: 0"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="ConnectedPanel" type="PanelContainer" parent="VBoxContainer"]
 clip_contents = true
@@ -80,7 +87,9 @@ custom_minimum_size = Vector2(75, 200)
 layout_mode = 2
 
 [node name="DisplayContainer" type="GridContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Summn" type="Button" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-res://Scenes/Board&Beads/Board.tscn
+res://Scenes/MainMenu/options_menu.tscn
 res://Shaders/ShaderCode/BurnOut.gdshader
 res://Shaders/Beads/SingleBeadBurn.tres
 res://addons/controller_icons/settings.tres
@@ -6,7 +6,6 @@ res://Code/Scenes/Board&Beads/Board.gd
 res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Shaders/Backgrounds/DarkBGGradient.tres
 res://Shaders/Backgrounds/DarkBG.tres
-res://Resources/Rules/Basic Rules.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Shaders/ShaderCode/Black2Transp.gdshader
@@ -14,25 +13,17 @@ res://Shaders/ShaderCode/LightningArc.gdshader
 res://Shaders/ShaderCode/background.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
 res://Shaders/ShaderCode/Shockwave.gdshader
+res://Code/Globals/Globals.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/UI/right_ui.tscn
+res://Code/Scenes/UI/right_ui.gd
 res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/Board&Beads/fail_screen.tscn
-res://Scenes/Board&Beads/HighScoreScreen.tscn
-res://Scenes/Board&Beads/FullBead.tscn
-res://Scenes/Constants/ETC/pause_screen.tscn
-res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
-res://Code/Scenes/Board&Beads/FullPiece.gd
-res://Code/Scenes/UI/HighScoreScreen.gd
-res://Scenes/UI/right_ui.tscn
-res://Code/Scenes/UI/chain_totals.gd
-res://Code/Scenes/UI/right_ui.gd
 res://Scenes/UI/chain_totals.tscn
-res://Code/Scenes/Menus/how_2_play.gd
-res://Scenes/MainMenu/how_2_play.tscn
-res://addons/newgrounds/imported_medals/testinhg.tres
-res://Scenes/Constants/ETC/connected.tscn
-res://Scenes/Constants/Backgrounds/DarkBG.tscn
-res://Scenes/MainMenu/options_menu.tscn
-res://Code/Scenes/Menus/MainMenu.gd
+res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Resources/Rules/Basic Rules.tres
+res://Resources/Options/UserPrefs.tres
+res://Resources/Options/UserPreferences.gd
+res://Resources/Rules/RuleMaker.gd
+res://Scenes/Board&Beads/SingleBead.tscn
