@@ -50,6 +50,12 @@ static func load_or_create() -> UserPreferences:
 	
 	return res
 
+func save_score(score,name):
+	var id: String = ""
+	for i in range(6):
+		id = str(id,randi_range(0,9))
+	HiScores[id] = [score,name]
+
 #Ugly functions but they work
 func set_default_controls():
 	InputMap.load_from_project_settings()

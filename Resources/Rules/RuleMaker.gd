@@ -25,11 +25,11 @@ class_name Rules
 @export_category("Scoring")
 @export_group("Score")
 @export_range(0,100) var beadScore: int = 50
-@export_range(0,2,.01) var linkMultiplier: float = .5
+@export_range(0,3,.01) var linkMultiplier: float = .5
 @export_range(0,2,.01) var powerMultiplier: float = .15
-@export_range(0,2,.01) var chainMultiplier: float = .7
-@export_range(0,2,.01) var comboMultiplier: float = 2
-@export_range(0,1) var breakBeadRecharge: float = .75
+@export_range(0,5,.01) var chainMultiplier: float = .7
+@export_range(0,5,.01) var comboMultiplier: float = 2
+@export_range(0,2) var breakBeadRecharge: float = .75
 @export_group("Levels")
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100
@@ -63,6 +63,7 @@ func indvChainScore(chain, linkNum) -> int: #Seperate functions cause the two wi
 func chainComboMult(chainScore, combo) -> int:
 	#Will be zero at combo 1, so have a 1+const to make sure chain score doesn't vanish
 	#Beyond combo 1 combo mod will go very high
+	print("COMBO: ", combo)
 	return round(chainScore * (1 + (combo * comboMultiplier)))
 
 func totalScore(chains) -> int:

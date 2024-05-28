@@ -39,7 +39,7 @@ func _ready() -> void:
 func randomize_type(array) -> void:
 	typeID = array.pick_random()
 	currentType = Globals.bead_types[typeID]
-	typeFlag = 2^typeID
+	typeFlag = Globals.string_to_flag(currentType)
 	sprite.texture = beads[typeID]
 	material.set_shader_parameter("dissolve_value",1.0)
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
