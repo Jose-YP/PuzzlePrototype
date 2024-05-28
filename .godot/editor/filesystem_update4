@@ -22,3 +22,6 @@ res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/UI/chain_totals.tscn
 res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Resources/Rules/Basic Rules.tres
+res://Resources/Options/UserPrefs.tres
+res://Resources/Options/UserPreferences.gd

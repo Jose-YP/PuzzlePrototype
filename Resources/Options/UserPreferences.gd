@@ -1,6 +1,16 @@
 extends Resource
 class_name UserPreferences
 
+#SAVE FILE BASICS
+@export_category("Score")
+@export var HiScores: Dictionary = {"999999":[1,"YP!"],
+"000000":[40,"YP!"],
+"111111":[30,"YP!"],
+"222222":[20,"YP!"],
+"333333":[10,"YP!"],
+"444444":[50,"YP!"]}
+@export var username: String = "LVY"
+
 #AUDIO OPTIONS
 @export_category("Audio")
 @export_range(0,100,.05) var masterAudioLeve: float = 100.0
