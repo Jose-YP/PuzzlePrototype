@@ -63,14 +63,14 @@ bus = &"BoardSFX"
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_rnsn7")
-volume_db = -10.0
+volume_db = -5.0
 max_polyphony = 4
 bus = &"BoardSFX"
 
 [node name="Twinkle" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("8_6hs26")
-volume_db = -12.0
+volume_db = -8.0
 pitch_scale = 0.76
 bus = &"BoardSFX"
 

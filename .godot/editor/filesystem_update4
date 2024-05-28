@@ -29,3 +29,7 @@ res://Scenes/UI/right_ui.tscn
 res://Code/Scenes/UI/chain_totals.gd
 res://Code/Scenes/UI/right_ui.gd
 res://Scenes/UI/chain_totals.tscn
+res://Code/Scenes/Menus/how_2_play.gd
+res://Scenes/MainMenu/how_2_play.tscn
+res://addons/newgrounds/imported_medals/testinhg.tres
+res://Scenes/Constants/ETC/connected.tscn

@@ -93,3 +93,6 @@ func _on_next_pressed():
 
 func _on_main_menu_switch_tutorial():
 	%Next.grab_focus()
+
+func _on_jokor_timeout():
+	%Meter.show()

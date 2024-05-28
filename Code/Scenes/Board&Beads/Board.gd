@@ -37,7 +37,6 @@ var chainScores: Array[int]
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
 var inputHoldTime: float = 0
-var holdBreakChain: int = 0
 var brokenBeads: int = 0
 var score: int = 0
 var breakNum: int = 1
@@ -402,11 +401,10 @@ func _process(delta) -> void:
 				await LUI.rippleEnd
 				for i in range(chains.size()):
 					#Make sure the starting value is bracketed into an array
-					holdBreakChain = i
 					breaking = true
 					beadsSize += chains[i].size()
 					brokenBeads += chains[i].size()
-					break_order([chains[i].pick_random()], chains)
+					break_order([chains[i].pick_random()], chains, i)
 					await self.brokeAll
 				
 				RUI.update_display(beadsSize,linksSize,chainsSize)
@@ -448,8 +446,9 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
+		print("Breaker Size Comp: ", origBreakerSize, breakers.size())
 		#Since breaker beads break last do one last fall check
-		if breakers.size() < origBreakerSize:
+		if fallPaused:
 			all_fall()
 		
 		#Reset grounded & Gravity timer to give the player time to react
@@ -569,14 +568,18 @@ func second_fix() -> void:
 				board[pos.x][pos.y] = bead
 
 func lost_beads() -> void:
+	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
 	for bead in $Grid.get_children():
 		if bead == $Grid/GridBackground or bead.has_node("Beads"):
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
 			print(bead)
+			changed = true
 			display_board()
 			bead.queue_free()
+	if changed:
+		all_fall()
 
 func reset_beads() -> void:
 	for i in rules.width:
@@ -628,9 +631,9 @@ func check_breakers() -> void:
 			#print("BREAKER CHAINS:", breakerChains)
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			beadsSize = 0
-			holdBreakChain = 0
 			
 			#Break every chain found at ith breaker bead
+			print(range(breakAt[i].size()))
 			for j in range(breakAt[i].size()):
 				#Check if 
 				if not is_instance_valid(breakAt[i][j]):
@@ -638,14 +641,21 @@ func check_breakers() -> void:
 				#Make sure the starting value is bracketed into an array
 				var extraIndex = find_linkNum_index(breakerChains[j])
 				var finalScore = rules.chainComboMult(chainScores[extraIndex], comboSize)
+				var breakIndex: int = 0
 				beadsSize = breakerChains[j].size()
 				brokenBeads += breakerChains[j].size()
 				linksSize = chainLinkNum[extraIndex]
 				score += finalScore
 				print("From ",breakAt[i][j])
 				print("Score: ", chainScores[extraIndex], " With Combo ",  finalScore)
+				for chain in range(chains.size()):
+					breakIndex = chains[chain].find(breakAt[i][j])
+					if breakIndex != -1:
+						breakIndex = chain
+						break
 				
-				break_order([breakAt[i][j]], breakerChains)
+				print("Just checking something, ", extraIndex, breakIndex)
+				break_order([breakAt[i][j]], breakerChains, breakIndex)
 				await self.brokeAll
 				
 				#print()
@@ -656,7 +666,6 @@ func check_breakers() -> void:
 					usingBreakerArray[i].destroy_anim()
 					await usingBreakerArray[i].tree_exiting
 					breakers.erase(usingBreakerArray[i])
-					holdBreakChain = clamp(holdBreakChain + 1, 0, breakerChains.size()-1)
 			
 			comboSize += 1
 			#Should probably find a way to display multiple chain breaks at once
@@ -707,7 +716,7 @@ func find_chains(addScore: bool) -> void:
 	
 	print(chainScores)
 
-func break_order(chainPart, holdChains) -> void:
+func break_order(chainPart, holdChains, holdNum) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
 	#REMOVE EVERY INSTANCE OF CHAINS
@@ -720,20 +729,22 @@ func break_order(chainPart, holdChains) -> void:
 		for adj in bead.adjacent:
 			#Clear a bead if it's in the chain, first condition is for debugger
 			if (is_instance_valid(adj)
-			 and holdChains[holdBreakChain].find(adj) != -1):
+			 and holdChains[holdNum].find(adj) != -1):
 				adjacent[adj] = adj
 			elif adj != null:
 				print(adj, adj.currentType)
+				print(is_instance_valid(adj), holdChains[holdNum].find(adj))
 	
 	if adjacent.size() == 0:
 		print("ERmpty")
+		print(holdChains, holdNum)
 	
-	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
+	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	break_bead(chainPart)
 	await self.brokeBead
 	var empty = true
 	var notEmptied = []
-	for bead in holdChains[holdBreakChain]:
+	for bead in holdChains[holdNum]:
 		if bead != null:
 			empty = false
 			notEmptied.append(bead)
@@ -743,9 +754,9 @@ func break_order(chainPart, holdChains) -> void:
 		return
 	#If there are no adjacent beads left find untouched beads
 	if adjacent.size() != 0:
-		break_order(adjacent.keys(), holdChains)
+		break_order(adjacent.keys(), holdChains, holdNum)
 	else:
-		break_order([notEmptied.pick_random()], holdChains)
+		break_order([notEmptied.pick_random()], holdChains, holdNum)
 
 func break_bead(chainPart) -> void:
 	for bead in chainPart:
@@ -1027,11 +1038,13 @@ func pauseFall(should):
 		%Grounded.set_paused(true)
 		%SoftDrop.set_paused(true)
 		%Gravity.set_paused(true)
+		$Ghost.hide()
 	else:
 		fallPaused = false
 		%Grounded.set_paused(false)
 		%SoftDrop.set_paused(false)
 		%Gravity.set_paused(false)
+		$Ghost.show()
 
 func _on_soft_drop_timeout() -> void:
 	if can_move("Down"):

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/medal.png-ad6c58c2f63bb29d9252fa5ec38f15a2.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -12,9 +12,9 @@ plugin.cfg::TextFile::-1::1715277339::0::1::::<><>::
 plugin.gd::GDScript::-1::1715277339::0::1::::<>EditorPlugin<>::
 Settings.gd::GDScript::-1::1715277339::0::1::::ControllerSettings<>Resource<>::
 settings.tres::Resource/ControllerSettings::8165738396870216675::1716832683::0::1::::<><>::res://addons/controller_icons/Settings.gd
-::res://addons/controller_icons/assets/::1715277339
+::res://addons/controller_icons/assets/::1716850009
 disconnected.png::CompressedTexture2D::4512197778159170925::1715277339::1716850009::1::::<><>::
-::res://addons/controller_icons/assets/key/::1715277339
+::res://addons/controller_icons/assets/key/::1716850009
 0.png::CompressedTexture2D::7697226919020739807::1715277339::1716850009::1::::<><>::
 1.png::CompressedTexture2D::6501934886007856904::1715277339::1716850009::1::::<><>::
 2.png::CompressedTexture2D::5877888990493661742::1715277339::1716850009::1::::<><>::
@@ -103,7 +103,7 @@ win.png::CompressedTexture2D::9059084562024745141::1715277339::1716850008::1::::
 x.png::CompressedTexture2D::929698015214264532::1715277339::1716850008::1::::<><>::
 y.png::CompressedTexture2D::1818471588642891929::1715277339::1716850008::1::::<><>::
 z.png::CompressedTexture2D::8676305818312230914::1715277339::1716850008::1::::<><>::
-::res://addons/controller_icons/assets/luna/::1715277339
+::res://addons/controller_icons/assets/luna/::1716850011
 a.png::CompressedTexture2D::1221948880540117057::1715277339::1716850008::1::::<><>::
 b.png::CompressedTexture2D::3629131991851343787::1715277339::1716850008::1::::<><>::
 circle.png::CompressedTexture2D::4161858394255420215::1715277339::1716850008::1::::<><>::
@@ -126,12 +126,12 @@ r_stick.png::CompressedTexture2D::6191627335083348133::1715277339::1716850010::1
 r_stick_click.png::CompressedTexture2D::8243475072980937212::1715277339::1716850010::1::::<><>::
 x.png::CompressedTexture2D::2596990560905200728::1715277339::1716850010::1::::<><>::
 y.png::CompressedTexture2D::6615953341763332458::1715277339::1716850010::1::::<><>::
-::res://addons/controller_icons/assets/mouse/::1715277339
+::res://addons/controller_icons/assets/mouse/::1716850010
 left.png::CompressedTexture2D::4747263354749878952::1715277339::1716850010::1::::<><>::
 middle.png::CompressedTexture2D::336246058906472193::1715277339::1716850010::1::::<><>::
 right.png::CompressedTexture2D::6523733636320294469::1715277339::1716850010::1::::<><>::
 simple.png::CompressedTexture2D::1462245369340080858::1715277339::1716850010::1::::<><>::
-::res://addons/controller_icons/assets/ouya/::1715277339
+::res://addons/controller_icons/assets/ouya/::1716850011
 a.png::CompressedTexture2D::6249041730980544616::1715277339::1716850010::1::::<><>::
 dpad.png::CompressedTexture2D::7155899978081582247::1715277339::1716850011::1::::<><>::
 dpad_down.png::CompressedTexture2D::3483852930503798899::1715277339::1716850011::1::::<><>::
@@ -149,12 +149,12 @@ r_stick.png::CompressedTexture2D::1679330524644445009::1715277339::1716850011::1
 touch.png::CompressedTexture2D::6002072482048529789::1715277339::1716850011::1::::<><>::
 u.png::CompressedTexture2D::4030440569102275005::1715277339::1716850011::1::::<><>::
 y.png::CompressedTexture2D::7553502065632042127::1715277339::1716850011::1::::<><>::
-::res://addons/controller_icons/assets/positional/::1715277339
+::res://addons/controller_icons/assets/positional/::1716850011
 east.png::CompressedTexture2D::6167102690906581451::1715277339::1716850011::1::::<><>::
 north.png::CompressedTexture2D::2314707215161118889::1715277339::1716850011::1::::<><>::
 south.png::CompressedTexture2D::4638080405610658129::1715277339::1716850011::1::::<><>::
 west.png::CompressedTexture2D::3465964517017753545::1715277339::1716850011::1::::<><>::
-::res://addons/controller_icons/assets/ps3/::1715277339
+::res://addons/controller_icons/assets/ps3/::1716850011
 circle.png::CompressedTexture2D::8432898586865417642::1715277339::1716850011::1::::<><>::
 cross.png::CompressedTexture2D::9095798661796313959::1715277339::1716850011::1::::<><>::
 dpad.png::CompressedTexture2D::5494667099441230272::1715277339::1716850011::1::::<><>::
@@ -174,7 +174,7 @@ select.png::CompressedTexture2D::6629519284991714615::1715277339::1716850009::1:
 square.png::CompressedTexture2D::4322030092544477003::1715277339::1716850009::1::::<><>::
 start.png::CompressedTexture2D::8834673019988369971::1715277339::1716850009::1::::<><>::
 triangle.png::CompressedTexture2D::3569247911699363257::1715277339::1716850009::1::::<><>::
-::res://addons/controller_icons/assets/ps4/::1715277339
+::res://addons/controller_icons/assets/ps4/::1716850010
 circle.png::CompressedTexture2D::2624425664202702053::1715277339::1716850009::1::::<><>::
 cross.png::CompressedTexture2D::3342300689216909775::1715277339::1716850009::1::::<><>::
 diagram.png::CompressedTexture2D::5851644850168106728::1715277339::1716850010::1::::<><>::
@@ -197,7 +197,7 @@ share.png::CompressedTexture2D::3739539676586093118::1715277339::1716850010::1::
 square.png::CompressedTexture2D::2312466488324956532::1715277339::1716850010::1::::<><>::
 touch_pad.png::CompressedTexture2D::3157909824267231676::1715277339::1716850010::1::::<><>::
 triangle.png::CompressedTexture2D::1635663372927811472::1715277339::1716850010::1::::<><>::
-::res://addons/controller_icons/assets/ps5/::1715277339
+::res://addons/controller_icons/assets/ps5/::1716850010
 circle.png::CompressedTexture2D::3597960150318944537::1715277339::1716850010::1::::<><>::
 cross.png::CompressedTexture2D::2691354627606819528::1715277339::1716850010::1::::<><>::
 diagram.png::CompressedTexture2D::342507563552956495::1715277339::1716850010::1::::<><>::
@@ -223,7 +223,7 @@ share_alt.png::CompressedTexture2D::94534432782127102::1715277339::1716850005::1
 square.png::CompressedTexture2D::2525722696425813189::1715277339::1716850005::1::::<><>::
 touch_pad.png::CompressedTexture2D::8401919910434409484::1715277339::1716850005::1::::<><>::
 triangle.png::CompressedTexture2D::6590008386478632905::1715277339::1716850005::1::::<><>::
-::res://addons/controller_icons/assets/stadia/::1715277339
+::res://addons/controller_icons/assets/stadia/::1716850006
 a.png::CompressedTexture2D::3921236817528221090::1715277339::1716850005::1::::<><>::
 assistant.png::CompressedTexture2D::284407148709155574::1715277339::1716850005::1::::<><>::
 b.png::CompressedTexture2D::1312132405417473534::1715277339::1716850005::1::::<><>::
@@ -243,7 +243,7 @@ r_stick.png::CompressedTexture2D::1222229441129035781::1715277339::1716850005::1
 select.png::CompressedTexture2D::579875641220854513::1715277339::1716850005::1::::<><>::
 x.png::CompressedTexture2D::2055781957061355230::1715277339::1716850005::1::::<><>::
 y.png::CompressedTexture2D::2529829681453658741::1715277339::1716850005::1::::<><>::
-::res://addons/controller_icons/assets/steam/::1715277339
+::res://addons/controller_icons/assets/steam/::1716850006
 a.png::CompressedTexture2D::4792864843190440910::1715277339::1716850005::1::::<><>::
 b.png::CompressedTexture2D::6039260244076986694::1715277339::1716850005::1::::<><>::
 back.png::CompressedTexture2D::733304767198348290::1715277339::1716850005::1::::<><>::
@@ -274,7 +274,7 @@ tilt_roll.png::CompressedTexture2D::6897356665067187875::1715277339::1716850004:
 tilt_yaw.png::CompressedTexture2D::6025655524150755218::1715277339::1716850004::1::::<><>::
 x.png::CompressedTexture2D::4217333797616762597::1715277339::1716850004::1::::<><>::
 y.png::CompressedTexture2D::3637456796892388803::1715277339::1716850004::1::::<><>::
-::res://addons/controller_icons/assets/steamdeck/::1715277339
+::res://addons/controller_icons/assets/steamdeck/::1716850007
 a.png::CompressedTexture2D::1081760055903038379::1715277339::1716850004::1::::<><>::
 b.png::CompressedTexture2D::4879248245090126811::1715277339::1716850004::1::::<><>::
 dots.png::CompressedTexture2D::8362972451411712776::1715277339::1716850004::1::::<><>::
@@ -306,7 +306,7 @@ square.png::CompressedTexture2D::4410781116237316708::1715277339::1716850004::1:
 steam.png::CompressedTexture2D::8502158359201685868::1715277339::1716850004::1::::<><>::
 x.png::CompressedTexture2D::3924757861975320323::1715277339::1716850007::1::::<><>::
 y.png::CompressedTexture2D::4943120523811233133::1715277339::1716850007::1::::<><>::
-::res://addons/controller_icons/assets/switch/::1715277339
+::res://addons/controller_icons/assets/switch/::1716850008
 a.png::CompressedTexture2D::70630163316681525::1715277339::1716850007::1::::<><>::
 b.png::CompressedTexture2D::3787226169691311937::1715277339::1716850007::1::::<><>::
 controllers.png::CompressedTexture2D::6511250313064590109::1715277339::1716850007::1::::<><>::
@@ -334,7 +334,7 @@ x.png::CompressedTexture2D::4545054561247354894::1715277339::1716850007::1::::<>
 y.png::CompressedTexture2D::3796317644348903787::1715277339::1716850007::1::::<><>::
 zl.png::CompressedTexture2D::5531083624033956805::1715277339::1716850007::1::::<><>::
 zr.png::CompressedTexture2D::6952380807772436630::1715277339::1716850007::1::::<><>::
-::res://addons/controller_icons/assets/xbox360/::1715277339
+::res://addons/controller_icons/assets/xbox360/::1716850007
 a.png::CompressedTexture2D::9124285919887788140::1715277339::1716850007::1::::<><>::
 b.png::CompressedTexture2D::3801975477116728864::1715277339::1716850007::1::::<><>::
 back.png::CompressedTexture2D::5002803546769485915::1715277339::1716850007::1::::<><>::
@@ -356,7 +356,7 @@ start.png::CompressedTexture2D::5803929355699796159::1715277339::1716850007::1::
 start_alt.png::CompressedTexture2D::8334151044711462213::1715277339::1716850006::1::::<><>::
 x.png::CompressedTexture2D::636000834909789563::1715277339::1716850006::1::::<><>::
 y.png::CompressedTexture2D::3862162459667637671::1715277339::1716850006::1::::<><>::
-::res://addons/controller_icons/assets/xboxone/::1715277339
+::res://addons/controller_icons/assets/xboxone/::1716850007
 a.png::CompressedTexture2D::8749207738817086750::1715277339::1716850006::1::::<><>::
 b.png::CompressedTexture2D::1949435891207324902::1715277339::1716850006::1::::<><>::
 diagram.png::CompressedTexture2D::8488744059551645412::1715277339::1716850007::1::::<><>::
@@ -378,7 +378,7 @@ r_stick_click.png::CompressedTexture2D::8840481370091071990::1715277339::1716850
 view.png::CompressedTexture2D::1346889433654922258::1715277339::1716850006::1::::<><>::
 x.png::CompressedTexture2D::167259576045102610::1715277339::1716850006::1::::<><>::
 y.png::CompressedTexture2D::6761476271685337333::1715277339::1716850007::1::::<><>::
-::res://addons/controller_icons/assets/xboxseries/::1715277339
+::res://addons/controller_icons/assets/xboxseries/::1716850007
 a.png::CompressedTexture2D::5754306489485008223::1715277339::1716850007::1::::<><>::
 b.png::CompressedTexture2D::7723966344501729298::1715277339::1716850007::1::::<><>::
 diagram.png::CompressedTexture2D::3408515659237972706::1715277339::1716850007::1::::<><>::
@@ -446,14 +446,14 @@ example_scoreboard.gd::GDScript::-1::1706204339::0::1::::<>Control<>::
 example_scoreboard.tscn::PackedScene::4317405060774068446::1706204339::0::1::::<><>::res://addons/newgrounds/examples/example_scoreboard.gd<>res://addons/newgrounds/newgrounds_scoreboard.gd
 newgrounds_debug.gd::GDScript::-1::1716587152::0::1::::<>Control<>::
 newgrounds_debug.tscn::PackedScene::1619811821043084831::1716672604::0::1::::<><>::res://addons/newgrounds/examples/newgrounds_debug.gd<>res://addons/newgrounds/examples/ExampleSaveData.gd<>uid://b2rnbblsa42pm::::res://addons/newgrounds/examples/example_scoreboard.tscn<>uid://dgf2xfu4r0mtd::::res://addons/newgrounds/newgrounds_user_avatar.tscn<>uid://cafxm6acw5lcl::::res://addons/newgrounds/examples/example_medal_list.tscn<>res://addons/newgrounds/newgrounds_session_watcher.gd<>res://addons/newgrounds/newgrounds_medal_unlocker.gd
-::res://addons/newgrounds/icons/::1715399914
-anon.png::CompressedTexture2D::8834133970687912095::1706204339::1715399914::1::::<><>::
-avatar.png::CompressedTexture2D::1736156942127060365::1706204339::1715399914::1::::<><>::
-medal.png::CompressedTexture2D::4989066983218512741::1706204339::1715399914::1::::<><>::
-scoreboard.png::CompressedTexture2D::4370320445839379688::1706204339::1715399914::1::::<><>::
-session.png::CompressedTexture2D::8547229592107891387::1706204339::1715399914::1::::<><>::
-::res://addons/newgrounds/imported_medals/::1716587475
-testinhg.tres::Resource/Resource::7218481566125173642::1716587475::0::1::::<><>::res://addons/newgrounds/data/medal_resource.gd
+::res://addons/newgrounds/icons/::1716850119
+anon.png::CompressedTexture2D::8834133970687912095::1706204339::1716850119::1::::<><>::
+avatar.png::CompressedTexture2D::1736156942127060365::1706204339::1716850119::1::::<><>::
+medal.png::CompressedTexture2D::4989066983218512741::1706204339::1716850119::1::::<><>::
+scoreboard.png::CompressedTexture2D::4370320445839379688::1706204339::1716850119::1::::<><>::
+session.png::CompressedTexture2D::8547229592107891387::1706204339::1716850119::1::::<><>::
+::res://addons/newgrounds/imported_medals/::1716850374
+testinhg.tres::Resource/MedalResource::7218481566125173642::1716850374::0::1::::<><>::res://addons/newgrounds/data/medal_resource.gd
 ::res://addons/newgrounds/scripts/::1716587935
 newgrounds.gd::GDScript::-1::1716587935::0::1::::<>Node<>::
 newgrounds.tscn::PackedScene::6439464049918221784::1716403413::0::1::::<><>::res://addons/newgrounds/scripts/newgrounds.gd<>res://addons/newgrounds/scripts/newgrounds_components.gd<>res://addons/newgrounds/scripts/newgrounds_offline_data.gd
@@ -464,9 +464,8 @@ newgrounds_image.gd::GDScript::-1::1706204339::0::1::::<>TextureRect<>::
 newgrounds_offline_data.gd::GDScript::-1::1706204339::0::1::::<>Node<>::
 newgrounds_request.gd::GDScript::-1::1706204339::0::1::::NewgroundsRequest<>HTTPRequest<>::
 ::res://Art/::1716689570
-::res://Art/Backgrounds/::1716689628
+::res://Art/Backgrounds/::1716850670
 115.png::CompressedTexture2D::3608562760507141318::1715292042::1715292042::1::::<><>::
-Air BG.png::CompressedTexture2D::5202144251950783632::1715292042::1715292042::1::::<><>::
 Dark BG.png::CompressedTexture2D::6014922212016558526::1715292042::1715292042::1::::<><>::
 v1043-068a.png::CompressedTexture2D::4884160941452799133::1715292042::1715292042::1::::<><>::
 ::res://Art/Beads/::1716849879
@@ -478,7 +477,7 @@ LiquidOrb.png::CompressedTexture2D::4981308037519780617::1715032746::1716849879:
 SoulBreaker.png::CompressedTexture2D::1362707941815891526::1715988320::1716849879::1::::<><>::
 ::res://Art/ETC/::1716849916
 857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png::CompressedTexture2D::8160380675066023406::1714748740::1716849916::1::::<><>::
-doublesided.png::CompressedTexture2D::8718936885938840902::1714845214::1714845215::1::::<><>::
+doublesided.png::CompressedTexture2D::8718936885938840902::1714845214::1716850693::1::::<><>::
 ::res://Art/frames/::1716690459
 0000.png::CompressedTexture2D::8337188132914974801::1714771187::1716690368::1::::<><>::
 0001.png::CompressedTexture2D::3961639676691893016::1714771187::1716690368::1::::<><>::
@@ -553,9 +552,9 @@ breaker_bead.gd::GDScript::-1::1716843737::0::1::::<>Node2D<>::
 FullPiece.gd::GDScript::-1::1716845224::0::1::::<>Node2D<>::
 ghost_bead.gd::GDScript::-1::1716608926::0::1::::<>Node2D<>::
 SinglePiece.gd::GDScript::-1::1716610801::0::1::::<>Node2D<>::
-::res://Code/Scenes/Menus/::1716734792
+::res://Code/Scenes/Menus/::1716850374
 game_manager.gd::GDScript::-1::1716734791::0::1::::<>CanvasLayer<>::
-how_2_play.gd::GDScript::-1::1716693791::0::1::::<>PanelContainer<>::
+how_2_play.gd::GDScript::-1::1716850374::0::1::::<>PanelContainer<>::
 MainMenu.gd::GDScript::-1::1716734792::0::1::::<>Control<>::
 optionsMenu.gd::GDScript::-1::1716687648::0::1::::<>CanvasLayer<>::
 score_display.gd::GDScript::-1::1716501656::0::1::::<>PanelContainer<>::
@@ -582,8 +581,8 @@ RuleMaker.gd::GDScript::-1::1716593035::0::1::::Rules<>Resource<>::
 SaveFile.tres::Resource/Save::-1::1716740390::0::1::::<><>::res://Resources/SaveData/SaveMaker.gd
 SaveMaker.gd::GDScript::-1::1716586348::0::1::::Save<>Resource<>::
 ::res://Scenes/::1715179287
-::res://Scenes/Board&Beads/::1716849924
-Board.tscn::PackedScene::3399644878295701062::1716849924::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>uid://c8upol425ha0o::::res://Scenes/Board&Beads/grid_background.tscn<>uid://dlxjyxa3t38su::::res://Scenes/Board&Beads/ghost_bead.tscn<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn<>res://Code/Scenes/Board&Beads/BoardDebugCode.gd
+::res://Scenes/Board&Beads/::1716850441
+Board.tscn::PackedScene::3399644878295701062::1716850441::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>uid://c8upol425ha0o::::res://Scenes/Board&Beads/grid_background.tscn<>uid://dlxjyxa3t38su::::res://Scenes/Board&Beads/ghost_bead.tscn<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn<>res://Code/Scenes/Board&Beads/BoardDebugCode.gd
 breaker_bead.tscn::PackedScene::2399157447238258805::1716843740::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader<>res://Code/Scenes/Board&Beads/breaker_bead.gd<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://dmum7mn3abqi::::res://Audio/BoardSFX/BreakSFX/Brak1.wav<>uid://dmqj2u4jpxoyp::::res://Audio/BoardSFX/BreakSFX/Brak2.wav<>uid://hknh6c41g4qn::::res://Audio/BoardSFX/BreakSFX/Brak3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav
 fail_screen.tscn::PackedScene::129981532982295584::1716849431::0::1::::<><>::res://Code/Scenes/UI/fail_screen.gd
 FullBead.tscn::PackedScene::5820798710556208465::1716849431::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
@@ -605,18 +604,18 @@ ripple.tscn::PackedScene::4295565812743270968::1716240875::0::1::::<><>::
 ::res://Scenes/Constants/UIPieces/::1716690792
 all_beads.tscn::PackedScene::7719899159518361124::1716690209::0::1::::<><>::res://Code/Constants/all_beads.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png
 DuoDisplay.tscn::PackedScene::6367025496885865420::1716520533::0::1::::<><>::res://Code/Scenes/UI/DuoDisplay.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://dwhru74flwehi::::res://Art/ETC/doublesided.png
-::res://Scenes/MainMenu/::1716849924
-game_manager.tscn::PackedScene::291240715937711722::1716849923::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://dhlvh5cnlnrwe::::res://Audio/BoardSFX/Snare 11.wav<>uid://do31ftphnqyj8::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav<>uid://vamg0tkl3038::::res://Audio/Music/break-tambossa-103bpm.wav<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav<>uid://cynh42d4vh1do::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav<>uid://bs88cfn7ooyoh::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav<>uid://c55ujrf1e7yhj::::res://Scenes/Constants/ETC/pause_screen.tscn<>res://addons/newgrounds/scripts/newgrounds_request.gd
-how_2_play.tscn::PackedScene::5201704712034171909::1716697588::0::1::::<><>::res://Code/Scenes/Menus/how_2_play.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
-MainMenu.tscn::PackedScene::3030349083803999890::1716849924::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn<>uid://cgd0k1a1ig4xt::::res://Scenes/MainMenu/how_2_play.tscn
+::res://Scenes/MainMenu/::1716850442
+game_manager.tscn::PackedScene::291240715937711722::1716850441::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://dhlvh5cnlnrwe::::res://Audio/BoardSFX/Snare 11.wav<>uid://do31ftphnqyj8::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav<>uid://vamg0tkl3038::::res://Audio/Music/break-tambossa-103bpm.wav<>uid://dfbgcar6hpar8::::res://Scenes/Constants/Backgrounds/DarkBG.tscn<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav<>uid://cynh42d4vh1do::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav<>uid://bs88cfn7ooyoh::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav<>uid://c55ujrf1e7yhj::::res://Scenes/Constants/ETC/pause_screen.tscn<>res://addons/newgrounds/scripts/newgrounds_request.gd
+how_2_play.tscn::PackedScene::5201704712034171909::1716850442::0::1::::<><>::res://Code/Scenes/Menus/how_2_play.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
+MainMenu.tscn::PackedScene::3030349083803999890::1716850441::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn<>uid://cgd0k1a1ig4xt::::res://Scenes/MainMenu/how_2_play.tscn
 options_menu.tscn::PackedScene::1849702126104635348::1716697081::0::1::::<><>::res://Code/Scenes/Menus/optionsMenu.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd
 score_display.tscn::PackedScene::8428345760910690618::1716581919::0::1::::<><>::res://Code/Scenes/Menus/score_display.gd
-::res://Scenes/UI/::1716849925
+::res://Scenes/UI/::1716850442
 BreakProgress.tscn::PackedScene::5040236556525383006::1716689558::0::1::::<><>::res://Code/Scenes/UI/BreakProgress.gd<>res://Shaders/ShaderCode/ProgressBar.gdshader<>res://addons/controller_icons/objects/ControllerIconTexture.gd
-chain_totals.tscn::PackedScene::1012383733827204810::1716849925::0::1::::<><>::res://Code/Scenes/UI/chain_totals.gd
+chain_totals.tscn::PackedScene::1012383733827204810::1716850442::0::1::::<><>::res://Code/Scenes/UI/chain_totals.gd
 left_ui.tscn::PackedScene::8562864369025183345::1716651342::0::1::::<><>::res://Code/Scenes/UI/left_ui.gd<>uid://dbl2flstx01xg::::res://Scenes/UI/NextBeads.tscn<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn
 NextBeads.tscn::PackedScene::7253807944244565396::1715614520::0::1::::<><>::res://Code/Constants/NextBeads.gd<>uid://c5g3srjmute6t::::res://Scenes/UI/VeryNextBead.tscn
-right_ui.tscn::PackedScene::3256515849781732230::1716849925::0::1::::<><>::res://Code/Scenes/UI/right_ui.gd<>uid://cwyh8ksd5xhbw::::res://Scenes/Constants/UIPieces/DuoDisplay.tscn
+right_ui.tscn::PackedScene::3256515849781732230::1716850441::0::1::::<><>::res://Code/Scenes/UI/right_ui.gd<>uid://cwyh8ksd5xhbw::::res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 song_display.tscn::PackedScene::8386807918637817636::1715179287::0::1::::<><>::
 VeryNextBead.tscn::PackedScene::6892626070512177881::1715623860::0::1::::<><>::res://Code/Scenes/UI/VeryNextBead.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn
 ::res://Shaders/::1716474463
@@ -631,14 +630,14 @@ WaterBG.tres::ShaderMaterial::6787270583058607907::1716242647::0::1::::<><>::res
 LightningArc.tres::ShaderMaterial::5246288134869955939::1714924001::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader
 Ripple.tres::ShaderMaterial::1768813050385603548::1716240428::0::1::::<><>::
 SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1716849431::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
-::res://Shaders/ShaderCode/::1716849925
-background.gdshader::Shader::-1::1716849925::0::1::::<><>::
-Black2Transp.gdshader::Shader::-1::1716849925::0::1::::<><>::
-BurnOut.gdshader::Shader::-1::1716849925::0::1::::<><>::
-LightningArc.gdshader::Shader::-1::1716849925::0::1::::<><>::
-ProgressBar.gdshader::Shader::-1::1716849925::0::1::::<><>::
-Ripple.gdshader::Shader::-1::1716849925::0::1::::<><>::
-Shockwave.gdshader::Shader::-1::1716849925::0::1::::<><>::
+::res://Shaders/ShaderCode/::1716850442
+background.gdshader::Shader::-1::1716850442::0::1::::<><>::
+Black2Transp.gdshader::Shader::-1::1716850442::0::1::::<><>::
+BurnOut.gdshader::Shader::-1::1716850442::0::1::::<><>::
+LightningArc.gdshader::Shader::-1::1716850442::0::1::::<><>::
+ProgressBar.gdshader::Shader::-1::1716850442::0::1::::<><>::
+Ripple.gdshader::Shader::-1::1716850442::0::1::::<><>::
+Shockwave.gdshader::Shader::-1::1716850442::0::1::::<><>::
 ::res://Themes/::1716832683
 AdobeClean-Bold.ttf::FontFile::395619687205701920::1702314482::1715386954::1::::<><>::
 AdobeClean-Regular.ttf::FontFile::4413336349752594389::1702522296::1715386954::1::::<><>::
