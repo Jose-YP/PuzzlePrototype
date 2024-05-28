@@ -11,10 +11,10 @@ const directions: Array[String] = ["Left","Right","Up","Down"]
 const otherConnectionNum: Array = [1,0,3,2]
 
 var relation_flags: Array[int] = []
+var droughtArray: Array[int] = [0,0,0,0,0]
 var bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
 Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 var breaker_color: Color = Color(0.514, 0.969, 0.557)
-var droughtArray: Array[int] = [0,0,0,0,0]
 var glow_num: int = 3
 var level: int = 1
 var highestID: String
@@ -66,6 +66,12 @@ func sort_scores() -> Array:
 	
 	return sorted
 
+func get_controls() -> void:
+	for action in Globals.userPrefs.keyboard_action_events:
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
+		InputMap.action_add_event(action, Globals.userPrefs.joy_action_events[action])
+
 func set_controls() -> void:
 	for action in Globals.userPrefs.keyboard_action_events:
 		InputMap.action_erase_events(action)
@@ -93,6 +99,56 @@ func set_other_inputs() -> void:
 		InputMap.action_add_event("ui_focus_next", event)
 	for event in InputMap.action_get_events("ui_cancel"):
 		InputMap.action_add_event("ui_focus_prev", event)
+
+func pressed_accept() -> bool:
+	var countEither: bool = true
+	var cancelEvents = InputMap.action_get_events("ui_cancel")
+	var inputAccept = Input.is_action_just_pressed("ui_accept")
+	
+	#Check if CCW event also hits an event in ui_cancel
+	for event in InputMap.action_get_events("CCW"):
+		if cancelEvents.find(event) != -1:
+			countEither = false
+	
+	#If it does, only check for ui_accept
+	if countEither:
+		return inputAccept or Input.is_action_just_pressed("CCW")
+	else:
+		#Check if counterclockwise is has an input in accept
+		var countOther: bool = false
+		for event in InputMap.action_get_events("Clockwise"):
+			if cancelEvents.find(event) != -1:
+				countOther = true
+		
+		if countOther:
+			return inputAccept or Input.is_action_just_pressed("Clockwise")
+		else:
+			return inputAccept
+
+func pressed_cancel() -> bool:
+	var countEither: bool = true
+	var acceptEvents = InputMap.action_get_events("ui_accept")
+	var inputCancel = Input.is_action_just_pressed("ui_cancel")
+	
+	#Check if CCW event also hits an event in ui_cancel
+	for event in InputMap.action_get_events("Clockwise"):
+		if acceptEvents.find(event) != -1:
+			countEither = false
+	
+	#If it does, only check for ui_accept
+	if countEither:
+		return inputCancel or Input.is_action_just_pressed("Clockwise")
+	else:
+		#Check if counterclockwise is has an input in accept
+		var countOther: bool = false
+		for event in InputMap.action_get_events("CCW"):
+			if acceptEvents.find(event) != -1:
+				countOther = true
+		
+		if countOther:
+			return inputCancel or Input.is_action_just_pressed("CCW")
+		else:
+			return inputCancel
 
 #______________________________
 #CONVERSION

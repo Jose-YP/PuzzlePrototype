@@ -13,6 +13,7 @@ var chainTotalArray: Array[PanelContainer] = []
 var regScore: int = 0
 var HiScore: int = 0
 var currentBeads: int = 0
+var levelUpthreshold: int = 0
 var level: int = 1
 
 #______________________________
@@ -21,6 +22,7 @@ var level: int = 1
 func _ready() -> void:
 	HiScore = Globals.get_extreme()[0]
 	%HiScoreText.text = str("HISCORE: ", HiScore)
+	levelUpthreshold = get_levelup_Threshold(1)
 
 #______________________________
 #SCORE MANIP
@@ -42,38 +44,40 @@ func update_HiScore(score) -> void:
 func update_beads(beads) -> void:
 	%BeadText.text = str("BEADS: ", beads)
 	#Get how many were broken in a combo for breaker bead ruleset
-	if Globals.rules.breakBead:
-		breakGain.emit(beads - currentBeads)
-		currentBeads = beads
-	
-	var levelThreshold: int = 1
-	if level < Globals.rules.max_levels:
-		levelThreshold = level_upThreshold(level)
-	print("level: ", level," Threshold: ",levelThreshold)
-	#Make code for beads being higher than rules.bead_levelUp * level
-	%LevelProgress.value = clamp((beads - levelThreshold) / levelThreshold, 0, 100)
-	if beads >= levelThreshold and level < Globals.rules.max_levels:
+	var breakNum = beads - currentBeads
+	#New levelling system
+	levelUpthreshold -= breakNum
+	tween_levelUp(float(levelUpthreshold))
+	if levelUpthreshold <= 0:
 		print("level up!")
 		update_level()
-		%LevelProgress.value = 0
-		#Check for even higher levels
-		update_beads(beads)
+	
 	if level == Globals.rules.max_levels:
 		maxedLevel.emit()
 	
+	if Globals.rules.breakBead:
+		breakGain.emit(breakNum)
+		currentBeads = beads
 
-func level_upThreshold(lv) -> int:
-	if lv <= 2:
-		return roundi(Globals.rules.bead_levelUp + lv * Globals.rules.levelUp_rate)
-	else:
-		return roundi(Globals.rules.bead_levelUp + lv * Globals.rules.levelUp_rate) + level_upThreshold(lv - 1)
+func get_levelup_Threshold(lv) -> int:
+	return roundi(Globals.rules.bead_levelUp + lv * Globals.rules.levelUp_rate)
 
 func update_level() -> void:
 	level = clamp(level + 1, 1, Globals.rules.max_levels)
 	%LevelText.text = str("LEVEL: ", level)
 	Globals.level = level
+	levelUpthreshold = get_levelup_Threshold(level)
 	levelUp.emit(level)
+	tween_levelUp(float(get_levelup_Threshold(level)))
 
+func tween_levelUp(currentValue: float):
+	var currentThreshold = float(get_levelup_Threshold(level))
+	var target = clamp((currentThreshold - currentValue) / currentThreshold, 0, 100) * 100
+	var levelTween = self.create_tween().set_ease(Tween.EASE_IN)
+	levelTween.tween_property(%LevelProgress,"value",target,.1)
+	print(%LevelProgress.value, target," | ", currentThreshold - currentValue,
+	" | ", currentThreshold," | ", currentValue, " | ", (currentThreshold - currentValue) / currentThreshold)
+	print(currentValue / currentThreshold)
 #______________________________
 #CHAIN DISPLAY MANIP
 #______________________________
@@ -123,8 +127,9 @@ func remove_displays():
 		$Timer.start()
 
 func _on_summn_pressed():
-	var randBool = true
-	if randi() % 2 == 0:
-		randBool = false
+	#var randBool = true
+	#if randi() % 2 == 0:
+		#randBool = false
 	
-	update_display(randi_range(6,30), randi_range(2,12), randi_range(1,5), randBool)
+	update_beads(currentBeads + 5)
+	#update_display(randi_range(6,30), randi_range(2,12), randi_range(1,5), randBool)
