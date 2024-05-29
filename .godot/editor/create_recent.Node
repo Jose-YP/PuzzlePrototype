@@ -1,14 +1,14 @@
+Control
+Node2D
 Button
 VBoxContainer
 TextureRect
 HBoxContainer
 Timer
-Control
 AudioStreamPlayer
 GridContainer
 MarginContainer
 RichTextLabel
 ControllerTextureRect
-Node2D
 ColorRect
 Node

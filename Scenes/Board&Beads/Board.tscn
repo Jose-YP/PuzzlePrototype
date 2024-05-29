@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=9 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
-[ext_resource type="Script" path="res://Code/Scenes/Board&Beads/BoardDebugCode.gd" id="8_dtori"]
 
 [node name="Board" type="Node2D"]
 process_mode = 1
@@ -34,15 +33,25 @@ visible = false
 [node name="GhostBead3" parent="Ghost" instance=ExtResource("4_yfyud")]
 visible = false
 
-[node name="RightUI" parent="." instance=ExtResource("5_uppt1")]
+[node name="UI" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.0392157)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RightUI" parent="UI" instance=ExtResource("5_uppt1")]
+layout_mode = 1
 offset_left = -30.0
 offset_top = -20.0
 offset_right = -30.0
 offset_bottom = -20.0
 
-[node name="LeftUI" parent="." instance=ExtResource("3_4i3af")]
-offset_left = 10.0
+[node name="LeftUI" parent="UI" instance=ExtResource("3_4i3af")]
+layout_mode = 1
+offset_left = 10.04
 offset_top = -25.0
+offset_right = 10.04
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
@@ -67,11 +76,11 @@ one_shot = true
 
 [node name="SoftDrop" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.3
 
 [node name="Gravity" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 2.5
 autostart = true
 
 [node name="Shake" type="Timer" parent="Timers"]
@@ -87,18 +96,27 @@ one_shot = true
 
 [node name="ChainFinish" type="Timer" parent="Timers"]
 
-[node name="DebugCode" type="Node" parent="."]
-script = ExtResource("8_dtori")
-
 [node name="Hold" type="Node2D" parent="."]
 editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"
 position = Vector2(-100, -100)
 
-[connection signal="HighScore" from="RightUI" to="." method="_on_right_ui_high_score"]
-[connection signal="breakGain" from="RightUI" to="LeftUI" method="_on_right_ui_break_gain"]
-[connection signal="levelUp" from="RightUI" to="." method="_on_right_ui_level_up"]
-[connection signal="maxedLevel" from="RightUI" to="." method="_on_right_ui_maxed_level"]
-[connection signal="breakReady" from="LeftUI" to="." method="_on_left_ui_break_ready"]
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -109.0
+offset_right = 1049.0
+offset_bottom = 756.0
+grow_vertical = 0
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
+
+[connection signal="HighScore" from="UI/RightUI" to="." method="_on_right_ui_high_score"]
+[connection signal="breakGain" from="UI/RightUI" to="UI/LeftUI" method="_on_right_ui_break_gain"]
+[connection signal="levelUp" from="UI/RightUI" to="." method="_on_right_ui_level_up"]
+[connection signal="maxedLevel" from="UI/RightUI" to="." method="_on_right_ui_maxed_level"]
+[connection signal="breakReady" from="UI/LeftUI" to="." method="_on_left_ui_break_ready"]
 [connection signal="proceed" from="HighScoreScreen" to="." method="_on_high_score_screen_proceed"]
 [connection signal="timeout" from="Timers/Grounded" to="." method="_on_grounded_timeout"]
 [connection signal="timeout" from="Timers/SoftDrop" to="." method="_on_soft_drop_timeout"]

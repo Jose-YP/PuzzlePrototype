@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c55ujrf1e7yhj"]
+[gd_scene load_steps=6 format=3 uid="uid://c55ujrf1e7yhj"]
 
 [ext_resource type="Script" path="res://Code/Constants/PauseScreen.gd" id="1_f2w6d"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_i2bur"]
+[ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="3_p5lg0"]
+
+[sub_resource type="Texture2D" id="Texture2D_ohhwm"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i2bur")
+path = "Pause"
+show_mode = 0
+force_type = 1
+
+[sub_resource type="Texture2D" id="Texture2D_btr6s"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i2bur")
+path = "Break"
+show_mode = 0
+force_type = 0
 
 [node name="PauseScreen" type="CanvasLayer"]
 layer = 2
@@ -21,21 +39,82 @@ offset_bottom = 385.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.101961, 0.101961, 0.101961, 1)
+metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -109.5
-offset_top = -71.0
-offset_right = 134.5
-offset_bottom = 92.0
+offset_left = -119.0
+offset_top = -27.0
+offset_right = 119.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-bbcode_enabled = true
-text = "[center]PAUSED
 
-PRESS SPACE OR PAUSE BUTTON TO UNPAUSE
+[node name="TITLE" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "PAUSED
 "
+
+[node name="PAUSE" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/PAUSE"]
+custom_minimum_size = Vector2(55, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "PRESS "
+
+[node name="PauseTexture" type="TextureRect" parent="VBoxContainer/PAUSE"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("Texture2D_ohhwm")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="PAUSE2" type="RichTextLabel" parent="VBoxContainer/PAUSE"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = " TO UNPAUSE"
+
+[node name="RETRY" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RETRY" type="RichTextLabel" parent="VBoxContainer/RETRY"]
+custom_minimum_size = Vector2(55, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "PRESS "
+
+[node name="RetryTexture" type="TextureRect" parent="VBoxContainer/RETRY"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("Texture2D_btr6s")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="RETRY2" type="RichTextLabel" parent="VBoxContainer/RETRY"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = " TO RETRY"
+
+[node name="Pause" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_p5lg0")
+volume_db = -10.0
+pitch_scale = 0.8

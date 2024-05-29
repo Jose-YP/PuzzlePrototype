@@ -99,7 +99,7 @@ func update_display(beads, links, chains, breaker = false) -> void:
 	if chains > 1 and not breaker:
 		chainText = str(chainText, chains, " Chains")
 	elif breaker:
-		chainText = str(chainText, chains, " Combo")
+		chainText = str(chainText, chains + 1, " Combo")
 	else:
 		chainText = str(chainText, chains, " Chain")
 	

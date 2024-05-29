@@ -6,10 +6,11 @@ extends Node2D
 @export var scoreFade: float = 1.5
 @export var farAway: Vector2 = Vector2(-100,-100)
 @export var RUIextra: float = 20.0
+@export var trasitionTiming: float = .15
 
 @onready var realHeight: int = rules.height - 1
-@onready var RUI: Control = $RightUI
-@onready var LUI: Control = $LeftUI
+@onready var RUI: Control = $UI/RightUI
+@onready var LUI: Control = $UI/LeftUI
 @onready var Fail: Control = $FailScreen
 @onready var ghostBeads: Array[Node] = $Ghost.get_children()
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
@@ -66,19 +67,11 @@ func _ready() -> void:
 	$Hold.add_child(temp2)
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
+	temp2.ripple()
+	await temp2.rippleEnd
 	
 	#Make board before adding anything
 	board = make_grid()
-	
-	#Make Timers function
-	%Gravity.set_wait_time(rules.gravity)
-	%SoftDrop.set_wait_time(rules.soft_drop)
-	pauseFall(false)
-	
-	var rel = rules.bead_relationships
-	Globals.glow_num = rel.glow_num
-	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
-	rel.lightRelations, rel.darkRelations]
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width,0))
 	RUI.position += Vector2(RUIextra, 0)
@@ -96,6 +89,11 @@ func _ready() -> void:
 	Globals.droughtArray = [0,0,0,0,0]
 	spawn_full_beads()
 	pull_next_bead()
+	
+	var transitionTween = self.create_tween().set_parallel()
+	transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-1000),trasitionTiming)
+	transitionTween.tween_property($UI,"modulate",Color.WHITE,trasitionTiming)
+	pauseFall(false)
 
 func make_grid() -> Array[Array]:
 	var array: Array[Array] = []
@@ -236,7 +234,7 @@ func hard_drop(target) -> void:
 	for i in range(currentBead.beads.size()):
 		var loc = find_bead(currentBead.beads[i])
 		if loc == null or loc > Vector2i(rules.width, realHeight) or loc < Vector2i(0,0):
-			print("Not matching up", loc)
+			print("Not matching up", loc, currentBead.beads[i].currentType)
 			print(currentBead.beads[i],target[i])
 			fixUp.append(currentBead.beads[i])
 	
@@ -417,7 +415,6 @@ func _process(delta) -> void:
 #POST TURN PROCESSES
 #______________________________
 func post_turn() -> void:
-	var origBreakerSize = breakers.size()
 	currentBead.placed = true
 	if not currentBead.breaker:
 		currentBead.sync_position()
@@ -446,12 +443,11 @@ func post_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
-		print("Breaker Size Comp: ", origBreakerSize, breakers.size())
 		#Since breaker beads break last do one last fall check
 		if fallPaused:
 			all_fall()
 			print()
-			playSFX.emit(9)
+			playSFX.emit(8)
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		lost_beads()
@@ -492,7 +488,7 @@ func find_links() -> void:
 
 func post_break() -> void:
 	all_fall()
-	playSFX.emit(9)
+	playSFX.emit(8)
 	
 	if not rules.breakBead:
 		breakNum -= 1
@@ -567,6 +563,8 @@ func second_fix() -> void:
 			var bead = board[i][j]
 			if bead == null:
 				continue
+			if bead.name.ends_with("2"):
+				pass
 			
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pos:
@@ -580,9 +578,9 @@ func lost_beads() -> void:
 		if bead == $Grid/GridBackground or bead.has_node("Beads"):
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
-			print(bead, "LOST!!! :o!")
-			changed = true
 			display_board()
+			print(bead, "LOST!!! :o!", bead.currentType)
+			changed = true
 			bead.queue_free()
 	if changed:
 		all_fall()
@@ -620,6 +618,7 @@ func check_breakers() -> void:
 	#Have all breaker ripples occur at once
 	
 	if shouldBreak:
+		print(breakAtCheck)
 		pauseFall(true)
 		playBreak.emit(clamp(comboSize,0,2))
 		print(comboSize, usingBreakerArray)
@@ -726,8 +725,10 @@ func break_order(chainPart, holdNum) -> void:
 				adjacent[adj] = adj
 	
 	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
+	display_board()
 	break_bead(chainPart)
 	await self.brokeBead
+	display_board()
 	var empty = true
 	var notEmptied = []
 	for bead in chains[holdNum]:
@@ -1044,7 +1045,7 @@ func _on_grounded_timeout() -> void:
 	place()
 
 func _on_gravity_timeout() -> void:
-	if rules.gravity_on:
+	if rules.gravity_on and not Input.is_action_pressed("ui_down"):
 		if not can_move("Down") and not held:
 			place()
 		else:

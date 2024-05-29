@@ -25,6 +25,11 @@ func _ready() -> void:
 	set_other_inputs()
 	set_controls()
 	set_colors()
+	
+	var rel = rules.bead_relationships
+	Globals.glow_num = rel.glow_num
+	Globals.relation_flags = [rel.earthRelations, rel.seaRelations, rel.airRelations,
+	rel.lightRelations, rel.darkRelations]
 
 #______________________________
 #SAVE MANAGEMENT

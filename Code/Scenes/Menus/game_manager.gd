@@ -28,6 +28,7 @@ func _process(_delta):
 		var currently = get_tree().paused
 		get_tree().paused = not currently
 		$PauseScreen.visible = not currently
+		$PauseScreen.play_sfx()
 	elif Input.is_action_just_pressed("Pause"):
 		unpausing = false
 
@@ -44,7 +45,7 @@ func changeScene(scene) -> void:
 	$".".add_child(newScene)
 	$".".move_child(newScene,1)
 	currentScene = newScene
-	$PauseScreen.retryDissplay.hide()
+	$PauseScreen.entered_board(false)
 
 #For loading scenes
 func loadScene(scene) -> void:
@@ -52,6 +53,7 @@ func loadScene(scene) -> void:
 	currentScene.next_scene = scene
 	match scene:
 		boardScene:
+			
 			currentScene.connect("finished", board_scene_loaded)
 		optionsScene:
 			currentScene.connect("finished", option_scene_loaded)
@@ -62,7 +64,8 @@ func board_scene_loaded(scene):
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
-	$PauseScreen.retryDissplay.show()
+	$PauseScreen.entered_board(true)
+	
 
 func option_scene_loaded(scene):
 	changeScene(scene)
@@ -99,8 +102,8 @@ func _on_board_play_sfx(index):
 func _on_board_play_break_sfx(index):
 	BreakSFX[index].play()
 
-func on_board_retry():
-	if currentScene == boardScene:
+func on_board_retry(onBoard = true):
+	if onBoard:
 		loadScene(boardScene)
 
 #-----------------------------------------

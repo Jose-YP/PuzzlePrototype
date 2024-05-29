@@ -7,20 +7,16 @@ class_name Rules
 @export_range(6,15) var height: int = 9 #row 0, 1 and 2 are fail state rows
 @export_range(0,15) var safe_high_columns: int = 0 #Which colums in fail rows are safe?
 @export_range(0,3) var fail_rows: int = 2
-@export_group("Pos & Sizing")
+@export_subgroup("Pos & Sizing")
 @export var offset: Vector2 = Vector2(65,65)
 @export var origin: Vector2 = Vector2(200, 85)
 @export var start_pos: Vector2i = Vector2(4,1)
 
-@export_category("Process Constants")
+@export_group("Process Constants")
 @export var bead_relationships: Relations
 @export var breakBead: bool = false
 @export_range(5,20) var droughtVal: int = 8
-@export_group("Timing")
-@export_range(0,10,.5) var gravity: float = 5
-@export_range(0,2,.1) var soft_drop: float = 1
-@export_group("ETC")
-@export var rotate_pop_checks: Array[Vector2i] = [Vector2i(0,-1),Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
+@export_range(5,20) var floodVal: int = 8
 
 @export_category("Scoring")
 @export_group("Score")
@@ -34,9 +30,12 @@ class_name Rules
 @export var max_levels: int = 20
 @export var bead_levelUp: int = 100
 @export_range(0,1,.01) var levelUp_rate: float = .25
-@export_range(0,.5,.01) var speedUp: float = .05
+@export_range(0,.5,.005) var speedUp: float = .05
 @export_range(0,1,.01) var meterChargeRate: float = .25
 @export_range(0,300) var meterChargeThres: int = 10
+
+@export_group("ETC")
+@export var rotate_pop_checks: Array[Vector2i] = [Vector2i(0,-1),Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 
 @export_category("Debug")
 @export_group("Debug")

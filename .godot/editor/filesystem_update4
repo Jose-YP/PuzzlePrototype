@@ -7,8 +7,16 @@ res://Shaders/Backgrounds/DarkBG.tres
 res://Resources/Rules/Basic Rules.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
-res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/UI/right_ui.tscn
 res://Scenes/UI/chain_totals.tscn
+res://Scenes/Constants/ETC/pause_screen.tscn
+res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Scenes/UI/right_ui.gd
+res://Resources/Rules/RuleMaker.gd
 res://Code/Constants/PauseScreen.gd
+res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/Constants/UIPieces/DuoDisplay.tscn
+res://Code/Globals/Globals.gd
+res://Scenes/Constants/ETC/load_screen.tscn
+res://Scenes/UI/left_ui.tscn
