@@ -451,6 +451,7 @@ func post_turn() -> void:
 		if fallPaused:
 			all_fall()
 			print()
+			playSFX.emit(9)
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		lost_beads()
@@ -491,6 +492,7 @@ func find_links() -> void:
 
 func post_break() -> void:
 	all_fall()
+	playSFX.emit(9)
 	
 	if not rules.breakBead:
 		breakNum -= 1

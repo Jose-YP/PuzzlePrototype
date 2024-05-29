@@ -11,3 +11,4 @@ res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/UI/right_ui.tscn
 res://Scenes/UI/chain_totals.tscn
+res://Code/Constants/PauseScreen.gd

@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var Newgrounds: bool = true
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
-%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC]
+%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
 @onready var BreakSFX: Array[AudioStreamPlayer] = [%Roar, %Roar2, %Roar3]
 @onready var MenuSFX: Array[AudioStreamPlayer] = [%MenuMove, %MenuConfirm,
  %MenuDeselect, %Pause]
@@ -44,6 +44,7 @@ func changeScene(scene) -> void:
 	$".".add_child(newScene)
 	$".".move_child(newScene,1)
 	currentScene = newScene
+	$PauseScreen.retryDissplay.hide()
 
 #For loading scenes
 func loadScene(scene) -> void:
@@ -61,6 +62,7 @@ func board_scene_loaded(scene):
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
+	$PauseScreen.retryDissplay.show()
 
 func option_scene_loaded(scene):
 	changeScene(scene)
@@ -98,7 +100,8 @@ func _on_board_play_break_sfx(index):
 	BreakSFX[index].play()
 
 func on_board_retry():
-	loadScene(boardScene)
+	if currentScene == boardScene:
+		loadScene(boardScene)
 
 #-----------------------------------------
 #OPTION MENU SIGNALS

@@ -95,9 +95,11 @@ volume_db = -11.62
 bus = &"BoardSFX"
 
 [node name="AllFall" type="AudioStreamPlayer" parent="BoardSFX"]
+unique_name_in_owner = true
 stream = ExtResource("12_tefc7")
 volume_db = -4.067
 pitch_scale = 0.98
+bus = &"BoardSFX"
 
 [node name="BreakSFX" type="Node" parent="BoardSFX"]
 
@@ -159,3 +161,4 @@ script = ExtResource("21_6ewy6")
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]
 [connection signal="playSFX" from="PauseScreen" to="." method="_on_pause_screen_play_sfx"]
+[connection signal="retry" from="PauseScreen" to="." method="on_board_retry"]
