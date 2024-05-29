@@ -450,6 +450,7 @@ func post_turn() -> void:
 		#Since breaker beads break last do one last fall check
 		if fallPaused:
 			all_fall()
+			print()
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		lost_beads()
@@ -543,7 +544,10 @@ func all_fall() -> void:
 			bead.set_name(str(target))
 	
 	if check_again:
+		lost_beads()
 		all_fall()
+	if currentBead != null:
+		ghost_bead_pos()
 
 func detect_fail() -> void:
 	#Only check for fail spots
@@ -574,7 +578,7 @@ func lost_beads() -> void:
 		if bead == $Grid/GridBackground or bead.has_node("Beads"):
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
-			print(bead)
+			print(bead, "LOST!!! :o!")
 			changed = true
 			display_board()
 			bead.queue_free()

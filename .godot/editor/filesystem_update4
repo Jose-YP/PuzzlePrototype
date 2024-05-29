@@ -1,29 +1,13 @@
-res://Scenes/MainMenu/options_menu.tscn
-res://Shaders/ShaderCode/BurnOut.gdshader
+res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://addons/controller_icons/settings.tres
 res://Code/Scenes/Board&Beads/Board.gd
-res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Shaders/Backgrounds/DarkBGGradient.tres
 res://Shaders/Backgrounds/DarkBG.tres
+res://Resources/Rules/Basic Rules.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
-res://Shaders/ShaderCode/Black2Transp.gdshader
-res://Shaders/ShaderCode/LightningArc.gdshader
-res://Shaders/ShaderCode/background.gdshader
-res://Shaders/ShaderCode/Ripple.gdshader
-res://Shaders/ShaderCode/Shockwave.gdshader
-res://Code/Globals/Globals.gd
+res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/Board.tscn
-res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/UI/right_ui.tscn
-res://Code/Scenes/UI/right_ui.gd
-res://Scenes/MainMenu/game_manager.tscn
-res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/UI/chain_totals.tscn
-res://Scenes/Board&Beads/HighScoreScreen.tscn
-res://Resources/Rules/Basic Rules.tres
-res://Resources/Options/UserPrefs.tres
-res://Resources/Options/UserPreferences.gd
-res://Resources/Rules/RuleMaker.gd
-res://Scenes/Board&Beads/SingleBead.tscn

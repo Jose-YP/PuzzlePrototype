@@ -99,9 +99,6 @@ func _on_board_play_break_sfx(index):
 
 func on_board_retry():
 	loadScene(boardScene)
-	#currentScene.connect("playSFX",_on_board_play_sfx)
-	#currentScene.Fail.connect("main",back_to_menu)
-	#currentScene.Fail.connect("retry",on_board_retry)
 
 #-----------------------------------------
 #OPTION MENU SIGNALS
