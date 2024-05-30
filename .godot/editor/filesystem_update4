@@ -16,3 +16,5 @@ res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 res://Scenes/Constants/ETC/load_screen.tscn
 res://Scenes/UI/left_ui.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
+res://Code/Scenes/Menus/MainMenu.gd
+res://Scenes/MainMenu/MainMenu.tscn

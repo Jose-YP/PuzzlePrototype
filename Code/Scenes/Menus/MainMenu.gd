@@ -1,7 +1,7 @@
 extends Control
 
 @export var newH2pPosition: Vector2 = Vector2(-526,-330)
-@export var orgH2pPosition: Vector2 = Vector2(-526,-1000)
+@export var orgH2pPosition: Vector2 = Vector2(-526,-1500)
 
 signal switchPlay
 signal switchOptions
