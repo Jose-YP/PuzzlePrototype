@@ -6,7 +6,7 @@ extends Node2D
 @export var scoreFade: float = 1.5
 @export var farAway: Vector2 = Vector2(-100,-100)
 @export var RUIextra: float = 20.0
-@export var trasitionTiming: float = .15
+@export var trasitionTiming: float = .1
 
 @onready var realHeight: int = rules.height - 1
 @onready var RUI: Control = $UI/RightUI
@@ -65,10 +65,11 @@ func _ready() -> void:
 	var temp2 = breakerBead.instantiate()
 	$Hold.add_child(temp)
 	$Hold.add_child(temp2)
+	#temp.modulate = Color(Color.WHITE,.001)
+	#temp2.modulate = Color(Color.WHITE,.001)
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
-	temp2.ripple()
-	await temp2.rippleEnd
+	temp2.rippleShader.show()
 	
 	#Make board before adding anything
 	board = make_grid()
@@ -93,6 +94,7 @@ func _ready() -> void:
 	var transitionTween = self.create_tween().set_parallel()
 	transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-1000),trasitionTiming)
 	transitionTween.tween_property($UI,"modulate",Color.WHITE,trasitionTiming)
+	await transitionTween.finished
 	pauseFall(false)
 
 func make_grid() -> Array[Array]:

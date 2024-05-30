@@ -10,6 +10,8 @@ extends Node2D
 signal find_adjacent
 signal rippleEnd
 
+@onready var rippleShader: ColorRect = $Ripple
+
 #Beads & positions is here just to easily integrate into old code
 var currentType: String = "Breaker"
 var typeID: int = 5

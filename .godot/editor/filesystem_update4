@@ -1,22 +1,21 @@
 res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://addons/controller_icons/settings.tres
-res://Code/Scenes/Board&Beads/Board.gd
 res://Shaders/Backgrounds/DarkBGGradient.tres
 res://Shaders/Backgrounds/DarkBG.tres
 res://Resources/Rules/Basic Rules.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
+res://Shaders/ShaderCode/Shockwave.gdshader
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/UI/right_ui.tscn
 res://Scenes/UI/chain_totals.tscn
 res://Scenes/Constants/ETC/pause_screen.tscn
 res://Scenes/MainMenu/how_2_play.tscn
-res://Code/Scenes/UI/right_ui.gd
-res://Resources/Rules/RuleMaker.gd
-res://Code/Constants/PauseScreen.gd
-res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Constants/UIPieces/DuoDisplay.tscn
-res://Code/Globals/Globals.gd
 res://Scenes/Constants/ETC/load_screen.tscn
 res://Scenes/UI/left_ui.tscn
+res://Code/Scenes/Board&Beads/Board.gd
+res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Scenes/Board&Beads/breaker_bead.tscn
+res://Code/Scenes/Menus/game_manager.gd
