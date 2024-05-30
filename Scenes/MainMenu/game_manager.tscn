@@ -30,6 +30,7 @@ Newgrounds = false
 
 [node name="Background" parent="." instance=ExtResource("12_73kx1")]
 process_mode = 1
+visible = false
 offset_left = -668.5
 offset_top = -668.5
 offset_right = 668.5

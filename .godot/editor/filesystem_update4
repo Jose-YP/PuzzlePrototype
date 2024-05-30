@@ -15,7 +15,4 @@ res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 res://Scenes/Constants/ETC/load_screen.tscn
 res://Scenes/UI/left_ui.tscn
-res://Code/Scenes/Board&Beads/Board.gd
-res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Scenes/Menus/game_manager.gd

@@ -16,6 +16,10 @@ run/main_scene="res://Scenes/MainMenu/game_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/Beads/LiquidOrb.png"
 
+[audio]
+
+driver/mix_rate.web=44100
+
 [autoload]
 
 NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
