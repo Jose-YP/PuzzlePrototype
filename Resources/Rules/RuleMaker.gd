@@ -17,6 +17,7 @@ class_name Rules
 @export var breakBead: bool = false
 @export_range(5,20) var droughtVal: int = 8
 @export_range(5,20) var floodVal: int = 8
+@export_range(0,2,.1) var soft_drop: float = .5
 
 @export_category("Scoring")
 @export_group("Score")

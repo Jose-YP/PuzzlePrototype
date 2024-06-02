@@ -20,9 +20,11 @@ const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
 var unpausing: bool = false
 
 func _ready():
-	FinalGlobal.finalReady(Newgrounds)
 	BoardSFX[0].play()
 	BoardSFX[0].stop()
+	BoardSFX[1].play()
+	BoardSFX[1].stop()
+	FinalGlobal.finalReady(Newgrounds)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") and not unpausing:

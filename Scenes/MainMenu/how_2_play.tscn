@@ -108,11 +108,9 @@ theme_override_constants/margin_right = 10
 [node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 1
 tabs_visible = false
 
 [node name="Chains" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
-visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 
@@ -304,6 +302,7 @@ text = "[center]Breaker Bead
 Will destroy any chains adjacent to it"
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
+visible = false
 custom_minimum_size = Vector2(0, 550)
 layout_mode = 2
 

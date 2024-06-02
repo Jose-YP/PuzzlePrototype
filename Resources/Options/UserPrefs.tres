@@ -35,61 +35,37 @@ device = -1
 button_index = 11
 pressed = true
 
-[sub_resource type="InputEventKey" id="InputEventKey_dcovd"]
-pressed = true
-keycode = 74
-physical_keycode = 74
-key_label = 74
-unicode = 106
+[sub_resource type="InputEventKey" id="InputEventKey_m0rdv"]
+device = -1
+physical_keycode = 86
+unicode = 118
 
-[sub_resource type="InputEventKey" id="InputEventKey_ht8iy"]
-pressed = true
-keycode = 73
-physical_keycode = 73
-key_label = 73
-unicode = 105
+[sub_resource type="InputEventKey" id="InputEventKey_hjyav"]
+device = -1
+physical_keycode = 67
+unicode = 99
 
-[sub_resource type="InputEventKey" id="InputEventKey_plhdq"]
-pressed = true
-keycode = 79
-physical_keycode = 79
-key_label = 79
-unicode = 111
+[sub_resource type="InputEventKey" id="InputEventKey_0xpg2"]
+device = -1
+physical_keycode = 90
+unicode = 122
 
-[sub_resource type="InputEventKey" id="InputEventKey_4wl75"]
-pressed = true
-keycode = 75
-physical_keycode = 75
-key_label = 75
-unicode = 107
+[sub_resource type="InputEventKey" id="InputEventKey_ho8qb"]
+device = -1
+physical_keycode = 88
+unicode = 120
 
-[sub_resource type="InputEventKey" id="InputEventKey_pft84"]
-pressed = true
-keycode = 83
-physical_keycode = 83
-key_label = 83
-unicode = 115
+[sub_resource type="InputEventKey" id="InputEventKey_qourv"]
+keycode = 4194322
 
-[sub_resource type="InputEventKey" id="InputEventKey_uya6k"]
-pressed = true
-keycode = 65
-physical_keycode = 65
-key_label = 65
-unicode = 97
+[sub_resource type="InputEventKey" id="InputEventKey_dt8kp"]
+keycode = 4194319
 
-[sub_resource type="InputEventKey" id="InputEventKey_nnyio"]
-pressed = true
-keycode = 68
-physical_keycode = 68
-key_label = 68
-unicode = 100
+[sub_resource type="InputEventKey" id="InputEventKey_edo36"]
+keycode = 4194321
 
-[sub_resource type="InputEventKey" id="InputEventKey_8pcxs"]
-pressed = true
-keycode = 87
-physical_keycode = 87
-key_label = 87
-unicode = 119
+[sub_resource type="InputEventKey" id="InputEventKey_pr7tt"]
+keycode = 4194320
 
 [resource]
 script = ExtResource("1_nv052")
@@ -107,14 +83,14 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 100.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_dcovd"),
-"Flip": SubResource("InputEventKey_ht8iy"),
-"ui_accept": SubResource("InputEventKey_plhdq"),
-"ui_cancel": SubResource("InputEventKey_4wl75"),
-"ui_down": SubResource("InputEventKey_pft84"),
-"ui_left": SubResource("InputEventKey_uya6k"),
-"ui_right": SubResource("InputEventKey_nnyio"),
-"ui_up": SubResource("InputEventKey_8pcxs")
+"Break": SubResource("InputEventKey_m0rdv"),
+"Flip": SubResource("InputEventKey_hjyav"),
+"ui_accept": SubResource("InputEventKey_0xpg2"),
+"ui_cancel": SubResource("InputEventKey_ho8qb"),
+"ui_down": SubResource("InputEventKey_qourv"),
+"ui_left": SubResource("InputEventKey_dt8kp"),
+"ui_right": SubResource("InputEventKey_edo36"),
+"ui_up": SubResource("InputEventKey_pr7tt")
 }
 joy_action_events = {
 "Break": SubResource("InputEventJoypadButton_yy17a"),
