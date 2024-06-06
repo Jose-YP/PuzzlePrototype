@@ -29,6 +29,7 @@
 process_mode = 1
 script = ExtResource("1_k3j0q")
 Newgrounds = false
+MusicOn = false
 
 [node name="MainMenu" parent="." instance=ExtResource("3_i7gc1")]
 

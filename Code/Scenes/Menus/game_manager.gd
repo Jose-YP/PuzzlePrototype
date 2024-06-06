@@ -34,20 +34,22 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("Pause") and not unpausing:
+		currentSong.pause()
 		play_menu_sfx(3)
 		var currently = get_tree().paused
 		get_tree().paused = not currently
 		$PauseScreen.visible = not currently
 		$PauseScreen.play_sfx()
+		
 	elif Input.is_action_just_pressed("Pause"):
 		unpausing = false
 	
-	if loopVal > currentSong.get_playback_position():
-		print("YOU LOOPED")
-		loopedSong = true
+	if MusicOn:
+		if loopVal > currentSong.get_playback_position():
+			print("YOU LOOPED")
+			loopedSong = true
 		
-		
-	loopVal = currentSong.get_playback_position()
+		loopVal = currentSong.get_playback_position()
 
 #-----------------------------------------
 #SCENE SWITCHING
@@ -81,7 +83,8 @@ func board_scene_loaded(scene) -> void:
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	$PauseScreen.entered_board(true)
-	
+	BoardMusic.shuffle()
+	play_music(BoardMusic[0])
 
 func option_scene_loaded(scene) -> void:
 	changeScene(scene)
@@ -94,6 +97,7 @@ func back_to_menu() -> void:
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)
 	currentScene.connect("boardSFX", _on_board_play_sfx)
 	currentScene.connect("playSFX", play_menu_sfx)
+	play_music(ETCMusic[0])
 
 func play_menu_sfx(index) -> void:
 	MenuSFX[index].play()
@@ -128,27 +132,44 @@ func _on_option_make_noise() -> void:
 	%ETC.play()
 
 #-----------------------------------------
+#MUSIC
+#-----------------------------------------
+func ready_playing(song) -> void:
+	if MusicOn:
+		var fadeIn = create_tween().set_ease(Tween.EASE_IN)
+		fadeIn.tween_method(fade_music, 0.0, 1.0, 10)
+		currentSong = song
+		song.play()
+
+func play_music(song) -> void:
+	if MusicOn:
+		print()
+		var fadeOut = create_tween().set_ease(Tween.EASE_IN)
+		fadeOut.tween_method(fade_music, 1.0, 0.0, 1)
+		await fadeOut.finished
+		
+		currentSong.stop()
+		loopVal = 0.0
+		song.play()
+		print(song)
+		currentSong = song
+		
+		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)
+
+func play_died() -> void:
+	pass
+
+func fade_music(value) -> void:
+	AudioServer.set_bus_volume_db(editableMusicBus, linear_to_db(value))
+
+#-----------------------------------------
 #OTHER
 #-----------------------------------------
 func _on_pause_screen_play_sfx() -> void:
 	unpausing = true
 	MenuSFX[3].play()
 
-func ready_playing(song) -> void:
-	var fadeIn = create_tween().set_ease(Tween.EASE_IN)
-	fadeIn.tween_method(fade_music, 0.0, 1.0, 10)
-	currentSong = song
-	song.play()
 
-func play_music(song) -> void:
-	if MusicOn:
-		var MusicBus = AudioServer.get_bus_index("ManageMusic")
-		var fadeOut = create_tween().set_ease(Tween.EASE_IN)
-		fadeOut.tween_method(MusicBus.set_bus_volume_db, linear_to_db(1.0), linear_to_db(0.0), .5)
-		currentSong.stop()
-		song.play()
-		currentSong = song
-		fadeOut.tween_method(MusicBus.set_bus_volume_db, linear_to_db(0.0), linear_to_db(1.0), .5)
 
-func fade_music(value) -> void:
-	AudioServer.set_bus_volume_db(editableMusicBus, linear_to_db(value))
+func _on_pause_screen_unpause_song():
+	pass # Replace with function body.
