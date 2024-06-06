@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var Newgrounds: bool = true
+@export var MusicOn: bool = true
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
@@ -117,7 +118,8 @@ func _on_option_make_noise():
 	%ETC.play()
 
 func _on_option_test_music():
-	music.play()
+	if music:
+		music.play()
 
 #-----------------------------------------
 #OTHER

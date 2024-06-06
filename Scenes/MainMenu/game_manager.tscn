@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=25 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="AudioStream" uid="uid://pda65amykc0j" path="res://Audio/BoardSFX/GlassMove.wav" id="1_rmh2v"]
@@ -15,11 +15,14 @@
 [ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="9_w0bdq"]
 [ext_resource type="AudioStream" uid="uid://dhlvh5cnlnrwe" path="res://Audio/BoardSFX/Snare 11.wav" id="10_qphp8"]
 [ext_resource type="AudioStream" uid="uid://do31ftphnqyj8" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav" id="11_kwukb"]
-[ext_resource type="AudioStream" uid="uid://vamg0tkl3038" path="res://Audio/Music/break-tambossa-103bpm.wav" id="11_m4xdf"]
 [ext_resource type="AudioStream" uid="uid://c37ajq80vr346" path="res://Audio/BoardSFX/BreakSFX/Brak4.wav" id="12_tefc7"]
 [ext_resource type="AudioStream" uid="uid://cynh42d4vh1do" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav" id="12_ub8u1"]
 [ext_resource type="AudioStream" uid="uid://bs88cfn7ooyoh" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav" id="13_ley1y"]
+[ext_resource type="AudioStream" uid="uid://dsskv01er3vy6" path="res://Audio/Music/Main menu.wav" id="15_lgb27"]
+[ext_resource type="AudioStream" uid="uid://msw256rvwad5" path="res://Audio/Music/Level 1.wav" id="16_ljc2t"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
+[ext_resource type="AudioStream" uid="uid://dfoiac7yvnrjq" path="res://Audio/Music/Level 2.wav" id="17_ympss"]
+[ext_resource type="AudioStream" uid="uid://c1p5isnsiuo7t" path="res://Audio/Music/End of a run.wav" id="18_mbcpg"]
 [ext_resource type="Script" path="res://addons/newgrounds/scripts/newgrounds_request.gd" id="21_6ewy6"]
 
 [node name="GameManager" type="CanvasLayer"]
@@ -113,8 +116,26 @@ volume_db = -5.777
 [node name="Music" type="Node" parent="."]
 process_mode = 1
 
-[node name="Music" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("11_m4xdf")
+[node name="MainMenu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("15_lgb27")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"Music"
+
+[node name="Lv1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_ljc2t")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"Music"
+
+[node name="Lv2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_ympss")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"Music"
+
+[node name="EndRun" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("18_mbcpg")
 volume_db = -10.0
 pitch_scale = 1.1
 bus = &"Music"

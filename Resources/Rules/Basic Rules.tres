@@ -16,6 +16,7 @@ bead_relationships = ExtResource("1_li5v6")
 breakBead = true
 droughtVal = 6
 floodVal = 8
+soft_drop = 0.5
 beadScore = 1
 linkMultiplier = 0.5
 powerMultiplier = 0.15
