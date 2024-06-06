@@ -147,6 +147,7 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Music" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -175,12 +176,14 @@ text = "Master Volume"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
+size_flags_vertical = 4
 value = 100.0
 
 [node name="MasterText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
+size_flags_vertical = 4
 text = "		100%"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
@@ -192,12 +195,14 @@ Volume"
 [node name="MusicSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 value = 100.0
 
 [node name="MusicText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
+size_flags_vertical = 4
 text = "		100%"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
@@ -209,12 +214,14 @@ Volume"
 [node name="SFXSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 value = 100.0
 
 [node name="SFXText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
+size_flags_vertical = 4
 text = "		100%"
 
 [node name="Colors" type="MarginContainer" parent="Main/VBox/HBoxContainer"]

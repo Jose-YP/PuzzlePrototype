@@ -1,3 +1,4 @@
+Node
 Control
 Node2D
 Button
@@ -11,4 +12,3 @@ MarginContainer
 RichTextLabel
 ControllerTextureRect
 ColorRect
-Node

@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/MainMenu/options_menu.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://addons/controller_icons/settings.tres
 res://Resources/Rules/Basic Rules.tres
@@ -6,3 +6,9 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
 res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/MainMenu/game_manager.tscn
+res://default_bus_layout.tres
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/how_2_play.tscn

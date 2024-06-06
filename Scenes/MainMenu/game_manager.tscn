@@ -113,32 +113,30 @@ unique_name_in_owner = true
 stream = ExtResource("11_kwukb")
 volume_db = -5.777
 
-[node name="Music" type="Node" parent="."]
+[node name="ETCMusic" type="Node" parent="."]
 process_mode = 1
 
-[node name="MainMenu" type="AudioStreamPlayer" parent="Music"]
+[node name="MainMenu" type="AudioStreamPlayer" parent="ETCMusic"]
 stream = ExtResource("15_lgb27")
 volume_db = -10.0
-pitch_scale = 1.1
-bus = &"Music"
+bus = &"ManageMusic"
 
-[node name="Lv1" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("16_ljc2t")
-volume_db = -10.0
-pitch_scale = 1.1
-bus = &"Music"
-
-[node name="Lv2" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("17_ympss")
-volume_db = -10.0
-pitch_scale = 1.1
-bus = &"Music"
-
-[node name="EndRun" type="AudioStreamPlayer" parent="Music"]
+[node name="EndRun" type="AudioStreamPlayer" parent="ETCMusic"]
 stream = ExtResource("18_mbcpg")
 volume_db = -10.0
-pitch_scale = 1.1
-bus = &"Music"
+bus = &"ManageMusic"
+
+[node name="BoardMusic" type="Node" parent="."]
+
+[node name="Lv1" type="AudioStreamPlayer" parent="BoardMusic"]
+stream = ExtResource("16_ljc2t")
+volume_db = -10.0
+bus = &"ManageMusic"
+
+[node name="Lv2" type="AudioStreamPlayer" parent="BoardMusic"]
+stream = ExtResource("17_ympss")
+volume_db = -10.0
+bus = &"ManageMusic"
 
 [node name="MenuSFX" type="Node" parent="."]
 
