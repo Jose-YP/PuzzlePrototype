@@ -29,7 +29,6 @@
 process_mode = 1
 script = ExtResource("1_k3j0q")
 Newgrounds = false
-MusicOn = false
 
 [node name="MainMenu" parent="." instance=ExtResource("3_i7gc1")]
 
@@ -174,3 +173,4 @@ script = ExtResource("21_6ewy6")
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]
 [connection signal="playSFX" from="PauseScreen" to="." method="_on_pause_screen_play_sfx"]
 [connection signal="retry" from="PauseScreen" to="." method="on_board_retry"]
+[connection signal="unpauseSong" from="PauseScreen" to="." method="_on_pause_screen_unpause_song"]

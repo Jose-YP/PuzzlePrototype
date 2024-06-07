@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
 @onready var BreakSFX: Array[Node] = $BoardSFX/BreakSFX.get_children()
-@onready var MenuSFX: Array[Node] = $BoardMusic.get_children()
+@onready var MenuSFX: Array[Node] = $MenuSFX.get_children()
 @onready var ETCMusic: Array[AudioStreamPlayer] = [$ETCMusic/MainMenu,$ETCMusic/EndRun]
 @onready var BoardMusic: Array[Node] = $BoardMusic.get_children()
 @onready var currentScene = $MainMenu
@@ -34,7 +34,7 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("Pause") and not unpausing:
-		currentSong.pause()
+		currentSong.stream_paused = true
 		play_menu_sfx(3)
 		var currently = get_tree().paused
 		get_tree().paused = not currently
@@ -44,7 +44,7 @@ func _process(_delta) -> void:
 	elif Input.is_action_just_pressed("Pause"):
 		unpausing = false
 	
-	if MusicOn:
+	if MusicOn and currentSong != null:
 		if loopVal > currentSong.get_playback_position():
 			print("YOU LOOPED")
 			loopedSong = true
@@ -154,10 +154,14 @@ func play_music(song) -> void:
 		print(song)
 		currentSong = song
 		
+		fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)
 
 func play_died() -> void:
 	pass
+
+func _on_pause_screen_unpause_song():
+	currentSong.stream_paused = false
 
 func fade_music(value) -> void:
 	AudioServer.set_bus_volume_db(editableMusicBus, linear_to_db(value))
@@ -168,8 +172,3 @@ func fade_music(value) -> void:
 func _on_pause_screen_play_sfx() -> void:
 	unpausing = true
 	MenuSFX[3].play()
-
-
-
-func _on_pause_screen_unpause_song():
-	pass # Replace with function body.

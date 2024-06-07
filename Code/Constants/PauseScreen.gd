@@ -4,6 +4,7 @@ extends CanvasLayer
 
 signal retry
 signal playSFX
+signal unpauseSong
 
 var onBoard: bool = false
 
@@ -13,6 +14,7 @@ func _input( event: InputEvent):
 		get_tree().paused = not currently
 		visible = not currently
 		playSFX.emit()
+		unpauseSong.emit()
 	
 	if event.is_action_pressed("Break"):
 		retry.emit(onBoard)

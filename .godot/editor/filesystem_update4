@@ -12,3 +12,4 @@ res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Constants/PauseScreen.gd
