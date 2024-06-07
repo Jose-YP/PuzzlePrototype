@@ -15,3 +15,5 @@ res://Scenes/MainMenu/how_2_play.tscn
 res://Code/Constants/PauseScreen.gd
 res://Code/Scenes/Board&Beads/Board.gd
 res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/Constants/ETC/connected.tscn
+res://Themes/LightningConnection.tres
