@@ -17,3 +17,5 @@ res://Code/Scenes/Board&Beads/Board.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Constants/ETC/connected.tscn
 res://Themes/LightningConnection.tres
+res://Code/Constants/Connected.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd

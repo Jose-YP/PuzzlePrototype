@@ -12,6 +12,7 @@ extends Node2D
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
 @onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
+@onready var connectionBolts: Node2D = $Images/Connections
 
 signal find_adjacent
 signal made_chain
@@ -53,8 +54,8 @@ func reset_links():
 	chainNodes = [null,null,null,null]
 	glowing = false
 	glow.hide()
-	for bolt in $Connections.get_children():
-		$Connections.remove_child(bolt)
+	for bolt in connectionBolts.get_children():
+		connectionBolts.remove_child(bolt)
 		bolt.die()
 	reset_link()
 
@@ -143,9 +144,9 @@ func make_chain(adj) -> void:
 func display_chain(direction,using) -> void:
 	#Doesn't work
 	var VFX: AnimatedSprite2D = chainedVFX.instantiate()
-	$Connections.add_child(VFX)
+	connectionBolts.add_child(VFX)
 	VFX.position = chainPos[direction][using].position
-	VFX.set_color(Globals.bead_colors[typeID])
+	
 	if direction > 1:
 		VFX.rotation_degrees = VFX.horiRot
 	else:
@@ -207,8 +208,6 @@ func destroy_anim():
 	#Destroy chains
 	breaking = true
 	brakSFX.pick_random().play()
-	for bolt in $Connections.get_children():
-		bolt.fade_tweenout()
 	
 	#Destroy bead
 	var tween = self.create_tween()
