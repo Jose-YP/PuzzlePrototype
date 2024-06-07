@@ -16,6 +16,7 @@ extends Node2D
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
+signal died
 signal processFramed
 signal startBreaking
 signal endCheck
@@ -1101,6 +1102,8 @@ func fail_screen() -> void:
 		if RUI.regScore > display[i][0]:
 			placement -= 1
 			highScored = true
+	
+	died.emit()
 	
 	if highScored:
 		var HiScoreTween = $HighScoreScreen.create_tween()

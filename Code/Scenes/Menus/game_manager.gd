@@ -80,6 +80,7 @@ func board_scene_loaded(scene) -> void:
 	changeScene(scene)
 	currentScene.connect("playSFX",_on_board_play_sfx)
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
+	currentScene.connect("died", fail_song)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	$PauseScreen.entered_board(true)
@@ -125,6 +126,9 @@ func on_board_retry(onBoard = true) -> void:
 	if onBoard:
 		loadScene(boardScene)
 
+func fail_song() -> void:
+	play_music(ETCMusic[1])
+
 #-----------------------------------------
 #OPTION MENU SIGNALS
 #-----------------------------------------
@@ -156,9 +160,6 @@ func play_music(song) -> void:
 		
 		fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)
-
-func play_died() -> void:
-	pass
 
 func _on_pause_screen_unpause_song():
 	currentSong.stream_paused = false
