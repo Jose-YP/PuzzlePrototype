@@ -11,12 +11,23 @@ offset_right = -0.160004
 offset_bottom = -0.0800018
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_4p6su")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 104.0
-offset_bottom = 94.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -47.0
+offset_right = 52.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Next" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -30,6 +41,7 @@ size_flags_vertical = 4
 
 [node name="Text" type="RichTextLabel" parent="HBoxContainer/Next/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 bbcode_enabled = true
 text = "[center]NEXT"
 fit_content = true

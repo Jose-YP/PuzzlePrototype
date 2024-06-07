@@ -125,9 +125,9 @@ func remove_displays():
 		$Timer.start()
 
 func _on_summn_pressed():
-	#var randBool = true
-	#if randi() % 2 == 0:
-		#randBool = false
+	var randBool = true
+	if randi() % 2 == 0:
+		randBool = false
 	
-	update_beads(currentBeads + 5)
-	#update_display(randi_range(6,30), randi_range(2,12), randi_range(1,5), randBool)
+	#update_beads(currentBeads + 5)
+	update_display(randi_range(6,30), randi_range(2,12), randi_range(1,5), randBool)

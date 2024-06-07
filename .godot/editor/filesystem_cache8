@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717730802
+::res://::1717797696
 default_bus_layout.tres::AudioBusLayout::6237434195594704410::1717716066::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1717036369::0::1::::<><>::
 README.md::TextFile::-1::1716501656::0::1::::<><>::
@@ -468,7 +468,7 @@ newgrounds_request.gd::GDScript::-1::1706204339::0::1::::NewgroundsRequest<>HTTP
 115.png::CompressedTexture2D::3608562760507141318::1715292042::1715292042::1::::<><>::
 Dark BG.png::CompressedTexture2D::6014922212016558526::1715292042::1715292042::1::::<><>::
 v1043-068a.png::CompressedTexture2D::4884160941452799133::1715292042::1715292042::1::::<><>::
-::res://Art/Beads/::1717730803
+::res://Art/Beads/::1717730932
 AirOrb.png::CompressedTexture2D::1054926077143352215::1715032746::1716849879::1::::<><>::
 DarkOrb.png::CompressedTexture2D::1935638628612028504::1715032746::1716849879::1::::<><>::
 EarthOrb.png::CompressedTexture2D::7410748901229107902::1715032746::1716849879::1::::<><>::
@@ -589,10 +589,10 @@ RuleMaker.gd::GDScript::-1::1717365096::0::1::::Rules<>Resource<>::
 SaveFile.tres::Resource/Resource::-1::1717727772::0::1::::<><>::res://Resources/SaveData/SaveMaker.gd
 SaveMaker.gd::GDScript::-1::1716586348::0::1::::Save<>Resource<>::
 ::res://Scenes/::1715179287
-::res://Scenes/Board&Beads/::1717728575
+::res://Scenes/Board&Beads/::1717731953
 Board.tscn::PackedScene::3399644878295701062::1717727872::0::1::::<><>::res://Code/Scenes/Board&Beads/Board.gd<>uid://f365vj7wr28e::::res://Resources/Rules/Basic Rules.tres<>uid://dt86eivh6s6vl::::res://Scenes/UI/left_ui.tscn<>uid://c8upol425ha0o::::res://Scenes/Board&Beads/grid_background.tscn<>uid://b455ror03qm3i::::res://Art/Board/puzzle_board_no_back.png<>uid://dlxjyxa3t38su::::res://Scenes/Board&Beads/ghost_bead.tscn<>uid://bmnqltlxw855k::::res://Scenes/UI/right_ui.tscn<>uid://ccacyr5ehej7m::::res://Scenes/Board&Beads/HighScoreScreen.tscn<>uid://b371obu5a1ii::::res://Scenes/Board&Beads/fail_screen.tscn<>uid://ddqt3mhtlqwiy::::res://Art/Board/puzzle_board.png
 breaker_bead.tscn::PackedScene::2399157447238258805::1717036122::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader<>res://Code/Scenes/Board&Beads/breaker_bead.gd<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png<>uid://b2g2luui08hlo::::res://Scenes/Constants/ETC/ripple.tscn<>uid://dmum7mn3abqi::::res://Audio/BoardSFX/BreakSFX/Brak1.wav<>uid://dmqj2u4jpxoyp::::res://Audio/BoardSFX/BreakSFX/Brak2.wav<>uid://hknh6c41g4qn::::res://Audio/BoardSFX/BreakSFX/Brak3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav
-fail_screen.tscn::PackedScene::129981532982295584::1717727872::0::1::::<><>::res://Code/Scenes/UI/fail_screen.gd
+fail_screen.tscn::PackedScene::129981532982295584::1717731953::0::1::::<><>::res://Code/Scenes/UI/fail_screen.gd
 FullBead.tscn::PackedScene::5820798710556208465::1716849431::0::1::::<><>::res://Code/Scenes/Board&Beads/FullPiece.gd<>uid://c1nqp81cess0x::::res://Scenes/Board&Beads/SingleBead.tscn<>res://Shaders/ShaderCode/BurnOut.gdshader
 ghost_bead.tscn::PackedScene::7979410540765424780::1716610148::0::1::::<><>::res://Code/Scenes/Board&Beads/ghost_bead.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
 grid_background.tscn::PackedScene::7131297142351933976::1715737946::0::1::::<><>::res://Code/Constants/GridBackground.gd
@@ -634,17 +634,17 @@ DarkBGGradient.tres::GradientTexture1D::5106853221718501646::1717035422::0::1:::
 EarthBG.tres::ShaderMaterial::227922523430680019::1716582778::0::1::::<><>::
 LightBG.tres::ShaderMaterial::8685382080157412346::1715292042::0::1::::<><>::
 WaterBG.tres::ShaderMaterial::6787270583058607907::1716242647::0::1::::<><>::res://Shaders/ShaderCode/background.gdshader
-::res://Shaders/Beads/::1717728575
+::res://Shaders/Beads/::1717731953
 LightningArc.tres::ShaderMaterial::5246288134869955939::1714924001::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader
 Ripple.tres::ShaderMaterial::1768813050385603548::1716240428::0::1::::<><>::
-SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1717728575::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
-::res://Shaders/ShaderCode/::1717730802
+SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1717731953::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
+::res://Shaders/ShaderCode/::1717732106
 background.gdshader::Shader::-1::1716866602::0::1::::<><>::
 Black2Transp.gdshader::Shader::-1::1716866602::0::1::::<><>::
 BurnOut.gdshader::Shader::-1::1716866602::0::1::::<><>::
-ProgressBar.gdshader::Shader::-1::1717034811::0::1::::<><>::
-Ripple.gdshader::Shader::-1::1716866602::0::1::::<><>::
-Shockwave.gdshader::Shader::-1::1717728575::0::1::::<><>::
+ProgressBar.gdshader::Shader::-1::1717732106::0::1::::<><>::
+Ripple.gdshader::Shader::-1::1717732106::0::1::::<><>::
+Shockwave.gdshader::Shader::-1::1717732106::0::1::::<><>::
 ::res://Themes/::1717728561
 AdobeClean-Bold.ttf::FontFile::395619687205701920::1702314482::1715386954::1::::<><>::
 AdobeClean-Regular.ttf::FontFile::4413336349752594389::1702522296::1715386954::1::::<><>::

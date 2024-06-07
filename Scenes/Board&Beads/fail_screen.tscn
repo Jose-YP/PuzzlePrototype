@@ -42,7 +42,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0

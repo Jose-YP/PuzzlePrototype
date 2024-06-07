@@ -38,7 +38,7 @@ size_flags_horizontal = 0
 [node name="HiScoreText" type="RichTextLabel" parent="VBoxContainer/HiScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "HI SCORE: 0"
+text = "RECORD: 0"
 fit_content = true
 metadata/_edit_lock_ = true
 
@@ -72,11 +72,12 @@ custom_minimum_size = Vector2(225, 0)
 layout_mode = 0
 offset_right = 271.0
 offset_bottom = 27.0
-text = "BEADS CLEARED: 0"
+text = "BEADS: 0"
 fit_content = true
 metadata/_edit_lock_ = true
 
 [node name="ConnectedPanel" type="PanelContainer" parent="VBoxContainer"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -95,19 +96,19 @@ size_flags_horizontal = 0
 [node name="Summn" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 389.0
-offset_top = 250.0
-offset_right = 430.0
-offset_bottom = 281.0
+offset_left = 54.0
+offset_top = 280.0
+offset_right = 95.0
+offset_bottom = 311.0
 text = "Add"
 
 [node name="Gone" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 469.0
-offset_top = 256.0
-offset_right = 510.0
-offset_bottom = 287.0
+offset_left = 49.0
+offset_top = 326.0
+offset_right = 99.0
+offset_bottom = 357.0
 text = "None"
 
 [node name="Timer" type="Timer" parent="."]

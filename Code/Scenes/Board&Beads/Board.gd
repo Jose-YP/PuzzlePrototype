@@ -54,6 +54,7 @@ var highScored: bool = false
 var playZap: bool = false
 var refind: bool = false
 var moved: bool = false
+var moving: bool = false
 var breakers: Dictionary = {}
 
 #______________________________
@@ -75,7 +76,7 @@ func _ready() -> void:
 	#Make board before adding anything
 	board = make_grid()
 	
-	RUI.position += grid_to_pixel(Vector2i(rules.width,0))
+	RUI.position += grid_to_pixel(Vector2i(rules.width + 1,0))
 	RUI.position += Vector2(RUIextra, 0)
 	LUI.position.y += grid_to_pixel(Vector2i(0,0)).y
 	LUI.set_ripple_center()
@@ -155,6 +156,7 @@ func manage_drought(checkedBeads) -> void:
 #BASIC CONTROLS: MOVE
 #______________________________
 func move_bead(ammount, direction = "X") -> void:
+	moving = true
 	for i in range(currentBead.gridPos.size()):
 		var pos: Vector2i = currentBead.gridPos[i]
 		#Only clear own bead
@@ -175,7 +177,10 @@ func move_bead(ammount, direction = "X") -> void:
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
 		ghost_bead_pos()
+		
 		playSFX.emit(0)
+	await get_tree().create_timer(0.05).timeout
+	moving = false
 
 func movement() -> void:
 	if not currentBead.breaker:
@@ -196,9 +201,11 @@ func movement() -> void:
 			second_fix()
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
+		print("DSFOUBOUDBOUSADBOU")
 		move_bead(-1)
 	
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
+		print("DSFOUBOUDBOUSADBOU")
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
@@ -951,9 +958,11 @@ func can_move(direction) -> bool:
 		#Check if a bead can move horizontally or down
 		match direction:
 			"Left":
+				if moving: return false
 				if newPos.x - 1 < 0: return false
 				else: newPos.x -= 1
 			"Right":
+				if moving: return false
 				if newPos.x + 1 > rules.width - 1: return false
 				else: newPos.x += 1
 			"Down":
