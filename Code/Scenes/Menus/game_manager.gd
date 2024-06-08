@@ -19,10 +19,11 @@ const optionsScene: String = "res://Scenes/MainMenu/options_menu.tscn"
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
 
-var unpausing: bool = false
 var currentSong: AudioStreamPlayer
 var loopVal: float = 0.0
+var unpausing: bool = false
 var loopedSong: bool = false
+var usingBoardSongs: bool = false
 
 func _ready() -> void:
 	BoardSFX[0].play()
@@ -44,10 +45,14 @@ func _process(_delta) -> void:
 	elif Input.is_action_just_pressed("Pause"):
 		unpausing = false
 	
-	if MusicOn and currentSong != null:
-		if loopVal > currentSong.get_playback_position():
-			print("YOU LOOPED")
+	if MusicOn and currentSong != null and usingBoardSongs and loopVal > currentSong.get_playback_position():
+		print("YOU LOOPED")
+		if loopedSong:
+			#If on first song, it'll get to the last song, otherwise go backwards
+			play_music(BoardMusic[BoardMusic.find(currentSong) - 1])
+		else:
 			loopedSong = true
+			
 		
 		loopVal = currentSong.get_playback_position()
 
@@ -147,7 +152,6 @@ func ready_playing(song) -> void:
 
 func play_music(song) -> void:
 	if MusicOn:
-		print()
 		var fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 1.0, 0.0, 1)
 		await fadeOut.finished
@@ -155,8 +159,10 @@ func play_music(song) -> void:
 		currentSong.stop()
 		loopVal = 0.0
 		song.play()
+		loopedSong = false
 		print(song)
 		currentSong = song
+		usingBoardSongs = true if BoardMusic.find(currentSong) != -1 else false
 		
 		fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)

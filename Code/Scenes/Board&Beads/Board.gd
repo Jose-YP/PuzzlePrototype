@@ -254,7 +254,6 @@ func hard_drop(target) -> void:
 func drop() -> void:
 	#Both drop, up is hard drop, down is soft drop
 	if Input.is_action_just_pressed("ui_up"):
-		print()
 		hard_drop(find_drop_bottom(currentBead))
 		
 	if Input.is_action_just_pressed("ui_down") and can_move("Down"):
@@ -425,6 +424,7 @@ func _process(delta) -> void:
 #POST TURN PROCESSES
 #______________________________
 func post_turn() -> void:
+	pauseFall(true)
 	currentBead.placed = true
 	if not currentBead.breaker:
 		currentBead.sync_position()
@@ -460,9 +460,11 @@ func post_turn() -> void:
 			playSFX.emit(8)
 		
 		#Reset grounded & Gravity timer to give the player time to react
-		lost_beads()
-		%Grounded.start()
-		%Gravity.start()
+		#Bead will show after a single timeout of Grounded to give them time to see the board and rest a second
+		lost_beads() 
+		%Placed.start()
+		await %Placed.timeout
+		pauseFall(false)
 		pull_next_bead()
 		#display_board()
 
@@ -1082,6 +1084,7 @@ func _on_right_ui_level_up(level) -> void:
 	var factor = level * rules.speedUp
 	%Grounded.set_wait_time(baseGroundedTime - factor/5)
 	%Gravity.set_wait_time(baseGravTime - factor)
+	%Placed.set_wait_time(%Grounded.get_wait_time()/4)
 
 func _on_right_ui_high_score() -> void:
 	highScored = true
