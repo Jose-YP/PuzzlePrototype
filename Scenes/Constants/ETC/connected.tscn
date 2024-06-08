@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4feies2oagdp"]
 
-[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Themes/LightningConnection.tres" id="2_dvep0"]
+[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Art/Connected/LightningConnection.tres" id="2_dvep0"]
 [ext_resource type="Script" path="res://Code/Constants/Connected.gd" id="3_8kjqr"]
 
 [node name="Connected" type="AnimatedSprite2D"]

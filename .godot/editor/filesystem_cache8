@@ -1,17 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717815936
+::res://::1717818387
 default_bus_layout.tres::AudioBusLayout::6237434195594704410::1717716066::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1717036369::0::1::::<><>::
 README.md::TextFile::-1::1716501656::0::1::::<><>::
+test.tscn::PackedScene::564141295383803953::1717818387::0::1::::<><>::uid://b15feom8mwjyn::::res://Scenes/MainMenu/MainMenuButton.tscn<>uid://b72jokubtyta4::::res://Art/SlimButtontexture/UI parts select no select0048.png<>uid://do2dkb3c6jk6j::::res://Art/SlimButtontexture/UI parts select no select0049.png<>uid://c7pyshr4ll41k::::res://Art/SlimButtontexture/animating.tres<>uid://dscg7l6asmavc::::res://Art/SlimButtontexture/UI parts select no select0050.png<>uid://d0lhm24by31qu::::res://Art/SlimButtontexture/UI parts select no select0051.png<>uid://cle4e52eis8gm::::res://Art/SlimButtontexture/UI parts select no select0052.png<>uid://t178r6e82kch::::res://Art/SlimButtontexture/UI parts select no select0053.png<>uid://bofaep3bbc680::::res://Art/SlimButtontexture/UI parts select no select0054.png<>uid://uvoxra0ql2v0::::res://Art/SlimButtontexture/UI parts select no select0055.png<>uid://1gd8pomj148r::::res://Art/SlimButtontexture/UI parts select no select0056.png<>uid://cr3yie6vmt4d8::::res://Art/SlimButtontexture/UI parts select no select0057.png<>uid://mgiwohr5q2ky::::res://Art/SlimButtontexture/UI parts select no select0058.png
 ::res://addons/::1717799938
 input_buffer.gd::GDScript::-1::1717799938::0::1::::<>Node<>::
-::res://addons/controller_icons/::1717797722
+::res://addons/controller_icons/::1717817787
 ControllerIcons.gd::GDScript::-1::1716643792::0::1::::<>Node<>::
 Mapper.gd::GDScript::-1::1715277339::0::1::::ControllerMapper<>Node<>::
 plugin.cfg::TextFile::-1::1715277339::0::1::::<><>::
 plugin.gd::GDScript::-1::1715277339::0::1::::<>EditorPlugin<>::
 Settings.gd::GDScript::-1::1715277339::0::1::::ControllerSettings<>Resource<>::
-settings.tres::Resource/ControllerSettings::8165738396870216675::1717797722::0::1::::<><>::res://addons/controller_icons/Settings.gd
+settings.tres::Resource/ControllerSettings::8165738396870216675::1717817787::0::1::::<><>::res://addons/controller_icons/Settings.gd
 ::res://addons/controller_icons/assets/::1716850009
 disconnected.png::CompressedTexture2D::4512197778159170925::1715277339::1716850009::1::::<><>::
 ::res://addons/controller_icons/assets/key/::1716850009
@@ -463,7 +464,7 @@ newgrounds_consts.gd::GDScript::-1::1706204339::0::1::::<>RefCounted<>::
 newgrounds_image.gd::GDScript::-1::1706204339::0::1::::<>TextureRect<>::
 newgrounds_offline_data.gd::GDScript::-1::1706204339::0::1::::<>Node<>::
 newgrounds_request.gd::GDScript::-1::1706204339::0::1::::NewgroundsRequest<>HTTPRequest<>::
-::res://Art/::1717730899
+::res://Art/::1717818387
 ::res://Art/Backgrounds/::1716850670
 115.png::CompressedTexture2D::3608562760507141318::1715292042::1715292042::1::::<><>::
 Dark BG.png::CompressedTexture2D::6014922212016558526::1715292042::1715292042::1::::<><>::
@@ -480,7 +481,7 @@ SoulBreaker.png::CompressedTexture2D::1362707941815891526::1715988320::171684987
 ::res://Art/Board/::1717725509
 puzzle_board.png::CompressedTexture2D::7404062893122716624::1717725509::1717725509::1::::<><>::
 puzzle_board_no_back.png::CompressedTexture2D::4485681112859734416::1717725509::1717725509::1::::<><>::
-::res://Art/Connected/::1717728366
+::res://Art/Connected/::1717818370
 0000.png.PNG::CompressedTexture2D::2440867689165282754::1717728206::1717728366::1::::<><>::
 0001.png.PNG::CompressedTexture2D::9088759610837060341::1717728206::1717728366::1::::<><>::
 0002.png.PNG::CompressedTexture2D::3461131204541618841::1717728206::1717728366::1::::<><>::
@@ -505,9 +506,24 @@ puzzle_board_no_back.png::CompressedTexture2D::4485681112859734416::1717725509::
 0021.png.PNG::CompressedTexture2D::6656417826803647035::1717728206::1717728365::1::::<><>::
 0022.png.PNG::CompressedTexture2D::2936657293223979432::1717728206::1717728365::1::::<><>::
 0023.png.PNG::CompressedTexture2D::4827111847610749231::1717728206::1717728365::1::::<><>::
+LightningConnection.tres::SpriteFrames::1527680758622028651::1717728561::0::1::::<><>::uid://ba1my708yylla::::res://Art/Connected/0000.png.PNG<>uid://d2qwspum7lnkv::::res://Art/Connected/0001.png.PNG<>uid://bpkulcaciwvkb::::res://Art/Connected/0002.png.PNG<>uid://tm61snbvfiej::::res://Art/Connected/0003.png.PNG<>uid://do4yh3crotfqs::::res://Art/Connected/0004.png.PNG<>uid://858lqra8hg2f::::res://Art/Connected/0005.png.PNG<>uid://dskub53wtfhmq::::res://Art/Connected/0006.png.PNG<>uid://skexj3t2h5u5::::res://Art/Connected/0007.png.PNG<>uid://dwxo0qwuy61jc::::res://Art/Connected/0008.png.PNG<>uid://d0em2xppn0rfi::::res://Art/Connected/0009.png.PNG<>uid://c8ky5wgpu0nr4::::res://Art/Connected/0010.png.PNG<>uid://y83iyhrjyk07::::res://Art/Connected/0011.png.PNG<>uid://dbs7wgrniqoxe::::res://Art/Connected/0012.png.PNG<>uid://hyrl7qfcpggh::::res://Art/Connected/0013.png.PNG<>uid://dqeef3g5n6d05::::res://Art/Connected/0014.png.PNG<>uid://b7u0mw32f02gv::::res://Art/Connected/0015.png.PNG<>uid://c62fwagjoqymb::::res://Art/Connected/0016.png.PNG<>uid://diqt206wdo7bq::::res://Art/Connected/0017.png.PNG<>uid://b7o0ut3f1kii0::::res://Art/Connected/0018.png.PNG<>uid://pe5jp4rjytqh::::res://Art/Connected/0019.png.PNG<>uid://bwpjs83u32mfx::::res://Art/Connected/0020.png.PNG<>uid://c13oh13i0i1wx::::res://Art/Connected/0021.png.PNG<>uid://bh3sk07n0oqce::::res://Art/Connected/0022.png.PNG<>uid://ca1j3d4x5g8lf::::res://Art/Connected/0023.png.PNG
 ::res://Art/ETC/::1716850693
 857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png::CompressedTexture2D::8160380675066023406::1714748740::1716849916::1::::<><>::
 doublesided.png::CompressedTexture2D::8718936885938840902::1714845214::1716850693::1::::<><>::
+::res://Art/SlimButtontexture/::1717818387
+animating.tres::AtlasTexture::7051339777488738138::1717818387::0::1::::<><>::uid://cle4e52eis8gm::::res://Art/SlimButtontexture/UI parts select no select0052.png
+Not.tres::AtlasTexture::1617572441979596134::1717818387::0::1::::<><>::uid://cr3yie6vmt4d8::::res://Art/SlimButtontexture/UI parts select no select0057.png
+UI parts select no select0048.png::CompressedTexture2D::4688773889720698873::1717815648::1717818388::1::::<><>::
+UI parts select no select0049.png::CompressedTexture2D::8197844166199256263::1717815648::1717818388::1::::<><>::
+UI parts select no select0050.png::CompressedTexture2D::8427212065103875980::1717815648::1717818388::1::::<><>::
+UI parts select no select0051.png::CompressedTexture2D::8937139208809414876::1717815648::1717818388::1::::<><>::
+UI parts select no select0052.png::CompressedTexture2D::5554945711990046252::1717815648::1717818388::1::::<><>::
+UI parts select no select0053.png::CompressedTexture2D::1389264666708360859::1717815648::1717818388::1::::<><>::
+UI parts select no select0054.png::CompressedTexture2D::3379394357723136055::1717815648::1717818388::1::::<><>::
+UI parts select no select0055.png::CompressedTexture2D::1448020810809129799::1717815648::1717818388::1::::<><>::
+UI parts select no select0056.png::CompressedTexture2D::1837538093326184263::1717815648::1717818388::1::::<><>::
+UI parts select no select0057.png::CompressedTexture2D::6025326039477358515::1717815648::1717818388::1::::<><>::
+UI parts select no select0058.png::CompressedTexture2D::855178160542472344::1717815648::1717818388::1::::<><>::
 ::res://Audio/::1715381005
 ::res://Audio/BoardSFX/::1716690036
 basicAction.wav::AudioStreamWAV::7461864721001865531::1715179287::1716690036::1::::<><>::
@@ -560,10 +576,11 @@ breaker_bead.gd::GDScript::-1::1717034822::0::1::::<>Node2D<>::
 FullPiece.gd::GDScript::-1::1716845224::0::1::::<>Node2D<>::
 ghost_bead.gd::GDScript::-1::1716608926::0::1::::<>Node2D<>::
 SinglePiece.gd::GDScript::-1::1717728561::0::1::::<>Node2D<>::
-::res://Code/Scenes/Menus/::1717803454
+::res://Code/Scenes/Menus/::1717818343
 game_manager.gd::GDScript::-1::1717803454::0::1::::<>CanvasLayer<>::
 how_2_play.gd::GDScript::-1::1716850374::0::1::::<>PanelContainer<>::
 MainMenu.gd::GDScript::-1::1717035553::0::1::::<>Control<>::
+MainMenuButton.gd::GDScript::-1::1717818343::0::1::::<>TextureButton<>::
 optionsMenu.gd::GDScript::-1::1716687648::0::1::::<>CanvasLayer<>::
 score_display.gd::GDScript::-1::1716501656::0::1::::<>PanelContainer<>::
 ::res://Code/Scenes/UI/::1717799537
@@ -582,8 +599,8 @@ UserPrefs.tres::Resource/Resource::-1::1717803892::0::1::::<><>::res://Resources
 ::res://Resources/Relations/::1716689723
 5 Duo.tres::Resource/Resource::8259742886959976142::1715295413::0::1::::<><>::uid://cwyh8ksd5xhbw::::res://Scenes/Constants/UIPieces/DuoDisplay.tscn<>res://Resources/Relations/RelationshipMaker.gd
 RelationshipMaker.gd::GDScript::-1::1716326163::0::1::::Relations<>Resource<>::
-::res://Resources/Rules/::1717798552
-Basic Rules.tres::Resource/Rules::410683714274369146::1717798552::0::1::::<><>::uid://dpxc016obexjq::::res://Resources/Relations/5 Duo.tres<>res://Resources/Rules/RuleMaker.gd
+::res://Resources/Rules/::1717817787
+Basic Rules.tres::Resource/Rules::410683714274369146::1717817787::0::1::::<><>::uid://dpxc016obexjq::::res://Resources/Relations/5 Duo.tres<>res://Resources/Rules/RuleMaker.gd
 RuleMaker.gd::GDScript::-1::1717365096::0::1::::Rules<>Resource<>::
 ::res://Resources/SaveData/::1716586348
 SaveFile.tres::Resource/Resource::-1::1717803892::0::1::::<><>::res://Resources/SaveData/SaveMaker.gd
@@ -604,18 +621,19 @@ uberbead.tscn::PackedScene::3667031385311914657::1716507515::0::1::::<><>::uid:/
 DarkBG.tscn::PackedScene::7512638548248051179::1716857805::0::1::::<><>::uid://cawrkhbnlvn85::::res://Shaders/Backgrounds/DarkBG.tres<>uid://crxw5i5fsgspi::::res://Art/Backgrounds/Dark BG.png
 EarthBG.tscn::PackedScene::3149499898499646176::1716582779::0::1::::<><>::uid://din36mm6qnuh::::res://Shaders/Backgrounds/EarthBG.tres<>uid://cbt6oggrwg5o0::::res://Art/Backgrounds/v1043-068a.png
 sea_bg.tscn::PackedScene::8460654939426370671::1716240874::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader<>uid://broarbw56swi5::::res://Art/Backgrounds/115.png<>uid://c3x2mch3abhnf::::res://Shaders/Backgrounds/WaterBG.tres
-::res://Scenes/Constants/ETC/::1717728561
-connected.tscn::PackedScene::2046055747740895309::1717728561::0::1::::<><>::uid://v1axc2nifmul::::res://Themes/LightningConnection.tres<>res://Code/Constants/Connected.gd
+::res://Scenes/Constants/ETC/::1717818370
+connected.tscn::PackedScene::2046055747740895309::1717818370::0::1::::<><>::uid://v1axc2nifmul::::res://Art/Connected/LightningConnection.tres<>res://Code/Constants/Connected.gd
 load_screen.tscn::PackedScene::2258975239481599943::1717036122::0::1::::<><>::res://Code/Constants/load_screen.gd
 pause_screen.tscn::PackedScene::6941669322958366871::1717036121::0::1::::<><>::res://Code/Constants/PauseScreen.gd<>res://addons/controller_icons/objects/ControllerIconTexture.gd<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav
 ripple.tscn::PackedScene::4295565812743270968::1716240875::0::1::::<><>::
 ::res://Scenes/Constants/UIPieces/::1717036121
 all_beads.tscn::PackedScene::7719899159518361124::1716690209::0::1::::<><>::res://Code/Constants/all_beads.gd<>uid://ddt27me2jsi6a::::res://Art/Beads/EarthOrb.png<>uid://cc78oeoy5ldrd::::res://Art/Beads/LiquidOrb.png<>uid://pbaqi8u6vslb::::res://Art/Beads/AirOrb.png<>uid://dy73pk3cbyn7p::::res://Art/Beads/LightOrb.png<>uid://2tvxklp6un8s::::res://Art/Beads/DarkOrb.png<>uid://toduoohf4htm::::res://Art/Beads/SoulBreaker.png
 DuoDisplay.tscn::PackedScene::6367025496885865420::1717036121::0::1::::<><>::res://Code/Scenes/UI/DuoDisplay.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://dwhru74flwehi::::res://Art/ETC/doublesided.png
-::res://Scenes/MainMenu/::1717803887
+::res://Scenes/MainMenu/::1717818387
 game_manager.tscn::PackedScene::291240715937711722::1717803887::0::1::::<><>::res://Code/Scenes/Menus/game_manager.gd<>uid://pda65amykc0j::::res://Audio/BoardSFX/GlassMove.wav<>uid://cerqvwywvs7yc::::res://Audio/BoardSFX/GlassTap.wav<>uid://chxp3gabho17j::::res://Audio/BoardSFX/HardDrop.wav<>uid://bjf6n3d1yeous::::res://Scenes/MainMenu/MainMenu.tscn<>uid://be1ulgpog174j::::res://Audio/BoardSFX/SoftDrop.wav<>uid://dekt267tihexf::::res://Audio/BoardSFX/basicAction.wav<>uid://lppqgchu4653::::res://Audio/MenuSFX/MenuMove.wav<>uid://cf40870fv4d5q::::res://Audio/MenuSFX/MenuConfirm.wav<>uid://bhapq413y8iqc::::res://Audio/MenuSFX/MenuDeselect.wav<>uid://cx43g2mds8wmu::::res://Audio/BoardSFX/Twinkle.wav<>uid://km3md211h7xt::::res://Audio/BoardSFX/Zap.wav<>uid://b5lfca8f5r133::::res://Audio/MenuSFX/Click.wav<>uid://dhlvh5cnlnrwe::::res://Audio/BoardSFX/Snare 11.wav<>uid://do31ftphnqyj8::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.wav<>uid://c37ajq80vr346::::res://Audio/BoardSFX/BreakSFX/Brak4.wav<>uid://cynh42d4vh1do::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar1.wav<>uid://bs88cfn7ooyoh::::res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.wav<>uid://dsskv01er3vy6::::res://Audio/Music/Main menu.wav<>uid://msw256rvwad5::::res://Audio/Music/Level 1.wav<>uid://c55ujrf1e7yhj::::res://Scenes/Constants/ETC/pause_screen.tscn<>uid://dfoiac7yvnrjq::::res://Audio/Music/Level 2.wav<>uid://c1p5isnsiuo7t::::res://Audio/Music/End of a run.wav<>res://addons/newgrounds/scripts/newgrounds_request.gd
 how_2_play.tscn::PackedScene::5201704712034171909::1717799003::0::1::::<><>::res://Code/Scenes/Menus/how_2_play.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>uid://cd2r7vn8ipum5::::res://Scenes/UI/BreakProgress.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd<>uid://doi7jo00s4wmw::::res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png
 MainMenu.tscn::PackedScene::3030349083803999890::1717803887::0::1::::<><>::res://Code/Scenes/Menus/MainMenu.gd<>uid://dsc0vgru2ykgw::::res://Scenes/MainMenu/score_display.tscn<>uid://cgd0k1a1ig4xt::::res://Scenes/MainMenu/how_2_play.tscn
+MainMenuButton.tscn::PackedScene::4273573434424024177::1717818387::0::1::::<><>::uid://c7pyshr4ll41k::::res://Art/SlimButtontexture/animating.tres<>uid://b72jokubtyta4::::res://Art/SlimButtontexture/UI parts select no select0048.png<>res://Code/Scenes/Menus/MainMenuButton.gd<>uid://do2dkb3c6jk6j::::res://Art/SlimButtontexture/UI parts select no select0049.png<>uid://dscg7l6asmavc::::res://Art/SlimButtontexture/UI parts select no select0050.png<>uid://d0lhm24by31qu::::res://Art/SlimButtontexture/UI parts select no select0051.png<>uid://cle4e52eis8gm::::res://Art/SlimButtontexture/UI parts select no select0052.png<>uid://t178r6e82kch::::res://Art/SlimButtontexture/UI parts select no select0053.png<>uid://bofaep3bbc680::::res://Art/SlimButtontexture/UI parts select no select0054.png<>uid://uvoxra0ql2v0::::res://Art/SlimButtontexture/UI parts select no select0055.png<>uid://1gd8pomj148r::::res://Art/SlimButtontexture/UI parts select no select0056.png<>uid://cr3yie6vmt4d8::::res://Art/SlimButtontexture/UI parts select no select0057.png<>uid://mgiwohr5q2ky::::res://Art/SlimButtontexture/UI parts select no select0058.png<>uid://xbtggfbln1hy::::res://Art/SlimButtontexture/Not.tres
 options_menu.tscn::PackedScene::1849702126104635348::1717799003::0::1::::<><>::res://Code/Scenes/Menus/optionsMenu.gd<>uid://dh8tu1vguv63i::::res://Scenes/Constants/UIPieces/all_beads.tscn<>res://addons/controller_icons/objects/ControllerIconTexture.gd
 score_display.tscn::PackedScene::8428345760910690618::1716581919::0::1::::<><>::res://Code/Scenes/Menus/score_display.gd
 ::res://Scenes/UI/::1717803888
@@ -634,26 +652,25 @@ DarkBGGradient.tres::GradientTexture1D::5106853221718501646::1717035422::0::1:::
 EarthBG.tres::ShaderMaterial::227922523430680019::1716582778::0::1::::<><>::
 LightBG.tres::ShaderMaterial::8685382080157412346::1715292042::0::1::::<><>::
 WaterBG.tres::ShaderMaterial::6787270583058607907::1716242647::0::1::::<><>::res://Shaders/ShaderCode/background.gdshader
-::res://Shaders/Beads/::1717803888
+::res://Shaders/Beads/::1717817787
 LightningArc.tres::ShaderMaterial::5246288134869955939::1714924001::0::1::::<><>::res://Shaders/ShaderCode/Black2Transp.gdshader
 Ripple.tres::ShaderMaterial::1768813050385603548::1716240428::0::1::::<><>::
-SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1717803888::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
-::res://Shaders/ShaderCode/::1717803888
+SingleBeadBurn.tres::ShaderMaterial::4329978552776294287::1717817787::0::1::::<><>::res://Shaders/ShaderCode/BurnOut.gdshader
+::res://Shaders/ShaderCode/::1717818387
 background.gdshader::Shader::-1::1716866602::0::1::::<><>::
 Black2Transp.gdshader::Shader::-1::1716866602::0::1::::<><>::
 BurnOut.gdshader::Shader::-1::1716866602::0::1::::<><>::
-ProgressBar.gdshader::Shader::-1::1717803888::0::1::::<><>::
-Ripple.gdshader::Shader::-1::1717803888::0::1::::<><>::
-Shockwave.gdshader::Shader::-1::1717803888::0::1::::<><>::
-::res://Themes/::1717815636
+ProgressBar.gdshader::Shader::-1::1717818387::0::1::::<><>::
+Ripple.gdshader::Shader::-1::1717818387::0::1::::<><>::
+Shockwave.gdshader::Shader::-1::1717818387::0::1::::<><>::
+::res://Themes/::1717818387
 AdobeClean-Bold.ttf::FontFile::395619687205701920::1702314482::1715386954::1::::<><>::
 AdobeClean-Regular.ttf::FontFile::4413336349752594389::1702522296::1715386954::1::::<><>::
 GameUI.tres::Theme::224482002394513341::1717028830::0::1::::<><>::uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf
-LightningConnection.tres::SpriteFrames::1527680758622028651::1717728561::0::1::::<><>::uid://ba1my708yylla::::res://Art/Connected/0000.png.PNG<>uid://d2qwspum7lnkv::::res://Art/Connected/0001.png.PNG<>uid://bpkulcaciwvkb::::res://Art/Connected/0002.png.PNG<>uid://tm61snbvfiej::::res://Art/Connected/0003.png.PNG<>uid://do4yh3crotfqs::::res://Art/Connected/0004.png.PNG<>uid://858lqra8hg2f::::res://Art/Connected/0005.png.PNG<>uid://dskub53wtfhmq::::res://Art/Connected/0006.png.PNG<>uid://skexj3t2h5u5::::res://Art/Connected/0007.png.PNG<>uid://dwxo0qwuy61jc::::res://Art/Connected/0008.png.PNG<>uid://d0em2xppn0rfi::::res://Art/Connected/0009.png.PNG<>uid://c8ky5wgpu0nr4::::res://Art/Connected/0010.png.PNG<>uid://y83iyhrjyk07::::res://Art/Connected/0011.png.PNG<>uid://dbs7wgrniqoxe::::res://Art/Connected/0012.png.PNG<>uid://hyrl7qfcpggh::::res://Art/Connected/0013.png.PNG<>uid://dqeef3g5n6d05::::res://Art/Connected/0014.png.PNG<>uid://b7u0mw32f02gv::::res://Art/Connected/0015.png.PNG<>uid://c62fwagjoqymb::::res://Art/Connected/0016.png.PNG<>uid://diqt206wdo7bq::::res://Art/Connected/0017.png.PNG<>uid://b7o0ut3f1kii0::::res://Art/Connected/0018.png.PNG<>uid://pe5jp4rjytqh::::res://Art/Connected/0019.png.PNG<>uid://bwpjs83u32mfx::::res://Art/Connected/0020.png.PNG<>uid://c13oh13i0i1wx::::res://Art/Connected/0021.png.PNG<>uid://bh3sk07n0oqce::::res://Art/Connected/0022.png.PNG<>uid://ca1j3d4x5g8lf::::res://Art/Connected/0023.png.PNG
-Theme.tres::Theme::3550294324214182303::1717797722::0::1::::<><>::uid://bmnp5omb2d47q::::res://Themes/ButtonStyle/Disabled.tres<>uid://da8iornffdc3c::::res://Themes/ButtonStyle/Hover.tres<>uid://csn7gcgx0jah7::::res://Themes/ButtonStyle/Normal.tres<>uid://57im7twwo0e0::::res://Themes/ButtonStyle/Focused.tres<>uid://dqp2it5itff85::::res://Themes/ButtonStyle/Pressed.tres<>uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf<>uid://cbmvpuynhcqqe::::res://Themes/HasSingle/Pannel.tres<>uid://7hbcyu4mqewp::::res://Themes/HasSingle/Scrollbar.tres<>uid://o6ph7ekev63x::::res://Themes/HasSingle/TabContainer.tres
-::res://Themes/ButtonStyle/::1717797722
+Theme.tres::Theme::3550294324214182303::1717817787::0::1::::<><>::uid://bmnp5omb2d47q::::res://Themes/ButtonStyle/Disabled.tres<>uid://da8iornffdc3c::::res://Themes/ButtonStyle/Hover.tres<>uid://csn7gcgx0jah7::::res://Themes/ButtonStyle/Normal.tres<>uid://57im7twwo0e0::::res://Themes/ButtonStyle/Focused.tres<>uid://dqp2it5itff85::::res://Themes/ButtonStyle/Pressed.tres<>uid://fvv2fagfsd1a::::res://Themes/AdobeClean-Bold.ttf<>uid://cbmvpuynhcqqe::::res://Themes/HasSingle/Pannel.tres<>uid://7hbcyu4mqewp::::res://Themes/HasSingle/Scrollbar.tres<>uid://o6ph7ekev63x::::res://Themes/HasSingle/TabContainer.tres
+::res://Themes/ButtonStyle/::1717817787
 Disabled.tres::StyleBoxFlat::3256488800807134636::1715356179::0::1::::<><>::
-Focused.tres::StyleBoxFlat::2172234273867921365::1717797722::0::1::::<><>::
+Focused.tres::StyleBoxFlat::2172234273867921365::1717817787::0::1::::<><>::
 Hover.tres::StyleBoxFlat::7227898167233465866::1702361247::0::1::::<><>::
 Normal.tres::StyleBoxFlat::6065031237599822278::1715356179::0::1::::<><>::
 Pressed.tres::StyleBoxFlat::8314903905431514092::1702361252::0::1::::<><>::
@@ -670,25 +687,3 @@ Pannel.tres::StyleBoxFlat::4869105675972042372::1715356179::0::1::::<><>::
 Scrollbar.tres::StyleBoxFlat::2260559222066820331::1715356179::0::1::::<><>::
 SubtleCircle.tres::StyleBoxFlat::5385356171059284499::1702511439::0::1::::<><>::
 TabContainer.tres::StyleBoxFlat::1047564464144121715::1715356179::0::1::::<><>::
-::res://Themes/SlimButtontexture/::1717815936
-UI parts select no select0048.png::CompressedTexture2D::4688773889720698873::1717815648::1717815938::1::::<><>::
-UI parts select no select0049.png::CompressedTexture2D::8197844166199256263::1717815648::1717815938::1::::<><>::
-UI parts select no select0050.png::CompressedTexture2D::8427212065103875980::1717815648::1717815938::1::::<><>::
-UI parts select no select0051.png::CompressedTexture2D::8937139208809414876::1717815648::1717815938::1::::<><>::
-UI parts select no select0052.png::CompressedTexture2D::5554945711990046252::1717815648::1717815938::1::::<><>::
-UI parts select no select0053.png::CompressedTexture2D::1389264666708360859::1717815648::1717815938::1::::<><>::
-UI parts select no select0054.png::CompressedTexture2D::3379394357723136055::1717815648::1717815937::1::::<><>::
-UI parts select no select0055.png::CompressedTexture2D::1448020810809129799::1717815648::1717815937::1::::<><>::
-UI parts select no select0056.png::CompressedTexture2D::1837538093326184263::1717815648::1717815937::1::::<><>::
-UI parts select no select0057.png::CompressedTexture2D::6025326039477358515::1717815648::1717815937::1::::<><>::
-UI parts select no select0058.png::CompressedTexture2D::855178160542472344::1717815648::1717815937::1::::<><>::
-UI parts select no select0059.png::CompressedTexture2D::8719630373856536618::1717815648::1717815937::1::::<><>::
-UI parts select no select0060.png::CompressedTexture2D::2100351594864387259::1717815648::1717815937::1::::<><>::
-UI parts select no select0061.png::CompressedTexture2D::7134890152239560701::1717815648::1717815937::1::::<><>::
-UI parts select no select0062.png::CompressedTexture2D::7883992603389249367::1717815648::1717815937::1::::<><>::
-UI parts select no select0063.png::CompressedTexture2D::7803910638931011758::1717815648::1717815937::1::::<><>::
-UI parts select no select0064.png::CompressedTexture2D::1774118864855720296::1717815648::1717815937::1::::<><>::
-UI parts select no select0065.png::CompressedTexture2D::6572713846988602684::1717815648::1717815937::1::::<><>::
-UI parts select no select0066.png::CompressedTexture2D::3136866894431254970::1717815648::1717815937::1::::<><>::
-UI parts select no select0067.png::CompressedTexture2D::4796693003423643361::1717815648::1717815937::1::::<><>::
-::res://Themes/Test/::1717815936

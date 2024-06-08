@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=3 uid="uid://b15feom8mwjyn"]
+
+[ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="1_71h3r"]
+[ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="2_n3icu"]
+[ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenuButton.gd" id="2_w3gu3"]
+[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="3_0astk"]
+[ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Art/SlimButtontexture/UI parts select no select0050.png" id="4_yne1h"]
+[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="5_dd4v4"]
+[ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Art/SlimButtontexture/UI parts select no select0052.png" id="6_kkcjw"]
+[ext_resource type="Texture2D" uid="uid://t178r6e82kch" path="res://Art/SlimButtontexture/UI parts select no select0053.png" id="7_xnt08"]
+[ext_resource type="Texture2D" uid="uid://bofaep3bbc680" path="res://Art/SlimButtontexture/UI parts select no select0054.png" id="8_qr40r"]
+[ext_resource type="Texture2D" uid="uid://uvoxra0ql2v0" path="res://Art/SlimButtontexture/UI parts select no select0055.png" id="9_2373l"]
+[ext_resource type="Texture2D" uid="uid://1gd8pomj148r" path="res://Art/SlimButtontexture/UI parts select no select0056.png" id="10_tmfq5"]
+[ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Art/SlimButtontexture/UI parts select no select0057.png" id="11_i4odr"]
+[ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="12_b37ro"]
+[ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="13_r37bt"]
+
+[sub_resource type="Animation" id="Animation_ksgyt"]
+resource_name = "Hover"
+length = 0.333335
+loop_mode = 2
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_71h3r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.133333, 0.183333, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08")]
+}
+
+[sub_resource type="Animation" id="Animation_u1u4r"]
+resource_name = "Pressed"
+length = 0.333335
+loop_mode = 2
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_71h3r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.133333, 0.183333, 0.233333, 0.266667, 0.283333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("8_qr40r"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro")]
+}
+
+[sub_resource type="Animation" id="Animation_y842p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_r37bt")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpfg"]
+_data = {
+"Hover": SubResource("Animation_ksgyt"),
+"Pressed": SubResource("Animation_u1u4r"),
+"RESET": SubResource("Animation_y842p")
+}
+
+[node name="TextureButton" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -92.0
+offset_right = 252.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_71h3r")
+stretch_mode = 4
+script = ExtResource("2_w3gu3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ewpfg")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -10.0
+offset_right = 121.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center] TEST TEXT"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

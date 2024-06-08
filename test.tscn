@@ -1,34 +1,18 @@
-[gd_scene load_steps=49 format=3 uid="uid://ibjlbmrseoij"]
+[gd_scene load_steps=24 format=3 uid="uid://ibjlbmrseoij"]
 
-[ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Themes/SlimButtontexture/UI parts select no select0048.png" id="1_yfihn"]
-[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Themes/SlimButtontexture/UI parts select no select0049.png" id="2_5gius"]
-[ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Themes/SlimButtontexture/UI parts select no select0050.png" id="3_8ku70"]
-[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Themes/SlimButtontexture/UI parts select no select0051.png" id="4_aa1e5"]
-[ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Themes/SlimButtontexture/UI parts select no select0052.png" id="5_2gb2p"]
-[ext_resource type="Texture2D" uid="uid://t178r6e82kch" path="res://Themes/SlimButtontexture/UI parts select no select0053.png" id="6_k687m"]
-[ext_resource type="Texture2D" uid="uid://bofaep3bbc680" path="res://Themes/SlimButtontexture/UI parts select no select0054.png" id="7_3f8vd"]
-[ext_resource type="Texture2D" uid="uid://uvoxra0ql2v0" path="res://Themes/SlimButtontexture/UI parts select no select0055.png" id="8_bvw2h"]
-[ext_resource type="Texture2D" uid="uid://1gd8pomj148r" path="res://Themes/SlimButtontexture/UI parts select no select0056.png" id="9_u78wk"]
-[ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Themes/SlimButtontexture/UI parts select no select0057.png" id="10_ga5m4"]
-[ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Themes/SlimButtontexture/UI parts select no select0058.png" id="11_gwntg"]
-[ext_resource type="Texture2D" uid="uid://dwh4bkjqkw4t7" path="res://Themes/SlimButtontexture/UI parts select no select0059.png" id="12_ya04e"]
-[ext_resource type="Texture2D" uid="uid://46oqpnj68404" path="res://Themes/SlimButtontexture/UI parts select no select0060.png" id="13_syifj"]
-[ext_resource type="Texture2D" uid="uid://c8wguly868ylp" path="res://Themes/SlimButtontexture/UI parts select no select0061.png" id="14_2s4du"]
-[ext_resource type="Texture2D" uid="uid://dklchaq5jdqx8" path="res://Themes/SlimButtontexture/UI parts select no select0062.png" id="15_th5ic"]
-[ext_resource type="Texture2D" uid="uid://djgjjd4y82xuc" path="res://Themes/SlimButtontexture/UI parts select no select0063.png" id="16_yntuc"]
-[ext_resource type="Texture2D" uid="uid://0jnqjfbwxpye" path="res://Themes/SlimButtontexture/UI parts select no select0064.png" id="17_j8ln2"]
-[ext_resource type="Texture2D" uid="uid://c0v4vwd1spvcm" path="res://Themes/SlimButtontexture/UI parts select no select0065.png" id="18_d1pm3"]
-[ext_resource type="Texture2D" uid="uid://bkxr0e2kygsfy" path="res://Themes/SlimButtontexture/UI parts select no select0066.png" id="19_02efc"]
-[ext_resource type="Texture2D" uid="uid://cals3k5xpylqf" path="res://Themes/SlimButtontexture/UI parts select no select0067.png" id="20_2xg3v"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0k1l"]
-load_path = "res://.godot/imported/UI parts select no select0001.png-fcc3280f8ba8c9584cfbaad4208ebf85.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3rqpg"]
-atlas = SubResource("CompressedTexture2D_b0k1l")
-region = Rect2(0, 0, 504, 167)
-margin = Rect2(0, 0, 0, -15)
-filter_clip = true
+[ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="1_531ux"]
+[ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="1_yfihn"]
+[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="2_5gius"]
+[ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="2_rnknk"]
+[ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Art/SlimButtontexture/UI parts select no select0050.png" id="3_8ku70"]
+[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="4_aa1e5"]
+[ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Art/SlimButtontexture/UI parts select no select0052.png" id="5_2gb2p"]
+[ext_resource type="Texture2D" uid="uid://t178r6e82kch" path="res://Art/SlimButtontexture/UI parts select no select0053.png" id="6_k687m"]
+[ext_resource type="Texture2D" uid="uid://bofaep3bbc680" path="res://Art/SlimButtontexture/UI parts select no select0054.png" id="7_3f8vd"]
+[ext_resource type="Texture2D" uid="uid://uvoxra0ql2v0" path="res://Art/SlimButtontexture/UI parts select no select0055.png" id="8_bvw2h"]
+[ext_resource type="Texture2D" uid="uid://1gd8pomj148r" path="res://Art/SlimButtontexture/UI parts select no select0056.png" id="9_u78wk"]
+[ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Art/SlimButtontexture/UI parts select no select0057.png" id="10_ga5m4"]
+[ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="11_gwntg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gev2e"]
 load_path = "res://.godot/imported/UI parts select no select0041.png-a90e7ddf5194127dd397bd12372853fe.ctex"
@@ -73,91 +57,8 @@ expand_margin_top = 10.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n8t3r"]
-load_path = "res://.godot/imported/UI parts select no select0010.png-d4bf3c13832d77cb1924814053f0fe51.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e6nu0"]
-load_path = "res://.godot/imported/UI parts select no select0013.png-2f475d4ba584a6d2f9aae7960129f869.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mbh5f"]
-load_path = "res://.godot/imported/UI parts select no select0016.png-e054eef6d161ed9477e3fdffa22c046a.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ogsi6"]
-load_path = "res://.godot/imported/UI parts select no select0019.png-a5bc8619d16d778dc63b5e1da734f590.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xlsgv"]
-load_path = "res://.godot/imported/UI parts select no select0022.png-085b2b597c11143114913cda8ca89d36.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x5kqr"]
-load_path = "res://.godot/imported/UI parts select no select0025.png-14fdfd80c5b956fa34aab24ae6791d22.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rvm71"]
-load_path = "res://.godot/imported/UI parts select no select0028.png-bd6c6fef85726aa0bf113359de568b18.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3fdb7"]
-load_path = "res://.godot/imported/UI parts select no select0031.png-333b075b33c631564ce8de8e5da2dc59.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3uutj"]
-load_path = "res://.godot/imported/UI parts select no select0034.png-dc5faaa884e5830cdb53e247089e1805.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vt3f"]
-load_path = "res://.godot/imported/UI parts select no select0037.png-2785ae00d851276cdf482df819ee7958.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yr05y"]
-load_path = "res://.godot/imported/UI parts select no select0040.png-4a503561bf07530e00d4866a7a753cab.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_66ktv"]
-load_path = "res://.godot/imported/UI parts select no select0043.png-6a8dbbf5f19c7806192f65f530fa06be.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_455mo"]
-load_path = "res://.godot/imported/UI parts select no select0046.png-a70bba43f4a81c5f2cd76c8b7cbb0b50.ctex"
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3kd2"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_n8t3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_e6nu0")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_mbh5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_ogsi6")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_xlsgv")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_x5kqr")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_rvm71")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_3fdb7")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_3uutj")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_5vt3f")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_yr05y")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_66ktv")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_455mo")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 24.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_yfihn")
@@ -193,85 +94,39 @@ animations = [{
 "texture": ExtResource("11_gwntg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ya04e")
+"texture": ExtResource("10_ga5m4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_syifj")
+"texture": ExtResource("9_u78wk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_2s4du")
+"texture": ExtResource("8_bvw2h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_th5ic")
+"texture": ExtResource("7_3f8vd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_yntuc")
+"texture": ExtResource("6_k687m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_j8ln2")
+"texture": ExtResource("5_2gb2p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_d1pm3")
+"texture": ExtResource("4_aa1e5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_02efc")
+"texture": ExtResource("3_8ku70")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_2xg3v")
+"texture": ExtResource("2_5gius")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_yfihn")
 }],
 "loop": true,
 "name": &"new_animation_1",
 "speed": 60.0
 }]
-
-[sub_resource type="Animation" id="Animation_u1u4r"]
-resource_name = "Pressed"
-length = 2.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CompressedTexture2D_b0k1l")]
-}
-
-[sub_resource type="Animation" id="Animation_y842p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal:atlas")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CompressedTexture2D_b0k1l")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpfg"]
-_data = {
-"Pressed": SubResource("Animation_u1u4r"),
-"RESET": SubResource("Animation_y842p")
-}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -281,13 +136,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TextureButton" parent="." instance=ExtResource("1_531ux")]
 layout_mode = 0
-offset_left = 10.0
-offset_top = -13.0
-offset_right = 514.0
-offset_bottom = 154.0
-texture_normal = SubResource("AtlasTexture_3rqpg")
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 504.0
+offset_bottom = 184.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = -4.0
+offset_right = 1005.0
+offset_bottom = 163.0
+texture_normal = ExtResource("2_rnknk")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -321,9 +190,6 @@ text = "UYYVaaaaa"
 position = Vector2(583, 363)
 sprite_frames = SubResource("SpriteFrames_r3kd2")
 animation = &"new_animation_1"
-frame_progress = 0.759664
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ewpfg")
-}
+autoplay = "new_animation_1"
+frame = 3
+frame_progress = 0.581766

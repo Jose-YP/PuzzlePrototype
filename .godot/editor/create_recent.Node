@@ -1,3 +1,4 @@
+RichTextLabel
 AnimationPlayer
 AnimatedSprite2D
 Button
@@ -12,4 +13,3 @@ TextureRect
 HBoxContainer
 AudioStreamPlayer
 GridContainer
-MarginContainer

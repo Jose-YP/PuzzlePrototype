@@ -1,3 +1,6 @@
+res://Code/Scenes/Menus
+res://Scenes/MainMenu
+res://Themes/SlimButtontexture
 res://
 C:/Users/Jose/Desktop/Godots/Exports
 res://addons
@@ -12,9 +15,7 @@ res://Code/Constants
 res://Scenes/Constants/ETC
 res://Shaders
 C:/Users/Jose/Videos/Godot Movies
-res://Scenes/MainMenu
 res://Themes
-res://Code/Scenes/Menus
 res://Code/Scenes
 res://Shaders/Backgrounds
 res://Scenes/Constants/Backgrounds
