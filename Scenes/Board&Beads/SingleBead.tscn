@@ -2,13 +2,13 @@
 
 [ext_resource type="Material" uid="uid://b2xqd47n88l6n" path="res://Shaders/Beads/SingleBeadBurn.tres" id="1_sxmjh"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
-[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="3_2tfol"]
-[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="4_gou0l"]
+[ext_resource type="Texture2D" uid="uid://c6e7og2i8mlsf" path="res://Art/Beads/grayEarth.png" id="3_0q0t5"]
+[ext_resource type="Texture2D" uid="uid://cfvtfpcsfxh43" path="res://Art/Beads/grayWater.png" id="4_lhyvb"]
+[ext_resource type="Texture2D" uid="uid://dippnu6i8rwff" path="res://Art/Beads/greyAir.png" id="5_jbphc"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="5_lflmb"]
-[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="5_xevfo"]
+[ext_resource type="Texture2D" uid="uid://dsexxbyabxyo4" path="res://Art/Beads/grayLight.png" id="6_0kxpy"]
 [ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="6_avety"]
-[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="6_bnx1h"]
-[ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="7_7wy5j"]
+[ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Beads/greyDark.png" id="7_4mh45"]
 [ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="11_dj0cq"]
 [ext_resource type="AudioStream" uid="uid://dmqj2u4jpxoyp" path="res://Audio/BoardSFX/BreakSFX/Brak2.wav" id="12_yjdwj"]
 [ext_resource type="AudioStream" uid="uid://hknh6c41g4qn" path="res://Audio/BoardSFX/BreakSFX/Brak3.wav" id="13_4kv4x"]
@@ -141,7 +141,7 @@ z_index = 1
 material = ExtResource("1_sxmjh")
 scale = Vector2(0.9, 0.9)
 script = ExtResource("2_3mwsr")
-beads = Array[CompressedTexture2D]([ExtResource("3_2tfol"), ExtResource("4_gou0l"), ExtResource("5_xevfo"), ExtResource("6_bnx1h"), ExtResource("7_7wy5j")])
+beads = Array[CompressedTexture2D]([ExtResource("3_0q0t5"), ExtResource("4_lhyvb"), ExtResource("5_jbphc"), ExtResource("6_0kxpy"), ExtResource("7_4mh45")])
 shakeRange = Vector2(1, 0)
 shakeSpeed = 0.1
 burnTiming = 0.08
@@ -155,9 +155,9 @@ visibility_layer = 2
 use_parent_material = true
 offset_left = -31.0
 offset_top = -30.0
-offset_right = 32.0
-offset_bottom = 33.0
-texture = ExtResource("5_xevfo")
+offset_right = 33.0
+offset_bottom = 34.0
+texture = ExtResource("5_jbphc")
 expand_mode = 2
 stretch_mode = 5
 

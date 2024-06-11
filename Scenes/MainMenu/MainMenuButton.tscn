@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b15feom8mwjyn"]
+[gd_scene load_steps=25 format=3 uid="uid://b15feom8mwjyn"]
 
 [ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="1_71h3r"]
 [ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="2_n3icu"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Art/SlimButtontexture/UI parts select no select0057.png" id="11_i4odr"]
 [ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="12_b37ro"]
 [ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="13_r37bt"]
+[ext_resource type="Texture2D" uid="uid://c6e7og2i8mlsf" path="res://Art/Beads/grayEarth.png" id="15_vu6i5"]
+[ext_resource type="Texture2D" uid="uid://dsexxbyabxyo4" path="res://Art/Beads/grayLight.png" id="16_7aplo"]
+[ext_resource type="Texture2D" uid="uid://cfvtfpcsfxh43" path="res://Art/Beads/grayWater.png" id="17_hyxrw"]
+[ext_resource type="Texture2D" uid="uid://dippnu6i8rwff" path="res://Art/Beads/greyAir.png" id="18_r4tny"]
+[ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Beads/greyDark.png" id="19_cfv6t"]
 
 [sub_resource type="Animation" id="Animation_ksgyt"]
 resource_name = "Hover"
@@ -177,6 +182,30 @@ grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "[center] TEST TEXT"
+
+[node name="GrayEarth" type="Sprite2D" parent="."]
+modulate = Color(0.886275, 0.223529, 0.211765, 1)
+position = Vector2(-76, -207)
+texture = ExtResource("15_vu6i5")
+
+[node name="GrayLight" type="Sprite2D" parent="."]
+modulate = Color(0.945098, 0.956863, 0.298039, 1)
+position = Vector2(-48, 260)
+texture = ExtResource("16_7aplo")
+
+[node name="GrayWater" type="Sprite2D" parent="."]
+modulate = Color(0.137255, 0.6, 0.909804, 1)
+position = Vector2(-136, 250)
+texture = ExtResource("17_hyxrw")
+
+[node name="GreyAir" type="Sprite2D" parent="."]
+position = Vector2(-95, -128)
+texture = ExtResource("18_r4tny")
+
+[node name="GreyDark" type="Sprite2D" parent="."]
+modulate = Color(0.843137, 0.25098, 0.662745, 1)
+position = Vector2(-153, -184)
+texture = ExtResource("19_cfv6t")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

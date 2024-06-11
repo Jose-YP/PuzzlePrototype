@@ -26,11 +26,11 @@ class_name UserPreferences
 
 #PREFERED COLORS
 @export_category("Colors")
-@export_color_no_alpha var earthColor: Color = Color(0.631, 0.125, 0.125)
+@export_color_no_alpha var earthColor: Color = Color(0.886, 0.224, 0.212)
 @export_color_no_alpha var seaColor: Color = Color(0.137, 0.6, 0.91)
 @export_color_no_alpha var airColor: Color = Color(1,1,1)
 @export_color_no_alpha var lightColor: Color = Color(0.898, 0.91, 0.137)
-@export_color_no_alpha var darkColor: Color = Color(0.478, 0.071, 0.365)
+@export_color_no_alpha var darkColor: Color = Color(0.843, 0.251, 0.663)
 @export_color_no_alpha var breakerColor: Color = Color(0.514, 0.969, 0.557)
 
 #FUNCTIONS

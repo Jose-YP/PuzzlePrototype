@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dh8tu1vguv63i"]
 
 [ext_resource type="Script" path="res://Code/Constants/all_beads.gd" id="1_ttsqa"]
-[ext_resource type="Texture2D" uid="uid://ddt27me2jsi6a" path="res://Art/Beads/EarthOrb.png" id="2_el67t"]
-[ext_resource type="Texture2D" uid="uid://cc78oeoy5ldrd" path="res://Art/Beads/LiquidOrb.png" id="3_k5m6e"]
-[ext_resource type="Texture2D" uid="uid://pbaqi8u6vslb" path="res://Art/Beads/AirOrb.png" id="4_gg2by"]
-[ext_resource type="Texture2D" uid="uid://dy73pk3cbyn7p" path="res://Art/Beads/LightOrb.png" id="5_abx2l"]
-[ext_resource type="Texture2D" uid="uid://2tvxklp6un8s" path="res://Art/Beads/DarkOrb.png" id="6_pwy1i"]
+[ext_resource type="Texture2D" uid="uid://c6e7og2i8mlsf" path="res://Art/Beads/grayEarth.png" id="2_lofkn"]
+[ext_resource type="Texture2D" uid="uid://cfvtfpcsfxh43" path="res://Art/Beads/grayWater.png" id="3_s1t7l"]
+[ext_resource type="Texture2D" uid="uid://dippnu6i8rwff" path="res://Art/Beads/greyAir.png" id="4_2mcqa"]
+[ext_resource type="Texture2D" uid="uid://dsexxbyabxyo4" path="res://Art/Beads/grayLight.png" id="5_68u7r"]
+[ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Beads/greyDark.png" id="6_g7dfo"]
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="7_so5yu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8ax2"]
@@ -19,51 +19,50 @@ offset_bottom = -6.24
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_d8ax2")
-current_tab = 2
 tabs_visible = false
 script = ExtResource("1_ttsqa")
 smallSize = Vector2(32, 32)
 regSize = Vector2(64, 64)
 
 [node name="Earth" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("2_el67t")
+texture = ExtResource("2_lofkn")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="Liquid" type="TextureRect" parent="."]
 visible = false
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("3_k5m6e")
+texture = ExtResource("3_s1t7l")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="Air" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(30, 30)
+visible = false
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("4_gg2by")
+texture = ExtResource("4_2mcqa")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="Light" type="TextureRect" parent="."]
 visible = false
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("5_abx2l")
+texture = ExtResource("5_68u7r")
 expand_mode = 2
 stretch_mode = 4
 
 [node name="Dark" type="TextureRect" parent="."]
 visible = false
 clip_contents = true
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("6_pwy1i")
+texture = ExtResource("6_g7dfo")
 expand_mode = 2
 stretch_mode = 4
 
@@ -74,7 +73,7 @@ layout_mode = 2
 [node name="Breaker" type="TextureRect" parent="."]
 visible = false
 clip_contents = true
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

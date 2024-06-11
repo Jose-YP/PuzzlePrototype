@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UserPreferences" load_steps=18 format=3]
+[gd_resource type="Resource" script_class="UserPreferences" load_steps=18 format=3 uid="uid://u57jqaul5rus"]
 
 [ext_resource type="Script" path="res://Resources/Options/UserPreferences.gd" id="1_nv052"]
 
@@ -103,9 +103,9 @@ joy_action_events = {
 "ui_up": SubResource("InputEventJoypadButton_iu1yp")
 }
 reset = false
-earthColor = Color(0.631, 0.125, 0.125, 1)
+earthColor = Color(0.886, 0.224, 0.212, 1)
 seaColor = Color(0.137, 0.6, 0.91, 1)
 airColor = Color(1, 1, 1, 1)
 lightColor = Color(0.898, 0.91, 0.137, 1)
-darkColor = Color(0.478, 0.071, 0.365, 1)
+darkColor = Color(0.843, 0.251, 0.663, 1)
 breakerColor = Color(0.514, 0.969, 0.557, 1)
