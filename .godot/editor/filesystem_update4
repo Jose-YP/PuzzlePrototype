@@ -21,3 +21,4 @@ res://Scenes/Constants/UIPieces/all_beads.tscn
 res://Code/Constants/test.gd
 res://Themes/ButtonStyle/MainMenuButtonAnims.res
 res://Themes/ButtonStyle/MainMenuButtonRESET.res
+res://Code/Scenes/Menus/MainMenu.gd
