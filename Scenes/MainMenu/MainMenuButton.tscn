@@ -35,23 +35,6 @@ libraries = {
 }
 autoplay = "MainMenuButtons/Off"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = -5.0
-offset_right = 121.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "[center] TEST TEXT"
-
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

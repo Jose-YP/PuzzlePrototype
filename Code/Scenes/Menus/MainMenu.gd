@@ -15,7 +15,8 @@ var can: bool = false
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	$Buttons/Play.grab_focus()
+	#$Buttons/Play.grab_focus()
+	%PlayTex.grab_focus()
 	can = true
 
 #______________________________

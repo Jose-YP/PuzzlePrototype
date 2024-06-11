@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=7 format=3 uid="uid://bjf6n3d1yeous"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
+[ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_kpayp"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="2_oy1pm"]
 [ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="5_x2ope"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 1
@@ -19,6 +21,7 @@ offset_right = 76.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kpayp")
 script = ExtResource("1_7dq6h")
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -111,45 +114,118 @@ mouse_filter = 2
 button_mask = 0
 text = "HOW TO PLAY"
 
-[node name="PlayTex" parent="Buttons" instance=ExtResource("2_oy1pm")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -420.0
+offset_top = -12.0
+offset_right = 592.0
+offset_bottom = 140.0
+metadata/_edit_lock_ = true
+
+[node name="PlayTex" parent="HBoxContainer2" instance=ExtResource("2_oy1pm")]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../OptionsTex")
-focus_neighbor_top = NodePath("../ScoresTex")
+focus_neighbor_top = NodePath("../../HBoxContainer/ScoresTex")
 focus_neighbor_right = NodePath("../OptionsTex")
-focus_neighbor_bottom = NodePath("../ScoresTex")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/ScoresTex")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
-richText = "PLAY"
+metadata/_edit_lock_ = true
 
-[node name="OptionsTex" parent="Buttons" instance=ExtResource("2_oy1pm")]
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer2/PlayTex"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 71.0
+offset_right = 364.0
+offset_bottom = 111.0
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]PLAY"
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="OptionsTex" parent="HBoxContainer2" instance=ExtResource("2_oy1pm")]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../PlayTex")
-focus_neighbor_top = NodePath("../H2PTex")
+focus_neighbor_top = NodePath("../../HBoxContainer/H2PTex")
 focus_neighbor_right = NodePath("../PlayTex")
-focus_neighbor_bottom = NodePath("../H2PTex")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/H2PTex")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
-richText = "OPTIONS"
+metadata/_edit_lock_ = true
 
-[node name="ScoresTex" parent="Buttons" instance=ExtResource("2_oy1pm")]
+[node name="RichTextLabel5" type="RichTextLabel" parent="HBoxContainer2/OptionsTex"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 74.0
+offset_right = 368.0
+offset_bottom = 114.0
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]OPTIONS"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -426.0
+offset_top = 168.0
+offset_right = 586.0
+offset_bottom = 320.0
+metadata/_edit_lock_ = true
+
+[node name="ScoresTex" parent="HBoxContainer" instance=ExtResource("2_oy1pm")]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../H2PTex")
-focus_neighbor_top = NodePath("../PlayTex")
+focus_neighbor_top = NodePath("../../HBoxContainer2/PlayTex")
 focus_neighbor_right = NodePath("../H2PTex")
-focus_neighbor_bottom = NodePath("../PlayTex")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/PlayTex")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
-richText = "SCORES"
+metadata/_edit_lock_ = true
 
-[node name="H2PTex" parent="Buttons" instance=ExtResource("2_oy1pm")]
+[node name="RichTextLabel4" type="RichTextLabel" parent="HBoxContainer/ScoresTex"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 73.0
+offset_right = 363.0
+offset_bottom = 113.0
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]SCORES"
+scroll_active = false
+
+[node name="H2PTex" parent="HBoxContainer" instance=ExtResource("2_oy1pm")]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../ScoresTex")
-focus_neighbor_top = NodePath("../OptionsTex")
+focus_neighbor_top = NodePath("../../HBoxContainer2/OptionsTex")
 focus_neighbor_right = NodePath("../ScoresTex")
-focus_neighbor_bottom = NodePath("../OptionsTex")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/OptionsTex")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
-richText = "HOW TO PLAY"
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/H2PTex"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 74.0
+offset_right = 361.0
+offset_bottom = 114.0
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]HOW TO PLAY"
+scroll_active = false
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
@@ -165,6 +241,7 @@ offset_right = 190.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_x2ope")
 metadata/_edit_lock_ = true
 
 [node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
@@ -198,10 +275,10 @@ autostart = true
 [connection signal="pressed" from="Buttons/Scores" to="." method="_on_scores_pressed"]
 [connection signal="focus_entered" from="Buttons/How2Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/How2Play" to="." method="_on_how_2_play_pressed"]
-[connection signal="finish" from="Buttons/PlayTex" to="." method="_on_play_pressed"]
-[connection signal="finish" from="Buttons/OptionsTex" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Buttons/ScoresTex" to="." method="_on_scores_pressed"]
-[connection signal="pressed" from="Buttons/H2PTex" to="." method="_on_how_2_play_pressed"]
+[connection signal="finish" from="HBoxContainer2/PlayTex" to="." method="_on_play_pressed"]
+[connection signal="finish" from="HBoxContainer2/OptionsTex" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/ScoresTex" to="." method="_on_scores_pressed"]
+[connection signal="pressed" from="HBoxContainer/H2PTex" to="." method="_on_how_2_play_pressed"]
 [connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
 [connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]
 [connection signal="boardSFX" from="How2Play" to="." method="_on_how_2_play_board_sfx"]

@@ -1,7 +1,5 @@
 extends TextureButton
 
-@export var richText: String = "TEST"
-
 @onready var animations: AnimationPlayer = $AnimationPlayer
 
 signal finish

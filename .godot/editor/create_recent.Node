@@ -1,6 +1,7 @@
+RichTextLabel
+HBoxContainer
 AnimationPlayer
 AnimatedSprite2D
-RichTextLabel
 Button
 TextureButton
 Timer
@@ -10,5 +11,4 @@ Control
 Node2D
 VBoxContainer
 TextureRect
-HBoxContainer
 AudioStreamPlayer
