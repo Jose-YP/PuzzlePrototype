@@ -1,6 +1,5 @@
-[gd_scene load_steps=23 format=3 uid="uid://b15feom8mwjyn"]
+[gd_scene load_steps=20 format=3 uid="uid://b15feom8mwjyn"]
 
-[ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="1_71h3r"]
 [ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_qgwcy"]
 [ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="2_n3icu"]
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenuButton.gd" id="2_w3gu3"]
@@ -16,114 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="12_b37ro"]
 [ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="13_r37bt"]
 
-[sub_resource type="Animation" id="Animation_j60se"]
-resource_name = "Hover"
-length = 0.333335
-loop_mode = 2
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_71h3r")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.1336, 0.1837, 0.25, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08")]
-}
-
-[sub_resource type="Animation" id="Animation_jwauy"]
-resource_name = "Pressed"
-length = 0.333335
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_71h3r")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.116667, 0.166667, 0.216667, 0.25, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("8_qr40r"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro")]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureButton")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3173),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"finish_signal"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_iku5n"]
-resource_name = "Pressed_Rev"
-length = 0.333335
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_71h3r")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:texture_normal:atlas")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.133333, 0.183333, 0.233333, 0.266667, 0.2839),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("12_b37ro"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("8_qr40r"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro")]
-}
-
-[sub_resource type="Animation" id="Animation_4l154"]
+[sub_resource type="Animation" id="Animation_5wgat"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
+tracks/0/path = NodePath(".:texture_normal")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,16 +29,58 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("13_r37bt")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_normal:region")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 504, 167)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpfg"]
 _data = {
-"Hover": SubResource("Animation_j60se"),
-"Pressed": SubResource("Animation_jwauy"),
-"Pressed_Rev": SubResource("Animation_iku5n"),
-"RESET": SubResource("Animation_4l154")
+"RESET": SubResource("Animation_5wgat")
+}
+
+[sub_resource type="Animation" id="Animation_sg82i"]
+resource_name = "Hover"
+length = 0.600002
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 154, 504, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_normal:atlas")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro"), ExtResource("11_i4odr"), ExtResource("10_tmfq5"), ExtResource("9_2373l"), ExtResource("7_xnt08"), ExtResource("6_kkcjw"), ExtResource("5_dd4v4"), ExtResource("4_yne1h"), ExtResource("3_0astk"), ExtResource("2_n3icu")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u7djd"]
+_data = {
+"Hover": SubResource("Animation_sg82i")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r370g"]
 animations = [{
@@ -227,7 +166,7 @@ offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qgwcy")
-texture_normal = ExtResource("1_71h3r")
+texture_normal = ExtResource("13_r37bt")
 stretch_mode = 4
 script = ExtResource("2_w3gu3")
 
@@ -236,7 +175,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ewpfg"),
 "MainMenuButtons": SubResource("AnimationLibrary_u7djd")
 }
-autoplay = "RESET"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -259,7 +197,7 @@ text = "[center] TEST TEXT"
 visible = false
 position = Vector2(1094, 188)
 sprite_frames = SubResource("SpriteFrames_r370g")
-frame_progress = 0.675451
+frame_progress = 0.793542
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
