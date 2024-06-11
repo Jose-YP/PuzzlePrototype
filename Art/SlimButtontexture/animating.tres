@@ -1,8 +1,8 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c7pyshr4ll41k"]
 
-[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="1_3sy0b"]
+[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="1_an2b5"]
 
 [resource]
-atlas = ExtResource("1_3sy0b")
+atlas = ExtResource("1_an2b5")
 region = Rect2(0, 154, 504, 173)
 filter_clip = true

@@ -6,9 +6,6 @@ extends TextureButton
 
 signal finish
 
-func _ready():
-	$".".grab_focus()
-
 func _on_pressed():
 	print("B")
 	animations.play("Pressed")
@@ -17,7 +14,7 @@ func _on_pressed():
 	animations.play("Pressed",true)
 
 func _on_focus_entered():
-	print("a")
+	print(self)
 	animations.play("Hover", -1.0, 1.0)
 
 func _on_focus_exited():

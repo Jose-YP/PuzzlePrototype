@@ -456,8 +456,6 @@ func post_turn() -> void:
 		#Since breaker beads break last do one last fall check
 		if fallPaused:
 			all_fall()
-			print()
-			playSFX.emit(8)
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		#Bead will show after a single timeout of Grounded to give them time to see the board and rest a second

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c55ujrf1e7yhj"]
+[gd_scene load_steps=7 format=3 uid="uid://c55ujrf1e7yhj"]
 
 [ext_resource type="Script" path="res://Code/Constants/PauseScreen.gd" id="1_f2w6d"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_i2bur"]
@@ -17,6 +17,14 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_i2bur")
 path = "Break"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_d0adn"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i2bur")
+path = "Flip"
 show_mode = 0
 force_type = 0
 
@@ -112,6 +120,31 @@ layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
 text = " TO RETRY"
+
+[node name="QUIT" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="QUIT" type="RichTextLabel" parent="VBoxContainer/QUIT"]
+custom_minimum_size = Vector2(55, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "PRESS "
+
+[node name="QuitTexture" type="TextureRect" parent="VBoxContainer/QUIT"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("Texture2D_d0adn")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="QUIT2" type="RichTextLabel" parent="VBoxContainer/QUIT"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = " TO QUIT"
 
 [node name="Pause" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

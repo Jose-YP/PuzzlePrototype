@@ -1,6 +1,6 @@
+AnimatedSprite2D
 RichTextLabel
 AnimationPlayer
-AnimatedSprite2D
 Button
 TextureButton
 Timer
@@ -12,4 +12,3 @@ VBoxContainer
 TextureRect
 HBoxContainer
 AudioStreamPlayer
-GridContainer

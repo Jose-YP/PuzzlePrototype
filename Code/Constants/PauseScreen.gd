@@ -1,8 +1,10 @@
 extends CanvasLayer
 
 @onready var retryDissplay: HBoxContainer = $VBoxContainer/RETRY
+@onready var quitDisplay: HBoxContainer = $VBoxContainer/QUIT
 
-signal retry
+signal retry(allowed)
+signal quit(allowed)
 signal playSFX
 signal unpauseSong
 
@@ -15,6 +17,9 @@ func _input( event: InputEvent):
 		visible = not currently
 		playSFX.emit()
 		unpauseSong.emit()
+	
+	if event.is_action_pressed("Flip"):
+		quit.emit(onBoard)
 	
 	if event.is_action_pressed("Break"):
 		retry.emit(onBoard)

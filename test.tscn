@@ -1,19 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://ibjlbmrseoij"]
+[gd_scene load_steps=12 format=3 uid="uid://ibjlbmrseoij"]
 
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="1_531ux"]
-[ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="1_yfihn"]
-[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="2_5gius"]
-[ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="2_rnknk"]
-[ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="2_wgalp"]
-[ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Art/SlimButtontexture/UI parts select no select0050.png" id="3_8ku70"]
-[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="4_aa1e5"]
-[ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Art/SlimButtontexture/UI parts select no select0052.png" id="5_2gb2p"]
-[ext_resource type="Texture2D" uid="uid://t178r6e82kch" path="res://Art/SlimButtontexture/UI parts select no select0053.png" id="6_k687m"]
-[ext_resource type="Texture2D" uid="uid://bofaep3bbc680" path="res://Art/SlimButtontexture/UI parts select no select0054.png" id="7_3f8vd"]
-[ext_resource type="Texture2D" uid="uid://uvoxra0ql2v0" path="res://Art/SlimButtontexture/UI parts select no select0055.png" id="8_bvw2h"]
-[ext_resource type="Texture2D" uid="uid://1gd8pomj148r" path="res://Art/SlimButtontexture/UI parts select no select0056.png" id="9_u78wk"]
-[ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Art/SlimButtontexture/UI parts select no select0057.png" id="10_ga5m4"]
-[ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="11_gwntg"]
+[ext_resource type="Script" path="res://Code/Constants/test.gd" id="1_844r2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gev2e"]
 load_path = "res://.godot/imported/UI parts select no select0041.png-a90e7ddf5194127dd397bd12372853fe.ctex"
@@ -58,77 +46,6 @@ expand_margin_top = 10.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_r3kd2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_yfihn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_5gius")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_8ku70")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_aa1e5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_2gb2p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_k687m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3f8vd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_bvw2h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_u78wk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ga5m4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_gwntg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ga5m4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_u78wk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_bvw2h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3f8vd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_k687m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_2gb2p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_aa1e5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_8ku70")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_5gius")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_yfihn")
-}],
-"loop": true,
-"name": &"new_animation_1",
-"speed": 60.0
-}]
-
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -136,6 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_844r2")
 
 [node name="TextureButton" parent="." instance=ExtResource("1_531ux")]
 layout_mode = 0
@@ -144,21 +62,58 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 504.0
-offset_bottom = 184.0
+offset_left = 403.0
+offset_top = 8.0
+offset_right = 907.0
+offset_bottom = 192.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_normal = ExtResource("2_wgalp")
+focus_neighbor_left = NodePath("../TextureButton3")
+focus_neighbor_top = NodePath("../TextureButton3")
+focus_neighbor_right = NodePath("../TextureButton2")
+focus_neighbor_bottom = NodePath("../TextureButton2")
+focus_next = NodePath("../TextureButton2")
+focus_previous = NodePath("../TextureButton3")
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="TextureButton2" parent="." instance=ExtResource("1_531ux")]
 layout_mode = 0
-offset_left = 501.0
-offset_top = -4.0
-offset_right = 1005.0
-offset_bottom = 163.0
-texture_normal = ExtResource("2_rnknk")
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 394.0
+offset_top = 233.0
+offset_right = 898.0
+offset_bottom = 417.0
+grow_horizontal = 1
+grow_vertical = 1
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_top = NodePath("../TextureButton")
+focus_neighbor_right = NodePath("../TextureButton3")
+focus_neighbor_bottom = NodePath("../TextureButton3")
+focus_next = NodePath("../TextureButton3")
+focus_previous = NodePath("../TextureButton")
+
+[node name="TextureButton3" parent="." instance=ExtResource("1_531ux")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 405.0
+offset_top = 449.0
+offset_right = 909.0
+offset_bottom = 633.0
+grow_horizontal = 1
+grow_vertical = 1
+focus_neighbor_left = NodePath("../TextureButton2")
+focus_neighbor_top = NodePath("../TextureButton2")
+focus_neighbor_right = NodePath("../TextureButton")
+focus_neighbor_bottom = NodePath("../TextureButton")
+focus_next = NodePath("../TextureButton")
+focus_previous = NodePath("../TextureButton2")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -188,10 +143,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_r18ml")
 theme_override_styles/focus = SubResource("StyleBoxTexture_vb65y")
 text = "UYYVaaaaa"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(583, 363)
-sprite_frames = SubResource("SpriteFrames_r3kd2")
-animation = &"new_animation_1"
-autoplay = "new_animation_1"
-frame = 3
-frame_progress = 0.581766
+[editable path="TextureButton"]
+[editable path="TextureButton2"]
+[editable path="TextureButton3"]

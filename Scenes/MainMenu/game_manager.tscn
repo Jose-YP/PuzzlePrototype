@@ -172,5 +172,6 @@ script = ExtResource("21_6ewy6")
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]
 [connection signal="playSFX" from="PauseScreen" to="." method="_on_pause_screen_play_sfx"]
+[connection signal="quit" from="PauseScreen" to="." method="_on_pause_screen_quit"]
 [connection signal="retry" from="PauseScreen" to="." method="on_board_retry"]
 [connection signal="unpauseSong" from="PauseScreen" to="." method="_on_pause_screen_unpause_song"]

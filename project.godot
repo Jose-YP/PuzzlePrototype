@@ -14,7 +14,7 @@ config/name="PuzzlePrototype:LIVELY"
 config/tags=PackedStringArray("2d", "made", "release")
 run/main_scene="res://Scenes/MainMenu/game_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Art/Beads/LiquidOrb.png"
+config/icon="res://Art/Beads/Water.png"
 
 [audio]
 

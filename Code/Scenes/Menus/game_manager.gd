@@ -127,9 +127,13 @@ func _on_board_play_sfx(index) -> void:
 func _on_board_play_break_sfx(index) -> void:
 	BreakSFX[index].play()
 
-func on_board_retry(onBoard = true) -> void:
-	if onBoard:
+func on_board_retry(allowed = true) -> void:
+	if allowed:
 		loadScene(boardScene)
+
+func _on_pause_screen_quit(allowed = true) -> void:
+	if allowed:
+		back_to_menu()
 
 func fail_song() -> void:
 	play_music(ETCMusic[1])
@@ -167,7 +171,7 @@ func play_music(song) -> void:
 		fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)
 
-func _on_pause_screen_unpause_song():
+func _on_pause_screen_unpause_song() -> void:
 	currentSong.stream_paused = false
 
 func fade_music(value) -> void:

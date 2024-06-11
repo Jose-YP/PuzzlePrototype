@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://b15feom8mwjyn"]
+[gd_scene load_steps=23 format=3 uid="uid://b15feom8mwjyn"]
 
 [ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="1_71h3r"]
+[ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_qgwcy"]
 [ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="2_n3icu"]
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenuButton.gd" id="2_w3gu3"]
 [ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="3_0astk"]
@@ -15,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="12_b37ro"]
 [ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="13_r37bt"]
 
-[sub_resource type="Animation" id="Animation_ksgyt"]
+[sub_resource type="Animation" id="Animation_j60se"]
 resource_name = "Hover"
 length = 0.333335
 loop_mode = 2
@@ -45,7 +46,7 @@ tracks/1/keys = {
 "values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08")]
 }
 
-[sub_resource type="Animation" id="Animation_u1u4r"]
+[sub_resource type="Animation" id="Animation_jwauy"]
 resource_name = "Pressed"
 length = 0.333335
 step = 0.0166667
@@ -88,22 +89,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_y842p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("13_r37bt")]
-}
-
-[sub_resource type="Animation" id="Animation_h2jqe"]
+[sub_resource type="Animation" id="Animation_iku5n"]
 resource_name = "Pressed_Rev"
 length = 0.333335
 step = 0.0166667
@@ -132,13 +118,101 @@ tracks/1/keys = {
 "values": [ExtResource("12_b37ro"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("8_qr40r"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro")]
 }
 
+[sub_resource type="Animation" id="Animation_4l154"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_r37bt")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpfg"]
 _data = {
-"Hover": SubResource("Animation_ksgyt"),
-"Pressed": SubResource("Animation_u1u4r"),
-"Pressed_Rev": SubResource("Animation_h2jqe"),
-"RESET": SubResource("Animation_y842p")
+"Hover": SubResource("Animation_j60se"),
+"Pressed": SubResource("Animation_jwauy"),
+"Pressed_Rev": SubResource("Animation_iku5n"),
+"RESET": SubResource("Animation_4l154")
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7djd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r370g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n3icu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0astk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yne1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dd4v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kkcjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xnt08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qr40r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2373l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tmfq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i4odr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b37ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i4odr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tmfq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2373l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qr40r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xnt08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kkcjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dd4v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yne1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0astk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n3icu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
 
 [node name="TextureButton" type="TextureButton"]
 anchors_preset = 8
@@ -152,15 +226,17 @@ offset_right = 252.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_qgwcy")
 texture_normal = ExtResource("1_71h3r")
 stretch_mode = 4
 script = ExtResource("2_w3gu3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ewpfg")
+"": SubResource("AnimationLibrary_ewpfg"),
+"MainMenuButtons": SubResource("AnimationLibrary_u7djd")
 }
+autoplay = "RESET"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -170,13 +246,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -161.0
-offset_top = -10.0
+offset_top = -24.0
 offset_right = 121.0
-offset_bottom = 13.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center] TEST TEXT"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1094, 188)
+sprite_frames = SubResource("SpriteFrames_r370g")
+frame_progress = 0.675451
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
