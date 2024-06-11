@@ -152,7 +152,6 @@ GLOWING [color=red]EARTH[/color] - [color=aqua]SEA[/color] -  [color=white]AIR[/
 [node name="Earth" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 0
 
 [node name="Sea" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
@@ -162,6 +161,7 @@ current_tab = 1
 [node name="Air" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
+current_tab = 2
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2

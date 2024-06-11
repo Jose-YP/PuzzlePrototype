@@ -21,3 +21,5 @@ res://Art/SlimButtontexture/Not.tres
 res://Scenes/Constants/UIPieces/all_beads.tscn
 res://Resources/Options/UserPrefs.tres
 res://Resources/Options/UserPreferences.gd
+res://Resources/SaveData/SaveFile.tres
+res://Scenes/MainMenu/how_2_play.tscn

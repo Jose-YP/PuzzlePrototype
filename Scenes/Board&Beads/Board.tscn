@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=10 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
-[ext_resource type="Texture2D" uid="uid://ddqt3mhtlqwiy" path="res://Art/Board/puzzle_board.png" id="10_3glqw"]
 
 [node name="Board" type="Node2D"]
 process_mode = 1
@@ -117,13 +116,6 @@ editor_description = "Uberbead is loaded here on ready so the bolt animation can
 visible = false
 position = Vector2(-100, -100)
 
-[node name="PuzzleBoard" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(528, 355)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("10_3glqw")
-metadata/_edit_lock_ = true
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 show_behind_parent = true
@@ -136,12 +128,6 @@ offset_right = 1049.0
 offset_bottom = 756.0
 grow_vertical = 0
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(327, 103)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(373, 103)
 
 [connection signal="HighScore" from="UI/RightUI" to="." method="_on_right_ui_high_score"]
 [connection signal="breakGain" from="UI/RightUI" to="UI/LeftUI" method="_on_right_ui_break_gain"]
