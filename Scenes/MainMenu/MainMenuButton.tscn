@@ -1,157 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://b15feom8mwjyn"]
+[gd_scene load_steps=7 format=3 uid="uid://b15feom8mwjyn"]
 
 [ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_qgwcy"]
-[ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="2_n3icu"]
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenuButton.gd" id="2_w3gu3"]
-[ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="3_0astk"]
-[ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Art/SlimButtontexture/UI parts select no select0050.png" id="4_yne1h"]
-[ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="5_dd4v4"]
-[ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Art/SlimButtontexture/UI parts select no select0052.png" id="6_kkcjw"]
-[ext_resource type="Texture2D" uid="uid://t178r6e82kch" path="res://Art/SlimButtontexture/UI parts select no select0053.png" id="7_xnt08"]
-[ext_resource type="Texture2D" uid="uid://bofaep3bbc680" path="res://Art/SlimButtontexture/UI parts select no select0054.png" id="8_qr40r"]
-[ext_resource type="Texture2D" uid="uid://uvoxra0ql2v0" path="res://Art/SlimButtontexture/UI parts select no select0055.png" id="9_2373l"]
-[ext_resource type="Texture2D" uid="uid://1gd8pomj148r" path="res://Art/SlimButtontexture/UI parts select no select0056.png" id="10_tmfq5"]
-[ext_resource type="Texture2D" uid="uid://cr3yie6vmt4d8" path="res://Art/SlimButtontexture/UI parts select no select0057.png" id="11_i4odr"]
-[ext_resource type="Texture2D" uid="uid://mgiwohr5q2ky" path="res://Art/SlimButtontexture/UI parts select no select0058.png" id="12_b37ro"]
+[ext_resource type="Animation" uid="uid://da128u4ykss61" path="res://Themes/ButtonStyle/MainMenuButtonRESET.res" id="4_4fddf"]
+[ext_resource type="AnimationLibrary" uid="uid://3aqrx4v1dv7u" path="res://Themes/ButtonStyle/MainMenuButtonAnims.res" id="5_lcy7u"]
 [ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="13_r37bt"]
-
-[sub_resource type="Animation" id="Animation_5wgat"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("13_r37bt")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture_normal:region")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 504, 167)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpfg"]
 _data = {
-"RESET": SubResource("Animation_5wgat")
+"RESET": ExtResource("4_4fddf")
 }
-
-[sub_resource type="Animation" id="Animation_sg82i"]
-resource_name = "Hover"
-length = 0.600002
-loop_mode = 1
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture_normal:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 154, 504, 192)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture_normal:atlas")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_n3icu"), ExtResource("3_0astk"), ExtResource("4_yne1h"), ExtResource("5_dd4v4"), ExtResource("6_kkcjw"), ExtResource("7_xnt08"), ExtResource("9_2373l"), ExtResource("10_tmfq5"), ExtResource("11_i4odr"), ExtResource("12_b37ro"), ExtResource("11_i4odr"), ExtResource("10_tmfq5"), ExtResource("9_2373l"), ExtResource("7_xnt08"), ExtResource("6_kkcjw"), ExtResource("5_dd4v4"), ExtResource("4_yne1h"), ExtResource("3_0astk"), ExtResource("2_n3icu")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7djd"]
-_data = {
-"Hover": SubResource("Animation_sg82i")
-}
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r370g"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_n3icu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_0astk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yne1h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_dd4v4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_kkcjw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_xnt08")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_qr40r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2373l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_tmfq5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_i4odr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_b37ro")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_i4odr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_tmfq5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2373l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_qr40r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_xnt08")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_kkcjw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_dd4v4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yne1h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_0astk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_n3icu")
-}],
-"loop": true,
-"name": &"default",
-"speed": 60.0
-}]
 
 [node name="TextureButton" type="TextureButton"]
 anchors_preset = 8
@@ -173,8 +31,9 @@ script = ExtResource("2_w3gu3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ewpfg"),
-"MainMenuButtons": SubResource("AnimationLibrary_u7djd")
+"MainMenuButtons": ExtResource("5_lcy7u")
 }
+autoplay = "MainMenuButtons/Off"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -192,12 +51,6 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center] TEST TEXT"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1094, 188)
-sprite_frames = SubResource("SpriteFrames_r370g")
-frame_progress = 0.793542
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

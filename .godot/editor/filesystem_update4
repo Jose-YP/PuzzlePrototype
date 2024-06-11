@@ -5,18 +5,19 @@ res://Shaders/ShaderCode/ProgressBar.gdshader
 res://Resources/Rules/Basic Rules.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
+res://Themes/GameUI.tres
+res://Art/SlimButtontexture/Not.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
-res://Themes/GameUI.tres
-res://Art/SlimButtontexture/animating.tres
-res://test.tscn
 res://Code/Scenes/Menus/MainMenuButton.gd
 res://Scenes/MainMenu/game_manager.tscn
-res://Art/SlimButtontexture/Not.tres
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Scenes/MainMenu/MainMenu.tscn
+res://test.tscn
 res://Scenes/Constants/ETC/pause_screen.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Constants/UIPieces/all_beads.tscn
 res://Code/Constants/test.gd
+res://Themes/ButtonStyle/MainMenuButtonAnims.res
+res://Themes/ButtonStyle/MainMenuButtonRESET.res
