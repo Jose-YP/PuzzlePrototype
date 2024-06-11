@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xaiidresne45"
-path="res://.godot/imported/greyDark.png-60fe1235fa8f7e319d82e0f84d28c12c.ctex"
+uid="uid://c6e7og2i8mlsf"
+path="res://.godot/imported/grayEarth.png-78dff5c1ba55871c8b2c37f68d447739.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Beads/greyDark.png"
-dest_files=["res://.godot/imported/greyDark.png-60fe1235fa8f7e319d82e0f84d28c12c.ctex"]
+source_file="res://Art/Beads/grayEarth.png"
+dest_files=["res://.godot/imported/grayEarth.png-78dff5c1ba55871c8b2c37f68d447739.ctex"]
 
 [params]
 

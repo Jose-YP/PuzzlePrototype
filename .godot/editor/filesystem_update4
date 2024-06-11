@@ -1,5 +1,4 @@
-res://Themes/SlimButtontexture/animating.tres
-res://test.tscn
+res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://addons/controller_icons/settings.tres
 res://Shaders/ShaderCode/ProgressBar.gdshader
@@ -8,6 +7,14 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
 res://Shaders/ShaderCode/Ripple.gdshader
-res://Themes/SlimButtontexture/Not.tres
 res://Code/Scenes/Menus/MainMenuButton.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/UI/right_ui.tscn
+res://test.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Art/SlimButtontexture/animating.tres
 res://Scenes/MainMenu/MainMenuButton.tscn
+res://Art/SlimButtontexture/Not.tres

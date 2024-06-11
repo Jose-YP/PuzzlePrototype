@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://ibjlbmrseoij"]
+[gd_scene load_steps=25 format=3 uid="uid://ibjlbmrseoij"]
 
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="1_531ux"]
 [ext_resource type="Texture2D" uid="uid://b72jokubtyta4" path="res://Art/SlimButtontexture/UI parts select no select0048.png" id="1_yfihn"]
 [ext_resource type="Texture2D" uid="uid://do2dkb3c6jk6j" path="res://Art/SlimButtontexture/UI parts select no select0049.png" id="2_5gius"]
 [ext_resource type="Texture2D" uid="uid://c7pyshr4ll41k" path="res://Art/SlimButtontexture/animating.tres" id="2_rnknk"]
+[ext_resource type="Texture2D" uid="uid://xbtggfbln1hy" path="res://Art/SlimButtontexture/Not.tres" id="2_wgalp"]
 [ext_resource type="Texture2D" uid="uid://dscg7l6asmavc" path="res://Art/SlimButtontexture/UI parts select no select0050.png" id="3_8ku70"]
 [ext_resource type="Texture2D" uid="uid://d0lhm24by31qu" path="res://Art/SlimButtontexture/UI parts select no select0051.png" id="4_aa1e5"]
 [ext_resource type="Texture2D" uid="uid://cle4e52eis8gm" path="res://Art/SlimButtontexture/UI parts select no select0052.png" id="5_2gb2p"]
@@ -149,6 +150,7 @@ offset_right = 504.0
 offset_bottom = 184.0
 grow_horizontal = 1
 grow_vertical = 1
+texture_normal = ExtResource("2_wgalp")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0
