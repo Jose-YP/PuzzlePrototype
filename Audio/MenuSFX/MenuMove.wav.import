@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://lppqgchu4653"
+uid="uid://dtrkvmnax8tb3"
 path="res://.godot/imported/MenuMove.wav-4f8d859e54affb7bb923f068c075c021.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=17 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Material" uid="uid://b2xqd47n88l6n" path="res://Shaders/Beads/SingleBeadBurn.tres" id="1_sxmjh"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
@@ -10,9 +10,6 @@
 [ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="6_avety"]
 [ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Board&Beads/greyDark.png" id="7_4mh45"]
 [ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="11_dj0cq"]
-[ext_resource type="AudioStream" uid="uid://dmqj2u4jpxoyp" path="res://Audio/BoardSFX/BreakSFX/Brak2.wav" id="12_yjdwj"]
-[ext_resource type="AudioStream" uid="uid://hknh6c41g4qn" path="res://Audio/BoardSFX/BreakSFX/Brak3.wav" id="13_4kv4x"]
-[ext_resource type="AudioStream" uid="uid://c37ajq80vr346" path="res://Audio/BoardSFX/BreakSFX/Brak4.wav" id="14_m1x3d"]
 
 [sub_resource type="Animation" id="Animation_sme3t"]
 resource_name = "Glow"
@@ -163,9 +160,8 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Glow" type="Sprite2D" parent="Images"]
-visible = false
 modulate = Color(1, 1, 1, 0.52549)
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.596078)
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true
@@ -213,27 +209,11 @@ position = Vector2(-7, -25.5)
 editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
 script = ExtResource("6_avety")
 
-[node name="BreakSFX" type="Node" parent="."]
-
-[node name="Break" type="AudioStreamPlayer" parent="BreakSFX"]
+[node name="Break" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("11_dj0cq")
 volume_db = -4.0
-
-[node name="Break2" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("12_yjdwj")
-volume_db = -4.0
-
-[node name="Break3" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("13_4kv4x")
-volume_db = -4.0
-
-[node name="Break4" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("14_m1x3d")
-volume_db = -4.0
+bus = &"BeadSFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

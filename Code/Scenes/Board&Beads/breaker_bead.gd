@@ -1,9 +1,10 @@
 extends Node2D
 
 @export var rippleTiming: float = 1.0
+@export_range(0,1,.01)  var pitchShift: float = .3
 @export_range(0,.5,.01) var burnTiming: float = .05
 
-@onready var brakSFX: Array[AudioStreamPlayer] = [%Break, %Break2, %Break3, %Break4]
+@onready var brakSFX: AudioStreamPlayer = %Break
 @onready var sprite: TextureRect = $TextureRect
 @onready var glow: Sprite2D = $Glow
 
@@ -86,7 +87,9 @@ func _on_ripple_end():
 func destroy_anim():
 	#Destroy chains
 	breaking = true
-	brakSFX.pick_random().play()
+	var pitch = AudioServer.get_bus_effect(6, 0)
+	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
+	brakSFX.play()
 	
 	#Destroy bead
 	var tween = self.create_tween()

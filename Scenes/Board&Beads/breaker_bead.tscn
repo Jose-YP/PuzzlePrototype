@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bagf1jfvukcdx"]
+[gd_scene load_steps=13 format=3 uid="uid://bagf1jfvukcdx"]
 
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="1_2fe1a"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/breaker_bead.gd" id="1_itnrx"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="2_snr66"]
 [ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="3_tjmdn"]
 [ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="6_6t61a"]
-[ext_resource type="AudioStream" uid="uid://dmqj2u4jpxoyp" path="res://Audio/BoardSFX/BreakSFX/Brak2.wav" id="7_63jnv"]
-[ext_resource type="AudioStream" uid="uid://hknh6c41g4qn" path="res://Audio/BoardSFX/BreakSFX/Brak3.wav" id="8_u775y"]
-[ext_resource type="AudioStream" uid="uid://c37ajq80vr346" path="res://Audio/BoardSFX/BreakSFX/Brak4.wav" id="9_vw60o"]
 
 [sub_resource type="Gradient" id="Gradient_tohcf"]
 
@@ -121,26 +118,12 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_snr66")
 metadata/_edit_lock_ = true
 
-[node name="BreakSFX" type="Node" parent="."]
-
-[node name="Break" type="AudioStreamPlayer" parent="BreakSFX"]
+[node name="Break" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_6t61a")
 volume_db = -4.0
+bus = &"BeadSFX"
 
-[node name="Break2" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("7_63jnv")
-volume_db = -4.0
-
-[node name="Break3" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("8_u775y")
-volume_db = -4.0
-
-[node name="Break4" type="AudioStreamPlayer" parent="BreakSFX"]
-unique_name_in_owner = true
-stream = ExtResource("9_vw60o")
-volume_db = -4.0
+[node name="BreakSFX" type="Node" parent="."]
 
 [connection signal="rippleEnd" from="." to="." method="_on_ripple_end"]
