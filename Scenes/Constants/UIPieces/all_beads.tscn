@@ -19,12 +19,14 @@ offset_bottom = -6.24
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_d8ax2")
+current_tab = 3
 tabs_visible = false
 script = ExtResource("1_ttsqa")
 smallSize = Vector2(32, 32)
 regSize = Vector2(64, 64)
 
 [node name="Earth" type="TextureRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_lofkn")
@@ -48,7 +50,6 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Light" type="TextureRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("5_68u7r")

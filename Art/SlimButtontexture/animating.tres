@@ -1,9 +1,8 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c7pyshr4ll41k"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1pbd"]
-load_path = "res://.godot/imported/UI parts select no select0051.png-3effda6b19365a47bfb7d8c368b32be5.ctex"
+[ext_resource type="Texture2D" uid="uid://d1camihn788r6" path="res://Art/SlimButtontexture/spritesheet(1).png" id="1_hdcr6"]
 
 [resource]
-atlas = SubResource("CompressedTexture2D_o1pbd")
-region = Rect2(0, 154, 504, 192)
+atlas = ExtResource("1_hdcr6")
+region = Rect2(0, 0, 504, 167)
 filter_clip = true
