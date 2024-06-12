@@ -34,11 +34,11 @@ libraries = {
 "MainMenuButtons": ExtResource("5_lcy7u")
 }
 autoplay = "MainMenuButtons/Off"
+speed_scale = 2.0
 
 [node name="Nothing" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0, 1, 1, 0.164706)
-position = Vector2(237, 83)
+position = Vector2(237, 86)
 texture = ExtResource("2_1jx3k")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

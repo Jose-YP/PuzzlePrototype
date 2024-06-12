@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ibjlbmrseoij"]
+[gd_scene load_steps=18 format=3 uid="uid://ibjlbmrseoij"]
 
 [ext_resource type="Script" path="res://Code/Constants/test.gd" id="1_1n235"]
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="2_5fkvx"]
-[ext_resource type="Texture2D" uid="uid://dejml6mauoiqc" path="res://Art/SlimButtontexture/nothing.png" id="3_38uve"]
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Board&Beads/SoulBreaker.png" id="4_mywuf"]
 [ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Board&Beads/greyDark.png" id="5_g5q7o"]
 [ext_resource type="Texture2D" uid="uid://dippnu6i8rwff" path="res://Art/Board&Beads/greyAir.png" id="6_n8fjn"]
@@ -79,7 +78,6 @@ focus_neighbor_left = NodePath("../TextureButton3")
 focus_neighbor_top = NodePath("../TextureButton3")
 focus_neighbor_right = NodePath("../TextureButton2")
 focus_neighbor_bottom = NodePath("../TextureButton2")
-texture_normal = ExtResource("3_38uve")
 
 [node name="TextureButton2" parent="." instance=ExtResource("2_5fkvx")]
 layout_mode = 0
@@ -98,7 +96,6 @@ focus_neighbor_left = NodePath("../TextureButton")
 focus_neighbor_top = NodePath("../TextureButton")
 focus_neighbor_right = NodePath("../TextureButton3")
 focus_neighbor_bottom = NodePath("../TextureButton3")
-texture_normal = ExtResource("3_38uve")
 
 [node name="TextureButton3" parent="." instance=ExtResource("2_5fkvx")]
 layout_mode = 0
@@ -117,7 +114,6 @@ focus_neighbor_left = NodePath("../TextureButton2")
 focus_neighbor_top = NodePath("../TextureButton2")
 focus_neighbor_right = NodePath("../TextureButton")
 focus_neighbor_bottom = NodePath("../TextureButton")
-texture_normal = ExtResource("3_38uve")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
