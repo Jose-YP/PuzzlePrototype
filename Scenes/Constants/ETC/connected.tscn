@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://4feies2oagdp"]
 
-[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Art/Connected/LightningConnection.tres" id="2_dvep0"]
+[ext_resource type="SpriteFrames" uid="uid://v1axc2nifmul" path="res://Art/Board&Beads/Connected/LightningConnection.tres" id="1_u27m6"]
 [ext_resource type="Script" path="res://Code/Constants/Connected.gd" id="3_8kjqr"]
 
 [node name="Connected" type="AnimatedSprite2D"]
 visibility_layer = 2
 z_index = 1
-scale = Vector2(0.1, 0.1)
-sprite_frames = ExtResource("2_dvep0")
-animation = &"display"
-frame_progress = 0.572596
+sprite_frames = ExtResource("1_u27m6")
+animation = &"OptDisplay"
+autoplay = "OptDisplay"
+frame_progress = 0.976537
 script = ExtResource("3_8kjqr")

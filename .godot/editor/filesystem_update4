@@ -29,3 +29,6 @@ res://Themes/ButtonStyle/MainMenuButtonAnims.res
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Art/SlimButtontexture/Animated.tres
 res://Art/SlimButtontexture/animating.tres
+res://Themes/ButtonStyle/MainMenuButtonRESET.res
+res://Scenes/Constants/ETC/test.tscn
+res://Scenes/Constants/ETC/connected.tscn

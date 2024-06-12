@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
 [ext_resource type="PackedScene" uid="uid://dt86eivh6s6vl" path="res://Scenes/UI/left_ui.tscn" id="3_4i3af"]
 [ext_resource type="PackedScene" uid="uid://c8upol425ha0o" path="res://Scenes/Board&Beads/grid_background.tscn" id="3_xac2l"]
-[ext_resource type="Texture2D" uid="uid://b455ror03qm3i" path="res://Art/Board/puzzle_board_no_back.png" id="4_xlr6p"]
+[ext_resource type="Texture2D" uid="uid://b455ror03qm3i" path="res://Art/Board&Beads/puzzle_board_no_back.png" id="4_xlr6p"]
 [ext_resource type="PackedScene" uid="uid://dlxjyxa3t38su" path="res://Scenes/Board&Beads/ghost_bead.tscn" id="4_yfyud"]
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
@@ -14,10 +14,6 @@
 process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
-scoreFade = null
-farAway = null
-RUIextra = null
-trasitionTiming = null
 
 [node name="PuzzleBoardNoBack" type="Sprite2D" parent="."]
 top_level = true
