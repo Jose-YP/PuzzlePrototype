@@ -152,6 +152,7 @@ GLOWING [color=red]EARTH[/color] - [color=aqua]SEA[/color] -  [color=white]AIR[/
 [node name="Earth" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
+current_tab = 0
 
 [node name="Sea" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
@@ -169,7 +170,6 @@ layout_mode = 2
 [node name="Light" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 3
 
 [node name="Dark" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
@@ -217,12 +217,10 @@ layout_mode = 2
 [node name="NoGlow" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 3
 
 [node name="Glo" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 3
 
 [node name="Glow" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Glo"]
 unique_name_in_owner = true
@@ -237,7 +235,6 @@ texture = ExtResource("8_xip8m")
 [node name="Linked" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("2_o4w07")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 3
 
 [node name="Glow2" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Linked"]
 unique_name_in_owner = true

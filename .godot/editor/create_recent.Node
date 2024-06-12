@@ -1,3 +1,4 @@
+Marker2D
 VBoxContainer
 RichTextLabel
 HBoxContainer
@@ -6,7 +7,6 @@ AnimatedSprite2D
 Button
 TextureButton
 Timer
-Marker2D
 Node
 Control
 Node2D
