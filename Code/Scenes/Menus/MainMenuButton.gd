@@ -30,5 +30,5 @@ func finish_signal():
 	finish.emit()
 	pressing = false
 
-func _on_animation_player_current_animation_changed(name):
-	print(name)
+func _on_animation_player_current_animation_changed(animName):
+	print(animName)

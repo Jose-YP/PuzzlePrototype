@@ -107,6 +107,7 @@ func _ready():
 	if _settings.custom_file_extension and not _settings.custom_file_extension.is_empty():
 		_base_extension = _settings.custom_file_extension
 	# Wait a frame to give a chance for the app to initialize
+	
 	await get_tree().process_frame
 	# Set input type to what's likely being used currently
 	if Input.get_connected_joypads().is_empty():
@@ -322,6 +323,8 @@ func _convert_event_to_path(event: InputEvent):
 	if event is InputEventKey:
 		# If this is a physical key, convert to localized scancode
 		if event.keycode == 0:
+			print("KEYCODE: ",OS.get_keycode_string(event.physical_keycode))
+			print("Input:  ", event.scancode)
 			return _convert_key_to_path(DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode))
 		return _convert_key_to_path(event.keycode)
 	elif event is InputEventMouseButton:
@@ -330,6 +333,7 @@ func _convert_event_to_path(event: InputEvent):
 		return _convert_joypad_button_to_path(event.button_index)
 	elif event is InputEventJoypadMotion:
 		return _convert_joypad_motion_to_path(event.axis)
+	
 
 func _convert_key_to_path(scancode: int):
 	match scancode:

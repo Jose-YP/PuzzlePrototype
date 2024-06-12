@@ -37,3 +37,8 @@ res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://Shaders/Beads/Ripple.tres
+res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/NextBeads.tscn
+res://addons/controller_icons/objects/ControllerIconPathSelector.gd
+res://addons/controller_icons/ControllerIcons.gd
+res://Scenes/MainMenu/options_menu.tscn

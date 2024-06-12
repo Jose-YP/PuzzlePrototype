@@ -314,7 +314,6 @@ color = Color(0.898039, 0.909804, 0.137255, 1)
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Light Bead"
-current_tab = 3
 small = true
 
 [node name="DarkColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]

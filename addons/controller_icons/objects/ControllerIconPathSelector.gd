@@ -41,7 +41,7 @@ func _on_tab_container_tab_selected(tab = null) -> void:
 			if not specific_path_populated:
 				specific_path_populated = true
 				n_specific_path.populate(editor_interface)
-
+	
 	await get_tree().process_frame
 	n_tab_container.get_current_tab_control().grab_focus()
 
