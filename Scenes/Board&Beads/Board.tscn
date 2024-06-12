@@ -14,6 +14,10 @@
 process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
+scoreFade = null
+farAway = null
+RUIextra = null
+trasitionTiming = null
 
 [node name="PuzzleBoardNoBack" type="Sprite2D" parent="."]
 top_level = true

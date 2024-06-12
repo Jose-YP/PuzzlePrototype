@@ -14,12 +14,12 @@ script = ExtResource("1_5q6ng")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 270.0
-offset_bottom = 40.0
+offset_right = 225.0
+offset_bottom = 110.0
 metadata/_edit_lock_ = true
 
 [node name="ScoreContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -31,7 +31,7 @@ fit_content = true
 metadata/_edit_lock_ = true
 
 [node name="HiScoreContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -43,7 +43,7 @@ fit_content = true
 metadata/_edit_lock_ = true
 
 [node name="LevelContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -55,7 +55,7 @@ fit_content = true
 metadata/_edit_lock_ = true
 
 [node name="LevelUpContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 25)
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -94,7 +94,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="Summn" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 54.0
 offset_top = 280.0
@@ -103,7 +102,6 @@ offset_bottom = 311.0
 text = "Add"
 
 [node name="Gone" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 49.0
 offset_top = 326.0

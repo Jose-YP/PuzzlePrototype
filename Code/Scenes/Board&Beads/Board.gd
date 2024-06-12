@@ -145,12 +145,15 @@ func manage_drought(checkedBeads) -> void:
 	for bead in checkedBeads.beads:
 		willDrought.erase(bead.typeID)
 		Globals.droughtArray[bead.typeID] = 0
+		Globals.floodArray[bead.typeID] += 1
 	
 	#For any value still in willDrought, add 1 to the drought array's corresponding value
 	for unfound in willDrought:
 		Globals.droughtArray[unfound] += 1
+		Globals.floodArray[unfound] -= 2
 	
 	print("DROUGHT ARRAY: ", Globals.droughtArray)
+	print("FLOOD ARRAY: ", Globals.floodArray)
 
 #______________________________
 #BASIC CONTROLS: MOVE

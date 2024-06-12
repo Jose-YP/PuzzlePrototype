@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pe5jp4rjytqh"
-path="res://.godot/imported/0019.png.PNG-530d355d27093d7969d6421534ff3756.ctex"
+uid="uid://dejml6mauoiqc"
+path="res://.godot/imported/nothing.png-0576c5256ec010b0ff65a294069d6ba5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Connected/0019.png.PNG"
-dest_files=["res://.godot/imported/0019.png.PNG-530d355d27093d7969d6421534ff3756.ctex"]
+source_file="res://Art/SlimButtontexture/nothing.png"
+dest_files=["res://.godot/imported/nothing.png-0576c5256ec010b0ff65a294069d6ba5.ctex"]
 
 [params]
 
 compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

@@ -1,7 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ibjlbmrseoij"]
+[gd_scene load_steps=18 format=3 uid="uid://ibjlbmrseoij"]
 
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="1_531ux"]
 [ext_resource type="Script" path="res://Code/Constants/test.gd" id="1_844r2"]
+[ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Beads/SoulBreaker.png" id="3_x3bjr"]
+[ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Beads/greyDark.png" id="4_83wxv"]
+[ext_resource type="Texture2D" uid="uid://dippnu6i8rwff" path="res://Art/Beads/greyAir.png" id="5_ubdpx"]
+[ext_resource type="Texture2D" uid="uid://cfvtfpcsfxh43" path="res://Art/Beads/grayWater.png" id="6_kopx8"]
+[ext_resource type="Texture2D" uid="uid://dsexxbyabxyo4" path="res://Art/Beads/grayLight.png" id="7_i7j7d"]
+[ext_resource type="Texture2D" uid="uid://c6e7og2i8mlsf" path="res://Art/Beads/grayEarth.png" id="8_eqcv7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gev2e"]
 load_path = "res://.godot/imported/UI parts select no select0041.png-a90e7ddf5194127dd397bd12372853fe.ctex"
@@ -136,3 +142,33 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_4rq1p")
 theme_override_styles/hover = SubResource("StyleBoxTexture_r18ml")
 theme_override_styles/focus = SubResource("StyleBoxTexture_vb65y")
 text = "UYYVaaaaa"
+
+[node name="SoulBreaker" type="Sprite2D" parent="."]
+position = Vector2(126, 424)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_x3bjr")
+
+[node name="GreyDark" type="Sprite2D" parent="."]
+position = Vector2(184, 390)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_83wxv")
+
+[node name="GreyAir" type="Sprite2D" parent="."]
+position = Vector2(202, 427)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_ubdpx")
+
+[node name="GrayWater" type="Sprite2D" parent="."]
+position = Vector2(196, 466)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_kopx8")
+
+[node name="GrayLight" type="Sprite2D" parent="."]
+position = Vector2(137, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_i7j7d")
+
+[node name="GrayEarth" type="Sprite2D" parent="."]
+position = Vector2(130, 472)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_eqcv7")

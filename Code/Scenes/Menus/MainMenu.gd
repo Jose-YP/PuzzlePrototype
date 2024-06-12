@@ -45,7 +45,7 @@ func _on_how_2_play_pressed() -> void:
 #SCORE AND BASIC CONTROLS
 #______________________________
 func _on_score_display_refocus() -> void:
-	$Buttons/Scores.grab_focus()
+	%ScoresTex.grab_focus()
 	playSFX.emit(2)
 
 func _on_focus_entered() -> void:
@@ -63,7 +63,7 @@ func _on_how_2_play_exit():
 	playSFX.emit(2)
 	h2pTween.tween_property($How2Play,"position",orgH2pPosition,.1)
 	await h2pTween.finished
-	$Buttons/How2Play.grab_focus()
+	%H2PTex.grab_focus()
 
 func _on_how_2_play_board_sfx(index):
 	boardSFX.emit(index)

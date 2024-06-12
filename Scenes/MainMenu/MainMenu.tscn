@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=6 format=3 uid="uid://bjf6n3d1yeous"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
-[ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_kpayp"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="2_oy1pm"]
 [ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
@@ -21,7 +20,7 @@ offset_right = 76.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_kpayp")
+theme = ExtResource("5_x2ope")
 script = ExtResource("1_7dq6h")
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -40,86 +39,11 @@ grow_vertical = 0
 bbcode_enabled = true
 text = "[center]LIVELY"
 
-[node name="Buttons" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(300, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -315.0
-offset_top = -115.0
-offset_right = 315.0
-offset_bottom = 115.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = -70
-theme_override_constants/v_separation = -30
-columns = 2
-metadata/_edit_lock_ = true
-
-[node name="Play" type="Button" parent="Buttons"]
-visible = false
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-focus_neighbor_left = NodePath("../Options")
-focus_neighbor_top = NodePath("../Scores")
-focus_neighbor_right = NodePath("../Options")
-focus_neighbor_bottom = NodePath("../Scores")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-mouse_filter = 2
-button_mask = 0
-text = "PLAY"
-
-[node name="Options" type="Button" parent="Buttons"]
-visible = false
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-focus_neighbor_left = NodePath("../Play")
-focus_neighbor_top = NodePath("../How2Play")
-focus_neighbor_right = NodePath("../Play")
-focus_neighbor_bottom = NodePath("../How2Play")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-mouse_filter = 2
-button_mask = 0
-text = "OPTIONS"
-
-[node name="Scores" type="Button" parent="Buttons"]
-visible = false
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-focus_neighbor_left = NodePath("../How2Play")
-focus_neighbor_top = NodePath("../Play")
-focus_neighbor_right = NodePath("../How2Play")
-focus_neighbor_bottom = NodePath("../Play")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-mouse_filter = 2
-button_mask = 0
-text = "SCORES"
-
-[node name="How2Play" type="Button" parent="Buttons"]
-visible = false
-layout_mode = 2
-focus_neighbor_left = NodePath("../Scores")
-focus_neighbor_top = NodePath("../Options")
-focus_neighbor_right = NodePath("../Scores")
-focus_neighbor_bottom = NodePath("../Options")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-mouse_filter = 2
-button_mask = 0
-text = "HOW TO PLAY"
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -420.0
-offset_top = -12.0
-offset_right = 592.0
-offset_bottom = 140.0
+layout_mode = 2
+offset_left = -430.0
+offset_right = 582.0
+offset_bottom = 152.0
 metadata/_edit_lock_ = true
 
 [node name="PlayTex" parent="HBoxContainer2" instance=ExtResource("2_oy1pm")]
@@ -172,11 +96,11 @@ text = "[center]OPTIONS"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -426.0
-offset_top = 168.0
-offset_right = 586.0
-offset_bottom = 320.0
+layout_mode = 2
+offset_left = -430.0
+offset_top = 156.0
+offset_right = 582.0
+offset_bottom = 308.0
 metadata/_edit_lock_ = true
 
 [node name="ScoresTex" parent="HBoxContainer" instance=ExtResource("2_oy1pm")]
@@ -227,6 +151,87 @@ bbcode_enabled = true
 text = "[center]HOW TO PLAY"
 scroll_active = false
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -506.0
+offset_right = 506.0
+offset_bottom = 308.0
+grow_horizontal = 2
+
+[node name="Buttons" type="GridContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -115.0
+offset_right = 315.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = -70
+theme_override_constants/v_separation = -30
+columns = 2
+metadata/_edit_lock_ = true
+
+[node name="Play" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_top = NodePath("../Scores")
+focus_neighbor_right = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Scores")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
+text = "PLAY"
+
+[node name="Options" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_top = NodePath("../How2Play")
+focus_neighbor_right = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../How2Play")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
+text = "OPTIONS"
+
+[node name="Scores" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../How2Play")
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_right = NodePath("../How2Play")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
+text = "SCORES"
+
+[node name="How2Play" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Scores")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath("../Scores")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
+text = "HOW TO PLAY"
+
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
 layout_mode = 1
@@ -267,6 +272,10 @@ one_shot = true
 autostart = true
 
 [connection signal="switchTutorial" from="." to="How2Play" method="_on_main_menu_switch_tutorial"]
+[connection signal="finish" from="HBoxContainer2/PlayTex" to="." method="_on_play_pressed"]
+[connection signal="finish" from="HBoxContainer2/OptionsTex" to="." method="_on_options_pressed"]
+[connection signal="finish" from="HBoxContainer/ScoresTex" to="." method="_on_scores_pressed"]
+[connection signal="finish" from="HBoxContainer/H2PTex" to="." method="_on_how_2_play_pressed"]
 [connection signal="focus_entered" from="Buttons/Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="focus_entered" from="Buttons/Options" to="." method="_on_focus_entered"]
@@ -275,10 +284,6 @@ autostart = true
 [connection signal="pressed" from="Buttons/Scores" to="." method="_on_scores_pressed"]
 [connection signal="focus_entered" from="Buttons/How2Play" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Buttons/How2Play" to="." method="_on_how_2_play_pressed"]
-[connection signal="finish" from="HBoxContainer2/PlayTex" to="." method="_on_play_pressed"]
-[connection signal="finish" from="HBoxContainer2/OptionsTex" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HBoxContainer/ScoresTex" to="." method="_on_scores_pressed"]
-[connection signal="pressed" from="HBoxContainer/H2PTex" to="." method="_on_how_2_play_pressed"]
 [connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
 [connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]
 [connection signal="boardSFX" from="How2Play" to="." method="_on_how_2_play_board_sfx"]

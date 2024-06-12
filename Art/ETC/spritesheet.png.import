@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh3sk07n0oqce"
-path="res://.godot/imported/0022.png.PNG-485d11ed54125ee8f84cae226f1bc3d9.ctex"
+uid="uid://dehh40txr7njg"
+path="res://.godot/imported/spritesheet.png-2ceb4de1a4bb64876acfed24d812d65c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Connected/0022.png.PNG"
-dest_files=["res://.godot/imported/0022.png.PNG-485d11ed54125ee8f84cae226f1bc3d9.ctex"]
+source_file="res://Art/ETC/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-2ceb4de1a4bb64876acfed24d812d65c.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

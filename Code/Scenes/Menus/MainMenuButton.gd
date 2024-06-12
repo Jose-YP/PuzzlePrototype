@@ -2,13 +2,12 @@ extends TextureButton
 
 @onready var animations: AnimationPlayer = $AnimationPlayer
 
+var pressing: bool = false
+
 signal finish
 
 func _ready():
 	texture_normal = texture_normal.duplicate()
-
-func _process(delta):
-	print(animations.get_assigned_animation())
 
 func _on_pressed():
 	animations.play("MainMenuButtons/Pressed")
@@ -19,11 +18,17 @@ func _on_focus_entered():
 	texture_normal = texture_normal.duplicate()
 
 func _on_focus_exited():
-	animations.stop()
+	if pressing:
+		await finish
+	else:
+		animations.stop()
+	
 	animations.play("MainMenuButtons/Off")
-	animations.play("RESET")
 	texture_normal = texture_normal.duplicate()
-	print("RESERT", self, texture_normal)
 
 func finish_signal():
 	finish.emit()
+	pressing = false
+
+func _on_animation_player_current_animation_changed(name):
+	print(name)

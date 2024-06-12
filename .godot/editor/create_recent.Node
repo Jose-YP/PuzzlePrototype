@@ -1,3 +1,4 @@
+VBoxContainer
 RichTextLabel
 HBoxContainer
 AnimationPlayer
@@ -9,6 +10,5 @@ Marker2D
 Node
 Control
 Node2D
-VBoxContainer
 TextureRect
 AudioStreamPlayer

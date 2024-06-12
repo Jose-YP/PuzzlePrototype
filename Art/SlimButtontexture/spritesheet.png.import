@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddqt3mhtlqwiy"
-path="res://.godot/imported/puzzle_board.png-16b5d50fbb29b6bd746581301a699e14.ctex"
+uid="uid://cyjydq1oyebxs"
+path="res://.godot/imported/spritesheet.png-e9d69061966e1d2fdf7da8f1443bbcb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Board/puzzle_board.png"
-dest_files=["res://.godot/imported/puzzle_board.png-16b5d50fbb29b6bd746581301a699e14.ctex"]
+source_file="res://Art/SlimButtontexture/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-e9d69061966e1d2fdf7da8f1443bbcb0.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

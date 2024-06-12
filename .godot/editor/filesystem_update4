@@ -19,3 +19,12 @@ res://Scenes/Constants/ETC/pause_screen.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Constants/UIPieces/all_beads.tscn
 res://Code/Scenes/Menus/MainMenuButton.gd
+res://Code/Scenes/Menus/score_display.gd
+res://Scenes/UI/right_ui.tscn
+res://Scenes/UI/chain_totals.tscn
+res://Code/Scenes/Board&Beads/Board.gd
+res://Code/Globals/Globals.gd
+res://Art/Connected/LightningConnection.tres
+res://Themes/ButtonStyle/MainMenuButtonAnims.res
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Art/SlimButtontexture/Animated.tres
