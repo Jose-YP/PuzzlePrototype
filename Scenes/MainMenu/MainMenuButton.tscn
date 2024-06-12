@@ -18,10 +18,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -286.0
-offset_top = -101.5
-offset_right = 174.0
-offset_bottom = 70.5
+offset_left = 194.0
+offset_top = 258.5
+offset_right = 654.0
+offset_bottom = 430.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qgwcy")
@@ -38,7 +38,6 @@ libraries = {
 "MainMenuButtons": ExtResource("5_lcy7u")
 }
 autoplay = "MainMenuButtons/Off"
-speed_scale = 2.0
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

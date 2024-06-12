@@ -36,3 +36,4 @@ res://default_bus_layout.tres
 res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Shaders/Beads/Ripple.tres

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/grayEarth.png-11b111b40eef93ec7b9b5d4f8c48af7
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
