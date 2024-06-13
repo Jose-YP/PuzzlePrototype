@@ -150,7 +150,7 @@ func manage_drought(checkedBeads) -> void:
 	#For any value still in willDrought, add 1 to the drought array's corresponding value
 	for unfound in willDrought:
 		Globals.droughtArray[unfound] += 1
-		Globals.floodArray[unfound] -= 2
+		Globals.floodArray[unfound] = clamp(Globals.floodArray[unfound] - 2, 0, Globals.floodArray[unfound])
 	
 	print("DROUGHT ARRAY: ", Globals.droughtArray)
 	print("FLOOD ARRAY: ", Globals.floodArray)
