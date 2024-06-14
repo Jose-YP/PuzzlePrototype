@@ -27,6 +27,7 @@ offset_left = 109.0
 offset_top = 55.0
 offset_right = 139.14
 offset_bottom = 85.0
+current_tab = 2
 small = true
 
 [node name="AllBeads2" parent="Pieces" instance=ExtResource("1_thji5")]
@@ -53,7 +54,6 @@ offset_left = 102.0
 offset_top = 113.0
 offset_right = 132.14
 offset_bottom = 143.0
-current_tab = 3
 small = true
 
 [node name="AllBeads5" parent="Pieces" instance=ExtResource("1_thji5")]

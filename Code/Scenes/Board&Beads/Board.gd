@@ -9,10 +9,11 @@ extends Node2D
 @export var trasitionTiming: float = .1
 
 @onready var realHeight: int = rules.height - 1
+@onready var gridBeads: Node2D = $Main/Grid
 @onready var RUI: Control = $UI/RightUI
 @onready var LUI: Control = $UI/LeftUI
 @onready var Fail: Control = $FailScreen
-@onready var ghostBeads: Array[Node] = $Ghost.get_children()
+@onready var ghostBeads: Array[Node] = %Ghost.get_children()
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
@@ -78,7 +79,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width + 1,0))
 	RUI.position += Vector2(RUIextra, 0)
-	LUI.position.y += grid_to_pixel(Vector2i(0,0)).y
+	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
 	LUI.set_ripple_center()
 	LUI.breakMeter.breakText.text = str(breakNum)
 	
@@ -123,7 +124,7 @@ func pull_next_bead() -> void:
 		currentBead = beadsUpnext.pop_front()
 		beadsUpnext.append(null)
 		$Hold.remove_child(currentBead)
-		$Grid.add_child.call_deferred(currentBead)
+		gridBeads.add_child.call_deferred(currentBead)
 		currentBead.gridPos[0] = rules.start_pos
 		
 		board[rules.start_pos.x][rules.start_pos.y] = currentBead.beads[0]
@@ -391,7 +392,7 @@ func _process(delta) -> void:
 				
 				#Replace current bead with a breaker bead
 				currentBead = breakerBead.instantiate()
-				$Grid.add_child(currentBead)
+				gridBeads.add_child(currentBead)
 				currentBead.connect("find_adjacent", find_adjacent)
 				currentBead.connect("rippleEnd", continue_breaker)
 				currentBead.gridPos[0] = oldPos
@@ -442,7 +443,7 @@ func post_turn() -> void:
 		currentBead.set_name(str(find_bead(currentBead)))
 	else:
 		for bead in currentBead.beads:
-			bead.reparent($Grid)
+			bead.reparent(gridBeads)
 			bead.set_name(str(find_bead(bead)))
 		second_fix()
 		currentBead.queue_free()
@@ -587,8 +588,8 @@ func second_fix() -> void:
 func lost_beads() -> void:
 	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
-	for bead in $Grid.get_children():
-		if bead == $Grid/GridBackground or bead.has_node("Beads"):
+	for bead in gridBeads.get_children():
+		if bead.has_node("Beads"):
 			continue
 		if pixel_to_grid(bead) != find_bead(bead):
 			display_board()
@@ -875,15 +876,15 @@ func find_linkNum_index(chain) -> int:
 #______________________________
 #Turn computer positions into visual positions
 func grid_to_pixel(gridPos: Vector2i) -> Vector2:
-	var Xnew: float = rules.origin.x + rules.offset.x * gridPos.x
-	var Ynew: float = rules.origin.y + rules.offset.y * gridPos.y
+	var Xnew: float = $Main.position.x + rules.origin.x + rules.offset.x * gridPos.x
+	var Ynew: float = $Main.position.y + rules.origin.y + rules.offset.y * gridPos.y
 	
 	return Vector2(Xnew, Ynew)
 
 #Turn visual positions into computer positions
 func pixel_to_grid(bead) -> Vector2i:
-	var Xnew: int = round((bead.global_position.x - rules.origin.x) / rules.offset.x)
-	var Ynew: int = round((bead.global_position.y - rules.origin.y) / rules.offset.y)
+	var Xnew: int = round((bead.global_position.x - rules.origin.x - $Main.position.x) / rules.offset.x)
+	var Ynew: int = round((bead.global_position.y - rules.origin.y - $Main.position.y) / rules.offset.y)
 	return Vector2i(Xnew, Ynew)
 
 func find_bead(bead) -> Vector2i:
@@ -1040,13 +1041,13 @@ func pauseFall(should) -> void:
 		%Grounded.set_paused(true)
 		%SoftDrop.set_paused(true)
 		%Gravity.set_paused(true)
-		$Ghost.hide()
+		%Ghost.hide()
 	else:
 		fallPaused = false
 		%Grounded.set_paused(false)
 		%SoftDrop.set_paused(false)
 		%Gravity.set_paused(false)
-		$Ghost.show()
+		%Ghost.show()
 
 func _on_soft_drop_timeout() -> void:
 	if can_move("Down"):
@@ -1172,7 +1173,7 @@ func ghost_bead_pos() -> void:
 #______________________________
 func add_bead(pos) -> void:
 	var bead = Globals.bead.instantiate()
-	$Grid.add_child(bead)
+	gridBeads.add_child(bead)
 	bead.global_position = grid_to_pixel(Vector2i(pos.x,pos.y))
 	board[pos.x][pos.y] = bead
 	bead.connect("find_adjacent", find_adjacent)

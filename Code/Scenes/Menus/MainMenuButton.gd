@@ -10,6 +10,7 @@ func _ready():
 	texture_normal = texture_normal.duplicate()
 
 func _on_pressed():
+	#position = Vector2(194,258.5)
 	animations.play("MainMenuButtons/Pressed")
 	texture_normal = texture_normal.duplicate()
 

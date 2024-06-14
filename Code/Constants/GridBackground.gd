@@ -13,11 +13,10 @@ extends Node2D
 func _draw() -> void:
 	#Make the grid from origin to end
 	#-offset/2 leads to the top left of every tile
-	var drawOrigin = rules.origin - rules.offset/2
 	var drawEnd = Vector2(rules.offset.x * rules.width,rules.offset.y * rules.height)
-	var boardRect: Rect2 = Rect2(drawOrigin,drawEnd)
-	var failOrigin = Vector2(Board.grid_to_pixel(Vector2i(rules.safe_high_columns,0)).x - rules.offset.x/2, drawOrigin.y)
-	var failEnd = Vector2(rules.offset.x * (rules.width - rules.safe_high_columns * 2),rules.offset.y * rules.fail_rows)
+	var boardRect: Rect2 = Rect2(Vector2(Board.grid_to_pixel(Vector2i.ZERO) - rules.offset/2),drawEnd)
+	var failOrigin = Vector2(Board.grid_to_pixel(Vector2i(rules.safe_high_columns,0)).x - rules.offset.x/2, rules.origin.y - rules.offset.y/2)
+	var failEnd = Vector2(rules.offset.x * (rules.width - rules.safe_high_columns * 2),rules.offset.y * rules.fail_rows + rules.offset.y/4)
 	var failRect: Rect2 = Rect2(failOrigin,failEnd)
 	draw_rect(boardRect, BoardColor)
 	draw_rect(failRect, FailColor)

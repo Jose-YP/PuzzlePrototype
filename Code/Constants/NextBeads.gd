@@ -1,6 +1,6 @@
 extends Control
 
-@onready var nextBeads: Array[Control] = [%Control, %Control2, %Control3]
+@onready var nextBeads: Array[Control] = [%First, %Second, %Third]
 
 func update(index,bead):
 	nextBeads[index].fullBead = bead

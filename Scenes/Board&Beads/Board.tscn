@@ -15,32 +15,46 @@ process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
 
-[node name="PuzzleBoardNoBack" type="Sprite2D" parent="."]
-top_level = true
+[node name="Main" type="Node2D" parent="."]
+position = Vector2(-51, 15)
+metadata/_edit_group_ = true
+
+[node name="PuzzleBoardNoBack" type="Sprite2D" parent="Main"]
 z_index = 2
 position = Vector2(528, 355)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_xlr6p")
-metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="Grid" type="Node2D" parent="."]
-position = Vector2(-21, -60)
-scale = Vector2(1.25, 1.25)
-
-[node name="GridBackground" parent="Grid" instance=ExtResource("3_xac2l")]
-modulate = Color(1, 1, 1, 0.447059)
+[node name="GridBackground" parent="Main" instance=ExtResource("3_xac2l")]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
+position = Vector2(52, -16)
+scale = Vector2(1, 1)
+BoardColor = Color(0.0901961, 0.298039, 0.341176, 0.152941)
+FailColor = Color(0.235294, 0.0352941, 0.0352941, 0.254902)
+TileColor = Color(0.207843, 0.207843, 0.207843, 0.431373)
+metadata/_edit_group_ = true
 
-[node name="Ghost" type="Node2D" parent="."]
+[node name="Grid" type="Node2D" parent="Main"]
+position = Vector2(-21, -60)
+scale = Vector2(1.25, 1.25)
+metadata/_edit_group_ = true
 
-[node name="GhostBead" parent="Ghost" instance=ExtResource("4_yfyud")]
+[node name="Ghost" type="Node2D" parent="Main"]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(51, -15)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="GhostBead2" parent="Ghost" instance=ExtResource("4_yfyud")]
+[node name="GhostBead" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
+
+[node name="GhostBead2" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
 visible = false
 
-[node name="GhostBead3" parent="Ghost" instance=ExtResource("4_yfyud")]
+[node name="GhostBead3" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
 visible = false
 
 [node name="UI" type="Control" parent="."]
@@ -49,6 +63,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="RightUI" parent="UI" instance=ExtResource("5_uppt1")]
 layout_mode = 1
@@ -56,12 +71,14 @@ offset_left = -30.0
 offset_top = -20.0
 offset_right = -30.0
 offset_bottom = -20.0
+metadata/_edit_lock_ = true
 
 [node name="LeftUI" parent="UI" instance=ExtResource("3_4i3af")]
 layout_mode = 1
 offset_left = 10.04
 offset_top = -25.0
 offset_right = 10.04
+metadata/_edit_lock_ = true
 
 [node name="HighScoreScreen" parent="." instance=ExtResource("6_4ewnf")]
 visible = false
