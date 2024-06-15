@@ -7,8 +7,8 @@ extends CanvasLayer
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
 @onready var BreakSFX: Array[Node] = $BoardSFX/BreakSFX.get_children()
 @onready var MenuSFX: Array[Node] = $MenuSFX.get_children()
-@onready var ETCMusic: Array[AudioStreamPlayer] = [$ETCMusic/MainMenu,$ETCMusic/EndRun]
 @onready var BoardMusic: Array[Node] = $BoardMusic.get_children()
+@onready var ETCMusic: Array[AudioStreamPlayer] = [$ETCMusic/MainMenu,$ETCMusic/EndRun]
 @onready var currentScene = $MainMenu
 @onready var editableMusicBus = AudioServer.get_bus_index("ManageMusic")
 

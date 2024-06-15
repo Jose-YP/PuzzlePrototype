@@ -19,6 +19,10 @@ var can: bool = true
 func _ready() -> void:
 	%PlayTex.grab_focus()
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		get_viewport().gui_get_focus_owner().button_pressed = true
+
 #______________________________
 #BUTTON NAVIGATIONS
 #______________________________

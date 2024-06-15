@@ -31,7 +31,7 @@ animation = &"MainMenuButtons/Hover"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
-graph_offset = Vector2(-451.968, -50.9159)
+graph_offset = Vector2(-313.522, 65.456)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
 nodes/Animation/position = Vector2(180, 260)
 nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")

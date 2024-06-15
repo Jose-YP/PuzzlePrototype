@@ -38,7 +38,7 @@ grow_vertical = 0
 bbcode_enabled = true
 text = "[center]LIVELY"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="TopButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -52,20 +52,20 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PlayTex" parent="HBoxContainer2" instance=ExtResource("2_oy1pm")]
+[node name="PlayTex" parent="TopButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../OptionsTex")
-focus_neighbor_top = NodePath("../../HBoxContainer/ScoresTex")
+focus_neighbor_top = NodePath("../../BottomButtons/ScoresTex")
 focus_neighbor_right = NodePath("../OptionsTex")
-focus_neighbor_bottom = NodePath("../../HBoxContainer/ScoresTex")
+focus_neighbor_bottom = NodePath("../../BottomButtons/ScoresTex")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer2/PlayTex"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TopButtons/PlayTex"]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 62.0
@@ -77,20 +77,20 @@ bbcode_enabled = true
 text = "[center]PLAY"
 scroll_active = false
 
-[node name="OptionsTex" parent="HBoxContainer2" instance=ExtResource("2_oy1pm")]
+[node name="OptionsTex" parent="TopButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../PlayTex")
-focus_neighbor_top = NodePath("../../HBoxContainer/H2PTex")
+focus_neighbor_top = NodePath("../../BottomButtons/H2PTex")
 focus_neighbor_right = NodePath("../PlayTex")
-focus_neighbor_bottom = NodePath("../../HBoxContainer/H2PTex")
+focus_neighbor_bottom = NodePath("../../BottomButtons/H2PTex")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="HBoxContainer2/OptionsTex"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="TopButtons/OptionsTex"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 66.0
@@ -102,7 +102,7 @@ bbcode_enabled = true
 text = "[center]OPTIONS"
 scroll_active = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="BottomButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -112,20 +112,20 @@ offset_right = 318.0
 offset_bottom = 293.0
 grow_horizontal = 2
 
-[node name="ScoresTex" parent="HBoxContainer" instance=ExtResource("2_oy1pm")]
+[node name="ScoresTex" parent="BottomButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../H2PTex")
-focus_neighbor_top = NodePath("../../HBoxContainer2/PlayTex")
+focus_neighbor_top = NodePath("../../TopButtons/PlayTex")
 focus_neighbor_right = NodePath("../H2PTex")
-focus_neighbor_bottom = NodePath("../../HBoxContainer2/PlayTex")
+focus_neighbor_bottom = NodePath("../../TopButtons/PlayTex")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="HBoxContainer/ScoresTex"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="BottomButtons/ScoresTex"]
 layout_mode = 0
 offset_left = 94.0
 offset_top = 63.0
@@ -137,20 +137,20 @@ bbcode_enabled = true
 text = "[center]SCORES"
 scroll_active = false
 
-[node name="H2PTex" parent="HBoxContainer" instance=ExtResource("2_oy1pm")]
+[node name="H2PTex" parent="BottomButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../ScoresTex")
-focus_neighbor_top = NodePath("../../HBoxContainer2/OptionsTex")
+focus_neighbor_top = NodePath("../../TopButtons/OptionsTex")
 focus_neighbor_right = NodePath("../ScoresTex")
-focus_neighbor_bottom = NodePath("../../HBoxContainer2/OptionsTex")
+focus_neighbor_bottom = NodePath("../../TopButtons/OptionsTex")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
 button_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/H2PTex"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="BottomButtons/H2PTex"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 65.0
@@ -161,18 +161,6 @@ theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
 text = "[center]HOW TO PLAY"
 scroll_active = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -403.0
-offset_top = 127.0
-offset_right = 385.0
-offset_bottom = 317.0
-grow_horizontal = 2
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]
 visible = false
@@ -213,15 +201,13 @@ one_shot = true
 autostart = true
 
 [connection signal="switchTutorial" from="." to="How2Play" method="_on_main_menu_switch_tutorial"]
-[connection signal="finish" from="HBoxContainer2/PlayTex" to="." method="_on_play_pressed"]
-[connection signal="finish" from="HBoxContainer2/OptionsTex" to="." method="_on_options_pressed"]
-[connection signal="finish" from="HBoxContainer/ScoresTex" to="." method="_on_scores_pressed"]
-[connection signal="finish" from="HBoxContainer/H2PTex" to="." method="_on_how_2_play_pressed"]
+[connection signal="finish" from="TopButtons/PlayTex" to="." method="_on_play_pressed"]
+[connection signal="finish" from="TopButtons/OptionsTex" to="." method="_on_options_pressed"]
+[connection signal="finish" from="BottomButtons/ScoresTex" to="." method="_on_scores_pressed"]
+[connection signal="finish" from="BottomButtons/H2PTex" to="." method="_on_how_2_play_pressed"]
 [connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
 [connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]
 [connection signal="boardSFX" from="How2Play" to="." method="_on_how_2_play_board_sfx"]
 [connection signal="exit" from="How2Play" to="." method="_on_how_2_play_exit"]
 [connection signal="makeSFX" from="How2Play" to="." method="_on_how_2_play_make_sfx"]
 [connection signal="timeout" from="jokor" to="." method="_on_timer_timeout"]
-
-[editable path="HBoxContainer2/PlayTex"]

@@ -14,7 +14,8 @@ func _ready():
 	texture_normal = texture_normal.duplicate()
 
 func _on_pressed():
-	$AnimationTree.set("parameters/OneShot/request", "Shoot")
+	print("AAAAA")
+	$AnimationTree.set("parameters/OneShot/request", 1)
 	texture_normal = texture_normal.duplicate()
 
 func _on_focus_entered():

@@ -16,6 +16,8 @@ var floodArray: Array[int] = [0,0,0,0,0]
 var bead_colors: Array[Color] = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
 Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 var breaker_color: Color = Color(0.514, 0.969, 0.557)
+var link_colors = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
+Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 var glow_num: int = 3
 var level: int = 1
 var highestID: String
@@ -94,6 +96,10 @@ func show_controls(textureNode) -> void:
 func set_colors() -> void:
 	bead_colors = Globals.userPrefs.get_regular_colors()
 	breaker_color = Globals.userPrefs.breakerColor
+	
+	for i in range(bead_colors.size()):
+		var current = bead_colors[i]
+		link_colors[i] = Color.from_hsv(clamp(current.h, 0, 1), clamp(current.s - .1, 0, 1), .98)
 
 #______________________________
 #INPUT MANAGEMENT

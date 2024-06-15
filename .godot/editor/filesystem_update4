@@ -14,3 +14,13 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/MainMenu/MainMenuButton.tscn
 res://Code/Scenes/Menus/MainMenuButton.gd
 res://Themes/ButtonStyle/MainMenuButtonAnims.res
+res://Art/UI/SlimButtontexture/animating.tres
+res://Code/Scenes/Menus/MainMenu.gd
+res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Globals/Globals.gd
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Shaders/Beads/SingleBeadBurn.tres
+res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Resources/SaveData/SaveFile.tres
+res://Resources/Options/UserPrefs.tres
+res://Code/Scenes/Menus/game_manager.gd

@@ -140,6 +140,7 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_0q0t5"), ExtResource("4_lhyvb"), ExtResource("5_jbphc"), ExtResource("6_0kxpy"), ExtResource("7_4mh45")])
 shakeRange = Vector2(1, 0)
+pitchShift = 0.15
 shakeSpeed = 0.1
 burnTiming = 0.08
 
