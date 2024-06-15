@@ -20,8 +20,10 @@ func _ready() -> void:
 	#$Buttons/Play.grab_focus()
 	%PlayTex.grab_focus()
 	can = true
-	#for button in buttons:
-		#button.set_anim_root(get_root_string())
+	print(get_tree())
+	for button in buttons:
+		pass
+		#button.set_anim_root(get_tree_string())
 
 #______________________________
 #BUTTON NAVIGATIONS

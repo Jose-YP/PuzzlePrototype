@@ -23,7 +23,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o1fgn"]
-animation = &"MainMenuButtons/Off"
+animation = &"RESET"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_umky0"]
 animation = &"MainMenuButtons/Hover"
@@ -31,7 +31,7 @@ animation = &"MainMenuButtons/Hover"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
-graph_offset = Vector2(-252.362, 81.924)
+graph_offset = Vector2(-494.492, 22.6807)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
 nodes/Animation/position = Vector2(180, 260)
 nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")
@@ -86,4 +86,3 @@ parameters/OneShot/request = 0
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]

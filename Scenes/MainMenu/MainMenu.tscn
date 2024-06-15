@@ -223,3 +223,5 @@ autostart = true
 [connection signal="exit" from="How2Play" to="." method="_on_how_2_play_exit"]
 [connection signal="makeSFX" from="How2Play" to="." method="_on_how_2_play_make_sfx"]
 [connection signal="timeout" from="jokor" to="." method="_on_timer_timeout"]
+
+[editable path="HBoxContainer2/PlayTex"]
