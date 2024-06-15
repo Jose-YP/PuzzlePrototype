@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doi7jo00s4wmw"
-path="res://.godot/imported/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png-f39cc5e4e56cddbda1540fbbe68b2668.ctex"
+uid="uid://dwhru74flwehi"
+path="res://.godot/imported/doublesided.png-ec8bf05b7f9c4515be85a53facd53665.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png"
-dest_files=["res://.godot/imported/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png-f39cc5e4e56cddbda1540fbbe68b2668.ctex"]
+source_file="res://Art/Board&Beads/doublesided.png"
+dest_files=["res://.godot/imported/doublesided.png-ec8bf05b7f9c4515be85a53facd53665.ctex"]
 
 [params]
 

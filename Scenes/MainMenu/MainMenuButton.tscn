@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b15feom8mwjyn"]
 
 [ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_qgwcy"]
-[ext_resource type="Texture2D" uid="uid://dejml6mauoiqc" path="res://Art/SlimButtontexture/nothing.png" id="2_1jx3k"]
+[ext_resource type="Texture2D" uid="uid://dejml6mauoiqc" path="res://Art/UI/SlimButtontexture/nothing.png" id="2_1jx3k"]
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenuButton.gd" id="2_w3gu3"]
 [ext_resource type="Animation" uid="uid://da128u4ykss61" path="res://Themes/ButtonStyle/MainMenuButtonRESET.res" id="4_4fddf"]
 [ext_resource type="AnimationLibrary" uid="uid://3aqrx4v1dv7u" path="res://Themes/ButtonStyle/MainMenuButtonAnims.res" id="5_lcy7u"]
@@ -23,7 +23,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o1fgn"]
-animation = &"RESET"
+animation = &"MainMenuButtons/Off"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_umky0"]
 animation = &"MainMenuButtons/Hover"
@@ -31,13 +31,13 @@ animation = &"MainMenuButtons/Hover"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
-graph_offset = Vector2(-494.492, 22.6807)
+graph_offset = Vector2(-451.968, -50.9159)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
 nodes/Animation/position = Vector2(180, 260)
 nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")
 nodes/Basic/position = Vector2(260, 40)
 nodes/Default/node = SubResource("AnimationNodeAnimation_o1fgn")
-nodes/Default/position = Vector2(-40, 20)
+nodes/Default/position = Vector2(-60, 0)
 nodes/Hover/node = SubResource("AnimationNodeAnimation_umky0")
 nodes/Hover/position = Vector2(-60, 140)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_spwqi")

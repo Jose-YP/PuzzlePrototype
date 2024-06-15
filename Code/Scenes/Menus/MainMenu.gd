@@ -11,19 +11,13 @@ signal switchTutorial
 signal playSFX(index)
 signal boardSFX(index)
 
-var can: bool = false
+var can: bool = true
 
 #______________________________
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
-	#$Buttons/Play.grab_focus()
 	%PlayTex.grab_focus()
-	can = true
-	print(get_tree())
-	for button in buttons:
-		pass
-		#button.set_anim_root(get_tree_string())
 
 #______________________________
 #BUTTON NAVIGATIONS

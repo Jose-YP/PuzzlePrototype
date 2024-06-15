@@ -11,18 +11,24 @@ signal finish
 func _ready():
 	$AnimationTree.tree_root = $AnimationTree.tree_root.duplicate()
 	$AnimationTree.active = true
+	texture_normal = texture_normal.duplicate()
 
 func _on_pressed():
 	$AnimationTree.set("parameters/OneShot/request", "Shoot")
+	texture_normal = texture_normal.duplicate()
 
 func _on_focus_entered():
 	$AnimationTree.set("parameters/Basic/transition_request", "Hover")
+	texture_normal = texture_normal.duplicate()
 
 func _on_focus_exited():
 	if pressing:
 		await finish
 	
+	animations.stop()
 	$AnimationTree.set("parameters/Basic/transition_request", "Default")
+	texture_normal = texture_normal.duplicate()
+	hoverUpdate = true
 
 func finish_signal():
 	finish.emit()

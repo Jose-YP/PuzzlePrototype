@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlxjyxa3t38su"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/ghost_bead.gd" id="1_2dxs6"]
-[ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/ETC/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="1_vamgo"]
+[ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="1_vamgo"]
 
 [node name="GhostBead" type="Node2D"]
 top_level = true

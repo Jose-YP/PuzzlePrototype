@@ -49,7 +49,7 @@ enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://add
 
 folder_colors={
 "res://Art/": "red",
-"res://Art/SlimButtontexture/": "red",
+"res://Art/UI/SlimButtontexture/": "red",
 "res://Audio/": "red",
 "res://Code/": "green",
 "res://Resources/": "green",

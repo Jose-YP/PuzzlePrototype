@@ -1,5 +1,5 @@
+res://default_bus_layout.tres
 res://Scenes/MainMenu/game_manager.tscn
-res://Shaders/Beads/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
 res://Themes/GameUI.tres
@@ -14,5 +14,3 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/MainMenu/MainMenuButton.tscn
 res://Code/Scenes/Menus/MainMenuButton.gd
 res://Themes/ButtonStyle/MainMenuButtonAnims.res
-res://Themes/ButtonStyle/MainMenuButtonRESET.res
-res://Art/SlimButtontexture/animating.tres
