@@ -26,3 +26,4 @@ res://Scenes/Board&Beads/grid_background.tscn
 res://Scenes/UI/right_ui.tscn
 res://Scenes/Constants/UIPieces/DuoDisplay.tscn
 res://Scenes/Board&Beads/ghost_bead.tscn
+res://Code/Scenes/Menus/MainMenu.gd

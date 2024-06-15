@@ -3,6 +3,8 @@ extends Control
 @export var newH2pPosition: Vector2 = Vector2(-526,-330)
 @export var orgH2pPosition: Vector2 = Vector2(-526,-1500)
 
+@onready var buttons: Array[TextureButton] = [%PlayTex, %OptionsTex, %ScoresTex, %H2PTex]
+
 signal switchPlay
 signal switchOptions
 signal switchTutorial
@@ -18,6 +20,8 @@ func _ready() -> void:
 	#$Buttons/Play.grab_focus()
 	%PlayTex.grab_focus()
 	can = true
+	#for button in buttons:
+		#button.set_anim_root(get_root_string())
 
 #______________________________
 #BUTTON NAVIGATIONS

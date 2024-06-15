@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b15feom8mwjyn"]
+[gd_scene load_steps=13 format=3 uid="uid://b15feom8mwjyn"]
 
 [ext_resource type="Theme" uid="uid://dg0gk08plhhl" path="res://Themes/GameUI.tres" id="1_qgwcy"]
 [ext_resource type="Texture2D" uid="uid://dejml6mauoiqc" path="res://Art/SlimButtontexture/nothing.png" id="2_1jx3k"]
@@ -10,6 +10,40 @@
 _data = {
 "RESET": ExtResource("4_4fddf")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8civu"]
+animation = &"MainMenuButtons/Pressed"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_as6ot"]
+input_0/name = "Default"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "Hover"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o1fgn"]
+animation = &"MainMenuButtons/Off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_umky0"]
+animation = &"MainMenuButtons/Hover"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
+graph_offset = Vector2(-252.362, 81.924)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
+nodes/Animation/position = Vector2(180, 260)
+nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")
+nodes/Basic/position = Vector2(260, 40)
+nodes/Default/node = SubResource("AnimationNodeAnimation_o1fgn")
+nodes/Default/position = Vector2(-40, 20)
+nodes/Hover/node = SubResource("AnimationNodeAnimation_umky0")
+nodes/Hover/position = Vector2(-60, 140)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_spwqi")
+nodes/OneShot/position = Vector2(460, 140)
+nodes/output/position = Vector2(680, 200)
+node_connections = [&"Basic", 0, &"Default", &"Basic", 1, &"Hover", &"OneShot", 0, &"Basic", &"OneShot", 1, &"Animation", &"output", 0, &"OneShot"]
 
 [node name="TextureButton" type="TextureButton"]
 custom_minimum_size = Vector2(460, 172)
@@ -34,7 +68,20 @@ libraries = {
 "": SubResource("AnimationLibrary_ewpfg"),
 "MainMenuButtons": ExtResource("5_lcy7u")
 }
-autoplay = "MainMenuButtons/Off"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ewpfg"),
+"MainMenuButtons": ExtResource("5_lcy7u")
+}
+tree_root = SubResource("AnimationNodeBlendTree_ruoyd")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Basic/current_state = "Default"
+parameters/Basic/transition_request = ""
+parameters/Basic/current_index = 0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

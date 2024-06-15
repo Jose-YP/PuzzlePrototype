@@ -74,6 +74,7 @@ offset_bottom = 714.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 20
 
 [node name="NextBeads" parent="VBoxContainer" instance=ExtResource("2_47gbb")]
 custom_minimum_size = Vector2(0, 200)
