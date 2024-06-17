@@ -46,6 +46,4 @@ func fix_anim(anim_index: int):
 			pressUpdate = false
 	
 	if should:
-		var fixTrack = animations.get_animation_list()[anim_index]
 		animations.stop()
-		#animations.play(fixTrack)

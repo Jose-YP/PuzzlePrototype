@@ -28,14 +28,14 @@ animation = &"MainMenuButtons/Off"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_umky0"]
 animation = &"MainMenuButtons/Hover"
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
-
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wpa7l"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_spwqi"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_om21p"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
-graph_offset = Vector2(-768.918, 432.609)
+graph_offset = Vector2(-433.088, -11.7538)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
 nodes/Animation/position = Vector2(-80, 380)
 nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")
@@ -44,14 +44,14 @@ nodes/Default/node = SubResource("AnimationNodeAnimation_o1fgn")
 nodes/Default/position = Vector2(-60, 0)
 nodes/Hover/node = SubResource("AnimationNodeAnimation_umky0")
 nodes/Hover/position = Vector2(-220, 240)
+nodes/HoverSpeed/node = SubResource("AnimationNodeTimeScale_wpa7l")
+nodes/HoverSpeed/position = Vector2(80, 160)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_spwqi")
 nodes/OneShot/position = Vector2(460, 140)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_om21p")
-nodes/TimeScale/position = Vector2(260, 280)
-"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_wpa7l")
-"nodes/TimeScale 2/position" = Vector2(80, 160)
+nodes/PressSpeed/node = SubResource("AnimationNodeTimeScale_om21p")
+nodes/PressSpeed/position = Vector2(260, 280)
 nodes/output/position = Vector2(680, 200)
-node_connections = [&"Basic", 0, &"Default", &"Basic", 1, &"TimeScale 2", &"OneShot", 0, &"Basic", &"OneShot", 1, &"TimeScale", &"TimeScale", 0, &"Animation", &"TimeScale 2", 0, &"Hover", &"output", 0, &"OneShot"]
+node_connections = [&"Basic", 0, &"Default", &"Basic", 1, &"HoverSpeed", &"HoverSpeed", 0, &"Hover", &"OneShot", 0, &"Basic", &"OneShot", 1, &"PressSpeed", &"PressSpeed", 0, &"Animation", &"output", 0, &"OneShot"]
 
 [node name="TextureButton" type="TextureButton"]
 custom_minimum_size = Vector2(460, 172)
@@ -87,11 +87,11 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Basic/current_state = "Default"
 parameters/Basic/transition_request = ""
 parameters/Basic/current_index = 0
+parameters/HoverSpeed/scale = 1.8
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
-parameters/TimeScale/scale = 1.5
-"parameters/TimeScale 2/scale" = 1.12
+parameters/PressSpeed/scale = 1.8
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

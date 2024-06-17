@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://jheao8y84etx"
+path="res://.godot/imported/Snare 11.ogg-932fc271ea45240fcffc699800fdec6b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/BoardSFX/Snare 11.ogg"
+dest_files=["res://.godot/imported/Snare 11.ogg-932fc271ea45240fcffc699800fdec6b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
