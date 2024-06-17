@@ -628,6 +628,9 @@ func check_breakers() -> void:
 			#Log every breaker and their chain into a new array that'll keep the right indexes
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
+			
+			if Globals.NewgroundsToggle and breakAtCheck.size() >= 3:
+				$Medals/Air.unlock()
 	
 	#Have all breaker ripples occur at once
 	
@@ -1092,6 +1095,9 @@ func _on_right_ui_high_score() -> void:
 	highScored = true
 
 func _on_right_ui_maxed_level() -> void:
+	if Globals.NewgroundsToggle:
+		$Medals/Dark.unlock()
+	
 	fail_screen()
 
 func should_play_zap() -> void:
@@ -1119,6 +1125,7 @@ func fail_screen() -> void:
 	
 	died.emit()
 	
+	await NG.scoreboard_submit(13768, score)
 	if highScored:
 		var HiScoreTween = $HighScoreScreen.create_tween()
 		$HighScoreScreen.show()

@@ -13,3 +13,16 @@ HiScores = {
 "881710": [4464, "LVY"]
 }
 username = "LVY"
+masterAudioLeve = 100.0
+musicAudioLeve = 100.0
+sfxAudioLeve = 100.0
+input_type = 0
+keyboard_action_events = {}
+joy_action_events = {}
+reset = true
+earthColor = Color(0.886, 0.224, 0.212, 1)
+seaColor = Color(0.137, 0.6, 0.91, 1)
+airColor = Color(1, 1, 1, 1)
+lightColor = Color(0.898, 0.91, 0.137, 1)
+darkColor = Color(0.843, 0.251, 0.663, 1)
+breakerColor = Color(0.514, 0.969, 0.557, 1)

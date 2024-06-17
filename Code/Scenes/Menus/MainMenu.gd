@@ -37,7 +37,7 @@ func _on_scores_pressed() -> void:
 	$"Score Display".show()
 
 func _on_how_2_play_pressed() -> void:
-	
+	$Light.unlock()
 	var h2pTween = self.create_tween()
 	get_viewport().gui_get_focus_owner().release_focus()
 	h2pTween.tween_property($How2Play,"position",newH2pPosition,.1)

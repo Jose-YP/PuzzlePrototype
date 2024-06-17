@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=11 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmnqltlxw855k" path="res://Scenes/UI/right_ui.tscn" id="5_uppt1"]
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
+[ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="10_6rky0"]
 
 [node name="Board" type="Node2D"]
 process_mode = 1
@@ -126,6 +127,16 @@ wait_time = 0.05
 one_shot = true
 
 [node name="ChainFinish" type="Timer" parent="Timers"]
+
+[node name="Medals" type="Node" parent="."]
+
+[node name="Air" type="Node" parent="Medals"]
+script = ExtResource("10_6rky0")
+medal_id = 79339
+
+[node name="Dark" type="Node" parent="Medals"]
+script = ExtResource("10_6rky0")
+medal_id = 79335
 
 [node name="Hold" type="Node2D" parent="."]
 editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"

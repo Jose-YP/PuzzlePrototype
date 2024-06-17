@@ -105,6 +105,13 @@ func update_display(beads, links, chains, breaker = false) -> void:
 	
 	display.text.append_text(str(beads," Beads\n", links," Links",chainText))
 	display.displayTime.start()
+	
+	if Globals.NewgroundsToggle:
+		if chains + 1 >= 3:
+			$Node/Sea.unlock()
+		
+		if links >= 15:
+			$Node/Earth.unlock()
 
 func hide_display(chainDisplay):
 	var displayTween = self.create_tween()
@@ -112,6 +119,7 @@ func hide_display(chainDisplay):
 	await displayTween.finished
 	#This should only be true when the hide tween finishes
 	chainDisplay.finishedTween = true
+	$Timer.start()
 
 #Will be called upon chains ending
 #Keep seperate so displays don't jump position

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=4 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/UIPieces/DuoDisplay.tscn" id="2_uv3j1"]
+[ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="3_fpxns"]
 
 [node name="RightUI" type="Control"]
 layout_mode = 3
@@ -112,6 +113,16 @@ text = "None"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Earth" type="Node" parent="Node"]
+script = ExtResource("3_fpxns")
+medal_id = 79337
+
+[node name="Sea" type="Node" parent="Node"]
+script = ExtResource("3_fpxns")
+medal_id = 79338
 
 [connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
 [connection signal="pressed" from="Gone" to="." method="remove_displays"]
