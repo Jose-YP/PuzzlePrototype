@@ -129,6 +129,7 @@ text = "Submit
 "
 metadata/_edit_lock_ = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/First" to="." method="_on_focus_entered" binds= [0]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Second" to="." method="_on_focus_entered" binds= [1]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Third" to="." method="_on_focus_entered" binds= [2]]

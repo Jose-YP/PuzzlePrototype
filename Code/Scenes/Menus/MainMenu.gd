@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
+		playSFX.emit(1)
 		get_viewport().gui_get_focus_owner().button_pressed = true
 
 #______________________________
@@ -30,16 +31,14 @@ func _on_play_pressed() -> void:
 	switchPlay.emit()
 
 func _on_options_pressed() -> void:
-	playSFX.emit(1)
 	switchOptions.emit()
 
 func _on_scores_pressed() -> void:
-	playSFX.emit(1)
 	$"Score Display".show()
 
 func _on_how_2_play_pressed() -> void:
+	
 	var h2pTween = self.create_tween()
-	playSFX.emit(1)
 	get_viewport().gui_get_focus_owner().release_focus()
 	h2pTween.tween_property($How2Play,"position",newH2pPosition,.1)
 	await h2pTween.finished

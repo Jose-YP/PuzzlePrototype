@@ -1,3 +1,5 @@
+NewgroundsMedalUnlocker
+Node
 AnimationTree
 Node2D
 HBoxContainer
@@ -9,7 +11,4 @@ AnimatedSprite2D
 Button
 TextureButton
 Timer
-Node
 Control
-TextureRect
-AudioStreamPlayer

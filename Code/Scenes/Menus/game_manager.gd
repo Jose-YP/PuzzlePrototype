@@ -115,7 +115,6 @@ func _on_main_menu_switch_options() -> void:
 	loadScene(optionsScene)
 
 func _on_main_menu_switch_play() -> void:
-	MenuSFX[1].play()
 	loadScene(boardScene)
 
 #-----------------------------------------

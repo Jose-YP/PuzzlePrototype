@@ -166,7 +166,6 @@ self_modulate = Color(1, 1, 1, 0.596078)
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true
-position = Vector2(2, 1)
 texture = ExtResource("5_lflmb")
 
 [node name="Connections" type="Node2D" parent="Images"]

@@ -16,4 +16,7 @@ func finalReady(use_NG):
 		
 		Globals.save = NGSaveSetup.save
 		Globals.userPrefs = NGSaveSetup.userPrefs
+		
+		
+		
 	else: Globals.NewgroundsToggle = false

@@ -1,14 +1,37 @@
 extends Resource
 class_name Save
 
+#SAVE FILE BASICS
+@export_category("Score")
 @export var HiScores: Dictionary = {"999999":[1,"YP!"],
 "000000":[40,"YP!"],
 "111111":[30,"YP!"],
 "222222":[20,"YP!"],
 "333333":[10,"YP!"],
 "444444":[50,"YP!"]}
-
 @export var username: String = "LVY"
+
+#AUDIO OPTIONS
+@export_category("Audio")
+@export_range(0,100,.05) var masterAudioLeve: float = 100.0
+@export_range(0,100,.05) var musicAudioLeve: float = 100.0
+@export_range(0,100,.05) var sfxAudioLeve: float = 100.0
+
+#INPUT MAP
+@export_category("Controls")
+@export_enum("KEYBOARD","GAMEPAD") var input_type: int = 0
+@export var keyboard_action_events: Dictionary = {}
+@export var joy_action_events: Dictionary ={}
+@export var reset: bool = true
+
+#PREFERED COLORS
+@export_category("Colors")
+@export_color_no_alpha var earthColor: Color = Color(0.886, 0.224, 0.212)
+@export_color_no_alpha var seaColor: Color = Color(0.137, 0.6, 0.91)
+@export_color_no_alpha var airColor: Color = Color(1,1,1)
+@export_color_no_alpha var lightColor: Color = Color(0.898, 0.91, 0.137)
+@export_color_no_alpha var darkColor: Color = Color(0.843, 0.251, 0.663)
+@export_color_no_alpha var breakerColor: Color = Color(0.514, 0.969, 0.557)
 
 func save(NG = false) -> void:
 	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")

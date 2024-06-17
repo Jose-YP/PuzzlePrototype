@@ -164,18 +164,18 @@ vertical_alignment = 1
 
 [node name="ExampleScoreboard" parent="." instance=ExtResource("3_gp5e1")]
 layout_mode = 0
-offset_left = 422.0
-offset_top = 57.0
-offset_right = 688.0
-offset_bottom = 422.0
+offset_left = 363.0
+offset_top = 52.0
+offset_right = 629.0
+offset_bottom = 417.0
 scoreboard_id = 13768
 own_scores = true
 
 [node name="ExampleMedalList" parent="." instance=ExtResource("4_lqp0p")]
-offset_left = 772.0
-offset_top = 61.0
-offset_right = 998.0
-offset_bottom = 426.0
+offset_left = 696.0
+offset_top = 64.0
+offset_right = 922.0
+offset_bottom = 429.0
 
 [node name="NewgroundsSessionWatcher" type="Node" parent="."]
 script = ExtResource("6_i37bs")

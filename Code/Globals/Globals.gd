@@ -25,7 +25,7 @@ var lowestID: String
 var NewgroundsToggle: bool = true
 
 func _ready() -> void:
-	set_other_inputs()
+	set_other_inputs(false)
 	set_controls()
 	set_colors()
 	
@@ -101,16 +101,37 @@ func set_colors() -> void:
 		var current = bead_colors[i]
 		link_colors[i] = Color.from_hsv(clamp(current.h, 0, 1), clamp(current.s - .1, 0, 1), .98)
 
+func NG_load(save_file):
+	Globals.save.HiScores = save_file["scores"]
+	Globals.save.username = save_file["scores"]
+	
+	Globals.save.input_type = save_file["control_type"]
+	Globals.save.keyboard_action_events = save_file["controls_key"]
+	Globals.save.joy_action_events = save_file["controls_joy"]
+	
+	Globals.save.earthColor = save_file["earth_color"]
+	Globals.save.seaColor = save_file["sea_color"]
+	Globals.save.airColor = save_file["air_color"]
+	Globals.save.lightColor = save_file["light_color"]
+	Globals.save.darkColor = save_file["dark_color"]
+	Globals.save.breakerColor = save_file["breaker_color"]
+	
+	Globals.save.masterAudioLeve = save_file["master"]
+	Globals.save.musicAudioLeve = save_file["music"]
+	Globals.save.sfxAudioLeve = save_file["sfx"]
+
 #______________________________
 #INPUT MANAGEMENT
 #______________________________
-func set_other_inputs() -> void:
+func set_other_inputs(should: bool) -> void:
 	InputMap.action_erase_events("ui_focus_next")
 	InputMap.action_erase_events("ui_focus_prev")
-	for event in InputMap.action_get_events("ui_accept"):
-		InputMap.action_add_event("ui_focus_next", event)
-	for event in InputMap.action_get_events("ui_cancel"):
-		InputMap.action_add_event("ui_focus_prev", event)
+	if should:
+		for event in InputMap.action_get_events("ui_accept"):
+			InputMap.action_add_event("ui_focus_next", event)
+		for event in InputMap.action_get_events("ui_cancel"):
+			InputMap.action_add_event("ui_focus_prev", event)
+	
 
 func pressed_accept() -> bool:
 	var countEither: bool = true

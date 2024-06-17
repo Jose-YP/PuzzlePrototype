@@ -57,6 +57,7 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("ui_accept"):
 			if not hasName:
+				Globals.set_other_inputs(false)
 				$VBoxContainer/Submit.grab_focus()
 				hasName = true
 			else:
@@ -114,3 +115,7 @@ func new_focus(newScore, newPlacement):
 	if newPlacement == 1:
 		await NG.scoreboard_submit(13768, newScore)
 	_ready()
+
+func _on_visibility_changed():
+	if visible:
+		Globals.set_other_inputs(true)

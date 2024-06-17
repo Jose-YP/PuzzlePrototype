@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=7 format=3 uid="uid://bjf6n3d1yeous"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="2_oy1pm"]
 [ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
 [ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="5_x2ope"]
+[ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="6_8jfis"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 1
@@ -199,6 +200,9 @@ metadata/_edit_lock_ = true
 wait_time = 0.15
 one_shot = true
 autostart = true
+
+[node name="NewgroundsMedalUnlocker" type="Node" parent="."]
+script = ExtResource("6_8jfis")
 
 [connection signal="switchTutorial" from="." to="How2Play" method="_on_main_menu_switch_tutorial"]
 [connection signal="finish" from="TopButtons/PlayTex" to="." method="_on_play_pressed"]

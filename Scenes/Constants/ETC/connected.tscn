@@ -6,6 +6,7 @@
 [node name="Connected" type="AnimatedSprite2D"]
 visibility_layer = 2
 z_index = 1
+scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("1_u27m6")
 animation = &"OptDisplay"
 autoplay = "OptDisplay"
