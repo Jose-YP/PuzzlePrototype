@@ -36,21 +36,21 @@ script = ExtResource("1_k3j0q")
 [node name="HoriMove" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("3_mwy77")
-volume_db = -5.0
+volume_db = -8.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_1bqrj")
-volume_db = -5.0
+volume_db = -8.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_7o23l")
-volume_db = -5.0
+volume_db = -8.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
@@ -64,28 +64,31 @@ bus = &"BoardSFX"
 [node name="Twinkle" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("7_cwt6p")
-pitch_scale = 0.76
+pitch_scale = 0.96
 bus = &"BoardSFX"
 
 [node name="Zap" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("8_kphb1")
-pitch_scale = 0.76
+volume_db = -5.0
 bus = &"BeadSFX"
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("9_w83p2")
+volume_db = -5.0
 bus = &"BoardSFX"
 
 [node name="ETC" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("10_gbw50")
+volume_db = -5.0
 bus = &"BoardSFX"
 
 [node name="AllFall" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("11_osyc5")
+volume_db = -5.0
 pitch_scale = 0.98
 bus = &"BoardSFX"
 

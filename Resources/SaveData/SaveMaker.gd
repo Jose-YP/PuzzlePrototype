@@ -34,9 +34,10 @@ class_name Save
 @export_color_no_alpha var breakerColor: Color = Color(0.514, 0.969, 0.557)
 
 func save(NG = false) -> void:
-	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 	if NG:
 		NGCloudSave.save_game()
+	else:
+		ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 
 static func load_or_create() -> Save:
 	var res: Save = load("res://Resources/SaveData/SaveFile.tres") as Save
@@ -49,3 +50,34 @@ func save_score(score,name):
 	for i in range(6):
 		id = str(id,randi_range(0,9))
 	HiScores[id] = [score,name]
+
+#Ugly functions but they work
+func set_default_controls():
+	InputMap.load_from_project_settings()
+	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
+	for action in actions:
+		var events = InputMap.action_get_events(action)
+		keyboard_action_events[action] = events[0]
+		joy_action_events[action] = events[1]
+
+func set_colors(newColors):
+	earthColor = newColors[0]
+	seaColor = newColors[1]
+	airColor = newColors[2]
+	lightColor = newColors[3]
+	darkColor = newColors[4]
+	breakerColor = newColors[5]
+
+func get_regular_colors() -> Array[Color]:
+	var arr: Array[Color] = [earthColor, seaColor, airColor,
+	 lightColor, darkColor]
+	return arr
+
+func reset_colors():
+	earthColor = Color(0.631, 0.125, 0.125)
+	seaColor = Color(0.137, 0.6, 0.91)
+	airColor = Color(1,1,1)
+	lightColor = Color(0.898, 0.91, 0.137)
+	darkColor = Color(0.478, 0.071, 0.365)
+	breakerColor = Color(0.514, 0.969, 0.557)
+

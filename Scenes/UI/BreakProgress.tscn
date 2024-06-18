@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd2r7vn8ipum5"]
+[gd_scene load_steps=7 format=3 uid="uid://cd2r7vn8ipum5"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
 [ext_resource type="Shader" path="res://Shaders/ShaderCode/ProgressBar.gdshader" id="1_eyjqy"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_et21x"]
+[ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="4_00tul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_276xm"]
 shader = ExtResource("1_eyjqy")
@@ -74,5 +75,5 @@ scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(49, 49)
-scale = Vector2(0.0850878, 0.0749999)
+position = Vector2(51, 52)
+texture = ExtResource("4_00tul")

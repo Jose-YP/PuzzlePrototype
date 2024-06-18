@@ -26,3 +26,15 @@ res://Themes/ButtonStyle/MainMenuButtonAnims.res
 res://Code/Scenes/UI/HighScoreScreen.gd
 res://Themes/ButtonStyle/MainMenuButtonRESET.res
 res://Code/Scenes/Menus/MainMenuButton.gd
+res://Scenes/Constants/ETC/pause_screen.tscn
+res://Scenes/UI/VeryNextBead.tscn
+res://README.md
+res://Code/Scenes/UI/VeryNextBead.gd
+res://Scenes/UI/NextBeads.tscn
+res://Scenes/Constants/UIPieces/all_beads.tscn
+res://Scenes/Board&Beads/breaker_bead.tscn
+res://Scenes/UI/BreakProgress.tscn
+res://Code/Scenes/UI/left_ui.gd
+res://Resources/SaveData/SaveFile.tres
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Resources/SaveData/SaveMaker.gd

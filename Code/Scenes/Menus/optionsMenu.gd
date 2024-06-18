@@ -226,7 +226,6 @@ func changeInput(event) -> void:
 	toggleOn = false
 	checkRepeats(currentInput, event)
 	getNewInputs()
-	Globals.set_other_inputs()
 	reset_buttons()
 
 func checkRepeats(oldEvent, event) -> void:

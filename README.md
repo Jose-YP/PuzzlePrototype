@@ -17,7 +17,7 @@ FEATURES
 ----------------
 MAIN GAME - Play the game for 20 levels, get the highest score in that time frame. 
 
-OPTIONS - It allows the player to mix the audio levels, change the colors of every bead type and remap keyboard controls.
+OPTIONS - It allows the player to mix the audio levels, change the colors of every bead type and remap controls.
 
 OTHER - The game also shows a local leaderboard of personal records and has a how to play screen to help player get used to the game. It's a new type of puzzle game so I need to ease people into it.
 
@@ -25,7 +25,6 @@ OTHER - The game also shows a local leaderboard of personal records and has a ho
 PLANS
 ----------------
 This is intented to be a web release that'll be playable in Itch.io and newgrounds. It'll always be free, and any updates directly to the game will also be free.
-
 
 ----------------
 WHAT I WON'T DO HERE
@@ -39,7 +38,3 @@ I would love to do one and I have a lot of ideas for it which includes and aeste
 CREDITS
 ----------------
 Bead break effect : 2D dissolve with burn edge - mreliptik
-
-Background Shaders: Earthbound-like battle background shader w/scroll effect and palette cycling - r3tr0_dev
-
-Break Charge Meter : Simple Radial Progress Bar - asciifaceman

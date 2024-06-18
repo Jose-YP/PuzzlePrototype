@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Constants/PauseScreen.gd" id="1_f2w6d"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_i2bur"]
-[ext_resource type="AudioStream" uid="uid://b5lfca8f5r133" path="res://Audio/MenuSFX/Click.wav" id="3_p5lg0"]
+[ext_resource type="AudioStream" uid="uid://c23dv670s53ql" path="res://Audio/MenuSFX/Click.ogg" id="3_an1u6"]
 
 [sub_resource type="Texture2D" id="Texture2D_ohhwm"]
 resource_local_to_scene = false
@@ -148,6 +148,7 @@ text = " TO QUIT"
 
 [node name="Pause" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("3_p5lg0")
-volume_db = -10.0
+stream = ExtResource("3_an1u6")
+volume_db = -5.0
 pitch_scale = 0.8
+bus = &"MenuSFX"

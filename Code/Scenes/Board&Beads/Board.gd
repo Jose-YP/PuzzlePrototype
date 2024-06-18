@@ -42,7 +42,7 @@ var currentBead: Node2D
 var inputHoldTime: float = 0
 var brokenBeads: int = 0
 var score: int = 0
-var breakNum: int = 1
+var breakNum: int = 0
 var chainsSize: int = 0
 var linksSize: int = 0
 var beadsSize: int = 0
@@ -79,7 +79,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width + 1,0))
 	RUI.position += Vector2(RUIextra, 0)
-	LUI.position.y += grid_to_pixel(Vector2i(0,1)).y
+	#LUI.position.y = grid_to_pixel(Vector2i(-8,0)).y
 	LUI.set_ripple_center()
 	LUI.breakMeter.breakText.text = str(breakNum)
 	

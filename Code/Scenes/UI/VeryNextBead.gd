@@ -1,8 +1,8 @@
 extends Control
 
 @export var small: bool = false
-@export var orderText: String = "NEXT"
-#Replace Full bead later
+
+const small_size = Vector2(100, 110)
 
 var fullBead
 
@@ -12,10 +12,9 @@ func _ready():
 		for tabs in %NextContain.get_children():
 			tabs.small = true
 			tabs.resize()
-			$HBoxContainer/Next/VBoxContainer/Text.hide()
+			$HBoxContainer/Next.custom_minimum_size = small_size
 	else:
-		$HBoxContainer/Next/VBoxContainer/Text.clear()
-		$HBoxContainer/Next/VBoxContainer/Text.append_text(str("[center]",orderText))
+		$HBoxContainer/Next.custom_minimum_size = small_size * 2
 
 func change_bead():
 	#CCW 0  | X CCW    |   CW X   |270 CW

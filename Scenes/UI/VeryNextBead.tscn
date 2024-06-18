@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5g3srjmute6t"]
+[gd_scene load_steps=5 format=3 uid="uid://c5g3srjmute6t"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/VeryNextBead.gd" id="1_4p6su"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/Constants/UIPieces/all_beads.tscn" id="2_nbrm8"]
+[ext_resource type="Texture2D" uid="uid://bumnvgcgjkk5y" path="res://Art/UI/Next_iconm.png" id="2_ua17o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlyyt"]
+texture = ExtResource("2_ua17o")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,21 +35,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Next" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 110)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_mlyyt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Next"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Text" type="RichTextLabel" parent="HBoxContainer/Next/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Next/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "[center]NEXT"
-fit_content = true
+theme_override_constants/margin_bottom = 8
 
 [node name="NextContain" type="GridContainer" parent="HBoxContainer/Next/VBoxContainer"]
 unique_name_in_owner = true

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Board&Beads/SoulBreaker.png" id="2_fqx32"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="2_snr66"]
 [ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="3_tjmdn"]
-[ext_resource type="AudioStream" uid="uid://dmum7mn3abqi" path="res://Audio/BoardSFX/BreakSFX/Brak1.wav" id="6_6t61a"]
+[ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="6_6ysas"]
 
 [sub_resource type="Gradient" id="Gradient_tohcf"]
 
@@ -120,7 +120,7 @@ metadata/_edit_lock_ = true
 
 [node name="Break" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("6_6t61a")
+stream = ExtResource("6_6ysas")
 volume_db = -4.0
 bus = &"BeadSFX"
 
