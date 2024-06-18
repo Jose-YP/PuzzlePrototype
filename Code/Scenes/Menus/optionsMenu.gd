@@ -40,16 +40,16 @@ var currentInput: InputEvent
 #-----------------------------------------
 func _ready():
 	Buses = [MasterBus, MusicBus, SFXBus]
-	userAudios = [Globals.userPrefs.masterAudioLeve, Globals.userPrefs.musicAudioLeve, Globals.userPrefs.sfxAudioLeve]
+	userAudios = [Globals.save.masterAudioLeve, Globals.save.musicAudioLeve, Globals.save.sfxAudioLeve]
 	
 	for i in range(VolumeValues.size()):
 		audioSet(userAudios[i], i)
 	
-	inputType = Globals.userPrefs.input_type
+	inputType = Globals.save.input_type
 	Globals.set_controls()
 	
-	currentColors = Globals.userPrefs.get_regular_colors()
-	currentColors.append(Globals.userPrefs.breakerColor)
+	currentColors = Globals.save.get_regular_colors()
+	currentColors.append(Globals.save.breakerColor)
 	
 	for i in range(beadExamples.size() - 1):
 		beadExamples[i].current_tab = i
@@ -80,12 +80,12 @@ func audioSet(value, index) -> void:
 	userAudios[index] = value * 0.01
 	match index: #Has to be saved directly
 		0:
-			Globals.userPrefs.masterAudioLeve = value
+			Globals.save.masterAudioLeve = value
 		1:
-			Globals.userPrefs.musicAudioLeve = value
+			Globals.save.musicAudioLeve = value
 		2:
-			Globals.userPrefs.sfxAudioLeve = value
-	Globals.userPrefs.save(Globals.NewgroundsToggle)
+			Globals.save.sfxAudioLeve = value
+	Globals.save.save(Globals.NewgroundsToggle)
 
 func _on_music_toggled(toggled_on) -> void:
 	testMusic.emit(toggled_on)
@@ -116,14 +116,14 @@ func set_colors(color: Color, index: int) -> void:
 	show_colors()
 
 func save_colors():
-	Globals.userPrefs.set_colors(currentColors)
-	Globals.userPrefs.save(Globals.NewgroundsToggle)
-	print(Globals.userPrefs.get_regular_colors())
+	Globals.save.set_colors(currentColors)
+	Globals.save.save(Globals.NewgroundsToggle)
+	print(Globals.save.get_regular_colors())
 
 func _on_reset_colors_pressed():
-	Globals.userPrefs.reset_colors()
-	currentColors = Globals.userPrefs.get_regular_colors()
-	currentColors.append(Globals.userPrefs.breakerColor)
+	Globals.save.reset_colors()
+	currentColors = Globals.save.get_regular_colors()
+	currentColors.append(Globals.save.breakerColor)
 	for i in range(beadColorPickers.size()):
 		beadColorPickers[i].color = currentColors[i]
 	
@@ -143,9 +143,9 @@ func getNewInputs() -> void:
 	
 	match inputType:
 		0:
-			loopActions = Globals.userPrefs.keyboard_action_events.keys()
+			loopActions = Globals.save.keyboard_action_events.keys()
 		1:
-			loopActions = Globals.userPrefs.joy_action_events.keys()
+			loopActions = Globals.save.joy_action_events.keys()
 	
 	for i in range(controllerChange.size()):#Controller change's parents have the right names
 		Globals.show_controls(controllerChange[i].get_child(0))
@@ -164,13 +164,13 @@ func getNewInputs() -> void:
 		for event in events:
 			if event is InputEventKey and inputType == 0:
 				inputs[0].append(event)
-				Globals.userPrefs.keyboard_action_events[action] = event
+				Globals.save.keyboard_action_events[action] = event
 			elif event is InputEventJoypadButton and inputType == 1:
 				print()
 				inputs[1].append(event)
-				Globals.userPrefs.joy_action_events[action] = event
+				Globals.save.joy_action_events[action] = event
 	
-	Globals.userPrefs.save(Globals.NewgroundsToggle)
+	Globals.save.save(Globals.NewgroundsToggle)
 	ControllerIcons.refresh()
 	#updateInputDisplay()
 
@@ -210,8 +210,8 @@ func controllerMapStart(_toggled,index) -> void:
 
 func _on_new_input_type_selected(index) -> void:
 	inputType = index
-	Globals.userPrefs.input_type = index
-	Globals.userPrefs.save(Globals.NewgroundsToggle)
+	Globals.save.input_type = index
+	Globals.save.save(Globals.NewgroundsToggle)
 	
 	getNewInputs()
 

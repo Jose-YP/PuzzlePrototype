@@ -75,27 +75,27 @@ func sort_scores() -> Array:
 	return sorted
 
 func get_controls() -> void:
-	for action in Globals.userPrefs.keyboard_action_events:
+	for action in Globals.save.keyboard_action_events:
 		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
-		InputMap.action_add_event(action, Globals.userPrefs.joy_action_events[action])
+		InputMap.action_add_event(action, Globals.save.keyboard_action_events[action])
+		InputMap.action_add_event(action, Globals.save.joy_action_events[action])
 
 func set_controls() -> void:
-	for action in Globals.userPrefs.keyboard_action_events:
+	for action in Globals.save.keyboard_action_events:
 		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, Globals.userPrefs.keyboard_action_events[action])
-		InputMap.action_add_event(action, Globals.userPrefs.joy_action_events[action])
+		InputMap.action_add_event(action, Globals.save.keyboard_action_events[action])
+		InputMap.action_add_event(action, Globals.save.joy_action_events[action])
 
 func show_controls(textureNode) -> void:
-	match Globals.userPrefs.input_type:
+	match Globals.save.input_type:
 		0:
 			textureNode.texture.force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
 		1:
 			textureNode.texture.force_type = ControllerIconTexture.ForceType.CONTROLLER
 
 func set_colors() -> void:
-	bead_colors = Globals.userPrefs.get_regular_colors()
-	breaker_color = Globals.userPrefs.breakerColor
+	bead_colors = Globals.save.get_regular_colors()
+	breaker_color = Globals.save.breakerColor
 	
 	for i in range(bead_colors.size()):
 		var current = bead_colors[i]

@@ -17,16 +17,16 @@ func resize():
 func edit_color(index):
 	match index:
 		0:
-			modulate = Globals.userPrefs.earthColor
+			modulate = Globals.save.earthColor
 		1:
-			modulate = Globals.userPrefs.seaColor
+			modulate = Globals.save.seaColor
 		2:
-			modulate = Globals.userPrefs.airColor
+			modulate = Globals.save.airColor
 		3:
-			modulate = Globals.userPrefs.lightColor
+			modulate = Globals.save.lightColor
 		4:
-			modulate = Globals.userPrefs.darkColor
+			modulate = Globals.save.darkColor
 		6:
-			modulate = Globals.userPrefs.breakerColor
+			modulate = Globals.save.breakerColor
 		5:
 			modulate = Color.TRANSPARENT
