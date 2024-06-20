@@ -15,8 +15,6 @@ func finalReady(use_NG):
 			NG.save_slots[1] = null
 		
 		Globals.save = NGSaveSetup.save
-		Globals.userPrefs = NGSaveSetup.userPrefs
-		
-		
+		Globals.NG_load(NGSaveSetup.save_dict)
 		
 	else: Globals.NewgroundsToggle = false

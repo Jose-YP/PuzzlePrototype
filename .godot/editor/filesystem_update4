@@ -39,3 +39,5 @@ res://Resources/SaveData/SaveFile.tres
 res://Code/Scenes/Menus/optionsMenu.gd
 res://Resources/SaveData/SaveMaker.gd
 res://Code/Globals/NGSave.gd
+res://Code/Globals/FinalGlobal.gd
+res://Code/Globals/Globals.gd

@@ -2,7 +2,6 @@ extends Node
 
 @onready var rules: Rules = load("res://Resources/Rules/Basic Rules.tres")
 @onready var save = Save.load_or_create()
-@onready var userPrefs = UserPreferences.load_or_create()
 @onready var display = sort_scores()
 
 const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")

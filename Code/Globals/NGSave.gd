@@ -1,14 +1,14 @@
 extends Node
 
 var save: Save
-var userPrefs: UserPreferences
+var save_dict: Dictionary
 
 func _ready():
 	add_to_group("CloudSave")
 
 func _cloud_save():
-	print(Globals.save, "||", Globals.userPrefs)
-	return 	{
+	print(Globals.save)
+	save_dict = {
 		"scores" : Globals.save.HiScores,
 		"username" : Globals.save.username,
 		
@@ -28,4 +28,5 @@ func _cloud_save():
 		"sfx" : Globals.save.sfxAudioLeve
 	}
 	
+	return save_dict
 
