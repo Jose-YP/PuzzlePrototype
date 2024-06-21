@@ -1,3 +1,7 @@
+PanelContainer
+HSeparator
+VSeparator
+Container
 VBoxContainer
 Label
 RichTextLabel
@@ -8,7 +12,3 @@ TextureProgressBar
 NewgroundsMedalUnlocker
 Node
 AnimationTree
-Node2D
-Marker2D
-AnimationPlayer
-AnimatedSprite2D

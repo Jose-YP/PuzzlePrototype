@@ -4,7 +4,7 @@ extends Control
 @export var rippleTiming: float = 1
 
 @onready var nextBeads: Control = $VBoxContainer/HBoxContainer2/NextBeads
-@onready var breakMeter: HBoxContainer = $VBoxContainer/BreakMeter
+@onready var breakMeter: VBoxContainer = $VBoxContainer/BreakMeter
 
 signal breakReady
 signal rippleEnd

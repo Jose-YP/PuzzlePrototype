@@ -17,7 +17,7 @@ script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
 
 [node name="Main" type="Node2D" parent="."]
-position = Vector2(-46, 15)
+position = Vector2(-72, 15)
 metadata/_edit_group_ = true
 
 [node name="PuzzleBoardNoBack" type="Sprite2D" parent="Main"]
@@ -31,7 +31,7 @@ metadata/_edit_group_ = true
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(45, -13)
+position = Vector2(71, -13)
 scale = Vector2(1, 1)
 BoardColor = Color(0.0901961, 0.298039, 0.341176, 0.152941)
 FailColor = Color(0.235294, 0.0352941, 0.0352941, 0.254902)

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends VBoxContainer
 
 @onready var progressBar: TextureProgressBar = $Progress/TextureProgressBar
 @onready var breakNotifier: PanelContainer = $Info
@@ -11,6 +11,12 @@ func _ready():
 	Globals.show_controls($Info/VBoxContainer/RichTextLabel2/TextureRect)
 
 func set_breakNum(string):
+	#If the break num is 0 hide it
+	if string == "0":
+		breakNotifier.hide()
+	else:
+		breakNotifier.show()
+	
 	breakNum.text = str(" ",string)
 
 # Called when the node enters the scene tree for the first time.

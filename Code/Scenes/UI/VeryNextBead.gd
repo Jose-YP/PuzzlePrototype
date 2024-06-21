@@ -13,8 +13,10 @@ func _ready():
 			tabs.small = true
 			tabs.resize()
 			$HBoxContainer/Next.custom_minimum_size = small_size
+			$HBoxContainer/Next/PanelContainer.custom_minimum_size = small_size * .85
 	else:
 		$HBoxContainer/Next.custom_minimum_size = small_size * 1.35
+		$HBoxContainer/Next/PanelContainer.custom_minimum_size = small_size * 1.15
 
 func change_bead():
 	#CCW 0  | X CCW    |   CW X   |270 CW

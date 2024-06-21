@@ -577,7 +577,7 @@ func second_fix() -> void:
 			if bead == null:
 				continue
 			if bead.name.ends_with("2"):
-				pass
+				print()
 			
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pos:
@@ -587,11 +587,16 @@ func second_fix() -> void:
 func lost_beads(bead) -> void:
 	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
-	if pixel_to_grid(bead) != find_bead(bead):
+	var visible_pos = pixel_to_grid(bead)
+	if visible_pos != find_bead(bead):
 		display_board()
 		print(bead, "LOST!!! :o!", bead.currentType)
 		changed = true
-		bead.queue_free()
+		var target = mini_find_bottom(visible_pos,visible_pos.x)
+		board[target.x][target.y] = bead
+		bead.global_position = grid_to_pixel(target)
+		bead.set_name(str(target))
+		#bead.queue_free()
 	if changed:
 		all_fall()
 

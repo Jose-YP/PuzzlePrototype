@@ -3,7 +3,7 @@ extends PanelContainer
 @export var glowTab: int = 3
 
 @onready var infoTabs: TabContainer = %InfoTabs
-@onready var breakProgress: HBoxContainer = %BreakProgress
+@onready var breakProgress: VBoxContainer = %BreakProgress
 @onready var movementContainers: Array[Node] = %MovementContainer.get_children()
 @onready var manipContainers: Array[Node] = %ManipContainer.get_children()
 @onready var beadImgs: Array[TabContainer] = [%Earth, %Sea, %Air, %Light, %Dark]
