@@ -1,5 +1,3 @@
-res://default_bus_layout.tres
-res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
@@ -9,12 +7,7 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
-res://Scenes/Board&Beads/Board.tscn
-res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/UI/left_ui.tscn
-res://Scenes/UI/VeryNextBead.tscn
 res://Scenes/UI/BreakProgress.tscn
-res://Code/Globals/Globals.gd
-res://Code/Globals/FinalGlobal.gd
-res://Code/Globals/NGSave.gd
-res://Resources/SaveData/SaveMaker.gd
+res://Code/Scenes/UI/BreakProgress.gd
+res://Scenes/UI/newSuperProgress.tscn
+res://Shaders/Beads/Ripple.tres

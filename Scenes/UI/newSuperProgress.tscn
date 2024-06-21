@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdsrmwnve1gv3"]
+
+[ext_resource type="Texture2D" uid="uid://c10mlmx1kqy5o" path="res://Art/UI/meter_bar_v2.png" id="1_ugiqk"]
+[ext_resource type="Texture2D" uid="uid://b5gonvncfad1d" path="res://Art/UI/meter_bar_v3.png" id="2_w0fdq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnhev"]
+atlas = ExtResource("1_ugiqk")
+region = Rect2(0, 0, 148, 150)
+
+[sub_resource type="Gradient" id="Gradient_mkdu8"]
+colors = PackedColorArray(0.207843, 0.423529, 0.529412, 1, 0.361292, 0.866595, 0.892981, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_op5pj"]
+gradient = SubResource("Gradient_mkdu8")
+width = 70
+height = 86
+fill_from = Vector2(0, 0.969697)
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_left = 26.0
+offset_top = 17.0
+offset_right = 174.0
+offset_bottom = 167.0
+value = 98.0
+fill_mode = 4
+texture_under = SubResource("AtlasTexture_vnhev")
+texture_over = ExtResource("2_w0fdq")
+texture_progress = SubResource("GradientTexture2D_op5pj")
+texture_progress_offset = Vector2(43, 32)
+radial_initial_angle = 71.3
