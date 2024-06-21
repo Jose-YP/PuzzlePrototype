@@ -24,6 +24,8 @@ var lowestID: String
 var NewgroundsToggle: bool = true
 
 func _ready() -> void:
+	print(save)
+	
 	set_other_inputs(false)
 	set_controls()
 	set_colors()
@@ -102,7 +104,7 @@ func set_colors() -> void:
 
 func NG_load(save_file):
 	Globals.save.HiScores = save_file["scores"]
-	Globals.save.username = save_file["scores"]
+	Globals.save.username = save_file["username"]
 	
 	Globals.save.input_type = save_file["control_type"]
 	Globals.save.keyboard_action_events = save_file["controls_key"]

@@ -45,6 +45,18 @@ static func load_or_create() -> Save:
 		res = Save.new()
 	return res
 
+func reset_value():
+	if reset:
+		HiScores = {"999999":[1,"YP!"],
+			"000000":[40,"YP!"],
+			"111111":[30,"YP!"],
+			"222222":[20,"YP!"],
+			"333333":[10,"YP!"],
+			"444444":[50,"YP!"]}
+	
+		pass
+	save(false)
+
 func save_score(score,name):
 	var id: String = ""
 	for i in range(6):

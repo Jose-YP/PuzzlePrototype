@@ -14,7 +14,12 @@ func finalReady(use_NG):
 		if NG.save_slots.size() == 0:
 			NG.save_slots[1] = null
 		
-		Globals.save = NGSaveSetup.save
-		Globals.NG_load(NGSaveSetup.save_dict)
+		if Globals.save.reset:
+			NGCloudSave.save_game()
+		
+		print(NGSaveSetup.save)
+		Globals.save = NGSaveSetup.save["file"]
 		
 	else: Globals.NewgroundsToggle = false
+
+
