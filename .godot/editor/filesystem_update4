@@ -11,3 +11,14 @@ res://Scenes/UI/BreakProgress.tscn
 res://Code/Scenes/UI/BreakProgress.gd
 res://Scenes/UI/newSuperProgress.tscn
 res://Shaders/Beads/Ripple.tres
+res://Scenes/UI/VeryNextBead.tscn
+res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/NextBeads.tscn
+res://Scenes/Constants/UIPieces/all_beads.tscn
+res://Code/Scenes/UI/VeryNextBead.gd
+res://Code/Scenes/UI/left_ui.gd
+res://Scenes/Constants/ETC/ripple.tscn
+res://Code/Scenes/Board&Beads/Board.gd

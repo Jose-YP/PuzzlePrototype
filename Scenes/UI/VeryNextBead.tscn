@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Next" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 110)
+custom_minimum_size = Vector2(101, 110)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -60,15 +60,19 @@ columns = 2
 [node name="(0,0)" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_nbrm8")]
 unique_name_in_owner = true
 layout_mode = 2
+regSize = Vector2(44, 44)
 
 [node name="(1,0)" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_nbrm8")]
 unique_name_in_owner = true
 layout_mode = 2
+regSize = Vector2(44, 44)
 
 [node name="(0,1)" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_nbrm8")]
 unique_name_in_owner = true
 layout_mode = 2
+regSize = Vector2(44, 44)
 
 [node name="(1,1)" parent="HBoxContainer/Next/VBoxContainer/NextContain" instance=ExtResource("2_nbrm8")]
 unique_name_in_owner = true
 layout_mode = 2
+regSize = Vector2(44, 44)

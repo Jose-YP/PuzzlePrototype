@@ -1,15 +1,17 @@
 extends HBoxContainer
 
 @onready var progressBar: TextureProgressBar = $Progress/TextureProgressBar
-@onready var rippleCenter: ColorRect = $Progress/BreakProgress
 @onready var breakNotifier: PanelContainer = $Info
-@onready var breakText: Label = $Info/Label
+@onready var breakNum: Label = $Progress/Label
 
 func _ready():
 	if Globals.rules.breakBead:
 		$Info/VBoxContainer/RichTextLabel.text = "TO SPAWN A BREAKER BEAD"
 	
 	Globals.show_controls($Info/VBoxContainer/RichTextLabel2/TextureRect)
+
+func set_breakNum(string):
+	breakNum.text = str(" ",string)
 
 # Called when the node enters the scene tree for the first time.
 func set_ripple_center() -> Vector2:

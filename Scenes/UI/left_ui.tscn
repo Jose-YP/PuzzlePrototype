@@ -72,13 +72,31 @@ offset_bottom = 714.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 134
+offset_right = 150.0
+offset_bottom = 532.0
+theme_override_constants/separation = 71
 
-[node name="NextBeads" parent="VBoxContainer" instance=ExtResource("2_47gbb")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="NextBeads" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_47gbb")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="HBoxContainer" parent="VBoxContainer" instance=ExtResource("5_0b4ie")]
+[node name="BreakMeter" parent="VBoxContainer" instance=ExtResource("5_0b4ie")]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 64.68
+offset_top = 549.0
+offset_right = 137.68
+offset_bottom = 582.0
+text = "rise meter"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

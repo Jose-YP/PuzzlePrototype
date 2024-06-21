@@ -81,7 +81,7 @@ func _ready() -> void:
 	RUI.position += Vector2(RUIextra, 0)
 	#LUI.position.y = grid_to_pixel(Vector2i(-8,0)).y
 	LUI.set_ripple_center()
-	LUI.breakMeter.breakText.text = str(breakNum)
+	LUI.breakMeter.set_breakNum(str(breakNum))
 	
 	#Make debugging easier
 	match rules.debug_fills:
@@ -383,7 +383,7 @@ func _process(delta) -> void:
 		and Input.is_action_just_pressed("Break") and breakNum > 0):
 			if rules.breakBead:
 				breakNum -= 1
-				LUI.breakMeter.breakText.text = str(breakNum)
+				LUI.breakMeter.set_breakNum(str(breakNum))
 				#Get old values to carry over
 				var oldPos = currentBead.gridPos[0]
 				for pos in currentBead.gridPos:
@@ -463,7 +463,6 @@ func post_turn() -> void:
 		
 		#Reset grounded & Gravity timer to give the player time to react
 		#Bead will show after a single timeout of Grounded to give them time to see the board and rest a second
-		lost_beads() 
 		%Placed.start()
 		await %Placed.timeout
 		pauseFall(false)
@@ -506,7 +505,7 @@ func post_break() -> void:
 	
 	if not rules.breakBead:
 		breakNum -= 1
-		LUI.breakMeter.breakText.text = str(breakNum)
+		LUI.breakMeter.set_breakNum(str(breakNum))
 	if breakNum <= 0:
 		LUI.breakMeter.breakNotifier.hide()
 	
@@ -554,9 +553,9 @@ func all_fall() -> void:
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
 			bead.set_name(str(target))
+			lost_beads(bead)
 	
 	if check_again:
-		lost_beads()
 		all_fall()
 	if currentBead != null:
 		ghost_bead_pos()
@@ -585,17 +584,14 @@ func second_fix() -> void:
 				board[i][j] = null
 				board[pos.x][pos.y] = bead
 
-func lost_beads() -> void:
+func lost_beads(bead) -> void:
 	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
-	for bead in gridBeads.get_children():
-		if bead.has_node("Beads"):
-			continue
-		if pixel_to_grid(bead) != find_bead(bead):
-			display_board()
-			print(bead, "LOST!!! :o!", bead.currentType)
-			changed = true
-			bead.queue_free()
+	if pixel_to_grid(bead) != find_bead(bead):
+		display_board()
+		print(bead, "LOST!!! :o!", bead.currentType)
+		changed = true
+		bead.queue_free()
 	if changed:
 		all_fall()
 
@@ -1081,7 +1077,7 @@ func _on_shake_timeout() -> void:
 func _on_left_ui_break_ready() -> void:
 	breakNum += 1
 	LUI.breakMeter.breakNotifier.show()
-	LUI.breakMeter.breakText.text = str(breakNum)
+	LUI.breakMeter.set_breakNum(str(breakNum))
 	playSFX.emit(4)
 
 func _on_right_ui_level_up(level) -> void:

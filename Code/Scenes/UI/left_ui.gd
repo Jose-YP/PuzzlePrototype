@@ -3,8 +3,8 @@ extends Control
 @export var progressTiming: float = .5
 @export var rippleTiming: float = 1
 
-@onready var nextBeads: Control = $VBoxContainer/NextBeads
-@onready var breakMeter: HBoxContainer = $VBoxContainer/HBoxContainer
+@onready var nextBeads: Control = $VBoxContainer/HBoxContainer2/NextBeads
+@onready var breakMeter: HBoxContainer = $VBoxContainer/BreakMeter
 
 signal breakReady
 signal rippleEnd
@@ -31,18 +31,14 @@ func meter_filled() -> void:
 	breakReady.emit()
 
 func set_progress() -> void:
-	var currentValue = breakMeter.progressBar.material.get_shader_parameter("value")
-	var tween = self.create_tween()
+	var tween = self.create_tween().set_ease(Tween.EASE_OUT)
 	var newValue = (progress / 
 	((Globals.level * Globals.rules.meterChargeRate) + Globals.rules.meterChargeThres))
 	newValue = clamp(newValue, 0, 1)
 	#Use a method to tween shader properties
-	tween.tween_method(tween_progress, currentValue, newValue, progressTiming)
+	tween.tween_property(breakMeter.progressBar, "value", newValue * 100.0, progressTiming)
 	if newValue == 1:
 		meter_filled()
-
-func tween_progress(value) -> void:
-	breakMeter.progressBar.material.set_shader_parameter("value", value)
 
 func _on_right_ui_break_gain(beads):
 	#Recharge the meter depending on how many beads were broken in a breaker bead combo
@@ -65,5 +61,8 @@ func ripple_size_tween(value):
 	$Ripple.material.set_shader_parameter("width", value)
 
 func set_ripple_center() -> void:
-	var center: Vector2 = $VBoxContainer/HBoxContainer.set_ripple_center()
+	var center: Vector2 = breakMeter.set_ripple_center()
 	$Ripple.material.set_shader_parameter("center", center)
+
+func _on_button_pressed():
+	update_meter(1)

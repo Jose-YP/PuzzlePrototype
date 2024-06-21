@@ -13,15 +13,10 @@ path = "Break"
 show_mode = 0
 force_type = 1
 
-[node name="HBoxContainer" type="HBoxContainer"]
+[node name="BreakMeter" type="VBoxContainer"]
 script = ExtResource("1_7383g")
 
 [node name="Progress" type="PanelContainer" parent="."]
-layout_mode = 2
-
-[node name="BreakProgress" type="ColorRect" parent="Progress"]
-visible = false
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="TextureProgressBar" parent="Progress" instance=ExtResource("2_wrft0")]
@@ -34,36 +29,40 @@ horizontal_alignment = 1
 
 [node name="Info" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Info"]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Info/VBoxContainer"]
-custom_minimum_size = Vector2(70, 54)
+custom_minimum_size = Vector2(139, 44)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
-text = "BREAK AVAILIBLE
+bbcode_enabled = true
+text = "[center]BREAK AVAILIBLE [/center]
 
-PRESS "
+				PRESS "
 fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="Info/VBoxContainer/RichTextLabel2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-offset_left = 31.0
-offset_top = 28.0
-offset_right = 63.0
-offset_bottom = 60.0
+offset_left = 71.0
+offset_top = 18.0
+offset_right = 103.0
+offset_bottom = 50.0
 texture = SubResource("Texture2D_4dw3j")
 expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Info/VBoxContainer"]
-custom_minimum_size = Vector2(70, 42)
+custom_minimum_size = Vector2(70, 19)
 layout_mode = 2
 mouse_force_pass_scroll_events = false
 theme_override_font_sizes/normal_font_size = 10
-text = "TO BREAK ALL CHAINS"
+bbcode_enabled = true
+text = "[center]TO BREAK ALL CHAINS"
 scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
