@@ -8,6 +8,7 @@ func _ready():
 
 func _cloud_save():
 	print(Globals.save)
+	save = Globals.save
 	save_dict = {
 		"file" : Globals.save,
 		"scores" : Globals.save.HiScores,

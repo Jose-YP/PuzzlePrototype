@@ -24,3 +24,5 @@ res://Scenes/Constants/ETC/ripple.tscn
 res://Code/Scenes/Board&Beads/Board.gd
 res://Scenes/UI/right_ui.tscn
 res://Code/Scenes/Menus/how_2_play.gd
+res://Code/Globals/NGSave.gd
+res://Code/Globals/FinalGlobal.gd

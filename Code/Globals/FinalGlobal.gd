@@ -18,7 +18,8 @@ func finalReady(use_NG):
 			NGCloudSave.save_game()
 		
 		print(NGSaveSetup.save)
-		Globals.save = NGSaveSetup.save["file"]
+		print(NGSaveSetup.save_dict["file"])
+		Globals.save = NGSaveSetup.save_dict["file"]
 		
 	else: Globals.NewgroundsToggle = false
 
