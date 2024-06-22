@@ -11,7 +11,8 @@ res://Shaders/ShaderCode/Shockwave.gdshader
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/UI/right_ui.tscn
 res://Scenes/MainMenu/how_2_play.tscn
-res://Code/Scenes/Menus/MainMenu.gd
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/UI/newSuperProgress.tscn
-res://Code/Scenes/Menus/game_manager.gd
+res://Code/Scenes/Menus/MainMenu.gd
+res://Code/Scenes/Board&Beads/Board.gd
+res://Code/Scenes/Board&Beads/FullPiece.gd

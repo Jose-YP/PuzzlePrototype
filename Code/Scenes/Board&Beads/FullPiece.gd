@@ -26,6 +26,7 @@ func _ready() -> void:
 	sync_position()
 	$Beads.rotation = 0 #In the UI Beads start rotated for some reason
 	determine_reroll()
+	check_flood()
 	check_drought()
 
 func check_drought() -> void:
@@ -33,7 +34,7 @@ func check_drought() -> void:
 	for i in range(drought.size()):
 		#Check if any drought value is over the limit
 		if drought[i] >= Globals.rules.droughtVal:
-			print("Rerolling for ", Globals.bead_types[i])
+			print("Rerolling for ", drought[i])
 			#Take a random number of beads, no three colors from this
 			var num = randi_range(2,3)
 			var tempBeads: Array = beads.duplicate()
@@ -45,6 +46,17 @@ func check_drought() -> void:
 					bead.randomize_type([i])
 				tempBeads.erase(bead)
 			break
+
+func check_flood() -> void:
+	var flood = Globals.floodArray
+	for i in range(flood.size()):
+		if flood[i] >= Globals.rules.floodVal:
+			print("Rerolling away ", flood[i])
+			var reroll = Globals.bead_types
+			reroll.remove_at(i)
+			for j in range(beads.size()):
+				if beads[i].typeID == i:
+					beads[i].randomize_type(reroll)
 
 #______________________________
 #BOARD FUNCTIONS

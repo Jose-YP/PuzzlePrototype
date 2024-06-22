@@ -205,11 +205,9 @@ func movement() -> void:
 			second_fix()
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
-		print("DSFOUBOUDBOUSADBOU")
 		move_bead(-1)
 	
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
-		print("DSFOUBOUDBOUSADBOU")
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():

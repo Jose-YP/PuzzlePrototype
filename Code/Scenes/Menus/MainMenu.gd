@@ -11,13 +11,14 @@ signal switchTutorial
 signal playSFX(index)
 signal boardSFX(index)
 
-var can: bool = true
+var can: bool = false
 
 #______________________________
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
 	%PlayTex.grab_focus()
+	can = true
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
