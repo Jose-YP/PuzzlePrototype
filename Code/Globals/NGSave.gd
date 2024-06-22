@@ -7,28 +7,26 @@ func _ready():
 	add_to_group("CloudSave")
 
 func _cloud_save():
-	print(Globals.save)
-	save = Globals.save
+	save = Globals.save.duplicate()
 	save_dict = {
-		"file" : Globals.save,
-		"scores" : Globals.save.HiScores,
-		"username" : Globals.save.username,
+		"file" : save,
+		"scores" : save.HiScores,
+		"username" : save.username,
 		
-		"control_type" : Globals.save.input_type,
-		"controls_key" : Globals.save.keyboard_action_events,
-		"controls_joy" : Globals.save.joy_action_events,
+		"control_type" : save.input_type,
+		"controls_key" : save.keyboard_action_events,
+		"controls_joy" : save.joy_action_events,
 		
-		"earth_color" : Globals.save.earthColor,
-		"sea_color" : Globals.save.seaColor,
-		"air_color" : Globals.save.airColor,
-		"light_color" : Globals.save.lightColor,
-		"dark_color" : Globals.save.darkColor,
-		"breaker_color" : Globals.save.breakerColor,
+		"earth_color" : save.earthColor,
+		"sea_color" : save.seaColor,
+		"air_color" : save.airColor,
+		"light_color" : save.lightColor,
+		"dark_color" : save.darkColor,
+		"breaker_color" : save.breakerColor,
 		
-		"master" : Globals.save.masterAudioLeve,
-		"music" : Globals.save.musicAudioLeve,
-		"sfx" : Globals.save.sfxAudioLeve
+		"master" : save.masterAudioLeve,
+		"music" : save.musicAudioLeve,
+		"sfx" : save.sfxAudioLeve
 	}
 	
 	return save_dict
-

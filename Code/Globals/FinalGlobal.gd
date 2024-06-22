@@ -14,8 +14,7 @@ func finalReady(use_NG):
 		if NG.save_slots.size() == 0:
 			NG.save_slots[1] = null
 		
-		if Globals.save.reset:
-			NGCloudSave.save_game()
+		NGCloudSave.save_game()
 		
 		print(NGSaveSetup.save)
 		print(NGSaveSetup.save_dict["file"])
