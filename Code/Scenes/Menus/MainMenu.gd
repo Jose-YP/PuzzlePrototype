@@ -38,6 +38,7 @@ func _on_scores_pressed() -> void:
 
 func _on_how_2_play_pressed() -> void:
 	$Light.unlock()
+	$How2Play.self_modulate = Color.WHITE
 	var h2pTween = self.create_tween()
 	get_viewport().gui_get_focus_owner().release_focus()
 	h2pTween.tween_property($How2Play,"position",newH2pPosition,.1)
