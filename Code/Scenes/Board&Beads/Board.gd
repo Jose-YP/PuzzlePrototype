@@ -512,7 +512,7 @@ func post_break() -> void:
 	reset_beads()
 	find_links()
 	find_chains(false)
-	check_breakers()
+	await check_breakers()
 	
 	print()
 	
@@ -1112,6 +1112,7 @@ func continue_breaker() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
+	
 	failed = true
 	pauseFall(true)
 	var display = Globals.display
@@ -1123,8 +1124,10 @@ func fail_screen() -> void:
 			highScored = true
 	
 	died.emit()
-	
+	$HighScoreScreen.score = RUI.regScore
+	$HighScoreScreen.new_score()
 	await NG.scoreboard_submit(13768, score)
+	
 	if highScored:
 		var HiScoreTween = $HighScoreScreen.create_tween()
 		$HighScoreScreen.show()

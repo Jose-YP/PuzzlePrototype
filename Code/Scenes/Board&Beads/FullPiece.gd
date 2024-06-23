@@ -49,14 +49,21 @@ func check_drought() -> void:
 
 func check_flood() -> void:
 	var flood = Globals.floodArray
+	var reroll = range(Globals.bead_types.size())
+	var willReroll = []
+	#Get the reroll arrays
 	for i in range(flood.size()):
-		if flood[i] >= Globals.rules.floodVal:
-			print("Rerolling away ", flood[i])
-			var reroll = Globals.bead_types
-			reroll.remove_at(i)
+		reroll.erase(i)
+		willReroll.append(i)
+	
+	#If any of the current types in the full bead have 
+	for i in willReroll:
+		if i >= Globals.rules.floodVal:
+			print("Rerolling away ", Globals.bead_types[i])
+			reroll.erase(i)
 			for j in range(beads.size()):
-				if beads[i].typeID == i:
-					beads[i].randomize_type(reroll)
+				if beads[j].typeID == i:
+					beads[j].randomize_type(reroll)
 
 #______________________________
 #BOARD FUNCTIONS

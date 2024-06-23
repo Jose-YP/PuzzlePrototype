@@ -24,8 +24,7 @@ func _ready():
 	hasName = false
 	%First.grab_focus()
 	
-	$VBoxContainer/RichTextLabel.clear()
-	$VBoxContainer/RichTextLabel.append_text(str("[center] Reached a High Score of ",score))
+	new_score()
 	$VBoxContainer/RichTextLabel2.clear()
 	$VBoxContainer/RichTextLabel2.append_text(str("[center] Placed in ",convert_placement(placement)," place!"))
 	nameIndexes = charIndex(username)
@@ -113,6 +112,10 @@ func new_focus(newScore, newPlacement):
 	score = newScore
 	placement = newPlacement
 	_ready()
+
+func new_score():
+	$VBoxContainer/RichTextLabel.clear()
+	$VBoxContainer/RichTextLabel.append_text(str("[center] Reached a High Score of ",score))
 
 func _on_visibility_changed():
 	if visible:

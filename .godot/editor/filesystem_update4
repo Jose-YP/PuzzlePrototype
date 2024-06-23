@@ -16,3 +16,8 @@ res://Scenes/UI/newSuperProgress.tscn
 res://Code/Scenes/Menus/MainMenu.gd
 res://Code/Scenes/Board&Beads/Board.gd
 res://Code/Scenes/Board&Beads/FullPiece.gd
+res://default_bus_layout.tres
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/Board&Beads/HighScoreScreen.tscn
