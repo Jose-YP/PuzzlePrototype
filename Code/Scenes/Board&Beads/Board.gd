@@ -628,7 +628,11 @@ func check_breakers() -> void:
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
 			
-			if Globals.NewgroundsToggle and breakAtCheck.size() >= 3:
+			if usingBreakerArray.size() >= 1: 
+				print()
+			
+			if Globals.NewgroundsToggle and usingBreakerArray.size() >= 3:
+				print("UNLCOK AIR")
 				$Medals/Air.unlock()
 	
 	#Have all breaker ripples occur at once
