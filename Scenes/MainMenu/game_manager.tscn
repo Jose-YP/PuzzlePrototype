@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=27 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Board&Beads/parallax_background.tscn" id="2_n4oh7"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c6t7wkb86lvbs" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.ogg" id="13_psqs0"]
 [ext_resource type="AudioStream" uid="uid://blcwrk0k6neaa" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.ogg" id="14_in7jn"]
 [ext_resource type="AudioStream" uid="uid://dsskv01er3vy6" path="res://Audio/Music/Main menu.wav" id="15_lgb27"]
+[ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="16_k3eu6"]
 [ext_resource type="AudioStream" uid="uid://msw256rvwad5" path="res://Audio/Music/Level 1.wav" id="16_ljc2t"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
 [ext_resource type="AudioStream" uid="uid://dfoiac7yvnrjq" path="res://Audio/Music/Level 2.wav" id="17_ympss"]
@@ -32,8 +33,6 @@ script = ExtResource("1_k3j0q")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_n4oh7")]
 scroll_offset = Vector2(1662.14, 1173.34)
-first_color = null
-second_color = null
 
 [node name="MainMenu" parent="." instance=ExtResource("3_i7gc1")]
 
@@ -115,6 +114,12 @@ unique_name_in_owner = true
 stream = ExtResource("14_in7jn")
 bus = &"BoardSFX"
 
+[node name="Break" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
+unique_name_in_owner = true
+stream = ExtResource("16_k3eu6")
+max_polyphony = 3
+bus = &"BeadSFX"
+
 [node name="ETCMusic" type="Node" parent="."]
 process_mode = 1
 
@@ -173,6 +178,9 @@ visible = false
 
 [node name="NewgroundsRequest" type="HTTPRequest" parent="."]
 script = ExtResource("21_6ewy6")
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0.490196, 0.8, 0.772549, 1)
 
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
