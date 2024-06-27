@@ -35,56 +35,56 @@ device = -1
 button_index = 11
 pressed = true
 
-[sub_resource type="InputEventKey" id="InputEventKey_4kebl"]
+[sub_resource type="InputEventKey" id="InputEventKey_3r1q3"]
 pressed = true
 keycode = 74
 physical_keycode = 74
 key_label = 74
 unicode = 106
 
-[sub_resource type="InputEventKey" id="InputEventKey_pj7kr"]
+[sub_resource type="InputEventKey" id="InputEventKey_3jqyd"]
 pressed = true
 keycode = 73
 physical_keycode = 73
 key_label = 73
 unicode = 105
 
-[sub_resource type="InputEventKey" id="InputEventKey_e00in"]
+[sub_resource type="InputEventKey" id="InputEventKey_tk7vk"]
 pressed = true
 keycode = 79
 physical_keycode = 79
 key_label = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_6y5d4"]
+[sub_resource type="InputEventKey" id="InputEventKey_swwwx"]
 pressed = true
 keycode = 75
 physical_keycode = 75
 key_label = 75
 unicode = 107
 
-[sub_resource type="InputEventKey" id="InputEventKey_nx58p"]
+[sub_resource type="InputEventKey" id="InputEventKey_g4nws"]
 pressed = true
 keycode = 83
 physical_keycode = 83
 key_label = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_ke1tr"]
+[sub_resource type="InputEventKey" id="InputEventKey_6tuoj"]
 pressed = true
 keycode = 65
 physical_keycode = 65
 key_label = 65
 unicode = 97
 
-[sub_resource type="InputEventKey" id="InputEventKey_ojtvi"]
+[sub_resource type="InputEventKey" id="InputEventKey_2jomp"]
 pressed = true
 keycode = 68
 physical_keycode = 68
 key_label = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_c2qri"]
+[sub_resource type="InputEventKey" id="InputEventKey_7opjl"]
 pressed = true
 keycode = 87
 physical_keycode = 87
@@ -107,14 +107,14 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 100.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_4kebl"),
-"Flip": SubResource("InputEventKey_pj7kr"),
-"ui_accept": SubResource("InputEventKey_e00in"),
-"ui_cancel": SubResource("InputEventKey_6y5d4"),
-"ui_down": SubResource("InputEventKey_nx58p"),
-"ui_left": SubResource("InputEventKey_ke1tr"),
-"ui_right": SubResource("InputEventKey_ojtvi"),
-"ui_up": SubResource("InputEventKey_c2qri")
+"Break": SubResource("InputEventKey_3r1q3"),
+"Flip": SubResource("InputEventKey_3jqyd"),
+"ui_accept": SubResource("InputEventKey_tk7vk"),
+"ui_cancel": SubResource("InputEventKey_swwwx"),
+"ui_down": SubResource("InputEventKey_g4nws"),
+"ui_left": SubResource("InputEventKey_6tuoj"),
+"ui_right": SubResource("InputEventKey_2jomp"),
+"ui_up": SubResource("InputEventKey_7opjl")
 }
 joy_action_events = {
 "Break": SubResource("InputEventJoypadButton_8q68f"),

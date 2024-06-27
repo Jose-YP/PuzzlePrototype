@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var Newgrounds: bool = true
 @export var MusicOn: bool = true
+@export var resetScores: bool = false
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
@@ -31,6 +32,10 @@ func _ready() -> void:
 	BoardSFX[1].play()
 	BoardSFX[1].stop()
 	ready_playing(ETCMusic[0])
+	
+	if resetScores:
+		Globals.save.reset_scores()
+	
 	FinalGlobal.finalReady(Newgrounds)
 
 func _process(_delta) -> void:

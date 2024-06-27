@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgd0k1a1ig4xt"]
+[gd_scene load_steps=16 format=3 uid="uid://cgd0k1a1ig4xt"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/how_2_play.gd" id="1_u0p3y"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/Constants/UIPieces/all_beads.tscn" id="2_o4w07"]
+[ext_resource type="PackedScene" uid="uid://cdsrmwnve1gv3" path="res://Scenes/UI/newSuperProgress.tscn" id="3_jggf6"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="6_3voon"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="7_0yb6m"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="8_xip8m"]
@@ -201,8 +202,13 @@ ONCE FILLED YOU'LL GAIN A BREAK BEAD THAT'LL DESTROY ANY CHAIN IT TOUCHES"
 [node name="HBoxContainer" type="GridContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/h_separation = -6
 columns = 5
 metadata/_edit_lock_ = true
+
+[node name="TextureProgressBar" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("3_jggf6")]
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Meter" type="MarginContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
@@ -303,8 +309,8 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Information/InfoTabs/Controls"]
 layout_mode = 2
-theme_override_constants/margin_left = 90
-theme_override_constants/margin_right = 90
+theme_override_constants/margin_left = 131
+theme_override_constants/margin_right = 131
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer"]
 layout_mode = 2

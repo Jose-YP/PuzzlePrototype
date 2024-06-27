@@ -205,11 +205,9 @@ func movement() -> void:
 			second_fix()
 	
 	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
-		print("DSFOUBOUDBOUSADBOU")
 		move_bead(-1)
 	
 	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
-		print("DSFOUBOUDBOUSADBOU")
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
@@ -514,7 +512,7 @@ func post_break() -> void:
 	reset_beads()
 	find_links()
 	find_chains(false)
-	check_breakers()
+	await check_breakers()
 	
 	print()
 	
@@ -630,7 +628,11 @@ func check_breakers() -> void:
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
 			
-			if Globals.NewgroundsToggle and breakAtCheck.size() >= 3:
+			if usingBreakerArray.size() >= 1: 
+				print()
+			
+			if Globals.NewgroundsToggle and usingBreakerArray.size() >= 3:
+				print("UNLCOK AIR")
 				$Medals/Air.unlock()
 	
 	#Have all breaker ripples occur at once
@@ -1114,6 +1116,7 @@ func continue_breaker() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
+	
 	failed = true
 	pauseFall(true)
 	var display = Globals.display
@@ -1125,8 +1128,10 @@ func fail_screen() -> void:
 			highScored = true
 	
 	died.emit()
-	
+	$HighScoreScreen.score = RUI.regScore
+	$HighScoreScreen.new_score()
 	await NG.scoreboard_submit(13768, score)
+	
 	if highScored:
 		var HiScoreTween = $HighScoreScreen.create_tween()
 		$HighScoreScreen.show()
