@@ -1,3 +1,9 @@
+Sprite2D
+ParallaxLayer
+ParallaxBackground
+ColorRect
+TextureRect
+Control
 PanelContainer
 HSeparator
 VSeparator
@@ -6,9 +12,3 @@ VBoxContainer
 Label
 RichTextLabel
 Button
-MarginContainer
-HBoxContainer
-TextureProgressBar
-NewgroundsMedalUnlocker
-Node
-AnimationTree

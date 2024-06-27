@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj6mpn3m43lkr"]
+
+[ext_resource type="Texture2D" uid="uid://cfs4f82m0qsu6" path="res://Art/Backgrounds/backpart.png" id="1_k8dp7"]
+[ext_resource type="Script" path="res://Code/Scenes/Board&Beads/parallax_background.gd" id="1_pmmv4"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_pmmv4")
+metadata/_edit_horizontal_guides_ = [887.0]
+metadata/_edit_vertical_guides_ = [1711.0]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(770, 359)
+motion_mirroring = Vector2(1849, 1036)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_k8dp7")
