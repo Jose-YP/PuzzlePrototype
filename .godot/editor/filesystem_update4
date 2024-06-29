@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Board&Beads/parallax_background.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
@@ -8,10 +8,8 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
+res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/Board&Beads/FullBead.tscn
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/Board&Beads/HighScoreScreen.tscn
-res://Scenes/Board&Beads/parallax_background.tscn
 res://Code/Scenes/Board&Beads/parallax_background.gd

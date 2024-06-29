@@ -6,6 +6,7 @@
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_ignore_camera_zoom = true
 script = ExtResource("1_pmmv4")
+debug_speed = 1.0
 scrolling_speed = Vector2(-20, -10)
 first_color = Color(0.32549, 0.611765, 0.588235, 1)
 second_color = Color(0.490196, 0.8, 0.772549, 1)
@@ -18,6 +19,7 @@ offset_top = -29.0
 offset_right = 1013.0
 offset_bottom = 792.0
 color = Color(0.168627, 0.0509804, 0.121569, 1)
+metadata/_edit_lock_ = true
 
 [node name="SecondLayer" type="ParallaxLayer" parent="."]
 modulate = Color(1, 1, 1, 0.513726)
@@ -29,10 +31,22 @@ motion_mirroring = Vector2(1849, 1036)
 texture_repeat = 2
 texture = ExtResource("1_k8dp7")
 
+[node name="Sprite2D2" type="Sprite2D" parent="SecondLayer"]
+texture_repeat = 2
+position = Vector2(925, 691)
+texture = ExtResource("1_k8dp7")
+
 [node name="FirstLayer" type="ParallaxLayer" parent="."]
 position = Vector2(770, 359)
 motion_mirroring = Vector2(1849, 1036)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="FirstLayer"]
 texture_repeat = 2
+texture = ExtResource("1_k8dp7")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="FirstLayer"]
+texture_repeat = 2
+position = Vector2(578, 1036)
 texture = ExtResource("1_k8dp7")
