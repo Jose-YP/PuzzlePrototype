@@ -179,9 +179,6 @@ visible = false
 [node name="NewgroundsRequest" type="HTTPRequest" parent="."]
 script = ExtResource("21_6ewy6")
 
-[node name="Node2D" type="Node2D" parent="."]
-modulate = Color(0.490196, 0.8, 0.772549, 1)
-
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]

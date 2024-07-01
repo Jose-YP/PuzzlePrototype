@@ -26,6 +26,7 @@ modulate = Color(1, 1, 1, 0.513726)
 position = Vector2(2761, 1643)
 motion_scale = Vector2(-0.5, -0.5)
 motion_mirroring = Vector2(1849, 1036)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SecondLayer"]
 texture_repeat = 2
@@ -39,12 +40,11 @@ texture = ExtResource("1_k8dp7")
 [node name="FirstLayer" type="ParallaxLayer" parent="."]
 position = Vector2(770, 359)
 motion_mirroring = Vector2(1849, 1036)
-metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="FirstLayer"]
 texture_repeat = 2
 texture = ExtResource("1_k8dp7")
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="FirstLayer"]
 texture_repeat = 2
