@@ -15,15 +15,15 @@ func _draw() -> void:
 	#-offset/2 leads to the top left of every tile
 	var drawEnd = Vector2(rules.offset.x * rules.width,rules.offset.y * rules.height)
 	var boardRect: Rect2 = Rect2(Vector2(Board.grid_to_pixel(Vector2i.ZERO) - rules.offset/2),drawEnd)
-	var failOrigin = Vector2(Board.grid_to_pixel(Vector2i(rules.safe_high_columns,0)).x - rules.offset.x/2, rules.origin.y - rules.offset.y/2)
-	var failEnd = Vector2(rules.offset.x * (rules.width - rules.safe_high_columns * 2),rules.offset.y * rules.fail_rows + rules.offset.y/4)
+	var failOrigin = Vector2(Board.grid_to_pixel(Vector2i(rules.safe_high_columns,0)) - rules.offset/2)
+	var failEnd = Vector2(rules.offset.x * (rules.width - rules.safe_high_columns * 2),rules.offset.y * rules.fail_rows - 1)
 	var failRect: Rect2 = Rect2(failOrigin,failEnd)
 	draw_rect(boardRect, BoardColor)
 	draw_rect(failRect, FailColor)
 	for i in rules.width:
 		for j in rules.height:
 			#FOR FAIL ROWS DON'T DRAW THE GRID
-			if j <= rules.fail_rows and not debug:
+			if (j <= rules.fail_rows and not debug) or j == 0:
 				continue
 			
 			var pos: Vector2 = Vector2(i,j)

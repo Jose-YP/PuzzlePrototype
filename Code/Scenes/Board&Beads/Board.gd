@@ -7,6 +7,7 @@ extends Node2D
 @export var farAway: Vector2 = Vector2(-100,-100)
 @export var RUIextra: float = 20.0
 @export var trasitionTiming: float = .1
+@export var print_display: bool = false
 
 @onready var realHeight: int = rules.height - 1
 @onready var gridBeads: Node2D = $Main/Grid
@@ -465,7 +466,7 @@ func post_turn() -> void:
 		await %Placed.timeout
 		pauseFall(false)
 		pull_next_bead()
-		#display_board()
+		display_board()
 
 func find_links() -> void:
 	#If nothing changes, then this won't
@@ -543,7 +544,6 @@ func all_fall() -> void:
 				target = Vector2i(i,j)
 			
 			if target != Vector2i(i,j):
-				print("Found new place")
 				check_again= true
 				
 			#print(bead.currentType,bead," Goes to ",target)
@@ -554,6 +554,7 @@ func all_fall() -> void:
 			lost_beads(bead)
 	
 	if check_again:
+		second_fix()
 		all_fall()
 	if currentBead != null:
 		ghost_bead_pos()
@@ -568,26 +569,22 @@ func detect_fail() -> void:
 				break
 
 func second_fix() -> void:
-	for i in rules.width:
-		for j in rules.height:
-			#or currentBead.in_full_bead(bead)
-			var bead = board[i][j]
-			if bead == null:
-				continue
-			if bead.name.ends_with("2"):
-				print()
-			
-			var pos = pixel_to_grid(bead)
-			if Vector2i(i,j) != pos:
-				board[i][j] = null
-				board[pos.x][pos.y] = bead
+	for bead in gridBeads.get_children():
+		if bead == null or bead == currentBead:
+			continue
+		var pos = pixel_to_grid(bead)
+		var found = find_bead(bead)
+		
+		if found != pos:
+			print(bead.name, find_bead(bead), " vs ", pos)
+			board[found.x][found.y] = null
+			board[pos.x][pos.y] = bead
 
 func lost_beads(bead) -> void:
 	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
 	var visible_pos = pixel_to_grid(bead)
 	if visible_pos != find_bead(bead):
-		display_board()
 		print(bead, "LOST!!! :o!", bead.currentType)
 		changed = true
 		var target = mini_find_bottom(visible_pos,visible_pos.x)
@@ -1219,17 +1216,21 @@ func make_overhang() -> void:
 		add_bead(Vector2i(ammount,rules.height-overhangPos.y))
 
 func display_board() -> void:
-	print("\n_____________________________________________________")
-	for j in rules.height:
-		var debugString: String
-		for i in rules.width:
-			if board[i][j] != null:
-				debugString = str(debugString, "\t",board[i][j].currentType)
-			else:
-				debugString = str(debugString, "\t",null)
-		
-		print("Row: ",j,"\t", debugString)
-	print("_____________________________________________________\n")
+	if print_display:
+		print("\n_____________________________________________________")
+		for j in rules.height:
+			var debugString: String
+			for i in rules.width:
+				if board[i][j] != null:
+					if board[i][j].currentType == "Sea" or board[i][j].currentType == "Air":
+						debugString = str(debugString, "\t",board[i][j].currentType,"\t")
+					else:
+						debugString = str(debugString, "\t",board[i][j].currentType)
+				else:
+					debugString = str(debugString, "\t",null)
+			
+			print("Row: ",j,"\t", debugString)
+		print("_____________________________________________________\n")
 
 func display_array(array) -> void:
 	var display: String = ""
