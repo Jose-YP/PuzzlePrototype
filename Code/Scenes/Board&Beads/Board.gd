@@ -117,7 +117,7 @@ func spawn_full_beads() -> void:
 		if beadsUpnext[i] == null:
 			beadsUpnext[i] = fullBead.instantiate()
 			$Hold.add_child(beadsUpnext[i])
-			manage_drought(beadsUpnext[i])
+			manage_DroughtFlood(beadsUpnext[i])
 	LUI.update_next(beadsUpnext)
 
 func pull_next_bead() -> void:
@@ -140,7 +140,7 @@ func pull_next_bead() -> void:
 		spawn_full_beads()
 		ghost_bead_pos()
 
-func manage_drought(checkedBeads) -> void:
+func manage_DroughtFlood(checkedBeads) -> void:
 	var willDrought = range(5)
 	#Any type found in a full bead will remove the drought count
 	#Remove it from will drought

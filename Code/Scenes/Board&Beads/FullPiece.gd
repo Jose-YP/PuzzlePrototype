@@ -28,18 +28,13 @@ func _ready() -> void:
 	determine_reroll()
 	check_flood()
 	check_drought()
-	
-	var string: String = ""
-	for i in range(beads.size()):
-		string = str(string, "\t", beads[i].currentType)
-	print("Types for This current Bead", string)
 
 func check_drought() -> void:
 	var drought = Globals.droughtArray
 	for i in range(drought.size()):
 		#Check if any drought value is over the limit
 		if drought[i] >= Globals.rules.droughtVal:
-			print("Rerolling for ", drought[i])
+			print("Rerolling for ", Globals.bead_types[i])
 			#Take a random number of beads, no three colors from this
 			var num = randi_range(2,3)
 			var tempBeads: Array = beads.duplicate()
@@ -65,7 +60,6 @@ func check_flood() -> void:
 	#If any of the current types in the full bead have 
 	for type in willReroll:
 		print("Rerolling away ", Globals.bead_types[type])
-		reroll.erase(type)
 		for i in range(beads.size()):
 			if beads[i].typeID == type:
 				beads[i].randomize_type(reroll)
@@ -90,7 +84,7 @@ func determine_reroll():
 	if reroll and chance >= three_type_chance:
 		var index = range(3).pick_random()
 		rerollTypes.erase(beads[index].typeID)
-		print(beads[index].currentType, " Reroll,", rerollTypes)
+		print(beads[index].currentType, " unlucky reroll, into", rerollTypes)
 		var tempReroll = rerollTypes
 		beads[index].randomize_type(tempReroll)
 	elif reroll: print("unlucky")

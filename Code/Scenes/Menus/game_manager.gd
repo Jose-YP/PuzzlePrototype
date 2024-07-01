@@ -57,8 +57,9 @@ func _process(_delta) -> void:
 			play_music(BoardMusic[BoardMusic.find(currentSong) - 1])
 		else:
 			loopedSong = true
-			
+		loopVal = currentSong.get_playback_position()
 		
+	elif MusicOn and usingBoardSongs:
 		loopVal = currentSong.get_playback_position()
 
 #-----------------------------------------
