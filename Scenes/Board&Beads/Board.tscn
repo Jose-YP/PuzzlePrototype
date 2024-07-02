@@ -122,6 +122,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Debug" type="Timer" parent="Timers"]
+wait_time = 0.25
 one_shot = true
 
 [node name="ChainClear" type="Timer" parent="Timers"]
@@ -146,17 +147,27 @@ visible = false
 position = Vector2(-100, -100)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-show_behind_parent = true
-anchors_preset = 2
-anchor_top = 1.0
+top_level = true
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -41.0
-offset_top = -109.0
-offset_right = 1049.0
-offset_bottom = 756.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]READY"
 
 [connection signal="HighScore" from="UI/RightUI" to="." method="_on_right_ui_high_score"]
 [connection signal="breakGain" from="UI/RightUI" to="UI/LeftUI" method="_on_right_ui_break_gain"]

@@ -137,6 +137,10 @@ Clockwise={
 ]
 }
 
+[input_devices]
+
+buffering/agile_event_flushing=true
+
 [newgrounds.io]
 
 app_id="58344:yWmMxvnO"
@@ -145,3 +149,5 @@ AES-128_key="GSwyswln7HEDKawKf0iDyA=="
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+gl_compatibility/item_buffer_size=32768
+limits/global_shader_variables/buffer_size=32768

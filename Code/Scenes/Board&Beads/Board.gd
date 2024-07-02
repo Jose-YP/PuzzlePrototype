@@ -77,6 +77,8 @@ func _ready() -> void:
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
 	temp2.rippleShader.show()
+	temp2.ripple()
+	await temp2.rippleEnd
 	
 	#Make board before adding anything
 	board = make_grid()
@@ -96,12 +98,17 @@ func _ready() -> void:
 	#start the game
 	Globals.droughtArray = [0,0,0,0,0]
 	spawn_full_beads()
-	pull_next_bead()
 	
-	var transitionTween = self.create_tween().set_parallel()
+	$ColorRect/RichTextLabel.clear()
+	$ColorRect/RichTextLabel.append_text("[center]GO!")
+	await get_tree().create_timer(.25).timeout
+	
+	var transitionTween = self.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
 	transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-1000),trasitionTiming)
 	transitionTween.tween_property($UI,"modulate",Color.WHITE,trasitionTiming)
 	await transitionTween.finished
+	
+	pull_next_bead()
 	pauseFall(false)
 
 func make_grid() -> Array[Array]:
@@ -138,6 +145,8 @@ func pull_next_bead() -> void:
 			bead.connect("find_adjacent", find_adjacent)
 			bead.connect("made_chain", should_play_zap)
 			bead.connect("something_changed", should_refind)
+		
+		#Push down on certain rotations
 		
 		full_bead_rotation(rules.start_pos, true)
 		spawn_full_beads()

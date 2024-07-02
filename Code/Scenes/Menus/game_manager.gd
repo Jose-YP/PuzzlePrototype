@@ -28,10 +28,10 @@ var loopedSong: bool = false
 var usingBoardSongs: bool = false
 
 func _ready() -> void:
-	BoardSFX[0].play()
-	BoardSFX[0].stop()
-	BoardSFX[1].play()
-	BoardSFX[1].stop()
+	MenuSFX[0].play()
+	MenuSFX[0].stop()
+	MenuSFX[1].play()
+	MenuSFX[1].stop()
 	ready_playing(ETCMusic[0])
 	
 	if resetScores:

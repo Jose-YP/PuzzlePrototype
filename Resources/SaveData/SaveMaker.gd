@@ -87,9 +87,9 @@ func reset_value():
 		input_type = 0
 		set_default_controls()
 		reset_colors()
-	
-	reset = false
-	save(false)
+		
+		reset = false
+		save(false)
 
 func reset_scores():
 	HiScores = {"999999":[1,"NAN"],

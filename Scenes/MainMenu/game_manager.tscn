@@ -166,13 +166,11 @@ bus = &"MenuSFX"
 [node name="MenuConfirm" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("20_qke31")
-volume_db = -3.0
 bus = &"MenuSFX"
 
 [node name="MenuDeselect" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("21_ngyja")
-volume_db = -3.0
 bus = &"MenuSFX"
 
 [node name="Pause" type="AudioStreamPlayer" parent="MenuSFX"]

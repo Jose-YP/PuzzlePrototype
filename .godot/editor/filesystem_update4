@@ -1,3 +1,4 @@
+res://default_bus_layout.tres
 res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
@@ -9,18 +10,7 @@ res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
 res://Scenes/Board&Beads/Board.tscn
-res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/Board&Beads/parallax_background.tscn
-res://Code/Constants/GridBackground.gd
-res://Scenes/Board&Beads/grid_background.tscn
-res://Code/Scenes/Board&Beads/Board.gd
-res://Code/Scenes/Menus/game_manager.gd
-res://Scenes/Board&Beads/FullBead.tscn
-res://Code/Scenes/Board&Beads/FullPiece.gd
-res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/UI/right_ui.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
+res://Code/Scenes/Board&Beads/Board.gd
 res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
-res://addons/controller_icons/ControllerIcons.gd
-res://Resources/SaveData/SaveMaker.gd
-res://default_bus_layout.tres
