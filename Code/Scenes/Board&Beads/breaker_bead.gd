@@ -1,17 +1,14 @@
 extends Node2D
 
 @export var rippleTiming: float = 1.0
-@export_range(0,1,.01)  var pitchShift: float = .3
 @export_range(0,.5,.01) var burnTiming: float = .05
 
-@onready var brakSFX: AudioStreamPlayer = %Break
 @onready var sprite: TextureRect = $TextureRect
 @onready var glow: Sprite2D = $Glow
+@onready var rippleShader: ColorRect = $Ripple
 
 signal find_adjacent
 signal rippleEnd
-
-@onready var rippleShader: ColorRect = $Ripple
 
 #Beads & positions is here just to easily integrate into old code
 var currentType: String = "Breaker"
@@ -86,12 +83,6 @@ func _on_ripple_end():
 #DESTROYING PIECES
 #______________________________
 func destroy_anim():
-	#Destroy chains
-	#breaking = true
-	#var pitch = AudioServer.get_bus_effect(6, 0)
-	#pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
-	#brakSFX.play()
-	
 	#Destroy bead
 	var tween = self.create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)

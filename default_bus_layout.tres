@@ -1,7 +1,14 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cu4pvofviv7ic"]
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://cu4pvofviv7ic"]
 
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_odm2v"]
 resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_otmdk"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_54r1e"]
+resource_name = "PitchShift"
+pitch_scale = 1.45
 
 [resource]
 bus/1/name = &"Music"
@@ -42,3 +49,13 @@ bus/6/volume_db = -4.50411
 bus/6/send = &"BoardSFX"
 bus/6/effect/0/effect = SubResource("AudioEffectPitchShift_odm2v")
 bus/6/effect/0/enabled = true
+bus/7/name = &"Die"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.862736
+bus/7/send = &"BoardSFX"
+bus/7/effect/0/effect = SubResource("AudioEffectReverb_otmdk")
+bus/7/effect/0/enabled = true
+bus/7/effect/1/effect = SubResource("AudioEffectPitchShift_54r1e")
+bus/7/effect/1/enabled = true

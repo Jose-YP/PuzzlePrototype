@@ -4,9 +4,11 @@ extends Node2D
 #GRID SIZE, DIMENTIONS, SPACE SIZE AND STARTING POSITIONS (CODE AND IN-GAME)
 @export var rules: Rules
 @export var scoreFade: float = 1.5
-@export var farAway: Vector2 = Vector2(-100,-100)
 @export var RUIextra: float = 20.0
 @export var trasitionTiming: float = .1
+@export var dieTiming: float = 1
+@export var failColor: Color = Color.DIM_GRAY
+@export var farAway: Vector2 = Vector2(-100,-100)
 
 @onready var realHeight: int = rules.height - 1
 @onready var gridBeads: Node2D = $Main/Grid
@@ -17,6 +19,7 @@ extends Node2D
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
 
+signal dying
 signal died
 signal processFramed
 signal startBreaking
@@ -28,9 +31,9 @@ signal playBreak(index)
 signal brokenBeadSFX
 
 #CONSTANTS
-const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
-const uberbead = preload("res://Scenes/Board&Beads/uberbead.tscn")
-const breakerBead = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
+const fullBead: Resource = preload("res://Scenes/Board&Beads/FullBead.tscn")
+const uberbead: Resource = preload("res://Scenes/Board&Beads/uberbead.tscn")
+const breakerBead: Resource = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
 
 #Variables
 var fixUp: Array = []
@@ -568,7 +571,11 @@ func detect_fail() -> void:
 	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
 		for j in rules.fail_rows:
 			if board[i][j] != null:
-				print(Vector2i(i,j),"Found a bead in ",board[i][j] )
+				print(Vector2i(i,j),"Found a bead in ",board[i][j])
+				dying.emit()
+				var dyingTween = create_tween().set_ease(Tween.EASE_OUT)
+				dyingTween.tween_property(self, "modulate", failColor, dieTiming)
+				
 				fail_screen()
 				break
 
@@ -1134,7 +1141,6 @@ func continue_breaker() -> void:
 #FAIL SCREEN
 #______________________________
 func fail_screen() -> void:
-	
 	failed = true
 	pauseFall(true)
 	var display = Globals.display

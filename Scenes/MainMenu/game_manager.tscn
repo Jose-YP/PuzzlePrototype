@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=28 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Board&Beads/parallax_background.tscn" id="2_n4oh7"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dsskv01er3vy6" path="res://Audio/Music/Main menu.wav" id="15_lgb27"]
 [ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="16_k3eu6"]
 [ext_resource type="AudioStream" uid="uid://msw256rvwad5" path="res://Audio/Music/Level 1.wav" id="16_ljc2t"]
+[ext_resource type="AudioStream" uid="uid://drboyvsf2iv6k" path="res://Audio/BoardSFX/Clap 3.ogg" id="17_jbvpi"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/ETC/pause_screen.tscn" id="17_kh1yb"]
 [ext_resource type="AudioStream" uid="uid://dfoiac7yvnrjq" path="res://Audio/Music/Level 2.wav" id="17_ympss"]
 [ext_resource type="AudioStream" uid="uid://c1p5isnsiuo7t" path="res://Audio/Music/End of a run.wav" id="18_mbcpg"]
@@ -117,8 +118,17 @@ bus = &"BoardSFX"
 [node name="Break" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
 unique_name_in_owner = true
 stream = ExtResource("16_k3eu6")
+pitch_scale = 0.9
 max_polyphony = 4
 bus = &"BeadSFX"
+
+[node name="RunOver" type="AudioStreamPlayer" parent="BoardSFX"]
+unique_name_in_owner = true
+stream = ExtResource("17_jbvpi")
+volume_db = 6.804
+pitch_scale = 0.32
+mix_target = 1
+bus = &"Die"
 
 [node name="ETCMusic" type="Node" parent="."]
 process_mode = 1

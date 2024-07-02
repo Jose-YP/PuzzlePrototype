@@ -23,3 +23,4 @@ res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
 res://addons/controller_icons/ControllerIcons.gd
 res://Resources/SaveData/SaveMaker.gd
+res://default_bus_layout.tres

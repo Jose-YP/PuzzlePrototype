@@ -3,7 +3,6 @@ extends Node2D
 @export var beads: Array[CompressedTexture2D]
 @export var chainedVFX: PackedScene = preload("res://Scenes/Constants/ETC/connected.tscn")
 @export var shakeRange: Vector2 = Vector2(.5,0)
-@export_range(0,1,.01)  var pitchShift: float = .3
 @export_range(0,.5,.01) var shakeSpeed: float = .05
 @export_range(0,.5,.01) var burnTiming: float = .05
 
@@ -12,7 +11,6 @@ extends Node2D
 @onready var glow: Sprite2D = $Images/Glow
 @onready var chainPos: Array[Array] = [[%L1,%L2],[%R1,%R2],[%U1,%U2],[%D1,%D2]]
 @onready var chainedLinks: Array[Node] = []
-@onready var brakSFX: AudioStreamPlayer = %Break
 @onready var connectionBolts: Node2D = $Images/Connections
 
 signal find_adjacent
@@ -208,12 +206,6 @@ func reset_link():
 #DESTROYING PIECES
 #______________________________
 func destroy_anim():
-	#Destroy chains
-	#breaking = true
-	#var pitch = AudioServer.get_bus_effect(6, 0)
-	#pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
-	#brakSFX.play()
-	
 	#Destroy bead
 	var tween = self.create_tween()
 	tween.tween_method(set_burn, 1.0, 0.0, burnTiming)

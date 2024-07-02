@@ -90,6 +90,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("playSFX",_on_board_play_sfx)
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
 	currentScene.connect("brokenBeadSFX",bead_break_SFX)
+	currentScene.connect("dying", fail_SFX)
 	currentScene.connect("died", fail_song)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
@@ -138,6 +139,19 @@ func on_board_retry(allowed = true) -> void:
 func _on_pause_screen_quit(allowed = true) -> void:
 	if allowed:
 		back_to_menu()
+
+func bead_break_SFX():
+	var pitch = AudioServer.get_bus_effect(6, 0)
+	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
+	%Break.play()
+
+func fail_SFX():
+	var pitchTween = create_tween().set_ease(Tween.EASE_OUT)
+	
+	%RunOver.play()
+	pitchTween.tween_method(tweening_pitch, 1.55, .7, .07) 
+	
+	await %RunOver.finished
 
 func fail_song() -> void:
 	play_music(ETCMusic[1])
@@ -188,7 +202,6 @@ func _on_pause_screen_play_sfx() -> void:
 	unpausing = true
 	MenuSFX[3].play()
 
-func bead_break_SFX():
-	var pitch = AudioServer.get_bus_effect(6, 0)
-	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
-	%Break.play()
+func tweening_pitch(ammount, busLocation: int = 7, effectLocation: int = 1):
+	var pitch = AudioServer.get_bus_effect(busLocation, effectLocation)
+	pitch.pitch_scale = ammount

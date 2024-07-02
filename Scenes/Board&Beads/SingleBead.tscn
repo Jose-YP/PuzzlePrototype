@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1nqp81cess0x"]
+[gd_scene load_steps=16 format=3 uid="uid://c1nqp81cess0x"]
 
 [ext_resource type="Material" uid="uid://b2xqd47n88l6n" path="res://Shaders/Beads/SingleBeadBurn.tres" id="1_sxmjh"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dsexxbyabxyo4" path="res://Art/Board&Beads/grayLight.png" id="6_0kxpy"]
 [ext_resource type="Script" path="res://Code/Constants/LinkArray.gd" id="6_avety"]
 [ext_resource type="Texture2D" uid="uid://xaiidresne45" path="res://Art/Board&Beads/greyDark.png" id="7_4mh45"]
-[ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="10_7g0a2"]
 
 [sub_resource type="Animation" id="Animation_sme3t"]
 resource_name = "Glow"
@@ -140,7 +139,6 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("2_3mwsr")
 beads = Array[CompressedTexture2D]([ExtResource("3_0q0t5"), ExtResource("4_lhyvb"), ExtResource("5_jbphc"), ExtResource("6_0kxpy"), ExtResource("7_4mh45")])
 shakeRange = Vector2(1, 0)
-pitchShift = 0.15
 shakeSpeed = 0.1
 burnTiming = 0.08
 
@@ -208,12 +206,6 @@ position = Vector2(-7, -25.5)
 [node name="LinkArray" type="Node" parent="."]
 editor_description = "This is a seperate node so it's changes can be seen by every node that refers to it"
 script = ExtResource("6_avety")
-
-[node name="Break" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("10_7g0a2")
-max_polyphony = 3
-bus = &"BeadSFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
