@@ -98,6 +98,7 @@ func _ready() -> void:
 	
 	#start the game
 	Globals.droughtArray = [0,0,0,0,0]
+	Globals.floodArray = [0,0,0,0,0]
 	spawn_full_beads()
 	
 	$ColorRect/RichTextLabel.clear()

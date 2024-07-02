@@ -15,6 +15,7 @@ var regScore: int = 0
 var HiScore: int = 0
 var currentBeads: int = 0
 var levelUpthreshold: int = 0
+var just_reached: bool = false
 
 #______________________________
 #INITIALIZATION
@@ -34,6 +35,17 @@ func update_score(score) -> void:
 		update_HiScore(score)
 
 func update_HiScore(score) -> void:
+	#Notify the player when they reach the top spot
+	if not just_reached:
+		just_reached = true
+		$Cheer.play()
+		var cheerTween = create_tween().set_ease(Tween.EASE_OUT)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -5, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 5, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -5, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 5, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 0, .1)
+	
 	HiScore = score
 	%HiScoreText.text = str("HISCORE: ", score)
 	HighScore.emit()
@@ -108,10 +120,10 @@ func update_display(beads, links, chains, breaker = false) -> void:
 	
 	if Globals.NewgroundsToggle:
 		if chains + 1 >= 3:
-			$Node/Sea.unlock()
+			%Sea.unlock()
 		
 		if links >= 15:
-			$Node/Earth.unlock()
+			%Earth.unlock()
 
 func hide_display(chainDisplay):
 	var displayTween = self.create_tween()

@@ -116,15 +116,19 @@ text = "None"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 
-[node name="Node" type="Node" parent="."]
+[node name="Medals" type="Node" parent="."]
 
-[node name="Earth" type="Node" parent="Node"]
+[node name="Earth" type="Node" parent="Medals"]
+unique_name_in_owner = true
 script = ExtResource("3_fpxns")
 medal_id = 79337
 
-[node name="Sea" type="Node" parent="Node"]
+[node name="Sea" type="Node" parent="Medals"]
+unique_name_in_owner = true
 script = ExtResource("3_fpxns")
 medal_id = 79338
+
+[node name="Cheer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
 [connection signal="pressed" from="Gone" to="." method="remove_displays"]
