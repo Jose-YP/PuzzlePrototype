@@ -138,19 +138,22 @@ func pull_next_bead() -> void:
 		beadsUpnext.append(null)
 		$Hold.remove_child(currentBead)
 		gridBeads.add_child.call_deferred(currentBead)
-		currentBead.gridPos[0] = rules.start_pos
 		
-		board[rules.start_pos.x][rules.start_pos.y] = currentBead.beads[0]
-		currentBead.rot.global_position = grid_to_pixel(rules.start_pos)
+		var effectiveStart = rules.start_pos
+		#Push down on certain rotations
+		if currentBead.rot.rotation_degrees >= 90.0 and currentBead.rot.rotation_degrees <= 180.0:
+			effectiveStart = rules.start_pos + Vector2i(0,1)
+		
+		currentBead.gridPos[0] = effectiveStart
+		board[effectiveStart.x][effectiveStart.y] = currentBead.beads[0]
+		currentBead.rot.global_position = grid_to_pixel(effectiveStart)
 		
 		for bead in currentBead.beads:
 			bead.connect("find_adjacent", find_adjacent)
 			bead.connect("made_chain", should_play_zap)
 			bead.connect("something_changed", should_refind)
 		
-		#Push down on certain rotations
-		
-		full_bead_rotation(rules.start_pos, true)
+		full_bead_rotation(effectiveStart, true)
 		spawn_full_beads()
 		ghost_bead_pos()
 
@@ -174,7 +177,7 @@ func manage_drought(checkedBeads) -> void:
 #______________________________
 #BASIC CONTROLS: MOVE
 #______________________________
-func move_bead(ammount, direction = "X") -> void:
+func move_bead(ammount, direction = "X", spawning = false) -> void:
 	moving = true
 	for i in range(currentBead.gridPos.size()):
 		var pos: Vector2i = currentBead.gridPos[i]
@@ -196,9 +199,11 @@ func move_bead(ammount, direction = "X") -> void:
 		board[pos.x][pos.y] = currentBead.beads[i]
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
 		ghost_bead_pos()
-		
+	
+	if not spawning:
 		playSFX.emit(0)
-	await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.05).timeout
+	
 	moving = false
 
 func movement() -> void:

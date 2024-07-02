@@ -19,26 +19,27 @@ func _ready():
 		$HBoxContainer/Next/PanelContainer.custom_minimum_size = small_size * 1.15
 
 func change_bead():
-	#CCW 0  | X CCW    |   CW X   |270 CW
-	# X CW  | CW 90    | 180 CCW  | CCW X
+	#CCW 90  | X CCW    |    CW X   |180 CW
+	# X CW    | CW 0     | 270 CCW  | CCW X
 	# [Anchor, CCW, Clockwise]
+	#For some reason it's different in the board
 	match fullBead.rot.rotation_degrees:
-		0.0:
+		90.0:
 			%"(0,0)".current_tab = fullBead.beads[1].typeID
 			%"(1,0)".current_tab = 5
 			%"(0,1)".current_tab = fullBead.beads[0].typeID
 			%"(1,1)".current_tab = fullBead.beads[2].typeID
-		90.0:
+		0.0:
 			%"(0,0)".current_tab = fullBead.beads[0].typeID
 			%"(1,0)".current_tab = fullBead.beads[1].typeID
 			%"(0,1)".current_tab = fullBead.beads[2].typeID
 			%"(1,1)".current_tab = 5
-		180.0:
+		270.0:
 			%"(0,0)".current_tab = fullBead.beads[2].typeID
 			%"(1,0)".current_tab = fullBead.beads[0].typeID
 			%"(0,1)".current_tab = 5
 			%"(1,1)".current_tab = fullBead.beads[1].typeID
-		270.0:
+		180.0:
 			%"(0,0)".current_tab = 5
 			%"(1,0)".current_tab = fullBead.beads[2].typeID
 			%"(0,1)".current_tab = fullBead.beads[1].typeID

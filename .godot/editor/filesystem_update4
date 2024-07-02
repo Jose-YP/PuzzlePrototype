@@ -14,3 +14,10 @@ res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Code/Scenes/Menus/optionsMenu.gd
 res://Code/Scenes/Menus/game_manager.gd
+res://default_bus_layout.tres
+res://Code/Scenes/Board&Beads/Board.gd
+res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/NextBeads.tscn
+res://Scenes/UI/VeryNextBead.tscn
+res://Code/Scenes/UI/VeryNextBead.gd

@@ -18,6 +18,7 @@ config/icon="res://Art/Board&Beads/Water.png"
 
 [audio]
 
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 driver/mix_rate.web=44100
 
 [autoload]

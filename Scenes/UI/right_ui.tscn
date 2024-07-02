@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=5 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/UIPieces/DuoDisplay.tscn" id="2_uv3j1"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="3_fpxns"]
+[ext_resource type="AudioStream" uid="uid://clq1ooqegfjyy" path="res://Audio/BoardSFX/cheer(1).ogg" id="4_kdgal"]
 
 [node name="RightUI" type="Control"]
 layout_mode = 3
@@ -129,6 +130,10 @@ script = ExtResource("3_fpxns")
 medal_id = 79338
 
 [node name="Cheer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kdgal")
+volume_db = -4.86
+pitch_scale = 1.25
+bus = &"BoardSFX"
 
 [connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
 [connection signal="pressed" from="Gone" to="." method="remove_displays"]

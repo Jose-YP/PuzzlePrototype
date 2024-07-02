@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var Newgrounds: bool = true
 @export var MusicOn: bool = true
 @export var resetScores: bool = false
-@export_range(0,1,.01)  var pitchShift: float = .3
+@export_range(0,.5,.01)  var pitchShift: float = .3
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall, %Win]
