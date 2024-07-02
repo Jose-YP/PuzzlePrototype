@@ -6,12 +6,12 @@ extends CanvasLayer
 @export_range(0,1,.01)  var pitchShift: float = .3
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
-%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
+%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall, %Win]
 @onready var BreakSFX: Array[Node] = $BoardSFX/BreakSFX.get_children()
 @onready var MenuSFX: Array[Node] = $MenuSFX.get_children()
 @onready var BoardMusic: Array[Node] = $BoardMusic.get_children()
 @onready var ETCMusic: Array[AudioStreamPlayer] = [$ETCMusic/MainMenu,$ETCMusic/EndRun]
-@onready var currentScene = $MainMenu
+@onready var currentScene: Node = $MainMenu
 @onready var editableMusicBus = AudioServer.get_bus_index("ManageMusic")
 
 #Scenes for loading
@@ -27,17 +27,21 @@ var unpausing: bool = false
 var loopedSong: bool = false
 var usingBoardSongs: bool = false
 
+#-----------------------------------------
+#INITALIZATION AND PROCESSING
+#-----------------------------------------
 func _ready() -> void:
-	MenuSFX[0].play()
-	MenuSFX[0].stop()
-	MenuSFX[1].play()
-	MenuSFX[1].stop()
 	ready_playing(ETCMusic[0])
 	
 	if resetScores:
 		Globals.save.reset_scores()
 	
 	FinalGlobal.finalReady(Newgrounds)
+
+func _on_main_menu_readied():
+	MenuSFX[0].stop()
+	MenuSFX[1].play()
+	MenuSFX[1].stop()
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("Pause") and not unpausing:
@@ -94,6 +98,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("died", fail_song)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
+	currentScene.HiScoreScene.connect("menuSFX", play_menu_sfx)
 	$PauseScreen.entered_board(true)
 	BoardMusic.shuffle()
 	play_music(BoardMusic[0])
@@ -104,6 +109,7 @@ func option_scene_loaded(scene) -> void:
 	currentScene.connect("makeNoise",_on_option_make_noise)
 
 func back_to_menu() -> void:
+	play_menu_sfx(2)
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)
@@ -133,6 +139,7 @@ func _on_board_play_break_sfx(index) -> void:
 	BreakSFX[index].play()
 
 func on_board_retry(allowed = true) -> void:
+	play_menu_sfx(1)
 	if allowed:
 		loadScene(boardScene)
 

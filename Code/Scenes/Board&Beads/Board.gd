@@ -15,6 +15,7 @@ extends Node2D
 @onready var RUI: Control = $UI/RightUI
 @onready var LUI: Control = $UI/LeftUI
 @onready var Fail: Control = $FailScreen
+@onready var HiScoreScene: Control = $HighScoreScreen
 @onready var ghostBeads: Array[Node] = %Ghost.get_children()
 @onready var baseGroundedTime: float = %Grounded.get_wait_time()
 @onready var baseGravTime: float = %Gravity.get_wait_time()
@@ -1161,16 +1162,16 @@ func fail_screen() -> void:
 			highScored = true
 	
 	died.emit()
-	$HighScoreScreen.score = RUI.regScore
-	$HighScoreScreen.new_score()
+	HiScoreScene.score = RUI.regScore
+	HiScoreScene.new_score()
 	await NG.scoreboard_submit(13768, score)
 	
 	if highScored:
-		var HiScoreTween = $HighScoreScreen.create_tween()
-		$HighScoreScreen.show()
+		var HiScoreTween = HiScoreScene.create_tween()
+		HiScoreScene.show()
 		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
 		await get_tree().create_timer(scoreFade).timeout
-		$HighScoreScreen.new_focus(RUI.regScore, placement)
+		HiScoreScene.new_focus(RUI.regScore, placement)
 	
 	else:
 		var failTween = Fail.create_tween()
@@ -1180,7 +1181,7 @@ func fail_screen() -> void:
 		Fail.start_focus()
 
 func _on_high_score_screen_proceed() -> void:
-	var HiScoreTween = $HighScoreScreen.create_tween()
+	var HiScoreTween = HiScoreScene.create_tween()
 	var failTween = Fail.create_tween()
 	HiScoreTween.set_parallel(true)
 	failTween.set_parallel(true)
@@ -1189,7 +1190,7 @@ func _on_high_score_screen_proceed() -> void:
 	HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.TRANSPARENT, scoreFade/2)
 	failTween.tween_property($FailScreen, 'modulate', Color.WHITE, scoreFade/2)
 	await get_tree().create_timer(scoreFade).timeout
-	$HighScoreScreen.hide()
+	HiScoreScene.hide()
 	Fail.start_focus()
 
 #______________________________

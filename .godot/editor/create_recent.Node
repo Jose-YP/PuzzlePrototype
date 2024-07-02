@@ -1,5 +1,5 @@
-RichTextLabel
 AudioStreamPlayer
+RichTextLabel
 Node2D
 ColorRect
 Sprite2D
@@ -12,4 +12,3 @@ HSeparator
 VSeparator
 Container
 VBoxContainer
-Label

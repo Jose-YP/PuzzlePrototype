@@ -5,6 +5,7 @@ extends Control
 @onready var currentFocus: Button = %First
 
 signal proceed
+signal menuSFX(index)
 
 const characters: Array[String] = ["A","B","C","D","E","F","G","H","I","J","K","L",
 "M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1",
@@ -42,11 +43,14 @@ func _process(delta):
 			if nameIndexes[currentIndex] > characters.size() - 1:
 				nameIndexes[currentIndex] = 0
 			charInputs[currentIndex].text = characters[nameIndexes[currentIndex]]
+			menuSFX.emit(0)
+			
 		if Input.is_action_pressed("ui_down") and justorMore:
 			nameIndexes[currentIndex] -= 1
 			if nameIndexes[currentIndex] < 0:
 				nameIndexes[currentIndex] = characters.size() - 1
 			charInputs[currentIndex].text = characters[nameIndexes[currentIndex]]
+			menuSFX.emit(0)
 		
 		#Seperate so held won't affect these two
 		if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
@@ -59,8 +63,11 @@ func _process(delta):
 				Globals.set_other_inputs(false)
 				$VBoxContainer/Submit.grab_focus()
 				hasName = true
+				menuSFX.emit(1)
+			
 			else:
 				$VBoxContainer/Submit.set_pressed(true)
+				menuSFX.emit(1)
 
 #______________________________
 #USERNAME MAKER

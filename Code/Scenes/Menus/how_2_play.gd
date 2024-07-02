@@ -10,7 +10,6 @@ extends PanelContainer
 @onready var glowImgs: Array[TabContainer] = [%NoGlow, %Glo, %Linked]
 @onready var breakerImg: TabContainer = %Breaker
 
-signal boardSFX(index)
 signal makeSFX(index)
 signal exit
 

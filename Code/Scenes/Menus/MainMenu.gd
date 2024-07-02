@@ -9,7 +9,7 @@ signal switchPlay
 signal switchOptions
 signal switchTutorial
 signal playSFX(index)
-signal boardSFX(index)
+signal readied
 
 var can: bool = false
 
@@ -17,6 +17,12 @@ var can: bool = false
 #INITIALIZATION
 #______________________________
 func _ready() -> void:
+	#This gives the computer some time to load in things
+	var startTween = create_tween().set_trans(Tween.TRANS_QUAD)
+	startTween.tween_property(self, "modulate", Color.WHITE, 1)
+	await startTween.finished
+	readied.emit()
+	
 	%PlayTex.grab_focus()
 	can = true
 
@@ -69,9 +75,6 @@ func _on_how_2_play_exit():
 	h2pTween.tween_property($How2Play,"position",orgH2pPosition,.1)
 	await h2pTween.finished
 	%H2PTex.grab_focus()
-
-func _on_how_2_play_board_sfx(index):
-	boardSFX.emit(index)
 
 func _on_timer_timeout():
 	$How2Play.position = orgH2pPosition

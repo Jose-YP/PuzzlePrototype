@@ -9,6 +9,7 @@
 
 [node name="MainMenu" type="Control"]
 process_mode = 1
+modulate = Color(1, 1, 1, 0.0392157)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -216,7 +217,6 @@ medal_id = 79336
 [connection signal="focus_entered" from="BottomButtons/H2PTex" to="." method="_on_focus_entered"]
 [connection signal="refocus" from="Score Display" to="." method="_on_score_display_refocus"]
 [connection signal="visibility_changed" from="Score Display" to="Score Display" method="_on_visibility_changed"]
-[connection signal="boardSFX" from="How2Play" to="." method="_on_how_2_play_board_sfx"]
 [connection signal="exit" from="How2Play" to="." method="_on_how_2_play_exit"]
 [connection signal="makeSFX" from="How2Play" to="." method="_on_how_2_play_make_sfx"]
 [connection signal="timeout" from="jokor" to="." method="_on_timer_timeout"]
