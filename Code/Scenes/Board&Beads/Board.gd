@@ -451,8 +451,11 @@ func post_turn() -> void:
 	find_links()
 	find_chains(false)
 	await check_breakers()
-	print(breaking)
 	
+	if not rules.breakBead:
+		next_turn()
+
+func next_turn() -> void:
 	LUI.update_meter(1)
 	detect_fail()
 	if not failed:
@@ -703,6 +706,7 @@ func check_breakers() -> void:
 	else:
 		comboSize = 0
 		endCheck.emit()
+		next_turn()
 
 #______________________________
 #CHAIN
