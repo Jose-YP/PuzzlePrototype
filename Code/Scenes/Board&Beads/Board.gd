@@ -35,6 +35,7 @@ signal brokenBeadSFX
 const fullBead: Resource = preload("res://Scenes/Board&Beads/FullBead.tscn")
 const uberbead: Resource = preload("res://Scenes/Board&Beads/uberbead.tscn")
 const breakerBead: Resource = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
+const holdConst: float = .8
 
 #Variables
 var fixUp: Array = []
@@ -45,6 +46,8 @@ var chainScores: Array[int]
 var beadsUpnext: Array[Node2D] = [null, null, null]
 var currentBead: Node2D
 var inputHoldTime: float = 0
+var inputHoldLeft: float = 0
+var inputHoldRight: float = 0
 var brokenBeads: int = 0
 var score: int = 0
 var breakNum: int = 0
@@ -224,10 +227,12 @@ func movement() -> void:
 			full_bead_rotation(currentBead.gridPos[0])
 			second_fix()
 	
-	if Input.is_action_just_pressed("ui_left") and can_move("Left"):
+	if ((Input.is_action_just_pressed("ui_left") or 
+	(Input.is_action_pressed("ui_left") and inputHoldLeft >= holdConst))) and can_move("Left"):
 		move_bead(-1)
 	
-	if Input.is_action_just_pressed("ui_right") and can_move("Right"):
+	if ((Input.is_action_just_pressed("ui_right") or 
+	(Input.is_action_pressed("ui_right") and inputHoldRight >= holdConst)) and can_move("Right")):
 		move_bead(1)
 	
 	if not currentBead.breaker and Input.is_anything_pressed():
@@ -440,6 +445,17 @@ func _process(delta) -> void:
 				RUI.update_beads(brokenBeads)
 				post_break()
 				pauseFall(false)
+	
+	if Input.is_action_pressed("ui_left"):
+		inputHoldLeft += delta
+		inputHoldRight = 0.0
+	elif Input.is_action_pressed("ui_right"):
+		inputHoldLeft = 0.0
+		inputHoldRight += delta
+	else:
+		inputHoldLeft = 0.0
+		inputHoldRight = 0.0
+	
 	processFramed.emit()
 
 #______________________________
@@ -463,7 +479,6 @@ func post_turn() -> void:
 		for bead in currentBead.beads:
 			bead.reparent(gridBeads)
 			bead.set_name(str(find_bead(bead)))
-			bead.gridVector = find_bead(bead)
 		second_fix()
 		currentBead.queue_free()
 	
@@ -573,7 +588,7 @@ func all_fall() -> void:
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
 			bead.set_name(str(target))
-			bead.gridVector = target
+
 			lost_beads(bead)
 	
 	if check_again:
@@ -633,7 +648,6 @@ func lost_beads(bead) -> void:
 		board[target.x][target.y] = bead
 		bead.global_position = grid_to_pixel(target)
 		bead.set_name(str(target))
-		bead.gridVector = target
 		#bead.queue_free()
 	if changed:
 		all_fall()
@@ -1232,7 +1246,6 @@ func add_bead(pos) -> void:
 	bead.connect("find_adjacent", find_adjacent)
 	bead.connect("made_chain", should_play_zap)
 	bead.set_name(str(pos))
-	bead.gridVector = pos
 
 func fill_board() -> void:
 	for i in rules.width:

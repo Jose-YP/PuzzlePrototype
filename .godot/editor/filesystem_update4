@@ -21,3 +21,5 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/UI/NextBeads.tscn
 res://Scenes/UI/VeryNextBead.tscn
 res://Code/Scenes/UI/VeryNextBead.gd
+res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd

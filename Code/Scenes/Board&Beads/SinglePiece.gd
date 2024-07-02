@@ -21,7 +21,6 @@ var typeID: int = 0
 var typeFlag: int = 1
 var chainedNum: int = 0
 var currentType: String = "Earth"
-var gridVector: Vector2i = Vector2i(-1,-1)
 var chainedWith: Array[int] = [-1,-1,-1,-1]
 var adjacent: Array = []
 var chainNodes: Array = [null,null,null,null]
