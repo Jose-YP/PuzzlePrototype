@@ -15,7 +15,6 @@
 process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_hwdnt")
-print_display = true
 
 [node name="Main" type="Node2D" parent="."]
 position = Vector2(-72, 15)

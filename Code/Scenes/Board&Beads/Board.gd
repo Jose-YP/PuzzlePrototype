@@ -7,7 +7,6 @@ extends Node2D
 @export var farAway: Vector2 = Vector2(-100,-100)
 @export var RUIextra: float = 20.0
 @export var trasitionTiming: float = .1
-@export var print_display: bool = false
 
 @onready var realHeight: int = rules.height - 1
 @onready var gridBeads: Node2D = $Main/Grid
@@ -117,7 +116,7 @@ func spawn_full_beads() -> void:
 		if beadsUpnext[i] == null:
 			beadsUpnext[i] = fullBead.instantiate()
 			$Hold.add_child(beadsUpnext[i])
-			manage_DroughtFlood(beadsUpnext[i])
+			manage_drought(beadsUpnext[i])
 	LUI.update_next(beadsUpnext)
 
 func pull_next_bead() -> void:
@@ -140,7 +139,7 @@ func pull_next_bead() -> void:
 		spawn_full_beads()
 		ghost_bead_pos()
 
-func manage_DroughtFlood(checkedBeads) -> void:
+func manage_drought(checkedBeads) -> void:
 	var willDrought = range(5)
 	#Any type found in a full bead will remove the drought count
 	#Remove it from will drought
@@ -353,10 +352,10 @@ func _process(delta) -> void:
 			movement()
 			drop()
 		
-		if currentBead != null and Input.is_action_pressed("ui_down") and not fallPaused and not failed:
+		if currentBead != null and Input.is_action_pressed("ui_down") and not fallPaused:
 			inputHoldTime += delta
 			held = inputHoldTime > rules.soft_drop
-		if currentBead != null and Input.is_action_just_released("ui_down") and not failed:
+		if currentBead != null and Input.is_action_just_released("ui_down") and not fallPaused:
 			$Timers/SoftDrop.stop()
 			inputHoldTime = 0
 			held = false
@@ -444,6 +443,7 @@ func post_turn() -> void:
 		for bead in currentBead.beads:
 			bead.reparent(gridBeads)
 			bead.set_name(str(find_bead(bead)))
+			bead.gridVector = find_bead(bead)
 		second_fix()
 		currentBead.queue_free()
 	
@@ -515,8 +515,6 @@ func post_break() -> void:
 	find_chains(false)
 	await check_breakers()
 	
-	print()
-	
 	if breaking:
 		$Timers/ChainFinish.start()
 		post_break()
@@ -544,6 +542,7 @@ func all_fall() -> void:
 				target = Vector2i(i,j)
 			
 			if target != Vector2i(i,j):
+				print("Found new place")
 				check_again= true
 				
 			#print(bead.currentType,bead," Goes to ",target)
@@ -551,6 +550,7 @@ func all_fall() -> void:
 			board[target.x][target.y] = bead
 			bead.global_position = grid_to_pixel(target)
 			bead.set_name(str(target))
+			bead.gridVector = target
 			lost_beads(bead)
 	
 	if check_again:
@@ -579,18 +579,34 @@ func second_fix() -> void:
 			print(bead.name, find_bead(bead), " vs ", pos)
 			board[found.x][found.y] = null
 			board[pos.x][pos.y] = bead
+		
+	for i in rules.width:
+		for j in rules.height:
+			#or currentBead.in_full_bead(bead)
+			var bead = board[i][j]
+			if bead == null:
+				continue
+			if bead.name.ends_with("2"):
+				print()
+			
+			var pos = pixel_to_grid(bead)
+			if Vector2i(i,j) != pos:
+				board[i][j] = null
+				board[pos.x][pos.y] = bead
 
 func lost_beads(bead) -> void:
 	var changed: bool = false
 	#If a bead isn't in the board anymore just delete them
 	var visible_pos = pixel_to_grid(bead)
 	if visible_pos != find_bead(bead):
+		display_board()
 		print(bead, "LOST!!! :o!", bead.currentType)
 		changed = true
 		var target = mini_find_bottom(visible_pos,visible_pos.x)
 		board[target.x][target.y] = bead
 		bead.global_position = grid_to_pixel(target)
 		bead.set_name(str(target))
+		bead.gridVector = target
 		#bead.queue_free()
 	if changed:
 		all_fall()
@@ -614,6 +630,7 @@ func check_breakers() -> void:
 	var breakAtCheck: Array[Array] = []
 	var shouldBreak: bool = false
 	
+	pauseFall(true)
 	#Check every breaker bead if they have chains to break
 	#maybe change when the breakers are removed
 	for i in range(breakerArray.size()):
@@ -625,9 +642,6 @@ func check_breakers() -> void:
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
 			
-			if usingBreakerArray.size() >= 1: 
-				print()
-			
 			if Globals.NewgroundsToggle and usingBreakerArray.size() >= 3:
 				print("UNLCOK AIR")
 				$Medals/Air.unlock()
@@ -636,7 +650,6 @@ func check_breakers() -> void:
 	
 	if shouldBreak:
 		print(breakAtCheck)
-		pauseFall(true)
 		playBreak.emit(clamp(comboSize,0,2))
 		print(comboSize, usingBreakerArray)
 		await self.startBreaking
@@ -1189,6 +1202,7 @@ func add_bead(pos) -> void:
 	bead.connect("find_adjacent", find_adjacent)
 	bead.connect("made_chain", should_play_zap)
 	bead.set_name(str(pos))
+	bead.gridVector = pos
 
 func fill_board() -> void:
 	for i in rules.width:
@@ -1216,21 +1230,20 @@ func make_overhang() -> void:
 		add_bead(Vector2i(ammount,rules.height-overhangPos.y))
 
 func display_board() -> void:
-	if print_display:
-		print("\n_____________________________________________________")
-		for j in rules.height:
-			var debugString: String
-			for i in rules.width:
-				if board[i][j] != null:
-					if board[i][j].currentType == "Sea" or board[i][j].currentType == "Air":
-						debugString = str(debugString, "\t",board[i][j].currentType,"\t")
-					else:
-						debugString = str(debugString, "\t",board[i][j].currentType)
+	print("\n_____________________________________________________")
+	for j in rules.height:
+		var debugString: String
+		for i in rules.width:
+			if board[i][j] != null:
+				if board[i][j].currentType == "Sea" or board[i][j].currentType == "Air":
+					debugString = str(debugString, "\t",board[i][j].currentType,"\t")
 				else:
-					debugString = str(debugString, "\t",null)
-			
-			print("Row: ",j,"\t", debugString)
-		print("_____________________________________________________\n")
+					debugString = str(debugString, "\t",board[i][j].currentType)
+			else:
+				debugString = str(debugString, "\t",null)
+		
+		print("Row: ",j,"\t", debugString)
+	print("_____________________________________________________\n")
 
 func display_array(array) -> void:
 	var display: String = ""

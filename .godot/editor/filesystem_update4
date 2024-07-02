@@ -17,3 +17,7 @@ res://Code/Scenes/Board&Beads/Board.gd
 res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/FullBead.tscn
 res://Code/Scenes/Board&Beads/FullPiece.gd
+res://Code/Scenes/Board&Beads/SinglePiece.gd
+res://Scenes/Board&Beads/SingleBead.tscn
+res://Scenes/Board&Beads/breaker_bead.tscn
+res://Code/Scenes/Board&Beads/breaker_bead.gd

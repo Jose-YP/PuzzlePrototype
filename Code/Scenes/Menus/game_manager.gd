@@ -50,16 +50,14 @@ func _process(_delta) -> void:
 	elif Input.is_action_just_pressed("Pause"):
 		unpausing = false
 	
-	if MusicOn and currentSong != null and usingBoardSongs and loopVal > currentSong.get_playback_position():
-		print("YOU LOOPED")
-		if loopedSong:
-			#If on first song, it'll get to the last song, otherwise go backwards
-			play_music(BoardMusic[BoardMusic.find(currentSong) - 1])
-		else:
-			loopedSong = true
-		loopVal = currentSong.get_playback_position()
+	if MusicOn and currentSong != null and usingBoardSongs:
+		if loopVal > currentSong.get_playback_position():
+			if loopedSong:
+				#If on first song, it'll get to the last song, otherwise go backwards
+				play_music(BoardMusic[BoardMusic.find(currentSong) - 1])
+			else:
+				loopedSong = true
 		
-	elif MusicOn and usingBoardSongs:
 		loopVal = currentSong.get_playback_position()
 
 #-----------------------------------------
