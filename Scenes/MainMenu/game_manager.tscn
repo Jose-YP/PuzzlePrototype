@@ -117,7 +117,7 @@ bus = &"BoardSFX"
 [node name="Break" type="AudioStreamPlayer" parent="BoardSFX/BreakSFX"]
 unique_name_in_owner = true
 stream = ExtResource("16_k3eu6")
-max_polyphony = 3
+max_polyphony = 4
 bus = &"BeadSFX"
 
 [node name="ETCMusic" type="Node" parent="."]

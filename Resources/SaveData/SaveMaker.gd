@@ -37,9 +37,10 @@ class_name Save
 #SAVE & LOAD
 #______________________________
 func save(NG = false) -> void:
-	ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 	if NG:
 		NGCloudSave.save_game()
+	else:
+		ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 
 static func load_or_create() -> Save:
 	var res: Save = load("res://Resources/SaveData/SaveFile.tres") as Save

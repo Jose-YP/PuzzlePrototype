@@ -25,6 +25,7 @@ signal brokeBead
 signal brokeAll
 signal playSFX(index)
 signal playBreak(index)
+signal brokenBeadSFX
 
 #CONSTANTS
 const fullBead = preload("res://Scenes/Board&Beads/FullBead.tscn")
@@ -667,6 +668,8 @@ func check_breakers() -> void:
 				var pos = usingBreakerArray[i].gridPos[0]
 				board[pos.x][pos.y] = null
 				usingBreakerArray[i].destroy_anim()
+				brokenBeadSFX.emit()
+				
 				await usingBreakerArray[i].tree_exiting
 				breakers.erase(usingBreakerArray[i])
 			else: continue
@@ -783,6 +786,7 @@ func break_bead(chainPart) -> void:
 	for bead in chainPart:
 		if is_instance_valid(bead):
 			bead.destroy_anim()
+			brokenBeadSFX.emit()
 	$Timers/ChainClear.start()
 	await $Timers/ChainClear.timeout
 	emit_signal("brokeBead")

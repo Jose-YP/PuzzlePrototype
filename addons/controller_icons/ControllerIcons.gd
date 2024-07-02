@@ -323,8 +323,6 @@ func _convert_event_to_path(event: InputEvent):
 	if event is InputEventKey:
 		# If this is a physical key, convert to localized scancode
 		if event.keycode == 0:
-			print("KEYCODE: ",OS.get_keycode_string(event.physical_keycode))
-			print("Input:  ", event.keycode)
 			return _convert_key_to_path(DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode))
 		return _convert_key_to_path(event.keycode)
 	elif event is InputEventMouseButton:

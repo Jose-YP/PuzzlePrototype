@@ -21,3 +21,5 @@ res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://addons/controller_icons/ControllerIcons.gd
+res://Resources/SaveData/SaveMaker.gd

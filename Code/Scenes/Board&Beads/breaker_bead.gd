@@ -87,10 +87,10 @@ func _on_ripple_end():
 #______________________________
 func destroy_anim():
 	#Destroy chains
-	breaking = true
-	var pitch = AudioServer.get_bus_effect(6, 0)
-	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
-	brakSFX.play()
+	#breaking = true
+	#var pitch = AudioServer.get_bus_effect(6, 0)
+	#pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
+	#brakSFX.play()
 	
 	#Destroy bead
 	var tween = self.create_tween()

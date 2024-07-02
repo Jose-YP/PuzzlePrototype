@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var Newgrounds: bool = true
 @export var MusicOn: bool = true
 @export var resetScores: bool = false
+@export_range(0,1,.01)  var pitchShift: float = .3
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
 %HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall]
@@ -88,6 +89,7 @@ func board_scene_loaded(scene) -> void:
 	changeScene(scene)
 	currentScene.connect("playSFX",_on_board_play_sfx)
 	currentScene.connect("playBreak", _on_board_play_break_sfx)
+	currentScene.connect("brokenBeadSFX",bead_break_SFX)
 	currentScene.connect("died", fail_song)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
@@ -185,3 +187,8 @@ func fade_music(value) -> void:
 func _on_pause_screen_play_sfx() -> void:
 	unpausing = true
 	MenuSFX[3].play()
+
+func bead_break_SFX():
+	var pitch = AudioServer.get_bus_effect(6, 0)
+	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
+	%Break.play()
