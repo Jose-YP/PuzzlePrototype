@@ -58,6 +58,7 @@ func _ready():
 	getNewInputs()
 	set_color_pickers()
 	show_colors()
+	$Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX.grab_focus()
 
 func _input(event):
 	if toggleOn:

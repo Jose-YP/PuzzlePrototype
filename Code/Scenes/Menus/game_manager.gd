@@ -39,6 +39,7 @@ func _ready() -> void:
 	FinalGlobal.finalReady(Newgrounds)
 
 func _on_main_menu_readied():
+	MenuSFX[0].play()
 	MenuSFX[0].stop()
 	MenuSFX[1].play()
 	MenuSFX[1].stop()
@@ -113,9 +114,9 @@ func back_to_menu() -> void:
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)
-	currentScene.connect("boardSFX", _on_board_play_sfx)
 	currentScene.connect("playSFX", play_menu_sfx)
-	play_music(ETCMusic[0])
+	if currentSong != ETCMusic[0]:
+		play_music(ETCMusic[0])
 
 func play_menu_sfx(index) -> void:
 	MenuSFX[index].play()
