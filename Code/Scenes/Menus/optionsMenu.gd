@@ -1,8 +1,6 @@
 extends CanvasLayer
 
 #IMPORTED FROM RPG PROTOTYPE
-@export var awaitingColor = Color(0.455, 0.455, 0.455)
-
 @onready var VolumeValues: Array[HSlider] = [%MasterSlider, %MusicSlider, %SFXSlider]
 @onready var VolumeTexts: Array[RichTextLabel] = [%MasterText, %MusicText, %SFXText]
 @onready var controllerChange: Array[Button] = [%ui_up/ui_up, %ui_accept/ui_accept, %ui_left/ui_left,
@@ -28,6 +26,7 @@ var Actions: Array = []
 var Buses: Array = []
 var userAudios: Array = []
 var inputType: int = 0
+var refocusLater: int
 var currentToggleIndex: int
 var currentAction: String
 var currentToggle: Button
@@ -196,6 +195,7 @@ func controllerMapStart(_toggled,index) -> void:
 			#I think this might be bad for the look of options but it might also be needed
 			#currentToggle.button_pressed = toggled
 			#Using Text inputs: inputTexts[currentToggleIndex]
+			refocusLater = index
 			erase = true
 			currentToggle.text = ""
 		
@@ -227,6 +227,12 @@ func changeInput(event) -> void:
 	checkRepeats(currentInput, event)
 	getNewInputs()
 	reset_buttons()
+	#Find a way to get the focus back on the old button without pressing it again
+	if controllerChange[refocusLater] != %ui_accept/ui_accept:
+		controllerChange[refocusLater].grab_focus()
+	else:
+		await get_tree().create_timer(.005).timeout
+		controllerChange[refocusLater].grab_focus()
 
 func checkRepeats(oldEvent, event) -> void:
 	var found: bool = false
@@ -255,7 +261,6 @@ func reset_buttons() -> void:
 #NAVIGATION BUTTONS
 #-----------------------------------------
 func _on_button_pressed() -> void:
-	print()
 	save_colors()
 	Globals.set_colors()
 	main.emit()

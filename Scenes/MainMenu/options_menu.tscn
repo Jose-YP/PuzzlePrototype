@@ -114,7 +114,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center][i]Use Keyboard to navigate Menu[/i]"
+text = "[center][i]Mouse recomended to navigate Menu[/i]"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox"]
@@ -688,25 +688,6 @@ text = "Exit
 
 [node name="MarginContainer2" type="MarginContainer" parent="Main/VBox"]
 layout_mode = 2
-
-[node name="Awaiting" type="PanelContainer" parent="."]
-visible = false
-anchors_preset = -1
-anchor_left = 0.153
-anchor_top = 0.363
-anchor_right = 0.844
-anchor_bottom = 0.776
-offset_left = -0.0750122
-offset_top = -0.140015
-offset_right = -0.100098
-offset_bottom = -0.280029
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Awaiting"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "[center]...Awaiting Input...[/center]"
 
 [connection signal="toggled" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
 [connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX" to="." method="_on_sfx_pressed"]
