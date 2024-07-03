@@ -46,7 +46,7 @@ func update_HiScore(score) -> void:
 		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
 		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -HiScoreShake, .1)
 		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", Vector2.ZERO, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", Vector2(0, HiScoreShake.y), .1)
 	
 	HiScore = score
 	%HiScoreText.text = str("HISCORE: ", score)

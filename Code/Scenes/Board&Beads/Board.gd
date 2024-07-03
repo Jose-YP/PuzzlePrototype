@@ -242,23 +242,6 @@ func movement() -> void:
 		currentBead.sync_position()
 		ghost_bead_pos()
 
-func place() -> void:
-	#Check a single extra frame if any processing is happening
-	#If their new position can move down, don't place
-	await self.processFramed
-	if can_move("Down"):
-		return
-	
-	for i in range(currentBead.beads.size()):
-		var orgPos = find_bead(currentBead.beads[i])
-		
-		board[orgPos.x][orgPos.y] = null
-		var pos = currentBead.gridPos[i]
-		board[pos.x][pos.y] = currentBead.beads[i]
-	
-	playSFX.emit(3)
-	post_turn()
-
 func hard_drop(target) -> void:
 	#var prevPos: Vector2i = currentBead.gridPos[0]
 	for i in (currentBead.beads.size()):
