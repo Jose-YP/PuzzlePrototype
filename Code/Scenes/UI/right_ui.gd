@@ -39,12 +39,14 @@ func update_HiScore(score) -> void:
 	if not just_reached:
 		just_reached = true
 		$Cheer.play()
-		var cheerTween = create_tween().set_ease(Tween.EASE_OUT)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -5, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 5, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -5, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 5, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", 0, .1)
+		
+		var HiScoreShake: Vector2 = Vector2(5,$VBoxContainer/HiScoreContainer.position.y)
+		var cheerTween = self.create_tween().set_ease(Tween.EASE_OUT)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -HiScoreShake, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -HiScoreShake, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
+		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", Vector2.ZERO, .1)
 	
 	HiScore = score
 	%HiScoreText.text = str("HISCORE: ", score)
