@@ -35,7 +35,7 @@ signal brokenBeadSFX
 const fullBead: Resource = preload("res://Scenes/Board&Beads/FullBead.tscn")
 const uberbead: Resource = preload("res://Scenes/Board&Beads/uberbead.tscn")
 const breakerBead: Resource = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
-const holdConst: float = .8
+const holdConst: float = .5
 
 #Variables
 var fixUp: Array = []
@@ -55,6 +55,7 @@ var chainsSize: int = 0
 var linksSize: int = 0
 var beadsSize: int = 0
 var comboSize: int = 0
+var turn: int = 0
 var held: bool = false
 var breaking: bool = false
 var fallPaused: bool = false
@@ -137,6 +138,8 @@ func spawn_full_beads() -> void:
 
 func pull_next_bead() -> void:
 	if rules.spawning:
+		turn += 1
+		print("------------\nTURN: ",turn,"\n-------------")
 		currentBead = beadsUpnext.pop_front()
 		beadsUpnext.append(null)
 		$Hold.remove_child(currentBead)
@@ -1116,15 +1119,15 @@ func _on_soft_drop_timeout() -> void:
 		if not currentBead.breaker:
 			currentBead.sync_position()
 	else:
-		place()
+		hard_drop(find_drop_bottom(currentBead))
 
 func _on_grounded_timeout() -> void:
-	place()
+	hard_drop(find_drop_bottom(currentBead))
 
 func _on_gravity_timeout() -> void:
 	if rules.gravity_on and not Input.is_action_pressed("ui_down"):
 		if not can_move("Down") and not held:
-			place()
+			hard_drop(find_drop_bottom(currentBead))
 		else:
 			move_bead(1, "Y")
 			if not currentBead.breaker:
