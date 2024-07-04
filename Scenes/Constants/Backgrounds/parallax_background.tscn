@@ -38,7 +38,7 @@ position = Vector2(925, 691)
 texture = ExtResource("1_k8dp7")
 
 [node name="FirstLayer" type="ParallaxLayer" parent="."]
-position = Vector2(770, 359)
+position = Vector2(866, 475)
 motion_mirroring = Vector2(1849, 1036)
 metadata/_edit_group_ = true
 

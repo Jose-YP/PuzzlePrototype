@@ -130,7 +130,6 @@ func set_other_inputs(should: bool) -> void:
 			InputMap.action_add_event("ui_focus_next", event)
 		for event in InputMap.action_get_events("ui_cancel"):
 			InputMap.action_add_event("ui_focus_prev", event)
-	
 
 func pressed_accept() -> bool:
 	var countEither: bool = true
@@ -185,6 +184,15 @@ func pressed_cancel() -> bool:
 #______________________________
 #CONVERSION
 #______________________________
+func find_placement(regScore) -> int:
+	var placement: int = 7
+	#If regular score is higher than any of the current Hi scores 
+	for i in range(display.size()):
+		if regScore > display[i][0]:
+			placement -= 1
+	
+	return placement
+
 func string_to_flag(type) -> int:
 	match type:
 		"Earth":

@@ -35,7 +35,6 @@ FinalGlobal="*res://Code/Globals/FinalGlobal.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=720
-window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 
 [editor]

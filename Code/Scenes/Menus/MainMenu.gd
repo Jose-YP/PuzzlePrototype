@@ -27,7 +27,7 @@ func _ready() -> void:
 	can = true
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if can and Input.is_action_just_pressed("ui_accept"):
 		playSFX.emit(1)
 		get_viewport().gui_get_focus_owner().button_pressed = true
 

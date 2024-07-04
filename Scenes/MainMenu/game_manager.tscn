@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
-[ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Board&Beads/parallax_background.tscn" id="2_n4oh7"]
+[ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Constants/Backgrounds/parallax_background.tscn" id="2_n4oh7"]
 [ext_resource type="PackedScene" uid="uid://bjf6n3d1yeous" path="res://Scenes/MainMenu/MainMenu.tscn" id="3_i7gc1"]
 [ext_resource type="AudioStream" uid="uid://04wi3pbnno26" path="res://Audio/BoardSFX/GlassMove.ogg" id="3_mwy77"]
 [ext_resource type="AudioStream" uid="uid://nnrbu8dbemk6" path="res://Audio/BoardSFX/GlassTap.ogg" id="4_1bqrj"]

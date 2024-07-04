@@ -725,6 +725,8 @@ func check_breakers() -> void:
 			#Should probably find a way to display multiple chain breaks at once
 			RUI.update_beads(brokenBeads)
 			RUI.update_score(score)
+			if highScored:
+				HiScoreScene.score = score
 	
 	if shouldBreak:
 		post_break()
@@ -1159,13 +1161,10 @@ func continue_breaker() -> void:
 func fail_screen() -> void:
 	failed = true
 	pauseFall(true)
-	var display = Globals.display
-	var placement = 7
-	#If regular score is higher than any of the current Hi scores 
-	for i in range(Globals.display.size()):
-		if RUI.regScore > display[i][0]:
-			placement -= 1
-			highScored = true
+	var placement = Globals.find_placement(score)
+	if placement != 7:
+		highScored = true
+		HiScoreScene.placement = placement
 	
 	died.emit()
 	HiScoreScene.score = RUI.regScore
