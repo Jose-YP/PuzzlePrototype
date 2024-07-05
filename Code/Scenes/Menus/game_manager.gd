@@ -97,6 +97,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("brokenBeadSFX",bead_break_SFX)
 	currentScene.connect("dying", fail_SFX)
 	currentScene.connect("died", fail_song)
+	currentScene.connect("modeSwitched", switch_mode)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	currentScene.HiScoreScene.connect("menuSFX", play_menu_sfx)
@@ -108,6 +109,7 @@ func option_scene_loaded(scene) -> void:
 	changeScene(scene)
 	currentScene.connect("main",back_to_menu)
 	currentScene.connect("makeNoise",_on_option_make_noise)
+	currentScene.connect("switchBG", switch_mode)
 
 func back_to_menu() -> void:
 	play_menu_sfx(2)
@@ -213,3 +215,6 @@ func _on_pause_screen_play_sfx() -> void:
 func tweening_pitch(ammount, busLocation: int = 7, effectLocation: int = 1):
 	var pitch = AudioServer.get_bus_effect(busLocation, effectLocation)
 	pitch.pitch_scale = ammount
+
+func switch_mode():
+	$ParallaxBackground.switch_mode()

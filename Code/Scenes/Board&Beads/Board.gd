@@ -27,9 +27,10 @@ signal startBreaking
 signal endCheck
 signal brokeBead
 signal brokeAll
+signal brokenBeadSFX
+signal switchMode
 signal playSFX(index)
 signal playBreak(index)
-signal brokenBeadSFX
 
 #CONSTANTS
 const fullBead: Resource = preload("res://Scenes/Board&Beads/FullBead.tscn")
@@ -1281,3 +1282,7 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
+
+func _on_mode_switch_pressed():
+	print("Lol")
+	switchMode.emit()

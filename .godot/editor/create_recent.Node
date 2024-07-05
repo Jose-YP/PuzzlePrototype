@@ -1,3 +1,5 @@
+HBoxContainer
+Button
 AudioStreamPlayer
 RichTextLabel
 Node2D
@@ -11,4 +13,3 @@ PanelContainer
 HSeparator
 VSeparator
 Container
-VBoxContainer

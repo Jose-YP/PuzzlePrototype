@@ -14,6 +14,7 @@ extends CanvasLayer
 
 signal main
 signal makeNoise
+signal switchBG
 signal testMusic(toggled_on)
 signal playSFX(index)
 
@@ -128,6 +129,9 @@ func _on_reset_colors_pressed():
 		beadColorPickers[i].color = currentColors[i]
 	
 	show_colors()
+
+func _on_bg_color_pressed():
+	switchBG.emit()
 
 #-----------------------------------------
 #CONTROLLER REMAPPING

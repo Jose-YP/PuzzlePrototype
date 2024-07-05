@@ -1,5 +1,4 @@
-res://Audio/default_bus_layout.tres
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Constants/Backgrounds/parallax_background.tscn
 res://Shaders/Beads/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
@@ -9,11 +8,8 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.tres
 res://Shaders/ShaderCode/Shockwave.gdshader
+res://Code/Scenes/Board&Beads/parallax_background.gd
 res://Code/Scenes/Board&Beads/Board.gd
-res://Code/Globals/Globals.gd
-res://Scenes/Board&Beads/Board.tscn
-res://Scenes/UI/right_ui.tscn
-res://Scenes/Board&Beads/Background.tscn
-res://Scenes/Constants/Backgrounds/parallax_background.tscn
-res://Scenes/Board&Beads/grid_background.tscn
-res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Scenes/MainMenu/game_manager.tscn
+res://Code/Scenes/Menus/game_manager.gd

@@ -7,9 +7,11 @@
 scroll_ignore_camera_zoom = true
 script = ExtResource("1_pmmv4")
 debug_speed = 1.0
+dark_mode = false
 scrolling_speed = Vector2(-20, -10)
-first_color = Color(0.32549, 0.611765, 0.588235, 1)
-second_color = Color(0.490196, 0.8, 0.772549, 1)
+light_BG = Color(0.74902, 0.74902, 0.74902, 1)
+light_first = Color(0.419608, 0.607843, 0.435294, 1)
+light_second = Color(0.580392, 0.807843, 0.505882, 1)
 metadata/_edit_horizontal_guides_ = [887.0]
 metadata/_edit_vertical_guides_ = [1711.0]
 
