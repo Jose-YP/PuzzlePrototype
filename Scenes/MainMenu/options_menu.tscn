@@ -156,9 +156,9 @@ text = "Test Music"
 
 [node name="SFX" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../Colors/IndvOptions/Reset")
+focus_neighbor_left = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/Reset")
+focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
 focus_neighbor_bottom = NodePath("../../AudioOptions/GridContainer/MasterSlider")
 text = "Test SFX"
 
@@ -256,17 +256,29 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[center]COLORS
+text = "[center]VISUALS
 "
 metadata/_edit_lock_ = true
 
-[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../Audio/IndvOptions/Tests/SFX")
-focus_neighbor_top = NodePath("../../../../Exit")
-focus_neighbor_right = NodePath("../../../Audio/IndvOptions/Tests/SFX")
-focus_neighbor_bottom = NodePath("../Domains/EarthColor")
-text = "Reset Colors
+
+[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_top = NodePath("../../../../../Exit")
+focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
+text = "Reset Beads
+"
+
+[node name="BGColor" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_top = NodePath("../../../../../Exit")
+focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
+text = "BG Switch
 "
 
 [node name="Domains" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
@@ -279,7 +291,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider")
-focus_neighbor_top = NodePath("../../Reset")
+focus_neighbor_top = NodePath("../../HBoxContainer/Reset")
 focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider")
 focus_neighbor_bottom = NodePath("../SeaColor")
 text = "Earth Color"
@@ -694,7 +706,8 @@ layout_mode = 2
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Reset" to="." method="_on_reset_colors_pressed"]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/Reset" to="." method="_on_reset_colors_pressed"]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/BGColor" to="." method="_on_bg_color_pressed"]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/EarthColor" to="." method="set_colors" binds= [0]]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/SeaColor" to="." method="set_colors" binds= [1]]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/AirColor" to="." method="set_colors" binds= [2]]

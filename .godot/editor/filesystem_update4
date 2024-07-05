@@ -13,3 +13,5 @@ res://Code/Scenes/Board&Beads/Board.gd
 res://Code/Scenes/Menus/optionsMenu.gd
 res://Scenes/MainMenu/game_manager.tscn
 res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/MainMenu/options_menu.tscn

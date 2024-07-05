@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=16 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://f365vj7wr28e" path="res://Resources/Rules/Basic Rules.tres" id="2_hwdnt"]
@@ -11,6 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="10_6rky0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0fgb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws1u8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ph4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e5ed7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_siyh3"]
+
 [node name="Board" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ixvqd")
@@ -19,7 +29,7 @@ failColor = Color(0.176471, 0.176471, 0.176471, 1)
 
 [node name="Main" type="Node2D" parent="."]
 position = Vector2(-72, 15)
-metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="PuzzleBoardNoBack" type="Sprite2D" parent="Main"]
 z_index = 2
@@ -57,6 +67,17 @@ visible = false
 
 [node name="GhostBead3" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
 visible = false
+
+[node name="ModeSwitch" type="Button" parent="Main"]
+offset_left = 716.0
+offset_top = 621.0
+offset_right = 807.0
+offset_bottom = 687.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s0fgb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ws1u8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ph4i")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e5ed7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_siyh3")
 
 [node name="UI" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.0392157)
@@ -155,6 +176,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
+metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 1
@@ -169,6 +191,7 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]READY"
 
+[connection signal="pressed" from="Main/ModeSwitch" to="." method="_on_mode_switch_pressed"]
 [connection signal="HighScore" from="UI/RightUI" to="." method="_on_right_ui_high_score"]
 [connection signal="breakGain" from="UI/RightUI" to="UI/LeftUI" method="_on_right_ui_break_gain"]
 [connection signal="levelUp" from="UI/RightUI" to="." method="_on_right_ui_level_up"]
