@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
-[ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/DuoDisplay.tscn" id="2_uv3j1"]
+[ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="2_uv3j1"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="3_fpxns"]
 [ext_resource type="AudioStream" uid="uid://clq1ooqegfjyy" path="res://Audio/BoardSFX/cheer(1).ogg" id="4_kdgal"]
 

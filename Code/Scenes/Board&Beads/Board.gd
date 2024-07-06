@@ -34,7 +34,6 @@ signal playBreak(index)
 
 #CONSTANTS
 const fullBead: Resource = preload("res://Scenes/Board&Beads/FullBead.tscn")
-const uberbead: Resource = preload("res://Scenes/Board&Beads/uberbead.tscn")
 const breakerBead: Resource = preload("res://Scenes/Board&Beads/breaker_bead.tscn")
 const holdConst: float = .5
 

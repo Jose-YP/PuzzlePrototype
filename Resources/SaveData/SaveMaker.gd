@@ -25,7 +25,8 @@ class_name Save
 @export var reset: bool = true
 
 #PREFERED COLORS
-@export_category("Colors")
+@export_category("Visuals")
+@export var background_id: int = 0
 @export_color_no_alpha var earthColor: Color = Color(0.886, 0.224, 0.212)
 @export_color_no_alpha var seaColor: Color = Color(0.137, 0.6, 0.91)
 @export_color_no_alpha var airColor: Color = Color(1,1,1)

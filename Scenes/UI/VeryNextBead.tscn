@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5g3srjmute6t"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/VeryNextBead.gd" id="1_4p6su"]
-[ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/all_beads.tscn" id="2_nbrm8"]
+[ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="2_nbrm8"]
 [ext_resource type="Texture2D" uid="uid://bumnvgcgjkk5y" path="res://Art/UI/Next_iconm.png" id="2_ua17o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlyyt"]

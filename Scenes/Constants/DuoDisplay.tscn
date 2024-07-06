@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwyh8ksd5xhbw"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/DuoDisplay.gd" id="1_27343"]
-[ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/all_beads.tscn" id="1_thji5"]
+[ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="1_thji5"]
 [ext_resource type="Texture2D" uid="uid://dwhru74flwehi" path="res://Art/Board&Beads/doublesided.png" id="6_xwprj"]
 
 [node name="ConnectionDisplay" type="Control"]

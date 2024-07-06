@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c1nqp81cess0x"]
 
-[ext_resource type="Material" uid="uid://b2xqd47n88l6n" path="res://Shaders/Beads/SingleBeadBurn.tres" id="1_sxmjh"]
+[ext_resource type="Material" uid="uid://b2xqd47n88l6n" path="res://Shaders/SingleBeadBurn.tres" id="1_sxmjh"]
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/SinglePiece.gd" id="2_3mwsr"]
 [ext_resource type="Texture2D" uid="uid://c6e7og2i8mlsf" path="res://Art/Board&Beads/grayEarth.png" id="3_0q0t5"]
 [ext_resource type="Texture2D" uid="uid://cfvtfpcsfxh43" path="res://Art/Board&Beads/grayWater.png" id="4_lhyvb"]

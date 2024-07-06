@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b2xqd47n88l6n"]
 
-[ext_resource type="Shader" path="res://Shaders/ShaderCode/BurnOut.gdshader" id="1_ygu8p"]
+[ext_resource type="Shader" path="res://Shaders/BurnOut.gdshader" id="1_wfx75"]
 
 [sub_resource type="Gradient" id="Gradient_s422o"]
 
@@ -12,7 +12,7 @@ noise = SubResource("FastNoiseLite_ttodo")
 
 [resource]
 resource_local_to_scene = true
-shader = ExtResource("1_ygu8p")
+shader = ExtResource("1_wfx75")
 shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.45
 shader_parameter/burn_color = Color(1, 1, 1, 1)
