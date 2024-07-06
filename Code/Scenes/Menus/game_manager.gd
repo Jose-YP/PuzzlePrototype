@@ -97,7 +97,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("brokenBeadSFX",bead_break_SFX)
 	currentScene.connect("dying", fail_SFX)
 	currentScene.connect("died", fail_song)
-	currentScene.connect("modeSwitched", switch_mode)
+	currentScene.connect("switchMode", switch_mode)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	currentScene.HiScoreScene.connect("menuSFX", play_menu_sfx)

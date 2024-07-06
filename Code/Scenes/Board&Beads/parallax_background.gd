@@ -7,7 +7,7 @@ extends ParallaxBackground
 @export_category("Colors")
 @export_subgroup("Background")
 @export var dark_BG: Color = Color(0.169, 0.051, 0.122)
-@export var light_BG: Color = Color()
+@export var light_BG: Color = Color.WHITE
 @export_subgroup("Patterns")
 @export var dark_first: Color = Color(0.325, 0.612, 0.588)
 @export var dark_second: Color = Color(0.49, 0.8, 0.773)
@@ -15,11 +15,11 @@ extends ParallaxBackground
 @export var light_second: Color = Color(0.49, 0.8, 0.773)
 
 @onready var mirroring: Vector2 = $FirstLayer.motion_mirroring
+@onready var modeColors: Array = [[dark_BG, dark_first, dark_second], [light_BG, light_first, light_second]]
+@onready var DomainColors: Array[Color] = [Globals.bead_colors[0],Globals.bead_colors[1],Globals.bead_colors[2]]
+@onready var EnergyColors: Array[Color] = [Globals.bead_colors[3],Globals.bead_colors[4]]
+@onready var colorGroups: Array[Array] = [DomainColors, EnergyColors]
 
-var DomainColors: Array[Color] = [Globals.bead_colors[0],Globals.bead_colors[1],Globals.bead_colors[2]]
-var EnergyColors: Array[Color] = [Globals.bead_colors[3],Globals.bead_colors[4]]
-var colorGroups: Array[Array] = [DomainColors, EnergyColors]
-var modeColors: Array = [[dark_BG, dark_first, dark_second], [light_BG, light_first, light_second]]
 var using: Array
 var tweening
 
@@ -37,18 +37,23 @@ func _process(delta) -> void:
 		scroll_offset += (scrolling_speed * debug_speed * Vector2(delta, delta))
 
 func switch_mode() -> void:
-	if dark_mode:
-		dark_mode = false
-		using = modeColors[1]
-	else:
-		dark_mode = true
-		using = modeColors[0]
-	
-	color_change(using[0], using[1], using[2])
+	if not tweening:
+		if dark_mode:
+			dark_mode = false
+			using = modeColors[1]
+		else:
+			dark_mode = true
+			using = modeColors[0]
+		
+		color_change(using[0], using[1], using[2])
 
 func color_change(BGColor, first, second) -> void:
+	tweening = true
 	var colorTween = self.create_tween().set_parallel()
 	
 	colorTween.tween_property($ColorRect, "color", BGColor, .5)
-	colorTween.tween_property($FirstLayer, "color", first, .5)
-	colorTween.tween_property($SecondLayer, "color", Color(second, .35), .5)
+	colorTween.tween_property($FirstLayer, "modulate", first, .5)
+	colorTween.tween_property($SecondLayer, "modulate", Color(second, .35), .5)
+	
+	await colorTween.finished
+	tweening = false

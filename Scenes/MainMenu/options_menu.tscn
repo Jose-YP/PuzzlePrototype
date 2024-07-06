@@ -267,14 +267,14 @@ layout_mode = 2
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_right = NodePath("../BGColor")
 focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
 text = "Reset Beads
 "
 
 [node name="BGColor" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_left = NodePath("../Reset")
 focus_neighbor_top = NodePath("../../../../../Exit")
 focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
 focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
