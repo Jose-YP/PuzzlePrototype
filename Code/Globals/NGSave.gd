@@ -49,36 +49,59 @@ func _cloud_save():
 	return save_dict
 
 func convert_to_key_save(keys) -> Dictionary:
-	var local_dict: Dictionary
+	var local_dict: Dictionary = {}
 	
 	for key in keys:
-		pass
+		print(key)
+		print(keys[key].as_text_keycode())
+		print(OS.find_keycode_from_string(keys[key].as_text_keycode()))
+		local_dict[key] = OS.get_keycode_string(keys[key].get_keycode())
+	
+	return local_dict
+
+func convert_keys_to_usable(keys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for key in keys:
+		print(key)
+		print(keys[key].as_text_keycode())
+		print(OS.find_keycode_from_string(keys[key].as_text_keycode()))
+		local_dict[key] = OS.find_keycode_from_string(keys[key])
 	
 	return local_dict
 
 func convert_to_joy_save(joys) -> Dictionary:
-	var local_dict: Dictionary
+	var local_dict: Dictionary = {}
 	
 	for joy in joys:
-		pass
+		if joys[joy] is InputEventJoypadButton:
+			local_dict[joy] = joys[joy].get_button_index()
+		else:
+			local_dict[joy].get_axis(joys[joy])
+	
+	return local_dict
+
+func convert_joys_to_usable(joys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for joy in joys:
+		if joys[joy] is InputEventJoypadButton:
+			local_dict[joy] = InputEventJoypadButton.new()
+			local_dict[joy].set_button_index(joys[joy])
+		else:
+			local_dict[joy] = InputEventJoypadMotion.new()
+			local_dict[joy].set_axis(joys[joy])
 	
 	return local_dict
 
 func NG2Save():
-	for key in controls_key:
-		if key is String:
-			print(key)
-			var asidn = OS.find_keycode_from_string(key)
-			print(asidn)
-			key = asidn
-	
 	save = Globals.save
 	save.HiScores = scores
 	save.username = username
 	
 	save.input_type = control_type
-	save.keyboard_action_events = controls_key
-	save.joy_action_events = controls_joy
+	save.keyboard_action_events = convert_keys_to_usable(controls_key)
+	save.joy_action_events = convert_joys_to_usable(controls_joy)
 	
 	save.earthColor = Color.html(earth_color)
 	save.seaColor = Color.html(sea_color)
@@ -97,8 +120,8 @@ func sync_files():
 	username = save.username
 	
 	control_type = save.input_type
-	controls_key = save.keyboard_action_events
-	controls_joy = save.joy_action_events
+	controls_key = convert_to_key_save(save.keyboard_action_events)
+	controls_joy = convert_to_joy_save(save.joy_action_events)
 	
 	earth_color = save.earthColor.to_html()
 	sea_color = save.seaColor.to_html()
