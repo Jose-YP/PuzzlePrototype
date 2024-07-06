@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/breaker_bead.gd" id="1_itnrx"]
 [ext_resource type="Texture2D" uid="uid://toduoohf4htm" path="res://Art/Board&Beads/SoulBreaker.png" id="2_fqx32"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="2_snr66"]
-[ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="3_tjmdn"]
+[ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ripple.tscn" id="3_tjmdn"]
 
 [sub_resource type="Gradient" id="Gradient_tohcf"]
 

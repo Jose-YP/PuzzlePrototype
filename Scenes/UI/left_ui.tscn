@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/left_ui.gd" id="1_j8v1b"]
 [ext_resource type="PackedScene" uid="uid://dbl2flstx01xg" path="res://Scenes/UI/NextBeads.tscn" id="2_47gbb"]
-[ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ETC/ripple.tscn" id="2_krah5"]
+[ext_resource type="PackedScene" uid="uid://b2g2luui08hlo" path="res://Scenes/Constants/ripple.tscn" id="2_krah5"]
 [ext_resource type="PackedScene" uid="uid://cd2r7vn8ipum5" path="res://Scenes/UI/BreakProgress.tscn" id="5_0b4ie"]
 
 [sub_resource type="Shader" id="Shader_cx7ik"]

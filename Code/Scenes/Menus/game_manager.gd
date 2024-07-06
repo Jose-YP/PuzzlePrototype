@@ -19,7 +19,7 @@ const boardScene: String = "res://Scenes/Board&Beads/Board.tscn"
 const optionsScene: String = "res://Scenes/MainMenu/options_menu.tscn"
 #Non Loading Scenes
 const mainMenuScene = preload("res://Scenes/MainMenu/MainMenu.tscn")
-const loadingScreen = preload("res://Scenes/Constants/ETC/load_screen.tscn")
+const loadingScreen = preload("res://Scenes/Constants/load_screen.tscn")
 
 var currentSong: AudioStreamPlayer
 var loopVal: float = 0.0

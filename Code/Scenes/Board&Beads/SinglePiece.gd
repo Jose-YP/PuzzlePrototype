@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var beads: Array[CompressedTexture2D]
-@export var chainedVFX: PackedScene = preload("res://Scenes/Constants/ETC/connected.tscn")
+@export var chainedVFX: PackedScene = preload("res://Scenes/Constants/connected.tscn")
 @export var shakeRange: Vector2 = Vector2(.5,0)
 @export_range(0,.5,.01) var shakeSpeed: float = .05
 @export_range(0,.5,.01) var burnTiming: float = .05
