@@ -9,6 +9,7 @@ var control_type
 var controls_key
 var controls_joy
 #
+var BGColor
 var earth_color
 var sea_color
 var air_color
@@ -119,10 +120,10 @@ func convert_to_joy_save(joys) -> Dictionary:
 	
 	for joy in joys:
 		if joys[joy] is InputEventJoypadButton:
-			local_dict[joy] = int(joys[joy].get_button_index())
+			local_dict[joy] = joys[joy].get_button_index()
 		else:
-			print(joy, joys[joy])
-			local_dict[joy] = str(joys[joy].get_axis())
+			#Convert the axis into something that won't be detected by a joy button
+			local_dict[joy] = (int(joys[joy].get_axis()) * -1) - 1
 	
 	return local_dict
 
@@ -130,13 +131,13 @@ func convert_joys_to_usable(joys) -> Dictionary:
 	var local_dict: Dictionary = {}
 	
 	for joy in joys:
-		if joys[joy] is int:
+		if joys[joy] >= 0:
 			local_dict[joy] = InputEventJoypadButton.new()
 			local_dict[joy].set_button_index(joys[joy])
 		else:
 			#only get the button verison
 			local_dict[joy] = InputEventJoypadMotion.new()
-			local_dict[joy].set_axis(int(joys[joy]))
+			local_dict[joy].set_axis(int((joys[joy] + 1) * -1))
 	
 	return local_dict
 

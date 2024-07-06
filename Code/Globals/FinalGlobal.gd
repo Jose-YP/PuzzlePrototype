@@ -17,6 +17,10 @@ func finalReady(use_NG):
 		NGCloudSave.save_game()
 		NGSaveSetup.NG2Save()
 		
+		Globals.set_other_inputs(false)
+		Globals.set_controls()
+		Globals.set_colors()
+		
 	else: Globals.NewgroundsToggle = false
 
 
