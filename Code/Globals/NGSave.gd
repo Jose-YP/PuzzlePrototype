@@ -20,10 +20,16 @@ var master
 var music
 var sfx
 
-func _ready():
+#______________________________
+#INITALIZATION
+#______________________________
+func _ready() -> void:
 	add_to_group("CloudSave")
 
-func _cloud_save():
+#______________________________
+#SAVE MANAGEMENT
+#______________________________
+func _cloud_save() -> Dictionary:
 	save = Globals.save.duplicate()
 	save_dict = {
 		"file" : save,
@@ -48,55 +54,7 @@ func _cloud_save():
 	
 	return save_dict
 
-func convert_to_key_save(keys) -> Dictionary:
-	var local_dict: Dictionary = {}
-	
-	for key in keys:
-		print(key)
-		print(keys[key].as_text_physical_keycode())
-		print(OS.find_keycode_from_string(keys[key].as_text_physical_keycode()))
-		print(keys[key].get_physical_keycode())
-		local_dict[key] = keys[key].get_physical_keycode() 
-	
-	return local_dict
-
-func convert_keys_to_usable(keys) -> Dictionary:
-	var local_dict: Dictionary = {}
-	
-	for key in keys:
-		#print(key)
-		#print(keys[key].as_text_physical_keycode())
-		#print(OS.find_keycode_from_string(keys[key].as_text_physical_keycode ()))
-		local_dict[key] = InputEventKey.new()
-		local_dict[key].set_physical_keycode(keys[key])
-	
-	return local_dict
-
-func convert_to_joy_save(joys) -> Dictionary:
-	var local_dict: Dictionary = {}
-	
-	for joy in joys:
-		if joys[joy] is InputEventJoypadButton:
-			local_dict[joy] = joys[joy].get_button_index()
-		else:
-			local_dict[joy] = joys[joy].get_axis()
-	
-	return local_dict
-
-func convert_joys_to_usable(joys) -> Dictionary:
-	var local_dict: Dictionary = {}
-	
-	for joy in joys:
-		if joys[joy] is InputEventJoypadButton:
-			local_dict[joy] = InputEventJoypadButton.new()
-			local_dict[joy].set_button_index(joys[joy])
-		else:
-			local_dict[joy] = InputEventJoypadMotion.new()
-			local_dict[joy].set_axis(joys[joy])
-	
-	return local_dict
-
-func NG2Save():
+func NG2Save() -> void:
 	save = Globals.save
 	save.HiScores = scores
 	save.username = username
@@ -116,7 +74,7 @@ func NG2Save():
 	save.musicAudioLeve = music
 	save.sfxAudioLeve = sfx
 
-func sync_files():
+func sync_files() -> void:
 	save = Globals.save.duplicate()
 	scores = save.HiScores
 	username = save.username
@@ -135,3 +93,50 @@ func sync_files():
 	master = save.masterAudioLeve
 	music = save.musicAudioLeve
 	sfx = save.sfxAudioLeve
+
+#______________________________
+#CONVERSION
+#______________________________
+func convert_to_key_save(keys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for key in keys:
+		local_dict[key] = keys[key].get_physical_keycode() 
+	
+	return local_dict
+
+func convert_keys_to_usable(keys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for key in keys:
+		local_dict[key] = InputEventKey.new()
+		local_dict[key].set_physical_keycode(keys[key])
+	
+	return local_dict
+
+func convert_to_joy_save(joys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for joy in joys:
+		if joys[joy] is InputEventJoypadButton:
+			local_dict[joy] = int(joys[joy].get_button_index())
+		else:
+			print(joy, joys[joy])
+			local_dict[joy] = str(joys[joy].get_axis())
+	
+	return local_dict
+
+func convert_joys_to_usable(joys) -> Dictionary:
+	var local_dict: Dictionary = {}
+	
+	for joy in joys:
+		if joys[joy] is int:
+			local_dict[joy] = InputEventJoypadButton.new()
+			local_dict[joy].set_button_index(joys[joy])
+		else:
+			#only get the button verison
+			local_dict[joy] = InputEventJoypadMotion.new()
+			local_dict[joy].set_axis(int(joys[joy]))
+	
+	return local_dict
+

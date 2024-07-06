@@ -2,71 +2,71 @@
 
 [ext_resource type="Script" path="res://Resources/SaveData/SaveMaker.gd" id="1_l2j0a"]
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_5h4d6"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_m28pu"]
 device = -1
 button_index = 2
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_y62se"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_nb1qq"]
 device = -1
 button_index = 3
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ynfln"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_u02ig"]
 device = -1
 button_index = 1
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ipkcg"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_8p834"]
 device = -1
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_pck4b"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_gwbba"]
 device = -1
 button_index = 12
 pressed = true
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_57cg5"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_lwa8c"]
 device = -1
 button_index = 13
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0vsn8"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_rdml1"]
 device = -1
 button_index = 14
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0rjyo"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_5sjox"]
 device = -1
 button_index = 11
 pressed = true
 
-[sub_resource type="InputEventKey" id="InputEventKey_v0nxd"]
+[sub_resource type="InputEventKey" id="InputEventKey_gi8ni"]
 device = -1
 physical_keycode = 86
 unicode = 118
 
-[sub_resource type="InputEventKey" id="InputEventKey_8sau4"]
+[sub_resource type="InputEventKey" id="InputEventKey_sksnv"]
 device = -1
 physical_keycode = 67
 unicode = 99
 
-[sub_resource type="InputEventKey" id="InputEventKey_ilcql"]
+[sub_resource type="InputEventKey" id="InputEventKey_6s47t"]
 device = -1
 keycode = 90
 physical_keycode = 90
 key_label = 90
 unicode = 122
 
-[sub_resource type="InputEventKey" id="InputEventKey_mwop4"]
+[sub_resource type="InputEventKey" id="InputEventKey_c3mqu"]
 device = -1
 physical_keycode = 88
 unicode = 120
 
-[sub_resource type="InputEventKey" id="InputEventKey_x0qju"]
+[sub_resource type="InputEventKey" id="InputEventKey_i44qj"]
 physical_keycode = 4194322
 
-[sub_resource type="InputEventKey" id="InputEventKey_wiomg"]
+[sub_resource type="InputEventKey" id="InputEventKey_mowpe"]
 physical_keycode = 4194319
 
-[sub_resource type="InputEventKey" id="InputEventKey_24p0t"]
+[sub_resource type="InputEventKey" id="InputEventKey_hmnnh"]
 physical_keycode = 4194321
 
-[sub_resource type="InputEventKey" id="InputEventKey_vj37m"]
+[sub_resource type="InputEventKey" id="InputEventKey_x8eau"]
 physical_keycode = 4194320
 
 [resource]
@@ -85,24 +85,24 @@ musicAudioLeve = 100.0
 sfxAudioLeve = 100.0
 input_type = 0
 keyboard_action_events = {
-"Break": SubResource("InputEventKey_v0nxd"),
-"Flip": SubResource("InputEventKey_8sau4"),
-"ui_accept": SubResource("InputEventKey_ilcql"),
-"ui_cancel": SubResource("InputEventKey_mwop4"),
-"ui_down": SubResource("InputEventKey_x0qju"),
-"ui_left": SubResource("InputEventKey_wiomg"),
-"ui_right": SubResource("InputEventKey_24p0t"),
-"ui_up": SubResource("InputEventKey_vj37m")
+"Break": SubResource("InputEventKey_gi8ni"),
+"Flip": SubResource("InputEventKey_sksnv"),
+"ui_accept": SubResource("InputEventKey_6s47t"),
+"ui_cancel": SubResource("InputEventKey_c3mqu"),
+"ui_down": SubResource("InputEventKey_i44qj"),
+"ui_left": SubResource("InputEventKey_mowpe"),
+"ui_right": SubResource("InputEventKey_hmnnh"),
+"ui_up": SubResource("InputEventKey_x8eau")
 }
 joy_action_events = {
-"Break": SubResource("InputEventJoypadButton_5h4d6"),
-"Flip": SubResource("InputEventJoypadButton_y62se"),
-"ui_accept": SubResource("InputEventJoypadButton_ynfln"),
-"ui_cancel": SubResource("InputEventJoypadButton_ipkcg"),
-"ui_down": SubResource("InputEventJoypadButton_pck4b"),
-"ui_left": SubResource("InputEventJoypadButton_57cg5"),
-"ui_right": SubResource("InputEventJoypadButton_0vsn8"),
-"ui_up": SubResource("InputEventJoypadButton_0rjyo")
+"Break": SubResource("InputEventJoypadButton_m28pu"),
+"Flip": SubResource("InputEventJoypadButton_nb1qq"),
+"ui_accept": SubResource("InputEventJoypadButton_u02ig"),
+"ui_cancel": SubResource("InputEventJoypadButton_8p834"),
+"ui_down": SubResource("InputEventJoypadButton_gwbba"),
+"ui_left": SubResource("InputEventJoypadButton_lwa8c"),
+"ui_right": SubResource("InputEventJoypadButton_rdml1"),
+"ui_up": SubResource("InputEventJoypadButton_5sjox")
 }
 reset = false
 earthColor = Color(0.886, 0.224, 0.212, 1)
