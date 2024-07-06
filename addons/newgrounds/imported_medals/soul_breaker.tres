@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MedalResource" load_steps=2 format=3 uid="uid://bul6ykw6g41xi"]
+
+[ext_resource type="Script" path="res://addons/newgrounds/data/medal_resource.gd" id="1_57gd2"]
+
+[resource]
+script = ExtResource("1_57gd2")
+name = "Soul Breaker"
+description = "Switched Background colors during a session by pressing the power button"
+icon_url = "https://apifiles.ngfiles.com/icons/medal_secret.png"
+id = 79713
+secret = true
+unlocked = false
+value = 0
+difficulty = 1

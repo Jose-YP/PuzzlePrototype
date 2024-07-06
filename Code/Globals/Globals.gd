@@ -24,6 +24,9 @@ var lowestID: String
 var NewgroundsToggle: bool = true
 
 func _ready() -> void:
+	if save.reset:
+		save.reset_value()
+	
 	set_other_inputs(false)
 	set_controls()
 	set_colors()

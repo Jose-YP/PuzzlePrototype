@@ -1,3 +1,4 @@
+NewgroundsMedalUnlocker
 HBoxContainer
 Button
 AudioStreamPlayer
@@ -12,4 +13,3 @@ Control
 PanelContainer
 HSeparator
 VSeparator
-Container

@@ -38,6 +38,7 @@ class_name Save
 #______________________________
 func save(NG = false) -> void:
 	if NG:
+		NGSaveSetup.sync_files()
 		NGCloudSave.save_game()
 	else:
 		ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
@@ -89,7 +90,9 @@ func reset_value():
 		reset_colors()
 		
 		reset = false
-		save(false)
+		save(Globals.NewgroundsToggle)
+		if Globals.NewgroundsToggle:
+			save(false)
 
 func reset_scores():
 	HiScores = {"999999":[1,"NAN"],

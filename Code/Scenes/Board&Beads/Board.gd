@@ -1284,5 +1284,5 @@ func _on_debug_timeout() -> void:
 	find_links()
 
 func _on_mode_switch_pressed():
-	print("Lol")
+	$Medals/Soul.unlock()
 	switchMode.emit()

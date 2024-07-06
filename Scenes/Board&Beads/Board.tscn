@@ -162,6 +162,10 @@ medal_id = 79339
 script = ExtResource("10_6rky0")
 medal_id = 79335
 
+[node name="Soul" type="Node" parent="Medals"]
+script = ExtResource("10_6rky0")
+medal_id = 79713
+
 [node name="Hold" type="Node2D" parent="."]
 editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"
 visible = false
