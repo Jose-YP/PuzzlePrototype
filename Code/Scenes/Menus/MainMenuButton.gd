@@ -14,7 +14,6 @@ func _ready():
 	texture_normal = texture_normal.duplicate()
 
 func _on_pressed():
-	print("AAAAA")
 	$AnimationTree.set("parameters/OneShot/request", 1)
 	texture_normal = texture_normal.duplicate()
 

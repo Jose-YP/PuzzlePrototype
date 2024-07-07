@@ -17,16 +17,13 @@ extends ParallaxBackground
 
 @onready var mirroring: Vector2 = $FirstLayer.motion_mirroring
 @onready var modeColors: Array = [[dark_BG, dark_first, dark_second], [light_BG, light_first, light_second]]
-@onready var DomainColors: Array[Color] = [Globals.bead_colors[0],Globals.bead_colors[1],Globals.bead_colors[2]]
-@onready var EnergyColors: Array[Color] = [Globals.bead_colors[3],Globals.bead_colors[4]]
-@onready var colorGroups: Array[Array] = [DomainColors, EnergyColors]
 
 const second_alpha: float = .35
 
 var in_danger: bool = false
+var tweening: bool = false
 var using: Array
 var currentMode: Globals.TempModes = Globals.TempModes.DEFAULT
-var tweening
 
 #-----------------------------------------
 #INITALIZATION AND PROCESSING

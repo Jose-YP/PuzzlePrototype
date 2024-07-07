@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1")
-joypad_fallback = 9
+joypad_fallback = 3
 joypad_deadzone = 0.5
-allow_mouse_remap = true
+allow_mouse_remap = false
 mouse_min_movement = 200
 custom_asset_dir = ""
 custom_file_extension = ""

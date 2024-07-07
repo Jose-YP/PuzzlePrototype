@@ -30,9 +30,9 @@ var inputType: int = 0
 var refocusLater: int
 var currentToggleIndex: int
 var currentAction: String
-var currentToggle: Button
 var toggleOn: bool = false
 var resetting: bool = false
+var currentToggle: Button
 var currentInput: InputEvent
 
 #-----------------------------------------
@@ -119,7 +119,6 @@ func set_colors(color: Color, index: int) -> void:
 func save_colors():
 	Globals.save.set_colors(currentColors)
 	Globals.save.save(Globals.NewgroundsToggle)
-	print(Globals.save.get_regular_colors())
 
 func _on_reset_colors_pressed():
 	Globals.save.reset_colors()
@@ -163,14 +162,12 @@ func getNewInputs() -> void:
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
 		var events = InputMap.action_get_events(action)
-		print(action, InputMap.action_get_events(action))
 		Actions.append(action)
 		for event in events:
 			if event is InputEventKey and inputType == 0:
 				inputs[0].append(event)
 				Globals.save.keyboard_action_events[action] = event
 			elif event is InputEventJoypadButton and inputType == 1:
-				print()
 				inputs[1].append(event)
 				Globals.save.joy_action_events[action] = event
 	
@@ -211,7 +208,6 @@ func controllerMapStart(_toggled,index) -> void:
 		if not erase:
 			currentToggle.text = awaitText
 		toggleOn = true
-		print(currentToggle)
 
 func _on_new_input_type_selected(index) -> void:
 	inputType = index

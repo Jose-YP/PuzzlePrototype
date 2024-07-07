@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/controller_texture_icon.svg-c7feb059f1c41a49e
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.3
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
