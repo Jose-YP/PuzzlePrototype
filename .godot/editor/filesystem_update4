@@ -1,19 +1,15 @@
-res://Audio/default_bus_layout.tres
-res://Scenes/MainMenu/options_menu.tscn
-res://Shaders/Beads/SingleBeadBurn.tres
+res://Scenes/MainMenu/game_manager.tscn
+res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
-res://Themes/GameUI.tres
 res://Themes/ButtonStyle/BreakProgress.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.tres
-res://Shaders/ShaderCode/Shockwave.gdshader
-res://Code/Scenes/Board&Beads/Board.gd
-res://Resources/SaveData/SaveMaker.gd
-res://Scenes/Board&Beads/SingleBead.tscn
-res://Scenes/Board&Beads/breaker_bead.tscn
-res://Shaders/SingleBeadBurn.tres
 res://Shaders/Shockwave.gdshader
-res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/MainMenu/MainMenuButton.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://Code/Globals/Globals.gd
+res://Code/Scenes/Board&Beads/parallax_background.gd
+res://Scenes/Constants/parallax_background.tscn
+res://Code/Scenes/Board&Beads/Board.gd
+res://Scenes/Board&Beads/Board.tscn

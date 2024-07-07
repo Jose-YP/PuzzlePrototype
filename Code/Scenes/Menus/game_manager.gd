@@ -98,6 +98,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("dying", fail_SFX)
 	currentScene.connect("died", fail_song)
 	currentScene.connect("switchMode", switch_mode)
+	currentScene.connect("modeReact", BG_react)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	currentScene.HiScoreScene.connect("menuSFX", play_menu_sfx)
@@ -212,9 +213,20 @@ func _on_pause_screen_play_sfx() -> void:
 	unpausing = true
 	MenuSFX[3].play()
 
-func tweening_pitch(ammount, busLocation: int = 7, effectLocation: int = 1):
+func tweening_pitch(ammount, busLocation: int = 7, effectLocation: int = 1) -> void:
 	var pitch = AudioServer.get_bus_effect(busLocation, effectLocation)
 	pitch.pitch_scale = ammount
 
-func switch_mode():
+func switch_mode() -> void:
 	$ParallaxBackground.switch_mode()
+
+func BG_react(mode: Globals.TempModes) -> void:
+	match mode:
+		Globals.TempModes.DANGER:
+			$ParallaxBackground.currentMode = Globals.TempModes.DANGER
+		Globals.TempModes.BREAKER:
+			$ParallaxBackground.currentMode = Globals.TempModes.BREAKER
+		Globals.TempModes.DEFAULT:
+			$ParallaxBackground.currentMode = Globals.TempModes.DEFAULT
+	
+	$ParallaxBackground.color_change()

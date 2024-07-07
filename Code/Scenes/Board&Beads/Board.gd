@@ -29,6 +29,7 @@ signal brokeBead
 signal brokeAll
 signal brokenBeadSFX
 signal switchMode
+signal modeReact(mode)
 signal playSFX(index)
 signal playBreak(index)
 
@@ -407,6 +408,7 @@ func _process(delta) -> void:
 				currentBead.gridPos[0] = oldPos
 				currentBead.global_position = grid_to_pixel(oldPos)
 				ghost_bead_pos()
+				modeReact.emit(Globals.TempModes.BREAKER)
 				playSFX.emit(7)
 			else:
 				#Full Bead should not move during this
@@ -584,17 +586,30 @@ func all_fall() -> void:
 		ghost_bead_pos()
 
 func detect_fail() -> void:
+	modeReact.emit(Globals.TempModes.BREAKER)
 	#Only check for fail spots
+	var inDanger: bool = false
 	for i in range(rules.safe_high_columns, rules.width - rules.safe_high_columns):
+		for j in range(rules.fail_rows + 1, rules.fail_rows + 2):
+			if board[i][j] != null:
+				inDanger = true
+				break
+		
 		for j in rules.fail_rows:
 			if board[i][j] != null:
 				print(Vector2i(i,j),"Found a bead in ",board[i][j])
+				inDanger = true
 				dying.emit()
 				var dyingTween = create_tween().set_ease(Tween.EASE_OUT)
 				dyingTween.tween_property(self, "modulate", failColor, dieTiming)
 				
 				fail_screen()
 				break
+		
+		if inDanger:
+			modeReact.emit(Globals.TempModes.DANGER)
+		else:
+			modeReact.emit(Globals.TempModes.DEFAULT)
 
 func second_fix() -> void:
 	for bead in gridBeads.get_children():
