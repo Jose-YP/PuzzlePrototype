@@ -41,8 +41,7 @@ func _ready() -> void:
 	$SecondLayer.modulate = Color(using[2], second_alpha)
 
 func _process(delta) -> void:
-	if not  tweening:
-		scroll_offset += (scrolling_speed * debug_speed * Vector2(delta, delta))
+	scroll_offset += (scrolling_speed * debug_speed * Vector2(delta, delta))
 
 #-----------------------------------------
 #COLOR CHANGE
