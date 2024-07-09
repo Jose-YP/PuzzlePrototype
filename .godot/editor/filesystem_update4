@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/BurnOut.gdshader
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
@@ -6,6 +6,11 @@ res://addons/controller_icons/settings.tres
 res://Themes/ButtonStyle/BreakProgress.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
-res://Resources/Rules/Basic Rules.tres
 res://Shaders/Shockwave.gdshader
-res://README.md
+res://Resources/Rules/Basic Rules.res
+res://Code/Globals/Globals.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/Constants/parallax_background.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/Board&Beads/FullBead.tscn
+res://Scenes/Board&Beads/SingleBead.tscn

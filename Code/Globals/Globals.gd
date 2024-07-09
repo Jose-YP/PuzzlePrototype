@@ -1,6 +1,6 @@
 extends Node
 
-@onready var rules: Rules = load("res://Resources/Rules/Basic Rules.tres")
+@onready var rules: Rules = load("res://Resources/Rules/Basic Rules.res")
 @onready var save = Save.load_or_create()
 @onready var display = sort_scores()
 
