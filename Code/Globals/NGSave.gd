@@ -32,6 +32,7 @@ func _ready() -> void:
 #______________________________
 func _cloud_save() -> Dictionary:
 	save = Globals.save.duplicate()
+	
 	save_dict = {
 		"file" : save,
 		"scores" : scores,
@@ -100,6 +101,7 @@ func sync_files() -> void:
 #______________________________
 func convert_to_key_save(keys) -> Dictionary:
 	var local_dict: Dictionary = {}
+	print("CONVERTING")
 	
 	for key in keys:
 		local_dict[key] = keys[key].get_physical_keycode() 

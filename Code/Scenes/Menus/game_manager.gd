@@ -71,6 +71,7 @@ func _process(_delta) -> void:
 #-----------------------------------------
 #For non-loading scenes
 func changeScene(scene) -> void:
+	BG_react(Globals.TempModes.DEFAULT)
 	Globals.save.save(Newgrounds)
 	currentScene.queue_free()
 	

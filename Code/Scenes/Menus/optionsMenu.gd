@@ -229,13 +229,10 @@ func changeInput(event) -> void:
 	getNewInputs()
 	reset_buttons()
 	
-	if controllerChange[refocusLater] != %ui_accept/ui_accept:
-		controllerChange[refocusLater].grab_focus()
-	else:
-		#Find a way to get the focus back on the old button without pressing it again
-		#A tiny delay is enough to make sure godot doesn't register the accept input instantly
-		await get_tree().create_timer(.005).timeout
-		controllerChange[refocusLater].grab_focus()
+	#Find a way to get the focus back on the old button without pressing it again
+	#A tiny delay is enough to make sure godot doesn't register the accept input instantly
+	await get_tree().create_timer(.005).timeout
+	controllerChange[refocusLater].grab_focus()
 
 func checkRepeats(oldEvent, event) -> void:
 	var found: bool = false
