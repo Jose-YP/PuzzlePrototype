@@ -37,6 +37,7 @@ func _ready() -> void:
 		Globals.save.reset_scores()
 	
 	FinalGlobal.finalReady(Newgrounds)
+	Globals.display = Globals.sort_scores()
 
 func _on_main_menu_readied():
 	MenuSFX[0].play()

@@ -567,6 +567,11 @@ func all_fall() -> void:
 			if target.x == -1:
 				target = Vector2i(i,j)
 			
+			if ((board[target.x][target.y] != null and board[target.x][target.y] != bead) or
+			 target.x > rules.width or target.x < 0 or target.y > realHeight or target.y < 0):
+				display_board()
+				print("ANOSANALNL")
+			
 			if target != Vector2i(i,j):
 				print("Found new place")
 				check_again= true
@@ -642,7 +647,6 @@ func lost_beads(bead) -> void:
 	#If a bead isn't in the board anymore just delete them
 	var visible_pos = pixel_to_grid(bead)
 	if visible_pos != find_bead(bead):
-		display_board()
 		print(bead, "LOST!!! :o!", bead.currentType)
 		changed = true
 		var target = mini_find_bottom(visible_pos,visible_pos.x)
@@ -801,11 +805,10 @@ func break_order(chainPart, holdNum) -> void:
 			 and chains[holdNum].find(adj) != -1):
 				adjacent[adj] = adj
 	
-	#print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
+	print("Breaking: ",chainPart, " Will break: ",adjacent.keys())
 	display_board()
 	break_bead(chainPart)
 	await self.brokeBead
-	display_board()
 	var empty = true
 	var notEmptied = []
 	for bead in chains[holdNum]:

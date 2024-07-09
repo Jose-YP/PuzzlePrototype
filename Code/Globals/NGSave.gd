@@ -59,6 +59,7 @@ func _cloud_save() -> Dictionary:
 func NG2Save() -> void:
 	save = Globals.save
 	save.HiScores = scores
+	print("CURRENT: ", save.HiScores, "REPLACE WITH: ", scores)
 	save.username = username
 	
 	save.input_type = control_type

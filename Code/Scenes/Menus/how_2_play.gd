@@ -43,7 +43,7 @@ func _ready():
 	
 	%LevellingSystem.clear()
 	%LevellingSystem.append_text(str("AS BEADS GET BROKEN, YOU'LL LEVEL UP,",
-	"WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION",
+	"WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION\n",
 	"THERE ARE A MAX OF ", Globals.rules.max_levels, " LEVELS IN A SESSION"))
 	
 	%Glow.modulate = Globals.bead_colors[3]
@@ -62,7 +62,7 @@ func _ready():
 	%DomainText.push_color(Globals.bead_colors[2])
 	%DomainText.append_text("AIR")
 	%DomainText.pop()
-	%DomainText.append_text(" BEADS CONNECT TOGETHER")
+	%DomainText.append_text(" BEADS LINK TOGETHER")
 	
 	%EnergyText.clear()
 	%EnergyText.append_text("[center]GLOWING ")
@@ -73,7 +73,7 @@ func _ready():
 	%EnergyText.push_color(Globals.bead_colors[4])
 	%EnergyText.append_text("DARK")
 	%EnergyText.pop()
-	%EnergyText.append_text(" BEADS CONNECT TOGETHER")
+	%EnergyText.append_text(" BEADS LINK TOGETHER")
 
 #______________________________
 #CONTROLS

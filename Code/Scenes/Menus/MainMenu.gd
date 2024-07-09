@@ -23,6 +23,7 @@ func _ready() -> void:
 	await startTween.finished
 	readied.emit()
 	
+	$"Score Display".refresh_scores()
 	%PlayTex.grab_focus()
 	can = true
 
