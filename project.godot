@@ -28,7 +28,6 @@ Globals="*res://Code/Globals/Globals.gd"
 NGSaveSetup="*res://Code/Globals/NGSave.gd"
 NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
-InputBuffer="res://addons/input_buffer.gd"
 FinalGlobal="*res://Code/Globals/FinalGlobal.gd"
 
 [display]

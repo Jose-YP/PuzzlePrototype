@@ -14,3 +14,5 @@ res://Scenes/Constants/parallax_background.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
+res://Shaders/BurnOut.res
+res://Shaders/ripple.res
