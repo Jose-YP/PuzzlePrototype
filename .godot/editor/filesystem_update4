@@ -23,3 +23,4 @@ res://Scenes/MainMenu/score_display.tscn
 res://Code/Scenes/Menus/score_display.gd
 res://Code/Scenes/Menus/MainMenu.gd
 res://Resources/SaveData/SaveFile.tres
+res://Code/Globals/FinalGlobal.gd

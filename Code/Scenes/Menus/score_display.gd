@@ -11,7 +11,7 @@ func _ready():
 func refresh_scores():
 	var display = Globals.display
 	var j = 0
-	print(display)
+	
 	#i will increment by 1 and if messed with inside the loop
 	#It'll revert to what it originally was before being messed with
 	for i in range(0,scoretext.size(),2):

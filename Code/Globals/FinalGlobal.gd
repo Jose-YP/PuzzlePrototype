@@ -17,6 +17,7 @@ func finalReady(use_NG):
 		NGCloudSave.save_game()
 		NGSaveSetup.NG2Save()
 		
+		Globals.display = Globals.sort_scores()
 		Globals.set_other_inputs(false)
 		Globals.set_controls()
 		Globals.set_colors()
