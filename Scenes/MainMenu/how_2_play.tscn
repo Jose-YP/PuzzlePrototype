@@ -108,6 +108,7 @@ theme_override_constants/margin_right = 10
 
 [node name="InfoTabs" type="TabContainer" parent="VBoxContainer/Information"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 590)
 layout_mode = 2
 tabs_visible = false
 
@@ -372,7 +373,7 @@ stretch_mode = 4
 [node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Up"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "HARD DROP [LOWEST POSSIBLE POSITION]"
+text = "HARD DROP "
 
 [node name="Down" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer"]
 layout_mode = 2
@@ -387,7 +388,7 @@ stretch_mode = 4
 [node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer/MovementContainer/Down"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-text = "SOFT DROP [DOWN ONE SPACE, WHEN PLACED THEY'LL STICK TOGETHER]"
+text = "SOFT DROP"
 
 [node name="ManipContainer" type="VBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -490,11 +491,11 @@ FOR EVERY CHAIN ON SCREEN YOU'LL GAIN A X MULTIPLIER FOR EVERY CHAIN ON SCREEN"
 
 [node name="LevellingSystem" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 bbcode_enabled = true
 text = "AS BEADS GET BROKEN, YOU'LL LEVEL UP, WHICH WILL SPEED UP THE GAME AND TAKE YOU CLOSER TO THE END OF THE SESSION
-THERE ARE A MAX OF 20 LEVELS IN A SESSION"
+THERE ARE A MAX OF X LEVELS IN A SESSION"
 
 [node name="nEXT_BACK" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
