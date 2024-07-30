@@ -1,5 +1,9 @@
-NewgroundsMedalUnlocker
+PanelContainer
+VBoxContainer
+MarginContainer
+Panel
 HBoxContainer
+NewgroundsMedalUnlocker
 Button
 AudioStreamPlayer
 RichTextLabel
@@ -8,8 +12,3 @@ ColorRect
 Sprite2D
 ParallaxLayer
 ParallaxBackground
-TextureRect
-Control
-PanelContainer
-HSeparator
-VSeparator

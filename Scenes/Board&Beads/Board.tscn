@@ -25,6 +25,7 @@
 process_mode = 1
 script = ExtResource("1_ixvqd")
 rules = ExtResource("2_of5fi")
+RUIextra = 15.0
 failColor = Color(0.176471, 0.176471, 0.176471, 1)
 
 [node name="Main" type="Node2D" parent="."]

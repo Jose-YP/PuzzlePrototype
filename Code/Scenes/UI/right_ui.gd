@@ -40,13 +40,13 @@ func update_HiScore(score) -> void:
 		just_reached = true
 		$Cheer.play()
 		
-		var HiScoreShake: Vector2 = Vector2(5,$VBoxContainer/HiScoreContainer.position.y)
+		var HiScoreShake: Vector2 = Vector2(5,%HiScoreContainer.position.y)
 		var cheerTween = self.create_tween().set_ease(Tween.EASE_OUT)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -HiScoreShake, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", -HiScoreShake, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", HiScoreShake, .1)
-		cheerTween.tween_property($VBoxContainer/HiScoreContainer, "position", Vector2(0, HiScoreShake.y), .1)
+		cheerTween.tween_property(%HiScoreContainer, "position", -HiScoreShake, .1)
+		cheerTween.tween_property(%HiScoreContainer, "position", HiScoreShake, .1)
+		cheerTween.tween_property(%HiScoreContainer, "position", -HiScoreShake, .1)
+		cheerTween.tween_property(%HiScoreContainer, "position", HiScoreShake, .1)
+		cheerTween.tween_property(%HiScoreContainer, "position", Vector2(0, HiScoreShake.y), .1)
 	
 	HiScore = score
 	%HiScoreText.text = str("HISCORE: ", score)
@@ -95,7 +95,7 @@ func tween_levelUp(currentValue: float):
 #______________________________
 func show_display() -> PanelContainer:
 	var chainDisplay = chainDisplayScene.instantiate()
-	$VBoxContainer/DisplayContainer.add_child(chainDisplay)
+	%DisplayContainer.add_child(chainDisplay)
 	chainTotalArray.append(chainDisplay)
 	chainDisplay.connect("remove",hide_display)
 	

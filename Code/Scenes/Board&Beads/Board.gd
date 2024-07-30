@@ -244,15 +244,21 @@ func movement() -> void:
 		ghost_bead_pos()
 
 func hard_drop(target) -> void:
+	#sort acoording to position
+	var finalBeads: Array[Vector2i] = currentBead.gridPos.duplicate()
+	finalBeads.sort_custom(func(a,b): return a.y > b.y)
+	
 	#var prevPos: Vector2i = currentBead.gridPos[0]
 	for i in (currentBead.beads.size()):
-		var pos: Vector2i = target[i]
-		#First time this happened was when hard dropping from the bottom
-		board[currentBead.gridPos[i].x][currentBead.gridPos[i].y] = null
+		var index: int = currentBead.gridPos.find(finalBeads[i])
+		var pos: Vector2i = target[index]
 		
-		currentBead.gridPos[i] = pos
-		board[pos.x][pos.y] = currentBead.beads[i]
-		currentBead.positions[i].global_position = grid_to_pixel(pos)
+		#First time this happened was when hard dropping from the bottom
+		board[currentBead.gridPos[index].x][currentBead.gridPos[index].y] = null
+		
+		currentBead.gridPos[index] = pos
+		board[pos.x][pos.y] = currentBead.beads[index]
+		currentBead.positions[index].global_position = grid_to_pixel(pos)
 		#prevPos = pos
 	
 	for i in range(currentBead.beads.size()):
@@ -635,7 +641,7 @@ func second_fix() -> void:
 			if bead == null:
 				continue
 			if bead.name.ends_with("2"):
-				print()
+				print("IASUHHBHJS")
 			
 			var pos = pixel_to_grid(bead)
 			if Vector2i(i,j) != pos:
@@ -1190,11 +1196,11 @@ func fail_screen() -> void:
 	await NG.scoreboard_submit(13768, score)
 	
 	if highScored:
+		HiScoreScene.new_focus(RUI.regScore, placement)
 		var HiScoreTween = HiScoreScene.create_tween()
 		HiScoreScene.show()
 		HiScoreTween.tween_property($HighScoreScreen, 'modulate', Color.WHITE, scoreFade/2)
 		await get_tree().create_timer(scoreFade).timeout
-		HiScoreScene.new_focus(RUI.regScore, placement)
 	
 	else:
 		var failTween = Fail.create_tween()
