@@ -16,18 +16,18 @@
 [ext_resource type="AudioStream" uid="uid://c6t7wkb86lvbs" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar2.ogg" id="13_psqs0"]
 [ext_resource type="AudioStream" uid="uid://cvpkafwkkverg" path="res://Audio/BoardSFX/gj.ogg" id="13_wjlcc"]
 [ext_resource type="AudioStream" uid="uid://blcwrk0k6neaa" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.ogg" id="14_in7jn"]
-[ext_resource type="AudioStream" uid="uid://dsskv01er3vy6" path="res://Audio/Music/Main menu.wav" id="15_lgb27"]
 [ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="16_k3eu6"]
-[ext_resource type="AudioStream" uid="uid://msw256rvwad5" path="res://Audio/Music/Level 1.wav" id="16_ljc2t"]
 [ext_resource type="AudioStream" uid="uid://drboyvsf2iv6k" path="res://Audio/BoardSFX/Clap 3.ogg" id="17_jbvpi"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/pause_screen.tscn" id="17_kh1yb"]
-[ext_resource type="AudioStream" uid="uid://dfoiac7yvnrjq" path="res://Audio/Music/Level 2.wav" id="17_ympss"]
-[ext_resource type="AudioStream" uid="uid://c1p5isnsiuo7t" path="res://Audio/Music/End of a run.wav" id="18_mbcpg"]
+[ext_resource type="AudioStream" uid="uid://dcbrn3wj46vbj" path="res://Audio/Music/Main menu.ogg" id="19_cqcrg"]
 [ext_resource type="AudioStream" uid="uid://xvj26kls8ng5" path="res://Audio/MenuSFX/MenuMove.ogg" id="19_t0dk7"]
 [ext_resource type="AudioStream" uid="uid://7vfslqr7c4yy" path="res://Audio/MenuSFX/MenuConfirm.ogg" id="20_qke31"]
+[ext_resource type="AudioStream" uid="uid://dexo2242g1qtm" path="res://Audio/Music/End of a run.ogg" id="20_yj1lj"]
 [ext_resource type="Script" path="res://addons/newgrounds/scripts/newgrounds_request.gd" id="21_6ewy6"]
 [ext_resource type="AudioStream" uid="uid://dducm8ymtpvl3" path="res://Audio/MenuSFX/MenuDeselect.ogg" id="21_ngyja"]
+[ext_resource type="AudioStream" uid="uid://cmj8gxo0xagmh" path="res://Audio/Music/Level 1.ogg" id="21_q3obc"]
 [ext_resource type="AudioStream" uid="uid://c23dv670s53ql" path="res://Audio/MenuSFX/Click.ogg" id="22_4neu4"]
+[ext_resource type="AudioStream" uid="uid://b8tx2xfgo7i1d" path="res://Audio/Music/Level 2.ogg" id="22_fphm8"]
 
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
@@ -142,24 +142,24 @@ bus = &"Die"
 process_mode = 1
 
 [node name="MainMenu" type="AudioStreamPlayer" parent="ETCMusic"]
-stream = ExtResource("15_lgb27")
+stream = ExtResource("19_cqcrg")
 volume_db = -15.0
 bus = &"ManageMusic"
 
 [node name="EndRun" type="AudioStreamPlayer" parent="ETCMusic"]
-stream = ExtResource("18_mbcpg")
+stream = ExtResource("20_yj1lj")
 volume_db = -15.0
 bus = &"ManageMusic"
 
 [node name="BoardMusic" type="Node" parent="."]
 
 [node name="Lv1" type="AudioStreamPlayer" parent="BoardMusic"]
-stream = ExtResource("16_ljc2t")
+stream = ExtResource("21_q3obc")
 volume_db = -15.0
 bus = &"ManageMusic"
 
 [node name="Lv2" type="AudioStreamPlayer" parent="BoardMusic"]
-stream = ExtResource("17_ympss")
+stream = ExtResource("22_fphm8")
 volume_db = -15.0
 bus = &"ManageMusic"
 

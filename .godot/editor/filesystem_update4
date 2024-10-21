@@ -12,5 +12,3 @@ res://Scenes/MainMenu/score_display.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/UI/left_ui.tscn
-res://Code/Scenes/Menus/game_manager.gd
-res://Code/Globals/Globals.gd
