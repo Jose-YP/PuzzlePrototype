@@ -109,6 +109,18 @@ func set_colors() -> void:
 		var current = bead_colors[i]
 		link_colors[i] = Color.from_hsv(clamp(current.h, 0, 1), clamp(current.s - .1, 0, 1), .98)
 
+func all_black() -> bool:
+	var all = true
+	
+	for i in range(bead_colors.size()):
+		print(bead_types[i], ": ",bead_colors[i])
+		
+		if bead_colors[i] != Color.BLACK:
+			all = false
+			break
+	
+	return all
+
 func NG_load(save_file):
 	Globals.save.HiScores = save_file["scores"]
 	Globals.save.username = save_file["username"]
