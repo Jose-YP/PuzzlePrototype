@@ -33,10 +33,9 @@ var usingBoardSongs: bool = false
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
 	
-	
-	
 	if resetScores:
 		Globals.save.reset_scores()
+		NGSaveSetup.sync_files()
 	
 	FinalGlobal.finalReady(Newgrounds)
 	
