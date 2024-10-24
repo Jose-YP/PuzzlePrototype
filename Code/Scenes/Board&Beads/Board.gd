@@ -76,14 +76,19 @@ func _ready() -> void:
 	#Once they're loaded once, they won't freeze up the game again
 	var temp = Globals.bead.instantiate()
 	var temp2 = breakerBead.instantiate()
+	var holdTween = self.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
 	$Hold.add_child(temp)
 	$Hold.add_child(temp2)
-	#temp.modulate = Color(Color.WHITE,.001)
-	#temp2.modulate = Color(Color.WHITE,.001)
+	temp2.rippleTiming = .1
+	
+	temp2.position = Vector2(RUIextra, 0)
+	temp.modulate = Color(Color.WHITE,.001)
+	temp2.modulate = Color(Color.WHITE,.001)
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
 	temp2.rippleShader.show()
 	temp2.ripple()
+	holdTween.tween_property($Hold, "modulate", Color.TRANSPARENT, .1)
 	await temp2.rippleEnd
 	
 	#Make board before adding anything
@@ -105,6 +110,8 @@ func _ready() -> void:
 	Globals.droughtArray = [0,0,0,0,0]
 	Globals.floodArray = [0,0,0,0,0]
 	spawn_full_beads()
+	pull_next_bead()
+	$Main/Ghost/GhostBead.show()
 	
 	$ColorRect/RichTextLabel.clear()
 	$ColorRect/RichTextLabel.append_text("[center]GO!")
@@ -115,7 +122,6 @@ func _ready() -> void:
 	transitionTween.tween_property($UI,"modulate",Color.WHITE,trasitionTiming)
 	await transitionTween.finished
 	
-	pull_next_bead()
 	pauseFall(false)
 
 func make_grid() -> Array[Array]:

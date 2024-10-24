@@ -140,6 +140,11 @@ Clockwise={
 
 buffering/agile_event_flushing=true
 
+[network]
+
+limits/packet_peer_stream/max_buffer_po2=32
+limits/webrtc/max_channel_in_buffer_kb=128
+
 [newgrounds.io]
 
 app_id="58344:yWmMxvnO"

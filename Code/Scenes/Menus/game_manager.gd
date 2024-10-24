@@ -26,6 +26,7 @@ var loopVal: float = 0.0
 var unpausing: bool = false
 var loopedSong: bool = false
 var usingBoardSongs: bool = false
+var readied: bool = false
 
 #-----------------------------------------
 #INITALIZATION AND PROCESSING
@@ -40,24 +41,29 @@ func _ready() -> void:
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()
+	
+	await get_tree().create_timer(.5).timeout
+	
+	$MainMenu.emit_signal("readied")
+	readied = true
 
 func _on_main_menu_readied():
 	MenuSFX[0].play()
-	MenuSFX[0].stop()
 	MenuSFX[1].play()
-	MenuSFX[1].stop()
+	pass
 
 func _process(_delta) -> void:
-	if Input.is_action_just_pressed("Pause") and not unpausing:
-		currentSong.stream_paused = true
-		play_menu_sfx(3)
-		var currently = get_tree().paused
-		get_tree().paused = not currently
-		$PauseScreen.visible = not currently
-		$PauseScreen.play_sfx()
-		
-	elif Input.is_action_just_pressed("Pause"):
-		unpausing = false
+	if readied:
+		if Input.is_action_just_pressed("Pause") and not unpausing:
+			currentSong.stream_paused = true
+			play_menu_sfx(3)
+			var currently = get_tree().paused
+			get_tree().paused = not currently
+			$PauseScreen.visible = not currently
+			$PauseScreen.play_sfx()
+			
+		elif Input.is_action_just_pressed("Pause"):
+			unpausing = false
 	
 	if MusicOn and currentSong != null and usingBoardSongs:
 		if loopVal > currentSong.get_playback_position():

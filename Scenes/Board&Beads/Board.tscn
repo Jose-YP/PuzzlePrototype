@@ -62,6 +62,7 @@ position = Vector2(51, -15)
 metadata/_edit_group_ = true
 
 [node name="GhostBead" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
+visible = false
 
 [node name="GhostBead2" parent="Main/Ghost" instance=ExtResource("4_yfyud")]
 visible = false
@@ -169,8 +170,7 @@ medal_id = 79713
 
 [node name="Hold" type="Node2D" parent="."]
 editor_description = "Uberbead is loaded here on ready so the bolt animation can fully load during the loading screen instead of during the game"
-visible = false
-position = Vector2(-100, -100)
+position = Vector2(32, 678)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true

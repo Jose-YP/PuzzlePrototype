@@ -1,7 +1,13 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://cu4pvofviv7ic"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://cu4pvofviv7ic"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_ghcxq"]
+resource_name = "Limiter"
 
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_odm2v"]
 resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_4n8dn"]
+resource_name = "Limiter"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_otmdk"]
 resource_name = "Reverb"
@@ -29,6 +35,8 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectLimiter_ghcxq")
+bus/3/effect/0/enabled = true
 bus/4/name = &"BoardSFX"
 bus/4/solo = false
 bus/4/mute = false
@@ -45,10 +53,12 @@ bus/6/name = &"BeadSFX"
 bus/6/solo = false
 bus/6/mute = false
 bus/6/bypass_fx = false
-bus/6/volume_db = -4.50411
+bus/6/volume_db = -10.5185
 bus/6/send = &"BoardSFX"
 bus/6/effect/0/effect = SubResource("AudioEffectPitchShift_odm2v")
 bus/6/effect/0/enabled = true
+bus/6/effect/1/effect = SubResource("AudioEffectLimiter_4n8dn")
+bus/6/effect/1/enabled = true
 bus/7/name = &"Die"
 bus/7/solo = false
 bus/7/mute = false

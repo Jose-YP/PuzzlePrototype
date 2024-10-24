@@ -1,4 +1,3 @@
-res://Audio/default_bus_layout.tres
 res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
@@ -13,5 +12,6 @@ res://Scenes/MainMenu/score_display.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/UI/left_ui.tscn
-res://Code/Scenes/Menus/game_manager.gd
-res://Resources/SaveData/SaveFile.tres
+res://Code/Scenes/Board&Beads/Board.gd
+res://Scenes/Board&Beads/breaker_bead.tscn
+res://Scenes/Constants/ripple.tscn
