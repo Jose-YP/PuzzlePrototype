@@ -33,12 +33,10 @@ var usingBoardSongs: bool = false
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
 	
-	
+	FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
 		Globals.save.reset_scores()
-	
-	FinalGlobal.finalReady(Newgrounds)
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()
