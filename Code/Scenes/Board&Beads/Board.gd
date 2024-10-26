@@ -78,18 +78,20 @@ func _ready() -> void:
 	var temp2 = breakerBead.instantiate()
 	var holdTween = self.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
 	$Hold.add_child(temp)
-	$Hold.add_child(temp2)
-	temp2.rippleTiming = .1
+	add_child(temp2)
+	#temp2.rippleTiming = .1
 	
-	temp2.position = Vector2(RUIextra, 0)
+	temp2.global_position = Vector2(489, 377)
 	temp.modulate = Color(Color.WHITE,.001)
-	temp2.modulate = Color(Color.WHITE,.001)
+	temp2.modulate = Color(Color.WHITE,.01)
 	#Spawn a connected bolt from a bead to load it in during loading
 	temp.display_chain(0,0)
 	temp2.rippleShader.show()
 	temp2.ripple()
 	holdTween.tween_property($Hold, "modulate", Color.TRANSPARENT, .1)
+	$Hold.hide()
 	await temp2.rippleEnd
+	temp2.queue_free()
 	
 	#Make board before adding anything
 	board = make_grid()
