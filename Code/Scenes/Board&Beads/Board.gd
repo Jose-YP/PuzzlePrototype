@@ -92,6 +92,7 @@ func _ready() -> void:
 	$Hold.hide()
 	await temp2.rippleEnd
 	temp2.queue_free()
+	temp.queue_free()
 	
 	#Make board before adding anything
 	board = make_grid()

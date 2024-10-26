@@ -33,6 +33,7 @@ var readied: bool = false
 #-----------------------------------------
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
+	await get_tree().create_timer(.5).timeout
 	
 	FinalGlobal.finalReady(Newgrounds)
 	
@@ -46,11 +47,6 @@ func _ready() -> void:
 	
 	$MainMenu.emit_signal("readied")
 	readied = true
-
-func _on_main_menu_readied():
-	MenuSFX[0].play()
-	MenuSFX[1].play()
-	pass
 
 func _process(_delta) -> void:
 	if readied:
@@ -161,12 +157,19 @@ func _on_pause_screen_quit(allowed = true) -> void:
 	if allowed:
 		back_to_menu()
 
-func bead_break_SFX():
+#func play_beggining_load() -> void:
+	#%LevelUp.pitch_scale = .65
+	#%LevelUp.play()
+	#
+	#await %LevelUp.finished
+	#%LevelUp.pitch_scale = 1
+
+func bead_break_SFX() -> void:
 	var pitch = AudioServer.get_bus_effect(6, 0)
 	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
 	%Break.play()
 
-func fail_SFX():
+func fail_SFX() -> void:
 	var pitchTween = create_tween().set_ease(Tween.EASE_OUT)
 	
 	%RunOver.play()

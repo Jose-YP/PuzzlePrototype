@@ -196,7 +196,6 @@ visible = false
 script = ExtResource("21_6ewy6")
 
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
-[connection signal="readied" from="MainMenu" to="." method="_on_main_menu_readied"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]
 [connection signal="playSFX" from="PauseScreen" to="." method="_on_pause_screen_play_sfx"]
