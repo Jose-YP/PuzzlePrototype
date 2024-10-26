@@ -331,7 +331,6 @@ func _convert_event_to_path(event: InputEvent):
 		return _convert_joypad_button_to_path(event.button_index)
 	elif event is InputEventJoypadMotion:
 		return _convert_joypad_motion_to_path(event.axis)
-	
 
 func _convert_key_to_path(scancode: int):
 	match scancode:

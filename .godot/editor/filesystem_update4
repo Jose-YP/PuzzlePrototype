@@ -14,3 +14,8 @@ res://Scenes/Board&Beads/FullBead.tscn
 res://Scenes/UI/left_ui.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/Constants/ripple.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://addons/controller_icons/ControllerIcons.gd
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Resources/SaveData/SaveMaker.gd
+res://Code/Scenes/Menus/game_manager.gd

@@ -143,7 +143,7 @@ func getNewInputs() -> void:
 	inputs = [[],[]]
 	var loopActions = InputMap.get_actions()
 	var sortedLoop: Array = []
-	
+	print(Globals.save.keyboard_action_events.keys())
 	match inputType:
 		0:
 			loopActions = Globals.save.keyboard_action_events.keys()
@@ -161,6 +161,7 @@ func getNewInputs() -> void:
 	loopActions = sortedLoop
 	
 	for action in loopActions: #Get every input in InputMap that can be edited
+		print(loopActions)
 		var events = InputMap.action_get_events(action)
 		Actions.append(action)
 		for event in events:
@@ -191,7 +192,10 @@ func updateInputDisplay() -> void:
 		controllerChange[event].text = keyText
 
 func controllerMapStart(_toggled,index) -> void:
+	print("CCCCCCCCC", resetting)
+	
 	if not resetting:
+		print("AAAA", currentToggle)
 		var erase: bool = false
 		if currentToggle != null:
 			#I think this might be bad for the look of options but it might also be needed
@@ -201,13 +205,20 @@ func controllerMapStart(_toggled,index) -> void:
 			erase = true
 			currentToggle.text = ""
 		
+		print("BBBBBBBB", Actions)
 		currentAction = Actions[index]
+		print("1")
 		currentInput = inputs[inputType][index]
+		print("2")
 		currentToggleIndex = index
+		print("3")
 		currentToggle = controllerChange[index]
+		print("EEEEEEEEEEEEEEE")
 		if not erase:
 			currentToggle.text = awaitText
 		toggleOn = true
+		
+		print("DACUINOVJDNASIOJASON", erase)
 
 func _on_new_input_type_selected(index) -> void:
 	inputType = index
@@ -217,10 +228,12 @@ func _on_new_input_type_selected(index) -> void:
 	getNewInputs()
 
 func _on_reset_pressed() -> void:
-	InputMap.load_from_project_settings()
+	Globals.save.set_default_controls()
 	getNewInputs()
 
 func changeInput(event) -> void:
+	print(event)
+	
 	currentToggle.button_pressed = false
 	InputMap.action_erase_event(currentAction, currentInput)
 	InputMap.action_add_event(currentAction, event)

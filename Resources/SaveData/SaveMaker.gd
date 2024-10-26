@@ -107,6 +107,7 @@ func set_default_controls():
 	InputMap.load_from_project_settings()
 	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
 	for action in actions:
+		print("SETTING DEFAULT")
 		var events = InputMap.action_get_events(action)
 		keyboard_action_events[action] = events[0]
 		joy_action_events[action] = events[1]

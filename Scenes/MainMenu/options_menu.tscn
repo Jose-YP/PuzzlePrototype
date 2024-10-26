@@ -442,6 +442,22 @@ popup/item_0/id = 0
 popup/item_1/text = "GamePad"
 popup/item_1/id = 1
 
+[node name="OptionButton2" type="OptionButton" parent="Main/VBox/Controls/VBox/InputType/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../Reset")
+focus_neighbor_top = NodePath("../../../../../HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider")
+focus_neighbor_right = NodePath("../Reset")
+focus_neighbor_bottom = NodePath("../../../Buttons/ui_up/ui_up")
+item_count = 2
+selected = 0
+popup/item_0/text = "Type 1 [Default]"
+popup/item_0/id = 0
+popup/item_1/text = "Type 2 [WASD]"
+popup/item_1/id = 1
+
 [node name="Reset" type="Button" parent="Main/VBox/Controls/VBox/InputType/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../OptionButton")
@@ -715,6 +731,7 @@ layout_mode = 2
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/DarkColor" to="." method="set_colors" binds= [4]]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/BreakerColor" to="." method="set_colors" binds= [5]]
 [connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton" to="." method="_on_new_input_type_selected"]
+[connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton2" to="." method="_on_new_input_type_selected"]
 [connection signal="pressed" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up" to="." method="controllerMapStart" binds= [0]]
 [connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept" to="." method="controllerMapStart" binds= [1]]

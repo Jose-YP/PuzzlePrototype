@@ -23,6 +23,7 @@ const loadingScreen = preload("res://Scenes/Constants/load_screen.tscn")
 
 var currentSong: AudioStreamPlayer
 var loopVal: float = 0.0
+var reset_controls: bool = false
 var unpausing: bool = false
 var loopedSong: bool = false
 var usingBoardSongs: bool = false
@@ -34,11 +35,12 @@ var readied: bool = false
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
 	await get_tree().create_timer(.5).timeout
+	print("RESET?", Globals.save.reset)
 	
 	FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
-		Globals.save.reset_scores()
+		Globals.save.reset_scores() 
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()
