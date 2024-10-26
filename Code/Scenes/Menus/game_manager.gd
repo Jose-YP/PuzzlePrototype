@@ -35,7 +35,6 @@ var readied: bool = false
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
 	await get_tree().create_timer(.5).timeout
-	print("RESET?", Globals.save.reset)
 	
 	FinalGlobal.finalReady(Newgrounds)
 	
