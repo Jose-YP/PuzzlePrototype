@@ -1236,6 +1236,7 @@ func _on_mode_switch_pressed():
 	
 	$Medals/Soul.unlock()
 	switchMode.emit()
+	#$Main/ModeSwitch.
 
 #______________________________
 #GHOST BEADS
