@@ -48,6 +48,7 @@ scale = Vector2(1, 1)
 BoardColor = Color(0.129412, 0.286275, 0.364706, 0.603922)
 FailColor = Color(0.588235, 0.145098, 0.14902, 0.478431)
 TileColor = Color(0.207843, 0.207843, 0.207843, 0.431373)
+debug = false
 metadata/_edit_group_ = true
 
 [node name="Grid" type="Node2D" parent="Main"]

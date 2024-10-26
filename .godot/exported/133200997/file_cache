@@ -9,7 +9,7 @@ res://Scenes/Board&Beads/fail_screen.tscn::911ad16599573d56bc618baca57231a6::171
 res://Scenes/Board&Beads/FullBead.tscn::ea78d92c04669561633b101815358847::1729962257::res://.godot/exported/133200997/export-c5516d59c11245cea9e46c43558e226b-FullBead.scn
 res://Scenes/Board&Beads/HighScoreScreen.tscn::dbff42073260ad11354009f348d72e4f::1720058214::res://.godot/exported/133200997/export-802b8affd20bfe3fe43e7a16cd1bf190-HighScoreScreen.scn
 res://Scenes/Board&Beads/SingleBead.tscn::e96d948b932e52038fa76a0c242e0cc0::1720486181::res://.godot/exported/133200997/export-48062e13200e7833266a060d8413d368-SingleBead.scn
-res://Scenes/MainMenu/game_manager.tscn::16fa4e7bee52cd442f3b12f628765079::1729962256::res://.godot/exported/133200997/export-2c5e222cf36fd6e0c24e009255bc7e9c-game_manager.scn
+res://Scenes/MainMenu/game_manager.tscn::16fa4e7bee52cd442f3b12f628765079::1729962325::res://.godot/exported/133200997/export-2c5e222cf36fd6e0c24e009255bc7e9c-game_manager.scn
 res://Scenes/MainMenu/how_2_play.tscn::a51a18720f4f6347a15b2d128c70210e::1721535726::res://.godot/exported/133200997/export-0b7745a83f863f1682bd539959cee22a-how_2_play.scn
 res://Scenes/MainMenu/MainMenu.tscn::f1b5bb2b30ee8493566e11c57c271d2d::1729962256::res://.godot/exported/133200997/export-ac22634f210ed72aaffe50757d1f9d3e-MainMenu.scn
 res://Scenes/MainMenu/options_menu.tscn::c8bbc37b2808361d5cc6de232d76fb56::1720488248::res://.godot/exported/133200997/export-435732bc71f03259835dde0f87553c2c-options_menu.scn
