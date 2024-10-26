@@ -1232,6 +1232,8 @@ func _on_high_score_screen_proceed() -> void:
 	Fail.start_focus()
 
 func _on_mode_switch_pressed():
+	print("aaa")
+	
 	$Medals/Soul.unlock()
 	switchMode.emit()
 
@@ -1318,4 +1320,6 @@ func display_array(array) -> void:
 
 func _on_debug_timeout() -> void:
 	find_links()
-	
+
+func _on_mode_switch_button_up():
+	print("DSCJKLNASCJKNL")
