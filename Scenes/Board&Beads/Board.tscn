@@ -198,7 +198,6 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]READY"
 
-[connection signal="button_up" from="Main/ModeSwitch" to="." method="_on_mode_switch_button_up"]
 [connection signal="pressed" from="Main/ModeSwitch" to="." method="_on_mode_switch_pressed"]
 [connection signal="HighScore" from="UI/RightUI" to="." method="_on_right_ui_high_score"]
 [connection signal="breakGain" from="UI/RightUI" to="UI/LeftUI" method="_on_right_ui_break_gain"]

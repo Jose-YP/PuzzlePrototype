@@ -1,11 +1,1 @@
-res://Scenes/MainMenu/game_manager.tscn
-res://Shaders/SingleBeadBurn.tres
-res://Art/Board&Beads/Connected/LightningConnection.tres
-res://addons/controller_icons/settings.tres
-res://Themes/ButtonStyle/BreakProgress.tres
-res://Themes/ButtonStyle/Focused.tres
-res://Themes/Theme.tres
-res://Resources/Rules/Basic Rules.res
-res://Scenes/Board&Beads/Board.tscn
-res://Scenes/MainMenu/options_menu.tscn
-res://Code/Scenes/Board&Beads/Board.gd
+res://Audio/default_bus_layout.tres

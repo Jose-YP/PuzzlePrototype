@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Save" load_steps=18 format=3]
+[gd_resource type="Resource" script_class="Save" load_steps=18 format=3 uid="uid://dl2eg8j088tbs"]
 
 [ext_resource type="Script" path="res://Resources/SaveData/SaveMaker.gd" id="1_l2j0a"]
 
@@ -104,7 +104,7 @@ joy_action_events = {
 "ui_right": SubResource("InputEventJoypadButton_xhwia"),
 "ui_up": SubResource("InputEventJoypadButton_b44wr")
 }
-reset = false
+reset = true
 background_id = 0
 earthColor = Color(0.886, 0.224, 0.212, 1)
 seaColor = Color(0.137, 0.6, 0.91, 1)
