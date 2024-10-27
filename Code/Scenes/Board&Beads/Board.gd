@@ -708,7 +708,6 @@ func check_breakers() -> void:
 				$Medals/Air.unlock()
 	
 	#Have all breaker ripples occur at once
-	
 	if shouldBreak:
 		print(breakAtCheck)
 		playBreak.emit(clamp(comboSize,0,2))
@@ -1175,6 +1174,7 @@ func _on_right_ui_high_score() -> void:
 
 func _on_right_ui_maxed_level() -> void:
 	if Globals.NewgroundsToggle:
+		playSFX.emit(9)
 		$Medals/Dark.unlock()
 	
 	fail_screen()
