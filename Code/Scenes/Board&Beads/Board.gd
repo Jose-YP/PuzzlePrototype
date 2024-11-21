@@ -707,6 +707,7 @@ func check_breakers() -> void:
 				print("UNLCOK AIR")
 				$Medals/Air.unlock()
 	
+	print(breakAtCheck)
 	#Have all breaker ripples occur at once
 	if shouldBreak:
 		print(breakAtCheck)
@@ -730,13 +731,15 @@ func check_breakers() -> void:
 				breakers.erase(usingBreakerArray[i])
 			else: continue
 			
-			#print("BREAK AT:", breakAt)
-			#print("BREAKER CHAINS:", breakerChains)
+			print("BREAK AT:", breakAt)
+			print("BREAKER CHAINS:", breakerChains)
 			#Once chains are finalized you can't normally find the amoount of links so find them before this
 			beadsSize = 0
 			
 			#Break every chain found at ith breaker bead
 			for j in range(breakAt[i].size()):
+				print("\n",breakAt[i],"OINOIFAS",breakAt[i][j], "\n")
+				
 				#Check if bead already broke
 				if not is_instance_valid(breakAt[i][j]):
 					continue
@@ -753,6 +756,7 @@ func check_breakers() -> void:
 				break_order([breakAt[i][j]], breakIndex)
 				await self.brokeAll
 				RUI.update_display(beadsSize,linksSize,comboSize, true)
+				print(j)
 			
 			comboSize += 1
 			#Should probably find a way to display multiple chain breaks at once
@@ -807,6 +811,7 @@ func find_chains(addScore: bool) -> void:
 func break_order(chainPart, holdNum) -> void:
 	#First find every adjacent bead to break in the future
 	#They must be connected to the current bead
+	print(chains[holdNum], chainPart)
 	var adjacent: Dictionary = {}
 	for bead in chainPart:
 		#Skip any beads that were already freed
@@ -835,8 +840,11 @@ func break_order(chainPart, holdNum) -> void:
 		return
 	#If there are no adjacent beads left find untouched beads
 	if adjacent.size() != 0:
+		print("FIND UNTOUCHED: ", adjacent.keys(), holdNum)
+		print()
 		break_order(adjacent.keys(), holdNum)
 	else:
+		print("NOT EMPTIED: ", notEmptied, holdNum)
 		break_order([notEmptied.pick_random()], holdNum)
 
 func break_bead(chainPart) -> void:
