@@ -32,6 +32,7 @@
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
 script = ExtResource("1_k3j0q")
+resetScores = true
 pitchShift = 0.25
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_n4oh7")]

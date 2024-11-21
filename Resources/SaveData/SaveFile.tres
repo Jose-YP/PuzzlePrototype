@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Save" load_steps=18 format=3]
+[gd_resource type="Resource" script_class="Save" load_steps=18 format=3 uid="uid://yd521d24gp22"]
 
 [ext_resource type="Script" path="res://Resources/SaveData/SaveMaker.gd" id="1_l2j0a"]
 
