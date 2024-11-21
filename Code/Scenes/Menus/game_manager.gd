@@ -36,13 +36,15 @@ func _ready() -> void:
 	ready_playing(ETCMusic[0])
 	await get_tree().create_timer(.5).timeout
 	
-	FinalGlobal.finalReady(Newgrounds)
-	
 	if resetScores:
-		Globals.save.reset_scores() 
+		Globals.save.reset_scores()
+		NGSaveSetup.sync_files() 
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()
+		NGSaveSetup.sync_files()
+	
+	FinalGlobal.finalReady(Newgrounds)
 	
 	await get_tree().create_timer(.5).timeout
 	

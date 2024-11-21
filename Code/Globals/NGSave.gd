@@ -79,6 +79,7 @@ func NG2Save() -> void:
 
 func sync_files() -> void:
 	save = Globals.save.duplicate()
+	print(save.HiScores, save.username, save.joy_action_events)
 	scores = save.HiScores
 	username = save.username
 	
