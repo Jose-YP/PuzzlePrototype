@@ -37,8 +37,7 @@ func _ready() -> void:
 	await get_tree().create_timer(.5).timeout
 	
 	if resetScores:
-		Globals.save.reset_scores()
-		NGSaveSetup.sync_files() 
+		Globals.save.reset_scores() 
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()

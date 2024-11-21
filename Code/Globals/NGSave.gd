@@ -1,25 +1,30 @@
 extends Node
 
 var save_dict: Dictionary
-var save: Save 
-var scores
-var username
+var save: Save
+var scores ={"999999": [1, "NAN"],
+ "000000": [5, "NAN"], 
+ "111111": [4, "NAN"],
+ "222222": [3, "NAN"],
+ "333333": [2, "NAN"], 
+ "444444": [1, "NAN"]}
+var username = "LVY"
 #
-var control_type
-var controls_key
-var controls_joy
+var control_type = 0
+var controls_key = set_inital_controls(0)
+var controls_joy = set_inital_controls(1)
 #
-var BGColor
-var earth_color
-var sea_color
-var air_color
-var light_color
-var dark_color
-var breaker_color
+var BGColor= 0
+var earth_color = Color(0.886, 0.224, 0.212)
+var sea_color = Color(0.137, 0.6, 0.91)
+var air_color = Color(1,1,1)
+var light_color = Color(0.898, 0.91, 0.137)
+var dark_color = Color(0.843, 0.251, 0.663)
+var breaker_color = Color(0.514, 0.969, 0.557)
 #
-var master
-var music
-var sfx
+var master = 100
+var music = 100
+var sfx = 100
 
 #______________________________
 #INITALIZATION
@@ -145,3 +150,17 @@ func convert_joys_to_usable(joys) -> Dictionary:
 	
 	return local_dict
 
+func set_inital_controls(type) -> Dictionary:
+	var keyboard_action_events: Dictionary = {}
+	var joy_action_events: Dictionary = {}
+	InputMap.load_from_project_settings()
+	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
+	for action in actions:
+		print("SETTING DEFAULT")
+		var events = InputMap.action_get_events(action)
+		keyboard_action_events[action] = events[0]
+		joy_action_events[action] = events[1]
+	
+	if type == 0:
+		return keyboard_action_events
+	return joy_action_events
