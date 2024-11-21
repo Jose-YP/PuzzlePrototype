@@ -744,10 +744,11 @@ func check_breakers() -> void:
 				if not is_instance_valid(breakAt[i][j]):
 					continue
 				
-				var breakIndex = find_linkNum_index(breakerChains[j])
+				var breakIndex = part_of_chain_index(breakAt[i][j])
 				var finalScore = rules.chainComboMult(chainScores[breakIndex], comboSize)
-				beadsSize = breakerChains[j].size()
-				brokenBeads += breakerChains[j].size()
+				print("WHICH INDEX IS BETTER: ", part_of_chain_index(breakAt[i][j]), find_linkNum_index(breakerChains[j]))
+				beadsSize = chains[breakIndex].size()
+				brokenBeads += beadsSize
 				linksSize = chainLinkNum[breakIndex]
 				score += finalScore
 				print("From ",breakAt[i][j])
@@ -959,6 +960,12 @@ func find_linkNum_index(chain) -> int:
 	if index == -1:
 		return 0
 	return index
+
+func part_of_chain_index(part) -> int:
+	for i in range(chains.size()):
+		if chains[i].find(part) != -1:
+			return i
+	return -1
 
 #______________________________
 #CONVERSION
