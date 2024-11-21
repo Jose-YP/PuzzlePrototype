@@ -71,12 +71,19 @@ func NG2Save() -> void:
 	save.keyboard_action_events = convert_keys_to_usable(controls_key)
 	save.joy_action_events = convert_joys_to_usable(controls_joy)
 	
-	save.earthColor = Color.html(earth_color)
-	save.seaColor = Color.html(sea_color)
-	save.airColor = Color.html(air_color)
-	save.lightColor = Color.html(light_color)
-	save.darkColor = Color.html(dark_color)
-	save.breakerColor = Color.html(breaker_color)
+	save.earthColor = earth_color
+	save.seaColor = sea_color
+	save.airColor = air_color
+	save.lightColor = light_color
+	save.darkColor = dark_color
+	save.breakerColor = breaker_color
+	
+	#save.earthColor = Color.html(earth_color)
+	#save.seaColor = Color.html(sea_color)
+	#save.airColor = Color.html(air_color)
+	#save.lightColor = Color.html(light_color)
+	#save.darkColor = Color.html(dark_color)
+	#save.breakerColor = Color.html(breaker_color)
 	
 	save.masterAudioLeve = master
 	save.musicAudioLeve = music
@@ -118,6 +125,9 @@ func convert_to_key_save(keys) -> Dictionary:
 func convert_keys_to_usable(keys) -> Dictionary:
 	var local_dict: Dictionary = {}
 	
+	print("\n\n", keys)
+	
+	#For every key in the 
 	for key in keys:
 		local_dict[key] = InputEventKey.new()
 		local_dict[key].set_physical_keycode(keys[key])
@@ -157,9 +167,12 @@ func set_inital_controls(type) -> Dictionary:
 	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
 	for action in actions:
 		print("SETTING DEFAULT")
-		var events = InputMap.action_get_events(action)
-		keyboard_action_events[action] = events[0]
-		joy_action_events[action] = events[1]
+		if type == 0:
+			var events: Array[InputEvent] = InputMap.action_get_events(action)
+			keyboard_action_events[action] = events[0]
+		else:
+			var events: Array[InputEvent] = InputMap.action_get_events(action)
+			joy_action_events[action] = events[1]
 	
 	if type == 0:
 		return keyboard_action_events

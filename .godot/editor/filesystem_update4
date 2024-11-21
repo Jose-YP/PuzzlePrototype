@@ -15,3 +15,5 @@ res://Code/Globals/NGSave.gd
 res://Code/Scenes/Menus/game_manager.gd
 res://Code/Globals/FinalGlobal.gd
 res://addons/newgrounds/scripts/newgrounds_cloudsave.gd
+res://Resources/SaveData/SaveMaker.gd
+res://addons/newgrounds/scripts/newgrounds_request.gd

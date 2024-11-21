@@ -68,18 +68,15 @@ func load_game(save_slot:int = 1):
 		if scr and scr.can_instantiate():
 			var newdd = scr.new();
 			var initial_vals = newdd._cloud_save();
-			print("\n\n\n",initial_vals)
 			for i in initial_vals.keys():
 				print("\n", i, initial_vals[i])
 				new_node.set(i, initial_vals[i])
 		
 		# Now we set the remaining variables.
-		print(node_data)
-		
 		for i in node_data.keys():
 			if i == "__node_path" or i == "__node_scene_path":
 				continue
-			print("set %s to %s" % [i, node_data[i]])
+			#print("set %s to %s" % [i, node_data[i]])
 			new_node.set(i, node_data[i])
 			if new_node.has_method("_cloud_set_property"):
 				new_node.call("_cloud_set_property", i, node_data[i])

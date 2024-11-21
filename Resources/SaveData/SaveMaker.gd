@@ -21,7 +21,7 @@ class_name Save
 @export_category("Controls")
 @export_enum("KEYBOARD","GAMEPAD") var input_type: int = 0
 @export var keyboard_action_events: Dictionary = {}
-@export var joy_action_events: Dictionary ={}
+@export var joy_action_events: Dictionary = {}
 @export var reset: bool = true
 
 #PREFERED COLORS

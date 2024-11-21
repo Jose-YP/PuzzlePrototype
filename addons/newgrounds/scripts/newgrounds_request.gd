@@ -145,6 +145,7 @@ func _request_completed(result, response_code, headers, body):
 			on_error.emit(body_string);
 		return
 	
+	print(body_string)
 	var res = JSON.parse_string(body_string)
 	# res null, response_code 405 not allowed when under maintenance
 	if !res.success:
