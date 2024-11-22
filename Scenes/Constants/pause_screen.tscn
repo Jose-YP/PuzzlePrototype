@@ -107,11 +107,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "PRESS BREAK "
+text = "PRESS "
 fit_content = true
 
 [node name="RetryTexture" type="TextureRect" parent="VBoxContainer/RETRY"]
-visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 texture = SubResource("Texture2D_btr6s")
@@ -135,10 +134,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "PRESS FLIP"
+text = "PRESS"
+fit_content = true
 
 [node name="QuitTexture" type="TextureRect" parent="VBoxContainer/QUIT"]
-visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 texture = SubResource("Texture2D_d0adn")

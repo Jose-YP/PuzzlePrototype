@@ -30,6 +30,8 @@ func unpause() -> void:
 	unpauseSong.emit()
 
 func entered_board(value) -> void:
+	ControllerIcons.refresh()
+	
 	if value:
 		$VBoxContainer/RETRY.show()
 		$VBoxContainer/QUIT.show()
