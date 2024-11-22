@@ -241,16 +241,11 @@ func BG_react(mode: Globals.TempModes) -> void:
 	
 	$ParallaxBackground.color_change()
 
-
 func _on_color_rect_gui_input(event):
-	if event is InputEventMouseButton:
+	if not readied and event is InputEventMouseButton:
 		if event.get_button_index() == 1:
 			ready_playing(ETCMusic[0])
 			var loadedTween = get_tree().create_tween()
 			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
 			$MainMenu.emit_signal("readied")
 			readied = true
-
-
-func _on_color_rect_focus_entered():
-	print("IOJFNASAIOFDNSAFNIJKO")

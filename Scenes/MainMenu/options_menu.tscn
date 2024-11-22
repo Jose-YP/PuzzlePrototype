@@ -1,8 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=13 format=3 uid="uid://1malajsj05pg"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="2_kx4ek"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_m2cxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm0iy"]
+bg_color = Color(0, 0.137255, 0.231373, 0.858824)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="Texture2D" id="Texture2D_batfw"]
 resource_local_to_scene = false
@@ -84,6 +95,7 @@ offset_right = 389.0
 offset_bottom = 760.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_lm0iy")
 
 [node name="VBox" type="VBoxContainer" parent="Main"]
 layout_mode = 2

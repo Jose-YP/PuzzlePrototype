@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://oon2u5ecyv51"]
+[gd_scene load_steps=4 format=3 uid="uid://oon2u5ecyv51"]
 
 [ext_resource type="StyleBox" uid="uid://d06bmaghd8dmw" path="res://Themes/ButtonStyle/RightUI.tres" id="1_0dmvh"]
 [ext_resource type="Script" path="res://Code/Scenes/UI/chain_totals.gd" id="1_fssn4"]
+[ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="3_npf68"]
 
 [node name="ChainTotals" type="PanelContainer"]
-modulate = Color(1, 1, 1, 0.572549)
-z_index = 1
+modulate = Color(1, 1, 1, 0.592157)
 custom_minimum_size = Vector2(150, 151)
 offset_right = 200.0
 offset_bottom = 70.0
@@ -27,6 +27,7 @@ layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_npf68")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2

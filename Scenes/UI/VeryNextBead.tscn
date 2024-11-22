@@ -3,16 +3,10 @@
 [ext_resource type="Script" path="res://Code/Scenes/UI/VeryNextBead.gd" id="1_4p6su"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="2_nbrm8"]
 [ext_resource type="Texture2D" uid="uid://bumnvgcgjkk5y" path="res://Art/UI/Next_iconm.png" id="2_ua17o"]
+[ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="3_te4n5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlyyt"]
 texture = ExtResource("2_ua17o")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0g11"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 1)
-corner_radius_top_left = 15
-corner_radius_bottom_right = 17
-corner_radius_bottom_left = 16
-corner_detail = 4
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -50,11 +44,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_mlyyt")
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Next"]
 z_index = -1
-custom_minimum_size = Vector2(98, 94)
+custom_minimum_size = Vector2(89, 81)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_a0g11")
+theme_override_styles/panel = ExtResource("3_te4n5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Next"]
 layout_mode = 2

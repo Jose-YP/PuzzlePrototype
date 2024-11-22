@@ -16,3 +16,11 @@ res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/Constants/pause_screen.tscn
 res://Scenes/MainMenu/MainMenu.tscn
+res://Themes/ButtonStyle/Pannel.tres
+res://Scenes/UI/VeryNextBead.tscn
+res://Scenes/UI/BreakProgress.tscn
+res://Scenes/UI/newSuperProgress.tscn
+res://Scenes/UI/left_ui.tscn
+res://Scenes/MainMenu/how_2_play.tscn
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Code/Scenes/Menus/game_manager.gd

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cd2r7vn8ipum5"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
-[ext_resource type="StyleBox" uid="uid://bjn6tigheb0xe" path="res://Themes/ButtonStyle/BreakProgress.tres" id="2_pt1pi"]
 [ext_resource type="PackedScene" uid="uid://cdsrmwnve1gv3" path="res://Scenes/UI/newSuperProgress.tscn" id="2_wrft0"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_et21x"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="4_00tul"]
+[ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="4_4dnh8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bp5l0"]
 
@@ -23,13 +23,6 @@ script = ExtResource("1_7383g")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bp5l0")
 
-[node name="PanelContainer" type="PanelContainer" parent="Progress"]
-custom_minimum_size = Vector2(122, 115)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = ExtResource("2_pt1pi")
-
 [node name="TextureProgressBar" parent="Progress" instance=ExtResource("2_wrft0")]
 layout_mode = 2
 rounded = true
@@ -42,6 +35,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("4_4dnh8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Info"]
 layout_mode = 2
