@@ -185,3 +185,4 @@ bus = &"BoardSFX"
 
 [connection signal="pressed" from="Summn" to="." method="_on_summn_pressed"]
 [connection signal="pressed" from="Gone" to="." method="remove_displays"]
+[connection signal="timeout" from="Timer" to="." method="remove_displays"]

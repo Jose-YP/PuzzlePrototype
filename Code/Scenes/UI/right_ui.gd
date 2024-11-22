@@ -99,8 +99,8 @@ func show_display() -> PanelContainer:
 	chainTotalArray.append(chainDisplay)
 	chainDisplay.connect("remove",hide_display)
 	
-	var displayTween = self.create_tween()
-	displayTween.tween_property(chainDisplay, "modulate", Color.WHITE, chainDisplayTiming)
+	var displayTween = self.create_tween().set_ease(Tween.EASE_IN)
+	displayTween.tween_property(chainDisplay, "modulate", Color.WHITE, chainDisplayTiming * .5)
 	chainDisplay.text.clear()
 	return chainDisplay
 
