@@ -80,9 +80,9 @@ HiScores = {
 "999999": [1, "NAN"]
 }
 username = "LVY"
-masterAudioLeve = 100.0
-musicAudioLeve = 100.0
-sfxAudioLeve = 100.0
+masterAudioLeve = 70.0
+musicAudioLeve = 70.0
+sfxAudioLeve = 70.0
 input_type = 0
 keyboard_action_events = {
 "Break": SubResource("InputEventKey_8tvk8"),

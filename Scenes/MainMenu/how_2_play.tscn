@@ -198,7 +198,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center] AS YOU PLACE AND DESTROY BEADS, THE BREAK METER WILL GROW, 
-ONCE FILLED YOU'LL GAIN A BREAK BEAD THAT'LL DESTROY ANY CHAIN IT TOUCHES"
+ONCE FILLED YOU'LL GAIN A BREAKER BEAD THAT'LL DESTROY ANY CHAIN IT TOUCHES"
 
 [node name="HBoxContainer" type="GridContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 layout_mode = 2
@@ -265,7 +265,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
 text = "[center]Break Meter
-When filled, it'll increment by 1. You can store as many as you like"
+When filled, it'll store a breaker bead. You can store as many as you like"
 
 [node name="RegularBead" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
@@ -320,7 +320,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]CONTROLS"
+text = "[center]DEFAULT CONTROLS"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)

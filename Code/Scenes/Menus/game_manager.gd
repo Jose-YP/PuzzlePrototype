@@ -33,20 +33,22 @@ var readied: bool = false
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
-	ready_playing(ETCMusic[0])
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(1).timeout
 	
+	print("HUH")
 	FinalGlobal.finalReady(Newgrounds)
 	
-	if resetScores:
-		Globals.save.reset_scores() 
+	#if resetScores:
+		#Globals.save.reset_scores() 
 	
-	if Globals.all_black():
-		Globals.save.reset_colors()
-		NGSaveSetup.sync_files()
+	#if Globals.all_black():
+		#Globals.save.reset_colors()
+		#NGSaveSetup.sync_files()
 	
-	await get_tree().create_timer(.5).timeout
-	
+	await get_tree().create_timer(1).timeout
+	ready_playing(ETCMusic[0])
+	var loadedTween = get_tree().create_tween()
+	loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
 	$MainMenu.emit_signal("readied")
 	readied = true
 

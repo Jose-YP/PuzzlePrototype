@@ -1,3 +1,4 @@
+res://Audio/default_bus_layout.tres
 res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
@@ -6,7 +7,15 @@ res://Themes/ButtonStyle/BreakProgress.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.res
+res://Code/Scenes/Menus/game_manager.gd
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/UI/right_ui.tscn
-res://Code/Scenes/Board&Beads/Board.gd
+res://Resources/SaveData/SaveFile.tres
+res://Code/Globals/NGSave.gd
+res://Resources/SaveData/SaveMaker.gd
+res://Code/Globals/FinalGlobal.gd
+res://addons/newgrounds/scripts/newgrounds.tscn
+res://addons/controller_icons/ControllerIcons.gd
+res://Scenes/Constants/pause_screen.tscn
+res://Scenes/MainMenu/how_2_play.tscn

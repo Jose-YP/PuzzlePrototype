@@ -32,7 +32,6 @@
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
 script = ExtResource("1_k3j0q")
-resetScores = true
 pitchShift = 0.25
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_n4oh7")]
@@ -144,24 +143,24 @@ process_mode = 1
 
 [node name="MainMenu" type="AudioStreamPlayer" parent="ETCMusic"]
 stream = ExtResource("19_amk13")
-volume_db = -15.0
+volume_db = -10.0
 bus = &"ManageMusic"
 
 [node name="EndRun" type="AudioStreamPlayer" parent="ETCMusic"]
 stream = ExtResource("20_i5q3o")
-volume_db = -15.0
+volume_db = -10.0
 bus = &"ManageMusic"
 
 [node name="BoardMusic" type="Node" parent="."]
 
 [node name="Lv1" type="AudioStreamPlayer" parent="BoardMusic"]
 stream = ExtResource("21_k23hk")
-volume_db = -15.0
+volume_db = -10.0
 bus = &"ManageMusic"
 
 [node name="Lv2" type="AudioStreamPlayer" parent="BoardMusic"]
 stream = ExtResource("22_5iqsk")
-volume_db = -15.0
+volume_db = -10.0
 bus = &"ManageMusic"
 
 [node name="MenuSFX" type="Node" parent="."]
@@ -195,6 +194,13 @@ visible = false
 
 [node name="NewgroundsRequest" type="HTTPRequest" parent="."]
 script = ExtResource("21_6ewy6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -27.0
+offset_top = -20.0
+offset_right = 999.0
+offset_bottom = 778.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
