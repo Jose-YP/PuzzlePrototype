@@ -1,9 +1,9 @@
+MarginContainer
+VBoxContainer
+PanelContainer
 RichTextLabel
 ColorRect
 Panel
-PanelContainer
-VBoxContainer
-MarginContainer
 HBoxContainer
 NewgroundsMedalUnlocker
 Button

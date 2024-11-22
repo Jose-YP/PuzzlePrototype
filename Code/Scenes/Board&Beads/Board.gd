@@ -703,7 +703,7 @@ func check_breakers() -> void:
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
 			
-			if Globals.NewgroundsToggle and breakAt[i].size() >= 3:
+			if Globals.NewgroundsToggle and breakAt[-1].size() >= 3:
 				print("UNLCOK AIR")
 				$Medals/Air.unlock()
 	
@@ -746,7 +746,7 @@ func check_breakers() -> void:
 				
 				var breakIndex = part_of_chain_index(breakAt[i][j])
 				var finalScore = rules.chainComboMult(chainScores[breakIndex], comboSize)
-				print("WHICH INDEX IS BETTER: ", part_of_chain_index(breakAt[i][j]), find_linkNum_index(breakerChains[j]))
+				
 				beadsSize = chains[breakIndex].size()
 				brokenBeads += beadsSize
 				linksSize = chainLinkNum[breakIndex]
@@ -951,15 +951,6 @@ func find_specific_chains(breakerLinks) -> Array:
 					returnChains[link] = link
 	
 	return returnChains.keys()
-
-func find_linkNum_index(chain) -> int:
-	var index: int = chains.find(chain)
-	for i in range(chains.size()):
-		if chains[i] == chain:
-			return i
-	if index == -1:
-		return 0
-	return index
 
 func part_of_chain_index(part) -> int:
 	for i in range(chains.size()):

@@ -4,7 +4,7 @@ res://addons/newgrounds/examples/newgrounds_debug.tscn::a5fa6ecc7ce9b15ad04a07fc
 res://addons/newgrounds/scripts/newgrounds.tscn::1eaceee76ba5707bc659f77a9baa469d::1732288120::res://.godot/exported/133200997/export-7c3fa359aab9a452786db3b51334560a-newgrounds.scn
 res://addons/newgrounds/newgrounds_user_avatar.tscn::d31b8ca2b159e082b6bb7b4049b20e78::1706200739::res://.godot/exported/133200997/export-22b4140e127bca1ea9825d08bf8c2c93-newgrounds_user_avatar.scn
 res://Resources/SaveData/SaveFile.tres::a41929acbebd8a5dc6a9bac27d5ff65d::1732247211::res://.godot/exported/133200997/export-4aedc94c3d7824f576412c0dfa44dd4a-SaveFile.res
-res://Scenes/Board&Beads/Board.tscn::c4802dfbc342ecd1ddd3185ee1aef05e::1732300037::res://.godot/exported/133200997/export-8d6da65ae42f71477fecddc675f9e592-Board.scn
+res://Scenes/Board&Beads/Board.tscn::e46503f1c3b5eb9b4d1336a4e166ea55::1732300120::res://.godot/exported/133200997/export-8d6da65ae42f71477fecddc675f9e592-Board.scn
 res://Scenes/Board&Beads/fail_screen.tscn::911ad16599573d56bc618baca57231a6::1718150217::res://.godot/exported/133200997/export-2e367e8bf9069deac8cc4fdd98cf8d05-fail_screen.scn
 res://Scenes/Board&Beads/FullBead.tscn::ea78d92c04669561633b101815358847::1729961103::res://.godot/exported/133200997/export-c5516d59c11245cea9e46c43558e226b-FullBead.scn
 res://Scenes/Board&Beads/HighScoreScreen.tscn::dbff42073260ad11354009f348d72e4f::1720054614::res://.godot/exported/133200997/export-802b8affd20bfe3fe43e7a16cd1bf190-HighScoreScreen.scn
@@ -52,7 +52,7 @@ res://addons/newgrounds/imported_medals/soul_breaker.tres::7745d0a06b0cd1827b4ee
 res://Scenes/Constants/connected.tscn::b76ed1a81373c1874231d1906d3c0905::1718650020::res://.godot/exported/133200997/export-5758ab85e271a9706c3572cb2a7fe692-connected.scn
 res://Scenes/Constants/load_screen.tscn::1cdbd9dbc003d4708e34d08a8f7c0c22::1717032522::res://.godot/exported/133200997/export-7dccf208a2edfbe0cf2cb0ea08d46bb8-load_screen.scn
 res://Scenes/Constants/parallax_background.tscn::d0dbf068acc4292ecf3cedf76e2b8e70::1720484647::res://.godot/exported/133200997/export-8e20489ec1d623e2fbc57187fa5b7433-parallax_background.scn
-res://Scenes/Constants/pause_screen.tscn::98dcff90046bc9a2efc9c647531dbd58::1732300038::res://.godot/exported/133200997/export-ba27f6e280be21c7234ae554a16bc165-pause_screen.scn
+res://Scenes/Constants/pause_screen.tscn::98dcff90046bc9a2efc9c647531dbd58::1732300184::res://.godot/exported/133200997/export-ba27f6e280be21c7234ae554a16bc165-pause_screen.scn
 res://Scenes/Constants/ripple.tscn::a6f12bcb15484c90443da3026fb36d61::1729961104::res://.godot/exported/133200997/export-76514a85eb99104b178f35e2ebc87e8f-ripple.scn
 res://Scenes/Constants/DuoDisplay.tscn::85943e4df27d9fbb98642071577ad382::1720235757::res://.godot/exported/133200997/export-e1817809cd2e19bb8c2e44358832fcd8-DuoDisplay.scn
 res://Scenes/UI/all_beads.tscn::3ed95e00ec7923051ab00987dc14609a::1729976560::res://.godot/exported/133200997/export-8bbdb20c298b54d5a7efe5123fb78b3e-all_beads.scn

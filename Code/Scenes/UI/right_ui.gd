@@ -117,7 +117,7 @@ func update_display(beads, links, chains, breaker = false) -> void:
 	else:
 		chainText = str(chainText, chains, " Chain")
 	
-	display.text.append_text(str(beads," Beads\n", links," Links",chainText))
+	display.text.append_text(str("[center]",beads," Beads\n", links," Chunks",chainText))
 	display.displayTime.start()
 	
 	if Globals.NewgroundsToggle:

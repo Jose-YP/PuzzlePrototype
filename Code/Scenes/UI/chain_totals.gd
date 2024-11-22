@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var text: RichTextLabel = $RichTextLabel
+@onready var text: RichTextLabel = $VBoxContainer/PanelContainer/RichTextLabel
 @onready var displayTime: Timer = $Timer
 
 signal remove(who)
