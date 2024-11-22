@@ -703,7 +703,7 @@ func check_breakers() -> void:
 			breakAt.append(breakAtCheck[i])
 			usingBreakerArray.append(breakerArray[i])
 			
-			if Globals.NewgroundsToggle and usingBreakerArray.size() >= 3:
+			if Globals.NewgroundsToggle and breakAt[i].size() >= 3:
 				print("UNLCOK AIR")
 				$Medals/Air.unlock()
 	
