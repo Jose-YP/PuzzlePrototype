@@ -34,23 +34,16 @@ var readied: bool = false
 #-----------------------------------------
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
-	
-	print("HUH")
 	FinalGlobal.finalReady(Newgrounds)
 	
-	#if resetScores:
-		#Globals.save.reset_scores() 
+	if resetScores:
+		Globals.save.reset_scores() 
 	
-	#if Globals.all_black():
-		#Globals.save.reset_colors()
-		#NGSaveSetup.sync_files()
+	if Globals.all_black():
+		Globals.save.reset_colors()
+		NGSaveSetup.sync_files()
 	
 	await get_tree().create_timer(1).timeout
-	ready_playing(ETCMusic[0])
-	var loadedTween = get_tree().create_tween()
-	loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
-	$MainMenu.emit_signal("readied")
-	readied = true
 
 func _process(_delta) -> void:
 	if readied:
@@ -247,3 +240,17 @@ func BG_react(mode: Globals.TempModes) -> void:
 			$ParallaxBackground.currentMode = Globals.TempModes.DEFAULT
 	
 	$ParallaxBackground.color_change()
+
+
+func _on_color_rect_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 1:
+			ready_playing(ETCMusic[0])
+			var loadedTween = get_tree().create_tween()
+			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
+			$MainMenu.emit_signal("readied")
+			readied = true
+
+
+func _on_color_rect_focus_entered():
+	print("IOJFNASAIOFDNSAFNIJKO")
