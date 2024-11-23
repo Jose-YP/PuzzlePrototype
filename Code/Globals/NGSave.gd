@@ -15,12 +15,12 @@ var controls_key = set_inital_controls(0)
 var controls_joy = set_inital_controls(1)
 #
 var BGColor= 0
-var earth_color = Color(0.886, 0.224, 0.212)
-var sea_color = Color(0.137, 0.6, 0.91)
-var air_color = Color(1,1,1)
-var light_color = Color(0.898, 0.91, 0.137)
-var dark_color = Color(0.843, 0.251, 0.663)
-var breaker_color = Color(0.514, 0.969, 0.557)
+var earth_color = Color(0.886, 0.224, 0.212).to_html()
+var sea_color = Color(0.137, 0.6, 0.91).to_html()
+var air_color = Color(1,1,1).to_html()
+var light_color = Color(0.898, 0.91, 0.137).to_html()
+var dark_color = Color(0.843, 0.251, 0.663).to_html()
+var breaker_color = Color(0.514, 0.969, 0.557).to_html()
 #
 var master = 70
 var music = 70
@@ -123,7 +123,15 @@ func convert_keys_to_usable(keys) -> Dictionary:
 	#For every key in the 
 	for key in keys:
 		local_dict[key] = InputEventKey.new()
-		local_dict[key].set_physical_keycode(keys[key])
+		print(key, keys[key])
+		
+		if keys[key] is String:
+			print("VDSOINSDVINO0")
+			keys = set_inital_controls(0)
+			local_dict[key].set_physical_keycode(keys[key])
+		
+		else:
+			local_dict[key].set_physical_keycode(keys[key])
 	
 	return local_dict
 
@@ -143,6 +151,10 @@ func convert_joys_to_usable(joys) -> Dictionary:
 	var local_dict: Dictionary = {}
 	
 	for joy in joys:
+		if joys[joy] is String:
+			print("OH NO IUFEUFNIOFEJNOVDJNO")
+			joys = set_inital_controls(1)
+		
 		if joys[joy] >= 0:
 			local_dict[joy] = InputEventJoypadButton.new()
 			local_dict[joy].set_button_index(joys[joy])
@@ -161,10 +173,10 @@ func set_inital_controls(type) -> Dictionary:
 	for action in actions:
 		if type == 0:
 			var events: Array[InputEvent] = InputMap.action_get_events(action)
-			keyboard_action_events[action] = events[0]
+			keyboard_action_events[action] = events[0].get_physical_keycode()
 		else:
 			var events: Array[InputEvent] = InputMap.action_get_events(action)
-			joy_action_events[action] = events[1]
+			joy_action_events[action] = events[1].get_button_index()
 	
 	if type == 0:
 		return keyboard_action_events
