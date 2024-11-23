@@ -12,3 +12,4 @@ res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Code/Globals/NGSave.gd
 res://addons/newgrounds/scripts/newgrounds_cloudsave.gd
+res://Resources/SaveData/SaveMaker.gd

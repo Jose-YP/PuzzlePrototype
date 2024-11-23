@@ -106,7 +106,6 @@ func reset_scores():
 			"444444":[1,"NAN"]}
 
 func should_reset_controls():
-	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
 	var should_reset = keyboard_action_events.size() < 8 or joy_action_events.size() < 8
 	for item in keyboard_action_events:
 		if keyboard_action_events[item] == null or joy_action_events[item] == null:
