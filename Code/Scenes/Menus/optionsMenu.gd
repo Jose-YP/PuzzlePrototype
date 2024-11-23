@@ -137,6 +137,7 @@ func _on_reset_colors_pressed():
 
 func _on_bg_color_pressed():
 	switchBG.emit()
+	Globals.save.save(Globals.NewgroundsToggle)
 
 #-----------------------------------------
 #CONTROLLER REMAPPING

@@ -43,6 +43,9 @@ func _ready() -> void:
 		Globals.save.reset_colors()
 		NGSaveSetup.sync_files()
 	
+	if Globals.save.background_id == 1:
+		$ParallaxBackground.starting_change()
+	
 	await get_tree().create_timer(1).timeout
 
 func _process(_delta) -> void:

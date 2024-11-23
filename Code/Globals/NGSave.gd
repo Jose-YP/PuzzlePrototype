@@ -61,6 +61,8 @@ func _cloud_save() -> Dictionary:
 		"controls_key" : controls_key,
 		"controls_joy" : controls_joy,
 		
+		"BGColor" : BGColor,
+		
 		"earth_color" : earth_color,
 		"sea_color" : sea_color,
 		"air_color" : air_color,
@@ -85,12 +87,14 @@ func NG2Save() -> void:
 	save.keyboard_action_events = convert_keys_to_usable(controls_key)
 	save.joy_action_events = convert_joys_to_usable(controls_joy)
 	
-	save.earthColor = earth_color
-	save.seaColor = sea_color
-	save.airColor = air_color
-	save.lightColor = light_color
-	save.darkColor = dark_color
-	save.breakerColor = breaker_color
+	save.background_id = BGColor
+	
+	save.earthColor = Color(earth_color)
+	save.seaColor = Color(sea_color)
+	save.airColor = Color(air_color)
+	save.lightColor = Color(light_color)
+	save.darkColor = Color(dark_color)
+	save.breakerColor = Color(breaker_color)
 	
 	save.masterAudioLeve = master
 	save.musicAudioLeve = music
@@ -105,6 +109,8 @@ func sync_files() -> void:
 	control_type = save.input_type
 	controls_key = convert_to_key_save(save.keyboard_action_events)
 	controls_joy = convert_to_joy_save(save.joy_action_events)
+	
+	BGColor = save.background_id
 	
 	earth_color = save.earthColor.to_html()
 	sea_color = save.seaColor.to_html()

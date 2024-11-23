@@ -43,14 +43,23 @@ func _process(delta) -> void:
 #-----------------------------------------
 #COLOR CHANGE
 #-----------------------------------------
+func starting_change() -> void:
+	dark_mode = false
+	using = modeColors[1]
+	Globals.save.background_id = 1
+	$ColorRect.color = modeColors[1][0]
+	
+
 func switch_mode() -> void:
 	if not tweening:
 		if dark_mode:
 			dark_mode = false
 			using = modeColors[1]
+			Globals.save.background_id = 1
 		else:
 			dark_mode = true
 			using = modeColors[0]
+			Globals.save.background_id = 0
 		
 		color_change(using[0], using[1], using[2])
 
