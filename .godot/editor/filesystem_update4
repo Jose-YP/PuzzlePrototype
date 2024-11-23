@@ -24,3 +24,7 @@ res://Scenes/UI/left_ui.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/Board&Beads/fail_screen.tscn
 res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/MainMenu/score_display.tscn
+res://addons/controller_icons/ControllerIcons.gd
+res://Resources/SaveData/SaveFile.tres
+res://Resources/SaveData/SaveMaker.gd

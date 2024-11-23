@@ -154,13 +154,6 @@ func _on_pause_screen_quit(allowed = true) -> void:
 	if allowed:
 		back_to_menu()
 
-#func play_beggining_load() -> void:
-	#%LevelUp.pitch_scale = .65
-	#%LevelUp.play()
-	#
-	#await %LevelUp.finished
-	#%LevelUp.pitch_scale = 1
-
 func bead_break_SFX() -> void:
 	var pitch = AudioServer.get_bus_effect(6, 0)
 	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)

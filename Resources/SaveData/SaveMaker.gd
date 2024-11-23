@@ -38,6 +38,8 @@ class_name Save
 #SAVE & LOAD
 #______________________________
 func save(NG = false) -> void:
+	should_reset_controls()
+	
 	if NG:
 		NGSaveSetup.sync_files()
 		NGCloudSave.save_game()
@@ -102,6 +104,17 @@ func reset_scores():
 			"222222":[3,"NAN"],
 			"333333":[2,"NAN"],
 			"444444":[1,"NAN"]}
+
+func should_reset_controls():
+	const actions = ["Break","Flip","ui_accept","ui_cancel","ui_down","ui_left","ui_right","ui_up"]
+	var should_reset = keyboard_action_events.size() < 8 or joy_action_events.size() < 8
+	for item in keyboard_action_events:
+		if keyboard_action_events[item] == null or joy_action_events[item] == null:
+			should_reset = true
+			break
+	
+	if should_reset:
+		set_default_controls()
 
 func set_default_controls():
 	InputMap.load_from_project_settings()
