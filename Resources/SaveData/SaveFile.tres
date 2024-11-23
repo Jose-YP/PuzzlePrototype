@@ -72,12 +72,12 @@ physical_keycode = 4194320
 [resource]
 script = ExtResource("1_l2j0a")
 HiScores = {
-"000000": [5, "NAN"],
-"111111": [4, "NAN"],
-"222222": [3, "NAN"],
-"333333": [2, "NAN"],
-"444444": [1, "NAN"],
-"999999": [1, "NAN"]
+"000000": [900, "ERN"],
+"111111": [800, "GAN"],
+"222222": [700, "MRA"],
+"333333": [600, "MLY"],
+"444444": [500, "NAN"],
+"999999": [1000, "LVY"]
 }
 username = "LVY"
 masterAudioLeve = 70.0

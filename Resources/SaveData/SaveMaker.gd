@@ -3,12 +3,12 @@ class_name Save
 
 #SAVE FILE BASICS
 @export_category("Score")
-@export var HiScores: Dictionary = {"999999":[1,"YP!"],
-"000000":[40,"YP!"],
-"111111":[30,"YP!"],
-"222222":[20,"YP!"],
-"333333":[10,"YP!"],
-"444444":[50,"YP!"]}
+@export var HiScores: Dictionary = {"999999": [1000, "LVY"],
+ "000000": [900, "ERN"],
+ "111111": [800, "GAN"],
+ "222222": [700, "MRA"],
+ "333333": [600, "MLY"],
+ "444444": [500, "NAN"]}
 @export var username: String = "LVY"
 
 #AUDIO OPTIONS
@@ -41,8 +41,8 @@ func save(NG = false) -> void:
 	#should_reset_controls()
 	
 	if NG:
-		NGSaveSetup.sync_files()
 		NGCloudSave.save_game()
+		#NGSaveSetup.sync_files()
 	else:
 		ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 

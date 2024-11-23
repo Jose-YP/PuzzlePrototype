@@ -2,17 +2,31 @@ extends Node
 
 var save_dict: Dictionary
 var save: Save
-var scores ={"999999": [1, "NAN"],
- "000000": [5, "NAN"], 
- "111111": [4, "NAN"],
- "222222": [3, "NAN"],
- "333333": [2, "NAN"], 
- "444444": [1, "NAN"]}
+var scores = {"999999": [1000, "LVY"],
+ "000000": [900, "ERN"],
+ "111111": [800, "GAN"],
+ "222222": [700, "MRA"],
+ "333333": [600, "MLY"],
+ "444444": [500, "NAN"]}
 var username = "LVY"
-#
+#Copy pasted from a function
 var control_type = 0
-var controls_key = set_inital_controls(0)
-var controls_joy = set_inital_controls(1)
+var controls_key = {"Break": 59, 
+ "Flip": 72, 
+ "ui_accept": 85, 
+ "ui_cancel": 73, 
+ "ui_down": 83, 
+ "ui_left": 65, 
+ "ui_right": 68, 
+ "ui_up": 87}
+var controls_joy = {"Break": 2, 
+ "Flip": 3, 
+ "ui_accept": 1, 
+ "ui_cancel": 0, 
+ "ui_down": 12, 
+ "ui_left": 13, 
+ "ui_right": 14, 
+ "ui_up": 11}
 #
 var BGColor= 0
 var earth_color = Color(0.886, 0.224, 0.212).to_html()
@@ -180,4 +194,5 @@ func set_inital_controls(type) -> Dictionary:
 	
 	if type == 0:
 		return keyboard_action_events
+	print(joy_action_events)
 	return joy_action_events
