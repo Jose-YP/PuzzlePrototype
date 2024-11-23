@@ -1238,6 +1238,7 @@ func _on_high_score_screen_proceed() -> void:
 	Fail.start_focus()
 
 func _on_mode_switch_pressed():
+	print("oujbfbuikkbjuakbhjas")
 	$Medals/Soul.unlock()
 	switchMode.emit()
 

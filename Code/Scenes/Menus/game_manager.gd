@@ -242,3 +242,4 @@ func _on_color_rect_gui_input(event):
 			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
 			$MainMenu.emit_signal("readied")
 			readied = true
+			$ColorRect.hide()

@@ -38,7 +38,7 @@ class_name Save
 #SAVE & LOAD
 #______________________________
 func save(NG = false) -> void:
-	should_reset_controls()
+	#should_reset_controls()
 	
 	if NG:
 		NGSaveSetup.sync_files()

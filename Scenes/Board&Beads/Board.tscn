@@ -82,6 +82,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ws1u8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ph4i")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_e5ed7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_siyh3")
+action_mode = 0
 
 [node name="UI" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.0392157)
