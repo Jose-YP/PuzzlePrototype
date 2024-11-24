@@ -145,12 +145,11 @@ func _request_completed(result, response_code, headers, body):
 			on_error.emit(body_string);
 		return
 	
-	print(body_string)
+	print("Body Stirng", body_string, typeof(body_string) == TYPE_DICTIONARY, typeof(body_string) == TYPE_STRING)
 	var res = JSON.parse_string(body_string)
 	# res null, response_code 405 not allowed when under maintenance
 	if !res.success:
 		on_error.emit(res.error)
-		
 		resp.error = FAILED
 		resp.error_message = res.error
 		on_response.emit(resp)

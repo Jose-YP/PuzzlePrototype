@@ -99,6 +99,7 @@ func retry_sending_medals_and_highscores():
 	var scrs = _failed_highscore_posts
 	_failed_highscore_posts = [];
 	for scr in scrs:
+		print(_failed_highscore_posts)
 		NG.scoreboard_submit(scr.id, scr.value)
 	
 	save();

@@ -356,6 +356,7 @@ func cloudsave_load_slot(slot_id: int) -> NewgroundsSaveSlot:
 
 func _store_slot_data(slot_data: Dictionary):
 	var slot: NewgroundsSaveSlot
+	print(slot_data.id, save_slots, save_slots.keys())
 	if save_slots.has(slot_data.id):
 		slot = save_slots[slot_data.id]
 		slot.setValuesFromDict(slot_data)

@@ -11,14 +11,14 @@ var scores = {"999999": [1000, "LVY"],
 var username = "LVY"
 #Copy pasted from a function
 var control_type = 0
-var controls_key = {"Break": 59, 
- "Flip": 72, 
- "ui_accept": 85, 
- "ui_cancel": 73, 
- "ui_down": 83, 
- "ui_left": 65, 
- "ui_right": 68, 
- "ui_up": 87}
+var controls_key = {"Break": 86, 
+ "Flip": 67, 
+ "ui_accept": 90, 
+ "ui_cancel": 88, 
+ "ui_down": 4194322, 
+ "ui_left": 4194319,
+ "ui_right": 4194321,
+ "ui_up": 4194320}
 var controls_joy = {"Break": 2, 
  "Flip": 3, 
  "ui_accept": 1, 
@@ -28,7 +28,7 @@ var controls_joy = {"Break": 2,
  "ui_right": 14, 
  "ui_up": 11}
 #
-var BGColor= 0
+var BGColor = 0
 var earth_color = Color(0.886, 0.224, 0.212).to_html()
 var sea_color = Color(0.137, 0.6, 0.91).to_html()
 var air_color = Color(1,1,1).to_html()
@@ -50,8 +50,6 @@ func _ready() -> void:
 #SAVE MANAGEMENT
 #______________________________
 func _cloud_save() -> Dictionary:
-	save = Globals.save.duplicate()
-	
 	save_dict = {
 		"file" : save,
 		"scores" : scores,
@@ -77,6 +75,46 @@ func _cloud_save() -> Dictionary:
 	
 	return save_dict
 
+func _cloud_set_property(property, value):
+	match property:
+		"scores":
+			scores = value
+		"username":
+			username = value
+		"control_type":
+			control_type = value
+		"controls_key":
+			controls_key = value
+		"controls_joy":
+			controls_joy = value
+		
+		"BGColor":
+			BGColor = value
+		
+		"earth_color":
+			earth_color = value
+		"sea_color":
+			sea_color = value
+		"air_color":
+			air_color = value
+		"light_color":
+			light_color = value
+		"dark_color":
+			dark_color = value
+		"breaker_color":
+			breaker_color = value
+		
+		"master":
+			master = value
+		"music":
+			music = value
+		"sfx":
+			sfx = value
+
+func _on_loaded():
+	print("SaveData has been loaded.")
+	print(air_color)
+
 func NG2Save() -> void:
 	save = Globals.save
 	save.HiScores = scores
@@ -101,7 +139,7 @@ func NG2Save() -> void:
 	save.sfxAudioLeve = sfx
 
 func sync_files() -> void:
-	save = Globals.save.duplicate()
+	save = Globals.save
 	print(save.HiScores, save.username, save.joy_action_events)
 	scores = save.HiScores
 	username = save.username

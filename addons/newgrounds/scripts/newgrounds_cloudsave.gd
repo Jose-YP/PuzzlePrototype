@@ -23,7 +23,8 @@ func save_game(save_slot: int = 1):
 
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
-
+		print(node_data)
+		
 		save_string += Marshalls.utf8_to_base64(json_string) + "\n"
 
 	save_string = NG.offline_data.hash_string(save_string);
@@ -69,11 +70,13 @@ func load_game(save_slot:int = 1):
 			print("SCR")
 			var newdd = scr.new();
 			var initial_vals = newdd._cloud_save();
+			print(initial_vals)
 			for i in initial_vals.keys():
-				print("\n", i, initial_vals[i])
+				print("AAAAA\n", i, initial_vals[i])
 				new_node.set(i, initial_vals[i])
 		
 		# Now we set the remaining variables.
+		print("\n", node_data.keys())
 		for i in node_data.keys():
 			if i == "__node_path" or i == "__node_scene_path":
 				continue

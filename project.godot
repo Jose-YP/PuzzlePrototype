@@ -23,8 +23,8 @@ driver/mix_rate.web=44100
 
 [autoload]
 
-NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 Globals="*res://Code/Globals/Globals.gd"
+NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
 NGSaveSetup="*res://Code/Globals/NGSave.gd"
 NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
