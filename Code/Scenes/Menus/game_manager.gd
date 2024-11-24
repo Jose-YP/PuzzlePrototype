@@ -33,8 +33,7 @@ var readied: bool = false
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
-	FinalGlobal.finalReady(Newgrounds)
+	await FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
 		Globals.save.reset_scores() 
@@ -46,7 +45,12 @@ func _ready() -> void:
 	if Globals.save.background_id == 1:
 		$ParallaxBackground.starting_change()
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(.25).timeout
+	
+	$ColorRect/RichTextLabel.clear()
+	$ColorRect.connect("gui_input", start_for_real)
+	$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
+	$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
 
 func _process(_delta) -> void:
 	if readied:
@@ -70,6 +74,18 @@ func _process(_delta) -> void:
 				loopedSong = true
 		
 		loopVal = currentSong.get_playback_position()
+
+func start_for_real(event):
+	if not readied and event is InputEventMouseButton:
+		if event.get_button_index() == 1:
+			ready_playing(ETCMusic[0])
+			var loadedTween = get_tree().create_tween()
+			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
+			$MainMenu.emit_signal("readied")
+			readied = true
+			await loadedTween.finished
+			$ColorRect.hide()
+
 
 #-----------------------------------------
 #SCENE SWITCHING
@@ -236,14 +252,3 @@ func BG_react(mode: Globals.TempModes) -> void:
 			$ParallaxBackground.currentMode = Globals.TempModes.DEFAULT
 	
 	$ParallaxBackground.color_change()
-
-func _on_color_rect_gui_input(event):
-	if not readied and event is InputEventMouseButton:
-		if event.get_button_index() == 1:
-			ready_playing(ETCMusic[0])
-			var loadedTween = get_tree().create_tween()
-			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
-			$MainMenu.emit_signal("readied")
-			readied = true
-			await loadedTween.finished
-			$ColorRect.hide()

@@ -212,7 +212,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]Click the screen to start"
+text = "[center]Wait a second"
 
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
@@ -221,6 +221,3 @@ text = "[center]Click the screen to start"
 [connection signal="quit" from="PauseScreen" to="." method="_on_pause_screen_quit"]
 [connection signal="retry" from="PauseScreen" to="." method="on_board_retry"]
 [connection signal="unpauseSong" from="PauseScreen" to="." method="_on_pause_screen_unpause_song"]
-[connection signal="focus_entered" from="ColorRect" to="." method="_on_color_rect_focus_entered"]
-[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
-[connection signal="gui_input" from="ColorRect/RichTextLabel" to="." method="_on_color_rect_gui_input"]
