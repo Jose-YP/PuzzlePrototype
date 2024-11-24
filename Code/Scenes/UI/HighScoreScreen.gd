@@ -66,8 +66,11 @@ func _process(delta):
 				menuSFX.emit(1)
 			
 			else:
-				$VBoxContainer/Submit.set_pressed(true)
+				$VBoxContainer/Submit.grab_focus()
 				menuSFX.emit(1)
+		
+		if Input.is_action_just_pressed("ui_cancel"):
+			charInputs[0].grab_focus()
 
 #______________________________
 #USERNAME MAKER

@@ -9,3 +9,10 @@ res://Themes/Theme.tres
 res://Resources/Rules/Basic Rules.res
 res://Themes/ButtonStyle/RightUI.tres
 res://Resources/SaveData/SaveMaker.gd
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/Constants/parallax_background.tscn
+res://Resources/SaveData/SaveFile.tres
+res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Code/Scenes/UI/HighScoreScreen.gd
