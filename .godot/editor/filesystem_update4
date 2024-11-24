@@ -23,3 +23,4 @@ res://addons/newgrounds/scripts/newgrounds_request.gd
 res://addons/newgrounds/scripts/newgrounds.tscn
 res://addons/newgrounds/scripts/newgrounds.gd
 res://Code/Scenes/Menus/game_manager.gd
+res://Code/Scenes/UI/HighScoreScreen.gd

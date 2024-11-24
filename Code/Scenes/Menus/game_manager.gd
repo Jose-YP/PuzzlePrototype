@@ -86,7 +86,6 @@ func start_for_real(event):
 			await loadedTween.finished
 			$ColorRect.hide()
 
-
 #-----------------------------------------
 #SCENE SWITCHING
 #-----------------------------------------

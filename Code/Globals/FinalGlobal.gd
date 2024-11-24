@@ -16,7 +16,6 @@ func finalReady(use_NG):
 		
 		await get_tree().create_timer(1.5).timeout
 		
-		#NGSaveSetup.sync_files()
 		NGSaveSetup.NG2Save()
 		NGCloudSave.save_game()
 		

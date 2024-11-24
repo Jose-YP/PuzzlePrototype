@@ -111,10 +111,6 @@ func _cloud_set_property(property, value):
 		"sfx":
 			sfx = value
 
-func _on_loaded():
-	print("SaveData has been loaded.")
-	print(air_color)
-
 func NG2Save() -> void:
 	save = Globals.save
 	save.HiScores = scores

@@ -1,5 +1,7 @@
 extends Control
 
+@export_range(.1,1,.05) var threshold: float = 1
+
 @onready var charInputs: Array[Button] = [%First, %Second, %Third]
 @onready var username: String = Globals.save.username
 @onready var currentFocus: Button = %First
@@ -8,9 +10,8 @@ signal proceed
 signal menuSFX(index)
 
 const characters: Array[String] = ["A","B","C","D","E","F","G","H","I","J","K","L",
-"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1",
-"2","3","4","5","6","7","8","9",".","?","!"]
-const threshold: float = 1
+"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6",
+"7","8","9","-","=","<",">","/",".","?","!","@","#","$","%","^","&","*","(",")","_","+","~"]
 
 var score: int = 0
 var placement: int = 6
@@ -35,7 +36,7 @@ func _ready():
 
 func _process(delta):
 	if visible:
-		var justorMore: bool = held == 0.0 or held > threshold
+		var justorMore: bool = held == 0.0 or (held > threshold and $FastScrolSpeed.get_time_left() == 0.0)
 		
 		#held allows for held button presses
 		if Input.is_action_pressed("ui_up") and justorMore:
@@ -43,16 +44,19 @@ func _process(delta):
 			if nameIndexes[currentIndex] > characters.size() - 1:
 				nameIndexes[currentIndex] = 0
 			charInputs[currentIndex].text = characters[nameIndexes[currentIndex]]
-			menuSFX.emit(0)
+			$Tick.play()
 			
 		if Input.is_action_pressed("ui_down") and justorMore:
 			nameIndexes[currentIndex] -= 1
 			if nameIndexes[currentIndex] < 0:
 				nameIndexes[currentIndex] = characters.size() - 1
 			charInputs[currentIndex].text = characters[nameIndexes[currentIndex]]
-			menuSFX.emit(0)
+			$Tick.play()
 		
 		#Seperate so held won't affect these two
+		if held > threshold and $FastScrolSpeed.get_time_left() == 0.0:
+			$FastScrolSpeed.start()
+		
 		if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
 			held += delta
 		if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
@@ -70,7 +74,7 @@ func _process(delta):
 				menuSFX.emit(1)
 		
 		if Input.is_action_just_pressed("ui_cancel"):
-			charInputs[0].grab_focus()
+			charInputs[currentIndex].grab_focus()
 
 #______________________________
 #USERNAME MAKER

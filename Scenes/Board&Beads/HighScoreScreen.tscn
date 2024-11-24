@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccacyr5ehej7m"]
+[gd_scene load_steps=4 format=3 uid="uid://ccacyr5ehej7m"]
 
 [ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="1_2q8p4"]
 [ext_resource type="Script" path="res://Code/Scenes/UI/HighScoreScreen.gd" id="1_iwhpm"]
+[ext_resource type="AudioStream" uid="uid://ceo4ye5yjkaux" path="res://Audio/MenuSFX/mouse-click-sound-233951.ogg" id="3_ufvmw"]
 
 [node name="HighScoreScreen" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2q8p4")
 script = ExtResource("1_iwhpm")
+threshold = 0.35
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -78,6 +80,20 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="First" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../Third")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Second")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../Submit")
+focus_previous = NodePath(".")
+mouse_filter = 2
+button_mask = 0
+
 [node name="Second" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
@@ -97,6 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Second")
 focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../First")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../../Submit")
 focus_previous = NodePath("../Second")
@@ -112,7 +129,18 @@ text = "Submit
 "
 metadata/_edit_lock_ = true
 
+[node name="FastScrolSpeed" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="Tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ufvmw")
+volume_db = -0.02
+pitch_scale = 1.35
+bus = &"MenuSFX"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/First" to="." method="_on_focus_entered" binds= [0]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Second" to="." method="_on_focus_entered" binds= [1]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Third" to="." method="_on_focus_entered" binds= [2]]
 [connection signal="pressed" from="VBoxContainer/Submit" to="." method="_on_submit_pressed"]
