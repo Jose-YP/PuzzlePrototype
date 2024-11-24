@@ -101,6 +101,11 @@ func _on_music_toggled(toggled_on) -> void:
 func _on_sfx_pressed() -> void:
 	makeNoise.emit()
 
+func _on_reset_audio_pressed():
+	for i in range(VolumeValues.size()):
+		VolumeValues[i].value = 70
+		audioSet(70, i)
+
 #-----------------------------------------
 #COLOR MAPPING
 #-----------------------------------------

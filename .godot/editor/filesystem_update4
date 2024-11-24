@@ -1,3 +1,4 @@
+res://Audio/default_bus_layout.tres
 res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
@@ -10,17 +11,4 @@ res://Themes/ButtonStyle/RightUI.tres
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/Constants/parallax_background.tscn
-res://Scenes/Board&Beads/HighScoreScreen.tscn
-res://Resources/SaveData/SaveFile.tres
-res://addons/newgrounds/examples/newgrounds_debug.tscn
-res://Code/Globals/NGSave.gd
-res://Resources/SaveData/SaveMaker.gd
-res://addons/newgrounds/scripts/newgrounds_offline_data.gd
-res://Code/Globals/FinalGlobal.gd
-res://addons/newgrounds/scripts/newgrounds_cloudsave.gd
-res://addons/newgrounds/scripts/newgrounds_request.gd
-res://addons/newgrounds/scripts/newgrounds.tscn
-res://addons/newgrounds/scripts/newgrounds.gd
-res://Code/Scenes/Menus/game_manager.gd
-res://Code/Scenes/UI/HighScoreScreen.gd
+res://Scenes/Board&Beads/fail_screen.tscn

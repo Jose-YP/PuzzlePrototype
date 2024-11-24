@@ -155,7 +155,7 @@ text = "[center]AUDIO"
 
 [node name="Tests" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="Music" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
@@ -173,6 +173,14 @@ focus_neighbor_top = NodePath("../../../../../Exit")
 focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
 focus_neighbor_bottom = NodePath("../../AudioOptions/GridContainer/MasterSlider")
 text = "Test SFX"
+
+[node name="ResetAudio" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
+focus_neighbor_top = NodePath("../../../../../Exit")
+focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
+focus_neighbor_bottom = NodePath("../../AudioOptions/GridContainer/MasterSlider")
+text = "Reset Audio"
 
 [node name="AudioOptions" type="MarginContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
@@ -275,15 +283,6 @@ metadata/_edit_lock_ = true
 [node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
 
-[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
-focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../BGColor")
-focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
-text = "Reset Beads
-"
-
 [node name="BGColor" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Reset")
@@ -291,6 +290,15 @@ focus_neighbor_top = NodePath("../../../../../Exit")
 focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
 focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
 text = "BG Switch
+"
+
+[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_top = NodePath("../../../../../Exit")
+focus_neighbor_right = NodePath("../BGColor")
+focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
+text = "Reset Beads
 "
 
 [node name="Domains" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
@@ -732,11 +740,12 @@ layout_mode = 2
 
 [connection signal="toggled" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
 [connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX" to="." method="_on_sfx_pressed"]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/ResetAudio" to="." method="_on_reset_audio_pressed"]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
 [connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/Reset" to="." method="_on_reset_colors_pressed"]
 [connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/BGColor" to="." method="_on_bg_color_pressed"]
+[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/Reset" to="." method="_on_reset_colors_pressed"]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/EarthColor" to="." method="set_colors" binds= [0]]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/SeaColor" to="." method="set_colors" binds= [1]]
 [connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/AirColor" to="." method="set_colors" binds= [2]]

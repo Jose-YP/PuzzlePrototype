@@ -142,26 +142,14 @@ func back_to_menu() -> void:
 	if currentSong != ETCMusic[0]:
 		play_music(ETCMusic[0])
 
-func play_menu_sfx(index) -> void:
-	MenuSFX[index].play()
-
 #-----------------------------------------
-#MAIN MENU SIGNALS
+#SCENE SPECIFIC SIGNALS
 #-----------------------------------------
 func _on_main_menu_switch_options() -> void:
 	loadScene(optionsScene)
 
 func _on_main_menu_switch_play() -> void:
 	loadScene(boardScene)
-
-#-----------------------------------------
-#BOARD SIGNALS
-#-----------------------------------------
-func _on_board_play_sfx(index) -> void:
-	BoardSFX[index].play()
-
-func _on_board_play_break_sfx(index) -> void:
-	BreakSFX[index].play()
 
 func on_board_retry(allowed = true) -> void:
 	play_menu_sfx(1)
@@ -172,25 +160,6 @@ func _on_pause_screen_quit(allowed = true) -> void:
 	if allowed:
 		back_to_menu()
 
-func bead_break_SFX() -> void:
-	var pitch = AudioServer.get_bus_effect(6, 0)
-	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
-	%Break.play()
-
-func fail_SFX() -> void:
-	var pitchTween = create_tween().set_ease(Tween.EASE_OUT)
-	
-	%RunOver.play()
-	pitchTween.tween_method(tweening_pitch, 1.55, .7, .07) 
-	
-	await %RunOver.finished
-
-func fail_song() -> void:
-	play_music(ETCMusic[1])
-
-#-----------------------------------------
-#OPTION MENU SIGNALS
-#-----------------------------------------
 func _on_option_make_noise() -> void:
 	%ETC.play()
 
@@ -221,23 +190,51 @@ func play_music(song) -> void:
 		fadeOut = create_tween().set_ease(Tween.EASE_IN)
 		fadeOut.tween_method(fade_music, 0.0, 1.0, 5)
 
+func fail_song() -> void:
+	play_music(ETCMusic[1])
+
 func _on_pause_screen_unpause_song() -> void:
 	currentSong.stream_paused = false
 
 func fade_music(value) -> void:
 	AudioServer.set_bus_volume_db(editableMusicBus, linear_to_db(value))
 
-#-----------------------------------------
-#OTHER
-#-----------------------------------------
-func _on_pause_screen_play_sfx() -> void:
-	unpausing = true
-	MenuSFX[3].play()
-
 func tweening_pitch(ammount, busLocation: int = 7, effectLocation: int = 1) -> void:
 	var pitch = AudioServer.get_bus_effect(busLocation, effectLocation)
 	pitch.pitch_scale = ammount
 
+#-----------------------------------------
+#SFX
+#-----------------------------------------
+func _on_board_play_sfx(index) -> void:
+	BoardSFX[index].play()
+
+func _on_board_play_break_sfx(index) -> void:
+	BreakSFX[index].play()
+
+func play_menu_sfx(index) -> void:
+	MenuSFX[index].play()
+
+func _on_pause_screen_play_sfx() -> void:
+	unpausing = true
+	MenuSFX[3].play()
+
+func fail_SFX() -> void:
+	var pitchTween = create_tween().set_ease(Tween.EASE_OUT)
+	
+	%RunOver.play()
+	pitchTween.tween_method(tweening_pitch, 1.55, .7, .07) 
+	
+	await %RunOver.finished
+
+func bead_break_SFX() -> void:
+	var pitch = AudioServer.get_bus_effect(6, 0)
+	pitch.pitch_scale = randf_range(1 - pitchShift, 1 + pitchShift)
+	%Break.play()
+
+#-----------------------------------------
+#BACKGROUND SIGNALS
+#-----------------------------------------
 func switch_mode() -> void:
 	$ParallaxBackground.switch_mode()
 

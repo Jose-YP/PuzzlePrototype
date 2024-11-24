@@ -75,6 +75,7 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("ui_cancel"):
 			charInputs[currentIndex].grab_focus()
+			menuSFX.emit(2)
 
 #______________________________
 #USERNAME MAKER
