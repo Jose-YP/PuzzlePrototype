@@ -16,3 +16,7 @@ res://Scenes/Constants/parallax_background.tscn
 res://Resources/SaveData/SaveFile.tres
 res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Code/Scenes/UI/HighScoreScreen.gd
+res://Code/Globals/FinalGlobal.gd
+res://addons/newgrounds/scripts/newgrounds_cloudsave.gd
+res://Code/Globals/Globals.gd
+res://Code/Scenes/Menus/optionsMenu.gd

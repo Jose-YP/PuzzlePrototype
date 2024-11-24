@@ -42,9 +42,9 @@ func save(NG = false) -> void:
 	
 	if NG:
 		#ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
-		NGCloudSave.save_game()
 		NGSaveSetup.sync_files()
 		NGSaveSetup.NG2Save()
+		NGCloudSave.save_game()
 	else:
 		ResourceSaver.save(self, "res://Resources/SaveData/SaveFile.tres")
 

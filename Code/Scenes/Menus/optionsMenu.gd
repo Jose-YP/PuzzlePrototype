@@ -82,9 +82,8 @@ func _input(event):
 func audioSet(value, index) -> void:
 	VolumeValues[index].value = value
 	VolumeTexts[index].text = str("		",VolumeValues[index].value,"%")
-	AudioServer.set_bus_volume_db(Buses[index], linear_to_db(value * 0.01)) #0.01 so it doesn't get too loud
-	
 	userAudios[index] = value * 0.01
+	
 	match index: #Has to be saved directly
 		0:
 			Globals.save.masterAudioLeve = value
@@ -92,6 +91,8 @@ func audioSet(value, index) -> void:
 			Globals.save.musicAudioLeve = value
 		2:
 			Globals.save.sfxAudioLeve = value
+	
+	Globals.set_volume()
 	Globals.save.save(Globals.NewgroundsToggle)
 
 func _on_music_toggled(toggled_on) -> void:

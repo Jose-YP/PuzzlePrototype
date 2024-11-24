@@ -78,31 +78,15 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="First" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../Third")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Second")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../Second")
-focus_previous = NodePath(".")
-mouse_filter = 2
-button_mask = 0
-
 [node name="Second" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../First")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Third")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Third")
-focus_previous = NodePath("../First")
 mouse_filter = 2
 button_mask = 0
 
@@ -113,7 +97,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Second")
 focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../First")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../../Submit")
 focus_previous = NodePath("../Second")
@@ -130,7 +113,6 @@ text = "Submit
 metadata/_edit_lock_ = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/First" to="." method="_on_focus_entered" binds= [0]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Second" to="." method="_on_focus_entered" binds= [1]]
 [connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Third" to="." method="_on_focus_entered" binds= [2]]
 [connection signal="pressed" from="VBoxContainer/Submit" to="." method="_on_submit_pressed"]

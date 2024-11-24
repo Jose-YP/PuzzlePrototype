@@ -18,11 +18,11 @@ func finalReady(use_NG):
 		NGCloudSave.save_game()
 		NGSaveSetup.NG2Save()
 		
-		print("SDGFLJNSNDJLK")
 		Globals.display = Globals.sort_scores()
 		Globals.set_other_inputs(false)
 		Globals.set_controls()
 		Globals.set_colors()
+		Globals.set_volume()
 		
 	else: Globals.NewgroundsToggle = false
 

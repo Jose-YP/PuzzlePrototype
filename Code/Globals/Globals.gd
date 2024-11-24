@@ -23,6 +23,9 @@ Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
 var breaker_color: Color = Color(0.514, 0.969, 0.557)
 var link_colors = [Color(0.631, 0.125, 0.125),Color(0.137, 0.6, 0.91),Color(1,1,1),
 Color(0.898, 0.91, 0.137),Color(0.478, 0.071, 0.365)]
+var buses = [AudioServer.get_bus_index("Master"),
+ AudioServer.get_bus_index("Music"),
+ AudioServer.get_bus_index("SFX")]
 var glow_num: int = 3
 var level: int = 1
 var highestID: String
@@ -120,6 +123,12 @@ func all_black() -> bool:
 			break
 	
 	return all
+
+func set_volume() -> void:
+	var levels = [Globals.save.masterAudioLeve, Globals.save.musicAudioLeve, Globals.save.sfxAudioLeve]
+	
+	for i in range(buses.size()):  #0.01 so it doesn't get too loud
+		AudioServer.set_bus_volume_db(buses[i], linear_to_db(levels[i] * 0.01))
 
 func NG_load(save_file):
 	Globals.save.HiScores = save_file["scores"]

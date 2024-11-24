@@ -66,6 +66,7 @@ func load_game(save_slot:int = 1):
 			
 		var scr = new_node.get_script()
 		if scr and scr.can_instantiate():
+			print("SCR")
 			var newdd = scr.new();
 			var initial_vals = newdd._cloud_save();
 			for i in initial_vals.keys():
