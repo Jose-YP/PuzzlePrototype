@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b371obu5a1ii"]
+[gd_scene load_steps=4 format=3 uid="uid://b371obu5a1ii"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/fail_screen.gd" id="1_17cxs"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="1_nfkgy"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="2_gqfik"]
 
 [node name="FailScreen" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nfkgy")
 script = ExtResource("1_17cxs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -47,6 +49,7 @@ custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
 text = "[center]END"
 metadata/_edit_lock_ = true
@@ -59,24 +62,26 @@ metadata/_edit_lock_ = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 35
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Main Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 focus_next = NodePath("../Retry")
 focus_previous = NodePath("../Retry")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("2_gqfik")
 button_mask = 0
 text = "Main Menu"
 
 [node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 100)
+custom_minimum_size = Vector2(275, 100)
 layout_mode = 2
 focus_next = NodePath("../Main Menu")
 focus_previous = NodePath("../Main Menu")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("2_gqfik")
 button_mask = 0
 text = "Retry"

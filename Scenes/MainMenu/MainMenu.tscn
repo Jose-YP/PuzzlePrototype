@@ -57,6 +57,7 @@ offset_right = 394.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_x2ope")
 
 [node name="PlayTex" parent="TopButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
@@ -98,7 +99,7 @@ metadata/_edit_lock_ = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="TopButtons/OptionsTex"]
 layout_mode = 0
-offset_left = 90.0
+offset_left = 65.0
 offset_top = 66.0
 offset_right = 341.0
 offset_bottom = 106.0
@@ -117,6 +118,7 @@ offset_top = 200.0
 offset_right = 318.0
 offset_bottom = 293.0
 grow_horizontal = 2
+theme = ExtResource("5_x2ope")
 
 [node name="ScoresTex" parent="BottomButtons" instance=ExtResource("2_oy1pm")]
 unique_name_in_owner = true
@@ -133,7 +135,7 @@ metadata/_edit_lock_ = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="BottomButtons/ScoresTex"]
 layout_mode = 0
-offset_left = 94.0
+offset_left = 80.0
 offset_top = 63.0
 offset_right = 345.0
 offset_bottom = 103.0
@@ -157,15 +159,23 @@ button_mask = 0
 metadata/_edit_lock_ = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="BottomButtons/H2PTex"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 65.0
-offset_right = 339.0
-offset_bottom = 105.0
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -24.0
+offset_right = 133.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_x2ope")
-theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/normal_font_size = 33
 bbcode_enabled = true
-text = "[center]HOW TO PLAY"
+text = "[center]HOW 2 PLAY"
 scroll_active = false
 
 [node name="Score Display" parent="." instance=ExtResource("2_iqmlp")]

@@ -93,7 +93,8 @@ func audioSet(value, index) -> void:
 			Globals.save.sfxAudioLeve = value
 	
 	Globals.set_volume()
-	Globals.save.save(Globals.NewgroundsToggle)
+	#Would cause too much noise
+	#Globals.save.save(Globals.NewgroundsToggle)
 
 func _on_music_toggled(toggled_on) -> void:
 	testMusic.emit(toggled_on)

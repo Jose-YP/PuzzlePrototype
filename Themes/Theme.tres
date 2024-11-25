@@ -1,21 +1,56 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bqt13gd00jakt"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bqt13gd00jakt"]
 
 [ext_resource type="StyleBox" uid="uid://bmnp5omb2d47q" path="res://Themes/ButtonStyle/Disabled.tres" id="1_eytf4"]
-[ext_resource type="FontFile" uid="uid://fvv2fagfsd1a" path="res://Themes/Fonts/AdobeClean-Bold.ttf" id="1_l5msj"]
+[ext_resource type="FontFile" uid="uid://babx7wtjcsiw4" path="res://Themes/Fonts/CyborgRoosterExpandedItalic-xmX8.otf" id="1_gbssi"]
 [ext_resource type="StyleBox" uid="uid://da8iornffdc3c" path="res://Themes/ButtonStyle/Hover.tres" id="2_mdkd6"]
 [ext_resource type="StyleBox" uid="uid://csn7gcgx0jah7" path="res://Themes/ButtonStyle/Normal.tres" id="3_fq2xi"]
 [ext_resource type="StyleBox" uid="uid://57im7twwo0e0" path="res://Themes/ButtonStyle/Focused.tres" id="3_ypfq3"]
 [ext_resource type="StyleBox" uid="uid://dqp2it5itff85" path="res://Themes/ButtonStyle/Pressed.tres" id="4_duwx5"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="6_e5cc2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqkxq"]
+bg_color = Color(0.722797, 0.772506, 0.703206, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k77xq"]
+bg_color = Color(0.137255, 0.6, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv45w"]
+bg_color = Color(0.137255, 0.6, 0.909804, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yor4h"]
+content_margin_left = 1.0
+content_margin_top = 4.0
+content_margin_right = 1.0
+content_margin_bottom = 4.0
+color = Color(0.262745, 0.301961, 0.247059, 1)
+thickness = 8
+
 [resource]
-default_font = ExtResource("1_l5msj")
-default_font_size = 16
+default_font = ExtResource("1_gbssi")
+default_font_size = 13
 Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_l5msj")
+Button/fonts/font = ExtResource("1_gbssi")
 Button/styles/disabled = ExtResource("1_eytf4")
 Button/styles/focus = ExtResource("3_ypfq3")
 Button/styles/hover = ExtResource("2_mdkd6")
 Button/styles/normal = ExtResource("3_fq2xi")
 Button/styles/pressed = ExtResource("4_duwx5")
+ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_vqkxq")
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_k77xq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_fv45w")
+HSlider/styles/slider = SubResource("StyleBoxLine_yor4h")
 PanelContainer/styles/panel = ExtResource("6_e5cc2")

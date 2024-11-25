@@ -7,5 +7,13 @@ res://Themes/ButtonStyle/Pannel.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
-res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Board&Beads/Board.tscn
+res://Scenes/MainMenu/options_menu.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/Board&Beads/fail_screen.tscn
+res://Scenes/MainMenu/MainMenuButton.tscn
+res://Scenes/MainMenu/score_display.tscn
+res://Scenes/MainMenu/how_2_play.tscn
+res://Themes/ButtonStyle/Normal.tres
+res://Code/Scenes/Menus/optionsMenu.gd

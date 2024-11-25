@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=15 format=3 uid="uid://1malajsj05pg"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="2_jveqf"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="2_kx4ek"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_m2cxj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xhfi"]
-bg_color = Color(0.258824, 0.301961, 0.243137, 0.94902)
+bg_color = Color(0.258824, 0.301961, 0.243137, 0.905882)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -17,8 +18,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0n8e"]
-bg_color = Color(0, 0.0235294, 0.223529, 0.733333)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47wwq"]
+bg_color = Color(0.000694599, 0.0651107, 0.367426, 0.72549)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -112,12 +113,13 @@ offset_right = 373.421
 offset_bottom = 386.316
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_jveqf")
 theme_override_styles/panel = SubResource("StyleBoxFlat_4xhfi")
 
 [node name="Main" type="PanelContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_q0n8e")
+theme_override_styles/panel = SubResource("StyleBoxFlat_47wwq")
 
 [node name="VBox" type="VBoxContainer" parent="PanelContainer/Main"]
 layout_mode = 2
@@ -148,7 +150,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center][i]Mouse recomended to navigate Menu[/i]"
+text = "[center][i]Mouse recomended | Exit to save[/i]"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Main/VBox"]
@@ -177,7 +179,7 @@ text = "[center]AUDIO"
 
 [node name="Tests" type="HBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Music" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
@@ -305,6 +307,7 @@ metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="BGColor" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
 layout_mode = 2
@@ -534,7 +537,7 @@ custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../ui_accept/ui_accept")
-focus_neighbor_top = NodePath("../../ui_left/ui_left")
+focus_neighbor_top = NodePath("../../../InputType/HBoxContainer/OptionButton")
 focus_neighbor_right = NodePath("../../ui_accept/ui_accept")
 focus_neighbor_bottom = NodePath("../../ui_left/ui_left")
 toggle_mode = true
