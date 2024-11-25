@@ -1,11 +1,71 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmnqltlxw855k"]
+[gd_scene load_steps=21 format=3 uid="uid://bmnqltlxw855k"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/right_ui.gd" id="1_5q6ng"]
+[ext_resource type="FontFile" uid="uid://babx7wtjcsiw4" path="res://Themes/Fonts/CyborgRoosterExpandedItalic-xmX8.otf" id="1_7tgxn"]
 [ext_resource type="StyleBox" uid="uid://d06bmaghd8dmw" path="res://Themes/ButtonStyle/RightUI.tres" id="2_iod4u"]
 [ext_resource type="PackedScene" uid="uid://cwyh8ksd5xhbw" path="res://Scenes/Constants/DuoDisplay.tscn" id="2_uv3j1"]
+[ext_resource type="StyleBox" uid="uid://bmnp5omb2d47q" path="res://Themes/ButtonStyle/Disabled.tres" id="2_xvunu"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="3_fpxns"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="3_inn4o"]
+[ext_resource type="StyleBox" uid="uid://57im7twwo0e0" path="res://Themes/ButtonStyle/Focused.tres" id="3_kda58"]
 [ext_resource type="AudioStream" uid="uid://clq1ooqegfjyy" path="res://Audio/BoardSFX/cheer(1).ogg" id="4_kdgal"]
+[ext_resource type="StyleBox" uid="uid://da8iornffdc3c" path="res://Themes/ButtonStyle/Hover.tres" id="4_unm41"]
+[ext_resource type="StyleBox" uid="uid://csn7gcgx0jah7" path="res://Themes/ButtonStyle/Normal.tres" id="5_g53lm"]
+[ext_resource type="StyleBox" uid="uid://dqp2it5itff85" path="res://Themes/ButtonStyle/Pressed.tres" id="6_5g5we"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqkxq"]
+bg_color = Color(0.722797, 0.772506, 0.703206, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k77xq"]
+bg_color = Color(0.137255, 0.6, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv45w"]
+bg_color = Color(0.137255, 0.6, 0.909804, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yor4h"]
+content_margin_left = 1.0
+content_margin_top = 4.0
+content_margin_right = 1.0
+content_margin_bottom = 4.0
+color = Color(0.262745, 0.301961, 0.247059, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xlva1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q8jf"]
+bg_color = Color(0.137255, 0.6, 0.909804, 0.631373)
+
+[sub_resource type="Theme" id="Theme_o5rtf"]
+default_font = ExtResource("1_7tgxn")
+default_font_size = 18
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_7tgxn")
+Button/styles/disabled = ExtResource("2_xvunu")
+Button/styles/focus = ExtResource("3_kda58")
+Button/styles/hover = ExtResource("4_unm41")
+Button/styles/normal = ExtResource("5_g53lm")
+Button/styles/pressed = ExtResource("6_5g5we")
+ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_vqkxq")
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_k77xq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_fv45w")
+HSlider/styles/slider = SubResource("StyleBoxLine_yor4h")
+PanelContainer/styles/panel = ExtResource("3_inn4o")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_xlva1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2q8jf")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfq6e"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -21,6 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_o5rtf")
 script = ExtResource("1_5q6ng")
 chainDisplayTiming = 1.25
 
@@ -29,86 +90,92 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2"]
+[node name="Main" type="PanelContainer" parent="VBoxContainer2"]
+unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(200, 163)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_iod4u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/Main"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer2/Main/VBoxContainer"]
 z_as_relative = false
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yfq6e")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/Main"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/Main/HBoxContainer"]
 custom_minimum_size = Vector2(29, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/Main/HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="ScoreContainer" type="PanelContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="ScoreContainer" type="PanelContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
+z_index = -1
 custom_minimum_size = Vector2(155, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("3_inn4o")
 
-[node name="ScoreText" type="RichTextLabel" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/ScoreContainer"]
+[node name="ScoreText" type="RichTextLabel" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/ScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "SCORE: 0"
 fit_content = true
 metadata/_edit_lock_ = true
 
-[node name="HiScoreContainer" type="PanelContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HiScoreContainer" type="PanelContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+z_index = -1
 custom_minimum_size = Vector2(155, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("3_inn4o")
 
-[node name="HiScoreText" type="RichTextLabel" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/HiScoreContainer"]
+[node name="HiScoreText" type="RichTextLabel" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/HiScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "RECORD: 0"
 fit_content = true
 metadata/_edit_lock_ = true
 
-[node name="LevelContainer" type="PanelContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="LevelContainer" type="PanelContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
+z_index = -1
 custom_minimum_size = Vector2(155, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("3_inn4o")
 
-[node name="LevelText" type="RichTextLabel" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/LevelContainer"]
+[node name="LevelText" type="RichTextLabel" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/LevelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "LEVEL: 1"
 fit_content = true
 metadata/_edit_lock_ = true
 
-[node name="LevelUpContainer" type="PanelContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="LevelUpContainer" type="PanelContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
+z_index = -1
 custom_minimum_size = Vector2(155, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("3_inn4o")
 
-[node name="LevelProgress" type="ProgressBar" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/LevelUpContainer"]
+[node name="LevelProgress" type="ProgressBar" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/LevelUpContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -116,7 +183,7 @@ fill_mode = 1
 show_percentage = false
 metadata/_edit_lock_ = true
 
-[node name="BeadText" type="RichTextLabel" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/LevelUpContainer/LevelProgress"]
+[node name="BeadText" type="RichTextLabel" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/LevelUpContainer/LevelProgress"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 0)
 layout_mode = 0
@@ -126,14 +193,14 @@ text = "BEADS: 0"
 fit_content = true
 metadata/_edit_lock_ = true
 
-[node name="ConnectedPanel" type="PanelContainer" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="ConnectedPanel" type="PanelContainer" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer"]
 visible = false
 clip_contents = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ConnectionDisplay" parent="VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/ConnectedPanel" instance=ExtResource("2_uv3j1")]
+[node name="ConnectionDisplay" parent="VBoxContainer2/Main/HBoxContainer/VBoxContainer/ConnectedPanel" instance=ExtResource("2_uv3j1")]
 custom_minimum_size = Vector2(75, 200)
 layout_mode = 2
 size_flags_horizontal = 0

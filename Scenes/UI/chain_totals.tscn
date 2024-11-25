@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://oon2u5ecyv51"]
+[gd_scene load_steps=5 format=3 uid="uid://oon2u5ecyv51"]
 
 [ext_resource type="StyleBox" uid="uid://d06bmaghd8dmw" path="res://Themes/ButtonStyle/RightUI.tres" id="1_0dmvh"]
 [ext_resource type="Script" path="res://Code/Scenes/UI/chain_totals.gd" id="1_fssn4"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="3_cnyb6"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="3_npf68"]
 
 [node name="ChainTotals" type="PanelContainer"]
 modulate = Color(1, 1, 1, 0.592157)
-custom_minimum_size = Vector2(150, 151)
-offset_right = 200.0
-offset_bottom = 70.0
+custom_minimum_size = Vector2(150, 150)
+offset_right = 209.0
+offset_bottom = 153.0
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("1_0dmvh")
 script = ExtResource("1_fssn4")
@@ -22,18 +23,22 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 z_index = -1
-custom_minimum_size = Vector2(142, 90)
+custom_minimum_size = Vector2(150, 90)
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme = ExtResource("3_cnyb6")
 theme_override_styles/panel = ExtResource("3_npf68")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 79)
+layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "XX Beads!
+text = "[center]XX Beads!
 XX Chunks!
 XX Chains!"
 

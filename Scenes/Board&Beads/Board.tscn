@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=19 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
 [ext_resource type="Resource" uid="uid://tdor8wdkj4d3" path="res://Resources/Relations/5 Duo.res" id="2_aefgl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccacyr5ehej7m" path="res://Scenes/Board&Beads/HighScoreScreen.tscn" id="6_4ewnf"]
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="10_6rky0"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="12_p8my5"]
 
 [sub_resource type="Resource" id="Resource_n23tv"]
 script = ExtResource("3_ln7wh")
@@ -220,6 +221,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_p8my5")
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
 metadata/_edit_lock_ = true
 

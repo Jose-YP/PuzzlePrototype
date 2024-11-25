@@ -22,7 +22,7 @@ var just_reached: bool = false
 #______________________________
 func _ready() -> void:
 	HiScore = Globals.get_extreme()[0]
-	%HiScoreText.text = str("HISCORE: ", HiScore)
+	%HiScoreText.text = str("RECORD: ", HiScore)
 	levelUpthreshold = get_levelup_Threshold(level)
 
 #______________________________
@@ -40,16 +40,15 @@ func update_HiScore(score) -> void:
 		just_reached = true
 		$Cheer.play()
 		
-		var HiScoreShake: Vector2 = Vector2(5,%HiScoreContainer.position.y)
+		var HiScoreShake: int = %Main.position.y
 		var cheerTween = self.create_tween().set_ease(Tween.EASE_OUT)
-		cheerTween.tween_property(%HiScoreContainer, "position", -HiScoreShake, .1)
-		cheerTween.tween_property(%HiScoreContainer, "position", HiScoreShake, .1)
-		cheerTween.tween_property(%HiScoreContainer, "position", -HiScoreShake, .1)
-		cheerTween.tween_property(%HiScoreContainer, "position", HiScoreShake, .1)
-		cheerTween.tween_property(%HiScoreContainer, "position", Vector2(0, HiScoreShake.y), .1)
+		cheerTween.tween_property(%Main, "position", -Vector2(0,HiScoreShake), .1)
+		cheerTween.tween_property(%Main, "position", Vector2(0,HiScoreShake), .1)
+		cheerTween.tween_property(%Main, "position", -Vector2(0,HiScoreShake), .1)
+		cheerTween.tween_property(%Main, "position", Vector2(0,HiScoreShake), .1)
 	
 	HiScore = score
-	%HiScoreText.text = str("HISCORE: ", score)
+	%HiScoreText.text = str("RECORD: ", score)
 	HighScore.emit()
 
 #______________________________

@@ -78,6 +78,13 @@ func _ready():
 #______________________________
 #CONTROLS
 #______________________________
+func _process(_delta):
+	if position.y != -1500 and Input.is_action_just_pressed("ui_cancel"):
+		if get_viewport().gui_get_focus_owner() != %Exit:
+			%Exit.grab_focus()
+		else:
+			_on_exit_pressed()
+
 func _on_exit_pressed():
 	exit.emit()
 

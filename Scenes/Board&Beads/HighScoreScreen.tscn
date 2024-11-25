@@ -133,6 +133,7 @@ button_mask = 0
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 mouse_filter = 2
+theme_override_font_sizes/font_size = 30
 button_mask = 0
 text = "Submit
 "
