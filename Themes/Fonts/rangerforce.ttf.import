@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://fvv2fagfsd1a"
-path="res://.godot/imported/AdobeClean-Bold.ttf-d9c6dab8917cfae18760b5566a1570a0.fontdata"
+uid="uid://bleejrv6d8v2f"
+path="res://.godot/imported/rangerforce.ttf-cf121bb6456703e616ca511d1d02c4df.fontdata"
 
 [deps]
 
-source_file="res://Themes/AdobeClean-Bold.ttf"
-dest_files=["res://.godot/imported/AdobeClean-Bold.ttf-d9c6dab8917cfae18760b5566a1570a0.fontdata"]
+source_file="res://Themes/Fonts/rangerforce.ttf"
+dest_files=["res://.godot/imported/rangerforce.ttf-cf121bb6456703e616ca511d1d02c4df.fontdata"]
 
 [params]
 
