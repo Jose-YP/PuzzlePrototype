@@ -1,14 +1,21 @@
-res://Audio/default_bus_layout.tres
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Board&Beads/Board.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
 res://Themes/ButtonStyle/Pannel.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
-res://Resources/Rules/Basic Rules.res
 res://Themes/ButtonStyle/RightUI.tres
-res://Scenes/Board&Beads/Board.tscn
+res://Resources/Rules/Basic Rules.res
+res://Code/Scenes/Board&Beads/Board.gd
+res://Scenes/Board&Beads/HighScoreScreen.tscn
+res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/options_menu.tscn
+res://Code/Scenes/Menus/optionsMenu.gd
+res://Scenes/MainMenu/score_display.tscn
+res://Themes/ButtonStyle/Border.tres
+res://Code/Scenes/Menus/score_display.gd
+res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/Board&Beads/fail_screen.tscn
+res://Scenes/MainMenu/MainMenuButton.tscn

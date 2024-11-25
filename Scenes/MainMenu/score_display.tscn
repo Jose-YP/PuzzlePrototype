@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsc0vgru2ykgw"]
+[gd_scene load_steps=4 format=3 uid="uid://dsc0vgru2ykgw"]
 
+[ext_resource type="StyleBox" uid="uid://ct3exjxdmie7b" path="res://Themes/ButtonStyle/Border.tres" id="1_c02e4"]
 [ext_resource type="Script" path="res://Code/Scenes/Menus/score_display.gd" id="1_jddak"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="1_jdsx3"]
 
@@ -7,109 +8,114 @@
 offset_left = 231.0
 offset_right = 611.0
 offset_bottom = 333.0
-theme_override_styles/panel = ExtResource("1_jdsx3")
+theme_override_styles/panel = ExtResource("1_c02e4")
 script = ExtResource("1_jddak")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Inner" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_jdsx3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inner"]
 layout_mode = 2
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="Inner/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]SCORES"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Inner/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Inner/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_right = 110
 
-[node name="Scores" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Scores" type="GridContainer" parent="Inner/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel4" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel5" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel6" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel7" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel7" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel8" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel8" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel9" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel9" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel10" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel10" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel11" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel11" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="RichTextLabel12" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
+[node name="RichTextLabel12" type="RichTextLabel" parent="Inner/VBoxContainer/HBoxContainer/Scores" groups=["ScoreText"]]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 bbcode_enabled = true
 text = "1.		YP"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="Inner/VBoxContainer"]
 custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 button_mask = 0
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Inner/VBoxContainer/Button" to="." method="_on_button_pressed"]

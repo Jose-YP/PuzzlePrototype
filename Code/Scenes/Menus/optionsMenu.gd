@@ -55,7 +55,7 @@ func _ready():
 		beadExamples[i].current_tab = i
 	beadExamples[5].current_tab = 6
 	
-	$Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton.selected = inputType
+	%OptionButton.selected = inputType
 	getNewInputs()
 	set_color_pickers()
 	show_colors()
@@ -65,7 +65,7 @@ func _ready():
 	await get_tree().create_timer(.018).timeout
 	%EarthColor.get_popup().hide()
 	
-	$Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX.grab_focus()
+	%TestSFX.grab_focus()
 
 func _input(event):
 	if toggleOn:

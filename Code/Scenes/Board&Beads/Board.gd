@@ -99,7 +99,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width + 1,0))
 	RUI.position += Vector2(RUIextra, 0)
-	#LUI.position.y = grid_to_pixel(Vector2i(-8,0)).y
+	LUI.position.y = RUI.position.y
 	LUI.set_ripple_center()
 	LUI.breakMeter.set_breakNum(str(breakNum))
 	
@@ -216,41 +216,42 @@ func move_bead(ammount, direction = "X", spawning = false) -> void:
 		currentBead.positions[i].global_position = grid_to_pixel(pos)
 		ghost_bead_pos()
 	
-	if not spawning:
+	if not spawning and not failed:
 		playSFX.emit(0)
 		await get_tree().create_timer(0.05).timeout
 	
 	moving = false
 
 func movement() -> void:
-	if not currentBead.breaker:
-		if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
-			currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
-			if currentBead.rot.rotation_degrees > 360:
-				currentBead.rot.rotation_degrees -= 360
-			
-			full_bead_rotation(currentBead.gridPos[0])
-			second_fix()
-			
-		if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
-			currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
-			if currentBead.rot.rotation_degrees < 0:
-				currentBead.rot.rotation_degrees += 360
-			
-			full_bead_rotation(currentBead.gridPos[0])
-			second_fix()
-	
-	if ((Input.is_action_just_pressed("ui_left") or 
-	(Input.is_action_pressed("ui_left") and inputHoldLeft >= holdConst))) and can_move("Left"):
-		move_bead(-1)
-	
-	if ((Input.is_action_just_pressed("ui_right") or 
-	(Input.is_action_pressed("ui_right") and inputHoldRight >= holdConst)) and can_move("Right")):
-		move_bead(1)
-	
-	if not currentBead.breaker and Input.is_anything_pressed():
-		currentBead.sync_position()
-		ghost_bead_pos()
+	if not failed:
+		if not currentBead.breaker:
+			if Input.is_action_just_pressed("ui_accept") and can_rotate("CCW"):
+				currentBead.rot.rotation_degrees += fmod(rotation_degrees+90,360)
+				if currentBead.rot.rotation_degrees > 360:
+					currentBead.rot.rotation_degrees -= 360
+				
+				full_bead_rotation(currentBead.gridPos[0])
+				second_fix()
+				
+			if Input.is_action_just_pressed("ui_cancel") and can_rotate("CLOCKWISE"):
+				currentBead.rot.rotation_degrees += fmod(rotation_degrees-90,360)
+				if currentBead.rot.rotation_degrees < 0:
+					currentBead.rot.rotation_degrees += 360
+				
+				full_bead_rotation(currentBead.gridPos[0])
+				second_fix()
+		
+		if ((Input.is_action_just_pressed("ui_left") or 
+		(Input.is_action_pressed("ui_left") and inputHoldLeft >= holdConst))) and can_move("Left"):
+			move_bead(-1)
+		
+		if ((Input.is_action_just_pressed("ui_right") or 
+		(Input.is_action_pressed("ui_right") and inputHoldRight >= holdConst)) and can_move("Right")):
+			move_bead(1)
+		
+		if not currentBead.breaker and Input.is_anything_pressed():
+			currentBead.sync_position()
+			ghost_bead_pos()
 
 func hard_drop(target) -> void:
 	#sort acoording to position

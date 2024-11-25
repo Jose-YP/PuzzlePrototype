@@ -44,41 +44,43 @@ scroll_offset = Vector2(1662.14, 1173.34)
 [node name="HoriMove" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("3_mwy77")
-volume_db = -8.0
+volume_db = -4.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_1bqrj")
-volume_db = -8.0
+volume_db = -3.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_7o23l")
-volume_db = -8.0
+volume_db = -5.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("6_yx237")
-volume_db = -5.0
+volume_db = -4.0
 max_polyphony = 4
 bus = &"BoardSFX"
 
 [node name="Twinkle" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("7_cwt6p")
+volume_db = 1.0
 pitch_scale = 0.96
 bus = &"BoardSFX"
 
 [node name="Zap" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("8_kphb1")
-volume_db = -5.0
+volume_db = -2.0
+pitch_scale = 0.95
 bus = &"BeadSFX"
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="BoardSFX"]
@@ -96,15 +98,16 @@ bus = &"BoardSFX"
 [node name="AllFall" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("11_osyc5")
-volume_db = -5.0
+volume_db = -2.0
 pitch_scale = 0.98
 bus = &"BoardSFX"
 
 [node name="Win" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("13_wjlcc")
-pitch_scale = 0.9
-bus = &"BoardSFX"
+volume_db = -15.0
+pitch_scale = 0.95
+bus = &"SFX"
 
 [node name="BreakSFX" type="Node" parent="BoardSFX"]
 
@@ -168,7 +171,7 @@ bus = &"ManageMusic"
 [node name="MenuMove" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("19_t0dk7")
-volume_db = -3.0
+volume_db = -1.0
 bus = &"MenuSFX"
 
 [node name="MenuConfirm" type="AudioStreamPlayer" parent="MenuSFX"]

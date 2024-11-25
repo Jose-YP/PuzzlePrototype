@@ -1,11 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://1malajsj05pg"]
+[gd_scene load_steps=14 format=3 uid="uid://1malajsj05pg"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/optionsMenu.gd" id="1_ybfn7"]
 [ext_resource type="PackedScene" uid="uid://dh8tu1vguv63i" path="res://Scenes/UI/all_beads.tscn" id="2_kx4ek"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_m2cxj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm0iy"]
-bg_color = Color(0, 0.137255, 0.231373, 0.858824)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xhfi"]
+bg_color = Color(0.258824, 0.301961, 0.243137, 0.94902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.00392157, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0n8e"]
+bg_color = Color(0, 0.0235294, 0.223529, 0.733333)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -86,34 +99,43 @@ scale = Vector2(0.95, 0.95)
 transform = Transform2D(0.95, 0, 0, 0.95, 0, 0)
 script = ExtResource("1_ybfn7")
 
-[node name="Main" type="PanelContainer" parent="."]
-anchors_preset = 5
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(745, 0)
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -389.0
-offset_right = 389.0
-offset_bottom = 760.0
+anchor_bottom = 0.5
+offset_left = -371.579
+offset_top = -353.684
+offset_right = 373.421
+offset_bottom = 386.316
 grow_horizontal = 2
-size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_lm0iy")
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xhfi")
 
-[node name="VBox" type="VBoxContainer" parent="Main"]
+[node name="Main" type="PanelContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0n8e")
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Main/VBox"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Main/VBox"]
 layout_mode = 2
 
-[node name="Title" type="PanelContainer" parent="Main/VBox"]
+[node name="Title" type="PanelContainer" parent="PanelContainer/Main/VBox"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBox/Title"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Main/VBox/Title"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Title/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Title/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 48
@@ -121,7 +143,7 @@ bbcode_enabled = true
 text = "[center]OPTIONS"
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Main/VBox/Title/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/Main/VBox/Title/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
@@ -129,36 +151,36 @@ bbcode_enabled = true
 text = "[center][i]Mouse recomended to navigate Menu[/i]"
 scroll_active = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Main/VBox"]
 layout_mode = 2
 
-[node name="Audio" type="MarginContainer" parent="Main/VBox/HBoxContainer"]
+[node name="Audio" type="MarginContainer" parent="PanelContainer/Main/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="IndvOptions" type="VBoxContainer" parent="Main/VBox/HBoxContainer/Audio"]
+[node name="IndvOptions" type="VBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="PanelContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
+[node name="Title" type="PanelContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Title"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Title"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]AUDIO"
 
-[node name="Tests" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
+[node name="Tests" type="HBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Music" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+[node name="Music" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
 visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -166,57 +188,58 @@ size_flags_horizontal = 4
 toggle_mode = true
 text = "Test Music"
 
-[node name="SFX" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+[node name="TestSFX" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
+focus_neighbor_right = NodePath("../ResetAudio")
 focus_neighbor_bottom = NodePath("../../AudioOptions/GridContainer/MasterSlider")
 text = "Test SFX"
 
-[node name="ResetAudio" type="Button" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
+[node name="ResetAudio" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
+focus_neighbor_left = NodePath("../TestSFX")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/Reset")
+focus_neighbor_right = NodePath("../../../../Colors/IndvOptions/HBoxContainer/BGColor")
 focus_neighbor_bottom = NodePath("../../AudioOptions/GridContainer/MasterSlider")
 text = "Reset Audio"
 
-[node name="AudioOptions" type="MarginContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions"]
+[node name="AudioOptions" type="MarginContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 
-[node name="GridContainer" type="GridContainer" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions"]
 layout_mode = 2
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
 
-[node name="MasterText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MasterText" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "		100%"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Music
 Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -226,20 +249,20 @@ focus_neighbor_right = NodePath("../../../../../Colors/IndvOptions/Domains/AirCo
 focus_neighbor_bottom = NodePath("../SFXSlider")
 value = 100.0
 
-[node name="MusicText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="MusicText" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "		100%"
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "SFX
 Volume"
 
-[node name="SFXSlider" type="HSlider" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="SFXSlider" type="HSlider" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -249,30 +272,30 @@ focus_neighbor_right = NodePath("../../../../../Colors/IndvOptions/Domains/DarkC
 focus_neighbor_bottom = NodePath("../../../../../../Controls/VBox/InputType/HBoxContainer/OptionButton")
 value = 100.0
 
-[node name="SFXText" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
+[node name="SFXText" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "		100%"
 
-[node name="Colors" type="MarginContainer" parent="Main/VBox/HBoxContainer"]
+[node name="Colors" type="MarginContainer" parent="PanelContainer/Main/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="IndvOptions" type="VBoxContainer" parent="Main/VBox/HBoxContainer/Colors"]
+[node name="IndvOptions" type="VBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Colors"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="PanelContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+[node name="Title" type="PanelContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Title"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Title"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
@@ -280,33 +303,33 @@ text = "[center]VISUALS
 "
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
 
-[node name="BGColor" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
+[node name="BGColor" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Reset")
+focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/ResetAudio")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_right = NodePath("../Reset")
 focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
 text = "BG Switch
 "
 
-[node name="Reset" type="Button" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
+[node name="Reset" type="Button" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../Audio/IndvOptions/Tests/SFX")
+focus_neighbor_left = NodePath("../BGColor")
 focus_neighbor_top = NodePath("../../../../../Exit")
-focus_neighbor_right = NodePath("../BGColor")
+focus_neighbor_right = NodePath("../../../../Audio/IndvOptions/Tests/TestSFX")
 focus_neighbor_bottom = NodePath("../../Domains/EarthColor")
 text = "Reset Beads
 "
 
-[node name="Domains" type="GridContainer" parent="Main/VBox/HBoxContainer/Colors/IndvOptions"]
+[node name="Domains" type="GridContainer" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 
-[node name="EarthColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="EarthColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -318,14 +341,14 @@ text = "Earth Color"
 color = Color(0.631, 0.125, 0.125, 1)
 edit_alpha = false
 
-[node name="Erth" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Erth" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Earth Bead"
 current_tab = 0
 small = true
 
-[node name="SeaColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="SeaColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -338,14 +361,14 @@ focus_neighbor_bottom = NodePath("../AirColor")
 text = "Sea Color"
 color = Color(0.137255, 0.6, 0.909804, 1)
 
-[node name="Sea" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Sea" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Sea Bead"
 current_tab = 1
 small = true
 
-[node name="AirColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="AirColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -356,14 +379,14 @@ focus_neighbor_bottom = NodePath("../LightColor")
 text = "Air Color"
 color = Color(1, 1, 1, 1)
 
-[node name="Air" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Air" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Air Bead"
 current_tab = 2
 small = true
 
-[node name="LightColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="LightColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -375,13 +398,13 @@ focus_neighbor_bottom = NodePath("../DarkColor")
 text = "Light Color"
 color = Color(0.898039, 0.909804, 0.137255, 1)
 
-[node name="Lght" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Lght" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Light Bead"
 small = true
 
-[node name="DarkColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="DarkColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -392,14 +415,14 @@ focus_neighbor_bottom = NodePath("../BreakerColor")
 text = "Dark Color"
 color = Color(0.478431, 0.0705882, 0.364706, 1)
 
-[node name="Dark" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Dark" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Dark Bead"
 current_tab = 4
 small = true
 
-[node name="BreakerColor" type="ColorPickerButton" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
+[node name="BreakerColor" type="ColorPickerButton" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -410,14 +433,14 @@ focus_neighbor_bottom = NodePath("../../../../../Controls/VBox/InputType/HBoxCon
 text = "Breaker Color"
 color = Color(0.513726, 0.968627, 0.556863, 1)
 
-[node name="Brek" parent="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
+[node name="Brek" parent="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains" instance=ExtResource("2_kx4ek")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Breaker Bead"
 current_tab = 6
 small = true
 
-[node name="Controls" type="MarginContainer" parent="Main/VBox"]
+[node name="Controls" type="MarginContainer" parent="PanelContainer/Main/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 20
@@ -425,30 +448,31 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBox" type="VBoxContainer" parent="Main/VBox/Controls"]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Main/VBox/Controls"]
 layout_mode = 2
 
-[node name="Title" type="PanelContainer" parent="Main/VBox/Controls/VBox"]
+[node name="Title" type="PanelContainer" parent="PanelContainer/Main/VBox/Controls/VBox"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Title"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]CONTROL REMAPPING"
 
-[node name="InputType" type="MarginContainer" parent="Main/VBox/Controls/VBox"]
+[node name="InputType" type="MarginContainer" parent="PanelContainer/Main/VBox/Controls/VBox"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBox/Controls/VBox/InputType"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/InputType"]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Main/VBox/Controls/VBox/InputType/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -463,7 +487,7 @@ popup/item_0/id = 0
 popup/item_1/text = "GamePad"
 popup/item_1/id = 1
 
-[node name="OptionButton2" type="OptionButton" parent="Main/VBox/Controls/VBox/InputType/HBoxContainer"]
+[node name="OptionButton2" type="OptionButton" parent="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
@@ -479,7 +503,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Type 2 [WASD]"
 popup/item_1/id = 1
 
-[node name="Reset" type="Button" parent="Main/VBox/Controls/VBox/InputType/HBoxContainer"]
+[node name="Reset" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../OptionButton")
 focus_neighbor_top = NodePath("../../../../../HBoxContainer/Colors/IndvOptions/Domains/BreakerColor")
@@ -487,25 +511,25 @@ focus_neighbor_right = NodePath("../OptionButton")
 focus_neighbor_bottom = NodePath("../../../Buttons/ui_accept/ui_accept")
 text = "Reset Buttons"
 
-[node name="Buttons" type="GridContainer" parent="Main/VBox/Controls/VBox"]
+[node name="Buttons" type="GridContainer" parent="PanelContainer/Main/VBox/Controls/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="ui_up" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_up" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_up"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_up"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Up"
 scroll_active = false
 
-[node name="ui_up" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_up"]
+[node name="ui_up" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_up"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -515,7 +539,7 @@ focus_neighbor_right = NodePath("../../ui_accept/ui_accept")
 focus_neighbor_bottom = NodePath("../../ui_left/ui_left")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_up/ui_up"]
 layout_mode = 0
 offset_left = -0.0263094
 offset_top = -0.526316
@@ -524,18 +548,18 @@ offset_bottom = 31.4737
 texture = SubResource("Texture2D_batfw")
 expand_mode = 2
 
-[node name="ui_accept" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_accept" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_accept"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_accept"]
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Accept/CCW"
 scroll_active = false
 
-[node name="ui_accept" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_accept"]
+[node name="ui_accept" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_accept"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -545,7 +569,7 @@ focus_neighbor_right = NodePath("../../ui_up/ui_up")
 focus_neighbor_bottom = NodePath("../../ui_cancel/ui_cancel")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept"]
 layout_mode = 0
 offset_top = -0.526
 offset_right = 32.0
@@ -553,18 +577,18 @@ offset_bottom = 31.474
 texture = SubResource("Texture2D_uiq46")
 expand_mode = 2
 
-[node name="ui_left" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_left" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_left"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_left"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Left"
 scroll_active = false
 
-[node name="ui_left" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_left"]
+[node name="ui_left" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_left"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -574,7 +598,7 @@ focus_neighbor_right = NodePath("../../ui_cancel/ui_cancel")
 focus_neighbor_bottom = NodePath("../../ui_down/ui_down")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_left/ui_left"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_left/ui_left"]
 layout_mode = 0
 offset_top = -0.526
 offset_right = 32.0
@@ -582,18 +606,18 @@ offset_bottom = 31.474
 texture = SubResource("Texture2D_7gy35")
 expand_mode = 2
 
-[node name="ui_cancel" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_cancel" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_cancel"]
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Cancel/Clockwise"
 scroll_active = false
 
-[node name="ui_cancel" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel"]
+[node name="ui_cancel" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_cancel"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../ui_left/ui_left")
@@ -602,7 +626,7 @@ focus_neighbor_right = NodePath("../../ui_left/ui_left")
 focus_neighbor_bottom = NodePath("../../Flip/Flip")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel"]
 layout_mode = 0
 offset_top = -0.526
 offset_right = 32.0
@@ -610,18 +634,18 @@ offset_bottom = 31.474
 texture = SubResource("Texture2D_e1f7w")
 expand_mode = 2
 
-[node name="ui_down" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_down" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_down"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_down"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Down"
 scroll_active = false
 
-[node name="ui_down" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_down"]
+[node name="ui_down" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_down"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -631,7 +655,7 @@ focus_neighbor_right = NodePath("../../Flip/Flip")
 focus_neighbor_bottom = NodePath("../../ui_right/ui_right")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_down/ui_down"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_down/ui_down"]
 layout_mode = 0
 offset_top = -0.526
 offset_right = 32.0
@@ -639,18 +663,18 @@ offset_bottom = 31.474
 texture = SubResource("Texture2D_i4njl")
 expand_mode = 2
 
-[node name="Flip" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="Flip" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/Flip"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Flip"]
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Flip"
 scroll_active = false
 
-[node name="Flip" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Flip"]
+[node name="Flip" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Flip"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../ui_down/ui_down")
@@ -659,18 +683,18 @@ focus_neighbor_right = NodePath("../../ui_down/ui_down")
 focus_neighbor_bottom = NodePath("../../Break/Break")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Flip/Flip"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Flip/Flip"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("Texture2D_r2mv0")
 expand_mode = 2
 
-[node name="ui_right" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="ui_right" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/ui_right"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_right"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 4
@@ -678,7 +702,7 @@ text = "Right
 "
 scroll_active = false
 
-[node name="ui_right" type="Button" parent="Main/VBox/Controls/VBox/Buttons/ui_right"]
+[node name="ui_right" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_right"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -688,7 +712,7 @@ focus_neighbor_right = NodePath("../../Break/Break")
 focus_neighbor_bottom = NodePath("../../../../../Exit")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/ui_right/ui_right"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_right/ui_right"]
 layout_mode = 0
 offset_top = -0.526
 offset_right = 32.0
@@ -696,18 +720,18 @@ offset_bottom = 31.474
 texture = SubResource("Texture2D_l14fa")
 expand_mode = 2
 
-[node name="Break" type="HBoxContainer" parent="Main/VBox/Controls/VBox/Buttons"]
+[node name="Break" type="HBoxContainer" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Main/VBox/Controls/VBox/Buttons/Break"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Break"]
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Break"
 scroll_active = false
 
-[node name="Break" type="Button" parent="Main/VBox/Controls/VBox/Buttons/Break"]
+[node name="Break" type="Button" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Break"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../ui_right/ui_right")
@@ -716,14 +740,14 @@ focus_neighbor_right = NodePath("../../ui_right/ui_right")
 focus_neighbor_bottom = NodePath("../../../../../Exit")
 toggle_mode = true
 
-[node name="TextureRect" type="TextureRect" parent="Main/VBox/Controls/VBox/Buttons/Break/Break"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Main/VBox/Controls/VBox/Buttons/Break/Break"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("Texture2D_sfah0")
 expand_mode = 2
 
-[node name="Exit" type="Button" parent="Main/VBox"]
+[node name="Exit" type="Button" parent="PanelContainer/Main/VBox"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -731,36 +755,36 @@ size_flags_stretch_ratio = 0.0
 focus_neighbor_left = NodePath("../Controls/VBox/Buttons/ui_right/ui_right")
 focus_neighbor_top = NodePath("../Controls/VBox/Buttons/ui_right/ui_right")
 focus_neighbor_right = NodePath("../Controls/VBox/Buttons/Break/Break")
-focus_neighbor_bottom = NodePath("../HBoxContainer/Audio/IndvOptions/Tests/SFX")
+focus_neighbor_bottom = NodePath("../HBoxContainer/Audio/IndvOptions/Tests/TestSFX")
 text = "Exit
 "
 
-[node name="MarginContainer2" type="MarginContainer" parent="Main/VBox"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/Main/VBox"]
 layout_mode = 2
 
-[connection signal="toggled" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/SFX" to="." method="_on_sfx_pressed"]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/ResetAudio" to="." method="_on_reset_audio_pressed"]
-[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
-[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
-[connection signal="value_changed" from="Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/BGColor" to="." method="_on_bg_color_pressed"]
-[connection signal="pressed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/Reset" to="." method="_on_reset_colors_pressed"]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/EarthColor" to="." method="set_colors" binds= [0]]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/SeaColor" to="." method="set_colors" binds= [1]]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/AirColor" to="." method="set_colors" binds= [2]]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/LightColor" to="." method="set_colors" binds= [3]]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/DarkColor" to="." method="set_colors" binds= [4]]
-[connection signal="color_changed" from="Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/BreakerColor" to="." method="set_colors" binds= [5]]
-[connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton" to="." method="_on_new_input_type_selected"]
-[connection signal="item_selected" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton2" to="." method="_on_new_input_type_selected"]
-[connection signal="pressed" from="Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_up/ui_up" to="." method="controllerMapStart" binds= [0]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept" to="." method="controllerMapStart" binds= [1]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_left/ui_left" to="." method="controllerMapStart" binds= [2]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel" to="." method="controllerMapStart" binds= [3]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_down/ui_down" to="." method="controllerMapStart" binds= [4]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Flip/Flip" to="." method="controllerMapStart" binds= [5]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/ui_right/ui_right" to="." method="controllerMapStart" binds= [6]]
-[connection signal="toggled" from="Main/VBox/Controls/VBox/Buttons/Break/Break" to="." method="controllerMapStart" binds= [7]]
-[connection signal="pressed" from="Main/VBox/Exit" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/Music" to="." method="_on_music_toggled"]
+[connection signal="pressed" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/TestSFX" to="." method="_on_sfx_pressed"]
+[connection signal="pressed" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/Tests/ResetAudio" to="." method="_on_reset_audio_pressed"]
+[connection signal="value_changed" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MasterSlider" to="." method="audioSet" binds= [0]]
+[connection signal="value_changed" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/MusicSlider" to="." method="audioSet" binds= [1]]
+[connection signal="value_changed" from="PanelContainer/Main/VBox/HBoxContainer/Audio/IndvOptions/AudioOptions/GridContainer/SFXSlider" to="." method="audioSet" binds= [2]]
+[connection signal="pressed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/BGColor" to="." method="_on_bg_color_pressed"]
+[connection signal="pressed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/HBoxContainer/Reset" to="." method="_on_reset_colors_pressed"]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/EarthColor" to="." method="set_colors" binds= [0]]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/SeaColor" to="." method="set_colors" binds= [1]]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/AirColor" to="." method="set_colors" binds= [2]]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/LightColor" to="." method="set_colors" binds= [3]]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/DarkColor" to="." method="set_colors" binds= [4]]
+[connection signal="color_changed" from="PanelContainer/Main/VBox/HBoxContainer/Colors/IndvOptions/Domains/BreakerColor" to="." method="set_colors" binds= [5]]
+[connection signal="item_selected" from="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton" to="." method="_on_new_input_type_selected"]
+[connection signal="item_selected" from="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer/OptionButton2" to="." method="_on_new_input_type_selected"]
+[connection signal="pressed" from="PanelContainer/Main/VBox/Controls/VBox/InputType/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_up/ui_up" to="." method="controllerMapStart" binds= [0]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_accept/ui_accept" to="." method="controllerMapStart" binds= [1]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_left/ui_left" to="." method="controllerMapStart" binds= [2]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_cancel/ui_cancel" to="." method="controllerMapStart" binds= [3]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_down/ui_down" to="." method="controllerMapStart" binds= [4]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/Flip/Flip" to="." method="controllerMapStart" binds= [5]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/ui_right/ui_right" to="." method="controllerMapStart" binds= [6]]
+[connection signal="toggled" from="PanelContainer/Main/VBox/Controls/VBox/Buttons/Break/Break" to="." method="controllerMapStart" binds= [7]]
+[connection signal="pressed" from="PanelContainer/Main/VBox/Exit" to="." method="_on_button_pressed"]

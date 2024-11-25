@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var scoretext = $VBoxContainer/HBoxContainer/Scores.get_children()
+@onready var scoretext = $Inner/VBoxContainer/HBoxContainer/Scores.get_children()
 
 signal refocus
 
@@ -23,7 +23,7 @@ func refresh_scores():
 
 func _process(_delta):
 	if visible:
-		$VBoxContainer/Button.grab_focus()
+		$Inner/VBoxContainer/Button.grab_focus()
 		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel"):
 			_on_button_pressed()
 

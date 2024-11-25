@@ -76,10 +76,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ewpfg"),
-"MainMenuButtons": ExtResource("5_lcy7u")
-}
 tree_root = SubResource("AnimationNodeBlendTree_ruoyd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Basic/current_state = "Default"
