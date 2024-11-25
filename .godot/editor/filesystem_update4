@@ -7,3 +7,5 @@ res://Themes/ButtonStyle/Pannel.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/game_manager.tscn

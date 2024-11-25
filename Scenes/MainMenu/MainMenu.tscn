@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjf6n3d1yeous"]
+[gd_scene load_steps=8 format=3 uid="uid://bjf6n3d1yeous"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/MainMenu.gd" id="1_7dq6h"]
 [ext_resource type="PackedScene" uid="uid://dsc0vgru2ykgw" path="res://Scenes/MainMenu/score_display.tscn" id="2_iqmlp"]
 [ext_resource type="PackedScene" uid="uid://b15feom8mwjyn" path="res://Scenes/MainMenu/MainMenuButton.tscn" id="2_oy1pm"]
+[ext_resource type="FontFile" uid="uid://cy85gln4jonam" path="res://Themes/Fonts/Octuple-max-demo.ttf" id="2_s7m0x"]
 [ext_resource type="PackedScene" uid="uid://cgd0k1a1ig4xt" path="res://Scenes/MainMenu/how_2_play.tscn" id="3_kx0x2"]
 [ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="5_x2ope"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="6_8jfis"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 1
-modulate = Color(1, 1, 1, 0.0392157)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,14 +31,18 @@ anchor_left = 0.5
 anchor_top = -6.979
 anchor_right = 0.5
 anchor_bottom = -6.979
-offset_left = -138.0
-offset_top = -6.83997
-offset_right = 148.0
-offset_bottom = 33.16
+offset_left = -445.0
+offset_top = 0.160004
+offset_right = 488.0
+offset_bottom = 148.16
 grow_horizontal = 2
-grow_vertical = 0
+theme_override_colors/default_color = Color(0.250715, 0.758409, 0.876104, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_s7m0x")
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]LIVELY"
+fit_content = true
 
 [node name="TopButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -184,17 +188,10 @@ metadata/_edit_lock_ = true
 modulate = Color(1, 1, 1, 0.00392157)
 self_modulate = Color(1, 1, 1, 0.105882)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -602.0
 offset_top = -350.0
 offset_right = 602.0
 offset_bottom = 350.0
-grow_horizontal = 2
-grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="jokor" type="Timer" parent="."]
