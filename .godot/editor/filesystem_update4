@@ -20,3 +20,5 @@ res://Resources/SaveData/SaveFile.tres
 res://Resources/Rules/Basic Rules.res
 res://Code/Globals/NGSave.gd
 res://Audio/default_bus_layout.tres
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Scenes/Board&Beads/HighScoreScreen.tscn
