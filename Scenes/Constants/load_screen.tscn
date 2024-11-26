@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://7gi8y6u52kbf"]
+[gd_scene load_steps=3 format=3 uid="uid://7gi8y6u52kbf"]
 
 [ext_resource type="Script" path="res://Code/Constants/load_screen.gd" id="1_6opy8"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="2_p83qm"]
 
 [node name="LoadScreen" type="CanvasLayer"]
 layer = 2
@@ -21,19 +22,24 @@ grow_vertical = 0
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.741176)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -1.0
-offset_top = 150.0
-offset_right = 1022.0
-offset_bottom = 868.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
+layout_direction = 1
 layout_mode = 2
+theme = ExtResource("2_p83qm")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[center]LOADING"
+text = "[center]
+
+LOADING"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 size_flags_horizontal = 4

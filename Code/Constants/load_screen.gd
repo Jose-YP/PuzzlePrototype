@@ -18,6 +18,7 @@ func _process(_delta):
 	var progress = []
 	ResourceLoader.load_threaded_get_status(next_scene, progress)
 	$VBoxContainer/ProgressBar.value = progress[0] * 100
+	print("PROGRESS: ", progress)
 	
 	#Once finished loading rpelace load screen with board
 	if progress[0] == 1:

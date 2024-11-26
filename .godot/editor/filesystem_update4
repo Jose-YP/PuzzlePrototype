@@ -18,3 +18,6 @@ res://Scenes/Board&Beads/HighScoreScreen.tscn
 res://Code/Scenes/UI/BreakProgress.gd
 res://Code/Scenes/Board&Beads/Board.gd
 res://Scenes/Board&Beads/fail_screen.tscn
+res://Code/Scenes/UI/HighScoreScreen.gd
+res://Scenes/Constants/load_screen.tscn
+res://Code/Constants/load_screen.gd
