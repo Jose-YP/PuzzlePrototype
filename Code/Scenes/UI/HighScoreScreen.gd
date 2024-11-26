@@ -116,6 +116,8 @@ func _on_submit_pressed():
 	proceed.emit()
 	$VBoxContainer/Submit.disabled = true
 	
+	Globals.save.save()
+	
 	if Globals.NewgroundsToggle:
 		NG.scoreboard_submit(13768, score)
 
