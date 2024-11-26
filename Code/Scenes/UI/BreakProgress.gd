@@ -1,12 +1,13 @@
 extends VBoxContainer
 
 @onready var progressBar: TextureProgressBar = $Progress/TextureProgressBar
-@onready var breakNotifier: PanelContainer = $pANEL/Info
+@onready var breakNotifier: PanelContainer = $pANEL
 @onready var breakNum: Label = $Progress/Label
 
 func _ready():
 	if Globals.rules.breakBead:
-		$pANEL/Info/VBoxContainer/RichTextLabel.text = "TO SPAWN A BREAKER BEAD"
+		$pANEL/Info/VBoxContainer/RichTextLabel.clear()
+		$pANEL/Info/VBoxContainer/RichTextLabel.append_text("[center]TO SPAWN A BREAKER BEAD")
 	
 	Globals.show_controls($pANEL/Info/VBoxContainer/RichTextLabel2/TextureRect)
 
