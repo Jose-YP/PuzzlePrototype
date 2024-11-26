@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd2r7vn8ipum5"]
+[gd_scene load_steps=11 format=3 uid="uid://cd2r7vn8ipum5"]
 
 [ext_resource type="Script" path="res://Code/Scenes/UI/BreakProgress.gd" id="1_7383g"]
 [ext_resource type="PackedScene" uid="uid://cdsrmwnve1gv3" path="res://Scenes/UI/newSuperProgress.tscn" id="2_wrft0"]
+[ext_resource type="StyleBox" uid="uid://d06bmaghd8dmw" path="res://Themes/ButtonStyle/RightUI.tres" id="3_bj0xv"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_et21x"]
 [ext_resource type="Texture2D" uid="uid://doi7jo00s4wmw" path="res://Art/Board&Beads/857-8579317_ftestickers-effect-overlay-glow-white-universe-2663166295.png" id="4_00tul"]
 [ext_resource type="StyleBox" uid="uid://cbmvpuynhcqqe" path="res://Themes/ButtonStyle/Pannel.tres" id="4_4dnh8"]
@@ -35,39 +36,48 @@ rounded = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Info" type="PanelContainer" parent="."]
+[node name="pANEL" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 122)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_bj0xv")
+
+[node name="Info" type="PanelContainer" parent="pANEL"]
+z_index = -1
+custom_minimum_size = Vector2(0, 93)
+layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_override_styles/panel = ExtResource("4_4dnh8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Info"]
+[node name="VBoxContainer" type="VBoxContainer" parent="pANEL/Info"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_nyq5d")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Info/VBoxContainer"]
-custom_minimum_size = Vector2(139, 44)
+[node name="RichTextLabel2" type="RichTextLabel" parent="pANEL/Info/VBoxContainer"]
+custom_minimum_size = Vector2(116, 44)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
-text = "[center]BREAK AVAILIBLE [/center]
+text = "[center]
+BREAK AVAILIBLE [/center]
 
-			PRESS "
+		PRESS "
 fit_content = true
 
-[node name="TextureRect" type="TextureRect" parent="Info/VBoxContainer/RichTextLabel2"]
+[node name="TextureRect" type="TextureRect" parent="pANEL/Info/VBoxContainer/RichTextLabel2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-offset_left = 79.0
-offset_top = 11.0
-offset_right = 111.0
-offset_bottom = 43.0
+offset_left = 61.0
+offset_top = 19.0
+offset_right = 93.0
+offset_bottom = 51.0
 texture = SubResource("Texture2D_4dw3j")
 expand_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Info/VBoxContainer"]
-custom_minimum_size = Vector2(70, 19)
+[node name="RichTextLabel" type="RichTextLabel" parent="pANEL/Info/VBoxContainer"]
+custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 mouse_force_pass_scroll_events = false
 theme_override_font_sizes/normal_font_size = 10
@@ -77,5 +87,4 @@ scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(51, 52)
 texture = ExtResource("4_00tul")

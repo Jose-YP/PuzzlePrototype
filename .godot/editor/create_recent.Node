@@ -1,5 +1,6 @@
-AudioStreamPlayer
+Sprite2D
 PanelContainer
+AudioStreamPlayer
 Timer
 MarginContainer
 VBoxContainer
@@ -10,5 +11,4 @@ HBoxContainer
 NewgroundsMedalUnlocker
 Button
 Node2D
-Sprite2D
 ParallaxLayer

@@ -99,6 +99,7 @@ func _ready() -> void:
 	
 	RUI.position += grid_to_pixel(Vector2i(rules.width + 1,0))
 	RUI.position += Vector2(RUIextra, 0)
+	RUI.position.y = 57
 	LUI.position.y = RUI.position.y
 	LUI.set_ripple_center()
 	LUI.breakMeter.set_breakNum(str(breakNum))
