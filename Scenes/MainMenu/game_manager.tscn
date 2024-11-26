@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=30 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Constants/parallax_background.tscn" id="2_n4oh7"]
@@ -17,8 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://cvpkafwkkverg" path="res://Audio/BoardSFX/gj.ogg" id="13_wjlcc"]
 [ext_resource type="AudioStream" uid="uid://blcwrk0k6neaa" path="res://Audio/BoardSFX/BreakSFX/RandomizedRoar3.ogg" id="14_in7jn"]
 [ext_resource type="AudioStream" uid="uid://bt0gbwqa2jl2q" path="res://Audio/BoardSFX/BreakSFX/Brak1.ogg" id="16_k3eu6"]
-[ext_resource type="AudioStream" uid="uid://drboyvsf2iv6k" path="res://Audio/BoardSFX/Clap 3.ogg" id="17_jbvpi"]
 [ext_resource type="PackedScene" uid="uid://c55ujrf1e7yhj" path="res://Scenes/Constants/pause_screen.tscn" id="17_kh1yb"]
+[ext_resource type="AudioStream" uid="uid://mkgq1nxtu337" path="res://Audio/BoardSFX/End Run.ogg" id="18_pi3u3"]
 [ext_resource type="AudioStream" uid="uid://cafdxue3hyxin" path="res://Audio/Music/Main menu.ogg" id="19_amk13"]
 [ext_resource type="AudioStream" uid="uid://xvj26kls8ng5" path="res://Audio/MenuSFX/MenuMove.ogg" id="19_t0dk7"]
 [ext_resource type="AudioStream" uid="uid://dsgo0u1xrmfws" path="res://Audio/Music/End of a run.ogg" id="20_i5q3o"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dducm8ymtpvl3" path="res://Audio/MenuSFX/MenuDeselect.ogg" id="21_ngyja"]
 [ext_resource type="AudioStream" uid="uid://c23dv670s53ql" path="res://Audio/MenuSFX/Click.ogg" id="22_4neu4"]
 [ext_resource type="AudioStream" uid="uid://b6owxrx7f361p" path="res://Audio/Music/Level 2.ogg" id="22_5iqsk"]
+[ext_resource type="AudioStream" uid="uid://bkdkb7w0q2wdo" path="res://Audio/MenuSFX/Correct.ogg" id="27_1u41y"]
 
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
@@ -51,21 +52,19 @@ bus = &"BoardSFX"
 [node name="Rotate" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("4_1bqrj")
-volume_db = -3.0
+volume_db = -2.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_7o23l")
-volume_db = -5.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("6_yx237")
-volume_db = -4.0
 max_polyphony = 4
 bus = &"BoardSFX"
 
@@ -79,7 +78,7 @@ bus = &"BoardSFX"
 [node name="Zap" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("8_kphb1")
-volume_db = -2.0
+volume_db = 10.685
 pitch_scale = 0.95
 bus = &"BeadSFX"
 
@@ -98,7 +97,6 @@ bus = &"BoardSFX"
 [node name="AllFall" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("11_osyc5")
-volume_db = -2.0
 pitch_scale = 0.98
 bus = &"BoardSFX"
 
@@ -135,11 +133,15 @@ bus = &"BeadSFX"
 
 [node name="RunOver" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
-stream = ExtResource("17_jbvpi")
-volume_db = 6.804
-pitch_scale = 0.32
-mix_target = 1
+stream = ExtResource("18_pi3u3")
+volume_db = 9.615
 bus = &"Die"
+
+[node name="Ackcheevement" type="AudioStreamPlayer" parent="BoardSFX"]
+unique_name_in_owner = true
+stream = ExtResource("27_1u41y")
+pitch_scale = 1.11
+bus = &"MenuSFX"
 
 [node name="ETCMusic" type="Node" parent="."]
 process_mode = 1
@@ -171,17 +173,18 @@ bus = &"ManageMusic"
 [node name="MenuMove" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("19_t0dk7")
-volume_db = -1.0
 bus = &"MenuSFX"
 
 [node name="MenuConfirm" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("20_qke31")
+volume_db = 1.0
 bus = &"MenuSFX"
 
 [node name="MenuDeselect" type="AudioStreamPlayer" parent="MenuSFX"]
 unique_name_in_owner = true
 stream = ExtResource("21_ngyja")
+volume_db = 1.0
 bus = &"MenuSFX"
 
 [node name="Pause" type="AudioStreamPlayer" parent="MenuSFX"]

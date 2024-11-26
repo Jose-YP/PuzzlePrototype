@@ -14,7 +14,6 @@ resource_name = "Reverb"
 
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_54r1e"]
 resource_name = "PitchShift"
-pitch_scale = 1.45
 
 [resource]
 bus/1/name = &"Music"
@@ -47,7 +46,7 @@ bus/5/name = &"MenuSFX"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 0.0
+bus/5/volume_db = 2.44924
 bus/5/send = &"SFX"
 bus/6/name = &"BeadSFX"
 bus/6/solo = false

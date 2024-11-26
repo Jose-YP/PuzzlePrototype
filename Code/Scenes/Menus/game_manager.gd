@@ -6,7 +6,7 @@ extends CanvasLayer
 @export_range(0,.5,.01)  var pitchShift: float = .3
 
 @onready var BoardSFX: Array[AudioStreamPlayer] = [%HoriMove, %Rotate, 
-%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall, %Win]
+%HardDrop, %SoftDrop, %Twinkle, %Zap, %LevelUp, %ETC, %AllFall, %Win, %Ackcheevement]
 @onready var BreakSFX: Array[Node] = $BoardSFX/BreakSFX.get_children()
 @onready var MenuSFX: Array[Node] = $MenuSFX.get_children()
 @onready var BoardMusic: Array[Node] = $BoardMusic.get_children()
