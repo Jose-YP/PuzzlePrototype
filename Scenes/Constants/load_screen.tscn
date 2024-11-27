@@ -43,3 +43,6 @@ LOADING"
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

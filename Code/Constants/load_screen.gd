@@ -22,5 +22,8 @@ func _process(_delta):
 	
 	#Once finished loading rpelace load screen with board
 	if progress[0] == 1:
+		$VBoxContainer/ProgressBar.value = 100
 		var packed_scene = ResourceLoader.load_threaded_get(next_scene)
+		$Timer.start()
+		await $Timer.timeout
 		finished.emit(packed_scene)
