@@ -209,8 +209,8 @@ GLOWING [color=gold]LIGHT[/color] - [color=purple]DARK[/color] BEADS CONNECT TOG
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center] TO MAKE A BEAD GLOW, THREE OR MORE OF THE SAME TYPE MUST BE NEXT TO EACHOTHER
- ONCE THEY GLOW THEY CAN START CONNECTING TO DIFFERENT TYPES OF GLOWING BEADS"
+text = "[center] TO MAKE A CHUNK, THREE OR MORE OF THE SAME TYPE MUST BE NEXT TO EACHOTHER
+ ONCE THEY GLOW THEY CAN START CONNECTING TO DIFFERENT TYPES OF CHUNKS"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
@@ -222,10 +222,11 @@ ONCE FILLED YOU'LL GAIN A BREAKER BEAD THAT'LL DESTROY ANY CHAIN IT TOUCHES"
 [node name="HBoxContainer" type="GridContainer" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = -6
+theme_override_constants/h_separation = -2
 columns = 5
 
 [node name="TextureProgressBar" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer" instance=ExtResource("3_jggf6")]
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -283,44 +284,62 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Break Meter
+text = "[center][u]Break Meter[/u]
 When filled, it'll store a breaker bead. You can store as many as you like"
 
 [node name="RegularBead" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(172, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Regular Bead
-Can't chain until +3 similar beads are connected"
+text = "[center][u]Regular Bead[/u]
+Can't chain until
+ +3 similar beads
+ are connected"
 
-[node name="ChainableBead" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(200, 100)
+[node name="Container" type="Container" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "[center]Chainable Beads
-Needs another set of glowing beads w/ complementary types"
 
-[node name="ChainedBeads" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+[node name="ChainableBead" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Container"]
 custom_minimum_size = Vector2(200, 100)
+layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Chained Beads
-Can be broken and turn other chainable beads into Chained Beads"
+text = "[center][u]Bead Chunk[/u]
+Needs another complementary chunk to become
+ a chain"
+
+[node name="Container2" type="Container" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(229, 0)
+layout_mode = 2
+
+[node name="ChainedBeads" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Container2"]
+custom_minimum_size = Vector2(209, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][u]Chained Chunk[/u]
+Can be broken and connect with complementary chunks"
 
 [node name="ChainedBeads2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(150, 100)
+layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center]Breaker Bead
+text = "[center][u]Breaker Bead[/u]
 Will destroy any chains adjacent to it"
+
+[node name="Container3" type="Container" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 1
+layout_mode = 2
 
 [node name="Controls" type="PanelContainer" parent="VBoxContainer/Information/InfoTabs"]
 visible = false
@@ -530,7 +549,7 @@ theme_override_constants/separation = 600
 
 [node name="Exit" type="Button" parent="VBoxContainer/nEXT_BACK/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Next")
 focus_neighbor_right = NodePath("../Next")
