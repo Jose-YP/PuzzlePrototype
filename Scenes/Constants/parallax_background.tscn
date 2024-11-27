@@ -28,7 +28,7 @@ metadata/_edit_lock_ = true
 [node name="SecondLayer" type="ParallaxLayer" parent="."]
 modulate = Color(1, 1, 1, 0.513726)
 position = Vector2(2761, 1643)
-motion_scale = Vector2(-0.5, -0.5)
+motion_scale = Vector2(-0.45, -0.45)
 motion_mirroring = Vector2(1849, 1036)
 metadata/_edit_group_ = true
 

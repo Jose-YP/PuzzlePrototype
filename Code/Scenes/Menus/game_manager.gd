@@ -120,6 +120,7 @@ func board_scene_loaded(scene) -> void:
 	currentScene.connect("died", fail_song)
 	currentScene.connect("switchMode", switch_mode)
 	currentScene.connect("modeReact", BG_react)
+	currentScene.Fail.connect("menuSFX",play_menu_sfx)
 	currentScene.Fail.connect("main",back_to_menu)
 	currentScene.Fail.connect("retry",on_board_retry)
 	currentScene.HiScoreScene.connect("menuSFX", play_menu_sfx)
@@ -130,11 +131,12 @@ func board_scene_loaded(scene) -> void:
 func option_scene_loaded(scene) -> void:
 	changeScene(scene)
 	currentScene.connect("main",back_to_menu)
+	currentScene.connect("playSFX",play_menu_sfx)
 	currentScene.connect("makeNoise",_on_option_make_noise)
 	currentScene.connect("switchBG", switch_mode)
 
 func back_to_menu() -> void:
-	play_menu_sfx(2)
+	
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)
@@ -152,7 +154,6 @@ func _on_main_menu_switch_play() -> void:
 	loadScene(boardScene)
 
 func on_board_retry(allowed = true) -> void:
-	play_menu_sfx(1)
 	if allowed:
 		loadScene(boardScene)
 

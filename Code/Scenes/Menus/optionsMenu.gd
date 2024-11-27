@@ -276,4 +276,5 @@ func reset_buttons() -> void:
 func _on_button_pressed() -> void:
 	save_colors()
 	Globals.set_colors()
+	playSFX.emit(2)
 	main.emit()
