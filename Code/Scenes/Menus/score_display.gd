@@ -2,7 +2,10 @@ extends PanelContainer
 
 @onready var scoretext = $Inner/VBoxContainer/HBoxContainer/Scores.get_children()
 
+var pulled_down = false
+
 signal refocus
+signal leave
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,11 +25,12 @@ func refresh_scores():
 		j += 1
 
 func _process(_delta):
-	if visible:
+	print()
+	if pulled_down:
 		$Inner/VBoxContainer/Button.grab_focus()
 		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel"):
 			_on_button_pressed()
 
 func _on_button_pressed():
-	$".".hide()
 	refocus.emit()
+	pulled_down = false

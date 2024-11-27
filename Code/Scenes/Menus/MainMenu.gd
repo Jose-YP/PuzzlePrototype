@@ -31,6 +31,8 @@ func _process(_delta):
 	if can and Input.is_action_just_pressed("ui_accept"):
 		playSFX.emit(1)
 		get_viewport().gui_get_focus_owner().button_pressed = true
+	
+	print(get_viewport().gui_get_focus_owner())
 
 #______________________________
 #BUTTON NAVIGATIONS
@@ -43,6 +45,11 @@ func _on_options_pressed() -> void:
 
 func _on_scores_pressed() -> void:
 	$"Score Display".show()
+	$"Score Display".pulled_down = true
+	var scoreTween = self.create_tween()
+	get_viewport().gui_get_focus_owner().release_focus()
+	scoreTween.tween_property($"Score Display","position",Vector2(-114,-293),.05)
+	await scoreTween.finished
 
 func _on_how_2_play_pressed() -> void:
 	$Light.unlock()
@@ -57,8 +64,12 @@ func _on_how_2_play_pressed() -> void:
 #SCORE AND BASIC CONTROLS
 #______________________________
 func _on_score_display_refocus() -> void:
-	%ScoresTex.grab_focus()
 	playSFX.emit(2)
+	var scoreTween = self.create_tween()
+	get_viewport().gui_get_focus_owner().release_focus()
+	scoreTween.tween_property($"Score Display","position",Vector2(-114,-682), .05)
+	await scoreTween.finished
+	%ScoresTex.grab_focus()
 
 func _on_focus_entered() -> void:
 	if can:

@@ -34,7 +34,6 @@ var readied: bool = false
 #-----------------------------------------
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
-	#await FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
 		Globals.save.reset_scores() 
@@ -45,13 +44,6 @@ func _ready() -> void:
 	
 	if Globals.save.background_id == 1:
 		$ParallaxBackground.starting_change()
-	
-	#await get_tree().create_timer(.25).timeout
-	#
-	#$ColorRect/RichTextLabel.clear()
-	#$ColorRect.connect("gui_input", start_for_real)
-	#$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
-	#$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
 
 func _process(_delta) -> void:
 	if readied:

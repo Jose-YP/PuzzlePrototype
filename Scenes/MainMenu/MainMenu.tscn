@@ -195,12 +195,11 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -190.0
-offset_top = -333.0
+offset_top = -722.0
 offset_right = 190.0
-offset_bottom = 0.0
+offset_bottom = -389.0
 grow_horizontal = 2
 grow_vertical = 0
-metadata/_edit_lock_ = true
 
 [node name="How2Play" parent="." instance=ExtResource("3_kx0x2")]
 modulate = Color(1, 1, 1, 0.00392157)
