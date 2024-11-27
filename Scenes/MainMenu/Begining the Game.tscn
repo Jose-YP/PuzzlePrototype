@@ -27,6 +27,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]Wait a second"
+text = "[center]Getting save data"
 
 [connection signal="finished" from="LoadScreen" to="." method="_on_load_screen_finished"]

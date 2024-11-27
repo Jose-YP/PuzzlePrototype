@@ -4,6 +4,8 @@ extends CanvasLayer
 @export var next_scene = "res://Scenes/Board&Beads/Board.tscn"
 @export var in_the_beggining: bool = false
 
+@onready var loadingText: RichTextLabel = $VBoxContainer/RichTextLabel
+
 signal finished(scene)
 
 # Called when the node enters the scene tree for the first time.
