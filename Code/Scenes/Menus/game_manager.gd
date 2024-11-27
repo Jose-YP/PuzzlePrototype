@@ -236,6 +236,10 @@ func bead_break_SFX() -> void:
 #BACKGROUND SIGNALS
 #-----------------------------------------
 func switch_mode() -> void:
+	if $ParallaxBackground.dark_mode:
+		%Ackcheevement.pitch_scale = 1.11
+	else:
+		%Ackcheevement.pitch_scale = 0.89
 	$ParallaxBackground.switch_mode()
 
 func BG_react(mode: Globals.TempModes) -> void:

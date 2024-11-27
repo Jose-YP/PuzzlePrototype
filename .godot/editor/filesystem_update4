@@ -1,4 +1,4 @@
-res://Scenes/MainMenu/game_manager.tscn
+res://Scenes/Constants/load_screen.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
@@ -6,12 +6,18 @@ res://Themes/ButtonStyle/Border.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
+res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/options_menu.tscn
 res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/UI/BreakProgress.tscn
 res://Scenes/UI/chain_totals.tscn
 res://Scenes/Board&Beads/HighScoreScreen.tscn
-res://Scenes/Board&Beads/fail_screen.tscn
-res://Scenes/Constants/load_screen.tscn
-res://Code/Constants/load_screen.gd
+res://Scenes/UI/left_ui.tscn
+res://Scenes/UI/right_ui.tscn
+res://Scenes/Constants/pause_screen.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/MainMenu/MainMenuButton.tscn
+res://Code/Scenes/Menus/MainMenuButton.gd
+res://Themes/ButtonStyle/MainMenuButtonRESET.res
+res://Themes/ButtonStyle/MainMenuButtonAnims.res

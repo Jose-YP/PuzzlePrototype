@@ -2,6 +2,8 @@ extends TextureButton
 
 @onready var animations: AnimationPlayer = $AnimationPlayer
 
+@export var buttonText: String = ""
+
 var pressing: bool = false
 var hoverUpdate: bool = true
 var pressUpdate: bool = true
@@ -12,6 +14,8 @@ func _ready():
 	$AnimationTree.tree_root = $AnimationTree.tree_root.duplicate()
 	$AnimationTree.active = true
 	texture_normal = texture_normal.duplicate()
+	$RichTextLabel.clear()
+	$RichTextLabel.append_text(str("[center]", buttonText))
 
 func _on_pressed():
 	$AnimationTree.set("parameters/OneShot/request", 1)

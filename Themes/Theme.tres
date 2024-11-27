@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bqt13gd00jakt"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bqt13gd00jakt"]
 
 [ext_resource type="StyleBox" uid="uid://bmnp5omb2d47q" path="res://Themes/ButtonStyle/Disabled.tres" id="1_eytf4"]
 [ext_resource type="FontFile" uid="uid://babx7wtjcsiw4" path="res://Themes/Fonts/CyborgRoosterExpandedItalic-xmX8.otf" id="1_gbssi"]
@@ -35,6 +35,22 @@ content_margin_bottom = 4.0
 color = Color(0.262745, 0.301961, 0.247059, 1)
 thickness = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwxs2"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.266667, 0.301961, 0.235294, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ja1e"]
+bg_color = Color(0.137255, 0.6, 0.909804, 0.631373)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [resource]
 default_font = ExtResource("1_gbssi")
 default_font_size = 13
@@ -54,3 +70,5 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_k77xq")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_fv45w")
 HSlider/styles/slider = SubResource("StyleBoxLine_yor4h")
 PanelContainer/styles/panel = ExtResource("6_e5cc2")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xwxs2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_8ja1e")

@@ -59,12 +59,14 @@ bus = &"BoardSFX"
 [node name="HardDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_7o23l")
+volume_db = 1.0
 max_polyphony = 2
 bus = &"BoardSFX"
 
 [node name="SoftDrop" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("6_yx237")
+volume_db = 1.0
 max_polyphony = 4
 bus = &"BoardSFX"
 
@@ -140,6 +142,7 @@ bus = &"Die"
 [node name="Ackcheevement" type="AudioStreamPlayer" parent="BoardSFX"]
 unique_name_in_owner = true
 stream = ExtResource("27_1u41y")
+volume_db = -3.0
 pitch_scale = 1.11
 bus = &"MenuSFX"
 

@@ -34,7 +34,6 @@ animation = &"MainMenuButtons/Hover"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_om21p"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ruoyd"]
-graph_offset = Vector2(-433.088, -11.7538)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8civu")
 nodes/Animation/position = Vector2(-80, 380)
 nodes/Basic/node = SubResource("AnimationNodeTransition_as6ot")
@@ -76,6 +75,10 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ewpfg"),
+"MainMenuButtons": ExtResource("5_lcy7u")
+}
 tree_root = SubResource("AnimationNodeBlendTree_ruoyd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Basic/current_state = "Default"
@@ -86,6 +89,24 @@ parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 parameters/PressSpeed/scale = 1.8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -19.0
+offset_right = 127.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "test"
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

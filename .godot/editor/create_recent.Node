@@ -1,10 +1,10 @@
+RichTextLabel
 Timer
 Sprite2D
 PanelContainer
 AudioStreamPlayer
 MarginContainer
 VBoxContainer
-RichTextLabel
 ColorRect
 Panel
 HBoxContainer

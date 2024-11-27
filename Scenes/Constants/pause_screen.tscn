@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c55ujrf1e7yhj"]
+[gd_scene load_steps=8 format=3 uid="uid://c55ujrf1e7yhj"]
 
 [ext_resource type="Script" path="res://Code/Constants/PauseScreen.gd" id="1_f2w6d"]
+[ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="2_0qfms"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_i2bur"]
 [ext_resource type="AudioStream" uid="uid://c23dv670s53ql" path="res://Audio/MenuSFX/Click.ogg" id="3_an1u6"]
 
@@ -61,12 +62,14 @@ offset_right = 119.0
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0qfms")
 
 [node name="TITLE" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(75, 30)
+custom_minimum_size = Vector2(214, 72)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "PAUSED
 "
@@ -75,24 +78,28 @@ text = "PAUSED
 layout_mode = 2
 
 [node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/PAUSE"]
-custom_minimum_size = Vector2(55, 25)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "PRESS "
 
 [node name="PauseTexture" type="TextureRect" parent="VBoxContainer/PAUSE"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(70, 0)
+layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 0
 texture = SubResource("Texture2D_ohhwm")
 expand_mode = 5
 stretch_mode = 4
 
 [node name="PAUSE2" type="RichTextLabel" parent="VBoxContainer/PAUSE"]
-custom_minimum_size = Vector2(125, 25)
+custom_minimum_size = Vector2(176, 32)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = " TO UNPAUSE"
 
@@ -102,25 +109,29 @@ layout_mode = 2
 
 [node name="RETRY" type="RichTextLabel" parent="VBoxContainer/RETRY"]
 clip_contents = false
-custom_minimum_size = Vector2(55, 25)
+custom_minimum_size = Vector2(100, 43)
+layout_direction = 1
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "PRESS "
 fit_content = true
 
 [node name="RetryTexture" type="TextureRect" parent="VBoxContainer/RETRY"]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(50, 38)
 layout_mode = 2
+size_flags_vertical = 0
 texture = SubResource("Texture2D_btr6s")
 expand_mode = 5
 stretch_mode = 4
 
 [node name="RETRY2" type="RichTextLabel" parent="VBoxContainer/RETRY"]
-custom_minimum_size = Vector2(125, 25)
+custom_minimum_size = Vector2(194, 43)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = " TO RETRY"
 
@@ -129,10 +140,11 @@ visible = false
 layout_mode = 2
 
 [node name="QUIT" type="RichTextLabel" parent="VBoxContainer/QUIT"]
-custom_minimum_size = Vector2(55, 25)
+custom_minimum_size = Vector2(81, 25)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "PRESS"
 fit_content = true
@@ -145,9 +157,10 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="QUIT2" type="RichTextLabel" parent="VBoxContainer/QUIT"]
-custom_minimum_size = Vector2(125, 25)
+custom_minimum_size = Vector2(193, 29)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = " TO QUIT"
 

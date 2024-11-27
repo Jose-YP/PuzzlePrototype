@@ -31,6 +31,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_bp5l0")
 [node name="TextureProgressBar" parent="Progress" instance=ExtResource("2_wrft0")]
 layout_mode = 2
 rounded = true
+texture_progress_offset = Vector2(44, 32)
 
 [node name="Label" type="Label" parent="Progress"]
 layout_mode = 2
@@ -43,11 +44,11 @@ theme_override_styles/panel = ExtResource("3_bj0xv")
 
 [node name="Info" type="PanelContainer" parent="pANEL"]
 z_index = -1
-custom_minimum_size = Vector2(0, 93)
+custom_minimum_size = Vector2(0, 91)
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("4_4dnh8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="pANEL/Info"]
@@ -61,18 +62,19 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[center]
+
 BREAK AVAILIBLE [/center]
 
-		PRESS "
+		 PRESS "
 fit_content = true
 
 [node name="TextureRect" type="TextureRect" parent="pANEL/Info/VBoxContainer/RichTextLabel2"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-offset_left = 61.0
-offset_top = 19.0
-offset_right = 93.0
-offset_bottom = 51.0
+offset_left = 67.0
+offset_top = 41.0
+offset_right = 83.0
+offset_bottom = 57.0
 texture = SubResource("Texture2D_4dw3j")
 expand_mode = 3
 
