@@ -44,6 +44,7 @@ func randomize_type(array) -> void:
 	material.set_shader_parameter("dissolve_value",1.0)
 	material.set_shader_parameter("modulate",Globals.bead_colors[typeID])
 	connectionBolts.modulate = Globals.link_colors[typeID]
+	shakeSpeed = Globals.beadSpeeds[typeID]
 
 func reset_links():
 	chainedWith = [-1,-1,-1,-1]

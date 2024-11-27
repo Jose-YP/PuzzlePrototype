@@ -27,16 +27,12 @@ var reset_controls: bool = false
 var unpausing: bool = false
 var loopedSong: bool = false
 var usingBoardSongs: bool = false
-var readied: bool = false
 
 #-----------------------------------------
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
 	ready_playing(ETCMusic[0])
-	
-	if resetScores:
-		Globals.save.reset_scores() 
 	
 	if Globals.all_black():
 		Globals.save.reset_colors()
@@ -46,19 +42,18 @@ func _ready() -> void:
 		$ParallaxBackground.starting_change()
 
 func _process(_delta) -> void:
-	if readied:
-		if Input.is_action_just_pressed("Pause") and not unpausing:
-			currentSong.stream_paused = true
-			play_menu_sfx(3)
-			var currently = get_tree().paused
-			get_tree().paused = not currently
-			$PauseScreen.visible = not currently
-			$PauseScreen.play_sfx()
-			
-		elif Input.is_action_just_pressed("Pause"):
-			unpausing = false
+	if Input.is_action_just_pressed("Pause") and not unpausing:
+		currentSong.stream_paused = true
+		play_menu_sfx(3)
+		var currently = get_tree().paused
+		get_tree().paused = not currently
+		$PauseScreen.visible = not currently
+		$PauseScreen.play_sfx()
+		
+	elif Input.is_action_just_pressed("Pause"):
+		unpausing = false
 	
-	if MusicOn and currentSong != null and usingBoardSongs:
+	if MusicOn and currentSong != null and usingBoardSongs and loopVal > currentSong.get_playback_position():
 		if loopVal > currentSong.get_playback_position():
 			if loopedSong:
 				#If on first song, it'll get to the last song, otherwise go backwards
@@ -70,17 +65,6 @@ func _process(_delta) -> void:
 
 func just_got_loaded():
 	$MainMenu.emit_signal("readied")
-
-func start_for_real(event):
-	if not readied and event is InputEventMouseButton:
-		if event.get_button_index() == 1:
-			ready_playing(ETCMusic[0])
-			var loadedTween = get_tree().create_tween()
-			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
-			$MainMenu.emit_signal("readied")
-			readied = true
-			await loadedTween.finished
-			$ColorRect.hide()
 
 #-----------------------------------------
 #SCENE SWITCHING
@@ -165,7 +149,7 @@ func _on_option_make_noise() -> void:
 func ready_playing(song) -> void:
 	if MusicOn:
 		var fadeIn = create_tween().set_ease(Tween.EASE_IN)
-		fadeIn.tween_method(fade_music, 0.0, 1.0, 10)
+		fadeIn.tween_method(fade_music, 0.0, 1.0, 5)
 		currentSong = song
 		song.play()
 

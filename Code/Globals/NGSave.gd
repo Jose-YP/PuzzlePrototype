@@ -113,8 +113,9 @@ func _cloud_set_property(property, value):
 
 func NG2Save() -> void:
 	save = Globals.save
+	if save.HiScores != scores:
+		print("EJDVOJN")
 	save.HiScores = scores
-	print("CURRENT: ", save.HiScores, "REPLACE WITH: ", scores)
 	save.username = username
 	
 	save.input_type = control_type
@@ -137,6 +138,8 @@ func NG2Save() -> void:
 func sync_files() -> void:
 	save = Globals.save
 	print(save.HiScores, save.username, save.joy_action_events)
+	if save.HiScores != scores:
+		print("DVODVKJ")
 	scores = save.HiScores
 	username = save.username
 	

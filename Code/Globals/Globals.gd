@@ -14,6 +14,7 @@ const bead = preload("res://Scenes/Board&Beads/SingleBead.tscn")
 const bead_types: Array[String] = ["Earth","Sea","Air","Light","Dark"]
 const directions: Array[String] = ["Left","Right","Up","Down"]
 const otherConnectionNum: Array = [1,0,3,2]
+const beadSpeeds = [.05,.1,.125,.075,.2]
 
 var relation_flags: Array[int] = []
 var droughtArray: Array[int] = [0,0,0,0,0]

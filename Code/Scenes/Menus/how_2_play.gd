@@ -19,6 +19,7 @@ var breakNum: int = 1
 #INITIALIZATION
 #______________________________
 func _ready():
+	ControllerIcons.refresh()
 	for i in range(beadImgs.size()):
 		beadImgs[i].current_tab = i
 	for img in glowImgs:

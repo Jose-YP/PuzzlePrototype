@@ -143,7 +143,7 @@ metadata/_edit_lock_ = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]CHAINS
+text = "[center][u]CHAINS[/u]
 BREAK CHAINS TO SCORE"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2"]
@@ -251,8 +251,8 @@ layout_mode = 2
 
 [node name="Glow" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Glo"]
 unique_name_in_owner = true
-modulate = Color(0.898039, 0.909804, 0.137255, 0.580392)
-self_modulate = Color(1, 1, 1, 0.509804)
+modulate = Color(0.898, 0.91, 0.137, 0.569)
+self_modulate = Color(1, 1, 1, 0.596)
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true
@@ -265,8 +265,8 @@ layout_mode = 2
 
 [node name="Glow2" type="Sprite2D" parent="VBoxContainer/Information/InfoTabs/Chains/VBoxContainer2/HBoxContainer/Linked"]
 unique_name_in_owner = true
-modulate = Color(0.898039, 0.909804, 0.137255, 0.607843)
-self_modulate = Color(1, 1, 1, 0.85098)
+modulate = Color(0.898039, 0.909804, 0.137255, 1)
+self_modulate = Color(1, 1, 1, 0.596)
 light_mask = 2
 visibility_layer = 2
 use_parent_material = true
@@ -359,7 +359,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]DEFAULT CONTROLS"
+text = "[center][u]CONTROLS"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -496,7 +496,7 @@ text = " SUMMON BREAKER BEAD"
 layout_mode = 2
 
 [node name="PAUSE" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(55, 25)
+custom_minimum_size = Vector2(63, 20)
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
@@ -511,7 +511,7 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="PAUSE2" type="RichTextLabel" parent="VBoxContainer/Information/InfoTabs/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(100, 25)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true

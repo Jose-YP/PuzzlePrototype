@@ -88,7 +88,7 @@ func determine_reroll():
 		var tempReroll = rerollTypes
 		beads[index].randomize_type(tempReroll)
 	elif reroll: print("unlucky")
-	else: print(reroll, chance >= three_type_chance)
+	else: print("Don't need unlucky reroll: ", reroll, chance >= three_type_chance)
 
 func flip():
 	if flipped:

@@ -1,8 +1,11 @@
 extends Resource
 class_name Relations
 
+@export_category("Pool")
 @export_range(2,5) var glow_num: int = 3
+@export_flags("Earth","Sea","Air","Light","Dark") var bead_types: int = 31
 
+@export_category("Relationships")
 @export_flags("Earth","Sea","Air","Light","Dark") var earthRelations: int = 6
 @export_flags("Earth","Sea","Air","Light","Dark") var seaRelations: int = 5
 @export_flags("Earth","Sea","Air","Light","Dark") var airRelations: int = 3
