@@ -33,7 +33,8 @@ var readied: bool = false
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
-	await FinalGlobal.finalReady(Newgrounds)
+	ready_playing(ETCMusic[0])
+	#await FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
 		Globals.save.reset_scores() 
@@ -45,12 +46,12 @@ func _ready() -> void:
 	if Globals.save.background_id == 1:
 		$ParallaxBackground.starting_change()
 	
-	await get_tree().create_timer(.25).timeout
-	
-	$ColorRect/RichTextLabel.clear()
-	$ColorRect.connect("gui_input", start_for_real)
-	$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
-	$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
+	#await get_tree().create_timer(.25).timeout
+	#
+	#$ColorRect/RichTextLabel.clear()
+	#$ColorRect.connect("gui_input", start_for_real)
+	#$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
+	#$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
 
 func _process(_delta) -> void:
 	if readied:
@@ -74,6 +75,9 @@ func _process(_delta) -> void:
 				loopedSong = true
 		
 		loopVal = currentSong.get_playback_position()
+
+func just_got_loaded():
+	$MainMenu.emit_signal("readied")
 
 func start_for_real(event):
 	if not readied and event is InputEventMouseButton:
@@ -136,7 +140,6 @@ func option_scene_loaded(scene) -> void:
 	currentScene.connect("switchBG", switch_mode)
 
 func back_to_menu() -> void:
-	
 	changeScene(mainMenuScene)
 	currentScene.connect("switchOptions", _on_main_menu_switch_options)
 	currentScene.connect("switchPlay", _on_main_menu_switch_play)

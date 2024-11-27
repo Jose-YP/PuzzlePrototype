@@ -5,9 +5,15 @@ extends Node2D
 @export var resetScores: bool = false
 @export_range(0,.5,.01)  var pitchShift: float = .3
 
+var saveRady = false
 var readied = false
+var transitioning = false
+var gameManager = preload("res://Scenes/MainMenu/game_manager.tscn")
 
 func _ready():
+	first_ready()
+
+func first_ready():
 	await FinalGlobal.finalReady(Newgrounds)
 	
 	if resetScores:
@@ -22,21 +28,32 @@ func _ready():
 	
 	await get_tree().create_timer(.25).timeout
 	
-	$ColorRect/RichTextLabel.clear()
-	$ColorRect.connect("gui_input", start_for_real)
-	$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
-	$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
+	saveRady = true
+
+func _process(_delta):
+	if gameManager != null and saveRady and not readied:
+		readied = true
+		$ColorRect/RichTextLabel.clear()
+		$ColorRect.connect("gui_input", start_for_real)
+		$ColorRect/RichTextLabel.connect("gui_input", start_for_real)
+		$ColorRect/RichTextLabel.append_text("[center]Click the screen to start")
 
 func start_for_real(event):
-	if not readied and event is InputEventMouseButton:
+	print("AAA")
+	if not transitioning and readied and event is InputEventMouseButton:
 		if event.get_button_index() == 1:
-			#ready_playing(ETCMusic[0])
-			var loadedTween = get_tree().create_tween()
+			transitioning = true
+			
+			var loaded = gameManager.instantiate()
+			var loadedTween = get_tree().create_tween().set_ease(Tween.EASE_IN)
+			get_tree().root.add_child(loaded)
+			
 			loadedTween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, 1.0)
-			$MainMenu.emit_signal("readied")
-			readied = true
 			await loadedTween.finished
-			$ColorRect.hide()
+			loaded.just_got_loaded()
+			queue_free()
 
 func _on_load_screen_finished(scene):
-	pass # Replace with function body.
+	gameManager = scene
+	$LoadScreen.queue_free()
+

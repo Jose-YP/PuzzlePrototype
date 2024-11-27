@@ -2,14 +2,16 @@ extends CanvasLayer
 
 @export var trasitionTiming: float = .15
 @export var next_scene = "res://Scenes/Board&Beads/Board.tscn"
+@export var in_the_beggining: bool = false
 
 signal finished(scene)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var transitionTween = self.create_tween().set_trans(Tween.TRANS_SPRING)
-	transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-200),trasitionTiming)
-	await transitionTween.finished
+	if not in_the_beggining:
+		var transitionTween = self.create_tween().set_trans(Tween.TRANS_SPRING)
+		transitionTween.tween_property($ColorRect,"position",Vector2($ColorRect.position.x,-200),trasitionTiming)
+		await transitionTween.finished
 	
 	ResourceLoader.load_threaded_request(next_scene)
 

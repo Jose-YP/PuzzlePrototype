@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://efcxr875kt2y"]
+[gd_scene load_steps=31 format=3 uid="uid://efcxr875kt2y"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Menus/game_manager.gd" id="1_k3j0q"]
 [ext_resource type="PackedScene" uid="uid://dj6mpn3m43lkr" path="res://Scenes/Constants/parallax_background.tscn" id="2_n4oh7"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://c23dv670s53ql" path="res://Audio/MenuSFX/Click.ogg" id="22_4neu4"]
 [ext_resource type="AudioStream" uid="uid://b6owxrx7f361p" path="res://Audio/Music/Level 2.ogg" id="22_5iqsk"]
 [ext_resource type="AudioStream" uid="uid://bkdkb7w0q2wdo" path="res://Audio/MenuSFX/Correct.ogg" id="27_1u41y"]
+[ext_resource type="AudioStream" uid="uid://ceo4ye5yjkaux" path="res://Audio/MenuSFX/mouse-click-sound-233951.ogg" id="28_xxxhb"]
 
 [node name="GameManager" type="CanvasLayer"]
 process_mode = 1
@@ -197,6 +198,12 @@ volume_db = -5.0
 pitch_scale = 0.8
 bus = &"MenuSFX"
 
+[node name="Tick" type="AudioStreamPlayer" parent="MenuSFX"]
+stream = ExtResource("28_xxxhb")
+volume_db = -7.0
+pitch_scale = 1.35
+bus = &"MenuSFX"
+
 [node name="PauseScreen" parent="." instance=ExtResource("17_kh1yb")]
 process_mode = 2
 visible = false
@@ -205,6 +212,7 @@ visible = false
 script = ExtResource("21_6ewy6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -27.0
 offset_top = -20.0
 offset_right = 999.0
