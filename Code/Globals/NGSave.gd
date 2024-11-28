@@ -114,6 +114,7 @@ func _cloud_set_property(property, value):
 func NG2Save() -> void:
 	save = Globals.save
 	if save.HiScores != scores:
+		print(save.HiScores, scores)
 		print("EJDVOJN")
 	save.HiScores = scores
 	save.username = username

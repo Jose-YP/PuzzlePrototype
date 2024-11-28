@@ -330,6 +330,10 @@ func full_bead_rotation(pos, start = false) -> void:
 		board[allOldPos[1].x][allOldPos[1].y] = null
 		board[allOldPos[2].x][allOldPos[2].y] = null
 	
+	print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
+	for i in range(currentBead.positions.size()):
+		if (allOldPos[i].x - allNewPos[i].x > 1) or (allOldPos[i].y - allNewPos[i].y > 1):
+			print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
 	allNewPos = rotate_pop(allNewPos)
 	
 	for i in range(currentBead.positions.size()):
@@ -1081,6 +1085,7 @@ func can_rotate(direction = "CCW") -> bool:
 	#CCW 90  | X CCW   |   CW X   |180 CW
 	# X CW   | CW 0    | 270 CCW  | CCW X
 	#X - Anchor, CCW - Counter Clockwise, CW -Clockwise
+	print(currentBead.rot.rotation_degrees, " | ", direction)
 	var pos: Vector2i = currentBead.gridPos[0]
 	match currentBead.rot.rotation_degrees:
 		0.0:
@@ -1116,7 +1121,7 @@ func within_bounds(pos,where = "X") -> bool:
 		if pos.x >= rules.width - 1 or pos.x < 0:
 			return false
 	else:
-		if pos.y >= realHeight or pos.y < 0:
+		if pos.y >= realHeight + 1 or pos.y < 0:
 			return false
 	
 	return true
