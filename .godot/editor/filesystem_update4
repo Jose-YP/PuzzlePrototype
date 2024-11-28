@@ -12,3 +12,6 @@ res://Code/Globals/NGSave.gd
 res://Code/Scenes/Board&Beads/Board.gd
 res://Resources/Rules/Basic Rules.res
 res://Resources/Rules/Easy Rules.res
+res://Resources/SaveData/SaveFile.tres
+res://Scenes/MainMenu/how_2_play.tscn
+res://Code/Scenes/Menus/how_2_play.gd
