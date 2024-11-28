@@ -117,6 +117,9 @@ func NG2Save() -> void:
 		print(save.HiScores, scores)
 		print("EJDVOJN")
 	save.HiScores = scores
+	if save.username != username:
+		print(save.username, " | ",  username)
+		print()
 	save.username = username
 	
 	save.input_type = control_type
@@ -142,6 +145,9 @@ func sync_files() -> void:
 	if save.HiScores != scores:
 		print("DVODVKJ")
 	scores = save.HiScores
+	if save.username != username:
+		print(save.username, " | ",  username)
+		print()
 	username = save.username
 	
 	control_type = save.input_type

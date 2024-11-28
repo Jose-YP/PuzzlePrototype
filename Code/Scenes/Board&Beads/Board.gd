@@ -330,10 +330,10 @@ func full_bead_rotation(pos, start = false) -> void:
 		board[allOldPos[1].x][allOldPos[1].y] = null
 		board[allOldPos[2].x][allOldPos[2].y] = null
 	
-	print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
-	for i in range(currentBead.positions.size()):
-		if (allOldPos[i].x - allNewPos[i].x > 1) or (allOldPos[i].y - allNewPos[i].y > 1):
-			print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
+	#print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
+	#for i in range(currentBead.positions.size()):
+		#if (allOldPos[i].x - allNewPos[i].x > 1) or (allOldPos[i].y - allNewPos[i].y > 1):
+			#print(allOldPos, " | ", currentBead.rot.rotation_degrees, " | ", allNewPos)
 	allNewPos = rotate_pop(allNewPos)
 	
 	for i in range(currentBead.positions.size()):

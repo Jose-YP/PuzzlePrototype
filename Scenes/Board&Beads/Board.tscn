@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://boo2wissxvyly"]
+[gd_scene load_steps=17 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
-[ext_resource type="Resource" uid="uid://tdor8wdkj4d3" path="res://Resources/Relations/5 Duo.res" id="2_aefgl"]
+[ext_resource type="Resource" uid="uid://uxnc7ih2362h" path="res://Resources/Rules/Easy Rules.res" id="2_yhwyg"]
 [ext_resource type="PackedScene" uid="uid://dt86eivh6s6vl" path="res://Scenes/UI/left_ui.tscn" id="3_4i3af"]
-[ext_resource type="Script" path="res://Resources/Rules/RuleMaker.gd" id="3_ln7wh"]
 [ext_resource type="PackedScene" uid="uid://c8upol425ha0o" path="res://Scenes/Board&Beads/grid_background.tscn" id="3_xac2l"]
 [ext_resource type="Texture2D" uid="uid://b455ror03qm3i" path="res://Art/Board&Beads/puzzle_board_no_back.png" id="4_xlr6p"]
 [ext_resource type="PackedScene" uid="uid://dlxjyxa3t38su" path="res://Scenes/Board&Beads/ghost_bead.tscn" id="4_yfyud"]
@@ -12,42 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b371obu5a1ii" path="res://Scenes/Board&Beads/fail_screen.tscn" id="7_td82j"]
 [ext_resource type="Script" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="10_6rky0"]
 [ext_resource type="Theme" uid="uid://bqt13gd00jakt" path="res://Themes/Theme.tres" id="12_p8my5"]
-
-[sub_resource type="Resource" id="Resource_n23tv"]
-script = ExtResource("3_ln7wh")
-width = 10
-height = 13
-safe_high_columns = 1
-fail_rows = 3
-offset = Vector2(44.9, 44.9)
-origin = Vector2(328, 59)
-start_pos = Vector2i(4, 1)
-bead_relationships = ExtResource("2_aefgl")
-breakBead = true
-droughtVal = 6
-floodVal = 8
-soft_drop = 0.5
-beadScore = 1
-linkMultiplier = 0.5
-powerMultiplier = 0.15
-chainMultiplier = 2.0
-comboMultiplier = 3.0
-breakBeadRecharge = 0.25
-max_levels = 15
-bead_levelUp = 30
-levelUp_rate = 0.3
-speedUp = 0.1
-meterChargeRate = 0.6
-meterChargeThres = 6
-rotate_pop_checks = Array[Vector2i]([Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)])
-gravity_on = true
-spawning = true
-debug_fills = 0
-grid_fill = 7
-column_fill = Vector2i(3, 4)
-column_pos = Vector2i(3, 0)
-overhang_dimentions = Vector2i(-1, 4)
-overhang_pos = Vector2i(6, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0fgb"]
 
@@ -62,7 +25,7 @@ overhang_pos = Vector2i(6, 4)
 [node name="Board" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ixvqd")
-rules = SubResource("Resource_n23tv")
+rules = ExtResource("2_yhwyg")
 RUIextra = 15.0
 failColor = Color(0.176471, 0.176471, 0.176471, 1)
 
@@ -86,6 +49,7 @@ scale = Vector2(1, 1)
 BoardColor = Color(0.129412, 0.286275, 0.364706, 0.603922)
 FailColor = Color(0.588235, 0.145098, 0.14902, 0.478431)
 TileColor = Color(0.207843, 0.207843, 0.207843, 0.431373)
+debug = false
 metadata/_edit_group_ = true
 
 [node name="Grid" type="Node2D" parent="Main"]
