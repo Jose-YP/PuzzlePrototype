@@ -57,7 +57,7 @@ func _ready():
 	%DomainText.pop()
 	%DomainText.append_text("- ")
 	%DomainText.push_color(Globals.bead_colors[1])
-	%DomainText.append_text("SEA ")
+	%DomainText.append_text("WATER ")
 	%DomainText.pop()
 	%DomainText.append_text("- ")
 	%DomainText.push_color(Globals.bead_colors[2])

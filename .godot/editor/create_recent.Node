@@ -1,6 +1,7 @@
+TextureRect
+Timer
 Container
 RichTextLabel
-Timer
 Sprite2D
 PanelContainer
 AudioStreamPlayer

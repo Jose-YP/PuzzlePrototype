@@ -232,3 +232,7 @@ func BG_react(mode: Globals.TempModes) -> void:
 			$ParallaxBackground.currentMode = Globals.TempModes.DEFAULT
 	
 	$ParallaxBackground.color_change()
+
+func _on_reping_timeout():
+	if Globals.NewgroundsToggle:
+		NG.components.ping()

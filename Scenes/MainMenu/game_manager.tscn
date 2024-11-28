@@ -231,6 +231,10 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[center]Wait a second"
 
+[node name="Reping" type="Timer" parent="."]
+wait_time = 600.0
+autostart = true
+
 [connection signal="playSFX" from="MainMenu" to="." method="play_menu_sfx"]
 [connection signal="switchOptions" from="MainMenu" to="." method="_on_main_menu_switch_options"]
 [connection signal="switchPlay" from="MainMenu" to="." method="_on_main_menu_switch_play"]
@@ -238,3 +242,4 @@ text = "[center]Wait a second"
 [connection signal="quit" from="PauseScreen" to="." method="_on_pause_screen_quit"]
 [connection signal="retry" from="PauseScreen" to="." method="on_board_retry"]
 [connection signal="unpauseSong" from="PauseScreen" to="." method="_on_pause_screen_unpause_song"]
+[connection signal="timeout" from="Reping" to="." method="_on_reping_timeout"]

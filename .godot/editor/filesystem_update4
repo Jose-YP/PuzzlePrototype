@@ -6,12 +6,11 @@ res://Themes/ButtonStyle/Border.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
+res://Resources/Rules/Basic Rules.res
+res://Resources/SaveData/SaveFile.tres
 res://Scenes/MainMenu/score_display.tscn
 res://Scenes/Board&Beads/Board.tscn
-res://Code/Globals/NGSave.gd
-res://Code/Scenes/Board&Beads/Board.gd
-res://Resources/Rules/Basic Rules.res
-res://Resources/Rules/Easy Rules.res
-res://Resources/SaveData/SaveFile.tres
 res://Scenes/MainMenu/how_2_play.tscn
-res://Code/Scenes/Menus/how_2_play.gd
+res://Scenes/MainMenu/Begining the Game.tscn
+res://Code/Globals/FinalGlobal.gd
+res://Code/Globals/NGSave.gd
