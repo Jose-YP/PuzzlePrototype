@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@export var Newgrounds: bool = true
 @export var MusicOn: bool = true
 @export var resetScores: bool = false
 @export_range(0,.5,.01)  var pitchShift: float = .3
@@ -32,14 +31,15 @@ var usingBoardSongs: bool = false
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
-	ready_playing(ETCMusic[0])
-	
 	if Globals.all_black():
 		Globals.save.reset_colors()
 		NGSaveSetup.sync_files()
 	
 	if Globals.save.background_id == 1:
 		$ParallaxBackground.starting_change()
+	
+	if MusicOn:
+		ready_playing(ETCMusic[0])
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("Pause") and not unpausing:
@@ -72,7 +72,7 @@ func just_got_loaded():
 #For non-loading scenes
 func changeScene(scene) -> void:
 	BG_react(Globals.TempModes.DEFAULT)
-	Globals.save.save(Newgrounds)
+	Globals.save.save(Globals.NewgroundsToggle)
 	currentScene.queue_free()
 	
 	var newScene = scene.instantiate()

@@ -495,6 +495,7 @@ func post_turn() -> void:
 	find_links()
 	find_chains(false)
 	await check_breakers()
+	second_fix()
 	
 	if not rules.breakBead:
 		next_turn()
@@ -638,8 +639,24 @@ func detect_fail() -> void:
 			modeReact.emit(Globals.TempModes.DEFAULT)
 
 func second_fix() -> void:
+	for i in rules.width:
+		for j in range(rules.height - 1, -1, -1):
+			#or currentBead.in_full_bead(bead)
+			var bead = board[i][j]
+			
+			if bead == null or bead.has_node("Beads"):
+				continue
+			
+			var pos = pixel_to_grid(bead)
+			if bead.name.ends_with("2"):
+				print("IASUHHBHJS")
+				push_up(bead)
+			elif Vector2i(i,j) != pos:
+				board[i][j] = null
+				board[pos.x][pos.y] = bead
+	
 	for bead in gridBeads.get_children():
-		if bead == null or bead == currentBead:
+		if bead == null or bead.has_node("Beads") or not is_instance_valid(bead):
 			continue
 		var pos = pixel_to_grid(bead)
 		var found = find_bead(bead)
@@ -648,20 +665,20 @@ func second_fix() -> void:
 			print(bead.name, find_bead(bead), " vs ", pos)
 			board[found.x][found.y] = null
 			board[pos.x][pos.y] = bead
-		
-	for i in rules.width:
-		for j in rules.height:
-			#or currentBead.in_full_bead(bead)
-			var bead = board[i][j]
-			if bead == null:
-				continue
-			if bead.name.ends_with("2"):
-				print("IASUHHBHJS")
-			
-			var pos = pixel_to_grid(bead)
-			if Vector2i(i,j) != pos:
-				board[i][j] = null
-				board[pos.x][pos.y] = bead
+	
+	second_fix()
+
+func push_up(pushing) -> void:
+	var pushingPos = pixel_to_grid(pushing)
+	var newPos = pushingPos - Vector2i(0,1)
+	print("Pushing :", pushingPos, pushingPos - Vector2i(0,1), newPos)
+	if board[newPos.x][newPos.y] != null:
+		var first_push = board[newPos.x][newPos.y]
+		await push_up(first_push)
+	
+	board[pushingPos.x][pushingPos.y] = null
+	board[newPos.x][newPos.y] = pushing
+	pushing.set_name(str(newPos))
 
 func lost_beads(bead) -> void:
 	var changed: bool = false
@@ -1152,10 +1169,11 @@ func _on_soft_drop_timeout() -> void:
 		hard_drop(find_drop_bottom(currentBead))
 
 func _on_grounded_timeout() -> void:
-	hard_drop(find_drop_bottom(currentBead))
+	if not failed:
+		hard_drop(find_drop_bottom(currentBead))
 
 func _on_gravity_timeout() -> void:
-	if rules.gravity_on and not Input.is_action_pressed("ui_down"):
+	if rules.gravity_on and not Input.is_action_pressed("ui_down") and not failed:
 		if not can_move("Down") and not held:
 			hard_drop(find_drop_bottom(currentBead))
 		else:

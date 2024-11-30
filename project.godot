@@ -39,6 +39,7 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="C:/Users/Jose/Videos/Godot Movies/GodotTest.avi"
+naming/node_name_casing=1
 
 [editor_plugins]
 

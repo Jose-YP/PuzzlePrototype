@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1lvgx12waft8"
-path="res://.godot/imported/BadLogo.png-c9dd0a037d0333a4c165d51ecfee0101.ctex"
+uid="uid://bonp45djdfwr4"
+path="res://.godot/imported/BadLogoPart2.png-3c07b27f6937e17eba684ee355b6a29c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/BadLogo.png"
-dest_files=["res://.godot/imported/BadLogo.png-c9dd0a037d0333a4c165d51ecfee0101.ctex"]
+source_file="res://Art/UI/BadLogoPart2.png"
+dest_files=["res://.godot/imported/BadLogoPart2.png-3c07b27f6937e17eba684ee355b6a29c.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

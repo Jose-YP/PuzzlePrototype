@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1yyt1hj4cb7m"
-path="res://.godot/imported/meter_bar_v4.png-35cd52c4a67e4375dd528b9ae1e3a620.ctex"
+uid="uid://deh15r0e4igux"
+path="res://.godot/imported/Bad Logo part.png-f3b072213d26bb7913636c5ab9d06f73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/meter_bar_v4.png"
-dest_files=["res://.godot/imported/meter_bar_v4.png-35cd52c4a67e4375dd528b9ae1e3a620.ctex"]
+source_file="res://Art/UI/Bad Logo part.png"
+dest_files=["res://.godot/imported/Bad Logo part.png-f3b072213d26bb7913636c5ab9d06f73.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

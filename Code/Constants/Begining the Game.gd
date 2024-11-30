@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var Newgrounds: bool = true
-@export var MusicOn: bool = true
 @export var resetScores: bool = false
 @export_range(0,.5,.01)  var pitchShift: float = .3
 

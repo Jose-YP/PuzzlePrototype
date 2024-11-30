@@ -1,4 +1,3 @@
-res://Scenes/MainMenu/game_manager.tscn
 res://Shaders/SingleBeadBurn.tres
 res://Art/Board&Beads/Connected/LightningConnection.tres
 res://addons/controller_icons/settings.tres
@@ -7,10 +6,16 @@ res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
 res://Resources/Rules/Basic Rules.res
-res://Resources/SaveData/SaveFile.tres
+res://Title.gd
+res://Scenes/Constants/title.tscn
+res://Scenes/MainMenu/MainMenu.tscn
+res://Scenes/MainMenu/game_manager.tscn
 res://Scenes/MainMenu/score_display.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/MainMenu/Begining the Game.tscn
-res://Code/Globals/FinalGlobal.gd
-res://Code/Globals/NGSave.gd
+res://Scenes/MainMenu/MainMenuButton.tscn
+res://Code/Constants/Begining the Game.gd
+res://README.md
+res://Code/Scenes/Menus/game_manager.gd
+res://Code/Scenes/Board&Beads/Board.gd
