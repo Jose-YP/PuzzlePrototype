@@ -53,13 +53,13 @@ physical_keycode = 4194320
 script = ExtResource("1_l2j0a")
 HiScores = {
 "000000": [900.0, "ERN"],
-"111111": [800.0, "GAN"],
 "133793": [1116, "QVW"],
-"222222": [700.0, "MRA"],
+"218512": [7107, "YP!"],
 "884746": [1110.0, "RVW"],
+"889291": [4022, "YP!"],
 "999999": [1000.0, "LVY"]
 }
-username = "QVW"
+username = "YP!"
 masterAudioLeve = 0.0
 musicAudioLeve = 70.0
 sfxAudioLeve = 70.0

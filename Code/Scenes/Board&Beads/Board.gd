@@ -1175,7 +1175,7 @@ func _on_soft_drop_timeout() -> void:
 		hard_drop(find_drop_bottom(currentBead))
 
 func _on_grounded_timeout() -> void:
-	if not failed:
+	if not failed and not breaking:
 		hard_drop(find_drop_bottom(currentBead))
 
 func _on_gravity_timeout() -> void:
@@ -1214,6 +1214,8 @@ func _on_right_ui_maxed_level() -> void:
 		playSFX.emit(9)
 		$Medals/Dark.unlock()
 	
+	if breaking:
+		await self.brokeAll
 	fail_screen()
 
 func should_play_zap() -> void:

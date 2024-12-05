@@ -53,9 +53,9 @@ func start_for_real(event):
 
 func _on_load_screen_finished(scene):
 	var loadedTween = get_tree().create_tween().set_ease(Tween.EASE_IN) 
-	gameManager = scene
 	$LoadScreen.loadingText.clear()
 	$LoadScreen.loadingText.append_text("[center]\n\nLoaded Main Game")
 	loadedTween.tween_property($LoadScreen.loadingText, "modulate", Color.TRANSPARENT, 2.0)
 	await loadedTween.finished
+	gameManager = scene
 	$LoadScreen.queue_free()

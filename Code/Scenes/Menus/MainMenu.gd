@@ -25,14 +25,13 @@ func _ready() -> void:
 	
 	$"Score Display".refresh_scores()
 	%PlayTex.grab_focus()
+	#$Title2.global_position.x = -140
 	can = true
 
 func _process(_delta):
 	if can and Input.is_action_just_pressed("ui_accept"):
 		playSFX.emit(1)
 		get_viewport().gui_get_focus_owner().button_pressed = true
-	
-	print(get_viewport().gui_get_focus_owner())
 
 #______________________________
 #BUTTON NAVIGATIONS

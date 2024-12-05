@@ -19,3 +19,6 @@ res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Code/Scenes/Board&Beads/breaker_bead.gd
+res://Resources/Rules/Easy Rules.res
+res://Code/Scenes/Menus/MainMenu.gd
+res://Code/Constants/Begining the Game.gd
