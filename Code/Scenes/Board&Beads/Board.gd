@@ -1247,6 +1247,7 @@ func fail_screen() -> void:
 	var placement = Globals.find_placement(score)
 	if placement != 7:
 		highScored = true
+		HiScoreScene.score = score
 		HiScoreScene.placement = placement
 	
 	died.emit()
