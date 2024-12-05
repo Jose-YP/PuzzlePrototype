@@ -576,7 +576,7 @@ func post_break() -> void:
 
 func all_fall() -> void:
 	var check_again: bool = false
-	for i in range(rules.width):
+	for i in rules.width:
 		#Start at the bottom of the board and push those down first
 		for j in range(realHeight,-1,-1):
 			var bead = board[i][j]
@@ -649,9 +649,9 @@ func second_fix() -> void:
 			
 			var pos = pixel_to_grid(bead)
 			if bead.name.ends_with("2"):
-				print("IASUHHBHJS")
+				print(bead, bead.currentType, " IASUHHBHJS")
 				push_up(bead)
-			elif Vector2i(i,j) != pos:
+			elif Vector2i(i,j) != pos and not bead.second_fix:
 				board[i][j] = null
 				board[pos.x][pos.y] = bead
 	
@@ -665,19 +665,25 @@ func second_fix() -> void:
 			print(bead.name, find_bead(bead), " vs ", pos)
 			board[found.x][found.y] = null
 			board[pos.x][pos.y] = bead
+		
+		bead.second_fix = false
 	
-	second_fix()
+	#second_fix()
 
 func push_up(pushing) -> void:
+	if pushing.second_fix: return
+	
+	pushing.second_fix = true
 	var pushingPos = pixel_to_grid(pushing)
 	var newPos = pushingPos - Vector2i(0,1)
-	print("Pushing :", pushingPos, pushingPos - Vector2i(0,1), newPos)
+	print(pushing.currentType," Pushing :", pushingPos, pushingPos - Vector2i(0,1), newPos)
 	if board[newPos.x][newPos.y] != null:
 		var first_push = board[newPos.x][newPos.y]
 		await push_up(first_push)
 	
 	board[pushingPos.x][pushingPos.y] = null
 	board[newPos.x][newPos.y] = pushing
+	pushing.global_position = grid_to_pixel(newPos)
 	pushing.set_name(str(newPos))
 
 func lost_beads(bead) -> void:

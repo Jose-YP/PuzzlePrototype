@@ -29,6 +29,7 @@ var glowing: bool = false
 var breaking: bool = false
 var shaking: bool = false
 var chained: bool = false
+var second_fix: bool = false
 
 #______________________________
 #INITIALIZATION

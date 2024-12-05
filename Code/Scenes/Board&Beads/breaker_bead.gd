@@ -21,6 +21,7 @@ var breaker: bool = true
 var placed: bool = false
 var breaking: bool = false
 var rippled: bool = false
+var second_fix: bool = false
 
 #______________________________
 #INITIALIZATION
