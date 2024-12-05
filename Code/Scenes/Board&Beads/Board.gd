@@ -74,6 +74,7 @@ var breakers: Dictionary = {}
 func _ready() -> void:
 	#Here to load all objects
 	#Once they're loaded once, they won't freeze up the game again
+	Globals.rules = rules
 	var temp = Globals.bead.instantiate()
 	var temp2 = breakerBead.instantiate()
 	var holdTween = self.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
@@ -515,6 +516,9 @@ func next_turn() -> void:
 		pauseFall(false)
 		pull_next_bead()
 		display_board()
+	
+	else:
+		fail_screen()
 
 func find_links() -> void:
 	#If nothing changes, then this won't
@@ -1214,9 +1218,8 @@ func _on_right_ui_maxed_level() -> void:
 		playSFX.emit(9)
 		$Medals/Dark.unlock()
 	
-	if breaking:
-		await self.brokeAll
-	fail_screen()
+	failed = true
+	#fail_screen()
 
 func should_play_zap() -> void:
 	playZap = true
@@ -1230,6 +1233,14 @@ func continue_breaker() -> void:
 #______________________________
 #FAIL SCREEN
 #______________________________
+func is_completed():
+	if not breaking and failed:
+		if Globals.NewgroundsToggle:
+			playSFX.emit(9)
+			$Medals/Dark.unlock()
+		
+		fail_screen()
+
 func fail_screen() -> void:
 	failed = true
 	pauseFall(true)
