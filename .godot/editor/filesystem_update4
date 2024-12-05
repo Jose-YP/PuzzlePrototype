@@ -6,19 +6,13 @@ res://Themes/ButtonStyle/Border.tres
 res://Themes/ButtonStyle/Focused.tres
 res://Themes/Theme.tres
 res://Themes/ButtonStyle/RightUI.tres
-res://Resources/Rules/Basic Rules.res
+res://Resources/Rules/Easy Rules.res
 res://Scenes/MainMenu/score_display.tscn
 res://Scenes/Board&Beads/Board.tscn
 res://Scenes/MainMenu/how_2_play.tscn
 res://Scenes/MainMenu/Begining the Game.tscn
-res://Scenes/MainMenu/MainMenuButton.tscn
 res://Scenes/MainMenu/MainMenu.tscn
-res://Scenes/Constants/title.tscn
-res://Code/Scenes/Board&Beads/Board.gd
-res://Code/Scenes/Board&Beads/SinglePiece.gd
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
-res://Code/Scenes/Board&Beads/breaker_bead.gd
-res://Resources/Rules/Easy Rules.res
-res://Code/Scenes/Menus/MainMenu.gd
-res://Code/Constants/Begining the Game.gd
+res://Scenes/Constants/title.tscn
+res://Code/Scenes/Board&Beads/Board.gd

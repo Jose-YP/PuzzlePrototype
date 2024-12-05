@@ -375,6 +375,8 @@ func mini_rotate_pop(newPos, ammount) -> Array[Vector2i]:
 #PROCESSING + BREAK & FLIP
 #______________________________
 func _process(delta) -> void:
+	if failed and not fallPaused and not breaking: fail_screen()
+	
 	if not moved:
 		for bead in $Hold.get_children():
 			bead.global_position = farAway
