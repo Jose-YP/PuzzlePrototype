@@ -31,6 +31,8 @@ var usingBoardSongs: bool = false
 #INITALIZATION AND PROCESSING
 #-----------------------------------------
 func _ready() -> void:
+	Globals.set_volume()
+	
 	if Globals.all_black():
 		Globals.save.reset_colors()
 		NGSaveSetup.sync_files()

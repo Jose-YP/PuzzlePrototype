@@ -15,3 +15,5 @@ res://Scenes/MainMenu/MainMenu.tscn
 res://Scenes/Board&Beads/SingleBead.tscn
 res://Scenes/Board&Beads/breaker_bead.tscn
 res://Scenes/Constants/title.tscn
+res://Code/Scenes/Menus/game_manager.gd
+res://Scenes/MainMenu/options_menu.tscn
