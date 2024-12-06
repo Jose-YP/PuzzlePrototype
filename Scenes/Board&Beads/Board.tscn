@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://boo2wissxvyly"]
 
 [ext_resource type="Script" path="res://Code/Scenes/Board&Beads/Board.gd" id="1_ixvqd"]
-[ext_resource type="Resource" uid="uid://uxnc7ih2362h" path="res://Resources/Rules/Easy Rules.res" id="2_vxalo"]
+[ext_resource type="Resource" uid="uid://cl0ogyq1iuq2o" path="res://Resources/Rules/Basic Rules.res" id="2_sleix"]
 [ext_resource type="PackedScene" uid="uid://dt86eivh6s6vl" path="res://Scenes/UI/left_ui.tscn" id="3_4i3af"]
 [ext_resource type="PackedScene" uid="uid://c8upol425ha0o" path="res://Scenes/Board&Beads/grid_background.tscn" id="3_xac2l"]
 [ext_resource type="Texture2D" uid="uid://b455ror03qm3i" path="res://Art/Board&Beads/puzzle_board_no_back.png" id="4_xlr6p"]
@@ -25,7 +25,7 @@
 [node name="Board" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ixvqd")
-rules = ExtResource("2_vxalo")
+rules = ExtResource("2_sleix")
 RUIextra = 15.0
 failColor = Color(0.176471, 0.176471, 0.176471, 1)
 
