@@ -299,6 +299,7 @@ func drop() -> void:
 #______________________________
 func ground_timer_reset(oldPos, newPos) -> void:
 	var canDown = can_move("Down")
+	#IF the bead moved but is still grounded
 	if oldPos != newPos and not canDown:
 		$Timers/Grounded.start()
 	elif canDown:
@@ -1208,7 +1209,7 @@ func _on_left_ui_break_ready() -> void:
 func _on_right_ui_level_up(level) -> void:
 	playSFX.emit(6)
 	var factor = level * rules.speedUp
-	%Grounded.set_wait_time(baseGroundedTime - factor/5)
+	#%Grounded.set_wait_time(baseGroundedTime - factor/5)
 	%Gravity.set_wait_time(baseGravTime - factor)
 	%Placed.set_wait_time(%Grounded.get_wait_time()/4)
 

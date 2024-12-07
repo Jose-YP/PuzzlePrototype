@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Save" load_steps=18 format=3]
+[gd_resource type="Resource" script_class="Save" load_steps=18 format=3 uid="uid://dpt3ygmd04kml"]
 
 [ext_resource type="Script" path="res://Resources/SaveData/SaveMaker.gd" id="1_l2j0a"]
 
@@ -52,15 +52,15 @@ physical_keycode = 4194320
 [resource]
 script = ExtResource("1_l2j0a")
 HiScores = {
-"062403": [6810, "YP!"],
-"133793": [1116, "QVW"],
-"218512": [7107, "YP!"],
-"344912": [2740, "YP!"],
-"395504": [1342, "YP!"],
-"889291": [4022, "YP!"]
+"000000": [900, "ERN"],
+"111111": [800, "GAN"],
+"222222": [700, "MRA"],
+"333333": [600, "MLY"],
+"444444": [500, "NAN"],
+"999999": [1000, "LVY"]
 }
-username = "YP!"
-masterAudioLeve = 0.0
+username = "LVY"
+masterAudioLeve = 100.0
 musicAudioLeve = 70.0
 sfxAudioLeve = 70.0
 input_type = 0
@@ -86,9 +86,9 @@ joy_action_events = {
 }
 reset = false
 background_id = 0
-earthColor = Color(0.886275, 0.223529, 0.211765, 1)
-seaColor = Color(0.137255, 0.6, 0.909804, 1)
+earthColor = Color(0.886, 0.224, 0.212, 1)
+seaColor = Color(0.137, 0.6, 0.91, 1)
 airColor = Color(1, 1, 1, 1)
-lightColor = Color(0.898039, 0.909804, 0.137255, 1)
-darkColor = Color(0.843137, 0.25098, 0.662745, 1)
-breakerColor = Color(0.513726, 0.968627, 0.556863, 1)
+lightColor = Color(0.898, 0.91, 0.137, 1)
+darkColor = Color(0.843, 0.251, 0.663, 1)
+breakerColor = Color(0.514, 0.969, 0.557, 1)

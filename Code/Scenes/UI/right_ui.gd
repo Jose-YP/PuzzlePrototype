@@ -123,7 +123,7 @@ func update_display(beads, links, chains, breaker = false) -> void:
 		if chains + 1 >= 3:
 			%Sea.unlock()
 		
-		if links >= 15:
+		if links >= 12:
 			%Earth.unlock()
 
 func hide_display(chainDisplay):
